@@ -4,7 +4,7 @@
 # Autore: Ivan Luminaria
 # Versione: 4.0
 # Data: 05 Marzo 2026
-# Nota: Aggiunto progetto WWW (www.luminaria.it)
+# Nota: Aggiunto progetto WWW (www.ivanluminaria.com)
 # ===================================================================
 # Configurazione del TOKEN per gh (github)
 # IMPORTANTE: inserisci qui il tuo GitHub Personal Access Token
@@ -99,7 +99,7 @@ set_gdm_prompt() {
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{magenta}[GDM]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 ♟️  %# '
 }
-# Prompt WWW (www.luminaria.it)
+# Prompt WWW (ivanluminaria.com)
 set_www_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{033}[WWW]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
@@ -142,16 +142,16 @@ switch_project() {
             fi
             ;;
         3|www)
-            echo "🌐 Caricamento ambiente www.luminaria.it..."
+            echo "🌐 Caricamento ambiente ivanluminaria.com..."
             export CURRENT_PROJECT="www"
             # Variabili progetto WWW
-            export WWW_PROJECT_DIR="/Users/ivanluminaria/Development/APPLICAZIONI/My-Web-Site/www.luminaria.it"
+            export WWW_PROJECT_DIR="/Users/ivanluminaria/Development/APPLICAZIONI/My-Web-Site/ivanluminaria.com"
             export WWW_CONTENT_DIR="$WWW_PROJECT_DIR/content"
             export WWW_CONFIG_DIR="$WWW_PROJECT_DIR/config/_default"
             export WWW_DOCS_DIR="$WWW_PROJECT_DIR/DOCS"
-            export HUGO_BASE_URL="https://ilum75IDB.github.io/www.luminaria.it/"
-            export WWW_PROD_URL="https://www.luminaria.it/"
-            export WWW_REPO="ilum75IDB/www.luminaria.it"
+            export HUGO_BASE_URL="https://ilum75IDB.github.io/ivanluminaria.com/"
+            export WWW_PROD_URL="https://www.ivanluminaria.com/"
+            export WWW_REPO="ilum75IDB/ivanluminaria.com"
             if [[ -d "$WWW_PROJECT_DIR" ]]; then
                 cd "$WWW_PROJECT_DIR"
                 set_www_prompt
@@ -177,8 +177,8 @@ switch_project() {
                 alias gpull='git pull origin main'
                 # Deploy & preview
                 alias deploy='git add -A && git commit -m "update site" && git push origin main'
-                alias preview='open "https://ilum75IDB.github.io/www.luminaria.it/"'
-                alias ghactions='open "https://github.com/ilum75IDB/www.luminaria.it/actions"'
+                alias preview='open "https://ilum75IDB.github.io/ivanluminaria.com/"'
+                alias ghactions='open "https://github.com/ilum75IDB/ivanluminaria.com/actions"'
                 # Contenuti multilingua - crea set di file per nuova pagina
                 www_new_page() {
                     local name=$1
@@ -262,7 +262,7 @@ project_status() {
             fi
             ;;
         www)
-            echo "🌐 www.luminaria.it — Hugo Site"
+            echo "🌐 ivanluminaria.com — Hugo Site"
             echo "📂 Dir: $WWW_PROJECT_DIR"
             echo "🌍 URL: $HUGO_BASE_URL"
             echo "🏗️  Repo: $WWW_REPO"
@@ -278,7 +278,7 @@ alias pstatus='project_status'
 # Help WWW
 wwwhelp() {
     echo ""
-    echo "🌐 COMANDI WWW.LUMINARIA.IT"
+    echo "🌐 COMANDI WWW.IVANLUMINARIA.COM"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo "🚀 HUGO:"
@@ -407,8 +407,8 @@ show_project_menu() {
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo "  1) 🎮 Revolution Chess Clock (RCC)"
-    echo "  2) ♟️  Game Director Manager (GDM)"
-    echo "  3) 🌐 www.luminaria.it (WWW)"
+    echo "  2) ♟️  Game Director Manager  (GDM)"
+    echo "  3) 🌐 www.ivanluminaria.com  (WWW)"
     echo "  4) 🔧 Ambiente Base (no progetti)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -432,7 +432,7 @@ help() {
     echo "📂 CAMBIO PROGETTO:"
     echo "  workrcc         # Passa a Revolution Chess Clock"
     echo "  workgdm         # Passa a Game Director Manager"
-    echo "  workwww         # Passa a www.luminaria.it"
+    echo "  workwww         # Passa a www.ivanluminaria.com"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
     echo ""
