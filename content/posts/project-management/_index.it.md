@@ -49,15 +49,11 @@ L'ultima — **team happiness** — è quella che i PM tradizionali non misurano
 
 ------------------------------------------------------------------------
 
-## 📚 Di cosa parlo in questa sezione
+## 📚 Di cosa parlo qui
 
-Qui trovi storie vere, numeri concreti e lezioni apprese. Niente teoria da manuale. Solo quello che ho visto funzionare — e quello che ho visto fallire.
+Storie vere, numeri concreti e lezioni apprese. Niente teoria da manuale. Solo quello che ho visto funzionare — e quello che ho visto fallire.
 
-**🤖 AI e Workflow** — Come l'intelligenza artificiale sta cambiando il modo in cui gestiamo i progetti software. Non l'AI che sostituisce le persone — l'AI che moltiplica le competenze di chi le ha.
-
-**🏢 Consulenza IT** — Storie dal mondo della consulenza informatica. Milioni spesi, errori ripetuti, e le lezioni brutali che ne derivano. Perché il costo più alto non è il fornitore sbagliato — è il tempo che perdi prima di capire che la soluzione era più semplice.
-
-**💻 Smart Working** — Analisi concreta del lavoro da remoto nella consulenza IT. Con i numeri veri, il raccordo anulare di Roma, e la dimostrazione che misurare i risultati funziona meglio che contare le presenze.
+Si parla di intelligenza artificiale applicata al workflow, di consulenza IT e dei suoi costi nascosti, di smart working come vantaggio competitivo. Ogni articolo nasce da un'esperienza reale — la mia.
 
 ------------------------------------------------------------------------
 

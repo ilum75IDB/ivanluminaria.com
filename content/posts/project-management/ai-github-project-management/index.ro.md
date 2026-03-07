@@ -5,7 +5,7 @@ date: "2026-03-07T10:00:00+01:00"
 draft: false
 translationKey: "ai_github_project_management"
 tags: ["Project Management", "AI", "GitHub", "Workflow", "Bug Fixing", "Software Evolution"]
-categories: ["Project Management", "AI Workflow"]
+categories: ["Project Management"]
 image: "ai-github-project-management.cover.jpg"
 ---
 

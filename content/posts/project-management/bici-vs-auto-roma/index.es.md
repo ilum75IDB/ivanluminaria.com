@@ -5,7 +5,7 @@ date: "2026-03-07T18:00:00+01:00"
 draft: false
 translationKey: "bici_vs_auto_roma"
 tags: ["Movilidad Urbana", "Bicicleta", "Smart Working", "Roma", "Sostenibilidad", "Salud"]
-categories: ["Project Management", "Smart Working"]
+categories: ["Project Management"]
 image: "bici-vs-auto-roma.cover.jpg"
 ---
 
