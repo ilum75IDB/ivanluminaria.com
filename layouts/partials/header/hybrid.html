@@ -5,7 +5,7 @@
       {{ partial "logo.html" . }}
     </div>
     {{ if or .Site.Menus.main (.Site.Params.enableSearch | default false) }}
-      {{/* Hamburger menu — visible below 1100px */}}
+      {{/* Hamburger menu — visible below 1190px */}}
       <label id="menu-button" for="menu-controller" class="block burger-toggle">
         <input type="checkbox" id="menu-controller" class="hidden" />
         <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
@@ -127,7 +127,7 @@
           </ul>
         </div>
       </label>
-      {{/* Inline menu — visible at 1100px and above */}}
+      {{/* Inline menu — visible at 1190px and above */}}
       <ul class="hidden list-none flex-row text-end desktop-menu">
         {{ if .Site.Menus.main }}
           {{ range .Site.Menus.main }}
