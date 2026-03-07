@@ -56,28 +56,28 @@ h1, h2, h3, h4,
   color: var(--ivan-gray-title) !important;
 }
 
-/* 3. MENU NAVIGAZIONE — hybrid layout con breakpoint a 1100px
-   Sotto 1100px: hamburger menu (burger overlay)
-   Sopra 1100px: menu inline orizzontale
+/* 3. MENU NAVIGAZIONE — hybrid layout con breakpoint a 1190px
+   Sotto 1190px: hamburger menu (burger overlay)
+   Sopra 1190px: menu inline orizzontale
    ============================================ */
 
-/* Burger toggle: visibile sotto 1100px */
+/* Burger toggle: visibile sotto 1190px */
 .burger-toggle {
   display: block;
 }
 
-/* Menu inline desktop: nascosto sotto 1100px */
+/* Menu inline desktop: nascosto sotto 1190px */
 .desktop-menu {
   display: none !important;
 }
 
-/* Nav allineamento (sotto 1100px: top-aligned come mobile) */
+/* Nav allineamento (sotto 1190px: top-aligned come mobile) */
 .desktop-nav-align {
   align-items: flex-start;
 }
 
-/* Desktop: sopra 1100px mostra menu inline, nasconde burger */
-@media (min-width: 1100px) {
+/* Desktop: sopra 1190px mostra menu inline, nasconde burger */
+@media (min-width: 1190px) {
   .burger-toggle {
     display: none !important;
   }
@@ -412,9 +412,9 @@ body {
   padding-top: 5.5rem; /* ~88px: aggiusta se vuoi più/meno aria */
 }
 
-@media (max-width: 1099px) {
+@media (max-width: 1189px) {
   body {
-    padding-top: 5rem; /* sotto 1100px: navbar leggermente più bassa */
+    padding-top: 5rem; /* sotto 1190px: navbar leggermente più bassa */
   }
 }
 
