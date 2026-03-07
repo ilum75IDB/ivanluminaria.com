@@ -1,4 +1,8 @@
 <footer class="py-10 print:hidden">
+  {{/* Initialize scratch counters so they default to 0, not nil */}}
+  {{ $.Scratch.Set "localeCount" 0 }}
+  {{ $.Scratch.Set "searchCount" 0 }}
+  {{ $.Scratch.Set "switchCount" 0 }}
   {{/* Footer menu */}}
   {{ if .Site.Menus.footer }}
     <nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
