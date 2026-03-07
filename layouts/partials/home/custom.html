@@ -37,7 +37,7 @@
       <a href="{{ $hero.Permalink }}">{{ $hero.Title | emojify }}</a>
     </h3>
     <div class="editorial-hero-meta">
-      {{ .Site.Params.author.name }} · {{ $hero.Date | time.Format ":date_long" }}
+      {{ $hero.Date | time.Format ":date_long" }} · {{ $hero.ReadingTime }} min
     </div>
     {{ if $hero.Params.description }}
       <p class="editorial-hero-desc">{{ $hero.Params.description }}</p>
@@ -78,7 +78,7 @@
               <a href="{{ .Permalink }}">{{ .Title | emojify }}</a>
             </h4>
             <div class="editorial-grid-meta">
-              {{ site.Params.author.name }} · {{ .Date | time.Format ":date_long" }}
+              {{ .Date | time.Format ":date_long" }} · {{ .ReadingTime }} min
             </div>
           </div>
         </article>
@@ -113,7 +113,7 @@
           <a href="{{ $sHero.Permalink }}">{{ $sHero.Title | emojify }}</a>
         </h3>
         <div class="editorial-hero-meta">
-          {{ site.Params.author.name }} · {{ $sHero.Date | time.Format ":date_long" }}
+          {{ $sHero.Date | time.Format ":date_long" }} · {{ $sHero.ReadingTime }} min
         </div>
         {{ if $sHero.Params.description }}
           <p class="editorial-hero-desc">{{ $sHero.Params.description }}</p>
@@ -154,7 +154,7 @@
                   <a href="{{ .Permalink }}">{{ .Title | emojify }}</a>
                 </h4>
                 <div class="editorial-grid-meta">
-                  {{ site.Params.author.name }} · {{ .Date | time.Format ":date_long" }}
+                  {{ .Date | time.Format ":date_long" }} · {{ .ReadingTime }} min
                 </div>
               </div>
             </article>
