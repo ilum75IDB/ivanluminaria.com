@@ -686,8 +686,13 @@ footer {
     min-width: 0;
   }
 
-  .author-mobile-badge {
+  /* Desktop: hide mobile-top-block, show desktop cover */
+  .mobile-top-block {
     display: none !important;
+  }
+
+  .desktop-cover {
+    display: block !important;
   }
 }
 
@@ -724,7 +729,7 @@ footer {
   color: #9ca3af;
 }
 
-/* Mobile: single column, no sidebar, show mobile badge */
+/* Mobile: single column, no sidebar, show mobile top block */
 @media (max-width: 767px) {
   .article-two-col {
     display: block !important;
@@ -732,14 +737,21 @@ footer {
   .article-sidebar {
     display: none !important;
   }
-  .author-mobile-badge {
+  .mobile-top-block {
     display: block !important;
+  }
+  .desktop-cover {
+    display: none !important;
   }
 }
 
-/* ---- Author mobile badge (horizontal) ---- */
-.author-mobile-badge {
+/* ---- Mobile top block & author badge ---- */
+.mobile-top-block {
   display: none;
+}
+
+.desktop-cover {
+  display: block;
 }
 
 .author-mobile-card {
