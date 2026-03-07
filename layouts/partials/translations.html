@@ -45,7 +45,8 @@
   </summary>
 
   {{/* z-index alto + overlay sopra i contenuti */}}
-  <div class="absolute right-0 w-44 rounded-2xl border border-neutral-200 bg-white shadow-lg dark:border-neutral-700 dark:bg-neutral-900 overflow-hidden z-[9999] {{ if eq $dir "up" }}bottom-full mb-2{{ else }}mt-2{{ end }}">
+  <div class="absolute right-0 w-44 rounded-2xl border border-neutral-200 bg-white shadow-lg dark:border-neutral-700 dark:bg-neutral-900 overflow-hidden z-[9999]"
+       style="{{ if eq $dir "up" }}bottom: 100%; margin-bottom: 0.5rem;{{ else }}margin-top: 0.5rem;{{ end }}">
     {{ range $t := $translations }}
       {{ if ne $t.Site.Language.Lang $lang }}
         {{ $tlang := $t.Site.Language.Lang }}
