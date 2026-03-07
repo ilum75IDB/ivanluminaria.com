@@ -350,3 +350,35 @@ a.skip-to-content:focus {
   outline: 2px solid rgba(248, 0, 0, 0.35) !important;
   outline-offset: 2px !important;
 }
+
+/* ============================
+   SCROLL-TO-TOP — avoid overlap with language switcher (issue #3)
+   ============================ */
+
+/* Move the button left so it doesn't sit on top of the footer
+   language dropdown (which opens upward in the same corner) */
+#to-top {
+  z-index: 50 !important;        /* below language dropdown (z-9999+) */
+  margin-inline-end: 3.5rem;     /* shift left, away from the lang switcher */
+}
+
+#to-top a {
+  background: rgba(51, 103, 145, 0.12) !important; /* subtle ivan-blue tint */
+  color: var(--ivan-blue) !important;
+  backdrop-filter: blur(6px);
+}
+
+#to-top a:hover {
+  background: var(--ivan-red) !important;
+  color: #ffffff !important;
+}
+
+.dark #to-top a {
+  background: rgba(229, 231, 235, 0.12) !important;
+  color: #e5e7eb !important;
+}
+
+.dark #to-top a:hover {
+  background: var(--ivan-red) !important;
+  color: #ffffff !important;
+}
