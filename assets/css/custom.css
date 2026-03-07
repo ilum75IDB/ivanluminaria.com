@@ -54,15 +54,30 @@ h1, h2, h3, h4,
   color: var(--ivan-gray-title) !important;
 }
 
-/* 3. MENU NAVIGAZIONE */
-nav ul li {
-  margin-left: 1.5rem !important;
+/* 3. MENU NAVIGAZIONE — solo desktop inline menu */
+@media (min-width: 640px) {
+  nav ul li {
+    margin-left: 1.5rem !important;
+  }
 }
 
 nav ul li a {
   font-size: 1.1rem !important;
   font-weight: 600 !important;
   color: var(--ivan-red) !important; /* Rosso Oracle */
+}
+
+/* Mobile hamburger overlay: full-screen menu styling */
+#menu-wrapper ul li a {
+  font-size: 1.25rem !important;
+  padding: 0.5rem 0;
+  display: inline-block;
+}
+
+/* Show/hide hamburger overlay via CSS checkbox hack */
+#menu-controller:checked ~ #menu-wrapper {
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* ============================
