@@ -87,7 +87,7 @@ nav ul li a {
   color: rgba(255, 255, 255, 0.6) !important;
 }
 
-/* Force overlay to cover full viewport (escape nav stacking context) */
+/* Force overlay to cover full viewport with solid background */
 #menu-wrapper {
   position: fixed !important;
   top: 0 !important;
@@ -97,6 +97,29 @@ nav ul li a {
   width: 100vw !important;
   height: 100vh !important;
   z-index: 99999 !important;
+  background: rgba(17, 17, 17, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Close button (X) — pinned top-right, never centered with links */
+#menu-wrapper > span:first-child,
+#menu-wrapper > span[class*="absolute"] {
+  position: absolute !important;
+  top: 1.25rem !important;
+  right: 1.5rem !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 100000 !important;
+  font-size: 2rem !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  cursor: pointer;
+}
+#menu-wrapper > span:first-child:hover,
+#menu-wrapper > span[class*="absolute"]:hover {
+  color: #ffffff !important;
 }
 
 /* Show/hide hamburger overlay via CSS checkbox hack */
