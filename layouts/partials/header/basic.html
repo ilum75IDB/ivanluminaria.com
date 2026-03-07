@@ -1,24 +1,73 @@
+{{/* Custom hybrid header: hamburger on mobile, inline menu on desktop */}}
+
 <nav class="site-nav sticky top-0 z-[1000] isolate flex items-center justify-between py-4 px-6
             bg-white/80 backdrop-blur dark:bg-neutral-900/80
             border-b border-neutral-200/70 dark:border-neutral-800/70">
-  <div class="flex items-center">
+
+  {{/* Brand */}}
+  <div class="z-40 flex items-center">
     <a class="site-brand text-2xl font-bold text-primary-600" href="{{ .Site.Home.RelPermalink }}">
       Ivan Luminaria
     </a>
   </div>
 
-  <div class="flex items-center">
+  {{/* ── MOBILE: Hamburger ── */}}
+  <label id="menu-button" for="menu-controller" class="block sm:hidden z-40">
+    <input type="checkbox" id="menu-controller" class="hidden" />
+    {{/* Hamburger icon (☰) */}}
+    <div class="cursor-pointer text-2xl text-neutral-700 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      &#9776;
+    </div>
+    {{/* Fullscreen overlay */}}
+    <div
+      id="menu-wrapper"
+      class="invisible fixed inset-0 z-30 m-auto h-full w-full cursor-default overflow-auto
+             bg-neutral-100/50 opacity-0 backdrop-blur-sm transition-opacity
+             dark:bg-neutral-900/50"
+    >
+      <ul class="mx-auto flex w-full max-w-7xl list-none flex-col overflow-visible
+                 px-6 py-6 text-end sm:px-14 sm:py-10 md:px-24 lg:px-32">
+        {{/* Close button (✕) */}}
+        <li class="mb-1">
+          <span class="cursor-pointer text-2xl hover:text-primary-600 dark:hover:text-primary-400">
+            &#10005;
+          </span>
+        </li>
+        {{ range .Site.Menus.main }}
+          <li class="group mb-1">
+            <a
+              href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL }}{{ end }}"
+              title="{{ .Title }}"
+              onclick="close_menu()"
+              class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+            >
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+        {{/* Language switcher inside mobile menu */}}
+        <li class="group mb-1 mt-2">
+          {{ partial "translations.html" . }}
+        </li>
+      </ul>
+    </div>
+  </label>
+
+  {{/* ── DESKTOP: Inline menu (hidden on mobile) ── */}}
+  <div class="hidden sm:flex items-center">
     <ul class="flex flex-row list-none items-center">
       {{ range .Site.Menus.main }}
         <li class="ml-6">
-          <a class="font-medium text-gray-800 hover:text-primary-600" href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL }}{{ end }}">
+          <a class="font-medium text-gray-800 hover:text-primary-600
+                     dark:text-neutral-200 dark:hover:text-primary-400"
+             href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL }}{{ end }}">
             {{ .Name }}
           </a>
         </li>
       {{ end }}
     </ul>
 
-    {{/* Language switcher: a destra del menu */}}
+    {{/* Language switcher */}}
     <div class="ml-6 mr-2 flex items-center">
       {{ partial "translations.html" . }}
     </div>
