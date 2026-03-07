@@ -88,7 +88,7 @@
                     </button>
                   {{ else if eq .Params.action "locale" }}
                     {{ $.Scratch.Add "localeCount" 1 }}
-                    {{ partial "translations.html" . }}
+                    {{ partial "translations.html" $ }}
                   {{ else }}
                     <a
                       href="{{ .URL }}"
@@ -194,7 +194,7 @@
                 </button>
               {{ else if eq .Params.action "locale" }}
                 {{ $.Scratch.Add "localeCount" 1 }}
-                {{ partial "translations.html" . }}
+                {{ partial "translations.html" $ }}
               {{ else }}
                 <a
                   href="{{ .URL }}"
