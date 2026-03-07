@@ -54,10 +54,43 @@ h1, h2, h3, h4,
   color: var(--ivan-gray-title) !important;
 }
 
-/* 3. MENU NAVIGAZIONE — solo desktop inline menu */
-@media (min-width: 640px) {
-  nav ul li {
-    margin-left: 1.5rem !important;
+/* 3. MENU NAVIGAZIONE — hybrid layout con breakpoint a 1100px
+   Sotto 1100px: hamburger menu (burger overlay)
+   Sopra 1100px: menu inline orizzontale
+   ============================================ */
+
+/* Burger toggle: visibile sotto 1100px */
+.burger-toggle {
+  display: block;
+}
+
+/* Menu inline desktop: nascosto sotto 1100px */
+.desktop-menu {
+  display: none !important;
+}
+
+/* Nav allineamento (sotto 1100px: top-aligned come mobile) */
+.desktop-nav-align {
+  align-items: flex-start;
+}
+
+/* Desktop: sopra 1100px mostra menu inline, nasconde burger */
+@media (min-width: 1100px) {
+  .burger-toggle {
+    display: none !important;
+  }
+  .desktop-menu {
+    display: flex !important;
+  }
+  .desktop-nav-align {
+    align-items: center;
+  }
+  .desktop-menu-item {
+    margin-bottom: 0;
+    margin-inline-end: 1.75rem;
+  }
+  .desktop-menu-item:last-child {
+    margin-inline-end: 0;
   }
 }
 
@@ -363,9 +396,9 @@ body {
   padding-top: 5.5rem; /* ~88px: aggiusta se vuoi più/meno aria */
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1099px) {
   body {
-    padding-top: 5rem; /* mobile leggermente più bassa */
+    padding-top: 5rem; /* sotto 1100px: navbar leggermente più bassa */
   }
 }
 
