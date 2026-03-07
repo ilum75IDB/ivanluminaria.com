@@ -840,3 +840,216 @@ footer {
 .dark .author-mobile-roles {
   color: #9ca3af;
 }
+
+/* ============================
+   EDITORIAL HOMEPAGE
+   ============================ */
+
+.editorial-section {
+  max-width: 960px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1rem;
+}
+
+.editorial-section-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ivan-gray-title) !important;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--ivan-red);
+}
+
+/* Hero article (latest / category featured) */
+.editorial-hero {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.dark .editorial-hero {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.editorial-hero-img-link {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.editorial-hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+.editorial-hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+}
+
+.editorial-hero-title a {
+  color: var(--ivan-gray-title) !important;
+  text-decoration: none !important;
+}
+
+.editorial-hero-title a:hover {
+  color: var(--ivan-red) !important;
+  text-decoration: none !important;
+}
+
+.editorial-hero-meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.dark .editorial-hero-meta {
+  color: #9ca3af;
+}
+
+.editorial-hero-desc {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dark .editorial-hero-desc {
+  color: #d1d5db;
+}
+
+/* Category hero (no image, just text) */
+.editorial-category-hero {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.dark .editorial-category-hero {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.editorial-category-hero-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 0.4rem 0;
+}
+
+.editorial-category-hero-title a {
+  color: var(--ivan-gray-title) !important;
+  text-decoration: none !important;
+}
+
+.editorial-category-hero-title a:hover {
+  color: var(--ivan-red) !important;
+  text-decoration: none !important;
+}
+
+/* Article grid (2 columns) */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.editorial-grid-item {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.dark .editorial-grid-item {
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.editorial-grid-img-link {
+  flex-shrink: 0;
+}
+
+.editorial-grid-img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 0.35rem;
+}
+
+@media (min-width: 641px) {
+  .editorial-grid-img {
+    width: 120px;
+    height: 90px;
+  }
+}
+
+.editorial-grid-text {
+  min-width: 0;
+}
+
+.editorial-grid-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.25rem 0;
+}
+
+.editorial-grid-title a {
+  color: var(--ivan-gray-title) !important;
+  text-decoration: none !important;
+}
+
+.editorial-grid-title a:hover {
+  color: var(--ivan-red) !important;
+  text-decoration: none !important;
+}
+
+.editorial-grid-meta {
+  font-size: 0.7rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.dark .editorial-grid-meta {
+  color: #9ca3af;
+}
+
+/* Show more link */
+.editorial-showmore {
+  text-align: right;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.dark .editorial-showmore {
+  border-top-color: rgba(255,255,255,0.08);
+}
+
+.editorial-showmore a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ivan-gray-title) !important;
+  text-decoration: none !important;
+}
+
+.editorial-showmore a:hover {
+  color: var(--ivan-red) !important;
+}
