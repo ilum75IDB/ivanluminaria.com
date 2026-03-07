@@ -87,6 +87,18 @@ nav ul li a {
   color: rgba(255, 255, 255, 0.6) !important;
 }
 
+/* Force overlay to cover full viewport (escape nav stacking context) */
+#menu-wrapper {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999 !important;
+}
+
 /* Show/hide hamburger overlay via CSS checkbox hack */
 #menu-controller:checked ~ #menu-wrapper {
   visibility: visible !important;
