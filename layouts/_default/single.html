@@ -70,6 +70,7 @@
     </section>
 
     <footer class="max-w-prose pt-8 print:hidden">
+      {{ partial "author.html" . }}
       {{ partial "sharing-links.html" . }}
       {{ partial "article-pagination.html" . }}
       {{ if .Params.showComments | default (.Site.Params.article.showComments | default false) }}
