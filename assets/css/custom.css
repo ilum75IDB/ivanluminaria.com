@@ -98,6 +98,14 @@ h1, h2, h3, h4,
   .desktop-menu-item:last-child {
     margin-inline-end: 0;
   }
+  /* Align language switcher with nav menu items */
+  .desktop-menu-item details summary {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: inherit;
+  }
 }
 
 nav ul li a {
