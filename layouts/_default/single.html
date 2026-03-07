@@ -17,15 +17,12 @@
     {{/* ---- RIGHT COLUMN: Article ---- */}}
     <article class="max-w-full">
 
-      {{/* Mobile-only: badge + cover BEFORE title/breadcrumbs */}}
+      {{/* Mobile-only: cover image BEFORE title/breadcrumbs */}}
       <div class="mobile-top-block print:hidden">
-        <div class="author-mobile-badge">
-          {{ partial "author-mobile.html" . }}
-        </div>
         {{ with $feature }}
           <div class="prose mobile-cover">
             {{ $altText := $.Params.featureAlt | default $.Params.coverAlt | default "" }}
-            {{ $class := "mb-4 w-full rounded-2xl" }}
+            {{ $class := "mb-6 w-full rounded-2xl" }}
             {{ $webp := $.Page.Site.Params.enableImageWebp | default true }}
             {{ partial "picture.html" (dict "img" . "alt" $altText "class" $class "lazy" false "webp" $webp) }}
             {{ with $.Params.coverCaption }}
@@ -65,10 +62,15 @@
           (and (.Params.showReadingTime | default (.Site.Params.article.showReadingTime | default true)) (ne .ReadingTime 0))
           (.Params.showEdit | default (.Site.Params.article.showEdit | default false))
         }}
-          <div class="mb-10 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+          <div class="mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
             {{ partial "article-meta.html" (dict "context" . "scope" "single") }}
           </div>
         {{ end }}
+
+        {{/* Author badge – mobile only, after tags */}}
+        <div class="author-mobile-badge print:hidden">
+          {{ partial "author-mobile.html" . }}
+        </div>
 
       </header>
 
