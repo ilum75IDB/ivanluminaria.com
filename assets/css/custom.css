@@ -355,7 +355,7 @@ nav {
   backdrop-filter: none !important;
 }
 .dark nav {
-  background: #171717 !important; /* neutral-900 */
+  background: rgb(var(--color-neutral-800)) !important; /* matches body dark bg */
 }
 
 /* 2) Evita che il contenuto finisca sotto la navbar fixed */
@@ -481,7 +481,7 @@ footer {
   border-color: rgb(229 231 235); /* neutral-200 */
 }
 .dark footer {
-  border-color: rgb(38 38 38); /* neutral-800 */
+  border-color: rgb(var(--color-neutral-700)); /* coerente col tema */
 }
 
 #to-top a {
