@@ -611,3 +611,19 @@ footer {
   background: var(--ivan-red) !important;
   color: #ffffff !important;
 }
+
+/* ============================
+   SEARCH RESULTS — hover/focus highlight
+   Replace Congo's purple bg with a red left border
+   ============================ */
+
+#search-results a {
+  border-left: 3px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+#search-results a:hover,
+#search-results a:focus {
+  background: transparent !important;
+  border-left-color: var(--ivan-red) !important;
+}
