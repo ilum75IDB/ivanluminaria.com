@@ -14,7 +14,7 @@
   {{- $hasReading := and $showReadingTime (gt .ReadingTime 0) -}}
 
   {{- if or $hasDate $hasReading -}}
-    <div class="article-meta mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+    <div class="article-meta mt-2 text-sm italic text-neutral-500 dark:text-neutral-400">
       {{- if $hasDate -}}
         <span>{{- .Date | time.Format ":date_long" -}}</span>
       {{- end -}}
