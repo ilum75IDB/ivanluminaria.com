@@ -49,15 +49,11 @@ Ultima — **team happiness** — este cea pe care PM-urile tradiționale nu o m
 
 ------------------------------------------------------------------------
 
-## 📚 Despre ce scriu în această secțiune
+## 📚 Despre ce scriu aici
 
-Aici vei găsi povești reale, numere concrete și lecții învățate. Nimic teorie de manual. Doar ce am văzut că funcționează — și ce am văzut că eșuează.
+Povești reale, numere concrete și lecții învățate. Nimic teorie de manual. Doar ce am văzut că funcționează — și ce am văzut că eșuează.
 
-**🤖 AI și Workflow** — Cum inteligența artificială schimbă modul în care gestionăm proiectele software. Nu AI-ul care înlocuiește oamenii — AI-ul care multiplică competențele celor care le au.
-
-**🏢 Consultanță IT** — Povești din lumea consultanței informatice. Milioane cheltuite, greșeli repetate și lecțiile brutale care decurg. Pentru că cel mai mare cost nu este furnizorul greșit — este timpul pe care îl pierzi înainte de a înțelege că soluția era mai simplă.
-
-**💻 Smart Working** — Analiza concretă a muncii la distanță în consultanța IT. Cu numere reale, centura Romei, și dovada că măsurarea rezultatelor funcționează mai bine decât numărarea prezențelor.
+Scriu despre inteligența artificială aplicată în workflow, despre consultanța IT și costurile ei ascunse, despre smart working ca avantaj competitiv. Fiecare articol provine dintr-o experiență reală — a mea.
 
 ------------------------------------------------------------------------
 

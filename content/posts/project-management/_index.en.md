@@ -49,15 +49,11 @@ The last one — **team happiness** — is the one traditional PMs never measure
 
 ------------------------------------------------------------------------
 
-## 📚 What I write about in this section
+## 📚 What I write about here
 
-Here you'll find true stories, hard numbers and lessons learned. No textbook theory. Just what I've seen work — and what I've seen fail.
+True stories, hard numbers and lessons learned. No textbook theory. Just what I've seen work — and what I've seen fail.
 
-**🤖 AI & Workflow** — How artificial intelligence is changing the way we manage software projects. Not AI that replaces people — AI that multiplies the competencies of those who have them.
-
-**🏢 IT Consulting** — Stories from the world of IT consulting. Millions spent, mistakes repeated, and the brutal lessons that follow. Because the highest cost isn't the wrong supplier — it's the time you waste before realising the solution was simpler.
-
-**💻 Smart Working** — A concrete analysis of remote work in IT consulting. With real numbers, Rome's ring road, and proof that measuring results works better than counting attendance.
+I write about artificial intelligence applied to workflow, IT consulting and its hidden costs, smart working as a competitive advantage. Every article comes from a real experience — mine.
 
 ------------------------------------------------------------------------
 
