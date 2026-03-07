@@ -359,7 +359,12 @@ a.skip-to-content:focus {
    language dropdown (which opens upward in the same corner) */
 #to-top {
   z-index: 50 !important;        /* below language dropdown (z-9999+) */
-  margin-inline-end: 3.5rem;     /* shift left, away from the lang switcher */
+  margin-inline-end: 5.5rem;     /* shift left, clear the lang switcher fully */
+}
+
+/* Align footer language switcher with header's — push it to the right edge */
+footer .flex.items-center.justify-between > .flex.flex-row {
+  margin-inline-end: -0.5rem;    /* nudge right, closer to the page edge */
 }
 
 #to-top a {
