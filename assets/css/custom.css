@@ -378,7 +378,7 @@ nav[aria-label="Breadcrumb"] a:hover,
    (il tema crea vari stacking context: qui mettiamo i paletti)
    ============================ */
 
-/* 1) Navbar davvero “sempre su” (fixed) con sfondo solido */
+/* 1) Navbar davvero “sempre su” (fixed) con sfondo solido + padding */
 nav {
   position: fixed !important;
   top: 0 !important;
@@ -388,6 +388,8 @@ nav {
   overflow: visible !important;
   background: #ffffff !important;
   backdrop-filter: none !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 .dark nav {
   background: rgb(var(--color-neutral-800)) !important; /* matches body dark bg */
@@ -442,19 +444,8 @@ nav details .lang-code {
 }
 
 /* ============================
-   NAV SPACING (brand + language)
+   NAV SPACING — padding ora applicato direttamente su nav (sezione fix sopra)
    ============================ */
-
-/* Se per qualche motivo il tema sovrascrive i padding della navbar */
-nav.site-nav {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-}
-
-/* Il brand non deve stare "incollato" al bordo */
-nav.site-nav a.site-brand {
-  padding-left: 0.25rem;
-}
 
 /* ============================
    SKIP TO CONTENT (Ir al contenuto / Vai al contenuto)
