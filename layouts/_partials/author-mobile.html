@@ -1,0 +1,21 @@
+{{ if .Params.showAuthor | default (.Site.Params.article.showAuthor | default true) }}
+  {{ $lazy := .Params.enableImageLazyLoading | default .Site.Params.enableImageLazyLoading | default true }}
+  {{ $altText := (.Site.Language.Params.Author.name | default "Author") }}
+  <div class="author-mobile-card">
+    {{ with .Site.Language.Params.Author.image }}
+      {{ $authorImage := resources.Get . }}
+      {{ if $authorImage }}
+        {{ $imgClass := "author-mobile-img rounded-full" }}
+        {{ partial "picture.html" (dict "img" $authorImage "alt" $altText "class" $imgClass "lazy" $lazy) }}
+      {{ end }}
+    {{ end }}
+    <div class="author-mobile-info">
+      {{ with .Site.Language.Params.Author.name | markdownify | emojify }}
+        <span class="font-semibold text-neutral-800 dark:text-neutral-300">{{ . }}</span>
+      {{ end }}
+      <div class="author-mobile-roles">
+        DWH Architect · AI Manager · Project Manager · Oracle DBA &amp; Performance Tuning · PL/SQL Senior &amp; Mentor
+      </div>
+    </div>
+  </div>
+{{ end }}

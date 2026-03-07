@@ -51,17 +51,12 @@
           </div>
         {{ end }}
 
-        {{/* Author badge (header, kept for mobile) */}}
-        {{- with .Site.Params.author }}
-        <div class="author-badge">
-          {{- with .image }}
-          <img src="{{ . | relURL }}" alt="{{ $.Site.Params.author.name }}" class="author-badge-avatar" />
-          {{- end }}
-          <span class="author-badge-name">{{ .name }}</span>
-        </div>
-        {{- end }}
-
       </header>
+
+      {{/* Author badge – mobile only (horizontal, between header and content) */}}
+      <div class="author-mobile-badge print:hidden">
+        {{ partial "author-mobile.html" . }}
+      </div>
 
       <section class="prose mt-6 flex max-w-full flex-col dark:prose-invert lg:flex-row">
         {{ if and (.Params.showTableOfContents | default (.Site.Params.article.showTableOfContents | default false)) (in .TableOfContents "<ul") }}
