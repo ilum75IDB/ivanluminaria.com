@@ -6,3 +6,8 @@ languageCode = 'it'
 
 defaultContentLanguage = "it"
 defaultContentLanguageInSubdir = true
+
+enableRobotsTXT = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
