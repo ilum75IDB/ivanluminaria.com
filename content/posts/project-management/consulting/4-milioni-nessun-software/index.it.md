@@ -6,6 +6,7 @@ draft: false
 translationKey: "consulenza_it_milioni_sprecati"
 tags: ["Project Management", "Consulenza IT", "Data Warehouse", "Assicurazioni", "Oracle", "Outsourcing"]
 categories: ["Project Management", "Consulting"]
+image: "4-milioni-nessun-software.cover.jpg"
 ---
 
 La storia che sto per raccontare è vera. I nomi non li faccio — non per diplomazia, ma perché i nomi non servono. Quello che serve è capire il meccanismo. Perché questo meccanismo si ripete, identico, in decine di aziende italiane. E costa milioni.
