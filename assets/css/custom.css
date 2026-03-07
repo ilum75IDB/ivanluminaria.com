@@ -117,7 +117,8 @@ nav ul li a {
 /* Mobile hamburger overlay: centered, opaque, no scroll needed */
 /* Light mode: dark text on white overlay */
 #menu-wrapper ul li a {
-  font-size: 1.5rem !important;
+  font-size: 22px !important;
+  text-transform: uppercase;
   color: var(--ivan-gray-title) !important;
   text-decoration: none !important;
 }
