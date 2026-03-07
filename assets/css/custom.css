@@ -35,17 +35,19 @@ html, body {
    HEADER / NAV BRAND
    ============================ */
 
-/* 1. BRAND: IVAN LUMINARIA (Blu Postgres & Uppercase) */
-nav a.text-2xl.font-bold {
+/* 1. BRAND: IVAN LUMINARIA (Blu Postgres & Uppercase)
+   Il logo.html di Congo usa: <div class="z-40 flex ..."><a class="decoration-primary-500 ..."> */
+nav .z-40 > a {
   color: var(--ivan-blue) !important;
   text-transform: uppercase !important;
-  font-size: 1.875rem !important; /* Grande come un H2 */
+  font-size: 1.875rem !important;
   letter-spacing: 0.05em;
   text-decoration: none !important;
 }
 
-nav a.text-2xl.font-bold:hover {
-  color: var(--ivan-red) !important; /* Diventa Rosso Oracle all'hover */
+nav .z-40 > a:hover {
+  color: var(--ivan-red) !important;
+  text-decoration: none !important;
 }
 
 /* 2. TITOLI: Grigio Antracite */
