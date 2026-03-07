@@ -6,11 +6,7 @@
    Quindi NON possiamo fare ".ctx" direttamente se "." è una Page.
 */}}
 
-<<<<<<< HEAD
-{{ $p := . }}
-=======
 {{ $p   := . }}
->>>>>>> claude/bugs-fix-20260307-001-t2YLR
 {{ $dir := "down" }}
 
 {{ if (reflect.IsMap .) }}
@@ -45,21 +41,13 @@
     <span class="lang-code text-sm font-medium">
       {{ upper $lang }}
     </span>
-<<<<<<< HEAD
-    <span class="text-neutral-500 dark:text-neutral-400">{{ if eq $dir "up" }}▴{{ else }}▾{{ end }}</span>
-=======
     <span class="lang-arrow">{{ if eq $dir "up" }}▴{{ else }}▾{{ end }}</span>
->>>>>>> claude/bugs-fix-20260307-001-t2YLR
   </summary>
 
   {{/* z-index alto + overlay sopra i contenuti */}}
   <div class="absolute right-0 w-44 rounded-2xl border border-neutral-200 bg-white shadow-lg dark:border-neutral-700 dark:bg-neutral-900 overflow-hidden z-[9999]"
-<<<<<<< HEAD
-       style="{{ if eq $dir "up" }}bottom: 100%; margin-bottom: 0.5rem;{{ else }}margin-top: 0.5rem;{{ end }}">
-=======
     {{ if eq $dir "up" }}style="bottom: 100%; margin-bottom: 0.5rem;"{{ else }}style="margin-top: 0.5rem;"{{ end }}
   >
->>>>>>> claude/bugs-fix-20260307-001-t2YLR
     {{ range $t := $translations }}
       {{ if ne $t.Site.Language.Lang $lang }}
         {{ $tlang := $t.Site.Language.Lang }}
