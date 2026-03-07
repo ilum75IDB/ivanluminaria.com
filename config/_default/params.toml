@@ -41,7 +41,7 @@ fingerprintAlgorithm = "sha256"
 [article]
   showDate = true
   showDateUpdated = false
-  showAuthor = true
+  showAuthor = false
   showBreadcrumbs = true
   showDraftLabel = true
   showEdit = false
@@ -92,8 +92,3 @@ fingerprintAlgorithm = "sha256"
   name = "Ivan Luminaria"
   image = "img/ivan_luminaria_avatar.png"
   headline = "Oracle DBA & DWH Architect"
-  bio = "20+ anni di esperienza su sistemi Oracle mission-critical."
-  links = [
-    { linkedin = "https://www.linkedin.com/in/ivanluminaria" },
-    { email = "mailto:ivan.luminaria@gmail.com" }
-  ]
