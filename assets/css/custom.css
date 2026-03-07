@@ -87,6 +87,19 @@ nav ul li a {
   color: #ffffff !important;
 }
 
+/* Separatore orizzontale tra voci menù mobile overlay */
+#menu-wrapper ul > li.group {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding-bottom: 0.75rem;
+}
+#menu-wrapper ul > li.group:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.dark #menu-wrapper ul > li.group {
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
 /* Language switcher inside mobile overlay */
 #menu-wrapper .lang-code {
   color: var(--ivan-gray-title) !important;
