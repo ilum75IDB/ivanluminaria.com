@@ -96,8 +96,15 @@
 {{ end }}
 
 {{/* ========== CATEGORY SECTIONS ========== */}}
-{{- $sections := slice "project-management" "postgresql" -}}
-{{- range $sectionSlug := $sections -}}
+{{/* Order: PM → Oracle → PostgreSQL → MySQL. Each with its own article limit. */}}
+{{- $categorySections := slice
+  (dict "slug" "project-management" "limit" 5)
+  (dict "slug" "oracle"             "limit" 3)
+  (dict "slug" "postgresql"         "limit" 3)
+  (dict "slug" "mysql"              "limit" 3)
+-}}
+{{- range $cfg := $categorySections -}}
+  {{- $sectionSlug := $cfg.slug -}}
   {{- $section := site.GetPage (printf "posts/%s" $sectionSlug) -}}
   {{- if $section -}}
     {{/* Collect all regular pages recursively under this section */}}
@@ -154,7 +161,7 @@
 
       {{/* Grid for remaining posts in section */}}
       {{- $sGrid := after 1 $sectionPosts -}}
-      {{- $sGrid = first 4 $sGrid -}}
+      {{- $sGrid = first (sub $cfg.limit 1) $sGrid -}}
       {{ if gt (len $sGrid) 0 }}
         <div class="editorial-grid">
           {{- range $sGrid }}
