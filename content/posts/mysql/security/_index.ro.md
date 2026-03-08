@@ -1,14 +1,20 @@
 ---
 title: "Access & Control"
-description: "Securitate MySQL și MariaDB în practică: gestionarea utilizatorilor, privilegii, host-uri și controlul accesului în medii reale."
+description: "Securitate MySQL și MariaDB în practică: modelul utilizator@host, privilegii granulare și capcanele unui sistem de autentificare care leagă identitatea de originea conexiunii."
 layout: "list"
 ---
-Securitatea nu este opțională.<br>
-Este primul lucru pe care o bază de date ți-l cere când deschizi o conexiune.<br>
+În MySQL securitatea începe înainte de parolă.<br>
+Începe cu întrebarea: de unde te conectezi?<br>
 
-MySQL și MariaDB au un model de autentificare unic: identitatea unui utilizator nu este doar numele său, ci combinația dintre nume și host-ul de origine.<br>
+Pentru că MySQL nu te întreabă doar cine ești.<br>
+Te întreabă cine ești **și de unde vii**.<br>
+Iar răspunsul schimbă totul: privilegii, acces, chiar și existența ta ca utilizator.<br>
 
-Aici vei găsi analize practice despre securitatea MySQL și MariaDB, cu exemple concrete și configurații aplicabile în medii de producție.<br>
+Este un model pe care alte baze de date nu îl au.<br>
+Este puternic când îl stăpânești.<br>
+Este o capcană când îl ignori.<br>
 
-Pentru că protejarea unei baze de date nu înseamnă doar setarea unei parole.<br>
-Înseamnă înțelegerea modului în care motorul decide cine ești și ce ai voie să faci.
+Aici vei găsi analize asupra modelului de autentificare MySQL și MariaDB, greșelile cele mai frecvente în gestionarea accesului și diferențele operaționale dintre cele două motoare pe care oricine lucrează în producție trebuie să le cunoască.<br>
+
+Pentru că majoritatea problemelor de securitate pe MySQL nu provin din atacuri externe.<br>
+Provin din utilizatori creați fără a înțelege cum îi interpretează motorul.
