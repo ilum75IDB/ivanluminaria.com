@@ -1,14 +1,20 @@
 ---
 title: "Access & Control"
-description: "MySQL and MariaDB security in practice: user management, privileges, hosts and access control in real-world environments."
+description: "MySQL and MariaDB security in practice: the user@host model, granular privileges and the pitfalls of an authentication system that ties identity to connection origin."
 layout: "list"
 ---
-Security is not optional.<br>
-It is the first thing a database asks you when you open a connection.<br>
+In MySQL, security begins before the password.<br>
+It begins with the question: where are you connecting from?<br>
 
-MySQL and MariaDB have a unique authentication model: a user's identity is not just their name, but the combination of name and source host.<br>
+Because MySQL does not just ask who you are.<br>
+It asks who you are **and where you come from**.<br>
+And the answer changes everything: privileges, access, even your existence as a user.<br>
 
-Here you will find practical analysis on MySQL and MariaDB security, with concrete examples and configurations applicable in production environments.<br>
+It is a model that other databases do not have.<br>
+It is powerful when you master it.<br>
+It is a trap when you ignore it.<br>
 
-Because protecting a database is not just about setting a password.<br>
-It is about understanding how the engine decides who you are and what you are allowed to do.
+Here you will find analysis of the MySQL and MariaDB authentication model, the most common mistakes in access management and the operational differences between the two engines that anyone working in production needs to know.<br>
+
+Because most MySQL security problems do not come from external attacks.<br>
+They come from users created without understanding how the engine interprets them.
