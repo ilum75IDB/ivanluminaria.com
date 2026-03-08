@@ -25,10 +25,10 @@
       <a href="{{ $hero.Permalink }}" class="editorial-hero-img-link">
         <img
           class="editorial-hero-img"
-          srcset="{{ (.Fit "800x533 smart").Permalink }} 800w, {{ (.Fit "1200x800 smart").Permalink }} 1200w"
-          src="{{ (.Fit "800x533 smart").Permalink }}"
+          srcset="{{ (.Resize "800x").Permalink }} 800w, {{ (.Resize "1200x").Permalink }} 1200w"
+          src="{{ (.Resize "800x").Permalink }}"
           alt="{{ $hero.Title }}"
-          width="1200" height="800"
+          width="{{ .Width }}" height="{{ .Height }}"
           {{ if $.Site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
         />
       </a>
