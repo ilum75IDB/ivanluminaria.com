@@ -179,9 +179,28 @@ In questo ambiente **non è disponibile `gh` CLI** e non è possibile accedere d
 **CRITICO — il comando deve funzionare con copia-incolla diretto nel terminale macOS (zsh):**
 
 1. **NON usare backtick `` ` `` o triple backtick `` ``` `` nel body** — la shell li interpreta come command substitution e il comando fallisce. Per i blocchi di codice nel body, usare indentazione con 4 spazi oppure scrivere la parola `Codice:` seguita dal contenuto su righe successive.
-2. **NON usare `$(cat <<'EOF' ... EOF)`** per il body — è fragile con contenuti complessi. Usare invece il flag `--body-file` con process substitution: `--body-file <(echo '...')`, oppure meglio ancora **salvare il body in un file temporaneo** e usare `--body-file /tmp/issue-body.md`.
-3. **Approccio consigliato**: genera due blocchi separati per ogni issue:
-   - **Blocco 1**: un comando `cat > /tmp/issue-body.md << 'ISSUE_EOF' ... ISSUE_EOF` con il contenuto del body (qui gli apici singoli attorno a ISSUE_EOF disabilitano ogni interpolazione)
-   - **Blocco 2**: il comando `gh issue create --repo ilum75IDB/ivanluminaria.com --title "..." --label "..." --body-file /tmp/issue-body.md`
+2. **NON usare `$(cat <<'EOF' ... EOF)`** per il body — è fragile con contenuti complessi. Usare il flag `--body-file` con un file temporaneo.
+3. **Approccio obbligatorio — blocco unico copia-incolla**: genera un **unico blocco di codice** che contiene sia il `cat` per creare il file temporaneo sia il comando `gh issue create`, separati da `&&`. In questo modo l'utente fa un solo copia-incolla e la issue viene creata immediatamente. Formato:
+   ```
+   cat > /tmp/issue-body.md << 'ISSUE_EOF'
+   ... contenuto body ...
+   ISSUE_EOF
+   gh issue create --repo ilum75IDB/ivanluminaria.com --title "..." --label "..." --body-file /tmp/issue-body.md
+   ```
 4. Nel body della issue, i blocchi di codice vanno scritti con triple backtick normalmente — saranno interpretati correttamente da GitHub perché il file viene letto da `--body-file`, non parsato dalla shell.
-5. **Testare mentalmente**: prima di fornire il comando, verificare che non ci siano apici, virgolette o backtick che possano confondere la shell zsh.
+5. **NON usare caratteri accentati nei titoli** del comando `gh issue create` (nei `--title`). Sostituire à→a, è→e, é→e, ù→u, ò→o, ì→i, ecc. I titoli delle issue devono essere ASCII-safe.
+6. **Testare mentalmente**: prima di fornire il comando, verificare che non ci siano apici, virgolette o backtick che possano confondere la shell zsh.
+
+### Label GitHub create
+
+Le seguenti label sono già state create nel repository `ilum75IDB/ivanluminaria.com`:
+
+| Label                | Colore    | Descrizione                          |
+|----------------------|-----------|--------------------------------------|
+| `oracle`             | `#F80000` | Articoli sezione Oracle              |
+| `blog-article`       | `#336791` | Nuovo articolo del blog              |
+| `postgresql`         | `#336791` | Articoli sezione PostgreSQL          |
+| `mysql`              | `#00758F` | Articoli sezione MySQL               |
+| `project-management` | `#4a4a4a` | Articoli sezione Project Management  |
+
+Quando si crea una nuova issue per un articolo, usare sempre la label `blog-article` insieme alla label della sezione corrispondente (es. `--label "oracle,blog-article"`).
