@@ -4,7 +4,7 @@ description: "From Appio Latino to Prati in 50 minutes of traffic and a €35 pa
 date: "2026-03-03T10:00:00+01:00"
 draft: false
 translationKey: "bici_vs_auto_roma"
-tags: ["Urban Mobility", "Cycling", "Smart Working", "Rome", "Sustainability", "Health"]
+tags: ["urban-mobility", "cycling", "smart-working", "sustainability", "health"]
 categories: ["Project Management"]
 image: "bici-vs-auto-roma.cover.jpg"
 ---

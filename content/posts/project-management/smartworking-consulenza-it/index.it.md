@@ -4,7 +4,7 @@ description: "Un'analisi concreta sulla convenienza economica e strategica del l
 date: "2026-02-10T10:00:00+01:00"
 draft: false
 translationKey: "smartworking_consulenza_it"
-tags: ["Smart Working", "Project Management", "Consulenza IT", "Produttività", "Roma", "Remote Work"]
+tags: ["smart-working", "consulting", "productivity", "remote-work"]
 categories: ["Project Management"]
 image: "smartworking-consulenza-it.cover.jpg"
 ---

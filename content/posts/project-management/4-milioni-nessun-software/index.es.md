@@ -4,7 +4,7 @@ description: "Un cliente del sector asegurador gastó más de 4 millones de euro
 date: "2026-01-13T10:00:00+01:00"
 draft: false
 translationKey: "consulenza_it_milioni_sprecati"
-tags: ["Project Management", "Consultoría IT", "Data Warehouse", "Seguros", "Oracle", "Outsourcing"]
+tags: ["consulting", "data-warehouse", "insurance", "oracle", "outsourcing"]
 categories: ["Project Management"]
 image: "4-milioni-nessun-software.cover.jpg"
 ---

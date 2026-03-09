@@ -4,7 +4,7 @@ description: "Un cliente donde todos los usuarios aplicativos se conectaban como
 date: "2026-01-06T10:00:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"
-tags: ["oracle", "security", "roles", "privileges", "grant", "revoke", "audit"]
+tags: ["security", "roles", "privileges", "grant", "revoke", "audit"]
 categories: ["oracle"]
 image: "oracle-roles-privileges.cover.jpg"
 ---

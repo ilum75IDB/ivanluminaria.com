@@ -4,7 +4,7 @@ description: "A client with a standalone MySQL that crashed every month, taking 
 date: "2026-02-24T10:00:00+01:00"
 draft: false
 translationKey: "galera_cluster_3_nodi"
-tags: ["mysql", "mariadb", "galera", "cluster", "high availability", "replication", "wsrep", "linux"]
+tags: ["mariadb", "galera", "cluster", "high-availability", "replication", "wsrep"]
 categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---

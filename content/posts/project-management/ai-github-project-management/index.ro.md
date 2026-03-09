@@ -4,7 +4,7 @@ description: "Un caz real de management de proiect: cum am propus GitHub și int
 date: "2026-01-27T10:00:00+01:00"
 draft: false
 translationKey: "ai_github_project_management"
-tags: ["Project Management", "AI", "GitHub", "Workflow", "Bug Fixing", "Software Evolution"]
+tags: ["ai", "github", "workflow", "bug-fixing", "software-evolution"]
 categories: ["Project Management"]
 image: "ai-github-project-management.cover.jpg"
 ---

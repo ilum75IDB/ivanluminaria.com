@@ -4,7 +4,7 @@ description: "Un client cu un MySQL standalone care cădea în fiecare lună, lu
 date: "2026-02-24T10:00:00+01:00"
 draft: false
 translationKey: "galera_cluster_3_nodi"
-tags: ["mysql", "mariadb", "galera", "cluster", "disponibilitate ridicată", "replicare", "wsrep", "linux"]
+tags: ["mariadb", "galera", "cluster", "high-availability", "replication", "wsrep"]
 categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---
