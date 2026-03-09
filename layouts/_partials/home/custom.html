@@ -164,8 +164,8 @@
                 <a href="{{ $article.Permalink }}" class="editorial-grid-img-link">
                   <img
                     class="editorial-grid-img"
-                    srcset="{{ (.Fill "160x120 smart").Permalink }} 160w, {{ (.Fill "320x240 smart").Permalink }} 320w"
-                    src="{{ (.Fill "160x120 smart").Permalink }}"
+                    srcset="{{ (.Fill "160x107 smart").Permalink }} 160w, {{ (.Fill "320x213 smart").Permalink }} 320w"
+                    src="{{ (.Fill "160x107 smart").Permalink }}"
                     alt="{{ $article.Title }}"
                     width="160" height="120"
                     {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
