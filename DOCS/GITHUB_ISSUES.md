@@ -19,12 +19,6 @@ tool `WebFetch`.
 | 25 | https://github.com/ilum75IDB/ivanluminaria.com/issues/25 | La tecnica del Si-E (Yes-And) - come ho evitato una discussione nel team | aperta |
 | 27 | https://github.com/ilum75IDB/ivanluminaria.com/issues/27 | Standup meeting - perche funzionano solo se durano 15 minuti | aperta |
 
-## Issue Aperte — Bug
-
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 36 | https://github.com/ilum75IDB/ivanluminaria.com/issues/36 | Hugo build timeout on cover image resize for Si-E Yes-And article | aperta |
-
 ## Issue Chiuse
 
 | #  | Issue | Titolo | Chiusa il |
@@ -41,3 +35,4 @@ tool `WebFetch`.
 | 33 | https://github.com/ilum75IDB/ivanluminaria.com/issues/33 | Galera Cluster a 3 nodi - alta disponibilita MySQL senza compromessi | 2026-03-09 |
 | 34 | https://github.com/ilum75IDB/ivanluminaria.com/issues/34 | Smart working nella consulenza IT - funziona o no? | 2026-03-09 |
 | 35 | https://github.com/ilum75IDB/ivanluminaria.com/issues/35 | Bici vs Auto a Roma - il commuting del consulente | 2026-03-09 |
+| 36 | https://github.com/ilum75IDB/ivanluminaria.com/issues/36 | Hugo build timeout on cover image resize for Si-E Yes-And article | 2026-03-09 |
