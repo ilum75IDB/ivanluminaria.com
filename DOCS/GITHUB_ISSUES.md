@@ -29,6 +29,16 @@ tool `WebFetch`.
 | 45 | https://github.com/ilum75IDB/ivanluminaria.com/issues/45 | Replica MySQL: quando lo slave resta indietro e nessuno se ne accorge | aperta |
 | 46 | https://github.com/ilum75IDB/ivanluminaria.com/issues/46 | MySQL e i lock che non ti aspetti: gap lock, next-key lock e deadlock | aperta |
 
+## Issue Aperte — Sezione PostgreSQL
+
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 47 | https://github.com/ilum75IDB/ivanluminaria.com/issues/47 | VACUUM e autovacuum: perche PostgreSQL ha bisogno che qualcuno pulisca | aperta |
+| 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | aperta |
+| 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | aperta |
+| 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
+| 51 | https://github.com/ilum75IDB/ivanluminaria.com/issues/51 | EXPLAIN ANALYZE non basta: come leggere un piano di esecuzione PostgreSQL | aperta |
+
 ## Issue Aperte — Sezione Project Management
 
 | #  | Issue | Titolo | Stato |
