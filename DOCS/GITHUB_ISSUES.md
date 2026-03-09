@@ -18,6 +18,7 @@ tool `WebFetch`.
 |----|-------|--------|-------|
 | 25 | https://github.com/ilum75IDB/ivanluminaria.com/issues/25 | La tecnica del Si-E (Yes-And) - come ho evitato una discussione nel team | aperta |
 | 26 | https://github.com/ilum75IDB/ivanluminaria.com/issues/26 | Pagamenti a 60-90-120 giorni - la normalita italiana che in Europa non esiste | aperta |
+| 27 | https://github.com/ilum75IDB/ivanluminaria.com/issues/27 | Standup meeting - perche funzionano solo se durano 15 minuti | aperta |
 
 ## Issue Chiuse
 

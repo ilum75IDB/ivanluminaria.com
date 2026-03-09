@@ -214,8 +214,9 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
 | 12 | 2026-03-03 | —        | Tue | Bici vs Auto a Roma                        | project-management | published  |
 | 13 | 2026-03-10 | —        | Tue | La tecnica del Sì-E (Yes-And)              | project-management | planned    |
 | 14 | 2026-03-17 | —        | Tue | Pagamenti a 60-90-120 giorni               | project-management | planned    |
+| 15 | 2026-03-24 | —        | Tue | Standup meeting (max 15 minuti)            | project-management | planned    |
 
-**Next available slot**: 2026-03-24 (Tuesday)
+**Next available slot**: 2026-03-31 (Tuesday)
 
 When adding a new article, update this table, assign the next available Tuesday slot, and set the "Next available slot" line accordingly.
 
