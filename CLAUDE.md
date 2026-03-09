@@ -185,6 +185,14 @@ When adding a new article, update this table, assign the next available Tuesday 
 
 In questo ambiente **non è disponibile `gh` CLI** e non è possibile accedere direttamente alle API di GitHub. Quando l'utente chiede di "creare una issue", in realtà sta chiedendo di **generare il comando `gh issue create` pronto per il copia-incolla**, in modo che possa eseguirlo lui stesso dal proprio terminale. Non tentare di installare `gh`, non provare workaround con `curl` o API proxy: fornisci direttamente i comandi `gh issue create` completi e pronti all'uso.
 
+### Consultare le issue aperte
+
+Poiché `gh` CLI non è disponibile, il file **`DOCS/GITHUB_ISSUES.md`** contiene i link diretti alle issue aperte del repository. Quando l'utente chiede di consultare, ricordare o lavorare sulle issue:
+
+1. **Leggere `DOCS/GITHUB_ISSUES.md`** per ottenere i link delle issue
+2. **Usare `WebFetch`** sui link per leggere il contenuto completo di ciascuna issue da GitHub
+3. Quando una issue viene chiusa o ne vengono create di nuove, **aggiornare `DOCS/GITHUB_ISSUES.md`** di conseguenza
+
 ### Regole di formattazione per i comandi gh issue create
 
 **CRITICO — il comando deve funzionare con copia-incolla diretto nel terminale macOS (zsh):**
