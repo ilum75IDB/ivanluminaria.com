@@ -133,6 +133,34 @@ Font: **Inter** (loaded from Google Fonts), base size 20px.
 - **`layouts/simple.html`**: Used by the About page for a clean profile layout
 - **Navbar**: CSS-forced to `position: fixed` with `z-index: 9999` (see custom.css)
 
+## Publication Schedule
+
+Articles are published **one per week, every Tuesday at 10:00 CET**, starting from the second week of 2026 (Tuesday 13 January 2026).
+
+### Rules
+
+1. **Cadence**: one article per Tuesday, no gaps
+2. **Time**: always `T10:00:00+01:00`
+3. **First article**: 2026-01-13 (Tuesday)
+4. **Anchor article**: "Bici vs Auto a Roma" must remain the **last published** article until explicitly told otherwise
+5. **New articles**: must be placed chronologically **before** the anchor, or set as `draft: true` if they belong after it
+6. **All 4 language versions** of each article share the same date
+
+### Current Schedule
+
+| #  | Date       | Day | Article                                    | Section            |
+|----|------------|-----|--------------------------------------------|--------------------|
+| 1  | 2026-01-13 | Tue | 4 milioni e nessun software                | project-management |
+| 2  | 2026-01-20 | Tue | LIKE optimization PostgreSQL                | postgresql         |
+| 3  | 2026-01-27 | Tue | AI e GitHub per gestire un progetto         | project-management |
+| 4  | 2026-02-03 | Tue | PostgreSQL roles and users                  | postgresql         |
+| 5  | 2026-02-10 | Tue | Smart working nella consulenza IT           | project-management |
+| 6  | 2026-02-17 | Tue | MySQL users and hosts                       | mysql              |
+| 7  | 2026-02-24 | Tue | **Bici vs Auto a Roma** *(anchor/ultimo)*   | project-management |
+| 8  | TBD        | --  | Galera Cluster a 3 nodi *(draft)*           | mysql              |
+
+When adding a new article, update this table and assign the next available Tuesday slot.
+
 ## Important Notes
 
 - The Congo theme is a **Git submodule** — always clone/checkout with `--recurse-submodules` or run `git submodule update --init`
