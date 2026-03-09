@@ -8,7 +8,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 20 | https://github.com/ilum75IDB/ivanluminaria.com/issues/20 | Da single instance a Data Guard - il giorno in cui il CEO ha capito il DR | aperta |
+| 20 | https://github.com/ilum75IDB/ivanluminaria.com/issues/20 | Da single instance a Data Guard - il giorno in cui il CEO ha capito il DR | in lavorazione |
 | 21 | https://github.com/ilum75IDB/ivanluminaria.com/issues/21 | AWR, ASH e i 10 minuti che hanno salvato un go-live | aperta |
 | 23 | https://github.com/ilum75IDB/ivanluminaria.com/issues/23 | Oracle su Linux - i parametri kernel che nessuno configura | aperta |
 
