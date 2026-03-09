@@ -4,7 +4,7 @@ description: "Un client cu o tabelă de tranzacții de 2 miliarde de rânduri ș
 date: "2025-12-30T10:00:00+01:00"
 draft: false
 translationKey: "oracle_partitioning"
-tags: ["oracle", "partitioning", "performance", "tuning", "execution-plan", "range-partitioning"]
+tags: ["partitioning", "performance", "tuning", "execution-plan"]
 categories: ["oracle"]
 image: "oracle-partitioning.cover.jpg"
 ---

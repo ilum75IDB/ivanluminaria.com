@@ -4,7 +4,7 @@ description: "De Appio Latino a Prati en 50 minutos de tráfico y 35€ de aparc
 date: "2026-03-03T10:00:00+01:00"
 draft: false
 translationKey: "bici_vs_auto_roma"
-tags: ["Movilidad Urbana", "Bicicleta", "Smart Working", "Roma", "Sostenibilidad", "Salud"]
+tags: ["urban-mobility", "cycling", "smart-working", "sustainability", "health"]
 categories: ["Project Management"]
 image: "bici-vs-auto-roma.cover.jpg"
 ---

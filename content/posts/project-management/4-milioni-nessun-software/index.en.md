@@ -4,7 +4,7 @@ description: "An insurance client spent over 4 million euros hiring two IT consu
 date: "2026-01-13T10:00:00+01:00"
 draft: false
 translationKey: "consulenza_it_milioni_sprecati"
-tags: ["Project Management", "IT Consulting", "Data Warehouse", "Insurance", "Oracle", "Outsourcing"]
+tags: ["consulting", "data-warehouse", "insurance", "oracle", "outsourcing"]
 categories: ["Project Management"]
 image: "4-milioni-nessun-software.cover.jpg"
 ---

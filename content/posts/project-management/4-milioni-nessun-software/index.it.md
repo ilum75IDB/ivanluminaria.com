@@ -4,7 +4,7 @@ description: "Un cliente del settore assicurativo ha speso oltre 4 milioni di eu
 date: "2026-01-13T10:00:00+01:00"
 draft: false
 translationKey: "consulenza_it_milioni_sprecati"
-tags: ["Project Management", "Consulenza IT", "Data Warehouse", "Assicurazioni", "Oracle", "Outsourcing"]
+tags: ["consulting", "data-warehouse", "insurance", "oracle", "outsourcing"]
 categories: ["Project Management"]
 image: "4-milioni-nessun-software.cover.jpg"
 ---

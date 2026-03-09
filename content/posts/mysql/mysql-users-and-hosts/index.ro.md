@@ -4,7 +4,7 @@ description: "În MySQL și MariaDB identitatea unui utilizator depinde de host-
 date: "2026-02-17T10:00:00+01:00"
 draft: false
 translationKey: "mysql_users_and_hosts"
-tags: ["mysql", "mariadb", "securitate", "utilizatori", "privilegii", "autentificare"]
+tags: ["mariadb", "security", "users", "privileges", "authentication"]
 categories: ["mysql"]
 image: "mysql-users-and-hosts.cover.jpg"
 ---

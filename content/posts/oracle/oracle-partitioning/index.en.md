@@ -4,7 +4,7 @@ description: "A client with a 2-billion-row transaction table and reporting quer
 date: "2025-12-30T10:00:00+01:00"
 draft: false
 translationKey: "oracle_partitioning"
-tags: ["oracle", "partitioning", "performance", "tuning", "execution-plan", "range-partitioning"]
+tags: ["partitioning", "performance", "tuning", "execution-plan"]
 categories: ["oracle"]
 image: "oracle-partitioning.cover.jpg"
 ---
