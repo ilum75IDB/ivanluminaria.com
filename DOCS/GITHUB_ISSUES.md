@@ -8,21 +8,31 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 20 | https://github.com/ilum75IDB/ivanluminaria.com/issues/20 | Da single instance a Data Guard - il giorno in cui il CEO ha capito il DR | in lavorazione |
-| 21 | https://github.com/ilum75IDB/ivanluminaria.com/issues/21 | AWR, ASH e i 10 minuti che hanno salvato un go-live | aperta |
-| 23 | https://github.com/ilum75IDB/ivanluminaria.com/issues/23 | Oracle su Linux - i parametri kernel che nessuno configura | aperta |
+
+## Issue Aperte — Sezione Data Warehouse
+
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 37 | https://github.com/ilum75IDB/ivanluminaria.com/issues/37 | SCD Tipo 2: la storia che il business non sapeva di volere | aperta |
+| 38 | https://github.com/ilum75IDB/ivanluminaria.com/issues/38 | Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste | aperta |
+| 39 | https://github.com/ilum75IDB/ivanluminaria.com/issues/39 | ETL a 4 ore: come ho portato un caricamento notturno a 25 minuti | aperta |
+| 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | aperta |
+| 41 | https://github.com/ilum75IDB/ivanluminaria.com/issues/41 | Partitioning nel DWH: quando 3 anni di dati pesano troppo | aperta |
 
 ## Issue Aperte — Sezione Project Management
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 25 | https://github.com/ilum75IDB/ivanluminaria.com/issues/25 | La tecnica del Si-E (Yes-And) - come ho evitato una discussione nel team | aperta |
-| 27 | https://github.com/ilum75IDB/ivanluminaria.com/issues/27 | Standup meeting - perche funzionano solo se durano 15 minuti | aperta |
 
 ## Issue Chiuse
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 20 | https://github.com/ilum75IDB/ivanluminaria.com/issues/20 | Da single instance a Data Guard - il giorno in cui il CEO ha capito il DR | 2026-03-09 |
+| 21 | https://github.com/ilum75IDB/ivanluminaria.com/issues/21 | AWR, ASH e i 10 minuti che hanno salvato un go-live | 2026-03-09 |
+| 23 | https://github.com/ilum75IDB/ivanluminaria.com/issues/23 | Oracle su Linux - i parametri kernel che nessuno configura | 2026-03-09 |
+| 25 | https://github.com/ilum75IDB/ivanluminaria.com/issues/25 | La tecnica del Si-E (Yes-And) - come ho evitato una discussione nel team | 2026-03-09 |
+| 27 | https://github.com/ilum75IDB/ivanluminaria.com/issues/27 | Standup meeting - perche funzionano solo se durano 15 minuti | 2026-03-09 |
 | 26 | https://github.com/ilum75IDB/ivanluminaria.com/issues/26 | Pagamenti a 60-90-120 giorni - la normalita italiana che in Europa non esiste | 2026-03-10 |
 | 28 | https://github.com/ilum75IDB/ivanluminaria.com/issues/28 | 4 milioni di record e nessun software - quando Excel e il database | 2026-03-09 |
 | 19 | https://github.com/ilum75IDB/ivanluminaria.com/issues/19 | Oracle Partitioning - quando 2 miliardi di righe non entrano piu in una query | 2026-03-09 |
