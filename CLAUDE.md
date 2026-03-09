@@ -172,4 +172,16 @@ When adding a new article, update this table, assign the next available Tuesday 
 
 ## GitHub Issues
 
-In questo ambiente **non è disponibile `gh` CLI** e non è possibile accedere direttamente alle API di GitHub. Quando l'utente chiede di "creare una issue", in realtà sta chiedendo di **generare il comando `gh issue create` pronto per il copia-incolla**, in modo che possa eseguirlo lui stesso dal proprio terminale. Non tentare di installare `gh`, non provare workaround con `curl` o API proxy: fornisci direttamente i comandi `gh issue create --title "..." --label "..." --body "$(cat <<'EOF' ... EOF)"` completi e pronti all'uso.
+In questo ambiente **non è disponibile `gh` CLI** e non è possibile accedere direttamente alle API di GitHub. Quando l'utente chiede di "creare una issue", in realtà sta chiedendo di **generare il comando `gh issue create` pronto per il copia-incolla**, in modo che possa eseguirlo lui stesso dal proprio terminale. Non tentare di installare `gh`, non provare workaround con `curl` o API proxy: fornisci direttamente i comandi `gh issue create` completi e pronti all'uso.
+
+### Regole di formattazione per i comandi gh issue create
+
+**CRITICO — il comando deve funzionare con copia-incolla diretto nel terminale macOS (zsh):**
+
+1. **NON usare backtick `` ` `` o triple backtick `` ``` `` nel body** — la shell li interpreta come command substitution e il comando fallisce. Per i blocchi di codice nel body, usare indentazione con 4 spazi oppure scrivere la parola `Codice:` seguita dal contenuto su righe successive.
+2. **NON usare `$(cat <<'EOF' ... EOF)`** per il body — è fragile con contenuti complessi. Usare invece il flag `--body-file` con process substitution: `--body-file <(echo '...')`, oppure meglio ancora **salvare il body in un file temporaneo** e usare `--body-file /tmp/issue-body.md`.
+3. **Approccio consigliato**: genera due blocchi separati per ogni issue:
+   - **Blocco 1**: un comando `cat > /tmp/issue-body.md << 'ISSUE_EOF' ... ISSUE_EOF` con il contenuto del body (qui gli apici singoli attorno a ISSUE_EOF disabilitano ogni interpolazione)
+   - **Blocco 2**: il comando `gh issue create --repo ilum75IDB/ivanluminaria.com --title "..." --label "..." --body-file /tmp/issue-body.md`
+4. Nel body della issue, i blocchi di codice vanno scritti con triple backtick normalmente — saranno interpretati correttamente da GitHub perché il file viene letto da `--body-file`, non parsato dalla shell.
+5. **Testare mentalmente**: prima di fornire il comando, verificare che non ci siano apici, virgolette o backtick che possano confondere la shell zsh.
