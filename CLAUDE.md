@@ -142,8 +142,25 @@ The homepage (`layouts/_partials/home/custom.html`) uses an editorial magazine-s
 
 ### Section display rules
 
-- **Latest** section: 1 hero article + 5 grid articles (total 6, controlled by `homepage.recentLimit` param)
-- **Each category section**: 1 hero article (with cover image) + up to 4 grid articles (total max 5)
+- **Latest** section: 1 hero (full-width image above title) + 5 grid articles (total 6, controlled by `homepage.recentLimit` param)
+- **Each category section**: 1 hero (2-column: image left, text right) + up to 4 grid articles (total max 5)
+- **All images** must use **3:2 aspect ratio** — never change this
+
+### Image sizes (3:2 ratio)
+
+| Element             | srcset                          | CSS class                        |
+|---------------------|---------------------------------|----------------------------------|
+| Latest hero         | `800x533` / `1200x800`         | `.editorial-hero-img`            |
+| Latest grid         | `160x107` / `320x213`          | `.editorial-grid-img`            |
+| Category hero       | `300x200` / `450x300`          | `.editorial-category-hero-img`   |
+| Category grid       | `160x107` / `320x213`          | `.editorial-grid-img`            |
+
+### Category hero layout
+
+Each category section hero uses a **2-column layout** (CSS class `.editorial-category-hero`):
+- **Left column**: cover image (3:2, linked to article)
+- **Right column** (`.editorial-category-hero-text`): 3 rows — title, date + reading time, description
+- Below 480px: collapses to single column (image on top)
 
 ### Section order
 
@@ -156,7 +173,7 @@ The homepage (`layouts/_partials/home/custom.html`) uses an editorial magazine-s
 | 5  | PostgreSQL               | `postgresql`         | 1 hero + up to 4 grid   |
 | 6  | MySQL                    | `mysql`              | 1 hero + up to 4 grid   |
 
-**Important**: When adding new sections, update both this table and the `$sections` slice in `layouts/_partials/home/custom.html`.
+**Important**: When adding new sections, update both this table and the `$sections` slice in `layouts/_partials/home/custom.html`. Never modify the image aspect ratios or the category hero 2-column structure.
 
 ## Custom Layouts & Overrides
 
