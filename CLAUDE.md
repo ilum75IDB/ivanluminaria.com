@@ -210,7 +210,7 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
 | 8  | 2026-01-06 | —        | Tue | Oracle ruoli e privilegi (GRANT ALL)                       | oracle             | #22   | published |
 | 9  | 2026-01-13 | —        | Tue | La tecnica del Sì-E (Yes-And)                              | project-management | #25   | published |
 | 10 | 2026-01-20 | —        | Tue | PostgreSQL roles and users                                 | postgresql         | #32   | published |
-| 11 | 2026-01-27 | —        | Tue | Standup meeting (max 15 minuti)                            | project-management | #27   | planned   |
+| 11 | 2026-01-27 | —        | Tue | Standup meeting (max 15 minuti)                            | project-management | #27   | published |
 | 12 | 2026-02-03 | —        | Tue | Galera Cluster a 3 nodi                                    | mysql              | #33   | published |
 | 13 | 2026-02-10 | —        | Tue | AWR, ASH e i 10 minuti che hanno salvato un go-live        | oracle             | #21   | planned   |
 | 14 | 2026-02-17 | —        | Tue | Smart working nella consulenza IT                          | project-management | #34   | published |
