@@ -212,15 +212,23 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
 | 10 | 2026-01-20 | —        | Tue | PostgreSQL roles and users                                 | postgresql         | #32   | published |
 | 11 | 2026-01-27 | —        | Tue | Standup meeting (max 15 minuti)                            | project-management | #27   | published |
 | 12 | 2026-02-03 | —        | Tue | Galera Cluster a 3 nodi                                    | mysql              | #33   | published |
-| 13 | 2026-02-10 | —        | Tue | AWR, ASH e i 10 minuti che hanno salvato un go-live        | oracle             | #21   | planned   |
+| 13 | 2026-02-10 | —        | Tue | AWR, ASH e i 10 minuti che hanno salvato un go-live        | oracle             | #21   | published |
 | 14 | 2026-02-17 | —        | Tue | Smart working nella consulenza IT                          | project-management | #34   | published |
-| 15 | 2026-02-24 | —        | Tue | Oracle su Linux - i parametri kernel che nessuno configura  | oracle             | #23   | planned   |
+| 15 | 2026-02-24 | —        | Tue | Oracle su Linux - i parametri kernel che nessuno configura  | oracle             | #23   | published |
 | 16 | 2026-03-03 | —        | Tue | Bici vs Auto a Roma                                        | project-management | #35   | published |
 | 17 | 2026-03-10 | —        | Tue | Pagamenti a 60-90-120 giorni                               | project-management | #26   | published |
 
 **Next available slot**: 2026-03-17 (Tuesday)
 
 When adding a new article, update this table, assign the next available Tuesday slot, and set the "Next available slot" line accordingly.
+
+### Publication dashboard rule
+
+When the user asks for the "tabella delle pubblicazioni" (publication table), **always show 3 tables**:
+
+1. **Tabella pubblicazioni** — the Current Schedule table above (all published + planned articles with dates)
+2. **Tabella issue aperte** — all open issues grouped by section (from `DOCS/GITHUB_ISSUES.md`)
+3. **Riepilogo per sezione** — a summary table with columns: Sezione, Pubblicati, Pianificati (issue aperte), Totale
 
 ## Important Notes
 
