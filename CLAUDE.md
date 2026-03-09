@@ -185,13 +185,13 @@ Each category section hero uses a **2-column layout** (CSS class `.editorial-cat
 
 ## Publication Schedule
 
-Articles are published **one per week, every Tuesday at 10:00 CET**, starting from 2 December 2025.
+Articles are published **one per week, every Tuesday at 10:00 CET**, starting from 16 December 2025.
 
 ### Rules
 
 1. **Cadence**: one article per Tuesday, no gaps
 2. **Time**: always `T10:00:00+01:00`
-3. **First article**: 2025-12-02 (Tuesday)
+3. **First article**: 2025-12-16 (Tuesday)
 4. **New articles**: take the next available Tuesday slot after the last published article
 5. **All 4 language versions** of each article share the same date
 6. **Schedule table format**: always show the columns below. When reorganising dates, fill the "New Date" column; use `—` if no change is needed
@@ -200,7 +200,7 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
 
 | #  | Date       | New Date | Day | Article                                    | Section            | Status     |
 |----|------------|----------|-----|--------------------------------------------|--------------------|------------|
-| 1  | 2025-12-02 | —        | Tue | Da single instance a Data Guard            | oracle             | published  |
+| 1  | 2025-12-16 | —        | Tue | Da single instance a Data Guard            | oracle             | published  |
 | 2  | 2025-12-23 | —        | Tue | Oracle Partitioning (2 miliardi di righe)  | oracle             | published  |
 | 3  | 2025-12-30 | —        | Tue | 4 milioni e nessun software                | project-management | published  |
 | 4  | 2026-01-06 | —        | Tue | LIKE optimization PostgreSQL               | postgresql         | published  |
