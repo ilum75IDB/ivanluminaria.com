@@ -191,34 +191,34 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
 
 1. **Cadence**: one article per Tuesday, no gaps
 2. **Time**: always `T10:00:00+01:00`
-3. **First article**: 2025-12-16 (Tuesday)
+3. **First article**: 2025-11-18 (Tuesday)
 4. **New articles**: take the next available Tuesday slot after the last published article
 5. **All 4 language versions** of each article share the same date
 6. **Schedule table format**: always show the columns below. When reorganising dates, fill the "New Date" column; use `—` if no change is needed
 
 ### Current Schedule
 
-| #  | Date       | New Date | Day | Article                                    | Section            | Status     |
-|----|------------|----------|-----|--------------------------------------------|--------------------|------------|
-| 1  | 2025-12-16 | —        | Tue | Da single instance a Data Guard            | oracle             | published  |
-| 2  | 2025-12-23 | —        | Tue | Oracle Partitioning (2 miliardi di righe)  | oracle             | published  |
-| 3  | 2025-12-30 | —        | Tue | 4 milioni e nessun software                | project-management | published  |
-| 4  | 2026-01-06 | —        | Tue | LIKE optimization PostgreSQL               | postgresql         | published  |
-| 5  | 2026-01-13 | —        | Tue | MySQL users and hosts                      | mysql              | published  |
-| 6  | 2026-01-20 | —        | Tue | Ragged Hierarchies (self-parenting)        | data-warehouse     | published  |
-| 7  | 2026-01-27 | —        | Tue | Oracle ruoli e privilegi (GRANT ALL)       | oracle             | published  |
-| 8  | 2026-02-03 | —        | Tue | AI e GitHub per gestire un progetto        | project-management | published  |
-| 9  | 2026-02-10 | —        | Tue | PostgreSQL roles and users                 | postgresql         | published  |
-| 10 | 2026-02-17 | —        | Tue | Galera Cluster a 3 nodi                    | mysql              | published  |
-| 11 | 2026-02-24 | —        | Tue | Smart working nella consulenza IT          | project-management | published  |
-| 12 | 2026-03-03 | —        | Tue | Bici vs Auto a Roma                        | project-management | published  |
-| 13 | 2026-03-10 | —        | Tue | La tecnica del Sì-E (Yes-And)              | project-management | planned    |
-| 14 | 2026-03-17 | —        | Tue | Pagamenti a 60-90-120 giorni               | project-management | planned    |
-| 15 | 2026-03-24 | —        | Tue | Standup meeting (max 15 minuti)            | project-management | planned    |
-| 16 | 2026-03-31 | —        | Tue | AWR, ASH e i 10 minuti che hanno salvato un go-live | oracle     | planned    |
-| 17 | 2026-04-07 | —        | Tue | Oracle su Linux - i parametri kernel che nessuno configura | oracle | planned |
+| #  | Date       | New Date | Day | Article                                                    | Section            | Status    |
+|----|------------|----------|-----|------------------------------------------------------------|--------------------|-----------|
+| 1  | 2025-11-18 | —        | Tue | Da single instance a Data Guard                            | oracle             | published |
+| 2  | 2025-11-25 | —        | Tue | 4 milioni e nessun software                                | project-management | published |
+| 3  | 2025-12-02 | —        | Tue | LIKE optimization PostgreSQL                               | postgresql         | published |
+| 4  | 2025-12-09 | —        | Tue | Oracle Partitioning (2 miliardi di righe)                  | oracle             | published |
+| 5  | 2025-12-16 | —        | Tue | MySQL users and hosts                                      | mysql              | published |
+| 6  | 2025-12-23 | —        | Tue | AI e GitHub per gestire un progetto                        | project-management | published |
+| 7  | 2025-12-30 | —        | Tue | Ragged Hierarchies (self-parenting)                        | data-warehouse     | published |
+| 8  | 2026-01-06 | —        | Tue | Oracle ruoli e privilegi (GRANT ALL)                       | oracle             | published |
+| 9  | 2026-01-13 | —        | Tue | La tecnica del Sì-E (Yes-And)                              | project-management | planned   |
+| 10 | 2026-01-20 | —        | Tue | PostgreSQL roles and users                                 | postgresql         | published |
+| 11 | 2026-01-27 | —        | Tue | Standup meeting (max 15 minuti)                            | project-management | planned   |
+| 12 | 2026-02-03 | —        | Tue | Galera Cluster a 3 nodi                                    | mysql              | published |
+| 13 | 2026-02-10 | —        | Tue | AWR, ASH e i 10 minuti che hanno salvato un go-live        | oracle             | planned   |
+| 14 | 2026-02-17 | —        | Tue | Smart working nella consulenza IT                          | project-management | published |
+| 15 | 2026-02-24 | —        | Tue | Oracle su Linux - i parametri kernel che nessuno configura  | oracle             | planned   |
+| 16 | 2026-03-03 | —        | Tue | Bici vs Auto a Roma                                        | project-management | published |
+| 17 | 2026-03-10 | —        | Tue | Pagamenti a 60-90-120 giorni                               | project-management | planned   |
 
-**Next available slot**: 2026-04-14 (Tuesday)
+**Next available slot**: 2026-03-17 (Tuesday)
 
 When adding a new article, update this table, assign the next available Tuesday slot, and set the "Next available slot" line accordingly.
 
