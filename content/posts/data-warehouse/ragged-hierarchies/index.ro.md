@@ -4,8 +4,8 @@ description: "Un client cu o ierarhie pe trei niveluri — Top Group, Group, Cli
 date: "2025-12-23T10:00:00+01:00"
 draft: false
 translationKey: "ragged_hierarchies"
-tags: ["data-warehouse", "hierarchies", "dimensional-modeling", "etl", "oracle", "olap", "reporting"]
-categories: ["data-warehouse", "modeling"]
+tags: ["data-warehouse", "hierarchies", "dimensional-modeling", "modeling", "etl", "oracle", "olap", "reporting"]
+categories: ["data-warehouse"]
 image: "ragged-hierarchies.cover.jpg"
 ---
 
