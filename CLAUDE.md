@@ -202,5 +202,7 @@ Le seguenti label sono già state create nel repository `ilum75IDB/ivanluminaria
 | `postgresql`         | `#336791` | Articoli sezione PostgreSQL          |
 | `mysql`              | `#00758F` | Articoli sezione MySQL               |
 | `project-management` | `#4a4a4a` | Articoli sezione Project Management  |
+| `data-warehouse`     | `#1E3A5F` | Articoli sezione Data Warehouse Architect |
+| `ai-manager`         | `#8B5CF6` | Articoli sezione AI Manager          |
 
 Quando si crea una nuova issue per un articolo, usare sempre la label `blog-article` insieme alla label della sezione corrispondente (es. `--label "oracle,blog-article"`).
