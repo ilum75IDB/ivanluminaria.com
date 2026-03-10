@@ -7,6 +7,10 @@ draft: false
 layout: "simple"
 ---
 
+**[Scarica PDF]({{% staticurl "downloads/CV-IvanLuminaria-OracleDBAPerformanceTuningExpert(ENG).pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+
+---
+
 ## Profilo Professionale
 
 Senior Oracle DBA e Performance Tuning Expert con oltre 20 anni di esperienza specializzata nell'amministrazione, ottimizzazione e gestione di database Oracle complessi e mission-critical, inclusi ambienti Exadata, RAC e Oracle Cloud (OCI, Autonomous Database). Profonda competenza nell'analisi delle prestazioni (AWR, ADDM, ASH), nel tuning di query SQL complesse, nell'ottimizzazione delle istanze e nella risoluzione di problemi di performance. Conoscenze consolidate nelle pratiche di backup & recovery (RMAN), sicurezza (TDE), installazione, patching, migrazioni e gestione dello storage (ASM), con il performance tuning come area primaria e approfondita di competenza, cruciale per l'integrità, le prestazioni e il contributo all'alta disponibilità dei sistemi Oracle in contesti aziendali internazionali e ad elevata complessità.
@@ -141,4 +145,4 @@ Roma, Marzo 2026
 
 ---
 
-{{< staticurl "downloads/CV-IvanLuminaria-OracleDBAPerformanceTuningExpert(ENG).pdf" >}}
+**[Scarica PDF]({{% staticurl "downloads/CV-IvanLuminaria-OracleDBAPerformanceTuningExpert(ENG).pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Torna alla pagina precedente](/it/resumes/)**

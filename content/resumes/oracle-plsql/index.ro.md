@@ -7,6 +7,10 @@ draft: false
 layout: "simple"
 ---
 
+**[Descarca PDF]({{% staticurl "downloads/CV-IvanLuminaria-OraclePLSQLDeveloper(ENG).pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+
+---
+
 ## Profil Profesional
 
 Senior Oracle PL/SQL Developer cu peste 20 de ani de experienta in proiectarea, dezvoltarea, testarea si optimizarea codului PL/SQL robust si eficient pentru aplicatii cu volume mari de date si sisteme Data Warehouse. Expertiza avansata in crearea de pachete, proceduri, functii, triggere si tipuri complexe, cu un accent constant pe performanta, mentenabilitate si calitatea codului. Expert in optimizarea interogarilor SQL complexe si gestionarea volumelor mari de date. Abilitate in transpunerea cerintelor de business in logica aplicativa performanta si scalabila in cadrul bazei de date Oracle. Parcurs consolidat si ca Oracle DBA si DWH Architect, oferind o viziune completa asupra ciclului de viata al datelor.
@@ -147,4 +151,4 @@ Roma, Martie 2026
 
 ---
 
-{{< staticurl "downloads/CV-IvanLuminaria-OraclePLSQLDeveloper(ENG).pdf" >}}
+**[Descarca PDF]({{% staticurl "downloads/CV-IvanLuminaria-OraclePLSQLDeveloper(ENG).pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**
