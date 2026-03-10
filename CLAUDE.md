@@ -218,8 +218,9 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
 | 16 | 2026-03-03 | —        | Tue | Bici vs Auto a Roma                                        | project-management | #35   | published |
 | 17 | 2026-03-10 | —        | Tue | Pagamenti a 60-90-120 giorni                               | project-management | #26   | published |
 | 18 | 2026-03-17 | —        | Tue | SCD Tipo 2: la storia che il business non sapeva di volere | data-warehouse     | #37   | planned   |
+| 19 | 2026-03-24 | —        | Tue | AI Manager e Project Management                            | project-management | #55   | planned   |
 
-**Next available slot**: 2026-03-24 (Tuesday)
+**Next available slot**: 2026-03-31 (Tuesday)
 
 When adding a new article, update this table, assign the next available Tuesday slot, and set the "Next available slot" line accordingly.
 
