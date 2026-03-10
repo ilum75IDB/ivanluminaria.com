@@ -32,7 +32,7 @@ Senior Oracle DBA si Performance Tuning Expert cu aproape 30 de ani de experient
 - **Instrumente Oracle**: Oracle Enterprise Manager (OEM) Cloud Control, SQL Developer, SQL*Plus, Toad.
 - **Scripting**: PL/SQL, SQL, Unix Shell Scripting (pentru automatizarea sarcinilor DBA).
 - **Cloud**: Oracle Cloud Infrastructure (OCI) — Compute, Storage, Networking, Database Services (VM DB, Bare Metal, Exadata CS, Autonomous Database).
-- **Alte Tehnologii de Baze de Date**: Cunostinte de MySQL (Instalare, Configurare).
+- **Alte Tehnologii de Baze de Date**: PostgreSQL (administrare, performance tuning, partitioning, replicare), MySQL (administrare, configurare, replicare, optimizare InnoDB).
 - **Sisteme de Operare**: Linux (Red Hat, Oracle Linux), Unix (AIX, Solaris), Windows Server.
 
 ---
@@ -40,13 +40,28 @@ Senior Oracle DBA si Performance Tuning Expert cu aproape 30 de ani de experient
 ## Experienta Profesionala
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Senior Oracle DBA & Performance Tuning Expert / DWH Architect** | 2022 – Prezent
+**Senior Oracle DBA & Performance Tuning Expert / DWH Architect | Administrator Unic** | 2021 – Prezent
 
-- Consultanta specializata ca Oracle DBA si Performance Tuning Expert pentru clienti din sectorul bancar si parteneri Telepass.
-- Proiectare, implementare si optimizare de baze de date Oracle in medii OCI si Autonomous Database.
-- Analiza proactiva a performantei, identificarea blocajelor si implementarea solutiilor de tuning pentru interogari SQL si instante DB.
-- Suport pentru gestionarea RMAN, Oracle OEM, instalare si patching de baze de date Oracle.
-- Arhitectura si modelarea datelor DWH, asigurand performanta optima.
+- **DBA MySQL & PostgreSQL** (pentru POSTE ITALIANE) | Iul 2025 – Prezent:
+  - Administrarea si gestionarea a aproximativ 1.500 de instante MySQL si PostgreSQL in medii de productie, staging si dezvoltare.
+  - Monitorizarea performantei, query tuning, gestionarea replicarii si planificarea capacitatii la scara enterprise.
+
+- **Oracle DBA & Tuning Expert** (pentru GENERALI Assicurazioni) | Feb 2024 – Mai 2025:
+  - Administrarea bazelor de date Oracle si performance tuning avansat pentru aplicatii din sectorul asigurarilor.
+  - Analiza AWR/ADDM, optimizare SQL si rezolvarea proactiva a blocajelor pe baze de date de la 500GB la 8TB.
+
+- **Oracle DBA** (pentru ATRADIUS) | 2022 – 2026:
+  - Administrarea si performance tuning-ul bazelor de date care sustin Data Warehouse-ul diviziei Surety pentru consolidarea datelor din Italia, Spania, Franta si tarile din nordul Europei.
+  - Gestionarea bazelor de date Oracle in medii OCI, sustinand peste 60.000 de linii de cod PL/SQL ETL cu ingestie zilnica completa in mai putin de 2 ore.
+
+- **Oracle DBA** (pentru FAI SERVICE) | 2021 – 2023:
+  - Administrarea si tuning-ul bazelor de date Oracle 19c in OCI pentru procese ETL si dashboarduri Oracle Analytics Cloud.
+
+- **DBA & Performance Tuning** (Banking, Telepass si alti clienti):
+  - Optimizarea bazelor de date Oracle in medii OCI si Autonomous Database — reducerea timpilor de procesare batch de la 4 ore la mai putin de 30 de minute pe incarcaturi de lucru analitice critice.
+  - Proiectarea si dezvoltarea fluxurilor ETL/ELT pentru integrarea datelor din peste 15 surse eterogene pe seturi de date de peste 2 miliarde de randuri.
+  - Gestionarea RMAN, monitorizare Oracle OEM, instalare si patching de baze de date Oracle.
+  - Proiectarea si implementarea solutiilor DWH pe PostgreSQL ca alternative cost-effective la arhitecturile Oracle.
 
 ---
 
