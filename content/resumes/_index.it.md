@@ -38,7 +38,7 @@ Nell’automotive conta la sincronizzazione dei processi e la qualità del dato 
 
 Ho progettato architetture dati in ambienti dove il margine di errore non è contemplato.
 
-👉 [Leggi il CV online](/it/resumes/dwh-architect/) | [Scarica PDF]({{% staticurl "downloads/CV-IvanLuminaria-DWHArchitect(English).pdf" %}})
+👉 [Leggi il CV online](/it/resumes/dwh-architect/) | [__Scarica la roadmap delle mie competenze ed esperienze come Data Warehouse Architect__]({{% staticurl "downloads/CV-IvanLuminaria-DWHArchitect(English).pdf" %}})
 
 ---
 
@@ -85,7 +85,7 @@ Collego visione strategica e dettaglio tecnico.
 Roadmap e implementazione.
 Decisioni e conseguenze.
 
-👉 [Leggi il CV online](/it/resumes/project-manager/) | [Scarica PDF]({{% staticurl "downloads/CV-IvanLuminaria-ProjectManager(ENG).pdf" %}})
+👉 [Leggi il CV online](/it/resumes/project-manager/) | [__Scarica la roadmap delle mie competenze ed esperienze come Project Manager__]({{% staticurl "downloads/CV-IvanLuminaria-ProjectManager(ENG).pdf" %}})
 
 ---
 
@@ -104,7 +104,7 @@ Reperibilità reale.
 Qui il tuning non è un miglioramento estetico.
 È protezione dell’operatività.
 
-👉 [Leggi il CV online](/it/resumes/oracle-dba/) | [Scarica PDF]({{% staticurl "downloads/CV-IvanLuminaria-OracleDBAPerformanceTuningExpert(ENG).pdf" %}})
+👉 [Leggi il CV online](/it/resumes/oracle-dba/) | [__Scarica la roadmap delle mie competenze ed esperienze come Oracle DBA__]({{% staticurl "downloads/CV-IvanLuminaria-OracleDBAPerformanceTuningExpert(ENG).pdf" %}})
 
 ---
 
@@ -122,4 +122,4 @@ Posso guidare.
 Posso fare mentoring.
 Posso aiutare sviluppatori a crescere in profondità tecnica e progettuale.
 
-👉 [Leggi il CV online](/it/resumes/oracle-plsql/) | [Scarica PDF]({{% staticurl "downloads/CV-IvanLuminaria-OraclePLSQLDeveloper(ENG).pdf" %}})
+👉 [Leggi il CV online](/it/resumes/oracle-plsql/) | [__Scarica la roadmap delle mie competenze ed esperienze come Oracle PL/SQL Developer__]({{% staticurl "downloads/CV-IvanLuminaria-OraclePLSQLDeveloper(ENG).pdf" %}})
