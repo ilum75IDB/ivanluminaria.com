@@ -42,29 +42,6 @@ Ho progettato architetture dati in ambienti dove il margine di errore non è con
 
 ---
 
-## AI Manager – Data & Intelligence Strategy
-
-L’Intelligenza Artificiale non è una moda. È un’evoluzione.
-
-Dopo trent’anni passati a progettare architetture dati e governare sistemi mission-critical, l’AI rappresenta la naturale estensione del dato verso l’intelligenza.
-
-Un AI Manager non è chi addestra un modello.  
-È chi governa l’impatto dell’AI sull’azienda.
-
-Significa:
-
-– Valutare dove l’AI genera valore reale e dove genera solo entusiasmo.  
-– Integrare modelli in architetture esistenti senza comprometterne stabilità e sicurezza.  
-– Garantire coerenza tra governance del dato, compliance e automazione.  
-– Tradurre esigenze di business in soluzioni intelligenti e sostenibili.
-
-In settori regolamentati come Banking, Assicurazioni, Farmaceutico e Pubblica Amministrazione, l’AI richiede responsabilità e visione strategica.
-
-Perché l’AI non è magia.  
-È architettura applicata all’intelligenza.
-
----
-
 ## Project Manager con background tecnico
 
 La gestione di progetto è maturata coordinando attività in contesti complessi:

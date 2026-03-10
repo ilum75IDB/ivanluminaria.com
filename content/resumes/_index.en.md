@@ -44,29 +44,6 @@ I have designed data architectures in environments where error is not an option.
 
 ---
 
-## AI Manager – Data & Intelligence Strategy
-
-Artificial Intelligence is not a trend. It is an evolution.
-
-After nearly three decades designing data architectures and governing mission-critical systems, AI represents the natural extension of data toward intelligence.
-
-An AI Manager is not the person who trains a model.
-It is the person who governs the impact of AI on the organization.
-
-This means:
-
-– Identifying where AI creates real value and where it only creates enthusiasm.
-– Integrating models into existing architectures without compromising stability and security.
-– Ensuring alignment between data governance, compliance, and automation.
-– Translating business needs into intelligent and sustainable solutions.
-
-In regulated industries such as Banking, Insurance, Pharma and Public Administration, AI requires responsibility and strategic vision.
-
-AI is not magic.
-It is architecture applied to intelligence.
-
----
-
 ## Project Manager with Technical Background
 
 My project management experience matured while coordinating initiatives in complex environments:

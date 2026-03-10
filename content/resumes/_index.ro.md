@@ -44,29 +44,6 @@ Am proiectat arhitecturi de date în medii în care marja de eroare nu este acce
 
 ---
 
-## AI Manager – Data & Intelligence Strategy
-
-Inteligența Artificială nu este o modă. Este o evoluție.
-
-După aproape trei decenii petrecute proiectând arhitecturi de date și guvernând sisteme mission-critical, AI reprezintă extensia naturală a datelor către inteligență.
-
-Un AI Manager nu este persoana care antrenează un model.  
-Este persoana care guvernează impactul AI asupra organizației.
-
-Acest lucru înseamnă:
-
-– Evaluarea zonelor în care AI generează valoare reală și a celor în care generează doar entuziasm.  
-– Integrarea modelelor în arhitecturi existente fără a compromite stabilitatea și securitatea.  
-– Asigurarea coerenței între guvernanța datelor, conformitate și automatizare.  
-– Traducerea nevoilor de business în soluții inteligente și sustenabile.
-
-În sectoare reglementate precum Banking, Asigurări, Farmaceutic și Administrație Publică, AI necesită responsabilitate și viziune strategică.
-
-AI nu este magie.  
-Este arhitectură aplicată inteligenței.
-
----
-
 ## Project Manager cu background tehnic
 
 Experiența mea în management de proiect s-a maturizat coordonând inițiative în medii complexe:
