@@ -46,6 +46,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
+| 55 | https://github.com/ilum75IDB/ivanluminaria.com/issues/55 | AI Manager e Project Management: quando l'intelligenza artificiale entra nei progetti | aperta |
 
 ## Issue Chiuse
 
