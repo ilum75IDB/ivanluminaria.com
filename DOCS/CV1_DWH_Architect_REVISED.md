@@ -36,6 +36,7 @@ Data Warehouse Architect and IT professional with nearly 30 years of experience 
   - Designed the Surety division Data Warehouse to consolidate data from Italy, Spain, France, and Northern European countries.
   - Integrated heterogeneous sources — Oracle databases, Microsoft SQL Server, and flat files from external systems — into a unified Oracle-based DWH.
   - Modeled core business domains: client portfolio, policies, contracts, billing, claims, and claims transactions.
+  - Developed the entire data model and ETL layer — over 60K lines of PL/SQL code — with a real-time load monitoring system. Full daily ingestion from all three sources completes in under 2 hours.
 
 - **DWH Architect** (for FAI SERVICE) | 2021 – 2023:
   - Designed a Snowflake Schema data model on Oracle Analytics Cloud with ETL processes running on Oracle 19c in OCI.
