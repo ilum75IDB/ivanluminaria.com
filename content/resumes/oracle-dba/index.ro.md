@@ -1,6 +1,6 @@
 ---
 title: "Oracle DBA & Performance Tuning Expert"
-description: "Oracle DBA Performance Tuning Expert — peste 20 de ani de experienta specializata in administrarea, optimizarea si gestionarea bazelor de date Oracle complexe si critice."
+description: "Oracle DBA Performance Tuning Expert — aproape 30 de ani de experienta specializata in administrarea, optimizarea si gestionarea bazelor de date Oracle complexe si critice."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false
@@ -13,13 +13,13 @@ layout: "simple"
 
 ## Profil Profesional
 
-Senior Oracle DBA si Performance Tuning Expert cu peste 20 de ani de experienta specializata in administrarea, optimizarea si gestionarea bazelor de date Oracle complexe si critice, inclusiv medii Exadata, RAC si Oracle Cloud (OCI, Autonomous Database). Expertiza avansata in analiza performantei (AWR, ADDM, ASH), optimizarea interogatiilor SQL complexe, tuning-ul instantelor si rezolvarea problemelor de performanta. Cunostinte solide in practici legate de backup & recovery (RMAN), securitate (TDE), instalare, patching, migrari si gestionarea stocarii (ASM), performanta ramanand principala si cea mai aprofundata arie de expertiza, cruciala pentru integritatea, performanta si contributia la disponibilitatea ridicata a sistemelor Oracle in medii corporative exigente si internationale.
+Senior Oracle DBA si Performance Tuning Expert cu aproape 30 de ani de experienta specializata in administrarea, optimizarea si gestionarea bazelor de date Oracle complexe si critice, inclusiv medii Exadata, RAC si Oracle Cloud (OCI, Autonomous Database). Expertiza avansata in analiza performantei (AWR, ADDM, ASH), optimizarea interogatiilor SQL complexe, tuning-ul instantelor si rezolvarea problemelor de performanta. Cunostinte solide in practici legate de backup & recovery (RMAN), securitate (TDE), instalare, patching, migrari si gestionarea stocarii (ASM), performanta ramanand principala si cea mai aprofundata arie de expertiza, cruciala pentru integritatea, performanta si contributia la disponibilitatea ridicata a sistemelor Oracle in medii corporative exigente si internationale.
 
 ---
 
 ## Competente Tehnice — Oracle DBA & Performance Tuning
 
-- **Administrare Oracle Database**: Oracle Database (de la 8i la 19c, Autonomous), Oracle Exadata, Oracle RAC (Real Application Clusters), Oracle Data Guard, Oracle GoldenGate (cunostinte de baza).
+- **Administrare Oracle Database**: Oracle Database (de la 8i la 21c, Autonomous), Oracle Exadata, Oracle RAC (Real Application Clusters), Oracle Data Guard, Oracle GoldenGate (cunostinte de baza).
 - **Performance Tuning Avansat**:
   - Analiza si Diagnosticare: AWR, ADDM, ASH, Statspack, SQL Trace, TKPROF, Explain Plan.
   - SQL Tuning: Optimizarea interogarilor complexe, Hints, SQL Profiles, SQL Plan Management (SPM).
@@ -67,6 +67,7 @@ Senior Oracle DBA si Performance Tuning Expert cu peste 20 de ani de experienta 
 - Optimizarea interogarilor SQL complexe si tuning-ul instantelor Oracle pentru imbunatatirea performantei aplicatiilor critice.
 - Suport in instalarea, configurarea, patching-ul si upgrade-ul bazelor de date Oracle.
 - Consultanta privind strategiile de backup si recovery cu RMAN.
+- Proiectarea si implementarea configuratiilor Oracle Data Guard pentru disponibilitate ridicata si disaster recovery, inclusiv proceduri de switchover/failover.
 - Gestionarea echipelor tehnice mici in proiecte de migrare si upgrade.
 
 ---
@@ -106,15 +107,8 @@ Senior Oracle DBA si Performance Tuning Expert cu peste 20 de ani de experienta 
 **Cursuri Selectate de Formare si Educatie Continua:**
 
 - Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (August 2020)
-- Oracle Database 12c: Advanced SQL — LinkedIn Learning (August 2020)
-- Oracle Database 12c: Basic SQL — LinkedIn Learning (August 2020)
-- Oracle 12c Database: Administration — LinkedIn Learning (Septembrie 2020)
-- Oracle Database 12c: Backup and Recovery — LinkedIn Learning (Septembrie 2020)
-- Oracle Database 12c: Security — LinkedIn Learning (Septembrie 2020)
-- Oracle 12c: New Features — LinkedIn Learning (August 2020)
-- Oracle 12c Release 2 New Features & The Oracle Cloud — LinkedIn Learning (August 2020)
 - Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprilie 2021)
-- MySQL Installation and Configuration — LinkedIn Learning (August 2020)
+- Cursuri de specializare Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, New Features) — LinkedIn Learning (2020)
 
 ---
 

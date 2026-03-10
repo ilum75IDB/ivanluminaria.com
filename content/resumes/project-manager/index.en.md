@@ -1,6 +1,6 @@
 ---
 title: "Project Manager"
-description: "Project Manager (Scrum/Agile) with deep technical background in Oracle & Data Warehouse — over 20 years of IT experience."
+description: "Project Manager (Scrum/Agile) with deep technical background in Oracle & Data Warehouse — nearly 30 years of IT experience."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false
@@ -13,7 +13,7 @@ layout: "simple"
 
 ## Professional Profile
 
-IT professional with over 20 years of solid technical experience in Data Warehouse and Oracle environments, with a strong interest and a growing focus on Project Management using Agile (Scrum) methodologies. In-depth technical background including DWH architecture, Oracle administration (DBA), performance optimization, and PL/SQL development. Experience in informally managing small teams (3-7 people) and coordinating complex project activities, translating business requirements into effective technical solutions. Continuous and certified training in Project Management, Agile/Scrum methodologies, data technologies, and support tools. Determined to leverage acquired technical and managerial skills to officially hold a Project Manager role.
+IT professional with nearly 30 years of solid technical experience in Data Warehouse and Oracle environments, with a strong interest and a growing focus on Project Management using Agile (Scrum) methodologies. In-depth technical background including DWH architecture, Oracle administration (DBA), performance optimization, and PL/SQL development. Experience in informally managing small teams (3-7 people) and coordinating complex project activities, translating business requirements into effective technical solutions. Continuous and certified training in Project Management, Agile/Scrum methodologies, data technologies, and support tools. Determined to leverage acquired technical and managerial skills to officially hold a Project Manager role.
 
 ---
 
@@ -106,17 +106,9 @@ IT professional with over 20 years of solid technical experience in Data Warehou
 - Project Management — Randstad/Forma.temp (May 2024)
 - Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (April 2021)
 - Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (September 2020)
-- Oracle Database 12c: Security — LinkedIn Learning (September 2020)
-- Oracle Database 12c: Backup and Recovery — LinkedIn Learning (September 2020)
-- Oracle 12c Database: Administration — LinkedIn Learning (September 2020)
+- Multiple Oracle 12c specialization courses (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
 - Learning Excel 2016 — LinkedIn Learning (August 2020)
-- MySQL Installation and Configuration — LinkedIn Learning (August 2020)
-- Oracle 12c: New Features — LinkedIn Learning (August 2020)
 - Learning Git and GitHub — LinkedIn Learning (August 2020)
-- Oracle 12c Release 2 New Features & The Oracle Cloud — LinkedIn Learning (August 2020)
-- Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (August 2020)
-- Oracle Database 12c: Advanced SQL — LinkedIn Learning (August 2020)
-- Oracle Database 12c: Basic SQL — LinkedIn Learning (August 2020)
 
 ---
 
