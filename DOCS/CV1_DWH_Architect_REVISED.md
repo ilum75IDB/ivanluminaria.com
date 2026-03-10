@@ -57,7 +57,7 @@ Data Warehouse Architect and IT professional with nearly 30 years of experience 
   - Responsible for 24/7 on-call availability of database systems supporting 20M+ prepaid mobile subscribers.
 
 - **Advanced Performance Tuning:**
-  - In-depth performance analysis via AWR, ADDM, and proactive tuning to ensure SLAs under 200ms response time on critical queries.
+  - In-depth performance analysis via AWR, ADDM, and proactive tuning to ensure SLAs under 500ms response time on critical queries.
   - Implementation of indexing, partitioning, and compression strategies to enhance DWH system performance.
   - Data security management with Oracle TDE (Transparent Data Encryption).
 
