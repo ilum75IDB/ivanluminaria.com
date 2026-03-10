@@ -1,6 +1,6 @@
 ---
 title: "Oracle PL/SQL Developer"
-description: "Oracle PL/SQL Developer & SQL Performance Tuning Expert — oltre 20 anni di esperienza nella progettazione, sviluppo e ottimizzazione di codice PL/SQL robusto per applicazioni data-intensive."
+description: "Oracle PL/SQL Developer & SQL Performance Tuning Expert — quasi 30 anni di esperienza nella progettazione, sviluppo e ottimizzazione di codice PL/SQL robusto per applicazioni data-intensive."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false
@@ -13,7 +13,7 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Senior Oracle PL/SQL Developer con oltre 20 anni di esperienza nella progettazione, sviluppo, test e ottimizzazione di codice PL/SQL robusto ed efficiente per applicazioni data-intensive e sistemi di Data Warehouse. Profonda competenza nella creazione di package, procedure, funzioni, trigger e tipi complessi, con un focus costante su prestazioni, manutenibilità e qualità del codice. Esperto nell'ottimizzazione di query SQL complesse e nella gestione di grandi volumi di dati. Abile nel tradurre requisiti di business in logica applicativa performante e scalabile all'interno del database Oracle. Background consolidato anche come Oracle DBA e DWH Architect, che garantisce una visione completa del ciclo di vita del dato.
+Senior Oracle PL/SQL Developer con quasi 30 anni di esperienza nella progettazione, sviluppo, test e ottimizzazione di codice PL/SQL robusto ed efficiente per applicazioni data-intensive e sistemi di Data Warehouse. Profonda competenza nella creazione di package, procedure, funzioni, trigger e tipi complessi, con un focus costante su prestazioni, manutenibilità e qualità del codice. Esperto nell'ottimizzazione di query SQL complesse e nella gestione di grandi volumi di dati. Abile nel tradurre requisiti di business in logica applicativa performante e scalabile all'interno del database Oracle. Background consolidato anche come Oracle DBA e DWH Architect, che garantisce una visione completa del ciclo di vita del dato.
 
 ---
 
@@ -33,7 +33,7 @@ Senior Oracle PL/SQL Developer con oltre 20 anni di esperienza nella progettazio
   - Tecniche di SQL Tuning (Hints, Query Rewriting, Indici).
   - Comprensione dell'impatto del database design sulle prestazioni PL/SQL.
 - **Strumenti di Sviluppo**: SQL Developer, Toad, SQL*Plus.
-- **Oracle Database**: Oracle Database (dalla 8i alla 19c, Autonomous Database).
+- **Oracle Database**: Oracle Database (dalla 8i alla 21c, Autonomous Database).
 - **Concetti Correlati**: Data Warehousing (sviluppo di logiche ETL/ELT), Data Integration, Modellazione Dati Relazionale e Multidimensionale.
 - **Version Control**: Git, GitHub.
 - **Scripting**: Unix Shell Scripting (per automazione di deployment e gestione script).
@@ -113,14 +113,12 @@ Senior Oracle PL/SQL Developer con oltre 20 anni di esperienza nella progettazio
 
 **Corsi di Formazione e Aggiornamento Selezionati:**
 
-- Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (Agosto 2020)
-- Oracle Database 12c: Advanced SQL — LinkedIn Learning (Agosto 2020)
-- Oracle Database 12c: Basic SQL — LinkedIn Learning (Agosto 2020)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprile 2021)
-- Oracle 12c: New Features — LinkedIn Learning (Agosto 2020)
-- Learning Git and GitHub — LinkedIn Learning (Agosto 2020)
 - Scrum Agile — Randstad/Forma.temp (Maggio 2024)
 - Project Management — Randstad/Forma.temp (Maggio 2024)
+- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprile 2021)
+- Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (Agosto 2020)
+- Corsi di specializzazione Oracle 12c (Advanced SQL, New Features) — LinkedIn Learning (2020)
+- Learning Git and GitHub — LinkedIn Learning (Agosto 2020)
 
 ---
 

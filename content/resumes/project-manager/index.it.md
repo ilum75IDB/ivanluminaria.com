@@ -1,6 +1,6 @@
 ---
 title: "Project Manager"
-description: "Project Manager (Scrum/Agile) con solido background tecnico in Oracle & Data Warehouse — oltre 20 anni di esperienza IT."
+description: "Project Manager (Scrum/Agile) con solido background tecnico in Oracle & Data Warehouse — quasi 30 anni di esperienza IT."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false
@@ -13,7 +13,7 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Professionista IT con oltre 20 anni di solida esperienza tecnica in ambienti Data Warehouse e Oracle, con un forte interesse e un focus crescente sul Project Management con metodologie Agile (Scrum). Background tecnico approfondito che include architettura DWH, amministrazione Oracle (DBA), ottimizzazione delle prestazioni e sviluppo PL/SQL. Esperienza nella gestione informale di piccoli team (3-7 persone) e nel coordinamento di attività progettuali complesse, traducendo requisiti di business in soluzioni tecniche efficaci. Formazione continua e certificata in Project Management, metodologie Agile/Scrum, tecnologie dati e strumenti di supporto. Determinato a valorizzare le competenze tecniche e manageriali acquisite per ricoprire ufficialmente il ruolo di Project Manager.
+Professionista IT con quasi 30 anni di solida esperienza tecnica in ambienti Data Warehouse e Oracle, con un forte interesse e un focus crescente sul Project Management con metodologie Agile (Scrum). Background tecnico approfondito che include architettura DWH, amministrazione Oracle (DBA), ottimizzazione delle prestazioni e sviluppo PL/SQL. Esperienza nella gestione informale di piccoli team (3-7 persone) e nel coordinamento di attività progettuali complesse, traducendo requisiti di business in soluzioni tecniche efficaci. Formazione continua e certificata in Project Management, metodologie Agile/Scrum, tecnologie dati e strumenti di supporto. Determinato a valorizzare le competenze tecniche e manageriali acquisite per ricoprire ufficialmente il ruolo di Project Manager.
 
 ---
 
@@ -106,17 +106,9 @@ Professionista IT con oltre 20 anni di solida esperienza tecnica in ambienti Dat
 - Project Management — Randstad/Forma.temp (Maggio 2024)
 - Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprile 2021)
 - Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (Settembre 2020)
-- Oracle Database 12c: Security — LinkedIn Learning (Settembre 2020)
-- Oracle Database 12c: Backup and Recovery — LinkedIn Learning (Settembre 2020)
-- Oracle 12c Database: Administration — LinkedIn Learning (Settembre 2020)
+- Corsi di specializzazione Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
 - Learning Excel 2016 — LinkedIn Learning (Agosto 2020)
-- MySQL Installation and Configuration — LinkedIn Learning (Agosto 2020)
-- Oracle 12c: New Features — LinkedIn Learning (Agosto 2020)
 - Learning Git and GitHub — LinkedIn Learning (Agosto 2020)
-- Oracle 12c Release 2 New Features & The Oracle Cloud — LinkedIn Learning (Agosto 2020)
-- Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (Agosto 2020)
-- Oracle Database 12c: Advanced SQL — LinkedIn Learning (Agosto 2020)
-- Oracle Database 12c: Basic SQL — LinkedIn Learning (Agosto 2020)
 
 ---
 
