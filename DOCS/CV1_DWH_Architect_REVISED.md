@@ -165,7 +165,7 @@ Data Warehouse Architect and IT professional with nearly 30 years of experience 
 
 ## HOBBIES AND INTERESTS
 
-Chess, Reading, Cooking, Guitar, Foreign Languages, Photography, Drawing.
+Chess, Reading, Cooking, Guitar, Saxophone, Foreign Languages, Photography, Drawing.
 
 ---
 
