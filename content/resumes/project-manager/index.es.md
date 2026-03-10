@@ -7,6 +7,10 @@ draft: false
 layout: "simple"
 ---
 
+**[Descargar PDF]({{% staticurl "downloads/CV-IvanLuminaria-ProjectManager(ENG).pdf" %}})** | **[Perfil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+
+---
+
 ## Perfil Profesional
 
 Profesional TI con mas de 20 anos de solida experiencia tecnica en entornos Data Warehouse y Oracle, con un fuerte interes y un enfoque creciente en la Gestion de Proyectos utilizando metodologias Agile (Scrum). Profunda base tecnica que incluye arquitectura DWH, administracion Oracle (DBA), optimizacion del rendimiento y desarrollo PL/SQL. Experiencia en la gestion informal de pequenos equipos (3-7 personas) y la coordinacion de actividades de proyectos complejos, traduciendo requisitos de negocio en soluciones tecnicas eficaces. Formacion continua y certificada en Gestion de Proyectos, metodologias Agile/Scrum, tecnologias de datos y herramientas de soporte. Decidido a aprovechar las competencias tecnicas y de gestion adquiridas para desempenar oficialmente el rol de Project Manager.
@@ -143,4 +147,4 @@ Roma, Marzo 2026
 
 ---
 
-{{< staticurl "downloads/CV-IvanLuminaria-ProjectManager(ENG).pdf" >}}
+**[Descargar PDF]({{% staticurl "downloads/CV-IvanLuminaria-ProjectManager(ENG).pdf" %}})** | **[Perfil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Volver a la pagina anterior](/es/resumes/)**

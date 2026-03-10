@@ -7,6 +7,10 @@ draft: false
 layout: "simple"
 ---
 
+**[Descarca PDF]({{% staticurl "downloads/CV-IvanLuminaria-DWHArchitect(English).pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+
+---
+
 ## Profil Profesional
 
 Data Warehouse Architect si profesionist IT cu aproape 30 de ani de experienta in proiectarea, implementarea si gestionarea solutiilor DWH complexe si de inalta performanta in medii Oracle si PostgreSQL. Expert in metodologii de modelare multidimensionala a datelor (Kimball, Inmon) si in optimizarea proceselor ETL/ELT si a interogatiilor SQL pe seturi de date de la sute de milioane la miliarde de randuri. Capacitate demonstrata de a conduce proiecte DWH de la un capat la altul — de la analiza cerintelor pana la punerea in productie — asigurand integritatea, calitatea si disponibilitatea datelor pentru a sprijini deciziile de business. Leadership tehnic si mentalitate orientata catre rezolvarea problemelor in contexte internationale si full-remote.
@@ -169,4 +173,4 @@ Roma, Martie 2026
 
 ---
 
-{{< staticurl "downloads/CV-IvanLuminaria-DWHArchitect(English).pdf" >}}
+**[Descarca PDF]({{% staticurl "downloads/CV-IvanLuminaria-DWHArchitect(English).pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**
