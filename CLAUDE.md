@@ -252,6 +252,29 @@ Poiché `gh` CLI non è disponibile, il file **`DOCS/GITHUB_ISSUES.md`** contien
 3. Quando una issue viene chiusa o ne vengono create di nuove, **aggiornare `DOCS/GITHUB_ISSUES.md`** di conseguenza
 4. Quando l'utente chiede di **creare una nuova issue** e poi la crea dal suo terminale, **chiedere sempre il link** della issue appena creata per poterlo inserire in `DOCS/GITHUB_ISSUES.md`. Non procedere senza aver aggiornato il file
 
+### Chiusura issue di articoli pubblicati
+
+Quando si chiude una issue relativa a un articolo pubblicato, il commento di chiusura deve contenere:
+
+1. **Data di pubblicazione** — la data prevista dal calendario editoriale (es. 2025-11-11)
+2. **URL dell'articolo** — link alla versione italiana sul sito live (es. `https://ivanluminaria.com/it/posts/data-warehouse/scd-tipo-2/`)
+3. **Conferma tutte le lingue** — specificare che l'articolo è stato pubblicato in tutte e 4 le lingue (IT, EN, ES, RO)
+4. **Breve riassunto** — 2-3 frasi che descrivono il contenuto dell'articolo
+
+Formato del comando:
+
+```
+gh issue close <numero> --repo ilum75IDB/ivanluminaria.com --comment "Articolo pubblicato il <data>.
+
+URL: https://ivanluminaria.com/it/posts/<sezione>/<slug>/
+
+Pubblicato in tutte le lingue: IT, EN, ES, RO.
+
+<breve riassunto del contenuto>"
+```
+
+Dopo la chiusura, **aggiornare `DOCS/GITHUB_ISSUES.md`**: spostare la issue dalla sezione aperte alla sezione chiuse con la data di chiusura.
+
 ### Regole di formattazione per i comandi gh issue create
 
 **CRITICO — il comando deve funzionare con copia-incolla diretto nel terminale macOS (zsh):**
