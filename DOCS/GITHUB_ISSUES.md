@@ -36,7 +36,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 47 | https://github.com/ilum75IDB/ivanluminaria.com/issues/47 | VACUUM e autovacuum: perche PostgreSQL ha bisogno che qualcuno pulisca | aperta |
 | 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | aperta |
 | 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | aperta |
 | 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
@@ -70,3 +69,4 @@ tool `WebFetch`.
 | 36 | https://github.com/ilum75IDB/ivanluminaria.com/issues/36 | Hugo build timeout on cover image resize for Si-E Yes-And article | 2026-03-09 |
 | 37 | https://github.com/ilum75IDB/ivanluminaria.com/issues/37 | SCD Tipo 2: la storia che il business non sapeva di volere | 2026-03-16 |
 | 55 | https://github.com/ilum75IDB/ivanluminaria.com/issues/55 | AI Manager e Project Management: quando l'intelligenza artificiale entra nei progetti | 2026-03-16 |
+| 47 | https://github.com/ilum75IDB/ivanluminaria.com/issues/47 | VACUUM e autovacuum: perche PostgreSQL ha bisogno che qualcuno pulisca | 2026-03-16 |
