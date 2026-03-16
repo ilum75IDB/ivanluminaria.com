@@ -15,7 +15,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 37 | https://github.com/ilum75IDB/ivanluminaria.com/issues/37 | SCD Tipo 2: la storia che il business non sapeva di volere | aperta |
 | 38 | https://github.com/ilum75IDB/ivanluminaria.com/issues/38 | Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste | aperta |
 | 39 | https://github.com/ilum75IDB/ivanluminaria.com/issues/39 | ETL a 4 ore: come ho portato un caricamento notturno a 25 minuti | aperta |
 | 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | aperta |
@@ -71,3 +70,4 @@ tool `WebFetch`.
 | 34 | https://github.com/ilum75IDB/ivanluminaria.com/issues/34 | Smart working nella consulenza IT - funziona o no? | 2026-03-09 |
 | 35 | https://github.com/ilum75IDB/ivanluminaria.com/issues/35 | Bici vs Auto a Roma - il commuting del consulente | 2026-03-09 |
 | 36 | https://github.com/ilum75IDB/ivanluminaria.com/issues/36 | Hugo build timeout on cover image resize for Si-E Yes-And article | 2026-03-09 |
+| 37 | https://github.com/ilum75IDB/ivanluminaria.com/issues/37 | SCD Tipo 2: la storia che il business non sapeva di volere | 2026-03-16 |
