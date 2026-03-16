@@ -25,8 +25,8 @@
       <a href="{{ $hero.Permalink }}" class="editorial-hero-img-link">
         <img
           class="editorial-hero-img"
-          srcset="{{ (.Fill "800x533 smart").Permalink }} 800w, {{ (.Fill "1200x800 smart").Permalink }} 1200w"
-          src="{{ (.Fill "800x533 smart").Permalink }}"
+          srcset="{{ (.Fit "800x533 smart").Permalink }} 800w, {{ (.Fit "1200x800 smart").Permalink }} 1200w"
+          src="{{ (.Fit "800x533 smart").Permalink }}"
           alt="{{ $hero.Title }}"
           width="1200" height="800"
           {{ if $.Site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
@@ -122,8 +122,8 @@
           <a href="{{ $sHero.Permalink }}" class="editorial-category-hero-img-link">
             <img
               class="editorial-category-hero-img"
-              srcset="{{ (.Fill "300x200 smart").Permalink }} 300w, {{ (.Fill "450x300 smart").Permalink }} 450w"
-              src="{{ (.Fill "300x200 smart").Permalink }}"
+              srcset="{{ (.Fit "300x200 smart").Permalink }} 300w, {{ (.Fit "450x300 smart").Permalink }} 450w"
+              src="{{ (.Fit "300x200 smart").Permalink }}"
               alt="{{ $sHero.Title }}"
               width="450" height="300"
               {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
