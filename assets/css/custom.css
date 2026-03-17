@@ -397,7 +397,7 @@ nav[aria-label="Breadcrumb"] a:hover,
    (il tema crea vari stacking context: qui mettiamo i paletti)
    ============================ */
 
-/* 1) Navbar davvero “sempre su” (fixed) con sfondo solido + padding */
+/* 1) Navbar davvero “sempre su” (fixed) con sfondo solido */
 nav {
   position: fixed !important;
   top: 0 !important;
@@ -407,10 +407,18 @@ nav {
   overflow: visible !important;
   background: #ffffff !important;
   backdrop-filter: none !important;
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+/* 1b) Nav inner container: limita il contenuto a 1600px, centrato */
+.nav-inner {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 .dark nav {
   background: rgb(var(--color-neutral-800)) !important; /* matches body dark bg */
