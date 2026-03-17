@@ -1085,6 +1085,27 @@ footer {
   color: #9ca3af;
 }
 
+.editorial-grid-desc {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #4b5563;
+  margin: 0.35rem 0 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dark .editorial-grid-desc {
+  color: #9ca3af;
+}
+
+@media (max-width: 640px) {
+  .editorial-grid-desc {
+    display: none;
+  }
+}
+
 /* Show more link */
 .editorial-showmore {
   text-align: right;
