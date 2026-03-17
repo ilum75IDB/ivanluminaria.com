@@ -65,10 +65,10 @@
             <a href="{{ $article.Permalink }}" class="editorial-grid-img-link">
               <img
                 class="editorial-grid-img"
-                srcset="{{ (.Fit "180x120 smart").Permalink }} 180w, {{ (.Fit "360x240 smart").Permalink }} 360w"
-                src="{{ (.Fit "180x120 smart").Permalink }}"
+                srcset="{{ (.Fit "210x140 smart").Permalink }} 210w, {{ (.Fit "420x280 smart").Permalink }} 420w"
+                src="{{ (.Fit "210x140 smart").Permalink }}"
                 alt="{{ $article.Title }}"
-                width="180" height="120"
+                width="210" height="140"
                 {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
               />
             </a>
@@ -140,8 +140,8 @@
           <a href="{{ $sHero.Permalink }}" class="editorial-category-hero-img-link">
             <img
               class="editorial-category-hero-img"
-              srcset="{{ (.Resize "300x").Permalink }} 300w, {{ (.Resize "600x").Permalink }} 600w"
-              src="{{ (.Resize "300x").Permalink }}"
+              srcset="{{ (.Resize "450x").Permalink }} 450w, {{ (.Resize "900x").Permalink }} 900w"
+              src="{{ (.Resize "450x").Permalink }}"
               alt="{{ $sHero.Title }}"
               width="{{ .Width }}" height="{{ .Height }}"
               {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
@@ -182,10 +182,10 @@
                 <a href="{{ $article.Permalink }}" class="editorial-grid-img-link">
                   <img
                     class="editorial-grid-img"
-                    srcset="{{ (.Fit "160x107 smart").Permalink }} 160w, {{ (.Fit "320x213 smart").Permalink }} 320w"
-                    src="{{ (.Fit "160x107 smart").Permalink }}"
+                    srcset="{{ (.Fit "210x140 smart").Permalink }} 210w, {{ (.Fit "420x280 smart").Permalink }} 420w"
+                    src="{{ (.Fit "210x140 smart").Permalink }}"
                     alt="{{ $article.Title }}"
-                    width="180" height="120"
+                    width="210" height="140"
                     {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
                   />
                 </a>

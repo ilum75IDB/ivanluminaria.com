@@ -962,7 +962,7 @@ footer {
 
 @media (min-width: 641px) {
   .editorial-category-hero-img {
-    width: 300px;
+    width: 450px;
   }
 }
 
@@ -1048,8 +1048,8 @@ footer {
 
 @media (min-width: 641px) {
   .editorial-grid-img {
-    width: 180px;
-    height: 120px;
+    width: 210px;
+    height: 140px;
   }
 }
 
