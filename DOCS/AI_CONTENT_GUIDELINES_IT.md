@@ -93,7 +93,7 @@ Si assume che il lettore:
 
 -   conosca SQL
 -   lavori con ambienti di produzione
--   sia interessato a performance e scalabilità
+-   sia interessato a affidabilità e performance
 
 Spiegazioni troppo basilari devono essere evitate.
 
@@ -107,8 +107,8 @@ Argomenti adatti al blog:
 -   strategie di indexing
 -   analisi execution plan
 -   architettura database
--   access control
--   sicurezza dati
+-   modelli di access control
+-   pratiche di sicurezza
 -   performance tuning
 -   affidabilità dei sistemi
 
@@ -127,18 +127,20 @@ Le immagini devono seguire lo stile retro illustrato del blog.
 Prompt suggerito:
 
 retro 1950s cartoon illustration, minimal vector art, mid-century
-modern, art deco influence, geometric shapes, elegant silhouettes,
-limited color palette (black red beige brown white), textured paper
-background, dim lighting, vintage editorial illustration, 16:9
+modern, ispirazione art deco, geometric shapes, elegant silhouettes,
+limited color palette (black, red, beige, brown, white), textured paper
+background, dim lighting, vintage editorial illustration style, 16:9
+aspect ratio
 
-Le immagini devono rappresentare **metafore tecniche**.
+Le immagini devono rappresentare **concetti tecnici attraverso metafore
+visive**.
 
 Esempi:
 
 control room database\
-operatori che monitorano sistemi dati\
-guardie che proteggono un vault dati\
-ingegneri che analizzano dashboard
+ingegneri che monitorano sistemi dati\
+guardie di sicurezza che proteggono un vault dati\
+operatori che analizzano dashboard
 
 Evitare:
 
@@ -150,16 +152,18 @@ Evitare:
 
 # 7. Coerenza Concettuale
 
-Ogni articolo deve mantenere coerenza tra:
+Ogni articolo deve mantenere coerenza concettuale tra:
 
 -   titolo
 -   spiegazione tecnica
--   immagine
+-   illustrazione
+
+Le immagini devono rafforzare l'idea centrale dell'articolo.
 
 Esempio:
 
-Articolo su access control → immagine con checkpoint di sicurezza o
-guardie.
+Articolo su access control → illustrazione con guardie o checkpoint di
+sicurezza che controllano l'accesso a una struttura dati.
 
 ------------------------------------------------------------------------
 
