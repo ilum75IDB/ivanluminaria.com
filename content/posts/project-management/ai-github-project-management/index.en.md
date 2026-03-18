@@ -51,9 +51,9 @@ The first thing I put on the table was clear, direct, no frills:
 It's not about trends. It's not because "everyone does it."\
 It's because GitHub solves, with concrete tools, problems that no Excel spreadsheet can ever manage:
 
--   **Real versioning**: every change is tracked, commented, reversible
--   **Branches and Pull Requests**: every developer works on their own copy, then proposes changes to the team — they don't overwrite each other's work
--   **Integrated issue tracker**: bugs and feature requests live in the same place as the code
+-   **Real {{< glossary term="version-control" >}}versioning{{< /glossary >}}**: every change is tracked, commented, reversible
+-   **{{< glossary term="branch" >}}Branches{{< /glossary >}} and {{< glossary term="pull-request" >}}Pull Requests{{< /glossary >}}**: every developer works on their own copy, then proposes changes to the team — they don't overwrite each other's work
+-   **Integrated {{< glossary term="issue-tracker" >}}issue tracker{{< /glossary >}}**: bugs and feature requests live in the same place as the code
 -   **Complete history**: who did what, when, why
 
 I saw the senior developer's face. A mix of curiosity and skepticism.\
@@ -131,7 +131,7 @@ They pass it the relevant code, the error, the context. The AI returns a structu
 **4. The developer implements the fix**\
 With a huge advantage: they already know where to look.
 
-**5. Pull Request with review**\
+**5. Pull Request with {{< glossary term="code-review" >}}review{{< /glossary >}}**\
 A colleague reviews the code. Not for formality — for quality.
 
 **6. Merge into the main branch**\
@@ -195,3 +195,17 @@ A shared repository. A clear workflow. An intelligent assistant that accelerates
 
 Three things. Three decisions.\
 That transform chaos into control.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**[Pull Request](/en/glossary/pull-request/)** — Formal request to incorporate changes from a branch into the main branch, with mandatory code review. The mechanism that ensures "good" code stays good.
+
+**[Version Control](/en/glossary/version-control/)** — System that tracks every code change, maintaining complete history. Git is the standard; GitHub adds collaboration on top of Git.
+
+**[Issue Tracker](/en/glossary/issue-tracker/)** — Integrated tracking system for bugs and feature requests. On GitHub, issues live in the same place as the code, with traceability from problem to solution.
+
+**[Code Review](/en/glossary/code-review/)** — Code review by a colleague before merge. Catches bugs, improves quality and spreads codebase knowledge across the team.
+
+**[Branch](/en/glossary/branch/)** — Independent development line that allows working on isolated changes without affecting the main code until approved merge.

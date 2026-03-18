@@ -51,9 +51,9 @@ La prima cosa che ho messo sul tavolo è stata chiara, diretta, senza fronzoli:
 Non è una questione di moda. Non è perché "lo fanno tutti".\
 È perché GitHub risolve, con strumenti concreti, problemi che nessun foglio Excel potrà mai gestire:
 
--   **Versioning reale**: ogni modifica è tracciata, commentata, reversibile
--   **Branch e Pull Request**: ogni sviluppatore lavora sulla sua copia, poi propone le modifiche al team — non sovrascrive il lavoro degli altri
--   **Issue tracker integrato**: i bug e le richieste evolutive vivono nello stesso posto del codice
+-   **{{< glossary term="version-control" >}}Versioning{{< /glossary >}} reale**: ogni modifica è tracciata, commentata, reversibile
+-   **{{< glossary term="branch" >}}Branch{{< /glossary >}} e {{< glossary term="pull-request" >}}Pull Request{{< /glossary >}}**: ogni sviluppatore lavora sulla sua copia, poi propone le modifiche al team — non sovrascrive il lavoro degli altri
+-   **{{< glossary term="issue-tracker" >}}Issue tracker{{< /glossary >}} integrato**: i bug e le richieste evolutive vivono nello stesso posto del codice
 -   **Cronologia completa**: chi ha fatto cosa, quando, perché
 
 Ho visto la faccia dello sviluppatore senior. Un misto di curiosità e diffidenza.\
@@ -131,7 +131,7 @@ Le passa il codice coinvolto, l'errore, il contesto. L'AI restituisce un'analisi
 **4. Lo sviluppatore implementa il fix**\
 Con un vantaggio enorme: sa già dove guardare.
 
-**5. Pull Request con review**\
+**5. Pull Request con {{< glossary term="code-review" >}}review{{< /glossary >}}**\
 Un collega rivede il codice. Non per formalità — per qualità.
 
 **6. Merge nel branch principale**\
@@ -195,3 +195,17 @@ Un repository condiviso. Un flusso di lavoro chiaro. Un assistente intelligente 
 
 Tre cose. Tre decisioni.\
 Che trasformano il caos in controllo.
+
+------------------------------------------------------------------------
+
+## Glossario
+
+**[Pull Request](/it/glossary/pull-request/)** — Richiesta formale di incorporare modifiche da un branch nel branch principale, con code review obbligatoria. Il meccanismo che garantisce che il codice "buono" resti buono.
+
+**[Version Control](/it/glossary/version-control/)** — Sistema che traccia ogni modifica al codice, mantenendo la cronologia completa. Git è lo standard; GitHub aggiunge collaborazione sopra Git.
+
+**[Issue Tracker](/it/glossary/issue-tracker/)** — Sistema di tracciamento integrato per bug e richieste evolutive. Su GitHub, le issue vivono nello stesso posto del codice, con tracciabilità dal problema alla soluzione.
+
+**[Code Review](/it/glossary/code-review/)** — Revisione del codice da parte di un collega prima del merge. Cattura bug, migliora la qualità e diffonde la conoscenza del codebase nel team.
+
+**[Branch](/it/glossary/branch/)** — Ramo di sviluppo indipendente che permette di lavorare su modifiche isolate senza influenzare il codice principale fino al merge approvato.

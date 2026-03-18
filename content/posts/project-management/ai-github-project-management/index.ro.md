@@ -51,9 +51,9 @@ Primul lucru pe care l-am pus pe masă a fost clar, direct, fără fasoane:
 Nu e o chestie de modă. Nu e pentru că "fac toți așa".\
 E pentru că GitHub rezolvă, cu instrumente concrete, probleme pe care niciun tabel Excel nu le va putea gestiona vreodată:
 
--   **Versionare reală**: fiecare modificare e urmărită, comentată, reversibilă
--   **Branch-uri și Pull Request-uri**: fiecare dezvoltator lucrează pe copia lui, apoi propune modificările echipei — nu suprascrie munca celorlalți
--   **Issue tracker integrat**: bug-urile și cererile de evoluție trăiesc în același loc cu codul
+-   **{{< glossary term="version-control" >}}Versionare{{< /glossary >}} reală**: fiecare modificare e urmărită, comentată, reversibilă
+-   **{{< glossary term="branch" >}}Branch-uri{{< /glossary >}} și {{< glossary term="pull-request" >}}Pull Request-uri{{< /glossary >}}**: fiecare dezvoltator lucrează pe copia lui, apoi propune modificările echipei — nu suprascrie munca celorlalți
+-   **{{< glossary term="issue-tracker" >}}Issue tracker{{< /glossary >}} integrat**: bug-urile și cererile de evoluție trăiesc în același loc cu codul
 -   **Istoric complet**: cine a făcut ce, când, de ce
 
 Am văzut fața dezvoltatorului senior. Un amestec de curiozitate și neîncredere.\
@@ -131,7 +131,7 @@ Titlu clar, descriere, etichetă de prioritate. Gata cu emailurile, gata cu chat
 **4. Dezvoltatorul implementează fix-ul**\
 Cu un avantaj enorm: știe deja unde să se uite.
 
-**5. Pull Request cu review**\
+**5. Pull Request cu {{< glossary term="code-review" >}}review{{< /glossary >}}**\
 Un coleg revizuiește codul. Nu de formă — pentru calitate.
 
 **6. Merge în branch-ul principal**\
@@ -195,3 +195,17 @@ Un repository partajat. Un flux de lucru clar. Un asistent inteligent care accel
 
 Trei lucruri. Trei decizii.\
 Care transformă haosul în control.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[Pull Request](/ro/glossary/pull-request/)** — Cerere formală de incorporare a modificărilor dintr-un branch în branch-ul principal, cu code review obligatoriu. Mecanismul care garantează că codul "bun" rămâne bun.
+
+**[Version Control](/ro/glossary/version-control/)** — Sistem care urmărește fiecare modificare a codului, menținând istoricul complet. Git este standardul; GitHub adaugă colaborare peste Git.
+
+**[Issue Tracker](/ro/glossary/issue-tracker/)** — Sistem integrat de urmărire pentru bug-uri și cereri de funcționalități. Pe GitHub, issue-urile trăiesc în același loc cu codul, cu trasabilitate de la problemă la soluție.
+
+**[Code Review](/ro/glossary/code-review/)** — Revizuirea codului de către un coleg înainte de merge. Surprinde bug-uri, îmbunătățește calitatea și răspândește cunoașterea codebase-ului în echipă.
+
+**[Branch](/ro/glossary/branch/)** — Linie de dezvoltare independentă care permite lucrul pe modificări izolate fără a afecta codul principal până la merge-ul aprobat.
