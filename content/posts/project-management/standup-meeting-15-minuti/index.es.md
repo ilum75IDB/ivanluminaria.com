@@ -190,3 +190,17 @@ No hacen falta frameworks sofisticados. No hacen falta certificaciones. Hace fal
 Quince minutos. Tres preguntas. Parking lot para el resto.
 
 Todo lo demás es ruido.
+
+------------------------------------------------------------------------
+
+## Glosario
+
+**[Daily Standup](/es/glossary/daily-standup/)** — Reunión diaria de máximo 15 minutos donde cada miembro del equipo responde tres preguntas: qué hice ayer, qué haré hoy, qué me bloquea.
+
+**[Parking Lot](/es/glossary/parking-lot/)** — Lista visible de temas surgidos durante una reunión que merecen profundización pero se posponen para respetar el timebox.
+
+**[Facilitador](/es/glossary/facilitatore/)** — Persona responsable de guiar una reunión manteniendo el foco, respetando el timebox y garantizando que todos tengan voz.
+
+**[Timeboxing](/es/glossary/timeboxing/)** — Técnica de gestión del tiempo que asigna un intervalo fijo y no negociable a una actividad, forzando la conclusión dentro del límite establecido.
+
+**[Scrum](/es/glossary/scrum/)** — Framework ágil para la gestión de proyectos que organiza el trabajo en sprints de duración fija, con roles definidos y ceremonias estructuradas.
