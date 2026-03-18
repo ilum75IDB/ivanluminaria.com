@@ -258,3 +258,17 @@ Three things to take away:
 
 Databases don't maintain themselves. Not even the ones that have a
 daemon trying to.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**[VACUUM](/en/glossary/vacuum/)** — PostgreSQL command that reclaims space occupied by dead tuples, making it reusable for new inserts without returning it to the operating system.
+
+**[MVCC](/en/glossary/mvcc/)** — Multi-Version Concurrency Control — PostgreSQL's concurrency model that maintains multiple row versions to ensure transactional isolation without exclusive locks on reads.
+
+**[Dead Tuple](/en/glossary/dead-tuple/)** — Obsolete row in a PostgreSQL table, marked as no longer visible after an UPDATE or DELETE but not yet physically removed from disk.
+
+**[Autovacuum](/en/glossary/autovacuum/)** — PostgreSQL daemon that automatically runs VACUUM and ANALYZE on tables when the number of dead tuples exceeds a configurable threshold.
+
+**[Bloat](/en/glossary/bloat/)** — Dead space accumulated in a PostgreSQL table or index due to unremoved dead tuples, inflating disk size and degrading query performance.

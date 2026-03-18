@@ -19,7 +19,9 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql |
 | Branch | Ramo di sviluppo indipendente in un sistema di version control, permette di lavorare su modifiche isolate senza influenzare il codice principale | ai-github-project-management |
+| Bloat | Spazio morto accumulato in una tabella o indice PostgreSQL a causa di dead tuples non rimossi, che gonfia la dimensione su disco | vacuum-autovacuum-postgresql |
 | B-Tree | Struttura dati ad albero bilanciato, tipo di indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, inadatto per LIKE con wildcard iniziale | like-optimization-postgresql |
+| Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
 | Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2 |
@@ -28,6 +30,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | CDC | Change Data Capture — tecnica per intercettare e propagare le modifiche ai dati in tempo reale, spesso basata sulla lettura dei log delle transazioni | binary-log-mysql |
 | Code Review | Pratica di revisione del codice da parte di un collega prima del merge, per catturare bug e condividere conoscenza nel team | ai-github-project-management |
 | COALESCE | Funzione SQL che restituisce il primo valore non NULL da una lista di espressioni. Spesso usata come workaround per le gerarchie incomplete, ma non risolve il problema strutturale nel modello | ragged-hierarchies |
+| Dead Tuple | Riga obsoleta in una tabella PostgreSQL, marcata come non più visibile dopo un UPDATE o DELETE ma non ancora rimossa fisicamente | vacuum-autovacuum-postgresql |
 | Daily Standup | Riunione quotidiana di massimo 15 minuti in cui ogni membro del team risponde a tre domande: cosa ho fatto ieri, cosa farò oggi, cosa mi blocca | standup-meeting-15-minuti |
 | Data Guard | Tecnologia Oracle per la replica in tempo reale di un database su uno o più server standby, garantendo alta disponibilità e disaster recovery | oracle-data-guard |
 | DEFAULT PRIVILEGES | Meccanismo PostgreSQL che definisce automaticamente i privilegi da assegnare a tutti gli oggetti futuri creati in uno schema | postgresql_roles_and_users |
@@ -54,6 +57,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Kimball | Ralph Kimball — metodologia di progettazione data warehouse basata su dimensional modeling, star schema e processi ETL bottom-up. Riferimento standard per la classificazione delle SCD | scd-tipo-2 |
 | KPI | Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito | smartworking-consulenza-it |
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
+| MVCC | Multi-Version Concurrency Control — modello di concorrenza di PostgreSQL che mantiene più versioni delle righe per garantire isolamento transazionale | vacuum-autovacuum-postgresql |
 | mysqlbinlog | Utility da riga di comando di MySQL per leggere, filtrare e riapplicare il contenuto dei file binary log. Indispensabile per il point-in-time recovery e il debug della replica | binary-log-mysql |
 | Nested Loop | Strategia di join che per ogni riga della tabella esterna cerca le corrispondenze nella tabella interna. Ideale per poche righe, disastrosa su grandi volumi | explain-analyze-postgresql |
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
@@ -98,6 +102,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | System Privilege | Privilegio Oracle che autorizza operazioni globali sul database come CREATE TABLE, CREATE SESSION o ALTER SYSTEM, indipendenti da qualsiasi oggetto specifico | oracle-roles-privileges |
 | systemd | Sistema di init e gestore dei servizi su Linux, usato per gestire istanze multiple di MySQL/MariaDB sullo stesso server tramite unit file separati | mysql-multi-istanza-secure-file-priv |
 | Version Control | Sistema che traccia ogni modifica al codice sorgente, permettendo cronologia, annullamento e collaborazione. Git è lo standard attuale | ai-github-project-management |
+| VACUUM | Comando PostgreSQL che recupera lo spazio occupato dai dead tuples, rendendolo riutilizzabile per nuovi inserimenti | vacuum-autovacuum-postgresql |
 | Vendor Lock-in | Dipendenza strutturale da un fornitore esterno che rende difficile o costoso cambiare provider, spesso causata dalla perdita di know-how e dalla proprietà del codice | 4-milioni-nessun-software |
 | Unified Audit | Sistema di audit centralizzato introdotto in Oracle 12c che unifica tutti i tipi di audit in un'unica infrastruttura, sostituendo il vecchio audit tradizionale | oracle-roles-privileges |
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
@@ -108,5 +113,5 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 ---
 
 **Ultimo aggiornamento**: 2026-03-18
-**Totale termini**: 92
-**Totale articoli con glossario**: 19
+**Totale termini**: 97
+**Totale articoli con glossario**: 20
