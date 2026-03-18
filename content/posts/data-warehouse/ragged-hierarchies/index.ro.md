@@ -372,3 +372,17 @@ Un raport ar trebui să facă GROUP BY și JOIN. Dacă trebuie și să decidă c
 Self-parenting-ul nu este elegant. Nu este sofisticat. Este o soluție pe care un informatician proaspăt absolvent ar putea-o găsi urâtă. Dar funcționează, este mentenabil, și transformă o problemă care infestează fiecare raport individual într-o problemă care se rezolvă o dată, într-un singur loc, și nu mai revine.
 
 Uneori cea mai bună soluție este cea mai simplă. Aceasta este una dintre acele dăți.
+
+---
+
+## Glosar
+
+**COALESCE** — Funcție SQL care returnează prima valoare non-NULL dintr-o listă de expresii. Adesea folosită ca workaround pentru ierarhiile incomplete în rapoarte, dar nu rezolvă problema structurală din modelul dimensional.
+
+**Drill-down** — Navigare în rapoarte de la un nivel agregat la un nivel de detaliu (ex. de la Top Group la Group la Client). Necesită o ierarhie completă și echilibrată pentru a funcționa corect fără NULL-uri sau linii lipsă.
+
+**OLAP** — Online Analytical Processing — procesare orientată spre analiza multidimensională a datelor, tipică pentru data warehouse-uri și cuburi de analiză. Contrapusă OLTP-ului (Online Transaction Processing) din sistemele tranzacționale.
+
+**Ragged hierarchy** — Ierarhie în care nu toate ramurile ating aceeași adâncime: unele niveluri intermediare lipsesc. Frecventă în datele master de clienți, produse și structuri organizaționale unde nu toate entitățile au aceeași structură ierarhică.
+
+**Self-parenting** — Tehnică de echilibrare a ierarhiilor dezechilibrate: cine nu are un părinte devine propriul părinte. Nivelul lipsă este completat cu datele de la nivelul inferior, eliminând NULL-urile din dimensiune și garantând un drill-down corect.
