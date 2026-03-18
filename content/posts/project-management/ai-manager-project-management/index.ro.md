@@ -134,3 +134,17 @@ Dacă răspunsul la vreuna dintre aceste întrebări are legătură cu analiza u
 Iar a-l guverna nu înseamnă a-l controla. Înseamnă a-l înțelege suficient de bine pentru a ști când să te bazezi pe el și când nu.
 
 Aceasta este munca AI Managerului. Și, indiferent cum îl numești, este un rol de care orice proiect serios va avea nevoie.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[AI Manager](/ro/glossary/ai-manager/)** — Rol profesional care guvernează impactul inteligenței artificiale asupra arhitecturilor, proceselor și persoanelor, separând valoarea reală de zgomot.
+
+**[Data Governance](/ro/glossary/data-governance/)** — Set de politici, procese și standarde care garantează calitatea, securitatea și conformitatea datelor în cadrul unei organizații.
+
+**[Knowledge Transfer](/ro/glossary/knowledge-transfer/)** — Proces de transfer al cunoștințelor între persoane, echipe sau sisteme, critic în proiectele IT unde pierderea know-how-ului poate compromite continuitatea operațională.
+
+**[ROI](/ro/glossary/roi/)** — Return on Investment — raportul între beneficiul obținut și costul suportat pentru o investiție.
+
+**[Compliance](/ro/glossary/compliance/)** — Conformitate cu reglementările, regulile și standardele aplicabile — în contextul AI include GDPR, reglementări sectoriale și politici interne privind utilizarea datelor.
