@@ -1,0 +1,11 @@
+{{- $term := .Get "term" -}}
+{{- $lang := .Page.Language.Lang -}}
+{{- $glossaryPage := .Site.GetPage (printf "/glossary/%s" $term) -}}
+{{- $desc := "" -}}
+{{- $url := "" -}}
+{{- $readMore := i18n "glossary.read_more" -}}
+{{- with $glossaryPage -}}
+  {{- $desc = .Description -}}
+  {{- $url = .RelPermalink -}}
+{{- end -}}
+<span class="glossary-tip" tabindex="0" data-glossary-desc="{{ $desc | htmlEscape }}" data-glossary-url="{{ $url }}" data-glossary-more="{{ $readMore }}">{{ .Inner }}</span>

@@ -1357,3 +1357,124 @@ footer {
     border-bottom-color: #374151;
   }
 }
+
+/* ============================
+   GLOSSARY INLINE TOOLTIPS
+   ============================ */
+
+/* Inline term — dotted underline, help cursor */
+.glossary-tip {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--ivan-blue);
+  text-underline-offset: 3px;
+  cursor: help;
+  color: inherit;
+  transition: text-decoration-color 0.15s;
+}
+
+.glossary-tip:hover,
+.glossary-tip--active {
+  text-decoration-color: var(--ivan-red);
+  text-decoration-style: solid;
+}
+
+/* Focus outline for keyboard navigation */
+.glossary-tip:focus-visible {
+  outline: 2px solid var(--ivan-blue);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Tooltip card */
+.glossary-tooltip {
+  position: absolute;
+  z-index: 10000;
+  max-width: 360px;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid var(--ivan-blue);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #374151;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: auto;
+}
+
+.glossary-tooltip--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glossary-tooltip--below {
+  transform: translateY(-4px);
+}
+
+.glossary-tooltip--below.glossary-tooltip--visible {
+  transform: translateY(0);
+}
+
+/* Tooltip text */
+.glossary-tooltip-text {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+/* Read more link */
+.glossary-tooltip-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ivan-red);
+  text-decoration: none;
+}
+
+.glossary-tooltip-link:hover {
+  color: var(--ivan-red-dark);
+  text-decoration: underline;
+}
+
+/* Dark mode */
+.dark .glossary-tip {
+  text-decoration-color: #93c5fd;
+}
+
+.dark .glossary-tip:hover,
+.dark .glossary-tip--active {
+  text-decoration-color: #f87171;
+}
+
+.dark .glossary-tip:focus-visible {
+  outline-color: #93c5fd;
+}
+
+.dark .glossary-tooltip {
+  background: #1f2937;
+  border-color: #374151;
+  border-left-color: #93c5fd;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  color: #d1d5db;
+}
+
+.dark .glossary-tooltip-link {
+  color: #f87171;
+}
+
+.dark .glossary-tooltip-link:hover {
+  color: #fca5a5;
+}
+
+/* Mobile: wider tooltip */
+@media (max-width: 480px) {
+  .glossary-tooltip {
+    max-width: calc(100vw - 2rem);
+    left: 1rem !important;
+    right: 1rem;
+  }
+}
