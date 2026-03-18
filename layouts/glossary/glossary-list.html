@@ -1,0 +1,70 @@
+{{ define "main" }}
+  <article class="max-w-full">
+    <header>
+      {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+      {{ end }}
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        {{ .Title | emojify }}
+      </h1>
+      {{ with .Description }}
+        <p class="mt-3 text-lg text-neutral-600 dark:text-neutral-400">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    {{ with .Content }}
+      <section class="prose mt-6 max-w-full dark:prose-invert">
+        {{ . }}
+      </section>
+    {{ end }}
+
+    {{ if .Pages }}
+      {{/* Collect and sort pages alphabetically by title */}}
+      {{ $pages := .Pages.ByTitle }}
+
+      {{/* Group by first letter */}}
+      {{ $letters := slice }}
+      {{ $grouped := dict }}
+      {{ range $pages }}
+        {{ $letter := upper (substr .Title 0 1) }}
+        {{ if not (in $letters $letter) }}
+          {{ $letters = $letters | append $letter }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Letter navigation */}}
+      <nav class="glossary-letter-nav mt-8 mb-6 flex flex-wrap gap-2">
+        {{ range $letters }}
+          <a href="#letter-{{ . }}" class="glossary-letter-link">{{ . }}</a>
+        {{ end }}
+      </nav>
+
+      {{/* Terms grouped by letter */}}
+      {{ range $letter := $letters }}
+        <div id="letter-{{ $letter }}" class="glossary-letter-group">
+          <h2 class="glossary-letter-heading">{{ $letter }}</h2>
+          <div class="glossary-terms-list">
+            {{ range $pages }}
+              {{ if eq (upper (substr .Title 0 1)) $letter }}
+                <div class="glossary-term-card">
+                  <h3 class="glossary-term-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  </h3>
+                  {{ with .Description }}
+                    <p class="glossary-term-desc">{{ . }}</p>
+                  {{ end }}
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    {{ else }}
+      <section class="prose mt-10 dark:prose-invert">
+        <p class="border-t py-8">
+          <em>{{ i18n "list.no_articles" | emojify }}</em>
+        </p>
+      </section>
+    {{ end }}
+  </article>
+{{ end }}
