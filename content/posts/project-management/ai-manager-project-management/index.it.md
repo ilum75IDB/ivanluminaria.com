@@ -134,3 +134,17 @@ Se la risposta a una di queste domande ha a che fare con l'analisi di grandi qua
 E governarla non significa controllarla. Significa capirla abbastanza da sapere quando fidarsi e quando no.
 
 Quello è il lavoro dell'AI Manager. E, che lo si chiami così o no, è un ruolo che ogni progetto serio avrà bisogno di avere.
+
+------------------------------------------------------------------------
+
+## Glossario
+
+**[AI Manager](/it/glossary/ai-manager/)** — Ruolo professionale che governa l'impatto dell'intelligenza artificiale su architetture, processi e persone, separando il valore reale dal rumore.
+
+**[Data Governance](/it/glossary/data-governance/)** — Insieme di politiche, processi e standard che garantiscono la qualità, la sicurezza e la conformità dei dati all'interno di un'organizzazione.
+
+**[Knowledge Transfer](/it/glossary/knowledge-transfer/)** — Processo di trasferimento della conoscenza tra persone, team o sistemi, critico nei progetti IT dove la perdita di know-how può compromettere la continuità operativa.
+
+**[ROI](/it/glossary/roi/)** — Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento.
+
+**[Compliance](/it/glossary/compliance/)** — Conformità alle normative, regolamenti e standard applicabili — nel contesto AI include GDPR, regolamenti di settore e policy interne sull'uso dei dati.
