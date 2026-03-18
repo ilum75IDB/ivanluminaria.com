@@ -13,10 +13,12 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 | Termine | Descrizione | Contenuto in |
 |---------|-------------|--------------|
-| | | |
+| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash |
+| ETL | Extract, Transform, Load — processo di estrazione, trasformazione e caricamento dati dai sistemi sorgente al data warehouse | scd-tipo-2, ragged-hierarchies |
+| SCD | Slowly Changing Dimension — tecnica di data warehouse per tracciare le variazioni nel tempo dei dati nelle tabelle dimensionali | scd-tipo-2 |
 
 ---
 
 **Ultimo aggiornamento**: 2026-03-18
-**Totale termini**: 0
+**Totale termini**: 3
 **Totale articoli con glossario**: 0

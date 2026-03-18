@@ -1,2 +1,6 @@
 editorial:
   show_more: "Mostra altro"
+
+glossary:
+  related_articles: "Articoli correlati"
+  back_to_index: "Torna al glossario"

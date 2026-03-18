@@ -1169,3 +1169,141 @@ footer {
   line-height: 1.5;
   margin-bottom: 0;
 }
+
+/* ============================
+   GLOSSARY
+   ============================ */
+
+/* Letter navigation bar */
+.glossary-letter-nav {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+}
+
+.glossary-letter-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ivan-blue);
+  background: #f3f4f6;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.glossary-letter-link:hover {
+  background: var(--ivan-blue);
+  color: #fff;
+}
+
+/* Letter group */
+.glossary-letter-group {
+  margin-top: 2rem;
+}
+
+.glossary-letter-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ivan-blue);
+  border-bottom: 2px solid var(--ivan-blue);
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Term cards in the list */
+.glossary-terms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.glossary-term-card {
+  padding: 1rem 1.25rem;
+  background: #fafafa;
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--ivan-blue);
+}
+
+.glossary-term-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.glossary-term-title a {
+  color: var(--ivan-red);
+  text-decoration: none;
+}
+
+.glossary-term-title a:hover {
+  color: var(--ivan-red-dark);
+  text-decoration: underline;
+}
+
+.glossary-term-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Single term page */
+.glossary-aka {
+  font-style: italic;
+}
+
+.glossary-related-link {
+  color: var(--ivan-red);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.glossary-related-link:hover {
+  color: var(--ivan-red-dark);
+  text-decoration: underline;
+}
+
+.glossary-back-link {
+  display: inline-block;
+  color: var(--ivan-blue);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+.glossary-back-link:hover {
+  color: var(--ivan-red);
+}
+
+/* Dark mode */
+.dark .glossary-letter-link {
+  background: #374151;
+  color: #93c5fd;
+}
+
+.dark .glossary-letter-link:hover {
+  background: var(--ivan-blue);
+  color: #fff;
+}
+
+.dark .glossary-letter-heading {
+  color: #93c5fd;
+  border-bottom-color: #93c5fd;
+}
+
+.dark .glossary-term-card {
+  background: #1f2937;
+  border-left-color: #93c5fd;
+}
+
+.dark .glossary-term-desc {
+  color: #9ca3af;
+}
+
+.dark .glossary-letter-nav {
+  border-bottom-color: #374151;
+}

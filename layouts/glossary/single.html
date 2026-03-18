@@ -1,0 +1,54 @@
+{{ define "main" }}
+  <article class="max-w-full">
+    <header class="max-w-full">
+      {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+      {{ end }}
+
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        {{ .Title | emojify }}
+      </h1>
+
+      {{ with .Params.aka }}
+        <p class="glossary-aka mt-1 text-lg text-neutral-500 dark:text-neutral-400">
+          {{ . }}
+        </p>
+      {{ end }}
+    </header>
+
+    <section class="prose mt-6 flex max-w-full flex-col dark:prose-invert">
+      <div class="min-h-0 min-w-0 max-w-full grow">
+        {{ .Content | emojify }}
+      </div>
+    </section>
+
+    {{/* Related articles */}}
+    {{ with .Params.articles }}
+      <section class="glossary-related mt-10 border-t border-neutral-200 pt-6 dark:border-neutral-700">
+        <h2 class="text-2xl font-bold text-neutral-700 dark:text-neutral-300">
+          {{ i18n "glossary.related_articles" | default "Articoli correlati" }}
+        </h2>
+        <ul class="mt-4 space-y-2">
+          {{ range . }}
+            {{ $articlePath := . }}
+            {{/* Try to find the page by path */}}
+            {{ with $.Site.GetPage $articlePath }}
+              <li>
+                <a href="{{ .RelPermalink }}" class="glossary-related-link">
+                  {{ .Title }}
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+
+    {{/* Back to glossary index */}}
+    <div class="mt-8 print:hidden">
+      <a href="{{ (.Parent.RelPermalink) }}" class="glossary-back-link">
+        &larr; {{ i18n "glossary.back_to_index" | default "Torna al glossario" }}
+      </a>
+    </div>
+  </article>
+{{ end }}
