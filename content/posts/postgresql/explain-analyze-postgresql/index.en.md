@@ -213,3 +213,17 @@ I've seen DBAs with years of experience run EXPLAIN ANALYZE, look at the total t
 The execution plan tells you what's causing it. Each node is an organ. Estimated rows versus actual rows are the lab results. Buffers are the X-rays. And ANALYZE is the antibiotic that solves 70% of cases.
 
 But for that remaining 30%, you need to read. Line by line. Node by node. There's no shortcut.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**[Execution Plan](/en/glossary/execution-plan/)** — the sequence of operations (scan, join, sort) the database chooses to resolve a SQL query. Viewed with EXPLAIN and EXPLAIN ANALYZE.
+
+**[Nested Loop](/en/glossary/nested-loop/)** — a join strategy that for each row in the outer table looks for matches in the inner table. Ideal for few rows, disastrous on large volumes when mistakenly chosen by the optimizer.
+
+**[Hash Join](/en/glossary/hash-join/)** — a join strategy that builds a hash table from the smaller table and then scans the larger one looking for matches with O(1) lookups. Efficient on large volumes without indexes.
+
+**[ANALYZE](/en/glossary/analyze/)** — PostgreSQL command that collects statistics on data distribution in tables, used by the optimizer to estimate cardinality and choose the execution plan.
+
+**[default_statistics_target](/en/glossary/default-statistics-target/)** — PostgreSQL parameter that defines how many samples to collect per column during ANALYZE. The default is 100; for columns with skewed distribution it should be raised to 500-1000.
