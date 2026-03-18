@@ -26,11 +26,6 @@
   weight = 30
 
 [[main]]
-  name = "Glossary"
-  pageRef = "glossary"
-  weight = 35
-
-[[main]]
   name = "Language"
   weight = 40
   [main.params]
