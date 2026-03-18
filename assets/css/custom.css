@@ -1185,6 +1185,8 @@ footer {
   padding: 0.75rem 0;
   margin-top: 2.5rem !important;
   gap: 0.4rem !important;
+  position: relative;
+  z-index: 1;           /* below language dropdown (z-10000) */
 }
 
 .glossary-letter-link {
