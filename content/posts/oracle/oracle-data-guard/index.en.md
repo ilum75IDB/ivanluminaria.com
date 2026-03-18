@@ -256,3 +256,17 @@ You can't convince a CEO with an architectural diagram. You can only wait for th
 The only thing you can do beforehand is document the risk, put it in writing that you flagged it, and keep the project ready in the drawer. I had proposed that project eighteen months earlier. It had been shelved with a "let's revisit it next year."
 
 Next year arrived on a Wednesday morning in November, at 8:47 AM.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**Data Guard** — Oracle technology for real-time database replication to one or more standby servers. The standby continuously receives and applies the primary's redo logs, enabling switchover in seconds.
+
+**Redo Log** — Log files where Oracle records every data change before writing it to the datafiles. They are the foundation of recovery and Data Guard replication: without redo, none of these operations is possible.
+
+**RPO** — Recovery Point Objective. The maximum amount of data an organisation can afford to lose in a disaster, measured in time. With asynchronous Data Guard it is reduced to a few seconds.
+
+**RTO** — Recovery Time Objective. The maximum acceptable time to restore service after a failure. With Data Guard and automatic switchover, it goes from hours to under a minute.
+
+**RMAN** — Recovery Manager. Oracle's native tool for backup, restore and recovery, including standby database creation via `DUPLICATE ... FOR STANDBY FROM ACTIVE DATABASE`.

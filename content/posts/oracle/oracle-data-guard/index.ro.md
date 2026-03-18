@@ -256,3 +256,17 @@ Nu poți convinge un CEO cu o diagramă arhitecturală. Poți doar să aștepți
 Singurul lucru pe care îl poți face dinainte este să documentezi riscul, să pui în scris că l-ai semnalat, și să ții proiectul pregătit în sertar. Eu propusesem acel proiect cu optsprezece luni înainte. Fusese pus deoparte cu un "revenim anul viitor."
 
 Anul viitor a sosit într-o dimineață de miercuri din noiembrie, la 8:47.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**Data Guard** — Tehnologie Oracle pentru replicarea in timp real a unei baze de date pe unul sau mai multe servere standby. Standby-ul primeste si aplica continuu redo log-urile primarului, permitand switchover in secunde.
+
+**Redo Log** — Fisiere de log in care Oracle inregistreaza fiecare modificare a datelor inainte de a o scrie in datafile-uri. Sunt baza recuperarii si replicarii Data Guard: fara redo, niciuna dintre aceste operatiuni nu este posibila.
+
+**RPO** — Recovery Point Objective. Cantitatea maxima de date pe care o organizatie si-o poate permite sa piarda in caz de dezastru, masurata in timp. Cu Data Guard asincron se reduce la cateva secunde.
+
+**RTO** — Recovery Time Objective. Timpul maxim acceptabil pentru restaurarea serviciului dupa o defectiune. Cu Data Guard si switchover automat, se trece de la ore la mai putin de un minut.
+
+**RMAN** — Recovery Manager. Instrumentul nativ Oracle pentru backup, restore si recovery, inclusiv crearea bazelor de date standby prin `DUPLICATE ... FOR STANDBY FROM ACTIVE DATABASE`.
