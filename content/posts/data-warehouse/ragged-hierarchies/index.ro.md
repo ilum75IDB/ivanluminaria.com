@@ -377,12 +377,12 @@ Uneori cea mai bună soluție este cea mai simplă. Aceasta este una dintre acel
 
 ## Glosar
 
-**COALESCE** — Funcție SQL care returnează prima valoare non-NULL dintr-o listă de expresii. Adesea folosită ca workaround pentru ierarhiile incomplete în rapoarte, dar nu rezolvă problema structurală din modelul dimensional.
+**[COALESCE](/ro/glossary/coalesce/)** — Funcție SQL care returnează prima valoare non-NULL dintr-o listă de expresii. Adesea folosită ca workaround pentru ierarhiile incomplete în rapoarte, dar nu rezolvă problema structurală din modelul dimensional.
 
-**Drill-down** — Navigare în rapoarte de la un nivel agregat la un nivel de detaliu (ex. de la Top Group la Group la Client). Necesită o ierarhie completă și echilibrată pentru a funcționa corect fără NULL-uri sau linii lipsă.
+**[Drill-down](/ro/glossary/drill-down/)** — Navigare în rapoarte de la un nivel agregat la un nivel de detaliu (ex. de la Top Group la Group la Client). Necesită o ierarhie completă și echilibrată pentru a funcționa corect fără NULL-uri sau linii lipsă.
 
-**OLAP** — Online Analytical Processing — procesare orientată spre analiza multidimensională a datelor, tipică pentru data warehouse-uri și cuburi de analiză. Contrapusă OLTP-ului (Online Transaction Processing) din sistemele tranzacționale.
+**[OLAP](/ro/glossary/olap/)** — Online Analytical Processing — procesare orientată spre analiza multidimensională a datelor, tipică pentru data warehouse-uri și cuburi de analiză. Contrapusă OLTP-ului (Online Transaction Processing) din sistemele tranzacționale.
 
-**Ragged hierarchy** — Ierarhie în care nu toate ramurile ating aceeași adâncime: unele niveluri intermediare lipsesc. Frecventă în datele master de clienți, produse și structuri organizaționale unde nu toate entitățile au aceeași structură ierarhică.
+**[Ragged hierarchy](/ro/glossary/ragged-hierarchy/)** — Ierarhie în care nu toate ramurile ating aceeași adâncime: unele niveluri intermediare lipsesc. Frecventă în datele master de clienți, produse și structuri organizaționale unde nu toate entitățile au aceeași structură ierarhică.
 
-**Self-parenting** — Tehnică de echilibrare a ierarhiilor dezechilibrate: cine nu are un părinte devine propriul părinte. Nivelul lipsă este completat cu datele de la nivelul inferior, eliminând NULL-urile din dimensiune și garantând un drill-down corect.
+**[Self-parenting](/ro/glossary/self-parenting/)** — Tehnică de echilibrare a ierarhiilor dezechilibrate: cine nu are un părinte devine propriul părinte. Nivelul lipsă este completat cu datele de la nivelul inferior, eliminând NULL-urile din dimensiune și garantând un drill-down corect.

@@ -365,12 +365,12 @@ La pregunta siempre llega. La cuestión es si tu DWH está preparado para respon
 
 ## Glosario
 
-**Clave subrogada** — Identificador numérico generado por el data warehouse, distinto de la clave natural del sistema fuente. En la SCD Tipo 2 es imprescindible porque el mismo registro puede tener múltiples versiones, y la clave natural ya no es única.
+**[Clave subrogada](/es/glossary/chiave-surrogata/)** — Identificador numérico generado por el data warehouse, distinto de la clave natural del sistema fuente. En la SCD Tipo 2 es imprescindible porque el mismo registro puede tener múltiples versiones, y la clave natural ya no es única.
 
-**Fact table** — Tabla central del star schema que contiene las medidas numéricas (importes, cantidades, conteos) y las claves foráneas hacia las tablas dimensionales. Cada fila representa un evento o una transacción de negocio.
+**[Fact table](/es/glossary/fact-table/)** — Tabla central del star schema que contiene las medidas numéricas (importes, cantidades, conteos) y las claves foráneas hacia las tablas dimensionales. Cada fila representa un evento o una transacción de negocio.
 
-**Kimball** — Ralph Kimball, autor de la metodología de diseño de data warehouse basada en dimensional modeling, star schemas y procesos ETL bottom-up. Su framework clasifica las Slowly Changing Dimensions en los tipos del 0 al 7.
+**[Kimball](/es/glossary/kimball/)** — Ralph Kimball, autor de la metodología de diseño de data warehouse basada en dimensional modeling, star schemas y procesos ETL bottom-up. Su framework clasifica las Slowly Changing Dimensions en los tipos del 0 al 7.
 
-**MERGE** — Instrucción SQL que combina INSERT y UPDATE en una sola operación: si el registro existe lo actualiza, si no existe lo inserta. En Oracle también se conoce como "upsert" y es el mecanismo base del ETL para las dimensiones SCD.
+**[MERGE](/es/glossary/merge-sql/)** — Instrucción SQL que combina INSERT y UPDATE en una sola operación: si el registro existe lo actualiza, si no existe lo inserta. En Oracle también se conoce como "upsert" y es el mecanismo base del ETL para las dimensiones SCD.
 
-**Star schema** — Modelo de datos típico del data warehouse: una fact table en el centro conectada a múltiples tablas dimensionales mediante claves foráneas. Simplifica las consultas analíticas y optimiza el rendimiento de las agregaciones.
+**[Star schema](/es/glossary/star-schema/)** — Modelo de datos típico del data warehouse: una fact table en el centro conectada a múltiples tablas dimensionales mediante claves foráneas. Simplifica las consultas analíticas y optimiza el rendimiento de las agregaciones.

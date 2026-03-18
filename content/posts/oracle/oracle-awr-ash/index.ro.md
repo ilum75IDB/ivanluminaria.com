@@ -278,12 +278,12 @@ Nu sunt un erou. Am folosit doar instrumentele potrivite.
 
 ## Glosar
 
-**AWR** — Automatic Workload Repository. Componenta integrata in Oracle care colecteaza statistici de performanta prin snapshot-uri periodice si genereaza rapoarte de diagnostic comparative.
+**[AWR](/ro/glossary/awr/)** — Automatic Workload Repository. Componenta integrata in Oracle care colecteaza statistici de performanta prin snapshot-uri periodice si genereaza rapoarte de diagnostic comparative.
 
-**ASH** — Active Session History. Componenta Oracle care esantioneaza starea fiecarei sesiuni active o data pe secunda, stocand-o in memorie si apoi in AWR. Este microscopul DBA-ului pentru diagnosticarea punctuala.
+**[ASH](/ro/glossary/ash/)** — Active Session History. Componenta Oracle care esantioneaza starea fiecarei sesiuni active o data pe secunda, stocand-o in memorie si apoi in AWR. Este microscopul DBA-ului pentru diagnosticarea punctuala.
 
-**Full Table Scan** — Operatie de citire in care Oracle citeste toate blocurile unei tabele fara a folosi indecsi. In wait event-uri apare ca `db file scattered read`.
+**[Full Table Scan](/ro/glossary/full-table-scan/)** — Operatie de citire in care Oracle citeste toate blocurile unei tabele fara a folosi indecsi. In wait event-uri apare ca `db file scattered read`.
 
-**Wait Event** — Eveniment de asteptare inregistrat de Oracle de fiecare data cand o sesiune nu poate continua pentru ca asteapta o resursa (I/O, lock, CPU, retea). Analiza wait event-urilor este baza metodologiei de diagnostic Oracle.
+**[Wait Event](/ro/glossary/wait-event/)** — Eveniment de asteptare inregistrat de Oracle de fiecare data cand o sesiune nu poate continua pentru ca asteapta o resursa (I/O, lock, CPU, retea). Analiza wait event-urilor este baza metodologiei de diagnostic Oracle.
 
-**Snapshot** — Captura punctuala a statisticilor de performanta preluata periodic de AWR (implicit la fiecare 60 de minute). Compararea a doua snapshot-uri genereaza raportul AWR.
+**[Snapshot](/ro/glossary/snapshot-oracle/)** — Captura punctuala a statisticilor de performanta preluata periodic de AWR (implicit la fiecare 60 de minute). Compararea a doua snapshot-uri genereaza raportul AWR.

@@ -377,12 +377,12 @@ A volte la soluzione migliore è la più semplice. Questa è una di quelle volte
 
 ## Glossario
 
-**COALESCE** — Funzione SQL che restituisce il primo valore non NULL da una lista di espressioni. Spesso usata come workaround per le gerarchie incomplete nei report, ma non risolve il problema strutturale nel modello dimensionale.
+**[COALESCE](/it/glossary/coalesce/)** — Funzione SQL che restituisce il primo valore non NULL da una lista di espressioni. Spesso usata come workaround per le gerarchie incomplete nei report, ma non risolve il problema strutturale nel modello dimensionale.
 
-**Drill-down** — Navigazione nei report dal livello aggregato al livello di dettaglio (es. da Top Group a Group a Client). Richiede una gerarchia completa e bilanciata per funzionare correttamente senza NULL o righe mancanti.
+**[Drill-down](/it/glossary/drill-down/)** — Navigazione nei report dal livello aggregato al livello di dettaglio (es. da Top Group a Group a Client). Richiede una gerarchia completa e bilanciata per funzionare correttamente senza NULL o righe mancanti.
 
-**OLAP** — Online Analytical Processing — elaborazione orientata all'analisi multidimensionale dei dati, tipica dei data warehouse e dei cubi di analisi. Contrapposta all'OLTP (Online Transaction Processing) dei sistemi transazionali.
+**[OLAP](/it/glossary/olap/)** — Online Analytical Processing — elaborazione orientata all'analisi multidimensionale dei dati, tipica dei data warehouse e dei cubi di analisi. Contrapposta all'OLTP (Online Transaction Processing) dei sistemi transazionali.
 
-**Ragged hierarchy** — Gerarchia in cui non tutti i rami raggiungono la stessa profondità: alcuni livelli intermedi sono assenti. Tipica nelle anagrafiche clienti, prodotti e strutture organizzative dove non tutte le entità hanno la stessa struttura gerarchica.
+**[Ragged hierarchy](/it/glossary/ragged-hierarchy/)** — Gerarchia in cui non tutti i rami raggiungono la stessa profondità: alcuni livelli intermedi sono assenti. Tipica nelle anagrafiche clienti, prodotti e strutture organizzative dove non tutte le entità hanno la stessa struttura gerarchica.
 
-**Self-parenting** — Tecnica di bilanciamento delle gerarchie sbilanciate: chi non ha un padre diventa padre di sé stesso. Il livello mancante viene riempito con i dati del livello inferiore, eliminando i NULL dalla dimensione e garantendo un drill-down corretto.
+**[Self-parenting](/it/glossary/self-parenting/)** — Tecnica di bilanciamento delle gerarchie sbilanciate: chi non ha un padre diventa padre di sé stesso. Il livello mancante viene riempito con i dati del livello inferiore, eliminando i NULL dalla dimensione e garantendo un drill-down corretto.

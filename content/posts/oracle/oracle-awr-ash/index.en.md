@@ -278,12 +278,12 @@ I'm not a hero. I just used the right tools.
 
 ## Glossary
 
-**AWR** — Automatic Workload Repository. A built-in Oracle component that collects performance statistics through periodic snapshots and generates comparative diagnostic reports.
+**[AWR](/en/glossary/awr/)** — Automatic Workload Repository. A built-in Oracle component that collects performance statistics through periodic snapshots and generates comparative diagnostic reports.
 
-**ASH** — Active Session History. An Oracle component that samples the state of every active session once per second, storing it in memory and then in AWR. It is the DBA's microscope for pinpoint diagnosis.
+**[ASH](/en/glossary/ash/)** — Active Session History. An Oracle component that samples the state of every active session once per second, storing it in memory and then in AWR. It is the DBA's microscope for pinpoint diagnosis.
 
-**Full Table Scan** — A read operation where Oracle reads every block of a table without using indexes. In wait events it shows up as `db file scattered read`.
+**[Full Table Scan](/en/glossary/full-table-scan/)** — A read operation where Oracle reads every block of a table without using indexes. In wait events it shows up as `db file scattered read`.
 
-**Wait Event** — A diagnostic event recorded by Oracle whenever a session cannot proceed because it is waiting for a resource (I/O, lock, CPU, network). Wait event analysis is the foundation of Oracle's diagnostic methodology.
+**[Wait Event](/en/glossary/wait-event/)** — A diagnostic event recorded by Oracle whenever a session cannot proceed because it is waiting for a resource (I/O, lock, CPU, network). Wait event analysis is the foundation of Oracle's diagnostic methodology.
 
-**Snapshot** — A point-in-time capture of performance statistics taken periodically by AWR (every 60 minutes by default). Comparing two snapshots generates the AWR report.
+**[Snapshot](/en/glossary/snapshot-oracle/)** — A point-in-time capture of performance statistics taken periodically by AWR (every 60 minutes by default). Comparing two snapshots generates the AWR report.

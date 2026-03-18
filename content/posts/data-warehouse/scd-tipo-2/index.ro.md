@@ -365,12 +365,12 @@ Acesta este punctul. Nu implementezi Tipul 2 pentru că "e best practice" sau pe
 
 ## Glosar
 
-**Cheie surogat** — Identificator numeric generat de data warehouse, distinct de cheia naturală a sistemului sursă. În SCD Tip 2 este esențială deoarece aceeași înregistrare poate avea mai multe versiuni, iar cheia naturală nu mai este unică.
+**[Cheie surogat](/ro/glossary/chiave-surrogata/)** — Identificator numeric generat de data warehouse, distinct de cheia naturală a sistemului sursă. În SCD Tip 2 este esențială deoarece aceeași înregistrare poate avea mai multe versiuni, iar cheia naturală nu mai este unică.
 
-**Fact table** — Tabela centrală a star schema-ului care conține măsurile numerice (sume, cantități, contorizări) și cheile externe către tabelele dimensionale. Fiecare linie reprezintă un eveniment sau o tranzacție de business.
+**[Fact table](/ro/glossary/fact-table/)** — Tabela centrală a star schema-ului care conține măsurile numerice (sume, cantități, contorizări) și cheile externe către tabelele dimensionale. Fiecare linie reprezintă un eveniment sau o tranzacție de business.
 
-**Kimball** — Ralph Kimball, autorul metodologiei de proiectare a data warehouse-ului bazată pe dimensional modeling, star schema și procese ETL bottom-up. Framework-ul său clasifică Slowly Changing Dimensions în tipurile de la 0 la 7.
+**[Kimball](/ro/glossary/kimball/)** — Ralph Kimball, autorul metodologiei de proiectare a data warehouse-ului bazată pe dimensional modeling, star schema și procese ETL bottom-up. Framework-ul său clasifică Slowly Changing Dimensions în tipurile de la 0 la 7.
 
-**MERGE** — Instrucțiune SQL care combină INSERT și UPDATE într-o singură operațiune: dacă înregistrarea există o actualizează, dacă nu există o inserează. În Oracle este cunoscută și ca "upsert" și este mecanismul de bază al ETL-ului pentru dimensiunile SCD.
+**[MERGE](/ro/glossary/merge-sql/)** — Instrucțiune SQL care combină INSERT și UPDATE într-o singură operațiune: dacă înregistrarea există o actualizează, dacă nu există o inserează. În Oracle este cunoscută și ca "upsert" și este mecanismul de bază al ETL-ului pentru dimensiunile SCD.
 
-**Star schema** — Model de date tipic pentru data warehouse: o fact table centrală conectată la mai multe tabele dimensionale prin chei externe. Simplifică interogările analitice și optimizează performanța agregărilor.
+**[Star schema](/ro/glossary/star-schema/)** — Model de date tipic pentru data warehouse: o fact table centrală conectată la mai multe tabele dimensionale prin chei externe. Simplifică interogările analitice și optimizează performanța agregărilor.

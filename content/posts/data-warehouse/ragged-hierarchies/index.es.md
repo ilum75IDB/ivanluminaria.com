@@ -377,12 +377,12 @@ A veces la mejor solución es la más simple. Esta es una de esas veces.
 
 ## Glosario
 
-**COALESCE** — Función SQL que devuelve el primer valor no NULL de una lista de expresiones. A menudo usada como workaround para las jerarquías incompletas en los reportes, pero no resuelve el problema estructural en el modelo dimensional.
+**[COALESCE](/es/glossary/coalesce/)** — Función SQL que devuelve el primer valor no NULL de una lista de expresiones. A menudo usada como workaround para las jerarquías incompletas en los reportes, pero no resuelve el problema estructural en el modelo dimensional.
 
-**Drill-down** — Navegación en los reportes desde un nivel agregado hasta un nivel de detalle (ej. de Top Group a Group a Client). Requiere una jerarquía completa y balanceada para funcionar correctamente sin NULLs ni filas faltantes.
+**[Drill-down](/es/glossary/drill-down/)** — Navegación en los reportes desde un nivel agregado hasta un nivel de detalle (ej. de Top Group a Group a Client). Requiere una jerarquía completa y balanceada para funcionar correctamente sin NULLs ni filas faltantes.
 
-**OLAP** — Online Analytical Processing — procesamiento orientado al análisis multidimensional de datos, típico de los data warehouses y cubos de análisis. Contrapuesto al OLTP (Online Transaction Processing) de los sistemas transaccionales.
+**[OLAP](/es/glossary/olap/)** — Online Analytical Processing — procesamiento orientado al análisis multidimensional de datos, típico de los data warehouses y cubos de análisis. Contrapuesto al OLTP (Online Transaction Processing) de los sistemas transaccionales.
 
-**Ragged hierarchy** — Jerarquía en la que no todas las ramas alcanzan la misma profundidad: algunos niveles intermedios están ausentes. Común en datos maestros de clientes, productos y estructuras organizativas donde no todas las entidades comparten la misma estructura jerárquica.
+**[Ragged hierarchy](/es/glossary/ragged-hierarchy/)** — Jerarquía en la que no todas las ramas alcanzan la misma profundidad: algunos niveles intermedios están ausentes. Común en datos maestros de clientes, productos y estructuras organizativas donde no todas las entidades comparten la misma estructura jerárquica.
 
-**Self-parenting** — Técnica de balanceo de jerarquías desequilibradas: quien no tiene padre se convierte en padre de sí mismo. El nivel faltante se rellena con los datos del nivel inferior, eliminando los NULLs de la dimensión y garantizando un drill-down correcto.
+**[Self-parenting](/es/glossary/self-parenting/)** — Técnica de balanceo de jerarquías desequilibradas: quien no tiene padre se convierte en padre de sí mismo. El nivel faltante se rellena con los datos del nivel inferior, eliminando los NULLs de la dimensión y garantizando un drill-down correcto.

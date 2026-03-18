@@ -157,7 +157,8 @@ Quando l'utente chiede di aggiungere la sezione Glossario a un articolo che ne �
 5. **Aggiungere la sezione Glossario** all'articolo in tutte e 4 le lingue:
    - Posizione: alla fine dell'articolo, dopo l'ultima sezione, preceduta da un separatore `------------------------------------------------------------------------`
    - Titolo: `## Glossario` (IT), `## Glossary` (EN), `## Glosario` (ES), `## Glosar` (RO)
-   - Formato voci: `**Termine** — descrizione breve (1-2 frasi)`
+   - Formato voci con link alla mini-pagina: `**[Termine](/{lang}/glossary/{slug}/)** — descrizione breve (1-2 frasi)`
+   - **IMPORTANTE**: ogni termine DEVE avere il link alla mini-pagina del glossario, usando il prefisso lingua corretto (`/it/`, `/en/`, `/es/`, `/ro/`). Esempio: `**[AWR](/it/glossary/awr/)** — Automatic Workload Repository...`
 6. **Aggiornare `DOCS/GLOSSARIO_TERMINI.md`**:
    - Aggiungere i nuovi termini in ordine alfabetico
    - Per i termini già presenti, aggiungere il nuovo articolo nella colonna "Contenuto in"
