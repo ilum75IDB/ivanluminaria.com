@@ -141,6 +141,30 @@ When writing a new blog article, **always** follow these steps:
 7. **Generare il prompt per l'immagine di copertina** — dopo aver completato la scrittura dell'articolo in tutte le lingue, generare **sempre** il prompt per la cover image. Leggere `DOCS/prompt-master.md` per il template base, poi aggiungere nella sezione `SCENA DA RAPPRESENTARE` una descrizione specifica della scena che rappresenti il tema dell'articolo tramite una metafora visiva coerente con lo stile del blog. Il prompt va presentato all'utente pronto per il copia-incolla in un generatore di immagini AI. **Non creare file placeholder** per la cover image — sarà l'utente a generare l'immagine e inserirla nella cartella dell'articolo con il nome `<slug>.cover.jpg`.
 8. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **fino a 10 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `DOCS/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
 
+### Workflow: aggiunta glossario a un articolo esistente
+
+Quando l'utente chiede di aggiungere la sezione Glossario a un articolo che ne è privo, seguire **sempre** questi passi nell'ordine indicato:
+
+1. **Leggere l'articolo** in tutte e 4 le lingue per identificare i termini tecnici principali
+2. **Leggere `DOCS/GLOSSARIO_TERMINI.md`** per sapere quali termini esistono già (con relative mini-pagine)
+3. **Scegliere 5 termini** (o il numero richiesto dall'utente) privilegiando: acronimi, concetti tecnici specifici dell'articolo, tecnologie menzionate. Includere anche termini già esistenti nel glossario se sono rilevanti per l'articolo
+4. **Creare le mini-pagine** per i termini nuovi:
+   - Directory: `content/glossary/<slug>/`
+   - File: `index.{it,en,es,ro}.md` (4 lingue)
+   - Formato frontmatter: `title`, `description`, `translationKey: "glossary_<slug>"`, `aka` (se applicabile), `articles` (lista dei path degli articoli)
+   - Contenuto: definizione, come funziona, a cosa serve, quando si usa
+   - Copiare il formato esatto dalle mini-pagine esistenti (es. `content/glossary/awr/`)
+5. **Aggiungere la sezione Glossario** all'articolo in tutte e 4 le lingue:
+   - Posizione: alla fine dell'articolo, dopo l'ultima sezione, preceduta da un separatore `------------------------------------------------------------------------`
+   - Titolo: `## Glossario` (IT), `## Glossary` (EN), `## Glosario` (ES), `## Glosar` (RO)
+   - Formato voci: `**Termine** — descrizione breve (1-2 frasi)`
+6. **Aggiornare `DOCS/GLOSSARIO_TERMINI.md`**:
+   - Aggiungere i nuovi termini in ordine alfabetico
+   - Per i termini già presenti, aggiungere il nuovo articolo nella colonna "Contenuto in"
+   - Aggiornare il contatore "Totale termini" e "Totale articoli con glossario"
+7. **Commit e push** con messaggio nel formato: `Glossario: aggiunta sezione glossario a <slug> (IT/EN/ES/RO)`
+8. **Fornire il comando `gh issue comment`** per aggiornare la issue di tracciamento (es. #60) con il riepilogo del lavoro svolto: termini aggiunti, file creati/modificati, progresso complessivo. **Non dimenticare mai questo passo.**
+
 ## Homepage Layout
 
 The homepage (`layouts/_partials/home/custom.html`) uses an editorial magazine-style layout. Sections are displayed in a **fixed order** defined by the `$sections` slice in the template.
