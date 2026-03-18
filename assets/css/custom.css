@@ -917,7 +917,7 @@ footer {
     font-size: 1.3rem;
   }
   .editorial-hero-desc {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
 
@@ -1035,6 +1035,13 @@ footer {
   .editorial-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  .editorial-grid-item {
+    flex-direction: column;
+  }
+  .editorial-grid-img {
+    width: 100%;
+    height: auto;
   }
 }
 
