@@ -32,33 +32,40 @@
         {{ end }}
       {{ end }}
 
-      {{/* Letter navigation */}}
-      <nav class="glossary-letter-nav mt-8 mb-6 flex flex-wrap gap-3">
-        {{ range $letters }}
-          <a href="#letter-{{ . }}" class="glossary-letter-link">{{ . }}</a>
-        {{ end }}
-      </nav>
+      {{/* 2-column layout: letter sidebar + terms */}}
+      <div class="glossary-layout">
 
-      {{/* Terms grouped by letter */}}
-      {{ range $letter := $letters }}
-        <div id="letter-{{ $letter }}" class="glossary-letter-group">
-          <h2 class="glossary-letter-heading">{{ $letter }}</h2>
-          <div class="glossary-terms-list">
-            {{ range $pages }}
-              {{ if eq (upper (substr .Title 0 1)) $letter }}
-                <div class="glossary-term-card">
-                  <h3 class="glossary-term-title">
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                  </h3>
-                  {{ with .Description }}
-                    <p class="glossary-term-desc">{{ . }}</p>
-                  {{ end }}
-                </div>
-              {{ end }}
-            {{ end }}
-          </div>
+        {{/* Letter sidebar (vertical on desktop, horizontal on mobile) */}}
+        <div class="glossary-letter-sidebar">
+          {{ range $letters }}
+            <a href="#letter-{{ . }}" class="glossary-letter-link">{{ . }}</a>
+          {{ end }}
         </div>
-      {{ end }}
+
+        {{/* Terms grouped by letter */}}
+        <div class="glossary-content">
+          {{ range $letter := $letters }}
+            <div id="letter-{{ $letter }}" class="glossary-letter-group">
+              <h2 class="glossary-letter-heading">{{ $letter }}</h2>
+              <div class="glossary-terms-list">
+                {{ range $pages }}
+                  {{ if eq (upper (substr .Title 0 1)) $letter }}
+                    <div class="glossary-term-card">
+                      <h3 class="glossary-term-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                      </h3>
+                      {{ with .Description }}
+                        <p class="glossary-term-desc">{{ . }}</p>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+
+      </div>{{/* /.glossary-layout */}}
     {{ else }}
       <section class="prose mt-10 dark:prose-invert">
         <p class="border-t py-8">
