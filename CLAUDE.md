@@ -200,11 +200,12 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
 5. **Backdated articles**: if the user asks to publish an article in the past, assign it to the **Previous available slot** date. Then update the Previous available slot to the Tuesday before the new oldest article
 6. **All 4 language versions** of each article share the same date
 7. **Schedule table format**: always show the columns below. When reorganising dates, fill the "New Date" column; use `—` if no change is needed
-8. **Article status values**:
+8. **Colonna "Scritto il"**: ogni articolo ha una colonna `Scritto il` che indica la **data effettiva in cui l'articolo è stato scritto e committato** (corrisponde alla data di chiusura della issue). Questa data è indipendente dalla data di pubblicazione — un articolo può essere scritto oggi ma avere una data di pubblicazione passata (backdating) o futura (scheduling). Quando si scrive un nuovo articolo, compilare sempre questa colonna con la data del giorno corrente. Quando l'utente chiede "l'ultimo articolo scritto", ordinare per `Scritto il` (non per `Date`).
+9. **Article status values**:
    - **published**: article is live on the site (publication date is in the past)
    - **scheduled**: article is written in all 4 languages, committed to the repo, and has a future publication date. The corresponding GitHub issue should be closed
    - **planned**: only the GitHub issue exists (article not yet written). The corresponding issue is still open
-9. **Slot markers** (at the bottom of `DOCS/HUGO_PUBLICATIONS_TABLE.md`):
+10. **Slot markers** (at the bottom of `DOCS/HUGO_PUBLICATIONS_TABLE.md`):
    - **Previous available slot**: the first Tuesday before the oldest article's date. Used when inserting backdated articles
    - **Next available slot**: the first Tuesday after the most recent article's date. Used for new articles
    - Both must be updated after every schedule change
@@ -219,9 +220,11 @@ When adding a new article, update the table in `DOCS/HUGO_PUBLICATIONS_TABLE.md`
 
 When the user asks for the "tabella delle pubblicazioni" (publication table), **always show 3 tables**:
 
-1. **Tabella pubblicazioni** — the Current Schedule table above (all published, scheduled and planned articles with dates)
+1. **Tabella pubblicazioni** — the Current Schedule table above (all published, scheduled and planned articles with dates), **inclusa la colonna "Scritto il"** che mostra quando l'articolo è stato effettivamente scritto. La tabella deve essere ordinata per data di pubblicazione (`Date`), ma la colonna `Scritto il` permette di identificare rapidamente l'ordine cronologico di scrittura
 2. **Tabella issue aperte** — all open issues grouped by section (from `DOCS/GITHUB_ISSUES.md`)
 3. **Riepilogo per sezione** — a summary table with columns: Sezione, Pubblicati, Programmati (scheduled), Pianificati (issue aperte), Totale
+
+When the user asks for "l'ultimo articolo scritto" or similar, **always refer to the `Scritto il` column** (most recent date), not the publication date.
 
 ## Important Notes
 
