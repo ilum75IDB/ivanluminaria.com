@@ -46,7 +46,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 61 | https://github.com/ilum75IDB/ivanluminaria.com/issues/61 | Glossario: creare sezione content/glossary/ con struttura e template | aperta |
 | 62 | https://github.com/ilum75IDB/ivanluminaria.com/issues/62 | Glossario: shortcode Hugo per tooltip inline dei termini | aperta |
 | 63 | https://github.com/ilum75IDB/ivanluminaria.com/issues/63 | Glossario: applicare shortcode tooltip nei testi degli articoli | aperta |
 
@@ -85,3 +84,4 @@ tool `WebFetch`.
 | 56 | https://github.com/ilum75IDB/ivanluminaria.com/issues/56 | MySQL multi-istanza: un ticket, un CSV e il muro di secure-file-priv | 2026-03-18 |
 | 59 | https://github.com/ilum75IDB/ivanluminaria.com/issues/59 | Grid images in homepage croppate su desktop | 2026-03-18 |
 | 51 | https://github.com/ilum75IDB/ivanluminaria.com/issues/51 | EXPLAIN ANALYZE non basta: come leggere un piano di esecuzione PostgreSQL | 2026-03-18 |
+| 61 | https://github.com/ilum75IDB/ivanluminaria.com/issues/61 | Glossario: creare sezione content/glossary/ con struttura e template | 2026-03-18 |
