@@ -261,12 +261,12 @@ L'anno prossimo è arrivato un mercoledì mattina di novembre, alle 8:47.
 
 ## Glossario
 
-**Data Guard** — Tecnologia Oracle per la replica in tempo reale di un database su uno o più server standby. Lo standby riceve e applica continuamente i redo log del primario, permettendo switchover in pochi secondi.
+**[Data Guard](/it/glossary/data-guard/)** — Tecnologia Oracle per la replica in tempo reale di un database su uno o più server standby. Lo standby riceve e applica continuamente i redo log del primario, permettendo switchover in pochi secondi.
 
-**Redo Log** — File di log in cui Oracle registra ogni modifica ai dati prima di scriverla nei datafile. Sono la base del recovery e della replica Data Guard: senza redo, nessuna di queste operazioni è possibile.
+**[Redo Log](/it/glossary/redo-log/)** — File di log in cui Oracle registra ogni modifica ai dati prima di scriverla nei datafile. Sono la base del recovery e della replica Data Guard: senza redo, nessuna di queste operazioni è possibile.
 
-**RPO** — Recovery Point Objective. La quantità massima di dati che un'organizzazione può permettersi di perdere in caso di disastro, misurata in tempo. Con Data Guard asincrono si riducono a pochi secondi.
+**[RPO](/it/glossary/rpo/)** — Recovery Point Objective. La quantità massima di dati che un'organizzazione può permettersi di perdere in caso di disastro, misurata in tempo. Con Data Guard asincrono si riducono a pochi secondi.
 
-**RTO** — Recovery Time Objective. Il tempo massimo accettabile per ripristinare il servizio dopo un guasto. Con Data Guard e switchover automatico, si passa da ore a meno di un minuto.
+**[RTO](/it/glossary/rto/)** — Recovery Time Objective. Il tempo massimo accettabile per ripristinare il servizio dopo un guasto. Con Data Guard e switchover automatico, si passa da ore a meno di un minuto.
 
-**RMAN** — Recovery Manager. Strumento nativo Oracle per backup, restore e recovery, inclusa la creazione di database standby via `DUPLICATE ... FOR STANDBY FROM ACTIVE DATABASE`.
+**[RMAN](/it/glossary/rman/)** — Recovery Manager. Strumento nativo Oracle per backup, restore e recovery, inclusa la creazione di database standby via `DUPLICATE ... FOR STANDBY FROM ACTIVE DATABASE`.
