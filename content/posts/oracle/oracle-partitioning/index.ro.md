@@ -99,7 +99,7 @@ Alegerea a căzut pe un **interval partitioning lunar** pe coloana `data_movimen
 
 Nu poți face `ALTER TABLE ... PARTITION BY` pe o tabelă existentă cu 2 miliarde de rânduri. Nu în Oracle 19c, cel puțin nu fără Online Table Redefinition. Și acea opțiune, pe o tabelă de aceste dimensiuni, are propriile riscuri.
 
-Am ales abordarea CTAS — Create Table As Select — cu paralelism. Creezi noua tabelă partițională, copiezi datele, redenumești.
+Am ales abordarea {{< glossary term="ctas" >}}CTAS{{< /glossary >}} — Create Table As Select — cu paralelism. Creezi noua tabelă partițională, copiezi datele, redenumești.
 
 ### Pasul 1: crearea tabelei partiționate
 
@@ -113,7 +113,7 @@ INTERVAL (NUMTOYMINTERVAL(1, 'MONTH'))
     PARTITION p_2016_02     VALUES LESS THAN (DATE '2016-03-01')
     -- Oracle va crea automat partițiile ulterioare
 )
-TABLESPACE ts_billing_data
+{{< glossary term="tablespace" >}}TABLESPACE{{< /glossary >}} ts_billing_data
 NOLOGGING
 PARALLEL 8
 AS
@@ -123,7 +123,7 @@ SELECT /*+ PARALLEL(t, 8) */
 FROM   txn_movimenti t;
 ```
 
-`NOLOGGING` este fundamental: fără el, copia generează redo log pentru fiecare bloc scris. Pe 380 GB ar însemna umplerea zonei de redo și punerea sistemului în mod archivelog timp de zile. Cu `NOLOGGING` copia a durat 3 ore și jumătate cu paralelism la 8.
+{{< glossary term="nologging" >}}`NOLOGGING`{{< /glossary >}} este fundamental: fără el, copia generează redo log pentru fiecare bloc scris. Pe 380 GB ar însemna umplerea zonei de redo și punerea sistemului în mod archivelog timp de zile. Cu `NOLOGGING` copia a durat 3 ore și jumătate cu paralelism la 8.
 
 După copiere am restaurat logging-ul:
 
@@ -137,7 +137,7 @@ ALTER TABLE txn_movimenti_part LOGGING;
 
 Designul indecșilor pe o tabelă partițională este diferit de o tabelă normală. Conceptul cheie este: **index local vs index global**.
 
-Un index **local** este partiționat cu aceeași cheie ca tabela. Fiecare partiție a tabelei are partiția de index corespunzătoare. Avantaj: operațiile de mentenanță pe o partiție nu le afectează pe celelalte.
+Un index {{< glossary term="local-index" >}}**local**{{< /glossary >}} este partiționat cu aceeași cheie ca tabela. Fiecare partiție a tabelei are partiția de index corespunzătoare. Avantaj: operațiile de mentenanță pe o partiție nu le afectează pe celelalte.
 
 Un index **global** acoperă toate partițiile. Este mai eficient pentru interogări care nu filtrează pe cheia de partiție, dar orice operație DDL pe partiție (drop, truncate, split) invalidează indexul întreg.
 
@@ -243,7 +243,7 @@ Costul a trecut de la 890K la 12K. Nu este o îmbunătățire procentuală — e
 
 ## Partition pruning: adevărata magie
 
-Mecanismul care face toate acestea posibile se numește **partition pruning**. Nu este ceva ce trebuie configurat — Oracle o face automat când predicatul interogării corespunde cheii de partiție.
+Mecanismul care face toate acestea posibile se numește {{< glossary term="partition-pruning" >}}**partition pruning**{{< /glossary >}}. Nu este ceva ce trebuie configurat — Oracle o face automat când predicatul interogării corespunde cheii de partiție.
 
 Dar trebuie să știi când funcționează și când nu.
 
@@ -327,3 +327,17 @@ Nu toate tabelele au nevoie de partitioning. Regula mea empirică:
 Dar momentul potrivit pentru a-l implementa este înainte să devină urgent. Când tabela are deja 2 miliarde de rânduri, migrarea este un proiect în sine. Când are 50 de milioane și crește, este treabă de o după-amiază.
 
 Cea mai mare eroare a mea cu partitioning-ul? Că nu l-am propus cu șase luni mai devreme, când toate semnalele erau deja acolo.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[Partition Pruning](/ro/glossary/partition-pruning/)** — Mecanism automat Oracle care exclude partițiile nerelevante în timpul execuției unei interogări, citind doar cele care conțin date corespunzătoare predicatului.
+
+**[CTAS](/ro/glossary/ctas/)** — Create Table As Select: tehnică pentru crearea unei tabele noi populate cu un SELECT într-o singură operație. Esențial pentru migrarea tabelelor cu miliarde de rânduri la partitioning.
+
+**[Local Index](/ro/glossary/local-index/)** — Index partiționat cu aceeași cheie ca tabela. Fiecare partiție are propria porțiune de index, făcând operațiile DDL independente între partiții.
+
+**[NOLOGGING](/ro/glossary/nologging/)** — Mod Oracle care suprimă generarea de redo log în timpul operațiunilor masive, reducând timpii de la zile la ore. Necesită backup RMAN imediat după utilizare.
+
+**[Tablespace](/ro/glossary/tablespace/)** — Unitate logică de stocare Oracle care grupează fișiere de date fizice. În partitioning, permite mutarea partițiilor vechi pe stocare de arhivă și gestionarea ciclului de viață al datelor.

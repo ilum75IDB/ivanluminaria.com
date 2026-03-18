@@ -99,7 +99,7 @@ La scelta è caduta su un **interval partitioning mensile** sulla colonna `data_
 
 Non puoi fare `ALTER TABLE ... PARTITION BY` su una tabella esistente con 2 miliardi di righe. Non in Oracle 19c, almeno non senza l'opzione Online Table Redefinition. E quella opzione, su una tabella di queste dimensioni, ha i suoi rischi.
 
-Ho scelto l'approccio CTAS — Create Table As Select — con parallelismo. Creare la nuova tabella partizionata, copiarci i dati, rinominare.
+Ho scelto l'approccio {{< glossary term="ctas" >}}CTAS{{< /glossary >}} — Create Table As Select — con parallelismo. Creare la nuova tabella partizionata, copiarci i dati, rinominare.
 
 ### Step 1: creare la tabella partizionata
 
@@ -113,7 +113,7 @@ INTERVAL (NUMTOYMINTERVAL(1, 'MONTH'))
     PARTITION p_2016_02     VALUES LESS THAN (DATE '2016-03-01')
     -- Oracle creerà automaticamente le partizioni successive
 )
-TABLESPACE ts_billing_data
+{{< glossary term="tablespace" >}}TABLESPACE{{< /glossary >}} ts_billing_data
 NOLOGGING
 PARALLEL 8
 AS
@@ -123,7 +123,7 @@ SELECT /*+ PARALLEL(t, 8) */
 FROM   txn_movimenti t;
 ```
 
-Il `NOLOGGING` è fondamentale: senza di esso la copia genera redo log per ogni blocco scritto. Su 380 GB significherebbe riempire l'area di redo e mandare in archivelog il sistema per giorni. Con `NOLOGGING` la copia è andata in 3 ore e mezza con parallelismo a 8.
+Il {{< glossary term="nologging" >}}`NOLOGGING`{{< /glossary >}} è fondamentale: senza di esso la copia genera redo log per ogni blocco scritto. Su 380 GB significherebbe riempire l'area di redo e mandare in archivelog il sistema per giorni. Con `NOLOGGING` la copia è andata in 3 ore e mezza con parallelismo a 8.
 
 Ovviamente dopo la copia ho rimesso il logging:
 
@@ -137,7 +137,7 @@ E ho lanciato un backup RMAN immediatamente, perché i segmenti NOLOGGING non so
 
 La scelta degli indici su una tabella partizionata è diversa da una tabella normale. Il concetto chiave è: **indice locale vs indice globale**.
 
-Un indice **locale** è partizionato con la stessa chiave della tabella. Ogni partizione della tabella ha la sua partizione di indice corrispondente. Vantaggio: le operazioni di manutenzione su una partizione non toccano le altre.
+Un indice {{< glossary term="local-index" >}}**locale**{{< /glossary >}} è partizionato con la stessa chiave della tabella. Ogni partizione della tabella ha la sua partizione di indice corrispondente. Vantaggio: le operazioni di manutenzione su una partizione non toccano le altre.
 
 Un indice **globale** copre tutte le partizioni. È più efficiente per query che non filtrano sulla chiave di partizione, ma qualsiasi operazione DDL sulla partizione (drop, truncate, split) invalida l'indice intero.
 
@@ -243,7 +243,7 @@ Il costo è passato da 890K a 12K. Non è un miglioramento percentuale — è un
 
 ## Partition pruning: la vera magia
 
-Il meccanismo che rende tutto questo possibile si chiama **partition pruning**. Non è qualcosa che devi configurare — Oracle lo fa automaticamente quando il predicato della query corrisponde alla chiave di partizione.
+Il meccanismo che rende tutto questo possibile si chiama {{< glossary term="partition-pruning" >}}**partition pruning**{{< /glossary >}}. Non è qualcosa che devi configurare — Oracle lo fa automaticamente quando il predicato della query corrisponde alla chiave di partizione.
 
 Ma devi sapere quando funziona e quando no.
 
@@ -327,3 +327,17 @@ Non tutte le tabelle hanno bisogno di partitioning. La mia regola empirica:
 Ma il momento giusto per implementarlo è prima che diventi urgente. Quando la tabella ha già 2 miliardi di righe, la migrazione è un progetto a sé. Quando ne ha 50 milioni e sta crescendo, è un'operazione da un pomeriggio.
 
 Il mio errore più grande con il partitioning? Non averlo proposto sei mesi prima, quando i segnali c'erano già tutti.
+
+------------------------------------------------------------------------
+
+## Glossario
+
+**[Partition Pruning](/it/glossary/partition-pruning/)** — Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo quelle che contengono dati corrispondenti al predicato.
+
+**[CTAS](/it/glossary/ctas/)** — Create Table As Select: tecnica per creare una nuova tabella popolandola con una SELECT in un'unica operazione. Fondamentale per migrare tabelle di miliardi di righe al partitioning.
+
+**[Local Index](/it/glossary/local-index/)** — Indice partizionato con la stessa chiave della tabella. Ogni partizione ha la sua porzione di indice, rendendo le operazioni DDL indipendenti tra partizioni.
+
+**[NOLOGGING](/it/glossary/nologging/)** — Modalità Oracle che sopprime la generazione di redo log durante operazioni bulk, riducendo i tempi da giorni a ore. Richiede backup RMAN immediato dopo l'uso.
+
+**[Tablespace](/it/glossary/tablespace/)** — Unità logica di storage Oracle che raggruppa datafile fisici. Nel partitioning, permette di spostare partizioni vecchie su storage di archivio e gestire il ciclo di vita dei dati.
