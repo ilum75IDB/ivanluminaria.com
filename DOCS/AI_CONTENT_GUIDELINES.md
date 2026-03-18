@@ -165,7 +165,34 @@ checkpoints controlling entry to a data facility.
 
 ------------------------------------------------------------------------
 
-# 8. Final Objective
+# 8. Glossary Section
+
+Every article must end with a `## Glossary` section listing **up to 10
+key technical terms or acronyms** used in the article.
+
+Format for each entry:
+
+**Term** — Short, clear description (1–2 sentences).
+
+Selection criteria — prioritize:
+
+-   acronyms (e.g. AWR, SCD, ETL)
+-   specific technical concepts (e.g. buffer pool, execution plan)
+-   tools or technologies mentioned in the article
+
+Avoid overly generic terms (e.g. "database", "SQL") unless they are
+central to the article's topic.
+
+The glossary must appear in **all 4 language versions** of the article,
+with descriptions translated into each language.
+
+After writing the glossary, **always update** the file
+`DOCS/GLOSSARIO_TERMINI.md` — add new terms or update the "Contained in"
+column for terms that already exist.
+
+------------------------------------------------------------------------
+
+# 9. Final Objective
 
 The blog should evolve into a **technical knowledge base documenting
 real engineering practice in database systems**.

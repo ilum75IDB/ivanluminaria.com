@@ -163,7 +163,35 @@ guardie.
 
 ------------------------------------------------------------------------
 
-# 8. Obiettivo Finale
+# 8. Sezione Glossario
+
+Ogni articolo deve terminare con una sezione `## Glossario` che elenca
+**fino a 10 termini tecnici o acronimi chiave** utilizzati nell'articolo.
+
+Formato per ogni voce:
+
+**Termine** — Descrizione breve e chiara (1–2 frasi).
+
+Criteri di selezione — privilegiare:
+
+-   acronimi (es. AWR, SCD, ETL)
+-   concetti tecnici specifici (es. buffer pool, execution plan)
+-   strumenti o tecnologie menzionati nell'articolo
+
+Evitare termini troppo generici (es. "database", "SQL") a meno che non
+siano centrali per l'argomento dell'articolo.
+
+Il glossario deve essere presente in **tutte e 4 le versioni
+linguistiche** dell'articolo, con le descrizioni tradotte in ciascuna
+lingua.
+
+Dopo aver scritto il glossario, **aggiornare sempre** il file
+`DOCS/GLOSSARIO_TERMINI.md` — aggiungendo i nuovi termini o aggiornando
+la colonna "Contenuto in" per i termini già presenti.
+
+------------------------------------------------------------------------
+
+# 9. Obiettivo Finale
 
 Il blog deve evolvere in **una base di conoscenza tecnica sulla
 strategia dei database e sull'ingegneria dei sistemi dati**.
