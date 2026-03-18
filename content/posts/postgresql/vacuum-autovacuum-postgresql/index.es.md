@@ -264,3 +264,17 @@ Tres cosas para llevarse:
 
 Las bases de datos no se mantienen solas. Ni siquiera las que tienen un
 daemon que lo intenta.
+
+------------------------------------------------------------------------
+
+## Glosario
+
+**[VACUUM](/es/glossary/vacuum/)** — Comando PostgreSQL que recupera el espacio ocupado por dead tuples, haciéndolo reutilizable para nuevas inserciones sin devolverlo al sistema operativo.
+
+**[MVCC](/es/glossary/mvcc/)** — Multi-Version Concurrency Control — modelo de concurrencia de PostgreSQL que mantiene múltiples versiones de las filas para garantizar aislamiento transaccional sin locks exclusivos en las lecturas.
+
+**[Dead Tuple](/es/glossary/dead-tuple/)** — Fila obsoleta en una tabla PostgreSQL, marcada como ya no visible después de un UPDATE o DELETE pero aún no eliminada físicamente del disco.
+
+**[Autovacuum](/es/glossary/autovacuum/)** — Daemon de PostgreSQL que ejecuta automáticamente VACUUM y ANALYZE en las tablas cuando el número de dead tuples supera un umbral configurable.
+
+**[Bloat](/es/glossary/bloat/)** — Espacio muerto acumulado en una tabla o índice PostgreSQL debido a dead tuples no eliminados, que hincha el tamaño en disco y degrada el rendimiento.

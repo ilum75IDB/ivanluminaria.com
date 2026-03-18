@@ -262,3 +262,17 @@ Trei lucruri de reținut:
 
 Bazele de date nu se întrețin singure. Nici cele care au un daemon care
 încearcă.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[VACUUM](/ro/glossary/vacuum/)** — Comandă PostgreSQL care recuperează spațiul ocupat de dead tuples, făcându-l reutilizabil pentru inserări noi fără a-l returna sistemului de operare.
+
+**[MVCC](/ro/glossary/mvcc/)** — Multi-Version Concurrency Control — modelul de concurență al PostgreSQL care menține mai multe versiuni ale rândurilor pentru a garanta izolarea tranzacțională fără lock-uri exclusive pe citiri.
+
+**[Dead Tuple](/ro/glossary/dead-tuple/)** — Rând obsolet într-o tabelă PostgreSQL, marcat ca nevizibil după un UPDATE sau DELETE dar încă neșters fizic de pe disc.
+
+**[Autovacuum](/ro/glossary/autovacuum/)** — Daemon PostgreSQL care rulează automat VACUUM și ANALYZE pe tabele când numărul de dead tuples depășește un prag configurabil.
+
+**[Bloat](/ro/glossary/bloat/)** — Spațiu mort acumulat într-o tabelă sau index PostgreSQL din cauza dead tuple-urilor neșterse, care umflă dimensiunea pe disc și degradează performanțele.
