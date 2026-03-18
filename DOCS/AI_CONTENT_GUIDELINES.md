@@ -192,7 +192,80 @@ column for terms that already exist.
 
 ------------------------------------------------------------------------
 
-# 9. Final Objective
+# 9. Glossary Term Pages
+
+Each glossary term is a standalone page under `content/glossary/{slug}/`
+with 4 language versions (`index.it.md`, `index.en.md`, `index.es.md`,
+`index.ro.md`).
+
+## 9.1 Front Matter (mandatory fields)
+
+```yaml
+---
+title: "TERM_NAME"
+description: "Full expansion — one-sentence definition in the page language."
+translationKey: "glossary_slug_name"
+aka: "Full Name / Expansion of Acronym"
+articles:
+  - "/posts/section/article-slug"
+---
+```
+
+- **title**: the term as commonly referenced (acronym or technical name)
+- **description**: short definition suitable for the glossary index page
+- **translationKey**: must be identical across all 4 language files
+- **aka**: full expansion or alternative name; rendered as subtitle by the template
+- **articles**: list of paths to related blog articles (resolved by Hugo `GetPage`);
+  do **NOT** use hardcoded localized URLs — the template generates the correct
+  language-specific link automatically
+- Do **NOT** use `tags` — use `articles` instead
+
+## 9.2 Content Structure
+
+Every glossary term page must have:
+
+1. **Opening paragraph**: bold term + expansion in parentheses, followed by
+   a concise definition (2–3 sentences max)
+2. **3–4 sections** with `##` headings, each focused on one aspect:
+   - How it works / mechanism
+   - Why it matters / when it's useful
+   - Practical considerations / common pitfalls
+   - Comparison or context (if relevant)
+3. **No "Articoli correlati" section in the content** — related articles are
+   handled automatically by the template via the `articles` front matter field
+
+## 9.3 Section Heading Style
+
+Use clear, short headings in the page language. Good examples:
+
+| Italian              | English             | Spanish              | Romanian              |
+|----------------------|---------------------|----------------------|-----------------------|
+| Come funziona        | How it works        | Cómo funciona        | Cum functioneaza      |
+| A cosa serve         | What it's for       | Para qué sirve       | La ce serveste        |
+| Quando si usa        | When to use it      | Cuándo se usa        | Când se foloseste     |
+| Perché è critico     | Why it matters      | Por qué es crítico   | De ce conteaza        |
+| Cosa può andare storto | What can go wrong | Qué puede salir mal  | Ce poate merge prost  |
+
+## 9.4 Writing Style for Terms
+
+- Keep it technical but readable — same voice as the blog articles
+- Use bullet lists only for enumerations (types, phases, included items)
+- Paragraphs should be 2–4 sentences, not walls of text
+- Include concrete numbers or examples where possible (e.g. "100 outer rows",
+  "default value is 100")
+- Avoid generic filler; every sentence should add information
+
+## 9.5 Consistency Rules
+
+- All 4 language versions must have the **same structure** (same number of
+  sections, same heading intent, same level of detail)
+- The `translationKey` must match across all 4 files
+- The `articles` list must be identical across all 4 files (paths are
+  language-agnostic)
+
+------------------------------------------------------------------------
+
+# 10. Final Objective
 
 The blog should evolve into a **technical knowledge base documenting
 real engineering practice in database systems**.
