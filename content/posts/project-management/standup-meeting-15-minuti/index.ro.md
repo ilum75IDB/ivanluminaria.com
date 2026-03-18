@@ -190,3 +190,17 @@ Nu ai nevoie de framework-uri sofisticate. Nu ai nevoie de certificări. Ai nevo
 Cincisprezece minute. Trei întrebări. Parking lot pentru rest.
 
 Tot restul e zgomot.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[Daily Standup](/ro/glossary/daily-standup/)** — Ședință zilnică de maximum 15 minute în care fiecare membru al echipei răspunde la trei întrebări: ce am făcut ieri, ce voi face azi, ce mă blochează.
+
+**[Parking Lot](/ro/glossary/parking-lot/)** — Listă vizibilă de subiecte apărute în timpul unei ședințe care merită aprofundare dar sunt amânate pentru a respecta timeboxul.
+
+**[Facilitator](/ro/glossary/facilitatore/)** — Persoană responsabilă de ghidarea unei ședințe menținând focusul, respectând timeboxul și garantând că toți au voce.
+
+**[Timeboxing](/ro/glossary/timeboxing/)** — Tehnică de gestionare a timpului care atribuie un interval fix și nenegociabil unei activități, forțând încheierea în limita stabilită.
+
+**[Scrum](/ro/glossary/scrum/)** — Framework agil pentru gestionarea proiectelor care organizează munca în sprinturi cu durată fixă, cu roluri definite și ceremonii structurate.

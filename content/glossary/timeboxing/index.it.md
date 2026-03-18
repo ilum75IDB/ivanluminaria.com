@@ -5,6 +5,7 @@ translationKey: "glossary_timeboxing"
 aka: "Blocco temporale"
 articles:
   - "/posts/project-management/tecnica-si-e-yes-and"
+  - "/posts/project-management/standup-meeting-15-minuti"
 ---
 
 Il **Timeboxing** è una tecnica di gestione del tempo che consiste nell'assegnare un intervallo temporale fisso e non negoziabile a un'attività. Quando il tempo scade, l'attività si chiude — indipendentemente dal fatto che sia stata completata o meno.

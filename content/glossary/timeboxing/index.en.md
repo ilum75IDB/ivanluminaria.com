@@ -5,6 +5,7 @@ translationKey: "glossary_timeboxing"
 aka: "Time Block"
 articles:
   - "/posts/project-management/tecnica-si-e-yes-and"
+  - "/posts/project-management/standup-meeting-15-minuti"
 ---
 
 **Timeboxing** is a time management technique that assigns a fixed, non-negotiable time interval to an activity. When time runs out, the activity ends — regardless of whether it has been completed or not.

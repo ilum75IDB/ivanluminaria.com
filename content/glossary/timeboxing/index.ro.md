@@ -5,6 +5,7 @@ translationKey: "glossary_timeboxing"
 aka: "Bloc temporal"
 articles:
   - "/posts/project-management/tecnica-si-e-yes-and"
+  - "/posts/project-management/standup-meeting-15-minuti"
 ---
 
 **Timeboxing** este o tehnică de gestionare a timpului care constă în atribuirea unui interval temporal fix și nenegociabil unei activități. Când timpul expiră, activitatea se încheie — indiferent dacă a fost finalizată sau nu.
