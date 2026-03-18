@@ -1,6 +1,5 @@
 ---
 title: "Glosario"
-description: "Términos técnicos, acrónimos y conceptos clave usados en los artículos del blog Database Strategy."
-layout: "list"
+description: "Terminos tecnicos, acronimos y conceptos clave del mundo de las bases de datos, data warehouse y gestion de proyectos. Cada entrada incluye una definicion clara y enlaces a los articulos relacionados."
+layout: "glossary-list"
 ---
-Una referencia rápida a los términos técnicos y acrónimos que encontrarás en los artículos del blog. Cada entrada enlaza con los artículos donde el término se utiliza y se explica en profundidad.
