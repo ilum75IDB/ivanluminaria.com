@@ -213,3 +213,17 @@ Am vazut DBA cu ani de experienta lansand EXPLAIN ANALYZE, uitandu-se la timpul 
 Planul de executie iti spune de la ce. Fiecare nod e un organ. Randurile estimate fata de cele reale sunt valorile de laborator. Buffer-urile sunt radiografiile. Si ANALYZE-ul e antibioticul care rezolva 70% din cazuri.
 
 Dar pentru acel 30% ramas, trebuie sa citesti. Rand cu rand. Nod cu nod. Nu exista scurtatura.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[Execution Plan](/ro/glossary/execution-plan/)** — secventa de operatii (scan, join, sort) pe care baza de date o alege pentru a rezolva o interogare SQL. Se vizualizeaza cu EXPLAIN si EXPLAIN ANALYZE.
+
+**[Nested Loop](/ro/glossary/nested-loop/)** — strategie de join care pentru fiecare rand din tabelul extern cauta corespondentele in tabelul intern. Ideala pentru putine randuri, dezastruoasa pe volume mari cand este aleasa din greseala de optimizator.
+
+**[Hash Join](/ro/glossary/hash-join/)** — strategie de join care construieste o hash table din tabelul mai mic si apoi scaneaza tabelul mai mare cautand corespondente cu lookup-uri O(1). Eficienta pe volume mari fara indexuri.
+
+**[ANALYZE](/ro/glossary/analyze/)** — comanda PostgreSQL care colecteaza statistici despre distributia datelor in tabele, folosite de optimizator pentru a estima cardinalitatea si a alege planul de executie.
+
+**[default_statistics_target](/ro/glossary/default-statistics-target/)** — parametrul PostgreSQL care defineste cate esantioane sa colecteze per coloana in timpul ANALYZE. Valoarea implicita este 100; pe coloane cu distributie asimetrica este recomandat sa fie crescut la 500-1000.

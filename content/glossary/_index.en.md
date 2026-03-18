@@ -1,5 +1,6 @@
 ---
 title: "Glossary"
-description: "Technical terms, acronyms and key concepts from the world of databases, data warehousing and project management. Each entry includes a clear definition and links to related articles."
-layout: "glossary-list"
+description: "Technical terms, acronyms and key concepts used in Database Strategy blog articles."
+layout: "list"
 ---
+A quick reference to the technical terms and acronyms you'll find across the blog articles. Each entry links back to the articles where the term is used and explained in depth.

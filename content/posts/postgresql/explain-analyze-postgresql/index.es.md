@@ -213,3 +213,17 @@ He visto DBA con anos de experiencia lanzar EXPLAIN ANALYZE, mirar el tiempo tot
 El plan de ejecucion te dice de que. Cada nodo es un organo. Las filas estimadas contra las reales son los valores de laboratorio. Los buffers son las radiografias. Y el ANALYZE es el antibiotico que resuelve el 70% de los casos.
 
 Pero para ese 30% restante, hay que leer. Linea por linea. Nodo por nodo. No hay atajo.
+
+------------------------------------------------------------------------
+
+## Glosario
+
+**[Execution Plan](/es/glossary/execution-plan/)** — la secuencia de operaciones (scan, join, sort) que la base de datos elige para resolver una consulta SQL. Se visualiza con EXPLAIN y EXPLAIN ANALYZE.
+
+**[Nested Loop](/es/glossary/nested-loop/)** — estrategia de join que por cada fila de la tabla externa busca las correspondencias en la tabla interna. Ideal para pocas filas, desastrosa en grandes volúmenes cuando es elegida por error por el optimizer.
+
+**[Hash Join](/es/glossary/hash-join/)** — estrategia de join que construye una hash table a partir de la tabla más pequeña y luego escanea la más grande buscando correspondencias con lookups O(1). Eficiente en grandes volúmenes sin índices.
+
+**[ANALYZE](/es/glossary/analyze/)** — comando PostgreSQL que recopila estadísticas sobre la distribución de datos en las tablas, usadas por el optimizer para estimar la cardinalidad y elegir el plan de ejecución.
+
+**[default_statistics_target](/es/glossary/default-statistics-target/)** — parámetro PostgreSQL que define cuántas muestras recopilar por columna durante el ANALYZE. El valor por defecto es 100; en columnas con distribución asimétrica conviene subirlo a 500-1000.
