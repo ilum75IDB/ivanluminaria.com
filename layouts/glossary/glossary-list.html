@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <article class="max-w-full">
+  <article class="max-w-full pt-8">
     <header>
       {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
         {{ partial "breadcrumbs.html" . }}
@@ -33,7 +33,7 @@
       {{ end }}
 
       {{/* Letter navigation */}}
-      <nav class="glossary-letter-nav mt-8 mb-6 flex flex-wrap gap-2">
+      <nav class="glossary-letter-nav mt-8 mb-6 flex flex-wrap gap-3">
         {{ range $letters }}
           <a href="#letter-{{ . }}" class="glossary-letter-link">{{ . }}</a>
         {{ end }}
