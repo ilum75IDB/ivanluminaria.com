@@ -62,7 +62,7 @@ Il vero problema era un altro.
 ## 📌 Il colpevole: `LIKE '%valore%'` senza indice adatto
 
 La ricerca con wildcard iniziale (`%valore%`) rende inutilizzabile un
-normale indice B-Tree.
+normale indice {{< glossary term="b-tree" >}}B-Tree{{< /glossary >}}.
 
 PostgreSQL è costretto a fare una scansione sequenziale dell'intera
 tabella.
@@ -85,7 +85,7 @@ Il cliente giustamente chiede:
 > "Se creiamo un indice trigram (GIN), rischiamo di rallentare le
 > transazioni di pagamento?"
 
-Qui entra in gioco un concetto spesso ignorato: il **churn**.
+Qui entra in gioco un concetto spesso ignorato: il {{< glossary term="churn" >}}**churn**{{< /glossary >}}.
 
 ### Cos'è il churn?
 
@@ -131,11 +131,11 @@ Conclusione: popolamento near real-time, non batch notturno.
 ## 🛠️ La soluzione
 
 ``` sql
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE EXTENSION IF NOT EXISTS {{< glossary term="pg-trgm" >}}pg_trgm{{< /glossary >}};
 
 CREATE INDEX CONCURRENTLY idx_payment_report_reference_trgm
 ON reporting.payment_report
-USING gin (reference_code gin_trgm_ops);
+USING {{< glossary term="gin-index" >}}gin{{< /glossary >}} (reference_code gin_trgm_ops);
 ```
 
 Precauzioni:
@@ -185,4 +185,18 @@ Con dati alla mano, la decisione diventa tecnica, non emotiva.
 
 L'ottimizzazione non è magia. È misurazione, lettura dei piani e
 comprensione del comportamento reale del sistema.
+
+------------------------------------------------------------------------
+
+## Glossario
+
+**[GIN Index](/it/glossary/gin-index/)** — Generalized Inverted Index: tipo di indice PostgreSQL che crea un mapping inverso da ogni elemento ai record che lo contengono. Ideale per ricerche "contiene" su testo con pg_trgm.
+
+**[B-Tree](/it/glossary/b-tree/)** — Struttura dati ad albero bilanciato, indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, ma inutilizzabile per `LIKE '%valore%'`.
+
+**[pg_trgm](/it/glossary/pg-trgm/)** — Estensione PostgreSQL che scompone il testo in trigrammi (sequenze di 3 caratteri), abilitando l'uso di indici GIN per accelerare ricerche con wildcard.
+
+**[Churn](/it/glossary/churn/)** — Misura di quanto una tabella cambia dopo l'inserimento. Basso churn (append-only) è il miglior scenario per introdurre un indice GIN senza degradare le scritture.
+
+**[Execution Plan](/it/glossary/execution-plan/)** — Sequenza di operazioni scelta dal database per risolvere una query. Leggere il piano è il primo passo per identificare se il problema è CPU, I/O o un access path sbagliato.
 
