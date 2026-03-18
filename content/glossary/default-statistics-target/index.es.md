@@ -1,16 +1,34 @@
 ---
 title: "default_statistics_target"
-description: "El parámetro PostgreSQL que controla cuántas muestras recopila el optimizer para estimar la distribución de datos en una columna."
+description: "El parametro PostgreSQL que controla cuantas muestras recopila ANALYZE para estimar la distribucion de datos en cada columna."
 translationKey: "glossary_default_statistics_target"
-tags: ["glosario"]
+aka: "default_statistics_target (PostgreSQL)"
+articles:
+  - "/posts/postgresql/explain-analyze-postgresql"
 ---
 
-`default_statistics_target` es el parámetro PostgreSQL que define el número de muestras recopiladas por el comando ANALYZE para construir las estadísticas de cada columna. El valor por defecto es 100, lo que significa que PostgreSQL muestrea 100 valores para construir histogramas y listas de valores frecuentes.
+**default_statistics_target** es el parametro PostgreSQL que define el numero de muestras recopiladas por el comando `ANALYZE` para construir las estadisticas de cada columna. El valor por defecto es 100.
 
-Para tablas pequeñas o con distribución uniforme, 100 muestras son suficientes. Para tablas grandes con distribución asimétrica (skewed) — donde pocos valores dominan la mayoría de las filas — 100 muestras pueden dar una representación distorsionada, llevando al optimizer a estimaciones de cardinalidad erróneas.
+## Como funciona
 
-Se puede aumentar el target a nivel de columna individual con `ALTER TABLE ... ALTER COLUMN ... SET STATISTICS N`. Valores entre 500 y 1000 mejoran sensiblemente la calidad de las estimaciones en columnas con distribución no uniforme. Por encima de 1000 el beneficio es marginal y el ANALYZE mismo se vuelve más lento. Es un ajuste fino que marca la diferencia en consultas con joins complejos sobre tablas con millones de filas.
+PostgreSQL muestrea un cierto numero de valores por cada columna y los usa para construir dos estructuras:
 
-## Artículos relacionados
+- **Most common values (MCV)**: la lista de los valores mas frecuentes, con sus respectivas frecuencias
+- **Histograma**: la distribucion de los valores restantes, dividida en buckets de igual poblacion
 
-- [EXPLAIN ANALYZE no basta: cómo leer realmente un plan de ejecución en PostgreSQL](/es/posts/postgresql/explain-analyze-postgresql/)
+El parametro `default_statistics_target` determina cuantos elementos tendran estas estructuras. Con el valor 100 (por defecto), el histograma tendra 100 buckets y la lista MCV contendra hasta 100 valores.
+
+## Cuando aumentarlo
+
+Para tablas pequenas o con distribucion uniforme, 100 muestras son suficientes. Para tablas grandes con distribucion asimetrica (skewed) — donde pocos valores dominan la mayoria de las filas — 100 muestras pueden dar una representacion distorsionada, llevando al optimizer a estimaciones de cardinalidad erroneas.
+
+Se puede aumentar el target a nivel de columna individual:
+
+    ALTER TABLE orders ALTER COLUMN status SET STATISTICS 500;
+    ANALYZE orders;
+
+Valores entre 500 y 1000 mejoran sensiblemente la calidad de las estimaciones en columnas con distribucion no uniforme.
+
+## Limites practicos
+
+Por encima de 1000 el beneficio es marginal y el `ANALYZE` mismo se vuelve mas lento, porque necesita muestrear mas filas y construir estructuras mas grandes. Es un ajuste fino: hay que aplicarlo solo a las columnas que efectivamente causan estimaciones erroneas, no a todas las columnas de todas las tablas.

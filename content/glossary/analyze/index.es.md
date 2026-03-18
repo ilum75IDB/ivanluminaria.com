@@ -1,16 +1,34 @@
 ---
 title: "ANALYZE"
-description: "El comando PostgreSQL que actualiza las estadísticas de las tablas utilizadas por el optimizer para elegir el plan de ejecución."
+description: "El comando PostgreSQL que actualiza las estadisticas de las tablas utilizadas por el optimizer para elegir el plan de ejecucion."
 translationKey: "glossary_analyze"
-tags: ["glosario"]
+aka: "ANALYZE (PostgreSQL)"
+articles:
+  - "/posts/postgresql/explain-analyze-postgresql"
 ---
 
-`ANALYZE` es el comando PostgreSQL que recopila estadísticas sobre la distribución de los datos en las tablas y las almacena en el catálogo `pg_statistic` (legible a través de la vista `pg_stats`). El optimizer usa estas estadísticas para estimar la cardinalidad — cuántas filas devolverá cada operación — y elegir el plan de ejecución más eficiente.
+**ANALYZE** es el comando PostgreSQL que recopila estadisticas sobre la distribucion de los datos en las tablas y las almacena en el catalogo `pg_statistic` (legible a traves de la vista `pg_stats`). El optimizer usa estas estadisticas para estimar la cardinalidad — cuantas filas devolvera cada operacion — y elegir el plan de ejecucion mas eficiente.
 
-Las estadísticas recopiladas incluyen: valores más frecuentes (most common values), histogramas de distribución, número de valores distintos y porcentaje de NULL por cada columna. Sin estadísticas actualizadas, el optimizer se ve obligado a adivinar, y las estimaciones erróneas llevan a planes de ejecución desastrosos — como elegir un nested loop sobre millones de filas pensando que son cientos.
+## Que recopila
 
-PostgreSQL ejecuta ANALYZE automáticamente a través del autovacuum, pero el umbral por defecto (50 filas + 10% de las filas vivas) puede ser demasiado alto para tablas que crecen rápidamente. Después de importaciones masivas o cambios significativos en la distribución de los datos, un ANALYZE manual es la primera acción diagnóstica a realizar.
+Las estadisticas recopiladas por ANALYZE incluyen:
 
-## Artículos relacionados
+- **Most common values**: los valores mas frecuentes por cada columna y su porcentaje
+- **Histogramas de distribucion**: como se distribuyen los valores restantes
+- **Numero de valores distintos**: cuantos valores unicos tiene cada columna
+- **Porcentaje de NULL**: cuantas filas tienen valor NULL por cada columna
 
-- [EXPLAIN ANALYZE no basta: cómo leer realmente un plan de ejecución en PostgreSQL](/es/posts/postgresql/explain-analyze-postgresql/)
+La calidad de estas estadisticas depende del numero de muestras recopiladas, controlado por el parametro `default_statistics_target`.
+
+## Por que es critico
+
+Sin estadisticas actualizadas, el optimizer se ve obligado a adivinar. Las estimaciones erroneas llevan a planes de ejecucion desastrosos — como elegir un nested loop sobre millones de filas pensando que son cientos, o ignorar un indice perfectamente adecuado.
+
+## Cuando ejecutarlo
+
+PostgreSQL ejecuta ANALYZE automaticamente a traves del autovacuum, pero el umbral por defecto (50 filas + 10% de las filas vivas) puede ser demasiado alto para tablas que crecen rapidamente. Situaciones donde un ANALYZE manual es necesario:
+
+- Despues de importaciones masivas o bulk load
+- Despues de cambios significativos en la distribucion de los datos
+- Cuando `EXPLAIN ANALYZE` muestra estimaciones de cardinalidad muy diferentes de las filas reales
+- Despues de modificar el `default_statistics_target` de una columna
