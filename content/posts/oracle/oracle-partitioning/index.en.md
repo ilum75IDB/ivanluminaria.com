@@ -99,7 +99,7 @@ The choice fell on **monthly interval partitioning** on the `data_movimento` col
 
 You cannot do `ALTER TABLE ... PARTITION BY` on an existing table with 2 billion rows. Not in Oracle 19c, at least not without Online Table Redefinition. And that option, on a table this size, has its own risks.
 
-I chose the CTAS approach — Create Table As Select — with parallelism. Create the new partitioned table, copy the data, rename.
+I chose the {{< glossary term="ctas" >}}CTAS{{< /glossary >}} approach — Create Table As Select — with parallelism. Create the new partitioned table, copy the data, rename.
 
 ### Step 1: create the partitioned table
 
@@ -113,7 +113,7 @@ INTERVAL (NUMTOYMINTERVAL(1, 'MONTH'))
     PARTITION p_2016_02     VALUES LESS THAN (DATE '2016-03-01')
     -- Oracle will automatically create subsequent partitions
 )
-TABLESPACE ts_billing_data
+{{< glossary term="tablespace" >}}TABLESPACE{{< /glossary >}} ts_billing_data
 NOLOGGING
 PARALLEL 8
 AS
@@ -123,7 +123,7 @@ SELECT /*+ PARALLEL(t, 8) */
 FROM   txn_movimenti t;
 ```
 
-`NOLOGGING` is essential: without it the copy generates redo log for every block written. On 380 GB that would mean filling the redo area and putting the system into archivelog mode for days. With `NOLOGGING` the copy took 3 and a half hours with parallelism at 8.
+{{< glossary term="nologging" >}}`NOLOGGING`{{< /glossary >}} is essential: without it the copy generates redo log for every block written. On 380 GB that would mean filling the redo area and putting the system into archivelog mode for days. With `NOLOGGING` the copy took 3 and a half hours with parallelism at 8.
 
 After the copy I restored logging:
 
@@ -137,7 +137,7 @@ And ran an RMAN backup immediately, because NOLOGGING segments are not recoverab
 
 Index design on a partitioned table is different from a regular table. The key concept is: **local index vs global index**.
 
-A **local** index is partitioned with the same key as the table. Each table partition has its corresponding index partition. Advantage: maintenance operations on one partition do not touch the others.
+A {{< glossary term="local-index" >}}**local**{{< /glossary >}} index is partitioned with the same key as the table. Each table partition has its corresponding index partition. Advantage: maintenance operations on one partition do not touch the others.
 
 A **global** index spans all partitions. It is more efficient for queries that do not filter on the partition key, but any DDL operation on the partition (drop, truncate, split) invalidates the entire index.
 
@@ -243,7 +243,7 @@ The cost went from 890K to 12K. That is not a percentage improvement — it is a
 
 ## Partition pruning: the real magic
 
-The mechanism that makes all this possible is called **partition pruning**. It is not something you configure — Oracle does it automatically when the query predicate matches the partition key.
+The mechanism that makes all this possible is called {{< glossary term="partition-pruning" >}}**partition pruning**{{< /glossary >}}. It is not something you configure — Oracle does it automatically when the query predicate matches the partition key.
 
 But you need to know when it works and when it does not.
 
@@ -327,3 +327,17 @@ Not every table needs partitioning. My rule of thumb:
 But the right time to implement it is before it becomes urgent. When the table already has 2 billion rows, the migration is a project in itself. When it has 50 million and is growing, it is an afternoon's work.
 
 My biggest mistake with partitioning? Not proposing it six months earlier, when all the signals were already there.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**[Partition Pruning](/en/glossary/partition-pruning/)** — Automatic Oracle mechanism that excludes irrelevant partitions during query execution, reading only those containing data matching the predicate.
+
+**[CTAS](/en/glossary/ctas/)** — Create Table As Select: technique for creating a new table populated with a SELECT in a single operation. Essential for migrating billion-row tables to partitioning.
+
+**[Local Index](/en/glossary/local-index/)** — Index partitioned with the same key as the table. Each partition has its own index portion, making DDL operations independent across partitions.
+
+**[NOLOGGING](/en/glossary/nologging/)** — Oracle mode that suppresses redo log generation during bulk operations, reducing times from days to hours. Requires immediate RMAN backup after use.
+
+**[Tablespace](/en/glossary/tablespace/)** — Logical Oracle storage unit grouping physical datafiles. In partitioning, enables moving old partitions to archive storage and managing data lifecycle.
