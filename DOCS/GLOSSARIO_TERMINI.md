@@ -40,9 +40,12 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Data Governance | Insieme di politiche, processi e standard che garantiscono la qualità, la sicurezza e la conformità dei dati in un'organizzazione | ai-manager-project-management |
 | Data Guard | Tecnologia Oracle per la replica in tempo reale di un database su uno o più server standby, garantendo alta disponibilità e disaster recovery | oracle-data-guard |
 | DEFAULT PRIVILEGES | Meccanismo PostgreSQL che definisce automaticamente i privilegi da assegnare a tutti gli oggetti futuri creati in uno schema | postgresql_roles_and_users |
+| Direttiva 2011/7/UE | Direttiva europea sui ritardi di pagamento che fissa il termine standard a 30 giorni, il massimo a 60, con interessi di mora automatici | pagamenti-60-90-120-giorni |
 | Drill-down | Navigazione nei report dal livello aggregato al livello di dettaglio. Richiede una gerarchia completa e bilanciata per funzionare correttamente | ragged-hierarchies |
 | Data Warehouse | Sistema centralizzato di raccolta e storicizzazione dati provenienti da fonti diverse, progettato per l'analisi e il supporto alle decisioni aziendali | 4-milioni-nessun-software |
+| DSO | Days Sales Outstanding — numero medio di giorni per incassare i crediti commerciali. In Italia la media è 80 giorni, quasi tre volte la media europea | pagamenti-60-90-120-giorni |
 | ETL | Extract, Transform, Load — processo di estrazione, trasformazione e caricamento dati dai sistemi sorgente al data warehouse | scd-tipo-2, ragged-hierarchies, 4-milioni-nessun-software |
+| Float Finanziario | Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori | pagamenti-60-90-120-giorni |
 | FLUSH PRIVILEGES | Comando MySQL/MariaDB che ricarica le tabelle dei grant in memoria, rendendo effettive le modifiche manuali ai privilegi | mysql-users-and-hosts |
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
@@ -57,6 +60,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Hot Desk | Modello di organizzazione degli spazi ufficio in cui le postazioni non sono assegnate: chi viene in ufficio occupa una scrivania libera | smartworking-consulenza-it |
 | Huge Pages | Pagine di memoria da 2 MB che riducono drasticamente la pressione sulla MMU e sul TLB, migliorando le performance di Oracle su Linux | oracle-linux-kernel |
 | Issue Tracker | Sistema di tracciamento integrato per bug, richieste evolutive e task di progetto, su GitHub integrato direttamente nel repository | ai-github-project-management |
+| Interessi di Mora | Interessi automatici previsti dalla legge (tasso BCE + 8%) che maturano su ogni fattura pagata in ritardo | pagamenti-60-90-120-giorni |
 | INTO OUTFILE | Clausola SQL di MySQL per esportare il risultato di una query direttamente in un file sul filesystem del server, soggetta alle restrizioni di secure-file-priv | mysql-multi-istanza-secure-file-priv |
 | I/O Scheduler | Componente del kernel Linux che decide l'ordine in cui le richieste di I/O vengono inviate al disco, con impatto diretto sulle performance del database | oracle-linux-kernel |
 | IST | Incremental State Transfer — meccanismo di Galera Cluster per trasferire solo le transazioni mancanti a un nodo che rientra nel cluster | galera-cluster-3-nodi |
@@ -74,6 +78,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Pedalata Assistita | Sistema di propulsione elettrica che amplifica la forza della pedalata, eliminando il problema delle salite e del sudore nei tragitti urbani | bici-vs-auto-roma |
 | Pendolarismo | Spostamento quotidiano casa-lavoro e ritorno, che nelle grandi città può assorbire 2-4 ore al giorno e centinaia di euro al mese | smartworking-consulenza-it, bici-vs-auto-roma |
 | Presenteismo | Cultura organizzativa che equipara la presenza fisica in ufficio alla produttività, indipendentemente dai risultati prodotti | smartworking-consulenza-it |
+| Partita IVA | Regime fiscale italiano per lavoratori autonomi e liberi professionisti, che nella consulenza IT implica l'assunzione diretta del rischio di credito | pagamenti-60-90-120-giorni |
 | Partition Pruning | Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo quelle corrispondenti al predicato | oracle-partitioning |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
@@ -123,5 +128,5 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 ---
 
 **Ultimo aggiornamento**: 2026-03-18
-**Totale termini**: 107
-**Totale articoli con glossario**: 22
+**Totale termini**: 112
+**Totale articoli con glossario**: 23

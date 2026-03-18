@@ -193,3 +193,17 @@ Llevo treinta años de consultoría a mis espaldas. He trabajado con clientes qu
 Los mejores clientes que he tenido pagaban puntualmente. No por generosidad — por organización. Porque una empresa que sabe gestionar sus pagos es una empresa que sabe gestionar sus proyectos. Y viceversa.
 
 Quien paga mal, casi siempre, gestiona mal también todo lo demás.
+
+------------------------------------------------------------------------
+
+## Glosario
+
+**[DSO](/es/glossary/dso/)** — Days Sales Outstanding — número medio de días que una empresa tarda en cobrar sus créditos. En Italia la media es de 80 días, casi tres veces la media europea.
+
+**[Float Financiero](/es/glossary/float-finanziario/)** — Liquidez a coste cero generada por la diferencia entre los tiempos de cobro de los clientes y los tiempos de pago a los proveedores.
+
+**[Intereses de Demora](/es/glossary/interessi-di-mora/)** — Intereses automáticos previstos por ley (tipo BCE + 8%) que se devengan sobre cada factura pagada con retraso, sin necesidad de requerimiento formal.
+
+**[Partita IVA](/es/glossary/partita-iva/)** — Régimen fiscal italiano para trabajadores autónomos, que en la consultoría IT implica asumir directamente el riesgo de crédito hacia los clientes.
+
+**[Directiva 2011/7/UE](/es/glossary/direttiva-2011-7-ue/)** — Directiva europea sobre morosidad que fija el plazo estándar en 30 días, el máximo en 60, y prevé intereses de demora automáticos.
