@@ -61,7 +61,7 @@ Problema reală era alta.
 ## 📌 Vinovatul: `LIKE '%valoare%'` fără un index adecvat
 
 O căutare cu wildcard inițial (`%valoare%`) face inutilizabil un index
-B-Tree obișnuit.
+{{< glossary term="b-tree" >}}B-Tree{{< /glossary >}} obișnuit.
 
 PostgreSQL este forțat să execute un scan secvențial al întregii tabele.
 
@@ -83,7 +83,7 @@ Clientul a întrebat pe bună dreptate:
 > "Dacă creăm un index trigram (GIN), riscăm să încetinim tranzacțiile
 > de plată?"
 
-Aici intervine un concept adesea ignorat: **churn**.
+Aici intervine un concept adesea ignorat: {{< glossary term="churn" >}}**churn**{{< /glossary >}}.
 
 ### Ce este churn-ul?
 
@@ -130,11 +130,11 @@ Concluzie: populare near real-time, nu batch nocturn.
 ## 🛠️ Soluția
 
 ``` sql
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE EXTENSION IF NOT EXISTS {{< glossary term="pg-trgm" >}}pg_trgm{{< /glossary >}};
 
 CREATE INDEX CONCURRENTLY idx_payment_report_reference_trgm
 ON reporting.payment_report
-USING gin (reference_code gin_trgm_ops);
+USING {{< glossary term="gin-index" >}}gin{{< /glossary >}} (reference_code gin_trgm_ops);
 ```
 
 Precauții:
@@ -185,3 +185,17 @@ Cu date concrete, decizia devine tehnică, nu emoțională.
 Optimizarea nu este magie.\
 Este măsurare, analiză de planuri și înțelegerea comportamentului real
 al sistemului.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[GIN Index](/ro/glossary/gin-index/)** — Generalized Inverted Index: tip de index PostgreSQL care creează un mapping inversat de la fiecare element la înregistrările care îl conțin. Ideal pentru căutări "conține" pe text cu pg_trgm.
+
+**[B-Tree](/ro/glossary/b-tree/)** — Structură de date de arbore echilibrat, indexul implicit în bazele de date relaționale. Eficient pentru căutări de egalitate și interval, dar inutilizabil pentru `LIKE '%valoare%'`.
+
+**[pg_trgm](/ro/glossary/pg-trgm/)** — Extensie PostgreSQL care descompune textul în trigrame (secvențe de 3 caractere), activând indexuri GIN pentru accelerarea căutărilor cu wildcard.
+
+**[Churn](/ro/glossary/churn/)** — Măsură a cât de mult se modifică o tabelă după inserare. Churn scăzut (append-only) este cel mai bun scenariu pentru introducerea unui index GIN fără degradarea scrierilor.
+
+**[Execution Plan](/ro/glossary/execution-plan/)** — Secvență de operațiuni aleasă de baza de date pentru rezolvarea unei interogări. Citirea planului este primul pas pentru a identifica dacă problema este CPU, I/O sau un access path greșit.
