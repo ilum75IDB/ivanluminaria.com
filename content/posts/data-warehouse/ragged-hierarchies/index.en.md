@@ -372,3 +372,17 @@ A report should do GROUP BY and JOIN. If it also has to decide how to handle mis
 Self-parenting is not elegant. It is not sophisticated. It is a solution that a freshly graduated computer scientist might find ugly. But it works, it is maintainable, and it transforms a problem that infests every single report into a problem that is solved once, in one place, and never comes back.
 
 Sometimes the best solution is the simplest one. This is one of those times.
+
+---
+
+## Glossary
+
+**COALESCE** — A SQL function that returns the first non-NULL value from a list of expressions. Often used as a workaround for incomplete hierarchies in reports, but it doesn't solve the structural problem in the dimensional model.
+
+**Drill-down** — Navigation in reports from an aggregated level to a detail level (e.g. from Top Group to Group to Client). Requires a complete and balanced hierarchy to work correctly without NULLs or missing rows.
+
+**OLAP** — Online Analytical Processing — processing oriented to multidimensional data analysis, typical of data warehouses and analysis cubes. Contrasted with OLTP (Online Transaction Processing) used in transactional systems.
+
+**Ragged hierarchy** — A hierarchy where not all branches reach the same depth: some intermediate levels are missing. Common in customer master data, products and organizational structures where not all entities share the same hierarchical structure.
+
+**Self-parenting** — A technique for balancing ragged hierarchies: an entity without a parent becomes its own parent. The missing level is filled with data from the level below, eliminating NULLs from the dimension and ensuring correct drill-down behavior.
