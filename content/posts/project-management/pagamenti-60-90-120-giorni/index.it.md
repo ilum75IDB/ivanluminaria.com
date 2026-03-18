@@ -193,3 +193,17 @@ Ho trent'anni di consulenza alle spalle. Ho lavorato con clienti che mi hanno pa
 I clienti migliori che ho avuto pagavano puntualmente. Non per generosità — per organizzazione. Perché un'azienda che sa gestire i propri pagamenti è un'azienda che sa gestire i propri progetti. E viceversa.
 
 Chi paga male, quasi sempre, gestisce male anche tutto il resto.
+
+------------------------------------------------------------------------
+
+## Glossario
+
+**[DSO](/it/glossary/dso/)** — Days Sales Outstanding — numero medio di giorni che un'azienda impiega per incassare i propri crediti. In Italia la media è di 80 giorni, quasi tre volte la media europea.
+
+**[Float Finanziario](/it/glossary/float-finanziario/)** — Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori.
+
+**[Interessi di Mora](/it/glossary/interessi-di-mora/)** — Interessi automatici previsti dalla legge (tasso BCE + 8%) che maturano su ogni fattura pagata in ritardo, senza bisogno di messa in mora.
+
+**[Partita IVA](/it/glossary/partita-iva/)** — Regime fiscale italiano per lavoratori autonomi e liberi professionisti, che nella consulenza IT implica l'assunzione diretta del rischio di credito.
+
+**[Direttiva 2011/7/UE](/it/glossary/direttiva-2011-7-ue/)** — Direttiva europea sui ritardi di pagamento che fissa il termine standard a 30 giorni, il massimo a 60, e prevede interessi di mora automatici.

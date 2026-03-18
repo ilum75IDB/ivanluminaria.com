@@ -193,3 +193,17 @@ Am treizeci de ani de consultanță în spate. Am lucrat cu clienți care m-au p
 Cei mai buni clienți pe care i-am avut plăteau la timp. Nu din generozitate — din organizare. Pentru că o companie care știe să-și gestioneze plățile este o companie care știe să-și gestioneze proiectele. Și invers.
 
 Cine plătește prost, aproape întotdeauna, gestionează prost și tot restul.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[DSO](/ro/glossary/dso/)** — Days Sales Outstanding — numărul mediu de zile pe care o companie le necesită pentru a-și încasa creanțele. În Italia media este de 80 de zile, aproape de trei ori media europeană.
+
+**[Float Financiar](/ro/glossary/float-finanziario/)** — Lichiditate la cost zero generată de diferența dintre timpii de încasare de la clienți și timpii de plată către furnizori.
+
+**[Dobânzi de Întârziere](/ro/glossary/interessi-di-mora/)** — Dobânzi automate prevăzute de lege (rata BCE + 8%) care se acumulează pe fiecare factură plătită cu întârziere, fără necesitatea unei somații formale.
+
+**[Partita IVA](/ro/glossary/partita-iva/)** — Regim fiscal italian pentru lucrătorii independenți, care în consultanța IT implică asumarea directă a riscului de credit față de clienți.
+
+**[Directiva 2011/7/UE](/ro/glossary/direttiva-2011-7-ue/)** — Directivă europeană privind întârzierile la plată care fixează termenul standard la 30 de zile, maximul la 60, și prevede dobânzi de întârziere automate.
