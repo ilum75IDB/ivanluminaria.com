@@ -53,6 +53,18 @@ L'immagine deve sembrare una singola illustrazione coerente, non un collage.
 - abbigliamento classico anni '50 reinterpretato in chiave corporate
 - pose sicure, naturali, leggibili
 
+**PERSONAGGIO PRINCIPALE — se presente un unico personaggio o un personaggio principale nella scena, deve avere queste caratteristiche (riconoscibile e ricorrente):**
+
+- uomo sui 45-50 anni, corporatura media
+- capelli mossi, leggermente spettinati e voluminosi sulla parte alta, fondo scuro con evidenti sfumature brizzolate (sale e pepe)
+- vistosi baffi a manubrio (handlebar mustache), scuri, ben curvati verso l'alto alle punte — questo è il tratto più riconoscibile e distintivo
+- occhiali rettangolari con montatura sottile metallica
+- viso rasato, senza barba né pizzetto (al massimo un accenno di ricrescita di un giorno)
+- espressione intelligente, sicura, con un accenno di ironia
+- abbigliamento: giacca elegante scura, stile professionale anni '50
+
+Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme semplificate, silhouette espressiva, baffi a manubrio come elemento grafico forte e immediatamente leggibile. Non fotorealistico — deve sembrare un personaggio da poster aziendale vintage.
+
 **Importante:**
 
 - mantenere sempre coerenza totale con lo stile retro UPA/mid-century
