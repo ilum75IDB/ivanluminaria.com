@@ -55,13 +55,14 @@ L'immagine deve sembrare una singola illustrazione coerente, non un collage.
 
 **PERSONAGGIO PRINCIPALE — se presente un unico personaggio o un personaggio principale nella scena, deve avere queste caratteristiche (riconoscibile e ricorrente):**
 
-- uomo sui 45-50 anni, corporatura media
+- uomo sui 30-40 anni, corporatura media
 - capelli mossi, leggermente spettinati e voluminosi sulla parte alta, fondo scuro con evidenti sfumature brizzolate (sale e pepe)
 - vistosi baffi a manubrio (handlebar mustache), scuri, ben curvati verso l'alto alle punte — questo è il tratto più riconoscibile e distintivo
-- viso rasato, senza barba né pizzetto (al massimo un accenno di ricrescita di un giorno)
+- solo baffi: viso rasato, senza barba, senza pizzetto, senza basettoni lunghi (al massimo un accenno di ricrescita di un giorno)
 - senza occhiali
 - espressione intelligente, sicura, con un accenno di ironia
 - abbigliamento: giacca elegante scura, stile professionale anni '50
+- NON deve apparire stanco, triste o imbambolato a meno che la SCENA DA RAPPRESENTARE non lo richieda esplicitamente. L'espressione di default è sveglia, attenta, leggermente ironica
 
 Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme semplificate, silhouette espressiva, baffi a manubrio come elemento grafico forte e immediatamente leggibile. Non fotorealistico — deve sembrare un personaggio da poster aziendale vintage.
 
