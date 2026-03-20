@@ -5,6 +5,7 @@ translationKey: "glossary_pitr"
 aka: "Point-in-Time Recovery"
 articles:
   - "/posts/mysql/binary-log-mysql"
+  - "/posts/mysql/mysqldump-mysqlpump-mydumper"
 ---
 
 **PITR** (Point-in-Time Recovery) è una tecnica di ripristino che permette di riportare un database a un qualsiasi momento nel tempo, non solo al momento del backup. Si basa sulla combinazione di un backup completo e dei log delle transazioni (binary log in MySQL, WAL in PostgreSQL, redo log in Oracle).
