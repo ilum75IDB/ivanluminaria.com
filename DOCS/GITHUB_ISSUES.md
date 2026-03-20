@@ -23,7 +23,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 43 | https://github.com/ilum75IDB/ivanluminaria.com/issues/43 | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | aperta |
 | 44 | https://github.com/ilum75IDB/ivanluminaria.com/issues/44 | InnoDB buffer pool: il parametro che cambia tutto e che nessuno dimensiona | aperta |
 | 45 | https://github.com/ilum75IDB/ivanluminaria.com/issues/45 | Replica MySQL: quando lo slave resta indietro e nessuno se ne accorge | aperta |
 | 46 | https://github.com/ilum75IDB/ivanluminaria.com/issues/46 | MySQL e i lock che non ti aspetti: gap lock, next-key lock e deadlock | aperta |
@@ -86,3 +85,4 @@ tool `WebFetch`.
 | 62 | https://github.com/ilum75IDB/ivanluminaria.com/issues/62 | Glossario: shortcode Hugo per tooltip inline dei termini | 2026-03-18 |
 | 63 | https://github.com/ilum75IDB/ivanluminaria.com/issues/63 | Glossario: applicare shortcode tooltip nei testi degli articoli | 2026-03-18 |
 | 41 | https://github.com/ilum75IDB/ivanluminaria.com/issues/41 | Partitioning nel DWH: quando 3 anni di dati pesano troppo | 2026-03-20 |
+| 43 | https://github.com/ilum75IDB/ivanluminaria.com/issues/43 | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | 2026-03-20 |
