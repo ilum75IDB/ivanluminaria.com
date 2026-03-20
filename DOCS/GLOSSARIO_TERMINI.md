@@ -59,6 +59,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | GIN Index | Generalized Inverted Index — tipo di indice PostgreSQL ottimizzato per ricerche full-text, pattern matching con trigrammi e query su array e JSONB | like-optimization-postgresql |
 | Grain | Livello di dettaglio (granularità) di una fact table nel data warehouse. Determina cosa rappresenta ciascuna riga e quali domande il modello dimensionale può soddisfare | fatto-grana-sbagliata |
 | Full Table Scan | Operazione di lettura in cui il database legge tutti i blocchi di una tabella senza utilizzare indici. In Oracle si manifesta come wait event `db file scattered read` | oracle-awr-ash, partitioning-dwh |
+| GTID | Global Transaction Identifier — identificativo univoco assegnato a ogni transazione in MySQL, che semplifica la gestione della replica e il tracking delle transazioni tra master e slave | mysqldump-mysqlpump-mydumper |
 | Hash Join | Strategia di join che costruisce una hash table dalla tabella più piccola e poi scansiona la più grande cercando corrispondenze con lookup O(1). Efficiente su grandi volumi senza indici | explain-analyze-postgresql |
 | Hot Desk | Modello di organizzazione degli spazi ufficio in cui le postazioni non sono assegnate: chi viene in ufficio occupa una scrivania libera | smartworking-consulenza-it |
 | Huge Pages | Pagine di memoria da 2 MB che riducono drasticamente la pressione sulla MMU e sul TLB, migliorando le performance di Oracle su Linux | oracle-linux-kernel |
@@ -73,7 +74,10 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
 | Mobilità Sostenibile | Approccio ai trasporti urbani che privilegia mezzi a basso impatto ambientale, riducendo emissioni, traffico e costi | bici-vs-auto-roma |
 | MVCC | Multi-Version Concurrency Control — modello di concorrenza di PostgreSQL che mantiene più versioni delle righe per garantire isolamento transazionale | vacuum-autovacuum-postgresql |
+| mydumper | Tool open source di backup logico per MySQL/MariaDB con parallelismo reale a livello di chunk. Divide le tabelle grandi in pezzi e li esporta con thread multipli, con restore parallelo tramite myloader | mysqldump-mysqlpump-mydumper |
 | mysqlbinlog | Utility da riga di comando di MySQL per leggere, filtrare e riapplicare il contenuto dei file binary log. Indispensabile per il point-in-time recovery e il debug della replica | binary-log-mysql |
+| mysqldump | Utility di backup logico inclusa in ogni installazione MySQL. Produce un file SQL sequenziale con tutte le istruzioni per ricreare schema e dati. Single-threaded, affidabile ma lenta su database grandi | mysqldump-mysqlpump-mydumper |
+| mysqlpump | Evoluzione di mysqldump introdotta in MySQL 5.7, con supporto per il parallelismo a livello di tabella e compressione nativa. Deprecato da Oracle in MySQL 8.0.34 per problemi di consistenza | mysqldump-mysqlpump-mydumper |
 | Nested Loop | Strategia di join che per ogni riga della tabella esterna cerca le corrispondenze nella tabella interna. Ideale per poche righe, disastrosa su grandi volumi | explain-analyze-postgresql |
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
 | Pull Request | Meccanismo di proposta e revisione delle modifiche al codice su GitHub, con code review e approvazione prima del merge nel branch principale | ai-github-project-management |
@@ -89,7 +93,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | NOLOGGING | Modalità Oracle che sopprime la generazione di redo log durante operazioni bulk, velocizzando le operazioni ma richiedendo un backup RMAN immediato | oracle-partitioning |
 | Outsourcing | Esternalizzazione di attività o progetti IT a fornitori esterni, con rischi significativi di perdita di know-how e vendor lock-in se non gestita correttamente | 4-milioni-nessun-software |
 | OLAP | Online Analytical Processing — elaborazione orientata all'analisi multidimensionale dei dati, tipica dei data warehouse. Contrapposta all'OLTP dei sistemi transazionali | ragged-hierarchies |
-| PITR | Point-in-Time Recovery — tecnica di ripristino che combina backup e binary log per riportare un database a un qualsiasi momento nel tempo | binary-log-mysql |
+| PITR | Point-in-Time Recovery — tecnica di ripristino che combina backup e binary log per riportare un database a un qualsiasi momento nel tempo | binary-log-mysql, mysqldump-mysqlpump-mydumper |
 | Quorum | Meccanismo di consenso basato sulla maggioranza dei nodi, usato nei cluster database per prevenire lo split-brain e garantire la consistenza dei dati | galera-cluster-3-nodi |
 | Ragged hierarchy | Gerarchia in cui non tutti i rami raggiungono la stessa profondità: alcuni livelli intermedi sono assenti. Tipica nelle anagrafiche clienti e strutture organizzative | ragged-hierarchies |
 | Range Partitioning | Strategia di partizionamento che divide una tabella in segmenti basati su intervalli di valori di una colonna (tipicamente una data). Ogni partizione contiene le righe il cui valore cade nell'intervallo definito | partitioning-dwh, oracle-partitioning |
@@ -132,5 +136,5 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 ---
 
 **Ultimo aggiornamento**: 2026-03-20
-**Totale termini**: 116
-**Totale articoli con glossario**: 25
+**Totale termini**: 120
+**Totale articoli con glossario**: 26
