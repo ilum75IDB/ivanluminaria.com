@@ -5,6 +5,7 @@ translationKey: "glossary_postgresql_analyze"
 aka: "ANALYZE (PostgreSQL)"
 articles:
   - "/posts/postgresql/explain-analyze-postgresql"
+  - "/posts/postgresql/pg-stat-statements"
 ---
 
 **ANALYZE** este comanda PostgreSQL care colecteaza statistici despre distributia datelor in tabele si le stocheaza in catalogul `pg_statistic` (citibil prin vizualizarea `pg_stats`). Optimizatorul foloseste aceste statistici pentru a estima cardinalitatea — cate randuri va returna fiecare operatie — si a alege cel mai eficient plan de executie.

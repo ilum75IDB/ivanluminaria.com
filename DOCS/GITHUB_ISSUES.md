@@ -31,7 +31,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | aperta |
 | 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | aperta |
 | 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
 
@@ -86,3 +85,4 @@ tool `WebFetch`.
 | 41 | https://github.com/ilum75IDB/ivanluminaria.com/issues/41 | Partitioning nel DWH: quando 3 anni di dati pesano troppo | 2026-03-20 |
 | 38 | https://github.com/ilum75IDB/ivanluminaria.com/issues/38 | Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste | 2026-03-19 |
 | 43 | https://github.com/ilum75IDB/ivanluminaria.com/issues/43 | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | 2026-03-20 |
+| 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | 2026-03-21 |

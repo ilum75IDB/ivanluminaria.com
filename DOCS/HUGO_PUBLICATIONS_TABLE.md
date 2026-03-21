@@ -39,6 +39,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 | 24 | 2026-03-31 | —        | Tue | Binary log in MySQL: cosa sono, come gestirli e quando puoi cancellarli | mysql | #42 | 2026-03-18 | scheduled |
 | 25 | 2026-04-07 | —        | Tue | Partitioning nel DWH: quando 3 anni di dati pesano troppo | data-warehouse | #41 | 2026-03-20 | scheduled |
 | 26 | 2026-04-14 | —        | Tue | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | mysql | #43 | 2026-03-20 | scheduled |
+| 27 | 2026-04-21 | —        | Tue | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | postgresql | #48 | 2026-03-21 | scheduled |
 
 **Previous available slot**: 2025-10-14 (Tuesday)
-**Next available slot**: 2026-04-21 (Tuesday)
+**Next available slot**: 2026-04-28 (Tuesday)
