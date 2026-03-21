@@ -15,7 +15,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 38 | https://github.com/ilum75IDB/ivanluminaria.com/issues/38 | Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste | aperta |
 | 39 | https://github.com/ilum75IDB/ivanluminaria.com/issues/39 | ETL a 4 ore: come ho portato un caricamento notturno a 25 minuti | aperta |
 | 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | aperta |
 
@@ -85,4 +84,5 @@ tool `WebFetch`.
 | 62 | https://github.com/ilum75IDB/ivanluminaria.com/issues/62 | Glossario: shortcode Hugo per tooltip inline dei termini | 2026-03-18 |
 | 63 | https://github.com/ilum75IDB/ivanluminaria.com/issues/63 | Glossario: applicare shortcode tooltip nei testi degli articoli | 2026-03-18 |
 | 41 | https://github.com/ilum75IDB/ivanluminaria.com/issues/41 | Partitioning nel DWH: quando 3 anni di dati pesano troppo | 2026-03-20 |
+| 38 | https://github.com/ilum75IDB/ivanluminaria.com/issues/38 | Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste | 2026-03-19 |
 | 43 | https://github.com/ilum75IDB/ivanluminaria.com/issues/43 | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | 2026-03-20 |
