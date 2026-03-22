@@ -15,7 +15,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 38 | https://github.com/ilum75IDB/ivanluminaria.com/issues/38 | Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste | aperta |
 | 39 | https://github.com/ilum75IDB/ivanluminaria.com/issues/39 | ETL a 4 ore: come ho portato un caricamento notturno a 25 minuti | aperta |
 | 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | aperta |
 
@@ -23,7 +22,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 43 | https://github.com/ilum75IDB/ivanluminaria.com/issues/43 | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | aperta |
 | 44 | https://github.com/ilum75IDB/ivanluminaria.com/issues/44 | InnoDB buffer pool: il parametro che cambia tutto e che nessuno dimensiona | aperta |
 | 45 | https://github.com/ilum75IDB/ivanluminaria.com/issues/45 | Replica MySQL: quando lo slave resta indietro e nessuno se ne accorge | aperta |
 | 46 | https://github.com/ilum75IDB/ivanluminaria.com/issues/46 | MySQL e i lock che non ti aspetti: gap lock, next-key lock e deadlock | aperta |
@@ -33,7 +31,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | aperta |
 | 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | aperta |
 | 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
 
@@ -86,3 +83,6 @@ tool `WebFetch`.
 | 62 | https://github.com/ilum75IDB/ivanluminaria.com/issues/62 | Glossario: shortcode Hugo per tooltip inline dei termini | 2026-03-18 |
 | 63 | https://github.com/ilum75IDB/ivanluminaria.com/issues/63 | Glossario: applicare shortcode tooltip nei testi degli articoli | 2026-03-18 |
 | 41 | https://github.com/ilum75IDB/ivanluminaria.com/issues/41 | Partitioning nel DWH: quando 3 anni di dati pesano troppo | 2026-03-20 |
+| 38 | https://github.com/ilum75IDB/ivanluminaria.com/issues/38 | Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste | 2026-03-19 |
+| 43 | https://github.com/ilum75IDB/ivanluminaria.com/issues/43 | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | 2026-03-20 |
+| 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | 2026-03-21 |

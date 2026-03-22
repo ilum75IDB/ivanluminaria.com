@@ -5,6 +5,7 @@ translationKey: "glossary_postgresql_analyze"
 aka: "ANALYZE (PostgreSQL)"
 articles:
   - "/posts/postgresql/explain-analyze-postgresql"
+  - "/posts/postgresql/pg-stat-statements"
 ---
 
 **ANALYZE** is the PostgreSQL command that collects statistics about data distribution in tables and stores them in the `pg_statistic` catalog (readable through the `pg_stats` view). The optimizer uses these statistics to estimate cardinality — how many rows each operation will return — and choose the most efficient execution plan.

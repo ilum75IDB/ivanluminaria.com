@@ -5,6 +5,7 @@ translationKey: "glossary_execution_plan"
 aka: "Query Plan"
 articles:
   - "/posts/postgresql/explain-analyze-postgresql"
+  - "/posts/postgresql/pg-stat-statements"
 ---
 
 An **execution plan** is the sequence of operations the database chooses to resolve a SQL query. When you write a SELECT with JOINs, WHERE filters, and sorts, the optimizer evaluates dozens of possible strategies and picks one based on available statistics.
