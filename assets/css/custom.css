@@ -622,9 +622,11 @@ a.skip-to-content:focus {
 }
 
 /* Footer full-width: break out of body's max-w-7xl container
-   to align with the fixed navbar (both get px-6 = 1.5rem padding) */
+   to align with the fixed navbar (both get px-6 = 1.5rem padding),
+   but constrained to 1600px like the navbar on large screens */
 footer {
   width: 100vw !important;
+  max-width: 1600px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
