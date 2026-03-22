@@ -141,6 +141,28 @@ When writing a new blog article, **always** follow these steps:
 7. **Generare il prompt per l'immagine di copertina** — dopo aver completato la scrittura dell'articolo in tutte le lingue, generare **sempre** il prompt per la cover image. Leggere `DOCS/prompt-master.md` per il template base, poi aggiungere nella sezione `SCENA DA RAPPRESENTARE` una descrizione specifica della scena che rappresenti il tema dell'articolo tramite una metafora visiva coerente con lo stile del blog. Il prompt va presentato all'utente pronto per il copia-incolla in un generatore di immagini AI. **Non creare file placeholder** per la cover image — sarà l'utente a generare l'immagine e inserirla nella cartella dell'articolo con il nome `<slug>.cover.jpg`.
 8. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **fino a 10 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `DOCS/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
 
+### Procedura a step con commit intermedi (anti-timeout)
+
+La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è troppo pesante per una singola sessione. Per evitare timeout e perdita di lavoro, **ogni step deve concludersi con commit + push**. Se la sessione scade, la successiva riprende dallo step non completato.
+
+| Step | Cosa fare | Commit message |
+|------|-----------|----------------|
+| **0** | Leggere issue, DOCS/, articoli esistenti per contesto e tono | *(nessun commit, solo lettura)* |
+| **1** | Creare la directory dell'articolo e scrivere la versione **IT** | `Articolo #XX: <slug> - versione italiana (IT)` |
+| **2** | Scrivere la versione **EN** | `Articolo #XX: <slug> - traduzione inglese (EN)` |
+| **3** | Scrivere la versione **ES** | `Articolo #XX: <slug> - traduzione spagnola (ES)` |
+| **4** | Scrivere la versione **RO** | `Articolo #XX: <slug> - traduzione rumena (RO)` |
+| **5** | Glossario: creare mini-pagine nuove (4 lingue ciascuna) + aggiungere sezione glossario alle 4 versioni dell'articolo | `Glossario: mini-pagine e sezione glossario per <slug>` |
+| **6** | Aggiornare `DOCS/HUGO_PUBLICATIONS_TABLE.md`, `DOCS/GITHUB_ISSUES.md`, `DOCS/GLOSSARIO_TERMINI.md` | `Aggiornamento docs: pubblicazione e issue per <slug>` |
+| **7** | Generare prompt cover image + fornire comando `gh issue close` | *(nessun commit, solo output testuale)* |
+
+**Regole:**
+- **Commit + push dopo ogni step** — non accumulare mai più di uno step senza committare
+- **Se la sessione riparte**, leggere lo stato del repo (ultimo commit, file esistenti) per capire da quale step riprendere
+- **Lo step 0 (lettura)** può essere fatto in parallelo con agent Explore per velocizzare
+- **Gli step 1-4 (scrittura lingue)** sono sequenziali: IT è il master, le altre sono traduzioni adattate (non letterali)
+- **Lo step 5 (glossario)** può essere fatto tutto insieme perché le mini-pagine sono brevi
+
 ### Workflow: aggiunta glossario a un articolo esistente
 
 Quando l'utente chiede di aggiungere la sezione Glossario a un articolo che ne è privo, seguire **sempre** questi passi nell'ordine indicato:
