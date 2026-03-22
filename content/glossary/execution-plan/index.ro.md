@@ -5,6 +5,7 @@ translationKey: "glossary_execution_plan"
 aka: "Plan de Executie"
 articles:
   - "/posts/postgresql/explain-analyze-postgresql"
+  - "/posts/postgresql/pg-stat-statements"
 ---
 
 Un **execution plan** (plan de executie) este secventa de operatii pe care baza de date o alege pentru a rezolva o interogare SQL. Cand scrii un SELECT cu JOIN-uri, filtre WHERE si sortari, optimizatorul evalueaza zeci de strategii posibile si alege una pe baza statisticilor disponibile.

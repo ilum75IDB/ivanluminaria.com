@@ -17,7 +17,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Authentication Plugin | Modulo MySQL/MariaDB che gestisce il metodo di verifica delle credenziali durante la connessione | mysql-users-and-hosts |
 | Additive Measure | Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni (importi, quantità, conteggi). Le misure semi-additive e non-additive hanno regole di aggregazione diverse | fatto-grana-sbagliata |
 | AI Manager | Ruolo professionale che governa l'impatto dell'intelligenza artificiale su architetture, processi e persone all'interno di un progetto | ai-manager-project-management |
-| ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql |
+| ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql |
 | Brompton | Bicicletta pieghevole britannica considerata il riferimento mondiale per qualità costruttiva, compattezza e praticità nel pendolarismo urbano | bici-vs-auto-roma |
@@ -49,7 +49,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Exchange Partition | Operazione DDL Oracle che scambia istantaneamente i segmenti dati tra una tabella non partizionata e una partizione, senza spostare fisicamente i dati | partitioning-dwh |
 | Float Finanziario | Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori | pagamenti-60-90-120-giorni |
 | FLUSH PRIVILEGES | Comando MySQL/MariaDB che ricarica le tabelle dei grant in memoria, rendendo effettive le modifiche manuali ai privilegi | mysql-users-and-hosts |
-| Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql |
+| Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
@@ -86,6 +86,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Pendolarismo | Spostamento quotidiano casa-lavoro e ritorno, che nelle grandi città può assorbire 2-4 ore al giorno e centinaia di euro al mese | smartworking-consulenza-it, bici-vs-auto-roma |
 | Presenteismo | Cultura organizzativa che equipara la presenza fisica in ufficio alla produttività, indipendentemente dai risultati prodotti | smartworking-consulenza-it |
 | Partita IVA | Regime fiscale italiano per lavoratori autonomi e liberi professionisti, che nella consulenza IT implica l'assunzione diretta del rischio di credito | pagamenti-60-90-120-giorni |
+| pg_stat_statements | Estensione PostgreSQL che raccoglie statistiche di esecuzione per tutte le query SQL: tempi, conteggi, righe restituite e blocchi letti. Strumento fondamentale per la diagnostica delle performance | pg-stat-statements |
 | Partition Pruning | Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo quelle corrispondenti al predicato | oracle-partitioning, partitioning-dwh |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
@@ -106,6 +107,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Schema | Namespace logico all'interno di un database che raggruppa tabelle, viste, funzioni e altri oggetti, permettendo organizzazione e separazione dei permessi | postgresql_roles_and_users |
 | Scrum | Framework agile per la gestione di progetti che organizza il lavoro in sprint a durata fissa, con ruoli definiti e cerimonie strutturate | standup-meeting-15-minuti |
 | Scope | Perimetro di un progetto che definisce cosa è incluso e cosa è escluso: funzionalità, deliverable, vincoli e confini concordati con gli stakeholder | tecnica-si-e-yes-and |
+| shared_buffers | Area di memoria condivisa di PostgreSQL che funge da cache per i blocchi dati letti dal disco. Il parametro più importante per il tuning della memoria, con un default di 128 MB quasi sempre inadeguato | pg-stat-statements |
 | SGA | System Global Area — area di memoria condivisa di Oracle Database che contiene buffer cache, shared pool, redo log buffer e altre strutture critiche | oracle-linux-kernel |
 | Smart Working | Modello di lavoro flessibile che combina lavoro da remoto e presenza in ufficio, basato su obiettivi misurabili invece che su presenza fisica | smartworking-consulenza-it |
 | Scope Creep | Espansione incontrollata dei requisiti di progetto oltre il perimetro iniziale, che porta a ritardi, aumento dei costi e spesso al fallimento del progetto | 4-milioni-nessun-software |
@@ -115,6 +117,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Split-brain | Condizione critica in un cluster database dove due o più parti operano indipendentemente, accettando scritture divergenti sugli stessi dati | galera-cluster-3-nodi |
 | SQL Injection | Tecnica di attacco che inserisce codice SQL malevolo negli input di un'applicazione per manipolare le query eseguite dal database | mysql-multi-istanza-secure-file-priv |
 | SST | State Snapshot Transfer — meccanismo di Galera Cluster per trasferire una copia completa dei dati a un nodo che si unisce al cluster | galera-cluster-3-nodi |
+| Sequential Scan | Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella senza utilizzare indici, efficiente su tabelle piccole ma problematica su tabelle grandi | pg-stat-statements |
 | Self-parenting | Tecnica di bilanciamento delle gerarchie sbilanciate: chi non ha un padre diventa padre di sé stesso, eliminando i NULL dalla dimensione | ragged-hierarchies |
 | Snapshot (Oracle) | Istantanea delle statistiche di performance catturata periodicamente da AWR (di default ogni 60 minuti) e usata per generare report diagnostici comparativi | oracle-awr-ash |
 | Star schema | Modello di dati tipico del data warehouse: una fact table al centro collegata a più tabelle dimensionali tramite chiavi esterne. Semplifica le query analitiche e ottimizza le performance | scd-tipo-2, fatto-grana-sbagliata |
@@ -135,6 +138,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-03-20
-**Totale termini**: 120
-**Totale articoli con glossario**: 26
+**Ultimo aggiornamento**: 2026-03-21
+**Totale termini**: 123
+**Totale articoli con glossario**: 27
