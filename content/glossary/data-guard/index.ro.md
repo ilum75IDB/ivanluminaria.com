@@ -5,6 +5,7 @@ translationKey: "glossary_data_guard"
 aka: "Oracle Active Data Guard"
 articles:
   - "/posts/oracle/oracle-data-guard"
+  - "/posts/oracle/oracle-cloud-migration"
 ---
 
 **Data Guard** este tehnologia Oracle care mentine una sau mai multe copii sincronizate (standby) ale unei baze de date de productie (primar). Standby-ul primeste si aplica continuu redo log-urile generate de primar, ramanand aliniat in timp real sau aproape.
