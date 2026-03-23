@@ -43,9 +43,7 @@ tool `WebFetch`.
 
 ## Issue Aperte — Bug
 
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 60 | https://github.com/ilum75IDB/ivanluminaria.com/issues/60 | Bug: sezione Glossario mancante in tutti i 23 articoli pubblicati | aperta |
+*Nessuna issue aperta.*
 
 ## Issue Chiuse
 
@@ -86,3 +84,4 @@ tool `WebFetch`.
 | 43 | https://github.com/ilum75IDB/ivanluminaria.com/issues/43 | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | 2026-03-20 |
 | 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | 2026-03-21 |
 | 53 | https://github.com/ilum75IDB/ivanluminaria.com/issues/53 | Oracle da on-premises a cloud: strategia, pianificazione e cutover | 2026-03-23 |
+| 60 | https://github.com/ilum75IDB/ivanluminaria.com/issues/60 | Bug: sezione Glossario mancante in tutti i 23 articoli pubblicati | 2026-03-23 |
