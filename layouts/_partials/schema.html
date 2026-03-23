@@ -1,0 +1,21 @@
+{{- /* Override Congo's schema.html: keep only WebSite schema for homepage.
+     Article and BreadcrumbList schemas are handled in extend-head.html
+     to avoid duplicates and missing-field warnings. */ -}}
+
+{{ if .IsHome -}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": {{ (site.GetPage "/").Permalink | jsonify }},
+    "name": {{ .Site.Title | jsonify }},
+    {{ with .Site.Params.description }}"description": {{ . | jsonify }},{{ end }}
+    {{ with site.Language.Lang }}"inLanguage": {{ . | jsonify }},{{ end }}
+    "url": {{ (site.GetPage "/").Permalink | jsonify }},
+    "publisher": {
+      "@type": "Person",
+      "name": {{ .Site.Language.Params.Author.name | jsonify }}
+    }
+  }
+  </script>
+{{- end }}
