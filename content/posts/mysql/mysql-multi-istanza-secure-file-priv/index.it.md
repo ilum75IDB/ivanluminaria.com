@@ -1,7 +1,7 @@
 ---
 title: "MySQL multi-istanza: un ticket, un CSV e il muro di secure-file-priv"
 description: "Un'operazione che doveva durare cinque minuti — estrarre un CSV da MySQL — si trasforma in un'indagine tra istanze multiple sullo stesso server, socket Unix, porte diverse e la direttiva secure-file-priv che blocca tutto. Dalla connessione all'istanza giusta fino all'export da shell."
-date: "2025-11-04T10:00:00+01:00"
+date: "2025-11-04T08:03:00+01:00"
 draft: false
 translationKey: "mysql_multi_istanza_secure_file_priv"
 tags: ["multi-instance", "secure-file-priv", "csv-export", "systemd", "socket", "troubleshooting"]

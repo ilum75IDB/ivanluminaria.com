@@ -1,7 +1,7 @@
 ---
 title: "Payment at 60-90-120 days: the Italian normality that doesn't exist in Europe"
 description: "In Italy, paying an IT consultant at 90 days is standard practice. In the rest of Europe, it's an anomaly. A direct comparison between European rules and Italian reality, with numbers, directives and practical strategies for freelancers."
-date: "2026-03-10T10:00:00+01:00"
+date: "2026-03-10T08:03:00+01:00"
 draft: false
 translationKey: "pagamenti_60_90_120_giorni"
 tags: ["consulting", "freelance", "payments", "italy", "european-union"]

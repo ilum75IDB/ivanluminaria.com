@@ -1,6 +1,6 @@
 ---
 title: "Data Warehouse"
-date: "2026-03-10T10:00:00+01:00"
+date: "2026-03-10T08:03:00+01:00"
 description: "Arquitectura Data Warehouse en la práctica: modelado dimensional, jerarquías, ETL y estrategias de carga. Cuando los datos no solo deben funcionar, sino servir para decidir."
 image: "data-warehouse.cover.jpg"
 layout: "list"

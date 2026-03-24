@@ -1,7 +1,7 @@
 ---
 title: "Granularidad equivocada: cuando la fact table no responde las preguntas correctas"
 description: "Una fact table construida sobre el total mensual de facturación parecía perfecta. Luego el negocio pidió detalle por producto, por línea, por cliente. Y el data warehouse enmudeció."
-date: "2025-10-21T10:00:00+01:00"
+date: "2025-10-21T08:03:00+01:00"
 draft: false
 translationKey: "fatto_grana_sbagliata"
 tags: ["data-warehouse", "fact-table", "granularity", "grain", "dimensional-modeling", "kimball"]

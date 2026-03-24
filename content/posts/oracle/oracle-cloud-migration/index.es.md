@@ -1,7 +1,7 @@
 ---
 title: "Oracle de on-premises a cloud: estrategia, planificación y cutover"
 description: "Un Oracle 19c Enterprise con RAC, Data Guard y 2 TB de datos. Tres meses para migrar todo a OCI sin perder una transacción. Desde el assessment de licencias hasta el cutover nocturno, la crónica de una migración real."
-date: "2026-04-28T10:00:00+01:00"
+date: "2026-04-28T08:03:00+01:00"
 draft: false
 translationKey: "oracle_cloud_migration"
 tags: ["migration", "cloud", "oci", "data-guard", "architecture", "licensing"]

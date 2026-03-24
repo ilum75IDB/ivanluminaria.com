@@ -1,7 +1,7 @@
 ---
 title: "Granularitate greșită: când fact table nu răspunde la întrebările potrivite"
 description: "O fact table construită pe totalul lunar al facturării părea perfectă. Apoi business-ul a cerut detalii pe produs, pe linie, pe client. Și data warehouse-ul a amuțit."
-date: "2025-10-21T10:00:00+01:00"
+date: "2025-10-21T08:03:00+01:00"
 draft: false
 translationKey: "fatto_grana_sbagliata"
 tags: ["data-warehouse", "fact-table", "granularity", "grain", "dimensional-modeling", "kimball"]
