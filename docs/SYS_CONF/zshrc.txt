@@ -294,7 +294,7 @@ wwwhelp() {
     echo "  cdposts         # Cartella posts/"
     echo "  cdresumes       # Cartella resumes/"
     echo "  cdconfig        # Cartella config/_default/"
-    echo "  cddocs          # Cartella DOCS/"
+    echo "  cddocs          # Cartella docs/"
     echo "  cdcss           # Cartella assets/css/"
     echo "  cdlayouts       # Cartella layouts/"
     echo ""
