@@ -32,21 +32,6 @@ This project uses **Claude Code** (Anthropic) as a development and writing tool.
 - **The code is AI-assisted too.** Custom layouts, CSS, GitHub Actions workflows, and site structure are built in collaboration with Claude Code. I review, test, and approve everything.
 - **Why be transparent?** Because I think hiding AI usage is dishonest, and because using AI well is a skill worth showing — not something to be embarrassed about. The puppeteer is human. The puppet is artificial. The show is real.
 
-## Local development
-
-```bash
-# Clone with submodules
-git clone --recurse-submodules https://github.com/ilum75IDB/ivanluminaria.com.git
-
-# Run dev server
-hugo server -D
-
-# Production build
-hugo --minify
-```
-
-Requires Hugo **extended** version.
-
 ## License
 
 Content and code © Ivan Luminaria. All rights reserved.
