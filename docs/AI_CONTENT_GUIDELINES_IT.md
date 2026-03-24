@@ -190,7 +190,7 @@ linguistiche** dell'articolo, con le descrizioni tradotte in ciascuna
 lingua.
 
 Dopo aver scritto il glossario, **aggiornare sempre** il file
-`DOCS/GLOSSARIO_TERMINI.md` — aggiungendo i nuovi termini o aggiornando
+`docs/GLOSSARIO_TERMINI.md` — aggiungendo i nuovi termini o aggiornando
 la colonna "Contenuto in" per i termini già presenti.
 
 ------------------------------------------------------------------------

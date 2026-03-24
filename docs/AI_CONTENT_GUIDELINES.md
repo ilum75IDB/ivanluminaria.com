@@ -187,7 +187,7 @@ The glossary must appear in **all 4 language versions** of the article,
 with descriptions translated into each language.
 
 After writing the glossary, **always update** the file
-`DOCS/GLOSSARIO_TERMINI.md` — add new terms or update the "Contained in"
+`docs/GLOSSARIO_TERMINI.md` — add new terms or update the "Contained in"
 column for terms that already exist.
 
 ------------------------------------------------------------------------

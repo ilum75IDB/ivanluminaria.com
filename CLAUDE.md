@@ -128,18 +128,18 @@ Font: **Inter** (loaded from Google Fonts), base size 20px.
 
 When writing a new blog article, **always** follow these steps:
 
-1. **Read the content guidelines first** — before drafting any text, read the files in `DOCS/`, in particular:
-   - `DOCS/AI_CONTENT_GUIDELINES.md` (English version)
-   - `DOCS/AI_CONTENT_GUIDELINES_IT.md` (Italian version)
-   - `DOCS/prompt-master.md` (master prompt with tone & style rules)
-   - `DOCS/DESCRIZIONE_PROGETTO_DATABASE_STRATEGY_BLOG.md` and `DOCS/database_strategy_blog_project_description_FULL.md` (project context)
+1. **Read the content guidelines first** — before drafting any text, read the files in `docs/`, in particular:
+   - `docs/AI_CONTENT_GUIDELINES.md` (English version)
+   - `docs/AI_CONTENT_GUIDELINES_IT.md` (Italian version)
+   - `docs/prompt-master.md` (master prompt with tone & style rules)
+   - `docs/DESCRIZIONE_PROGETTO_DATABASE_STRATEGY_BLOG.md` and `docs/database_strategy_blog_project_description_FULL.md` (project context)
 2. **Write like a human** — the text **must not** sound AI-generated. Avoid generic filler, motivational closings, bullet-point-heavy structures, and overly polished phrasing. Use Ivan's voice: direct, experienced, occasionally ironic, grounded in real-world project stories. Vary sentence length, use colloquial turns where appropriate, and let opinions show.
 3. **No AI tells** — never use patterns like "In conclusion…", "It's worth noting that…", "Let's dive in…", "In today's fast-paced world…", or similar clichés typical of LLM output.
 4. **Riferimenti temporali vicini** — evitare riferimenti troppo indietro nel tempo (es. "due anni fa", "tre mesi fa") a meno che non sia richiesto esplicitamente dal contesto dell'articolo. Preferire sempre espressioni vicine: "l'altro giorno", "qualche giorno fa", "ieri", "la settimana scorsa", "la scorsa settimana". Se il racconto richiede un arco temporale più lungo (mese precedente, un paio di mesi fa), giustificarlo nel testo con frasi tipo: "È un po' che volevo scrivere su questo argomento e non ho trovato il tempo… finalmente eccomi" o simili.
 5. **No generalizzazioni da clickbait** — evitare frasi come "quello che nessuno ti dice", "che nessuno sa", "che non tutti sanno", "il segreto che…". Queste generalizzazioni svalorizzano il lavoro e suonano come marketing. Il valore dell'articolo deve emergere dal contenuto, non da promesse sensazionalistiche nel titolo o nel testo.
 6. **Variare i settori di business dei clienti** — nei racconti e negli aneddoti, alternare i mercati e i settori dei clienti (es. manifatturiero, bancario, retail, logistica, sanità, PA, energy, telco…). Questo rende il blog più inclusivo e coinvolge lettori di settori diversi, evitando di sembrare focalizzati su un unico tipo di azienda.
-7. **Generare il prompt per l'immagine di copertina** — dopo aver completato la scrittura dell'articolo in tutte le lingue, generare **sempre** il prompt per la cover image. Leggere `DOCS/prompt-master.md` per il template base, poi aggiungere nella sezione `SCENA DA RAPPRESENTARE` una descrizione specifica della scena che rappresenti il tema dell'articolo tramite una metafora visiva coerente con lo stile del blog. Il prompt va presentato all'utente pronto per il copia-incolla in un generatore di immagini AI. **Non creare file placeholder** per la cover image — sarà l'utente a generare l'immagine e inserirla nella cartella dell'articolo con il nome `<slug>.cover.jpg`.
-8. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **fino a 10 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `DOCS/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
+7. **Generare il prompt per l'immagine di copertina** — dopo aver completato la scrittura dell'articolo in tutte le lingue, generare **sempre** il prompt per la cover image. Leggere `docs/prompt-master.md` per il template base, poi aggiungere nella sezione `SCENA DA RAPPRESENTARE` una descrizione specifica della scena che rappresenti il tema dell'articolo tramite una metafora visiva coerente con lo stile del blog. Il prompt va presentato all'utente pronto per il copia-incolla in un generatore di immagini AI. **Non creare file placeholder** per la cover image — sarà l'utente a generare l'immagine e inserirla nella cartella dell'articolo con il nome `<slug>.cover.jpg`.
+8. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **fino a 10 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `docs/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
 
 ### Procedura a step con commit intermedi (anti-timeout)
 
@@ -147,13 +147,13 @@ La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è trop
 
 | Step | Cosa fare | Commit message |
 |------|-----------|----------------|
-| **0** | Leggere issue, DOCS/, articoli esistenti per contesto e tono | *(nessun commit, solo lettura)* |
+| **0** | Leggere issue, docs/, articoli esistenti per contesto e tono | *(nessun commit, solo lettura)* |
 | **1** | Creare la directory dell'articolo e scrivere la versione **IT** | `Articolo #XX: <slug> - versione italiana (IT)` |
 | **2** | Scrivere la versione **EN** | `Articolo #XX: <slug> - traduzione inglese (EN)` |
 | **3** | Scrivere la versione **ES** | `Articolo #XX: <slug> - traduzione spagnola (ES)` |
 | **4** | Scrivere la versione **RO** | `Articolo #XX: <slug> - traduzione rumena (RO)` |
 | **5** | Glossario: creare mini-pagine nuove (4 lingue ciascuna) + aggiungere sezione glossario alle 4 versioni dell'articolo | `Glossario: mini-pagine e sezione glossario per <slug>` |
-| **6** | Aggiornare `DOCS/HUGO_PUBLICATIONS_TABLE.md`, `DOCS/GITHUB_ISSUES.md`, `DOCS/GLOSSARIO_TERMINI.md` | `Aggiornamento docs: pubblicazione e issue per <slug>` |
+| **6** | Aggiornare `docs/HUGO_PUBLICATIONS_TABLE.md`, `docs/GITHUB_ISSUES.md`, `docs/GLOSSARIO_TERMINI.md` | `Aggiornamento docs: pubblicazione e issue per <slug>` |
 | **7** | Generare prompt cover image + fornire comando `gh issue close` | *(nessun commit, solo output testuale)* |
 
 **Regole:**
@@ -168,7 +168,7 @@ La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è trop
 Quando l'utente chiede di aggiungere la sezione Glossario a un articolo che ne è privo, seguire **sempre** questi passi nell'ordine indicato:
 
 1. **Leggere l'articolo** in tutte e 4 le lingue per identificare i termini tecnici principali
-2. **Leggere `DOCS/GLOSSARIO_TERMINI.md`** per sapere quali termini esistono già (con relative mini-pagine)
+2. **Leggere `docs/GLOSSARIO_TERMINI.md`** per sapere quali termini esistono già (con relative mini-pagine)
 3. **Scegliere 5 termini** (o il numero richiesto dall'utente) privilegiando: acronimi, concetti tecnici specifici dell'articolo, tecnologie menzionate. Includere anche termini già esistenti nel glossario se sono rilevanti per l'articolo
 4. **Creare le mini-pagine** per i termini nuovi:
    - Directory: `content/glossary/<slug>/`
@@ -181,7 +181,7 @@ Quando l'utente chiede di aggiungere la sezione Glossario a un articolo che ne �
    - Titolo: `## Glossario` (IT), `## Glossary` (EN), `## Glosario` (ES), `## Glosar` (RO)
    - Formato voci con link alla mini-pagina: `**[Termine](/{lang}/glossary/{slug}/)** — descrizione breve (1-2 frasi)`
    - **IMPORTANTE**: ogni termine DEVE avere il link alla mini-pagina del glossario, usando il prefisso lingua corretto (`/it/`, `/en/`, `/es/`, `/ro/`). Esempio: `**[AWR](/it/glossary/awr/)** — Automatic Workload Repository...`
-6. **Aggiornare `DOCS/GLOSSARIO_TERMINI.md`**:
+6. **Aggiornare `docs/GLOSSARIO_TERMINI.md`**:
    - Aggiungere i nuovi termini in ordine alfabetico
    - Per i termini già presenti, aggiungere il nuovo articolo nella colonna "Contenuto in"
    - Aggiornare il contatore "Totale termini" e "Totale articoli con glossario"
@@ -253,23 +253,23 @@ Articles are published **one per week, every Tuesday at 10:00 CET**, starting fr
    - **published**: article is live on the site (publication date is in the past)
    - **scheduled**: article is written in all 4 languages, committed to the repo, and has a future publication date. The corresponding GitHub issue should be closed
    - **planned**: only the GitHub issue exists (article not yet written). The corresponding issue is still open
-10. **Slot markers** (at the bottom of `DOCS/HUGO_PUBLICATIONS_TABLE.md`):
+10. **Slot markers** (at the bottom of `docs/HUGO_PUBLICATIONS_TABLE.md`):
    - **Previous available slot**: the first Tuesday before the oldest article's date. Used when inserting backdated articles
    - **Next available slot**: the first Tuesday after the most recent article's date. Used for new articles
    - Both must be updated after every schedule change
 
 ### Current Schedule
 
-The full publication table is maintained in **`DOCS/HUGO_PUBLICATIONS_TABLE.md`**. Always read and update that file when working with the schedule.
+The full publication table is maintained in **`docs/HUGO_PUBLICATIONS_TABLE.md`**. Always read and update that file when working with the schedule.
 
-When adding a new article, update the table in `DOCS/HUGO_PUBLICATIONS_TABLE.md`, assign the next available Tuesday slot, and update both slot markers accordingly.
+When adding a new article, update the table in `docs/HUGO_PUBLICATIONS_TABLE.md`, assign the next available Tuesday slot, and update both slot markers accordingly.
 
 ### Publication dashboard rule
 
 When the user asks for the "tabella delle pubblicazioni" (publication table), **always show 3 tables**:
 
 1. **Tabella pubblicazioni** — the Current Schedule table above (all published, scheduled and planned articles with dates), **inclusa la colonna "Scritto il"** che mostra quando l'articolo è stato effettivamente scritto. La tabella deve essere ordinata per data di pubblicazione (`Date`), ma la colonna `Scritto il` permette di identificare rapidamente l'ordine cronologico di scrittura
-2. **Tabella issue aperte** — all open issues grouped by section (from `DOCS/GITHUB_ISSUES.md`)
+2. **Tabella issue aperte** — all open issues grouped by section (from `docs/GITHUB_ISSUES.md`)
 3. **Riepilogo per sezione** — a summary table with columns: Sezione, Pubblicati, Programmati (scheduled), Pianificati (issue aperte), Totale
 
 When the user asks for "l'ultimo articolo scritto" or similar, **always refer to the `Scritto il` column** (most recent date), not the publication date.
@@ -287,12 +287,12 @@ In questo ambiente **non è disponibile `gh` CLI** e non è possibile accedere d
 
 ### Consultare le issue aperte
 
-Poiché `gh` CLI non è disponibile, il file **`DOCS/GITHUB_ISSUES.md`** contiene i link diretti alle issue aperte del repository. Quando l'utente chiede di consultare, ricordare o lavorare sulle issue:
+Poiché `gh` CLI non è disponibile, il file **`docs/GITHUB_ISSUES.md`** contiene i link diretti alle issue aperte del repository. Quando l'utente chiede di consultare, ricordare o lavorare sulle issue:
 
-1. **Leggere `DOCS/GITHUB_ISSUES.md`** per ottenere i link delle issue
+1. **Leggere `docs/GITHUB_ISSUES.md`** per ottenere i link delle issue
 2. **Usare `WebFetch`** sui link per leggere il contenuto completo di ciascuna issue da GitHub
-3. Quando una issue viene chiusa o ne vengono create di nuove, **aggiornare `DOCS/GITHUB_ISSUES.md`** di conseguenza
-4. Quando l'utente chiede di **creare una nuova issue** e poi la crea dal suo terminale, **chiedere sempre il link** della issue appena creata per poterlo inserire in `DOCS/GITHUB_ISSUES.md`. Non procedere senza aver aggiornato il file
+3. Quando una issue viene chiusa o ne vengono create di nuove, **aggiornare `docs/GITHUB_ISSUES.md`** di conseguenza
+4. Quando l'utente chiede di **creare una nuova issue** e poi la crea dal suo terminale, **chiedere sempre il link** della issue appena creata per poterlo inserire in `docs/GITHUB_ISSUES.md`. Non procedere senza aver aggiornato il file
 
 ### Chiusura issue di articoli pubblicati
 
@@ -315,7 +315,7 @@ Pubblicato in tutte le lingue: IT, EN, ES, RO.
 <breve riassunto del contenuto>"
 ```
 
-Dopo la chiusura, **aggiornare `DOCS/GITHUB_ISSUES.md`**: spostare la issue dalla sezione aperte alla sezione chiuse con la data di chiusura.
+Dopo la chiusura, **aggiornare `docs/GITHUB_ISSUES.md`**: spostare la issue dalla sezione aperte alla sezione chiuse con la data di chiusura.
 
 ### Regole di formattazione per i comandi gh issue create
 
