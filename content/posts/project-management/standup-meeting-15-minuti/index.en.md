@@ -1,7 +1,7 @@
 ---
 title: "Standup meetings: why they only work if they last 15 minutes"
 description: "A standup that starts well and in three weeks becomes a 45-minute meeting. How to enforce the 15-minute constraint and why it's the only thing that makes daily meetings actually work."
-date: "2026-01-27T10:00:00+01:00"
+date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "standup_meeting_15_minuti"
 tags: ["standup", "agile", "meeting", "team-management", "scrum"]

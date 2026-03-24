@@ -1,7 +1,7 @@
 ---
 title: "AWR, ASH e i 10 minuti che hanno salvato un go-live"
 description: "Venerdì sera, vigilia di un go-live. Le performance crollano. Con AWR e ASH ho trovato un full table scan nascosto in una stored procedure in meno di dieci minuti — e il rilascio in produzione è andato avanti."
-date: "2026-02-10T10:00:00+01:00"
+date: "2026-02-10T08:03:00+01:00"
 draft: false
 translationKey: "oracle_awr_ash"
 tags: ["awr", "ash", "performance", "tuning", "go-live", "diagnostic"]

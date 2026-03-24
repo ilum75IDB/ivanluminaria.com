@@ -1,7 +1,7 @@
 ---
 title: "Tehnica Da-Și: cum am evitat o discuție care era pe punctul de a exploda"
 description: "Tehnica Yes-And, născută în teatrul de improvizație, aplicată la gestionarea conflictelor în echipele IT. Un caz real al unei ședințe care degenera — și cum trei cuvinte au schimbat totul."
-date: "2026-01-13T10:00:00+01:00"
+date: "2026-01-13T08:03:00+01:00"
 draft: false
 translationKey: "tecnica_si_e_yes_and"
 tags: ["conflict-management", "team-leadership", "communication", "meeting"]

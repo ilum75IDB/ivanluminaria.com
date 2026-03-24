@@ -1,7 +1,7 @@
 ---
 title: "Partitioning nel DWH: quando 3 anni di dati pesano troppo"
 description: "Una fact table da 800 milioni di righe senza partitioning, query trimestrali che giravano per 12 minuti e un business che voleva risposte in tempo reale. Come ho implementato il range partitioning per mese e portato i tempi a 40 secondi."
-date: "2026-04-07T10:00:00+01:00"
+date: "2026-04-07T08:03:00+01:00"
 draft: false
 translationKey: "partitioning_dwh"
 tags: ["partitioning", "performance", "oracle", "fact-table", "data-warehouse"]

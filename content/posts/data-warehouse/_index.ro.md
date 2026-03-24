@@ -1,6 +1,6 @@
 ---
 title: "Data Warehouse"
-date: "2026-03-10T10:00:00+01:00"
+date: "2026-03-10T08:03:00+01:00"
 description: "Arhitectură Data Warehouse în practică: modelare dimensională, ierarhii, ETL și strategii de încărcare. Când datele nu trebuie doar să funcționeze, ci să ajute la decizii."
 image: "data-warehouse.cover.jpg"
 layout: "list"

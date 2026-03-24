@@ -1,7 +1,7 @@
 ---
 title: "Binary log în MySQL: ce sunt, cum le gestionezi și când le poți șterge"
 description: "Un server MySQL cu discul la 95%, 180 GB de binary log acumulate în șase luni. De acolo pornește o călătorie prin binlog: ce conțin, de ce există, cum funcționează cu replicarea și point-in-time recovery, și mai ales cum le gestionezi fără să faci pagube."
-date: "2026-03-31T10:00:00+01:00"
+date: "2026-03-31T08:03:00+01:00"
 draft: false
 translationKey: "binary_log_mysql"
 tags: ["binlog", "replication", "disk-space", "recovery", "mariadb"]

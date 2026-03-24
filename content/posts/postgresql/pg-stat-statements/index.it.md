@@ -1,7 +1,7 @@
 ---
 title: "pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL"
 description: "Un PostgreSQL in produzione da due anni senza pg_stat_statements. Quando l'abbiamo attivato, tre query consumavano l'80% delle risorse — e ognuna si risolveva con un indice. Come installare, interrogare e leggere i risultati dell'estensione più importante per la diagnostica PostgreSQL."
-date: "2026-04-21T10:00:00+01:00"
+date: "2026-04-21T08:03:00+01:00"
 draft: false
 translationKey: "pg_stat_statements"
 tags: ["monitoring", "performance", "pg_stat_statements", "diagnostics", "tuning"]

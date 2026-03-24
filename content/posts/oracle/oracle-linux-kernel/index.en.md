@@ -1,7 +1,7 @@
 ---
 title: "Oracle on Linux: the kernel parameters nobody configures"
 description: "A client with Oracle 19c on Linux and disappointing performance. Default installation, no tuning. Huge Pages, semaphores, I/O scheduler, THP and security limits: everything that was missing — with the before-and-after numbers."
-date: "2026-02-24T10:00:00+01:00"
+date: "2026-02-24T08:03:00+01:00"
 draft: false
 translationKey: "oracle_linux_kernel"
 tags: ["oracle", "linux", "kernel", "tuning", "hugepages", "performance"]

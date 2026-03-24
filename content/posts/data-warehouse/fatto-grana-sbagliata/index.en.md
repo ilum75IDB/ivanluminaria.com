@@ -1,7 +1,7 @@
 ---
 title: "Wrong grain: when the fact table can't answer the right questions"
 description: "A fact table built on monthly invoice totals looked perfect. Then the business asked for product-level, line-level, customer-level detail. And the data warehouse went silent."
-date: "2025-10-21T10:00:00+01:00"
+date: "2025-10-21T08:03:00+01:00"
 draft: false
 translationKey: "fatto_grana_sbagliata"
 tags: ["data-warehouse", "fact-table", "granularity", "grain", "dimensional-modeling", "kimball"]

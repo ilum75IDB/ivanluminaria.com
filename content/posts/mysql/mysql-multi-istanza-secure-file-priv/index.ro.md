@@ -1,7 +1,7 @@
 ---
 title: "MySQL multi-instanță: un ticket, un CSV și zidul secure-file-priv"
 description: "O operațiune care trebuia să dureze cinci minute — extragerea unui CSV din MySQL — se transformă într-o investigație printre instanțe multiple pe același server, socket-uri Unix, porturi diferite și directiva secure-file-priv care blochează totul. De la conectarea la instanța corectă până la exportul din shell."
-date: "2025-11-04T10:00:00+01:00"
+date: "2025-11-04T08:03:00+01:00"
 draft: false
 translationKey: "mysql_multi_istanza_secure_file_priv"
 tags: ["multi-instance", "secure-file-priv", "csv-export", "systemd", "socket", "troubleshooting"]

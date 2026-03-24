@@ -1,7 +1,7 @@
 ---
 title: "Plăți la 60-90-120 de zile: normalitatea italiană care nu există în Europa"
 description: "În Italia, a plăti un consultant IT la 90 de zile este practica standard. În restul Europei, este o anomalie. Comparație directă între regulile europene și realitatea italiană, cu cifre, directive și strategii concrete pentru freelanceri."
-date: "2026-03-10T10:00:00+01:00"
+date: "2026-03-10T08:03:00+01:00"
 draft: false
 translationKey: "pagamenti_60_90_120_giorni"
 tags: ["consulting", "freelance", "payments", "italy", "european-union"]

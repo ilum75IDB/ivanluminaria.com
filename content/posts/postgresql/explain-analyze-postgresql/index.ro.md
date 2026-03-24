@@ -1,7 +1,7 @@
 ---
 title: "EXPLAIN ANALYZE nu e suficient: cum sa citesti cu adevarat un plan de executie PostgreSQL"
 description: "Un caz real in care optimizatorul a ales un nested loop pe 2 milioane de randuri pentru ca statisticile erau vechi. Cum sa citesti un plan de executie, sa gasesti semnalele de alarma si sa intervii."
-date: "2025-10-28T10:00:00+01:00"
+date: "2025-10-28T08:03:00+01:00"
 draft: false
 translationKey: "explain_analyze_postgresql"
 tags: ["explain", "query-tuning", "execution-plan", "optimizer", "performance"]

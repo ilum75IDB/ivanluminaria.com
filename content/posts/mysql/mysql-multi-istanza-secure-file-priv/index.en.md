@@ -1,7 +1,7 @@
 ---
 title: "MySQL Multi-Instance: A Ticket, a CSV and the secure-file-priv Wall"
 description: "An operation that should have taken five minutes — exporting a CSV from MySQL — turns into an investigation across multiple instances on the same server, Unix sockets, different ports and the secure-file-priv directive that blocks everything. From finding the right instance to exporting from the shell."
-date: "2025-11-04T10:00:00+01:00"
+date: "2025-11-04T08:03:00+01:00"
 draft: false
 translationKey: "mysql_multi_istanza_secure_file_priv"
 tags: ["multi-instance", "secure-file-priv", "csv-export", "systemd", "socket", "troubleshooting"]
