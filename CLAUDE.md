@@ -424,6 +424,7 @@ Ogni **martedì alle 10:15 CET** (subito dopo la pubblicazione dell'articolo all
 - Due versioni: prima `🇮🇹 Versione italiana:` poi `🇬🇧 English version:`
 - Post **BREVE**: massimo 8-10 righe per lingua (deve essere letto in 15 secondi da cellulare)
 - La riga con il link all'articolo deve iniziare con 👉
+- Dopo il link all'articolo, aggiungere **sempre** una riga che segnala le traduzioni disponibili: "Disponibile anche in 🇬🇧 English, 🇪🇸 Español e 🇷🇴 Română sul sito." (nella versione EN: "Also available in 🇮🇹 Italiano, 🇪🇸 Español and 🇷🇴 Română on the website.")
 - Chiudere con un blocco unico di hashtag (10-15, mix italiano/inglese)
 
 ### Tono
