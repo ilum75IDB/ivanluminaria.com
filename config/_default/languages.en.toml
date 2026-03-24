@@ -7,7 +7,7 @@ title = "Ivan Luminaria"
 
 [params]
   dateFormat = "2 January 2006"
-  description = "Oracle DBA, DWH Architect & Project Manager — ~30 years of experience across Oracle, PostgreSQL and MySQL. Technical articles, project stories and lessons from the field."
+  description = "Technical blog on Oracle, PostgreSQL, MySQL, data warehouse and project management. Hands-on articles, real project stories and lessons learned across ~30 years of IT consulting."
 
 [params.author]
   # name = "Your name here"
