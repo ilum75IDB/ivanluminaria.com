@@ -3,6 +3,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
 
+{{/* Hreflang alternate tags for multilingual SEO */}}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
+{{ range .Translations }}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
+{{ end }}
+{{- if eq .Lang .Site.Language.Lang }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+{{- else }}
+{{- range .Translations }}{{- if eq .Lang $.Site.Language.Lang }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+{{- end }}{{- end }}
+{{- end }}
+
 {{/* OpenGraph & Twitter Card meta tags */}}
 {{ if .IsPage }}
   {{- $images := .Resources.ByType "image" }}
