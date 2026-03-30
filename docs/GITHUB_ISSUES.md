@@ -26,6 +26,7 @@ tool `WebFetch`.
 | 46 | https://github.com/ilum75IDB/ivanluminaria.com/issues/46 | MySQL e i lock che non ti aspetti: gap lock, next-key lock e deadlock | aperta |
 | 54 | https://github.com/ilum75IDB/ivanluminaria.com/issues/54 | Galera Cluster: due nodi giu - diagnosi e recovery da ticket reali | aperta |
 | 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | aperta |
+| 68 | https://github.com/ilum75IDB/ivanluminaria.com/issues/68 | Articolo MySQL: patching MySQL 8.0 dal backup alla verifica passo per passo | aperta |
 
 ## Issue Aperte — Sezione PostgreSQL
 
