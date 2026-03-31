@@ -28,7 +28,6 @@ tool `WebFetch`.
 | 54 | https://github.com/ilum75IDB/ivanluminaria.com/issues/54 | Galera Cluster: due nodi giu - diagnosi e recovery da ticket reali | aperta |
 | 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | aperta |
 | 68 | https://github.com/ilum75IDB/ivanluminaria.com/issues/68 | Articolo MySQL: patching MySQL 8.0 dal backup alla verifica passo per passo | aperta |
-| 69 | https://github.com/ilum75IDB/ivanluminaria.com/issues/69 | Articolo MySQL: disco pieno su cluster Group Replication - migrazione binary log | aperta |
 
 ## Issue Aperte — Sezione PostgreSQL
 
@@ -93,3 +92,4 @@ tool `WebFetch`.
 | 48 | https://github.com/ilum75IDB/ivanluminaria.com/issues/48 | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | 2026-03-21 |
 | 53 | https://github.com/ilum75IDB/ivanluminaria.com/issues/53 | Oracle da on-premises a cloud: strategia, pianificazione e cutover | 2026-03-23 |
 | 60 | https://github.com/ilum75IDB/ivanluminaria.com/issues/60 | Bug: sezione Glossario mancante in tutti i 23 articoli pubblicati | 2026-03-23 |
+| 69 | https://github.com/ilum75IDB/ivanluminaria.com/issues/69 | Disco pieno su cluster Group Replication - migrazione binary log | 2026-03-31 |
