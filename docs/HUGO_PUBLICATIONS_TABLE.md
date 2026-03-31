@@ -35,8 +35,8 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 | 20 | 2026-03-03 | —        | Tue | Bici vs Auto a Roma                                        | project-management | #35   | 2026-03-09 | published |
 | 21 | 2026-03-10 | —        | Tue | Pagamenti a 60-90-120 giorni                               | project-management | #26   | 2026-03-10 | published |
 | 22 | 2026-03-17 | —        | Tue | AI Manager e Project Management                            | project-management | #55   | 2026-03-16 | published |
-| 23 | 2026-03-24 | —        | Tue | VACUUM e autovacuum PostgreSQL                             | postgresql         | #47   | 2026-03-16 | scheduled |
-| 24 | 2026-03-31 | —        | Tue | Binary log in MySQL: cosa sono, come gestirli e quando puoi cancellarli | mysql | #42 | 2026-03-18 | scheduled |
+| 23 | 2026-03-24 | —        | Tue | VACUUM e autovacuum PostgreSQL                             | postgresql         | #47   | 2026-03-16 | published |
+| 24 | 2026-03-31 | —        | Tue | Binary log in MySQL: cosa sono, come gestirli e quando puoi cancellarli | mysql | #42 | 2026-03-18 | published |
 | 25 | 2026-04-07 | —        | Tue | Partitioning nel DWH: quando 3 anni di dati pesano troppo | data-warehouse | #41 | 2026-03-20 | scheduled |
 | 26 | 2026-04-14 | —        | Tue | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | mysql | #43 | 2026-03-20 | scheduled |
 | 27 | 2026-04-21 | —        | Tue | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | postgresql | #48 | 2026-03-21 | scheduled |
