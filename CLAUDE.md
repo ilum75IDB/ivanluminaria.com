@@ -139,7 +139,7 @@ When writing a new blog article, **always** follow these steps:
 5. **No generalizzazioni da clickbait** — evitare frasi come "quello che nessuno ti dice", "che nessuno sa", "che non tutti sanno", "il segreto che…". Queste generalizzazioni svalorizzano il lavoro e suonano come marketing. Il valore dell'articolo deve emergere dal contenuto, non da promesse sensazionalistiche nel titolo o nel testo.
 6. **Variare i settori di business dei clienti** — nei racconti e negli aneddoti, alternare i mercati e i settori dei clienti (es. manifatturiero, bancario, retail, logistica, sanità, PA, energy, telco…). Questo rende il blog più inclusivo e coinvolge lettori di settori diversi, evitando di sembrare focalizzati su un unico tipo di azienda.
 7. **Generare il prompt per l'immagine di copertina** — dopo aver completato la scrittura dell'articolo in tutte le lingue, generare **sempre** il prompt per la cover image. Leggere `docs/prompt-master.md` per il template base, poi aggiungere nella sezione `SCENA DA RAPPRESENTARE` una descrizione specifica della scena che rappresenti il tema dell'articolo tramite una metafora visiva coerente con lo stile del blog. Il prompt va presentato all'utente pronto per il copia-incolla in un generatore di immagini AI. **Non creare file placeholder** per la cover image — sarà l'utente a generare l'immagine e inserirla nella cartella dell'articolo con il nome `<slug>.cover.jpg`.
-8. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **fino a 10 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `docs/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
+8. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **5 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `docs/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
 
 ### Procedura a step con commit intermedi (anti-timeout)
 
@@ -147,7 +147,8 @@ La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è trop
 
 | Step | Cosa fare | Commit message |
 |------|-----------|----------------|
-| **0** | Leggere issue, docs/, articoli esistenti per contesto e tono | *(nessun commit, solo lettura)* |
+| **0** | Leggere issue, `docs/AI_CONTENT_GUIDELINES.md`, `docs/database_strategy_blog_project_description_FULL.md` | *(nessun commit, solo lettura)* |
+| **0b** | Proporre **3 titoli** all'utente tra cui scegliere (l'utente può anche suggerirne uno proprio) | *(nessun commit, solo output testuale)* |
 | **1** | Creare la directory dell'articolo e scrivere la versione **IT** | `Articolo #XX: <slug> - versione italiana (IT)` |
 | **2** | Scrivere la versione **EN** | `Articolo #XX: <slug> - traduzione inglese (EN)` |
 | **3** | Scrivere la versione **ES** | `Articolo #XX: <slug> - traduzione spagnola (ES)` |
@@ -159,7 +160,8 @@ La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è trop
 **Regole:**
 - **Commit + push dopo ogni step** — non accumulare mai più di uno step senza committare
 - **Se la sessione riparte**, leggere lo stato del repo (ultimo commit, file esistenti) per capire da quale step riprendere
-- **Lo step 0 (lettura)** può essere fatto in parallelo con agent Explore per velocizzare
+- **Lo step 0 (lettura)** legge solo `docs/AI_CONTENT_GUIDELINES.md` e `docs/database_strategy_blog_project_description_FULL.md` (non leggere i duplicati in italiano né articoli esistenti)
+- **Lo step 0b (proposta titoli)** è obbligatorio: proporre 3 titoli all'utente e permettergli di sceglierne uno o suggerirne un altro
 - **Gli step 1-4 (scrittura lingue)** sono sequenziali: IT è il master, le altre sono traduzioni adattate (non letterali)
 - **Lo step 5 (glossario)** può essere fatto tutto insieme perché le mini-pagine sono brevi
 
@@ -273,6 +275,10 @@ When the user asks for the "tabella delle pubblicazioni" (publication table), **
 3. **Riepilogo per sezione** — a summary table with columns: Sezione, Pubblicati, Programmati (scheduled), Pianificati (issue aperte), Totale
 
 When the user asks for "l'ultimo articolo scritto" or similar, **always refer to the `Scritto il` column** (most recent date), not the publication date.
+
+### Ideas dashboard rule
+
+When the user asks for "tabella delle idee", "fammi vedere le idee", or "fammi vedere gli appunti per gli articoli da scrivere", **always read `docs/NOTES_IDEAS.md`** and show a table with columns: Sezione, Titolo/Concept, Collegamento, Data nota.
 
 ## Important Notes
 
