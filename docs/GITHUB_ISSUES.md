@@ -27,6 +27,7 @@ tool `WebFetch`.
 | 54 | https://github.com/ilum75IDB/ivanluminaria.com/issues/54 | Galera Cluster: due nodi giu - diagnosi e recovery da ticket reali | aperta |
 | 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | aperta |
 | 68 | https://github.com/ilum75IDB/ivanluminaria.com/issues/68 | Articolo MySQL: patching MySQL 8.0 dal backup alla verifica passo per passo | aperta |
+| 69 | https://github.com/ilum75IDB/ivanluminaria.com/issues/69 | Articolo MySQL: disco pieno su cluster Group Replication - migrazione binary log | aperta |
 
 ## Issue Aperte — Sezione PostgreSQL
 
