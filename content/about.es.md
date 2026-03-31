@@ -5,6 +5,7 @@ date: "2026-02-20"
 lastmod: "2026-02-26"
 draft: false
 layout: "simple"
+showTitle: false
 ---
 
 <div class="profile-header flex flex-col sm:flex-row sm:items-center items-start">

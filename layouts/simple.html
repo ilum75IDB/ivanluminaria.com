@@ -24,9 +24,11 @@
       {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
         {{ partial "breadcrumbs.html" . }}
       {{ end }}
+      {{ if ne .Params.showTitle false }}
       <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
         {{ .Title | emojify }}
       </h1>
+      {{ end }}
     </header>
 
     <div id="content" class="scroll-mt-28"></div>
