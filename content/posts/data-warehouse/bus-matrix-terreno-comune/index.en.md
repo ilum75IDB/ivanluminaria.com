@@ -113,3 +113,119 @@ CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code,
 ```
 
 Around 3.1 million rows for 1.8 million distinct contract holders across the four main countries (the difference is the version history in {{< glossary term="scd" >}}SCD Type 2{{< /glossary >}}).
+
+**Layer 2 — Bridge between old and new keys.** The three existing data marts kept running with their own local keys. We created a mapping table for each:
+
+```sql
+CREATE TABLE dim_conformed.xref_customer (
+    source_system   VARCHAR(10) NOT NULL,   -- PMS | CRM | ERP
+    country_code    CHAR(2)     NOT NULL,   -- to disambiguate same names across countries
+    source_key      VARCHAR(50) NOT NULL,   -- local key in the source system
+    sk_customer     BIGINT      NOT NULL,   -- pointer to the conformed dim_customer
+    mapping_quality VARCHAR(20),            -- exact_match, fuzzy_match, manual
+    mapping_ts      TIMESTAMP   NOT NULL,
+    PRIMARY KEY (source_system, country_code, source_key)
+);
+```
+
+The xref is populated by a nightly job that reads the source masters, compares against the conformed dimension, applies the matching rules and logs the ambiguous cases into an exceptions table handled manually by the data team. Across the four countries, the ambiguous queue sat around 1.5% — a workload two people could clear in a couple of hours a day.
+
+**Layer 3 — Integration views.** On top of the three original {{< glossary term="fact-table" >}}fact tables{{< /glossary >}}, we created views that replace the local key with the conformed surrogate key:
+
+```sql
+CREATE OR REPLACE VIEW vw_fact_new_business_conformed AS
+SELECT
+    f.policy_id,
+    xc.sk_customer,           -- conformed key, no longer the local PMS one
+    xp.sk_policy,
+    xi.sk_intermediary,
+    xd.sk_date,
+    f.gross_premium,
+    f.net_premium,
+    f.commission_amount,
+    f.policy_duration_months
+FROM pms_dm.fact_new_business f
+LEFT JOIN dim_conformed.xref_customer      xc
+       ON xc.source_system = 'PMS'
+      AND xc.country_code  = f.country_code
+      AND xc.source_key    = f.pms_customer_code
+LEFT JOIN dim_conformed.xref_policy        xp
+       ON xp.source_system = 'PMS'
+      AND xp.source_key    = f.pms_tariff_code
+LEFT JOIN dim_conformed.xref_intermediary  xi
+       ON xi.source_system = 'PMS'
+      AND xi.country_code  = f.country_code
+      AND xi.source_key    = f.pms_agent_code
+JOIN dim_conformed.dim_date xd
+       ON xd.calendar_date = f.effective_date;
+```
+
+No department had to stop using its own data mart. Whoever wanted single-department analytics kept doing them on their own. Whoever needed cross-department analytics used the conformed views.
+
+## 📊 The question that used to be impossible
+
+The first truly cross-mart query we ran — the kind that, before the conformed-dimension work, would have come back with three different answers — looked trivial:
+
+```sql
+-- Intermediaries reached by a campaign and new policies issued in the next 60 days
+SELECT
+    dc.country_code,
+    dc.risk_segment,
+    COUNT(DISTINCT cm.sk_intermediary)   AS targeted_intermediaries,
+    COUNT(DISTINCT nb.sk_customer)       AS converted_customers,
+    SUM(nb.gross_premium)                AS new_business_premium,
+    ROUND(100.0 * COUNT(DISTINCT nb.sk_customer)
+          / NULLIF(COUNT(DISTINCT cm.sk_intermediary), 0), 1) AS conversion_ratio_pct
+FROM vw_fact_campaign_conformed cm
+JOIN dim_conformed.dim_intermediary di
+     ON di.sk_intermediary = cm.sk_intermediary AND di.is_current
+LEFT JOIN vw_fact_new_business_conformed nb
+     ON nb.sk_intermediary = cm.sk_intermediary
+    AND nb.sk_date BETWEEN cm.sk_date AND cm.sk_date + 60
+LEFT JOIN dim_conformed.dim_customer dc
+     ON dc.sk_customer = nb.sk_customer AND dc.is_current
+WHERE cm.campaign_code = 'Q1_2026_AUTO_BROKER_PUSH'
+GROUP BY dc.country_code, dc.risk_segment
+ORDER BY new_business_premium DESC NULLS LAST;
+```
+
+Before, this query was done by exporting two CSVs, loading them into Excel and running VLOOKUP on the agent/customer code — which was written differently in the two systems (the CRM used the internal broker code, the PMS the RUI code). Matching errors were in the 20-30% range, and no one was measuring them. Country handling added more pain: a broker operating in both Italy and Spain showed up twice.
+
+After, the query runs in about 5 seconds on Oracle Exadata over one quarter of data across the four countries and returns **a single number** per country × risk segment combination. Marketing compares it with finance, finance compares it with commercial, and if there's a discrepancy you go look at the join: not at the concept of customer.
+
+| Metric                              | Before                     | After                         |
+|--------------------------------------|----------------------------|-------------------------------|
+| Definitions of "contract holder"     | 3                          | 1 (with department-specific attributes) |
+| Gaps between department dashboards   | 9-16% depending on the KPI | < 0.5% (only ETL timing)      |
+| Time for cross-department analysis   | 1-2 days of Excel          | direct query on views         |
+| Cost of full re-platforming          | estimated 18-24 months     | 4 months + ongoing governance |
+
+We never paid the full re-platforming cost because it wasn't necessary. The bus matrix and the conformed dimensions don't replace a refactor: they buy you the time to do one calmly when it's actually needed, one process at a time.
+
+## 🧠 Why the bus matrix has to come before coding
+
+The reason this work has to happen at the start — not after three data marts have grown on their own — is straightforward: conforming after the fact costs ten times more than conforming up front.
+
+When you start from scratch, the conformed dimension is a page-and-a-half document written in a two-hour meeting. When you start from three data marts that have been in production for six years, it's a six-month project with a governance committee, a central data team, a matching process to build, mapping tables to maintain, and organizational locks to negotiate.
+
+Kimball wrote about the bus matrix in the '90s for exactly this reason: to give teams a sheet of paper to put on the wall before opening the SQL editor. It's an alignment exercise, not an architectural one. The architecture comes later, and it comes out much better if the sheet of paper has been done first.
+
+## What I learned
+
+The technical work — `dim_customer`, the xrefs, the views — was the easy part. The hard part was getting three departments to agree on what "customer" means. And that part wasn't solved by me: it was solved by the CFO with his political weight, by the governance committee with six weeks of patience, and by the customer's DBA who had an impressive long memory of every choice made over the previous years and why.
+
+When I see a DWH project starting today without a bus matrix drawn and shared, I raise my hand before we begin. Not to play the wise one — to remind myself that that phase, the one of aligning definitions, can't be skipped. If you skip it, you pay for it later with interest. If you do it, the rest of the project becomes almost boring. Which is exactly how it should be.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**[Bus Matrix](/en/glossary/bus-matrix/)** — Two-dimensional Kimball matrix with business processes as rows and conformed dimensions as columns. Used to align departments on definitions before starting the physical design of the data warehouse.
+
+**[Conformed Dimension](/en/glossary/conformed-dimension/)** — A shared dimension with the same structure, semantics and key across multiple data marts. Allows summing measures coming from different business processes without ambiguity.
+
+**[Data Mart](/en/glossary/data-mart/)** — A subset of the data warehouse focused on a single business process or functional area (sales, marketing, finance). Can be built independently by a department but risks diverging from the others when dimensional conformity is missing.
+
+**[Kimball](/en/glossary/kimball/)** — Ralph Kimball, methodology for designing data warehouses based on dimensional modeling, star schema and bus matrix. Bottom-up approach starting from business processes and building integrated data marts via conformed dimensions.
+
+**[Star Schema](/en/glossary/star-schema/)** — A data model with a central fact table linked to multiple dimension tables. The base pattern of every Kimball data mart and the natural ground on which conformed dimensions operate.
