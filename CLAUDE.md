@@ -440,7 +440,7 @@ Quando l'utente chiede di creare un post LinkedIn per promuovere un nuovo artico
 Due post a settimana:
 
 1. **Martedì** — post principale con link all'articolo appena pubblicato (l'articolo è online dalle 08:10 CET, il post va schedulato su Buffer per le ~10:05–10:15 CET)
-2. **Venerdì ~15:00** — post teaser che anticipa l'articolo del martedì successivo, creando curiosità senza spoilerare il contenuto
+2. **Venerdì ~15:00** — post teaser che anticipa l'articolo del martedì successivo, creando curiosità senza spoilerare il contenuto. **Se il venerdì cade su una festività** (es. 1 maggio, 25 aprile, 15 agosto, 1 novembre, 8 dicembre, 25-26 dicembre, Pasquetta, 2 giugno, 1 gennaio, 6 gennaio), **anticipare il teaser al giovedì stesso orario** — l'engagement in giornata festiva è quasi zero e il post va sprecato
 
 Quando l'utente chiede "fammi i post della settimana" o simili, generare **entrambi** i post: quello del martedì per l'articolo in uscita e quello del venerdì per l'articolo della settimana successiva.
 
