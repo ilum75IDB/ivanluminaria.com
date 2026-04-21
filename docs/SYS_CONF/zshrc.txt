@@ -157,6 +157,7 @@ switch_project() {
                 set_www_prompt
                 # Alias specifici Hugo/sito
                 alias hserve='hugo server -D --navigateToChanged'
+                alias hservepreview='hugo server -D -F --navigateToChanged'
                 alias hbuild='hugo --minify'
                 alias hclean='rm -rf public/ resources/_gen/ .hugo_build.lock'
                 alias hnew='hugo new'
@@ -282,7 +283,8 @@ wwwhelp() {
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo "🚀 HUGO:"
-    echo "  hserve          # Server locale (con drafts + live reload)"
+    echo "  hserve          # Server locale come apparirà su GitHub Pages (drafts, no post futuri)"
+    echo "  hservepreview   # Server locale con anche i post programmati (date future) visibili"
     echo "  hbuild          # Build produzione (--minify)"
     echo "  hclean          # Pulisci public/ e cache"
     echo "  hnew            # Crea nuovo contenuto Hugo"
