@@ -5,6 +5,7 @@ translationKey: "glossary_mysqldump"
 aka: "MySQL dump"
 articles:
   - "/posts/mysql/mysqldump-mysqlpump-mydumper"
+  - "/posts/mysql/mysql-pre-upgrade-assessment"
 ---
 
 **mysqldump** es la utilidad de backup lógico incluida de serie en cada instalación de MySQL y MariaDB. Produce un archivo SQL que contiene todas las instrucciones (CREATE TABLE, INSERT) necesarias para reconstruir completamente el esquema y los datos de una base de datos.
