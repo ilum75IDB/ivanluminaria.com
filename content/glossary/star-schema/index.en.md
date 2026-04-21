@@ -6,6 +6,7 @@ aka: "Schema a stella"
 articles:
   - "/posts/data-warehouse/scd-tipo-2"
   - "/posts/data-warehouse/fatto-grana-sbagliata"
+  - "/posts/data-warehouse/bus-matrix-terreno-comune"
 ---
 
 A **star schema** is the most widely used data model in data warehousing. It gets its name from its shape: a central fact table connected to multiple dimension tables surrounding it, like the points of a star.

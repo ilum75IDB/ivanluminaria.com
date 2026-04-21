@@ -6,6 +6,7 @@ aka: "Esquema en estrella"
 articles:
   - "/posts/data-warehouse/scd-tipo-2"
   - "/posts/data-warehouse/fatto-grana-sbagliata"
+  - "/posts/data-warehouse/bus-matrix-terreno-comune"
 ---
 
 El **star schema** (esquema en estrella) es el modelo de datos más utilizado en el data warehouse. Toma su nombre de su forma: una tabla central de hechos (fact table) conectada a múltiples tablas dimensionales que la rodean, como los rayos de una estrella.

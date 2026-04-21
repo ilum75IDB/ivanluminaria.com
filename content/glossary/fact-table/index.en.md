@@ -7,6 +7,7 @@ articles:
   - "/posts/data-warehouse/scd-tipo-2"
   - "/posts/data-warehouse/fatto-grana-sbagliata"
   - "/posts/data-warehouse/partitioning-dwh"
+  - "/posts/data-warehouse/bus-matrix-terreno-comune"
 ---
 
 A **fact table** is the central table of a star schema in a data warehouse. It contains numeric measures — amounts, quantities, counts, durations — and the foreign keys that connect it to dimension tables.
