@@ -5,6 +5,7 @@ translationKey: "glossary_kimball"
 aka: "Metodología Kimball, Dimensional Modeling"
 articles:
   - "/posts/data-warehouse/scd-tipo-2"
+  - "/posts/data-warehouse/bus-matrix-terreno-comune"
 ---
 
 **Kimball** se refiere a Ralph Kimball y su metodología de diseño de data warehouses, descrita en el libro *The Data Warehouse Toolkit* (primera edición 1996, tercera edición 2013).

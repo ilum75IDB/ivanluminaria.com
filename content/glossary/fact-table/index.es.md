@@ -7,6 +7,7 @@ articles:
   - "/posts/data-warehouse/scd-tipo-2"
   - "/posts/data-warehouse/fatto-grana-sbagliata"
   - "/posts/data-warehouse/partitioning-dwh"
+  - "/posts/data-warehouse/bus-matrix-terreno-comune"
 ---
 
 La **fact table** (tabla de hechos) es la tabla central de un star schema en el data warehouse. Contiene las medidas numéricas — importes, cantidades, conteos, duraciones — y las claves foráneas que la conectan con las tablas dimensionales.

@@ -7,6 +7,7 @@ articles:
   - "/posts/data-warehouse/scd-tipo-2"
   - "/posts/data-warehouse/fatto-grana-sbagliata"
   - "/posts/data-warehouse/partitioning-dwh"
+  - "/posts/data-warehouse/bus-matrix-terreno-comune"
 ---
 
 **Fact table** (tabela de fapte) este tabela centrală a unui star schema în data warehouse. Conține măsurile numerice — sume, cantități, contorizări, durate — și cheile externe care o conectează la tabelele dimensionale.

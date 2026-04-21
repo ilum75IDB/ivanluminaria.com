@@ -5,6 +5,7 @@ translationKey: "glossary_scd"
 aka: "Slowly Changing Dimension"
 articles:
   - "/posts/data-warehouse/scd-tipo-2"
+  - "/posts/data-warehouse/bus-matrix-terreno-comune"
 ---
 
 **SCD** (Slowly Changing Dimension) refers to a set of techniques used in data warehousing to manage changes in dimension table data over time.
