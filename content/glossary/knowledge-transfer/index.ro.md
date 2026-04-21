@@ -5,6 +5,7 @@ translationKey: "glossary_knowledge-transfer"
 aka: "Transfer de cunoștințe / KT"
 articles:
   - "/posts/project-management/ai-manager-project-management"
+  - "/posts/project-management/team-di-progetto-che-reggono"
 ---
 
 **Knowledge Transfer** (transfer de cunoștințe) este procesul prin care competențe, informații și know-how sunt transferate de la cei care le dețin la cei care au nevoie de ele — între colegi, între echipe, sau între persoane și sisteme de documentare.
