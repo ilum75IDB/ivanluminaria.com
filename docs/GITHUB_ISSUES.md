@@ -16,7 +16,6 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 39 | https://github.com/ilum75IDB/ivanluminaria.com/issues/39 | ETL a 4 ore: come ho portato un caricamento notturno a 25 minuti | aperta |
-| 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | aperta |
 
 ## Issue Aperte — Sezione MySQL
 
@@ -93,3 +92,4 @@ tool `WebFetch`.
 | 53 | https://github.com/ilum75IDB/ivanluminaria.com/issues/53 | Oracle da on-premises a cloud: strategia, pianificazione e cutover | 2026-03-23 |
 | 60 | https://github.com/ilum75IDB/ivanluminaria.com/issues/60 | Bug: sezione Glossario mancante in tutti i 23 articoli pubblicati | 2026-03-23 |
 | 69 | https://github.com/ilum75IDB/ivanluminaria.com/issues/69 | Disco pieno su cluster Group Replication - migrazione binary log | 2026-03-31 |
+| 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | 2026-04-21 |
