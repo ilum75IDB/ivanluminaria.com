@@ -43,7 +43,7 @@ La prima cosa utile che abbiamo fatto, prima ancora di toccare una riga di codic
 
 ## 🚌 Il bus matrix, spiegato senza mitologia
 
-Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} descrive il bus matrix come una matrice due-dimensioni: sulle righe i **processi di business** (vendite in negozio, campagne marketing, ciclo attivo di fatturazione, resi, movimenti di magazzino…), sulle colonne le **dimensioni conformi** (cliente, prodotto, negozio, data, geografia…). Nelle celle, una X se quel processo di business usa quella dimensione.
+Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} descrive il bus matrix come una matrice due-dimensioni: sulle righe i **processi di business** (nel nostro caso emissione polizze, rinnovi, sinistri, incassi premi, campagne marketing, sottoscrizioni online…), sulle colonne le **dimensioni conformi** (cliente, polizza, intermediario, data, campagna, canale…). Nelle celle, una X se quel processo di business usa quella dimensione.
 
 La matrice, da sola, non fa nulla. Non genera codice, non crea tabelle, non risolve conflitti. Serve a una cosa sola: costringere tutti a guardare lo stesso foglio.
 
@@ -62,7 +62,7 @@ Sei righe, sette colonne. Letto così, il foglio dice una cosa semplice e scomod
 
 ## 🔗 Cos'è una dimensione conforme
 
-Una {{< glossary term="conformed-dimension" >}}dimensione conforme{{< /glossary >}} è una dimensione che ha la stessa struttura, la stessa semantica e la stessa chiave attraverso più data mart. Non vuol dire "una sola tabella fisica condivisa" — può essere replicata, può vivere in schemi diversi — ma vuol dire che se il cliente `C_00217654` compare nel data mart commerciale e in quello marketing, **è lo stesso cliente, con gli stessi attributi di classificazione, e i numeri che lo riguardano si possono sommare senza riserve**.
+Una {{< glossary term="conformed-dimension" >}}dimensione conforme{{< /glossary >}} è una dimensione che ha la stessa struttura, la stessa semantica e la stessa chiave attraverso più data mart. Non vuol dire "una sola tabella fisica condivisa" — può essere replicata, può vivere in schemi diversi — ma vuol dire che se il contraente `IT_C00217654` compare nel data mart commerciale e in quello marketing, **è lo stesso contraente, con gli stessi attributi di classificazione, e i numeri che lo riguardano si possono sommare senza riserve**.
 
 Conformare una dimensione significa concordare tre cose:
 
