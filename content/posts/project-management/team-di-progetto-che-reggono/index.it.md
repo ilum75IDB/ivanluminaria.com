@@ -9,7 +9,7 @@ categories: ["Project Management"]
 image: "team-di-progetto-che-reggono.cover.jpg"
 ---
 
-Un anno, tanto tempo fa, ho avuto un PM che teneva un foglio Excel con i minuti che ciascuno di noi passava in bagno. Non scherzo. Un foglio condiviso, aggiornato a mano, con colonne per data, persona, orario di uscita, orario di rientro, durata. Lo mostrava in riunione settimanale a commento dell'andamento del progetto, come se i minuti lontano dalla scrivania spiegassero qualcosa dei ritardi.
+Più di quindici anni fa ho avuto un PM che teneva un foglio Excel con i minuti che ciascuno di noi passava in bagno. Non scherzo. Un foglio condiviso, aggiornato a mano, con colonne per data, persona, orario di uscita, orario di rientro, durata. Lo mostrava in riunione settimanale a commento dell'andamento del progetto, come se i minuti lontano dalla scrivania spiegassero qualcosa dei ritardi.
 
 Il risultato era prevedibile. Di mattina il team arrivava in silenzio, i passi in corridoio si facevano veloci e furtivi, la gente si scaglionava per non coincidere con un collega al gabinetto. Due persone si sono dimesse entro sei mesi. Il progetto è stato consegnato — ma nei mesi successivi la metà del team era rotante e ogni nuovo arrivato doveva essere formato da zero.
 

@@ -9,7 +9,7 @@ categories: ["Project Management"]
 image: "team-di-progetto-che-reggono.cover.jpg"
 ---
 
-Cu mulți ani în urmă am avut un PM care ținea un fișier Excel cu minutele pe care fiecare dintre noi le petrecea la baie. Nu glumesc. Un fișier partajat, actualizat manual, cu coloane pentru dată, persoană, ora ieșirii, ora întoarcerii, durata. Îl arăta în ședința săptămânală de status ca un comentariu la progresul proiectului, ca și cum minutele departe de birou ar explica ceva despre întârzieri.
+Cu mai bine de cincisprezece ani în urmă am avut un PM care ținea un fișier Excel cu minutele pe care fiecare dintre noi le petrecea la baie. Nu glumesc. Un fișier partajat, actualizat manual, cu coloane pentru dată, persoană, ora ieșirii, ora întoarcerii, durata. Îl arăta în ședința săptămânală de status ca un comentariu la progresul proiectului, ca și cum minutele departe de birou ar explica ceva despre întârzieri.
 
 Rezultatul era previzibil. Dimineața echipa venea în tăcere, pașii pe coridor se făceau rapizi și furișați, lumea își decala drumurile la baie ca să nu coincidă cu vreun coleg. Două persoane și-au dat demisia în șase luni. Proiectul s-a livrat — dar în lunile următoare jumătate din echipă era rotativă și fiecare nou-venit trebuia format de la zero.
 
