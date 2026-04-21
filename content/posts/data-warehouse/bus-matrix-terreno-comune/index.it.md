@@ -1,6 +1,6 @@
 ---
 title: "Tre data mart, tre verità sulle vendite: il bus matrix come terreno comune"
-description: "Una catena retail con tre reparti, tre data mart cresciuti in autonomia e tre numeri diversi sulle vendite di febbraio. Il bus matrix non l'ha risolto in un pomeriggio — ma ha dato un terreno condiviso su cui cominciare a parlare."
+description: "Un gruppo assicurativo multi-paese con tre reparti, tre data mart cresciuti in autonomia e tre numeri diversi sulle polizze emesse a febbraio. Il bus matrix non l'ha risolto in un pomeriggio — ma ha dato un terreno condiviso su cui cominciare a parlare."
 date: "2026-05-12T08:03:00+01:00"
 draft: false
 translationKey: "bus_matrix_terreno_comune"
@@ -9,11 +9,11 @@ categories: ["Data Warehouse"]
 image: "bus-matrix-terreno-comune.cover.jpg"
 ---
 
-Il primo meeting è stato strano. In sala c'erano tre persone — il responsabile commerciale, la marketing manager, il controller — e ognuno aveva davanti un foglio Excel con le vendite di febbraio di una catena retail di articoli sportivi, 48 punti vendita in Italia. I totali non coincidevano. Scarti dell'8%, del 12%, del 15% a seconda del confronto. E nessuno dei tre sembrava particolarmente sorpreso.
+Il primo meeting è stato strano. In sala c'erano tre persone — il responsabile della direzione commerciale, la marketing manager della rete agenziale, il controller della direzione amministrativa — e ognuno aveva davanti un foglio Excel con le nuove polizze emesse a febbraio in un grande gruppo assicurativo italiano, operativo in più paesi europei. I totali non coincidevano. Scarti del 9%, del 12%, del 16% a seconda del confronto. E nessuno dei tre sembrava particolarmente sorpreso.
 
-*"Facciamo così da sempre,"* ha detto il controller. *"Ognuno ha il suo. Poi quando il CEO chiede il fatturato, gli passiamo il mio perché è quello che torna con il bilancio."*
+*"Facciamo così da sempre,"* ha detto il controller. *"Ognuno ha il suo. Poi quando il board chiede la raccolta premi, passiamo il mio perché è quello che torna con la chiusura contabile."*
 
-Ecco il punto di partenza del progetto. Non un disastro scoperto da me, non un sistema da salvare. Una situazione che loro conoscevano benissimo e che era diventata ingestibile quando il nuovo CFO, arrivato da qualche settimana, aveva cominciato a fare domande scomode. Tipo: *perché il margine per categoria è diverso tra marketing e finance?* Oppure: *quanti clienti attivi abbiamo davvero, 180mila o 240mila?*
+Ecco il punto di partenza del progetto. Non un disastro scoperto da me, non un sistema da salvare. Una situazione che loro conoscevano benissimo e che era diventata ingestibile quando il nuovo CFO, arrivato da qualche settimana, aveva cominciato a fare domande scomode. Tipo: *perché la raccolta premi per ramo è diversa tra commerciale e finance?* Oppure: *quanti assicurati attivi abbiamo davvero in Italia, 420mila o 510mila?*
 
 Non avevamo una risposta. Ne avevamo tre.
 
@@ -23,13 +23,13 @@ Ogni reparto, negli anni, si era costruito il proprio {{< glossary term="data-ma
 
 Il risultato, a distanza di anni, era questo:
 
-| Data mart      | Grain principale          | Dimensioni                        | Sistema sorgente           |
-|----------------|----------------------------|-----------------------------------|----------------------------|
-| Commerciale    | Scontrino × riga           | Prodotto, Negozio, Cassiere, Data | POS (transazionale)        |
-| Marketing      | Cliente × campagna × mese  | Cliente, Campagna, Canale, Mese   | CRM + CDP                  |
-| Finance        | Fattura × voce × mese      | Conto, Centro di costo, Mese      | ERP contabilità            |
+| Data mart      | Grain principale                       | Dimensioni                              | Sistema sorgente                 |
+|----------------|----------------------------------------|-----------------------------------------|----------------------------------|
+| Commerciale    | Polizza × movimento × giorno           | Assicurato, Prodotto, Agenzia, Data     | Policy Management (mainframe)    |
+| Marketing      | Cliente × campagna × mese              | Cliente, Campagna, Canale, Mese         | CRM + piattaforma campaign mgmt  |
+| Finance        | Movimento contabile × voce × mese      | Conto, Centro di costo, Ramo, Mese      | ERP contabilità + riassicurazione|
 
-Tre {{< glossary term="star-schema" >}}star schema{{< /glossary >}}, tre definizioni di "cliente", tre calendari diversi (il marketing usava il mese solare, il finance il mese contabile con chiusure al 25, il commerciale la settimana retail a cavallo di due mesi). E soprattutto tre concetti di "prodotto": il POS lo identificava con il codice EAN, il CRM con il codice articolo padre, il finance lo raggruppava per categoria merceologica ai fini IVA.
+Tre {{< glossary term="star-schema" >}}star schema{{< /glossary >}}, tre definizioni di "cliente" (l'assicurato privato, l'azienda contraente, il contraente cointestato), tre calendari diversi (marketing sul mese solare, finance sul mese contabile con chiusure al 25, commerciale con la data di effetto della polizza che può slittare di mesi rispetto alla data di emissione). E soprattutto tre concetti di "prodotto": il policy management system identificava la polizza col codice tariffa interno, il CRM col macro-prodotto commerciale (Auto, Casa, Vita, Salute), il finance la raggruppava per ramo ai fini IVASS.
 
 Ognuno dei tre numeri era *corretto* nel suo contesto. Il problema era che non si parlavano.
 
