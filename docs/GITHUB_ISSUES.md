@@ -25,7 +25,6 @@ tool `WebFetch`.
 | 45 | https://github.com/ilum75IDB/ivanluminaria.com/issues/45 | Replica MySQL: quando lo slave resta indietro e nessuno se ne accorge | aperta |
 | 46 | https://github.com/ilum75IDB/ivanluminaria.com/issues/46 | MySQL e i lock che non ti aspetti: gap lock, next-key lock e deadlock | aperta |
 | 54 | https://github.com/ilum75IDB/ivanluminaria.com/issues/54 | Galera Cluster: due nodi giu - diagnosi e recovery da ticket reali | aperta |
-| 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | aperta |
 | 68 | https://github.com/ilum75IDB/ivanluminaria.com/issues/68 | Articolo MySQL: patching MySQL 8.0 dal backup alla verifica passo per passo | aperta |
 
 ## Issue Aperte — Sezione PostgreSQL
@@ -93,3 +92,4 @@ tool `WebFetch`.
 | 60 | https://github.com/ilum75IDB/ivanluminaria.com/issues/60 | Bug: sezione Glossario mancante in tutti i 23 articoli pubblicati | 2026-03-23 |
 | 69 | https://github.com/ilum75IDB/ivanluminaria.com/issues/69 | Disco pieno su cluster Group Replication - migrazione binary log | 2026-03-31 |
 | 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | 2026-04-21 |
+| 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | 2026-04-21 |
