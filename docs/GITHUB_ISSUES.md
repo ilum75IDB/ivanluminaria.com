@@ -45,6 +45,12 @@ tool `WebFetch`.
 
 *Nessuna issue aperta.*
 
+## Issue Aperte — Enhancement (Dev Tools)
+
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 71 | https://github.com/ilum75IDB/ivanluminaria.com/issues/71 | Comando zsh 'hugoserve' per avviare Hugo server con rendering dei post futuri | aperta |
+
 ## Issue Aperte — Bug
 
 *Nessuna issue aperta.*
