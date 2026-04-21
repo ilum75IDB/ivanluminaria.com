@@ -38,7 +38,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 65 | https://github.com/ilum75IDB/ivanluminaria.com/issues/65 | Articolo PM: 5 regole per creare team efficienti e di successo | aperta |
 | 66 | https://github.com/ilum75IDB/ivanluminaria.com/issues/66 | Articolo PM: importanza documentazione progettuale per il successo di un progetto | aperta |
 | 67 | https://github.com/ilum75IDB/ivanluminaria.com/issues/67 | Articolo PM: misurare i risultati come obiettivo per il successo di un progetto | aperta |
 
@@ -93,3 +92,4 @@ tool `WebFetch`.
 | 69 | https://github.com/ilum75IDB/ivanluminaria.com/issues/69 | Disco pieno su cluster Group Replication - migrazione binary log | 2026-03-31 |
 | 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | 2026-04-21 |
 | 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | 2026-04-21 |
+| 65 | https://github.com/ilum75IDB/ivanluminaria.com/issues/65 | Articolo PM: 5 regole per creare team efficienti e di successo | 2026-04-21 |

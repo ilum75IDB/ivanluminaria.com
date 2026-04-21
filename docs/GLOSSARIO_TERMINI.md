@@ -19,6 +19,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | AI Manager | Ruolo professionale che governa l'impatto dell'intelligenza artificiale su architetture, processi e persone all'interno di un progetto | ai-manager-project-management |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
+| Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
 | Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql, mysql-group-replication-binlog-migration, mysql-pre-upgrade-assessment |
 | Brompton | Bicicletta pieghevole britannica considerata il riferimento mondiale per qualità costruttiva, compattezza e praticità nel pendolarismo urbano | bici-vs-auto-roma |
@@ -76,9 +77,10 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | I/O Scheduler | Componente del kernel Linux che decide l'ordine in cui le richieste di I/O vengono inviate al disco, con impatto diretto sulle performance del database | oracle-linux-kernel |
 | IST | Incremental State Transfer — meccanismo di Galera Cluster per trasferire solo le transazioni mancanti a un nodo che rientra nel cluster | galera-cluster-3-nodi |
 | Kimball | Ralph Kimball — metodologia di progettazione data warehouse basata su dimensional modeling, star schema e processi ETL bottom-up. Riferimento standard per la classificazione delle SCD | scd-tipo-2, bus-matrix-terreno-comune |
-| Knowledge Transfer | Processo di trasferimento della conoscenza tra persone, team o sistemi, critico nei progetti IT dove la perdita di know-how compromette la continuità | ai-manager-project-management |
+| Knowledge Transfer | Processo di trasferimento della conoscenza tra persone, team o sistemi, critico nei progetti IT dove la perdita di know-how compromette la continuità | ai-manager-project-management, team-di-progetto-che-reggono |
 | KPI | Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito | smartworking-consulenza-it |
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
+| Micromanagement | Stile di gestione basato sul controllo puntuale delle attività quotidiane del team. Genera calo di motivazione, turnover e disincentiva l'iniziativa | team-di-progetto-che-reggono |
 | Mobilità Sostenibile | Approccio ai trasporti urbani che privilegia mezzi a basso impatto ambientale, riducendo emissioni, traffico e costi | bici-vs-auto-roma |
 | MVCC | Multi-Version Concurrency Control — modello di concorrenza di PostgreSQL che mantiene più versioni delle righe per garantire isolamento transazionale | vacuum-autovacuum-postgresql |
 | mydumper | Tool open source di backup logico per MySQL/MariaDB con parallelismo reale a livello di chunk. Divide le tabelle grandi in pezzi e li esporta con thread multipli, con restore parallelo tramite myloader | mysqldump-mysqlpump-mydumper, mysql-pre-upgrade-assessment |
@@ -96,6 +98,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | pg_stat_statements | Estensione PostgreSQL che raccoglie statistiche di esecuzione per tutte le query SQL: tempi, conteggi, righe restituite e blocchi letti. Strumento fondamentale per la diagnostica delle performance | pg-stat-statements |
 | Partition Pruning | Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo quelle corrispondenti al predicato | oracle-partitioning, partitioning-dwh |
 | Pre-upgrade assessment | Misurazione strutturata di dimensioni, crescita, tempi di backup e restore di un database prima di un upgrade. Serve a dimensionare la finestra di manutenzione e a definire una strategia di rollback realistica | mysql-pre-upgrade-assessment |
+| Psychological Safety | Clima di team in cui le persone possono ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione | team-di-progetto-che-reggono |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
 | pg_trgm | Estensione PostgreSQL che fornisce funzioni e operatori per la ricerca di similarità basata su trigrammi, abilitando l'uso di indici GIN per LIKE con wildcard | like-optimization-postgresql |
@@ -103,6 +106,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | OCI | Oracle Cloud Infrastructure — piattaforma cloud di Oracle con vantaggi significativi di licensing per i database Oracle grazie al programma BYOL e al rapporto 1:1 delle OCPU | oracle-cloud-migration |
 | Outsourcing | Esternalizzazione di attività o progetti IT a fornitori esterni, con rischi significativi di perdita di know-how e vendor lock-in se non gestita correttamente | 4-milioni-nessun-software |
 | OLAP | Online Analytical Processing — elaborazione orientata all'analisi multidimensionale dei dati, tipica dei data warehouse. Contrapposta all'OLTP dei sistemi transazionali | ragged-hierarchies |
+| Outcome vs Output | Distinzione tra ciò che il team produce concretamente (output: codice, documenti, deliverable) e il risultato finale misurato dal business (outcome: go-live, fatturato, KPI) | team-di-progetto-che-reggono |
 | PITR | Point-in-Time Recovery — tecnica di ripristino che combina backup e binary log per riportare un database a un qualsiasi momento nel tempo | binary-log-mysql, mysqldump-mysqlpump-mydumper |
 | Quorum | Meccanismo di consenso basato sulla maggioranza dei nodi, usato nei cluster database per prevenire lo split-brain e garantire la consistenza dei dati | galera-cluster-3-nodi, mysql-group-replication-binlog-migration |
 | RAC | Real Application Clusters — tecnologia Oracle che permette a più istanze di accedere contemporaneamente allo stesso database, garantendo alta disponibilità e scalabilità orizzontale | oracle-cloud-migration |
@@ -155,5 +159,5 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 ---
 
 **Ultimo aggiornamento**: 2026-04-21
-**Totale termini**: 137
-**Totale articoli con glossario**: 30
+**Totale termini**: 141
+**Totale articoli con glossario**: 31
