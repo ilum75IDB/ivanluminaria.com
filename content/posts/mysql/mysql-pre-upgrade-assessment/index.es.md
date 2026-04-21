@@ -62,3 +62,114 @@ Repitiendo la consulta en los cuatro servidores, el sizing total que llevé al P
 | **Total** |        |       25 |         **531,5 GB** |           **557 GB** |
 
 El gap entre "data + index" y "ficheros físicos" es el coste de la fragmentación y del tablespace `ibtmp1`. Merece la pena señalárselo al PM porque en el nuevo entorno se puede planificar un `OPTIMIZE TABLE` post-migración que recupera ese 5-6% de espacio.
+
+## 📈 2. Cuánto crecen — snapshots periódicos y lectura del binary log
+
+La cifra del crecimiento es más delicada. El PM pregunta "cuánto al mes", pero la respuesta útil es: *cuánto prevees que crezca en los próximos tres a seis meses, es decir, hasta el próximo assessment?* Hay dos enfoques, ambos válidos, que yo uso juntos.
+
+**Enfoque 1 — snapshots periódicos.** Si dispones del histórico del monitoreo (Prometheus + `mysqld_exporter`, Zabbix, o incluso solo la carpeta de los backups historizados), puedes reconstruir la curva de tamaños. Si no tienes nada, empieza ya: un cron semanal que ejecuta la consulta anterior y escribe el resultado en una tabla `ops.sizing_history` — después de 6-8 semanas tienes un dato sólido.
+
+```sql
+-- Tabla de historización (ejecutar una sola vez)
+CREATE TABLE ops.sizing_history (
+    captured_at   TIMESTAMP NOT NULL,
+    server_name   VARCHAR(50) NOT NULL,
+    schema_name   VARCHAR(64) NOT NULL,
+    data_bytes    BIGINT,
+    index_bytes   BIGINT,
+    num_tables    INT,
+    PRIMARY KEY (captured_at, server_name, schema_name)
+);
+
+-- Snapshot semanal vía cron
+INSERT INTO ops.sizing_history (captured_at, server_name, schema_name, data_bytes, index_bytes, num_tables)
+SELECT
+    NOW(),
+    @@hostname,
+    table_schema,
+    SUM(data_length),
+    SUM(index_length),
+    COUNT(*)
+FROM information_schema.TABLES
+WHERE table_schema NOT IN ('mysql', 'sys', 'performance_schema', 'information_schema', 'ops')
+GROUP BY table_schema;
+```
+
+**Enfoque 2 — estimación a partir del {{< glossary term="binary-log" >}}binary log{{< /glossary >}}.** Este es el truco que mucha gente no usa. El binlog registra cada escritura, y su tamaño diario es un proxy excelente de la tasa de crecimiento de los datos (netos de updates y deletes, que generan tráfico pero no crecimiento neto). Con `expire_logs_days=7` tienes una semana de histórico lista para leer.
+
+```bash
+# Volumen diario del binlog (últimos 7 días)
+ls -la /var/lib/mysql/binlog.* | awk '{print substr($6" "$7,1,6), $5}' | \
+    sort | awk '{a[$1]+=$2} END {for (k in a) printf "%s  %.2f GB\n", k, a[k]/1024/1024/1024}'
+```
+
+Resultado típico en uno de los servidores:
+
+```
+Abr 14   3,87 GB
+Abr 15   4,12 GB
+Abr 16   3,95 GB
+Abr 17   4,44 GB
+Abr 18   2,18 GB   # sábado
+Abr 19   1,02 GB   # domingo
+Abr 20   3,78 GB
+```
+
+Media entre semana ~4 GB/día de tráfico de escritura. La tasa de crecimiento neto del tablespace es típicamente entre el 20% y el 40% del volumen del binlog, según el mix de insert/update/delete. En nuestro caso, cruzando con los pocos snapshots disponibles, llegamos a una estimación de **+8-12 GB al mes por servidor**, con picos en `mysql-03` (el del portal de usuarios, más dinámico).
+
+## 💾 3. Cuánto dura el backup — `mysqldump`, `mydumper`, `xtrabackup`
+
+Aquí el PM espera un único número. La respuesta honesta es: depende de qué herramienta uses, y los tiempos pueden diferir en un orden de magnitud.
+
+En el mismo servidor (`mysql-03`, 218 GB de data + índices, tablas InnoDB con algún MyISAM residual que nadie ha tocado desde 2014), medí empíricamente cuatro estrategias.
+
+**`{{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}}` (lógico, single-threaded):**
+
+```bash
+time mysqldump --single-transaction --quick --routines --triggers --events \
+    --default-character-set=utf8mb4 --hex-blob \
+    --all-databases > /backup/mysql-03-full.sql
+```
+
+Resultado: 2 horas 47 minutos. Fichero SQL sin comprimir: 189 GB. Con pipe en tiempo real a `gzip` (`| gzip -3 > ...gz`): 3 horas 22 minutos, fichero comprimido 38 GB.
+
+**`mysqldump` + `zstd` (mi favorito para servidores PA donde el tiempo de CPU importa menos que la ventana):**
+
+```bash
+time mysqldump --single-transaction --quick --routines --triggers --events \
+    --default-character-set=utf8mb4 --hex-blob --all-databases | \
+    zstd -3 -T4 > /backup/mysql-03-full.sql.zst
+```
+
+Resultado: 2 horas 58 minutos, fichero comprimido 42 GB. Ligeramente mayor que gzip pero **aproximadamente el doble de rápido** en descompresión al restore — que es el momento en que la velocidad realmente importa.
+
+**`{{< glossary term="mydumper" >}}mydumper{{< /glossary >}}` (lógico, paralelo):**
+
+```bash
+time mydumper --host=localhost --user=backup --socket=/var/lib/mysql/mysql.sock \
+    --threads=8 --compress --rows=500000 \
+    --outputdir=/backup/mysql-03-mydumper \
+    --logfile=/backup/mysql-03-mydumper.log
+```
+
+Resultado: 47 minutos. Output: directorio con 312 ficheros comprimidos, total 41 GB. Casi 4x más rápido que `mysqldump` gracias al paralelismo a nivel de chunk de tabla.
+
+**`xtrabackup` (físico, hot backup):**
+
+```bash
+time xtrabackup --backup --target-dir=/backup/mysql-03-xtra \
+    --user=backup --password=*** --parallel=4 --compress --compress-threads=4
+```
+
+Resultado: 22 minutos. Output: 179 GB sin comprimir / 48 GB comprimidos. Es el más rápido porque copia los ficheros InnoDB a nivel físico en lugar de regenerar los `INSERT`, pero tiene una restricción importante: **las tablas MyISAM residuales se bloquean** durante su copia. Por suerte en `mysql-03` eran residuales y solo leídas por un batch nocturno, así que no impacta.
+
+Resumen que presenté al PM:
+
+| Herramienta             | Tiempo backup | Tamaño output | Notas                                             |
+|-------------------------|--------------:|--------------:|---------------------------------------------------|
+| `mysqldump` + gzip      | 3h 22m        | 38 GB         | baseline, single-thread, disponible en todos lados |
+| `mysqldump` + zstd      | 2h 58m        | 42 GB         | más rápido en restore                              |
+| `mydumper` + compress   | 47m           | 41 GB         | paralelo, excelente compromiso tiempo/espacio      |
+| `xtrabackup` + compress | 22m           | 48 GB         | físico, el más rápido, restricciones en MyISAM    |
+
+En el assessment propuse estandarizar en **`mydumper` para el backup periódico** (diario, poco espacio en disco, restore flexible por esquema) y **`xtrabackup` para el snapshot pre-upgrade** (muy rápido, ideal para la ventana de mantenimiento estrecha).
