@@ -35,9 +35,9 @@ Ognuno dei tre numeri era *corretto* nel suo contesto. Il problema era che non s
 
 ## 🔍 Il CFO aveva visto il problema prima di noi
 
-La cosa onesta da dire è che il problema l'aveva messo in agenda il CFO, non il team IT e non io. Lui non voleva un data warehouse nuovo. Voleva una cosa più banale: una riga di numeri che fosse la stessa su tutti i cruscotti. *"Non mi importa chi ha ragione tra di voi. Mi importa che il fatturato di febbraio sia un numero solo."*
+La cosa onesta da dire è che il problema l'aveva messo in agenda il CFO, non il team IT e non io. Lui non voleva un data warehouse nuovo. Voleva una cosa più banale: una riga di numeri che fosse la stessa su tutti i cruscotti. *"Non mi importa chi ha ragione tra di voi. Mi importa che la raccolta premi di febbraio sia un numero solo."*
 
-Detto così sembra ovvio. In pratica, quando chiedi a tre reparti di allineare le definizioni, scopri che ognuno ha ragionato per anni su una sua mappa del territorio e non ha voglia di ridisegnarla. Il commerciale conta il fatturato al lordo dei resi, il finance al netto. Il marketing considera "cliente attivo" chi ha comprato negli ultimi 12 mesi, il finance chi ha una posizione aperta nell'anno fiscale. Nessuno sbaglia. Semplicemente rispondono a domande diverse.
+Detto così sembra ovvio. In pratica, quando chiedi a tre reparti di allineare le definizioni, scopri che ognuno ha ragionato per anni su una sua mappa del territorio e non ha voglia di ridisegnarla. Il commerciale conta i premi lordi alla data di emissione, il finance li conta netti da commissioni alla data di competenza. Il marketing considera "cliente attivo" chi ha almeno una polizza in vigore negli ultimi 12 mesi, il finance chi ha una posizione premi aperta nell'esercizio. Nessuno sbaglia. Semplicemente rispondono a domande diverse.
 
 La prima cosa utile che abbiamo fatto, prima ancora di toccare una riga di codice, è stata una serie di workshop di due ore — uno per ogni dimensione candidata — in cui ciascun reparto spiegava cosa intendeva. A verbale. Il {{< glossary term="bus-matrix" >}}bus matrix{{< /glossary >}} che abbiamo poi disegnato non è nato da una genialata architetturale: è nato dalla trascrizione di quei workshop.
 
@@ -49,16 +49,16 @@ La matrice, da sola, non fa nulla. Non genera codice, non crea tabelle, non riso
 
 Quello che siamo arrivati a disegnare, dopo i workshop, era una cosa del genere (semplificata):
 
-| Processo di business      | Cliente | Prodotto | Negozio | Data | Promozione | Canale | Conto |
-|---------------------------|:-------:|:--------:|:-------:|:----:|:----------:|:------:|:-----:|
-| Vendite POS               |   X     |    X     |    X    |  X   |    X       |        |       |
-| Resi in negozio           |   X     |    X     |    X    |  X   |            |        |       |
-| Campagne marketing        |   X     |    X     |         |  X   |    X       |   X    |       |
-| Iscrizioni programma fedeltà |  X   |          |    X    |  X   |            |   X    |       |
-| Fatturazione              |   X     |    X     |    X    |  X   |            |        |   X   |
-| Ordini e-commerce         |   X     |    X     |         |  X   |    X       |   X    |       |
+| Processo di business        | Cliente | Polizza | Intermediario | Data | Campagna | Canale | Conto |
+|-----------------------------|:-------:|:-------:|:-------------:|:----:|:--------:|:------:|:-----:|
+| Emissione polizze           |   X     |    X    |      X        |  X   |    X     |   X    |       |
+| Rinnovi                     |   X     |    X    |      X        |  X   |          |   X    |       |
+| Sinistri aperti             |   X     |    X    |               |  X   |          |        |       |
+| Campagne su intermediari    |         |         |      X        |  X   |    X     |   X    |       |
+| Incassi premi               |   X     |    X    |      X        |  X   |          |        |   X   |
+| Sottoscrizioni online       |   X     |    X    |               |  X   |    X     |   X    |       |
 
-Sei righe, sette colonne. Letto così, il foglio dice una cosa semplice e scomoda insieme: **la dimensione Cliente appare in cinque processi su sei, la Data in tutti, il Prodotto in cinque**. Se la definizione di Cliente è diversa tra commerciale e marketing, cinque processi su sei restituiranno numeri incoerenti. Non è un problema di BI, è un problema di anagrafica.
+Sei righe, sette colonne. Letto così, il foglio dice una cosa semplice e scomoda insieme: **la dimensione Cliente appare in cinque processi su sei, la Polizza in cinque, la Data in tutti e l'Intermediario in quattro**. Se la definizione di Cliente è diversa tra commerciale e marketing, cinque processi su sei restituiranno numeri incoerenti. Non è un problema di BI, è un problema di anagrafica.
 
 ## 🔗 Cos'è una dimensione conforme
 
