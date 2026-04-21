@@ -113,3 +113,119 @@ CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code,
 ```
 
 Circa 3,1 milioane de rânduri pentru 1,8 milioane de contractanți distincți în cele patru țări principale (diferența este istoricul versiunilor în {{< glossary term="scd" >}}SCD Tip 2{{< /glossary >}}).
+
+**Stratul 2 — Bridge între chei vechi și chei noi.** Cele trei data marts existente continuau să funcționeze cu cheile lor locale. Am creat un tabel de mapare pentru fiecare:
+
+```sql
+CREATE TABLE dim_conformed.xref_customer (
+    source_system   VARCHAR(10) NOT NULL,   -- PMS | CRM | ERP
+    country_code    CHAR(2)     NOT NULL,   -- pentru a distinge omonimiile între țări
+    source_key      VARCHAR(50) NOT NULL,   -- cheia locală în sistemul sursă
+    sk_customer     BIGINT      NOT NULL,   -- pointer către dim_customer conformă
+    mapping_quality VARCHAR(20),            -- exact_match, fuzzy_match, manual
+    mapping_ts      TIMESTAMP   NOT NULL,
+    PRIMARY KEY (source_system, country_code, source_key)
+);
+```
+
+Xref-ul este populat de un job nocturn care citește master-ele sursă, compară cu dimensiunea conformă, aplică regulile de matching și înregistrează cazurile ambigue într-un tabel de anomalii gestionat manual de echipa de date. În cele patru țări, coada cazurilor ambigue era în jurul de 1,5% — un volum gestionabil de două persoane în două ore pe zi.
+
+**Stratul 3 — Viste de integrare.** Peste cele trei {{< glossary term="fact-table" >}}fact tables{{< /glossary >}} originale am creat viste care înlocuiesc cheia locală cu cheia surogat conformă:
+
+```sql
+CREATE OR REPLACE VIEW vw_fact_new_business_conformed AS
+SELECT
+    f.policy_id,
+    xc.sk_customer,           -- cheie conformă, nu cea locală PMS
+    xp.sk_policy,
+    xi.sk_intermediary,
+    xd.sk_date,
+    f.gross_premium,
+    f.net_premium,
+    f.commission_amount,
+    f.policy_duration_months
+FROM pms_dm.fact_new_business f
+LEFT JOIN dim_conformed.xref_customer      xc
+       ON xc.source_system = 'PMS'
+      AND xc.country_code  = f.country_code
+      AND xc.source_key    = f.pms_customer_code
+LEFT JOIN dim_conformed.xref_policy        xp
+       ON xp.source_system = 'PMS'
+      AND xp.source_key    = f.pms_tariff_code
+LEFT JOIN dim_conformed.xref_intermediary  xi
+       ON xi.source_system = 'PMS'
+      AND xi.country_code  = f.country_code
+      AND xi.source_key    = f.pms_agent_code
+JOIN dim_conformed.dim_date xd
+       ON xd.calendar_date = f.effective_date;
+```
+
+Niciun departament nu a fost nevoit să renunțe la propriul data mart. Cine voia analize mono-departament continua să le facă pe al lui. Cine avea nevoie de analize cross-departament folosea vistele conforme.
+
+## 📊 Întrebarea care înainte era imposibilă
+
+Prima interogare cu adevărat cross-mart pe care am lansat-o — cea care înainte de munca pe dimensiunile conforme ar fi ieșit cu trei răspunsuri diferite — părea banală:
+
+```sql
+-- Intermediari atinși de o campanie și polițe noi emise în următoarele 60 de zile
+SELECT
+    dc.country_code,
+    dc.risk_segment,
+    COUNT(DISTINCT cm.sk_intermediary)   AS targeted_intermediaries,
+    COUNT(DISTINCT nb.sk_customer)       AS converted_customers,
+    SUM(nb.gross_premium)                AS new_business_premium,
+    ROUND(100.0 * COUNT(DISTINCT nb.sk_customer)
+          / NULLIF(COUNT(DISTINCT cm.sk_intermediary), 0), 1) AS conversion_ratio_pct
+FROM vw_fact_campaign_conformed cm
+JOIN dim_conformed.dim_intermediary di
+     ON di.sk_intermediary = cm.sk_intermediary AND di.is_current
+LEFT JOIN vw_fact_new_business_conformed nb
+     ON nb.sk_intermediary = cm.sk_intermediary
+    AND nb.sk_date BETWEEN cm.sk_date AND cm.sk_date + 60
+LEFT JOIN dim_conformed.dim_customer dc
+     ON dc.sk_customer = nb.sk_customer AND dc.is_current
+WHERE cm.campaign_code = 'Q1_2026_AUTO_BROKER_PUSH'
+GROUP BY dc.country_code, dc.risk_segment
+ORDER BY new_business_premium DESC NULLS LAST;
+```
+
+Înainte, această interogare se făcea exportând două CSV-uri, încărcându-le în Excel și făcând VLOOKUP pe codul agentului/contractantului — care în cele două sisteme era scris diferit (CRM folosea codul intern de broker, PMS codul RUI). Erorile de matching erau în ordinul 20-30% și nimeni nu le măsura. Gestionarea pe țări adăuga complicații: un broker care opera atât în Italia cât și în Spania apărea de două ori.
+
+După, interogarea rulează în circa 5 secunde pe Oracle Exadata cu datele unui trimestru în cele patru țări și produce **un singur număr** per combinație țară × segment de risc. Marketingul îl compară cu finance, finance îl compară cu comercial, iar dacă există discrepanță se uită la join: nu la conceptul de client.
+
+| Metrică                               | Înainte                    | După                          |
+|---------------------------------------|----------------------------|-------------------------------|
+| Definiții de "contractant"            | 3                          | 1 (cu atribute specifice pe departament) |
+| Diferențe între dashboard-urile de departament | 9-16% în funcție de KPI | < 0,5% (doar timing ETL)   |
+| Timp pentru analize cross-departament | 1-2 zile de Excel          | interogare directă pe viste   |
+| Costul re-platforming-ului complet    | estimat 18-24 luni         | 4 luni + guvernanță continuă  |
+
+Costul re-platforming-ului complet nu l-am plătit niciodată pentru că nu a fost necesar. Bus matrix și dimensiunile conforme nu înlocuiesc un refactor: îți cumpără timpul să îl faci cu calm atunci când chiar este nevoie, un proces pe rând.
+
+## 🧠 De ce bus matrix se face înainte de codificare
+
+Motivul pentru care această muncă se face la început — și nu după ce trei data marts au crescut pe cont propriu — este simplu: a conforma după costă de zece ori mai mult decât a conforma înainte.
+
+Când pleci de la zero, dimensiunea conformă este un document de o pagină și jumătate scris într-o ședință de două ore. Când pleci de la trei data marts în producție de șase ani, este un proiect de șase luni cu un comitet de guvernanță, o echipă centrală de date, un proces de matching de construit, tabele de mapare de întreținut și blocaje organizaționale de negociat.
+
+Kimball a scris despre bus matrix în anii '90 cu exact această intenție: să dea echipelor o foaie de hârtie de pus pe perete înainte de a deschide editorul SQL. Este un exercițiu de aliniere, nu de arhitectură. Arhitectura vine după, și iese mult mai bine dacă foaia de hârtie a fost făcută.
+
+## Ce am învățat
+
+Munca tehnică — `dim_customer`, xref-urile, vistele — a fost partea ușoară. Partea dificilă a fost să aduci trei departamente la un acord pe ceea ce înseamnă "client". Și acea parte nu am rezolvat-o eu: a rezolvat-o CFO-ul cu greutatea sa politică, comitetul de guvernanță cu șase săptămâni de răbdare și DBA-ul clientului care avea o memorie istorică impresionantă a fiecărei decizii luate în anii anteriori și de ce.
+
+Când văd astăzi un proiect de DWH care pornește fără un bus matrix desenat și împărtășit, ridic mâna înainte de a începe. Nu ca să mă dau înțelept — ca să îmi amintesc că acea fază, cea de aliniere a definițiilor, nu poate fi sărită. Dacă o sari, o plătești după cu dobândă. Dacă o faci, restul proiectului devine aproape plictisitor. Și este exact cum ar trebui să fie.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[Bus Matrix](/ro/glossary/bus-matrix/)** — Matrice bidimensională Kimball cu procesele de business pe rânduri și dimensiunile conforme pe coloane. Servește la alinierea departamentelor pe definiții înainte de a începe proiectarea fizică a data warehouse-ului.
+
+**[Conformed Dimension](/ro/glossary/conformed-dimension/)** — Dimensiune partajată cu aceeași structură, semantică și cheie între mai multe data marts. Permite însumarea măsurilor provenind din procese de business diferite fără ambiguitate.
+
+**[Data Mart](/ro/glossary/data-mart/)** — Submulțime a data warehouse-ului focalizată pe un singur proces de business sau arie funcțională (vânzări, marketing, finance). Poate fi construit autonom de un departament, dar riscă să diverge de celelalte dacă lipsește conformitatea dimensiunilor.
+
+**[Kimball](/ro/glossary/kimball/)** — Ralph Kimball, metodologie de proiectare a data warehouse-ului bazată pe modelare dimensională, star schema și bus matrix. Abordare bottom-up care pleacă de la procesele de business și construiește data marts integrate prin dimensiuni conforme.
+
+**[Star Schema](/ro/glossary/star-schema/)** — Model de date cu o fact table centrală legată de mai multe tabele dimensionale. Este pattern-ul de bază al oricărui data mart Kimball și terenul natural pe care acționează dimensiunile conforme.
