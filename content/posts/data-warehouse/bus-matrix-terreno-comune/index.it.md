@@ -167,34 +167,36 @@ Nessun reparto ha dovuto smettere di usare il proprio data mart. Chi voleva anal
 La prima query davvero cross-mart che abbiamo lanciato — e che prima del lavoro sulle dimensioni conformi sarebbe uscita con tre risposte diverse — era banale a vedersi:
 
 ```sql
--- Clienti che hanno ricevuto una campagna e hanno comprato nei 30 giorni successivi
+-- Contraenti intermediari raggiunti da una campagna e nuove polizze emesse nei 60 giorni successivi
 SELECT
-    dc.region,
-    dc.loyalty_tier,
-    COUNT(DISTINCT dc.sk_customer)       AS targeted_customers,
-    COUNT(DISTINCT vs.sk_customer)       AS converted_customers,
-    ROUND(100.0 * COUNT(DISTINCT vs.sk_customer)
-          / NULLIF(COUNT(DISTINCT dc.sk_customer), 0), 1) AS conversion_rate_pct,
-    SUM(vs.net_amount)                   AS revenue_from_campaign
+    dc.country_code,
+    dc.risk_segment,
+    COUNT(DISTINCT cm.sk_intermediary)   AS targeted_intermediaries,
+    COUNT(DISTINCT nb.sk_customer)       AS converted_customers,
+    SUM(nb.gross_premium)                AS new_business_premium,
+    ROUND(100.0 * COUNT(DISTINCT nb.sk_customer)
+          / NULLIF(COUNT(DISTINCT cm.sk_intermediary), 0), 1) AS conversion_ratio_pct
 FROM vw_fact_campaign_conformed cm
-JOIN dim_conformed.dim_customer dc
-     ON dc.sk_customer = cm.sk_customer AND dc.is_current
-LEFT JOIN vw_fact_sales_conformed vs
-     ON vs.sk_customer = cm.sk_customer
-    AND vs.sk_date BETWEEN cm.sk_date AND cm.sk_date + 30
-WHERE cm.campaign_code = 'SPRING_2026_RUN'
-GROUP BY dc.region, dc.loyalty_tier
-ORDER BY conversion_rate_pct DESC;
+JOIN dim_conformed.dim_intermediary di
+     ON di.sk_intermediary = cm.sk_intermediary AND di.is_current
+LEFT JOIN vw_fact_new_business_conformed nb
+     ON nb.sk_intermediary = cm.sk_intermediary
+    AND nb.sk_date BETWEEN cm.sk_date AND cm.sk_date + 60
+LEFT JOIN dim_conformed.dim_customer dc
+     ON dc.sk_customer = nb.sk_customer AND dc.is_current
+WHERE cm.campaign_code = 'Q1_2026_AUTO_BROKER_PUSH'
+GROUP BY dc.country_code, dc.risk_segment
+ORDER BY new_business_premium DESC NULLS LAST;
 ```
 
-Prima, questa query si faceva esportando due CSV, caricandoli in Excel e facendo CERCA.VERT sul codice cliente — che nei due sistemi era scritto diverso. Gli errori di matching erano nell'ordine del 20-30%, e nessuno li misurava.
+Prima, questa query si faceva esportando due CSV, caricandoli in Excel e facendo CERCA.VERT sul codice agente/contraente — che nei due sistemi era scritto diverso (il CRM usava il codice broker interno, il PMS il codice RUI). Gli errori di matching erano nell'ordine del 20-30%, e nessuno li misurava. Aggiungeva fatica anche la gestione del paese: un broker con operatività in Italia e Spagna compariva due volte.
 
-Dopo, la query gira in circa 4 secondi su Postgres con i dati di un trimestre e produce **un solo numero** per combinazione regione × tier fedeltà. Il marketing lo confronta con finance, finance lo confronta con commerciale, e se c'è discrepanza si va a guardare il join: non il concetto di cliente.
+Dopo, la query gira in circa 5 secondi su Oracle Exadata con i dati di un trimestre sui quattro paesi e produce **un solo numero** per combinazione paese × segmento di rischio. Il marketing lo confronta con finance, finance lo confronta con commerciale, e se c'è discrepanza si va a guardare il join: non il concetto di cliente.
 
-| Metrica                             | Prima                      | Dopo                         |
+| Metrica                              | Prima                      | Dopo                         |
 |--------------------------------------|----------------------------|------------------------------|
-| Definizioni di "cliente"             | 3                          | 1 (più attributi specifici)  |
-| Scarti tra cruscotti reparto         | 8-15% a seconda del KPI    | < 0,5% (solo timing ETL)     |
+| Definizioni di "contraente"          | 3                          | 1 (più attributi specifici)  |
+| Scarti tra cruscotti reparto         | 9-16% a seconda del KPI    | < 0,5% (solo timing ETL)     |
 | Tempo per analisi cross-reparto      | 1-2 giorni di Excel        | query diretta su viste       |
 | Costo del re-platforming             | stimato 18-24 mesi         | 4 mesi + governance continua |
 
