@@ -67,6 +67,9 @@ Live URL: `https://ivanluminaria.com/`
 # Local development server (with drafts)
 hugo server -D
 
+# Local development server with drafts + scheduled (future) posts + LAN bind
+./scripts/serve-local.sh
+
 # Production build
 hugo --minify
 
@@ -74,6 +77,8 @@ hugo --minify
 ```
 
 Hugo **extended** version is required (for SCSS/PostCSS processing in the Congo theme).
+
+**Tip**: per comodità aggiungere in `~/.zshrc` l'alias `alias hugoserve="$HOME/ivanluminaria.com/scripts/serve-local.sh"` (o path equivalente), così basta scrivere `hugoserve` da qualunque directory per avere il server con draft + post programmati visibili.
 
 ## Deployment
 
