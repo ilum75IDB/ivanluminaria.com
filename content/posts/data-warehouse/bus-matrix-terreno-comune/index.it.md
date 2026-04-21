@@ -80,37 +80,39 @@ Qui c'è la parte tecnica che di solito passa in secondo piano rispetto alla nar
 
 La strategia è stata a strati.
 
-**Strato 1 — Dimensioni conformi centralizzate.** Abbiamo creato uno schema `dim_conformed` con le dimensioni condivise (`dim_customer`, `dim_product`, `dim_store`, `dim_date`, `dim_promotion`, `dim_channel`). La `dim_customer` è la più complessa: popolata da un processo di record matching tra POS, CRM ed ERP, con regole esplicite per i collision (stesso codice fiscale, e-mail diverse → merge; stessa e-mail, codici fiscali diversi → flag manuale).
+**Strato 1 — Dimensioni conformi centralizzate.** Abbiamo creato uno schema `dim_conformed` con le dimensioni condivise (`dim_customer`, `dim_policy`, `dim_intermediary`, `dim_date`, `dim_campaign`, `dim_channel`). La `dim_customer` è la più complessa: popolata da un processo di record matching tra policy management, CRM ed ERP, con regole esplicite per i collision (stesso codice fiscale, nazionalità diverse → merge se stesso paese di residenza; stessa e-mail, codici fiscali diversi → flag manuale).
 
 ```sql
 CREATE TABLE dim_conformed.dim_customer (
-    sk_customer         BIGINT PRIMARY KEY,      -- chiave surrogata
+    sk_customer         BIGINT PRIMARY KEY,      -- chiave surrogata centrale
     customer_code       VARCHAR(20) NOT NULL,    -- chiave naturale concordata
-    loyalty_card_id     VARCHAR(20),
+    country_code        CHAR(2)  NOT NULL,       -- IT, ES, FR, DE, ...
+    tax_id              VARCHAR(20),             -- CF / NIF / SIREN / Steuer-ID
     email_primary       VARCHAR(120),
-    fiscal_code         VARCHAR(16),
+    party_type          VARCHAR(10),             -- person, company
     first_name          VARCHAR(80),
     last_name           VARCHAR(80),
-    birth_year          INT,
-    gender              CHAR(1),
-    region              VARCHAR(40),             -- attributo geografico conforme
+    legal_name          VARCHAR(120),            -- per persone giuridiche
+    birth_year          INT,                     -- NULL per aziende
+    gender              CHAR(1),                 -- NULL per aziende
+    region              VARCHAR(40),
     province            VARCHAR(40),
-    acquisition_channel VARCHAR(30),             -- store, web, app, campagna
-    loyalty_tier        VARCHAR(20),
-    loyalty_since       DATE,
+    risk_segment        VARCHAR(20),             -- low, medium, high
+    acquisition_channel VARCHAR(30),             -- agency, broker, direct, online
+    first_policy_date   DATE,                    -- data primo contratto nel gruppo
     status              VARCHAR(10),             -- active, dormant, churned
     valid_from          DATE NOT NULL,
-    valid_to            DATE,                    -- SCD Tipo 2 su region, tier, status
+    valid_to            DATE,                    -- SCD Tipo 2 su region, risk_segment, status
     is_current          BOOLEAN NOT NULL DEFAULT TRUE,
-    record_source       VARCHAR(20),             -- POS, CRM, ERP, MERGE
+    record_source       VARCHAR(20),             -- PMS, CRM, ERP, MERGE
     last_update_ts      TIMESTAMP NOT NULL
 );
 
 CREATE INDEX ix_dim_customer_natural ON dim_conformed.dim_customer(customer_code, is_current);
-CREATE INDEX ix_dim_customer_loyalty ON dim_conformed.dim_customer(loyalty_card_id) WHERE loyalty_card_id IS NOT NULL;
+CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code, tax_id) WHERE tax_id IS NOT NULL;
 ```
 
-Circa 1,9 milioni di righe per 1,2 milioni di clienti distinti (la differenza è lo storico delle versioni in {{< glossary term="scd" >}}SCD Tipo 2{{< /glossary >}}).
+Circa 3,1 milioni di righe per 1,8 milioni di contraenti distinti sui quattro paesi principali (la differenza è lo storico delle versioni in {{< glossary term="scd" >}}SCD Tipo 2{{< /glossary >}}).
 
 **Strato 2 — Bridge tra vecchie chiavi e nuove chiavi.** I tre data mart esistenti continuavano a funzionare con le loro chiavi locali. Abbiamo creato una tabella di mappatura per ciascuno:
 
