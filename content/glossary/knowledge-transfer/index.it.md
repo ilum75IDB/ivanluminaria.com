@@ -5,6 +5,7 @@ translationKey: "glossary_knowledge-transfer"
 aka: "Trasferimento di conoscenza / KT"
 articles:
   - "/posts/project-management/ai-manager-project-management"
+  - "/posts/project-management/team-di-progetto-che-reggono"
 ---
 
 Il **Knowledge Transfer** (trasferimento di conoscenza) è il processo attraverso cui competenze, informazioni e know-how vengono trasferiti da chi li possiede a chi ne ha bisogno — tra colleghi, tra team, o tra persone e sistemi di documentazione.
