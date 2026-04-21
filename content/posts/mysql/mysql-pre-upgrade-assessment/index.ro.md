@@ -206,7 +206,7 @@ time myloader --host=localhost --user=root --socket=/var/lib/mysql/mysql.sock \
     --disable-redo-log --overwrite-tables
 ```
 
-Rezultat: **1 oră și 52 minute**. Flag-ul `--disable-redo-log` (MySQL 8.0.21+) este adevăratul game-changer: sare peste generarea {{< glossary term="redo-log-mysql" >}}redo log{{< /glossary >}}-ului în timpul încărcării inițiale, reducând overhead-ul de I/O. De folosit DOAR pe o instanță goală în faza de import, niciodată în producție.
+Rezultat: **1 oră și 52 minute**. Flag-ul `--disable-redo-log` (MySQL 8.0.21+) este adevăratul game-changer: sare peste generarea redo log-ului în timpul încărcării inițiale, reducând overhead-ul de I/O. De folosit DOAR pe o instanță goală în faza de import, niciodată în producție.
 
 **Din `xtrabackup`:**
 
