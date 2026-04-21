@@ -6,6 +6,7 @@ aka: "binlog"
 articles:
   - "/posts/mysql/mysql-group-replication-binlog-migration"
   - "/posts/mysql/binary-log-mysql"
+  - "/posts/mysql/mysql-pre-upgrade-assessment"
 ---
 
 Il **binary log** (o binlog) è un registro sequenziale in formato binario in cui MySQL scrive tutti gli eventi che modificano i dati: INSERT, UPDATE, DELETE e operazioni DDL. I file sono numerati progressivamente (`mysql-bin.000001`, `mysql-bin.000002`, ecc.) e gestiti tramite un file indice.

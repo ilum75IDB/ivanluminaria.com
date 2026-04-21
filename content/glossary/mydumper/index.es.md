@@ -5,6 +5,7 @@ translationKey: "glossary_mydumper"
 aka: "myloader"
 articles:
   - "/posts/mysql/mysqldump-mysqlpump-mydumper"
+  - "/posts/mysql/mysql-pre-upgrade-assessment"
 ---
 
 **mydumper** es una herramienta open source de backup lógico para MySQL y MariaDB que implementa paralelismo real: no solo entre tablas diferentes, sino también dentro de la misma tabla, dividiéndola en chunks basados en la primary key.

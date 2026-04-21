@@ -6,6 +6,7 @@ aka: "binlog"
 articles:
   - "/posts/mysql/mysql-group-replication-binlog-migration"
   - "/posts/mysql/binary-log-mysql"
+  - "/posts/mysql/mysql-pre-upgrade-assessment"
 ---
 
 **Binary log-ul** (sau binlog) este un registru secvențial în format binar în care MySQL scrie toate evenimentele care modifică datele: INSERT, UPDATE, DELETE și operațiuni DDL. Fișierele sunt numerotate progresiv (`mysql-bin.000001`, `mysql-bin.000002`, etc.) și gestionate printr-un fișier index.
