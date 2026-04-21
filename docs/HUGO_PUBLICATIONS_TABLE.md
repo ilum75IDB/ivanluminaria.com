@@ -44,6 +44,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 | 29 | 2026-04-28 | —        | Tue | Oracle da on-premises a cloud: strategia, pianificazione e cutover | oracle | #53 | 2026-03-23 | scheduled |
 | 30 | 2026-05-05 | —        | Tue | Prima di aggiornare MySQL: le cifre che il cliente ti chiede e come trovarle davvero | mysql | #64 | 2026-04-21 | scheduled |
 | 31 | 2026-05-12 | —        | Tue | Tre data mart, tre verità sulle vendite: il bus matrix come terreno comune | data-warehouse | #40 | 2026-04-21 | scheduled |
+| 32 | 2026-05-19 | —        | Tue | 5 regole che ho visto funzionare nei team di progetto che reggono | project-management | #65 | 2026-04-21 | scheduled |
 
 **Previous available slot**: 2025-10-07 (Tuesday)
-**Next available slot**: 2026-05-19 (Tuesday)
+**Next available slot**: 2026-05-26 (Tuesday)
