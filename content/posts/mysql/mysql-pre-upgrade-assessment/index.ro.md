@@ -173,3 +173,94 @@ Rezumat prezentat PM-ului:
 | `xtrabackup` + compress | 22m         | 48 GB       | fizic, cel mai rapid, restricții pe MyISAM    |
 
 În assessment am propus standardizarea pe **`mydumper` pentru backup-ul periodic** (zilnic, ocupă puțin spațiu, restore flexibil per schemă) și **`xtrabackup` pentru snapshot-ul pre-upgrade** (foarte rapid, ideal pentru fereastra de mentenanță strânsă).
+
+## ⏱️ 4. Cât durează restore-ul — cifra pe care PM-ul uită să o ceară
+
+Restore-ul este locul unde assessment-urile făcute prost eșuează. Un backup poate dura 47 minute, dar reconstrucția aceluiași dataset poate cere ore — iar în fereastra de mentenanță, asta contează.
+
+Tot pe `mysql-03`, măsurare empirică a cât durează reconstruirea de la zero a bazei de date pornind de la backup-urile de mai sus, pe un host geamăn (același CPU, același storage NVMe):
+
+**Din `mysqldump.sql.gz`:**
+
+```bash
+time gunzip -c /backup/mysql-03-full.sql.gz | \
+    mysql --default-character-set=utf8mb4
+```
+
+Rezultat: **5 ore și 12 minute**. Este lent pentru că restore-ul logic regenerează fiecare rând cu `INSERT`-uri individuale, actualizează indecșii tranzacțional și nu poate paraleliza pe o singură tabelă.
+
+**Din `mysqldump.sql.zst`:**
+
+```bash
+time zstd -dc /backup/mysql-03-full.sql.zst | \
+    mysql --default-character-set=utf8mb4
+```
+
+Rezultat: **4 ore și 38 minute**. Aici se vede avantajul decompresiei zstd (aproximativ 2x mai rapidă decât gzip), care este singurul element ce diferă de testul anterior.
+
+**Din `mydumper` cu `myloader`:**
+
+```bash
+time myloader --host=localhost --user=root --socket=/var/lib/mysql/mysql.sock \
+    --threads=8 --directory=/backup/mysql-03-mydumper \
+    --disable-redo-log --overwrite-tables
+```
+
+Rezultat: **1 oră și 52 minute**. Flag-ul `--disable-redo-log` (MySQL 8.0.21+) este adevăratul game-changer: sare peste generarea {{< glossary term="redo-log-mysql" >}}redo log{{< /glossary >}}-ului în timpul încărcării inițiale, reducând overhead-ul de I/O. De folosit DOAR pe o instanță goală în faza de import, niciodată în producție.
+
+**Din `xtrabackup`:**
+
+```bash
+time xtrabackup --decompress --target-dir=/backup/mysql-03-xtra --parallel=4
+time xtrabackup --prepare --target-dir=/backup/mysql-03-xtra
+# apoi rsync al fișierelor pe noul datadir + pornire mysqld
+```
+
+Rezultat: **34 minute** (decompress) + **12 minute** (prepare) + **6 minute** (copiere + restart) = **52 minute total**. Restore fizic: copie binară + crash recovery, fără SQL regenerat. Este singura opțiune care se apropie de timpul backup-ului însuși.
+
+Rezumat restore:
+
+| Strategie              | Timp restore | Note                                                   |
+|------------------------|-------------:|--------------------------------------------------------|
+| `mysqldump` + gzip     | 5h 12m       | de evitat pentru dataset-uri > 50 GB                   |
+| `mysqldump` + zstd     | 4h 38m       | doar dacă nu ai alternative                            |
+| `mydumper` + myloader  | 1h 52m       | cu `--disable-redo-log`, logic rapid                   |
+| `xtrabackup`           | 52m          | fizic, singura opțiune compatibilă cu ferestre strâmte |
+
+## 📋 5. Template-ul de răspuns pentru PM
+
+După măsurătorile pe cele patru servere, am consolidat totul într-un singur tabel, pentru că PM-ul are nevoie de o pagină de atașat la planul de cutover, nu de treizeci de slide-uri.
+
+| Server    | Dim. actuală | Creștere estimată | Backup (`xtrabackup`) | Restore (`xtrabackup`) | Restore worst-case (`mysqldump+gz`) |
+|-----------|-------------:|------------------:|----------------------:|-----------------------:|------------------------------------:|
+| mysql-01  |     172 GB   | +8 GB/lună        |               18 min  |                45 min  |                          4h 10m     |
+| mysql-02  |      95 GB   | +3 GB/lună        |               11 min  |                28 min  |                          2h 25m     |
+| mysql-03  |     219 GB   | +12 GB/lună       |               22 min  |                52 min  |                          5h 12m     |
+| mysql-04  |      46 GB   | +2 GB/lună        |                6 min  |                15 min  |                          1h 20m     |
+| **Total** |  **532 GB** | **+25 GB/lună**   |          **57 min**   |         **2h 20m**     |                    **13h 07m**      |
+
+Pe baza acestui tabel, fereastra de mentenanță de șase ore este **compatibilă cu un rollback bazat pe `xtrabackup`** (snapshot 57 minute + restore 2h 20m = 3h 17m, cu marjă de 2h 43m pentru debug și verificări), dar **incompatibilă cu un rollback bazat pe `mysqldump`** (peste 13 ore). Decizie operațională: `xtrabackup` ca strategie principală de rollback, `mydumper` ca fallback pentru restore-uri selective per schemă dacă apar probleme punctuale în timpul cutover-ului.
+
+PM-ul mi-a cerut patru cifre. I-am dat douăzeci și patru. Dar sunt douăzeci și patru de cifre măsurate — nu estimări aproximative — iar diferența este toată acolo.
+
+## Ce am învățat
+
+Un pre-upgrade assessment nu este un document tehnic, este un instrument de guvernare a riscului. Clientul care întreabă "cât durează backup-ul" de fapt întreabă *"dacă totul o ia razna în fereastra de mentenanță, reușim să repunem serviciile în funcțiune înainte de ora 6 dimineața?"*. Dacă răspunsul tău este "vreo trei ore, cred", întrebarea aceea rămâne fără răspuns și riscul nu a fost măsurat.
+
+Partea tehnică — interogările, instrumentele, măsurătorile — este partea ușoară. Partea dificilă este să faci ca cifrele măsurate să ajungă în planul de cutover, ca PM-ul să le citească, ca echipa ops să le folosească pentru a calibra fereastra. În cazul nostru PM-ul a vrut să adauge un slide în plus la întâlnirea cu vendor-ul noului storage: *"uite, astea sunt cifrele de referință; dacă array-ul vostru nu susține aceste throughput-uri de restore, planul nu funcționează"*. Și este exact ce ar trebui să facă un PM bun.
+
+În final upgrade-ul a trecut în patru ore, nu șase. Fără rollback. Clientul ne-a mulțumit nu pentru fereastra scurtă, ci pentru faptul că **știuseseră mereu ce s-ar întâmpla dacă ceva mergea prost**. Care este adevăratul obiectiv al unui pre-upgrade assessment bine făcut.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[information_schema](/ro/glossary/information-schema/)** — Schema de sistem MySQL (read-only) care expune metadate despre baze de date, tabele, indecși, utilizatori și starea serverului. Punct de plecare pentru orice assessment, sizing sau analiză structurală.
+
+**[xtrabackup](/ro/glossary/xtrabackup/)** — Instrument de backup fizic hot pentru MySQL/MariaDB dezvoltat de Percona. Copiază direct fișierele InnoDB în timp ce baza de date rulează, gestionând tranzacțiile în curs prin redo log. Semnificativ mai rapid decât backup-urile logice pe dataset-uri mari.
+
+**[Pre-upgrade assessment](/ro/glossary/pre-upgrade-assessment/)** — Măsurare structurată a dimensiunilor, ratei de creștere, timpilor de backup și timpilor de restore ai unei baze de date înainte de un upgrade. Servește la dimensionarea ferestrei de mentenanță și la definirea unei strategii de rollback realiste.
+
+**[mysqldump](/ro/glossary/mysqldump/)** — Utilitar de backup logic inclus în orice instalație MySQL. Produce un fișier SQL secvențial cu toate instrucțiunile pentru a recrea schema și datele. Single-threaded, fiabil dar lent pe baze de date mari.
+
+**[mydumper](/ro/glossary/mydumper/)** — Instrument open source de backup logic pentru MySQL/MariaDB cu paralelism real la nivel de chunk. Împarte tabelele mari în bucăți și le exportă cu thread-uri multiple, cu restore paralel prin myloader.
