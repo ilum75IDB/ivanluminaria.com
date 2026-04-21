@@ -44,3 +44,47 @@ L'antipattern è comune: *"serve qualcuno che faccia X, prendo quello del team c
 In un progetto per un ente della Pubblica Amministrazione italiana, c'era una collega assegnata a gestire il frontline del ticketing utenti. Tecnicamente brava, preparata, ma soffriva il contatto diretto con l'utenza infastidita; tornava a casa la sera svuotata. Il suo output era buono ma mai eccellente. Dopo tre mesi il responsabile ha fatto un passo indietro, ha guardato le competenze reali e gli interessi della squadra, e ha riassegnato quella collega all'analisi dei dati — dove si è rivelata molto forte, producendo report che prima nessuno riusciva a fare. Il frontline è stato coperto da un junior che fino a quel momento era su tutt'altro: quel contatto diretto lo formava, lo cresceva, lo faceva sentire utile.
 
 Risultato: due persone che prima rendevano al 60% ora rendevano al 100%, e il progetto ne ha beneficiato senza aver assunto nessuno. La regola non è "riassegna tutti", è più sottile: fai il punto ogni qualche mese, parla con le persone, osserva dove spendono energia e dove ne guadagnano. Un buon PM redistribuisce in base all'osservazione, non etichetta in base all'organigramma iniziale.
+
+## 4️⃣ Fai girare la conoscenza, non le persone
+
+La prima domanda che un PM dovrebbe farsi è: *"Se domani il team perdesse una persona, il progetto quanto si ferma?"*. La risposta — quantificata in giorni, non in parole confortanti — si chiama {{< glossary term="bus-factor" >}}bus factor{{< /glossary >}}. Un bus factor di 1 significa che la conoscenza critica è in una sola testa, e quella testa può ammalarsi, andare in ferie o cambiare azienda. Un bus factor di 3 significa che la stessa conoscenza è distribuita in almeno tre persone del team.
+
+Gli strumenti per alzare il bus factor sono semplici e noti — documentazione minima ma aggiornata, pair working sulle attività critiche, rotazione periodica delle responsabilità — e tutti e tre richiedono che il PM ci metta del tempo di calendario, non solo un'email di incoraggiamento.
+
+In un progetto presso un operatore postale e logistico nazionale con circa 1500 istanze MySQL e PostgreSQL in produzione, la pressione operativa era altissima: quando un DBA era in ferie, il team restante andava in sofferenza perché un pezzo di conoscenza specifica mancava. Abbiamo introdotto un rito molto semplice: ogni martedì alle 14:30, un {{< glossary term="knowledge-transfer" >}}knowledge transfer{{< /glossary >}} di 30 minuti su un tema specifico (configurazione di un tipo di cluster, procedura di recovery, troubleshooting di un servizio particolare), tenuto a turno da un membro del team. Sessioni registrate, indicizzate in un wiki interno, cercabili.
+
+Sei mesi dopo, quando un DBA è andato in paternità per tre mesi, il collega che lo sostituiva era già operativo dal primo giorno — non aveva mai toccato personalmente quei sistemi, ma aveva assistito o visto registrate le KT sulle procedure critiche. Il rito non è "ogni tanto facciamo un po' di formazione". Il rito è una mezz'ora bloccata in agenda, ogni settimana, che produce un asset del team condiviso. È una delle cose con il miglior rapporto costo-beneficio che ho visto applicare in un progetto.
+
+## 5️⃣ Riconosci il lavoro, non solo i risultati
+
+I risultati di un progetto dipendono da variabili che spesso il team non controlla: decisioni del cliente, cambi di scope, ritardi dei vendor, vincoli normativi che arrivano a metà corsa. Il lavoro, invece, è sotto il controllo del team. Il lavoro è quello che è stato messo nella giornata: ore di analisi, ore di coding, ore di confronto, ore di test.
+
+Se un PM riconosce solo i risultati, quando i risultati slittano per cause esterne le persone si demotivano. Hanno lavorato bene, forse lavorato molto, e si sentono dire *"comunque il go-live è saltato"*. La prossima volta lavoreranno di meno, perché hanno imparato che il loro sforzo non conta se l'outcome esterno non arriva. Il termine tecnico è la distinzione tra {{< glossary term="outcome-vs-output" >}}outcome e output{{< /glossary >}}: l'output è ciò che il team ha prodotto, l'outcome è il risultato finale misurato dal business.
+
+In un progetto nel settore assicurativo multi-paese, il team aveva completato lo sviluppo di un nuovo modulo di gestione commissioni rispettando tempi e qualità attesi. Poi, per decisioni di business che riguardavano un altro pezzo del sistema, il go-live è slittato di tre mesi e il modulo commissioni è rimasto in attesa. La responsabile di progetto ha chiamato il team in una riunione di quindici minuti e ha detto con estrema precisione: *"Avete consegnato quello che dovevate consegnare, nei tempi e con la qualità che ci eravamo detti. Il go-live dipende da fattori che non sono nelle vostre mani. Grazie del lavoro."*. Poi ha elencato, uno a uno, i pezzi di lavoro più difficili che il team aveva affrontato nei mesi precedenti — tre-quattro frasi, specifiche, concrete.
+
+Sembrerà poco. È stato tantissimo. Quel team ha mantenuto il ritmo anche durante i tre mesi di attesa, e quando il go-live è partito è partito bene. La regola non è "distribuire medaglie". La regola è distinguere ciò che il team ha fatto bene (output) da ciò che il business ha deciso (outcome), e riconoscere esplicitamente il primo quando il secondo non arriva.
+
+## 🧭 Il PM come custode delle condizioni
+
+Queste cinque regole non sono un decalogo da PM che comanda. Sono osservazioni su cosa succede quando certe condizioni ci sono e quando mancano. Sotto ognuna c'è un filo comune: il PM non è il generale che guida le truppe, è più un custode delle condizioni. Il suo lavoro è fare in modo che ogni persona del team abbia il permesso, lo spazio e gli strumenti per fare bene il proprio lavoro.
+
+Il successo di un progetto è del team che l'ha prodotto, non del PM. E la responsabilità dei fallimenti è del PM più che del team, perché le condizioni erano sotto il suo controllo. Questo ribaltamento — che per alcuni suona controintuitivo — è la parte che fa la differenza. Quando un team sente che chi lo guida prende la responsabilità per le condizioni e non si prende il merito per i successi, reggeno meglio alla pressione, bluffano meno, si aiutano di più.
+
+Ogni componente del team contribuisce al successo comune con la propria parte: tecnica, relazionale, organizzativa, di conoscenza del dominio. Il PM contribuisce con le condizioni. Se mancano le condizioni, il contributo di tutti si sgretola; se ci sono, il team regge. Le cinque regole sopra — tutte — sono modi concreti per mettere quelle condizioni in piedi e mantenerle nel tempo.
+
+E no, non si fa un foglio Excel con i minuti di gabinetto. Quello è l'opposto esatto del lavoro di un PM. È il segnale che non si è capito il mestiere.
+
+------------------------------------------------------------------------
+
+## Glossario
+
+**[Psychological Safety](/it/glossary/psychological-safety/)** — Clima di un team in cui le persone si sentono libere di ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Non significa clima morbido senza critiche, ma sicurezza professionale sul dire la verità tecnica.
+
+**[Bus Factor](/it/glossary/bus-factor/)** — Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Un bus factor di 1 è un rischio critico: la conoscenza è concentrata in una sola testa. Obiettivo: mantenere il bus factor ≥ 3 sulle competenze critiche.
+
+**[Micromanagement](/it/glossary/micromanagement/)** — Stile di gestione basato sul controllo puntuale delle attività quotidiane del team, spesso accompagnato da richieste continue di status e misurazione del tempo speso su singole operazioni. Genera calo di motivazione, turnover e disincentiva l'iniziativa.
+
+**[Outcome vs Output](/it/glossary/outcome-vs-output/)** — Distinzione tra ciò che il team produce concretamente (output: codice, documenti, deliverable) e il risultato finale misurato dal business (outcome: go-live, fatturato, KPI). L'output è sotto il controllo del team; l'outcome dipende anche da variabili esterne.
+
+**[Knowledge Transfer](/it/glossary/knowledge-transfer/)** — Processo strutturato di trasferimento di conoscenza tra persone o team, critico per alzare il bus factor e ridurre la dipendenza da singole persone. Può essere sincrono (sessioni pairing) o asincrono (documentazione, video registrati).
