@@ -9,7 +9,7 @@ categories: ["Project Management"]
 image: "team-di-progetto-che-reggono.cover.jpg"
 ---
 
-Hace mucho tiempo tuve un PM que llevaba una hoja de Excel con los minutos que cada uno de nosotros pasaba en el baño. No es broma. Una hoja compartida, actualizada a mano, con columnas para fecha, persona, hora de salida, hora de vuelta, duración. La enseñaba en la reunión semanal de estado como comentario al avance del proyecto, como si los minutos lejos del escritorio explicaran algo de los retrasos.
+Hace más de quince años tuve un PM que llevaba una hoja de Excel con los minutos que cada uno de nosotros pasaba en el baño. No es broma. Una hoja compartida, actualizada a mano, con columnas para fecha, persona, hora de salida, hora de vuelta, duración. La enseñaba en la reunión semanal de estado como comentario al avance del proyecto, como si los minutos lejos del escritorio explicaran algo de los retrasos.
 
 El resultado era previsible. Por la mañana el equipo llegaba en silencio, los pasos en el pasillo se hacían rápidos y furtivos, la gente se escalonaba las visitas al baño para no coincidir con algún compañero. Dos personas dimitieron en seis meses. El proyecto se entregó — pero en los meses siguientes la mitad del equipo era rotativa y cada nueva incorporación tenía que formarse desde cero.
 

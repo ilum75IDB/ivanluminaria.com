@@ -9,7 +9,7 @@ categories: ["Project Management"]
 image: "team-di-progetto-che-reggono.cover.jpg"
 ---
 
-A long time ago, I had a PM who kept an Excel sheet with the minutes each of us spent in the bathroom. I'm not making this up. A shared sheet, updated by hand, with columns for date, name, time left, time back, duration. He'd show it at the weekly status meeting, as a comment on project progress — as if the minutes away from the desk explained anything about the delays.
+Over fifteen years ago I had a PM who kept an Excel sheet with the minutes each of us spent in the bathroom. I'm not making this up. A shared sheet, updated by hand, with columns for date, name, time left, time back, duration. He'd show it at the weekly status meeting, as a comment on project progress — as if the minutes away from the desk explained anything about the delays.
 
 The outcome was predictable. Mornings the team came in silent, footsteps in the corridor got quick and furtive, people staggered their breaks so they wouldn't overlap with a colleague at the restroom. Two people quit within six months. The project shipped — but in the following months half the team was rotating, and every new hire had to be trained from scratch.
 
