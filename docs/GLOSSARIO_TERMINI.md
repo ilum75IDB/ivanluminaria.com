@@ -20,7 +20,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
-| Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql, mysql-group-replication-binlog-migration |
+| Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql, mysql-group-replication-binlog-migration, mysql-pre-upgrade-assessment |
 | Brompton | Bicicletta pieghevole britannica considerata il riferimento mondiale per qualità costruttiva, compattezza e praticità nel pendolarismo urbano | bici-vs-auto-roma |
 | Branch | Ramo di sviluppo indipendente in un sistema di version control, permette di lavorare su modifiche isolate senza influenzare il codice principale | ai-github-project-management |
 | Bicicletta Pieghevole | Bicicletta che si ripiega in 10-20 secondi diventando un bagaglio trasportabile in ufficio, in metro o in treno | bici-vs-auto-roma |
@@ -71,6 +71,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Huge Pages | Pagine di memoria da 2 MB che riducono drasticamente la pressione sulla MMU e sul TLB, migliorando le performance di Oracle su Linux | oracle-linux-kernel |
 | Issue Tracker | Sistema di tracciamento integrato per bug, richieste evolutive e task di progetto, su GitHub integrato direttamente nel repository | ai-github-project-management |
 | Interessi di Mora | Interessi automatici previsti dalla legge (tasso BCE + 8%) che maturano su ogni fattura pagata in ritardo | pagamenti-60-90-120-giorni |
+| information_schema | Schema di sistema MySQL/MariaDB in sola lettura che espone metadati su database, tabelle, indici, utenti e stato del server. Punto di partenza per assessment, sizing e analisi strutturale | mysql-pre-upgrade-assessment |
 | INTO OUTFILE | Clausola SQL di MySQL per esportare il risultato di una query direttamente in un file sul filesystem del server, soggetta alle restrizioni di secure-file-priv | mysql-multi-istanza-secure-file-priv |
 | I/O Scheduler | Componente del kernel Linux che decide l'ordine in cui le richieste di I/O vengono inviate al disco, con impatto diretto sulle performance del database | oracle-linux-kernel |
 | IST | Incremental State Transfer — meccanismo di Galera Cluster per trasferire solo le transazioni mancanti a un nodo che rientra nel cluster | galera-cluster-3-nodi |
@@ -80,9 +81,9 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
 | Mobilità Sostenibile | Approccio ai trasporti urbani che privilegia mezzi a basso impatto ambientale, riducendo emissioni, traffico e costi | bici-vs-auto-roma |
 | MVCC | Multi-Version Concurrency Control — modello di concorrenza di PostgreSQL che mantiene più versioni delle righe per garantire isolamento transazionale | vacuum-autovacuum-postgresql |
-| mydumper | Tool open source di backup logico per MySQL/MariaDB con parallelismo reale a livello di chunk. Divide le tabelle grandi in pezzi e li esporta con thread multipli, con restore parallelo tramite myloader | mysqldump-mysqlpump-mydumper |
+| mydumper | Tool open source di backup logico per MySQL/MariaDB con parallelismo reale a livello di chunk. Divide le tabelle grandi in pezzi e li esporta con thread multipli, con restore parallelo tramite myloader | mysqldump-mysqlpump-mydumper, mysql-pre-upgrade-assessment |
 | mysqlbinlog | Utility da riga di comando di MySQL per leggere, filtrare e riapplicare il contenuto dei file binary log. Indispensabile per il point-in-time recovery e il debug della replica | binary-log-mysql |
-| mysqldump | Utility di backup logico inclusa in ogni installazione MySQL. Produce un file SQL sequenziale con tutte le istruzioni per ricreare schema e dati. Single-threaded, affidabile ma lenta su database grandi | mysqldump-mysqlpump-mydumper |
+| mysqldump | Utility di backup logico inclusa in ogni installazione MySQL. Produce un file SQL sequenziale con tutte le istruzioni per ricreare schema e dati. Single-threaded, affidabile ma lenta su database grandi | mysqldump-mysqlpump-mydumper, mysql-pre-upgrade-assessment |
 | mysqlpump | Evoluzione di mysqldump introdotta in MySQL 5.7, con supporto per il parallelismo a livello di tabella e compressione nativa. Deprecato da Oracle in MySQL 8.0.34 per problemi di consistenza | mysqldump-mysqlpump-mydumper |
 | Nested Loop | Strategia di join che per ogni riga della tabella esterna cerca le corrispondenze nella tabella interna. Ideale per poche righe, disastrosa su grandi volumi | explain-analyze-postgresql |
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
@@ -94,6 +95,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Partita IVA | Regime fiscale italiano per lavoratori autonomi e liberi professionisti, che nella consulenza IT implica l'assunzione diretta del rischio di credito | pagamenti-60-90-120-giorni |
 | pg_stat_statements | Estensione PostgreSQL che raccoglie statistiche di esecuzione per tutte le query SQL: tempi, conteggi, righe restituite e blocchi letti. Strumento fondamentale per la diagnostica delle performance | pg-stat-statements |
 | Partition Pruning | Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo quelle corrispondenti al predicato | oracle-partitioning, partitioning-dwh |
+| Pre-upgrade assessment | Misurazione strutturata di dimensioni, crescita, tempi di backup e restore di un database prima di un upgrade. Serve a dimensionare la finestra di manutenzione e a definire una strategia di rollback realistica | mysql-pre-upgrade-assessment |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
 | pg_trgm | Estensione PostgreSQL che fornisce funzioni e operatori per la ricerca di similarità basata su trigrammi, abilitando l'uso di indici GIN per LIKE con wildcard | like-optimization-postgresql |
@@ -146,11 +148,12 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
 | Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
+| xtrabackup | Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione, gestendo le transazioni attive tramite il redo log. Nettamente più veloce dei backup logici su dataset grandi | mysql-pre-upgrade-assessment |
 | Yes-And | Tecnica di comunicazione nata nel teatro di improvvisazione che sostituisce il "No, però..." con "Sì, e...", trasformando le discussioni in costruzione collaborativa | tecnica-si-e-yes-and |
 | ZDM | Zero Downtime Migration — strumento Oracle per automatizzare le migrazioni verso OCI combinando Data Guard e Data Pump sotto un layer di orchestrazione | oracle-cloud-migration |
 
 ---
 
 **Ultimo aggiornamento**: 2026-04-21
-**Totale termini**: 134
-**Totale articoli con glossario**: 29
+**Totale termini**: 137
+**Totale articoli con glossario**: 30
