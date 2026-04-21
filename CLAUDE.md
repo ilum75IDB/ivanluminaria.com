@@ -64,11 +64,11 @@ Live URL: `https://ivanluminaria.com/`
 ## Build & Development
 
 ```bash
-# Local development server (with drafts)
+# Local development server (with drafts) — mostra ciò che sarà live su GitHub Pages
 hugo server -D
 
-# Local development server with drafts + scheduled (future) posts + LAN bind
-./scripts/serve-local.sh
+# Local development server con anche i post programmati (date future) visibili — per revisione pre-pubblicazione
+hugo server -D -F --navigateToChanged
 
 # Production build
 hugo --minify
@@ -78,7 +78,12 @@ hugo --minify
 
 Hugo **extended** version is required (for SCSS/PostCSS processing in the Congo theme).
 
-**Tip**: per comodità aggiungere in `~/.zshrc` l'alias `alias hugoserve="$HOME/ivanluminaria.com/scripts/serve-local.sh"` (o path equivalente), così basta scrivere `hugoserve` da qualunque directory per avere il server con draft + post programmati visibili.
+**Alias zsh disponibili** (definiti in `docs/SYS_CONF/zshrc.txt`, da copiare nel `~/.zshrc` dell'utente):
+
+- `hserve` → `hugo server -D --navigateToChanged` — simula esattamente cosa è online su GitHub Pages (no post futuri)
+- `hservepreview` → `hugo server -D -F --navigateToChanged` — include anche i post `scheduled` (data futura), utile per la revisione pre-pubblicazione
+
+In alternativa, lo script portabile `./scripts/serve-local.sh` offre la stessa vista completa di `hservepreview` + bind su `0.0.0.0` (accessibile da altri device in rete locale, es. iPhone/iPad per test mobile).
 
 ## Deployment
 
