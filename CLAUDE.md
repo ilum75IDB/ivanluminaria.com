@@ -454,7 +454,7 @@ Quando l'utente chiede "fammi i post della settimana" o simili, generare **entra
 
 ### Formato
 
-- Due versioni: prima `🇮🇹 Versione italiana:` poi `🇬🇧 English version:`
+- Due versioni: prima `🇬🇧 English version:` poi `🇮🇹 Versione italiana:` (ordine EN → IT per massimizzare l'anteprima su feed internazionali, dato che i primi ~150 caratteri sono quelli che compaiono nel preview LinkedIn)
 - Post **BREVE**: massimo 8-10 righe per lingua (deve essere letto in 15 secondi da cellulare)
 - La riga con il link all'articolo deve iniziare con 👉
 - Dopo il link all'articolo, aggiungere **sempre** una riga che segnala le traduzioni disponibili: "Disponibile anche in 🇬🇧 English, 🇪🇸 Español e 🇷🇴 Română sul sito." (nella versione EN: "Also available in 🇮🇹 Italiano, 🇪🇸 Español and 🇷🇴 Română on the website.")
@@ -489,4 +489,4 @@ Quando l'utente chiede "fammi i post della settimana" o simili, generare **entra
 1. Leggere l'articolo (almeno la versione italiana) per capire il tema, l'angolo personale e i dati chiave
 2. Identificare l'hook migliore: un numero, un paradosso, una situazione concreta vissuta in prima persona
 3. Scrivere il post seguendo le regole sopra
-4. Proporre il risultato completo (IT + EN + hashtag) pronto per il copia-incolla su LinkedIn
+4. Proporre il risultato completo (EN + IT + hashtag) pronto per il copia-incolla su LinkedIn
