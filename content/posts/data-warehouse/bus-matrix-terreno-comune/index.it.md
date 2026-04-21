@@ -66,13 +66,13 @@ Una {{< glossary term="conformed-dimension" >}}dimensione conforme{{< /glossary 
 
 Conformare una dimensione significa concordare tre cose:
 
-1. **La chiave naturale**: qual è l'identificativo unico del cliente? Il codice fiscale? L'e-mail? Il numero tessera fedeltà? Nei tre sistemi era diverso — il POS usava la tessera fedeltà (ma solo per chi la usava in cassa), il CRM usava l'e-mail, il finance usava il codice cliente dell'ERP. Senza una mappatura esplicita, tre clienti "diversi" potevano essere la stessa persona.
+1. **La chiave naturale**: qual è l'identificativo unico del cliente? Il codice fiscale? La partita IVA? Il codice contraente del sistema polizze? Nei tre sistemi era diverso — il policy management usava il codice contraente del mainframe (con logiche di deduplica ereditate dagli anni '90), il CRM usava e-mail + codice fiscale, il finance usava il codice cliente dell'ERP con una propria numerazione. Senza una mappatura esplicita, tre contraenti "diversi" potevano essere la stessa persona — e peggio, in paesi diversi la chiave naturale cambiava: codice fiscale in Italia, NIF in Spagna, SIREN o numero fiscale individuale in Francia.
 
-2. **Gli attributi condivisi**: quali colonne appartengono alla dimensione conforme? Regione, provincia, fascia d'età, data iscrizione programma fedeltà, canale di acquisizione. Tutto il resto resta in tabelle dimensionali *locali* al singolo data mart, ma non interferisce con le analisi cross-reparto.
+2. **Gli attributi condivisi**: quali colonne appartengono alla dimensione conforme? Paese, regione, provincia, tipo contraente (persona fisica / giuridica), fascia d'età, segmento di rischio, data primo contratto, canale di acquisizione. Tutto il resto resta in tabelle dimensionali *locali* al singolo data mart, ma non interferisce con le analisi cross-reparto.
 
-3. **La grana**: la dimensione conforme ha una riga per cliente individuale, non una riga per "segmento di clienti". Se il marketing vuole ragionare per segmento, aggiunge un attributo `segmento_marketing` alla dimensione conforme e lo valorizza con la propria logica.
+3. **La grana**: la dimensione conforme ha una riga per contraente individuale, non una riga per "segmento clienti". Se il marketing vuole ragionare per segmento, aggiunge un attributo `segmento_marketing` alla dimensione conforme e lo valorizza con la propria logica.
 
-Su queste tre cose ci abbiamo lavorato sei settimane. Non è stato divertente. Il marketing temeva di perdere il proprio modello di segmentazione, il commerciale non voleva che l'anagrafica passasse "sotto controllo finance". Il compromesso è stato: dimensione conforme gestita da un nuovo team dati centrale, con rappresentanti dei tre reparti nel comitato di governance.
+Su queste tre cose ci abbiamo lavorato sei settimane. Non è stato divertente. Il marketing temeva di perdere il proprio modello di segmentazione comportamentale, il commerciale non voleva che l'anagrafica contraenti passasse "sotto controllo finance", e il finance pretendeva che la chiave naturale fosse la loro perché "è quella usata per la fatturazione e per IVASS". Il compromesso è stato: dimensione conforme gestita da un nuovo team dati centrale, con rappresentanti dei tre reparti nel comitato di governance e una chiave surrogata interna che fa da pivot tra le tre chiavi naturali diverse.
 
 ## 🛠️ Come abbiamo integrato senza riscrivere tutto
 
