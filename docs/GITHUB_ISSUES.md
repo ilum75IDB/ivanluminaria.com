@@ -47,9 +47,7 @@ tool `WebFetch`.
 
 ## Issue Aperte — Enhancement (Dev Tools)
 
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 71 | https://github.com/ilum75IDB/ivanluminaria.com/issues/71 | Comando zsh 'hugoserve' per avviare Hugo server con rendering dei post futuri | aperta |
+*Nessuna issue aperta.*
 
 ## Issue Aperte — Bug
 
@@ -99,3 +97,4 @@ tool `WebFetch`.
 | 40 | https://github.com/ilum75IDB/ivanluminaria.com/issues/40 | Il bus matrix che ha salvato un progetto: modellare prima di scrivere codice | 2026-04-21 |
 | 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | 2026-04-21 |
 | 65 | https://github.com/ilum75IDB/ivanluminaria.com/issues/65 | Articolo PM: 5 regole per creare team efficienti e di successo | 2026-04-21 |
+| 71 | https://github.com/ilum75IDB/ivanluminaria.com/issues/71 | Feature: comando zsh 'hugoserve' per avviare Hugo server con rendering dei post futuri | 2026-04-21 |
