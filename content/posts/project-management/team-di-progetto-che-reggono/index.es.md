@@ -44,3 +44,51 @@ El antipatrón es común: *"hace falta alguien que haga X, cojo al del equipo qu
 En un proyecto para un ente de la Administración Pública italiana, una compañera estaba asignada a gestionar el frontline del ticketing a usuarios. Técnicamente buena, preparada, pero sufría el contacto directo con usuarios fastidiados; volvía a casa por la tarde vaciada. Su output era bueno pero nunca excelente. A los tres meses el responsable dio un paso atrás, miró las competencias reales y los intereses del equipo, y reasignó a aquella compañera al análisis de datos — donde resultó ser muy fuerte, produciendo informes que antes nadie conseguía hacer. El frontline lo cubrió un junior que hasta ese momento estaba en otra cosa completamente distinta: ese contacto directo le formaba, le hacía crecer, le hacía sentirse útil.
 
 Resultado: dos personas que antes rendían al 60% ahora rendían al 100%, y el proyecto se benefició sin haber contratado a nadie. La regla no es "reasigna a todo el mundo", es más sutil: haz balance cada algunos meses, habla con las personas, observa dónde gastan energía y dónde la ganan. Un buen PM redistribuye en base a la observación, no etiqueta en base al organigrama inicial.
+
+## 4️⃣ Haz circular el conocimiento, no las personas
+
+La primera pregunta que un PM debería hacerse es: *"Si mañana el equipo perdiera a una persona, ¿cuánto se pararía el proyecto?"*. La respuesta — cuantificada en días, no en palabras tranquilizadoras — se llama {{< glossary term="bus-factor" >}}bus factor{{< /glossary >}}. Un bus factor de 1 significa que el conocimiento crítico está en una sola cabeza, y esa cabeza puede enfermar, irse de vacaciones o cambiar de empresa. Un bus factor de 3 significa que el mismo conocimiento está distribuido en al menos tres personas del equipo.
+
+Las herramientas para subir el bus factor son simples y conocidas — documentación mínima pero actualizada, pair working sobre las actividades críticas, rotación periódica de las responsabilidades — y las tres requieren que el PM ponga tiempo de calendario, no solo un correo de ánimo.
+
+En un proyecto en un operador postal y logístico nacional con unas 1500 instancias MySQL y PostgreSQL en producción, la presión operativa era altísima: cuando un DBA estaba de vacaciones, el equipo restante sufría porque un trozo de conocimiento específico faltaba. Introdujimos un ritual muy sencillo: cada martes a las 14:30, un {{< glossary term="knowledge-transfer" >}}knowledge transfer{{< /glossary >}} de 30 minutos sobre un tema específico (configuración de un tipo de cluster, procedimiento de recovery, troubleshooting de un servicio particular), impartido por turnos por un miembro del equipo. Sesiones grabadas, indexadas en un wiki interno, buscables.
+
+Seis meses después, cuando un DBA se fue tres meses de paternidad, el compañero que lo sustituía ya estaba operativo desde el primer día — nunca había tocado personalmente esos sistemas, pero había asistido o visto grabadas las KT sobre los procedimientos críticos. El ritual no es "de vez en cuando hacemos un poco de formación". El ritual es media hora bloqueada en agenda, cada semana, que produce un activo del equipo compartido. Es una de las cosas con mejor relación coste-beneficio que he visto aplicar en un proyecto.
+
+## 5️⃣ Reconoce el trabajo, no solo los resultados
+
+Los resultados de un proyecto dependen de variables que muchas veces el equipo no controla: decisiones del cliente, cambios de alcance, retrasos de vendors, restricciones normativas que llegan a mitad del recorrido. El trabajo, en cambio, está bajo el control del equipo. El trabajo es lo que se ha puesto en la jornada: horas de análisis, horas de código, horas de discusión, horas de test.
+
+Si un PM reconoce solo los resultados, cuando los resultados se retrasan por causas externas las personas se desmotivan. Han trabajado bien, quizás han trabajado mucho, y oyen decir *"igualmente el go-live se ha caído"*. La próxima vez trabajarán menos, porque han aprendido que su esfuerzo no cuenta si el outcome externo no llega. El término técnico es la distinción entre {{< glossary term="outcome-vs-output" >}}outcome y output{{< /glossary >}}: el output es lo que el equipo ha producido, el outcome es el resultado final medido por el negocio.
+
+En un proyecto del sector asegurador multi-país, el equipo había completado el desarrollo de un nuevo módulo de gestión de comisiones respetando tiempos y calidad esperados. Luego, por decisiones de negocio que afectaban a otra parte del sistema, el go-live se retrasó tres meses y el módulo de comisiones quedó en espera. La responsable de proyecto convocó al equipo en una reunión de quince minutos y dijo con mucha precisión: *"Habéis entregado lo que teníais que entregar, en los tiempos y con la calidad que habíamos acordado. El go-live depende de factores que no están en vuestras manos. Gracias por el trabajo."*. Luego enumeró, uno a uno, los trozos de trabajo más difíciles que el equipo había afrontado en los meses anteriores — tres o cuatro frases, específicas, concretas.
+
+Parecerá poco. Fue muchísimo. Aquel equipo mantuvo el ritmo también durante los tres meses de espera, y cuando el go-live arrancó arrancó bien. La regla no es "repartir medallas". La regla es distinguir lo que el equipo ha hecho bien (output) de lo que el negocio ha decidido (outcome), y reconocer explícitamente lo primero cuando lo segundo no llega.
+
+## 🧭 El PM como custodio de las condiciones
+
+Un verano de hace muchos años, en Roma, con uno de esos bochornos que te clavan al asfalto, decidí ir a la oficina en bermudas. Sabía perfectamente que no era la vestimenta más adecuada para un contexto profesional, pero el calor estaba realmente fuera de escala. Nada más llegar, en el pasillo, me crucé con el manager. Me miró de arriba abajo y, sonriendo, me dijo: *"¿Hoy nos vamos a la playa?"*. Y yo, por instinto, me golpeé el índice en la sien y respondí: *"¿Me pagas por cómo visto o por lo que hay aquí dentro?"*. Soltó una carcajada, me dio una palmada en el hombro, y siguió recto hacia su despacho. Desde aquel día seguimos teniendo una excelente relación profesional, aunque luego los caminos nos han llevado en direcciones distintas.
+
+Aquella palmada en el hombro es una imagen que se me ha quedado pegada. En otro contexto — el de la hoja de Excel de los minutos de baño — la misma escena habría terminado en un aviso formal a RR.HH. y en una anotación en la evaluación anual. El manager que aquella mañana eligió reír había entendido una cosa simple: el valor de una persona en un proyecto no está en las bermudas ni en el traje, está en las ideas que produce y en el trabajo que pone a circular. Esa elección — reír en lugar de sancionar — es exactamente el oficio del custodio de las condiciones.
+
+Estas cinco reglas no son un decálogo de PM que manda. Son observaciones sobre lo que pasa cuando ciertas condiciones están y cuando faltan. Bajo cada una hay un hilo común: el PM no es el general que guía a las tropas, es más bien un custodio de las condiciones. Su trabajo es hacer que cada persona del equipo tenga el permiso, el espacio y las herramientas para hacer bien su trabajo.
+
+El éxito de un proyecto es del equipo que lo ha producido, no del PM. Y la responsabilidad de los fracasos es del PM más que del equipo, porque las condiciones estaban bajo su control. Esta inversión — que a algunos les suena contraintuitiva — es la parte que marca la diferencia. Cuando un equipo siente que quien lo guía asume la responsabilidad por las condiciones y no se atribuye el mérito por los éxitos, aguanta mejor bajo presión, finge menos, se ayuda más.
+
+Cada miembro del equipo contribuye al éxito común con su parte: técnica, relacional, organizativa, de conocimiento del dominio. El PM contribuye con las condiciones. Si faltan las condiciones, la contribución de todos se desmorona; si están, el equipo aguanta. Las cinco reglas de arriba — todas — son formas concretas de poner en pie esas condiciones y mantenerlas en el tiempo.
+
+Y no, no se lleva una hoja de Excel con los minutos de baño. Eso es el opuesto exacto del trabajo de un PM. Es la señal de que no se ha entendido el oficio.
+
+------------------------------------------------------------------------
+
+## Glosario
+
+**[Psychological Safety](/es/glossary/psychological-safety/)** — Clima de equipo en el que las personas se sienten libres de admitir errores, decir "no lo sé" y plantear problemas sin temer consecuencias sobre la valoración profesional. No significa clima blandengue sin críticas, sino seguridad profesional a la hora de decir la verdad técnica.
+
+**[Bus Factor](/es/glossary/bus-factor/)** — Número de personas del equipo que, si faltaran a la vez, bloquearían el proyecto. Un bus factor de 1 es un riesgo crítico: el conocimiento está concentrado en una sola cabeza. Objetivo: mantener el bus factor ≥ 3 en las competencias críticas.
+
+**[Micromanagement](/es/glossary/micromanagement/)** — Estilo de gestión basado en el control puntual de las actividades diarias del equipo, a menudo acompañado de peticiones continuas de estado y medición del tiempo empleado en operaciones individuales. Genera caída de motivación, turnover y desincentiva la iniciativa.
+
+**[Outcome vs Output](/es/glossary/outcome-vs-output/)** — Distinción entre lo que el equipo produce concretamente (output: código, documentos, deliverable) y el resultado final medido por el negocio (outcome: go-live, facturación, KPI). El output está bajo el control del equipo; el outcome también depende de variables externas.
+
+**[Knowledge Transfer](/es/glossary/knowledge-transfer/)** — Proceso estructurado de transferencia de conocimiento entre personas o equipos, crítico para subir el bus factor y reducir dependencias de personas individuales. Puede ser síncrono (sesiones de pairing) o asíncrono (documentación, vídeos grabados).
