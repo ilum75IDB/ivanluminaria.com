@@ -118,41 +118,46 @@ Circa 3,1 milioni di righe per 1,8 milioni di contraenti distinti sui quattro pa
 
 ```sql
 CREATE TABLE dim_conformed.xref_customer (
-    source_system   VARCHAR(10) NOT NULL,   -- POS | CRM | ERP
+    source_system   VARCHAR(10) NOT NULL,   -- PMS | CRM | ERP
+    country_code    CHAR(2)     NOT NULL,   -- per distinguere le omonimie tra paesi
     source_key      VARCHAR(50) NOT NULL,   -- chiave locale nel sistema di origine
-    sk_customer     BIGINT NOT NULL,        -- puntatore alla dim_customer conforme
+    sk_customer     BIGINT      NOT NULL,   -- puntatore alla dim_customer conforme
     mapping_quality VARCHAR(20),            -- exact_match, fuzzy_match, manual
-    mapping_ts      TIMESTAMP NOT NULL,
-    PRIMARY KEY (source_system, source_key)
+    mapping_ts      TIMESTAMP   NOT NULL,
+    PRIMARY KEY (source_system, country_code, source_key)
 );
 ```
 
-La xref è popolata da un job notturno che legge le anagrafiche sorgenti, confronta con la dimensione conforme, applica le regole di matching e logga i casi ambigui in una tabella di anomalie gestita manualmente dal team dati.
+La xref è popolata da un job notturno che legge le anagrafiche sorgenti, confronta con la dimensione conforme, applica le regole di matching e logga i casi ambigui in una tabella di anomalie gestita manualmente dal team dati. Sui quattro paesi, i casi ambigui in coda erano intorno all'1,5% — un volume gestibile da due persone in due ore al giorno.
 
 **Strato 3 — Viste di integrazione.** Sopra i tre {{< glossary term="fact-table" >}}fact table{{< /glossary >}} originali, abbiamo creato viste che sostituiscono la chiave locale con la chiave surrogata conforme:
 
 ```sql
-CREATE OR REPLACE VIEW vw_fact_sales_conformed AS
+CREATE OR REPLACE VIEW vw_fact_new_business_conformed AS
 SELECT
-    f.sale_id,
-    xc.sk_customer,           -- chiave conforme, non più quella POS locale
-    xp.sk_product,
-    xs.sk_store,
+    f.policy_id,
+    xc.sk_customer,           -- chiave conforme, non più quella PMS locale
+    xp.sk_policy,
+    xi.sk_intermediary,
     xd.sk_date,
-    f.quantity,
-    f.gross_amount,
-    f.discount_amount,
-    f.net_amount,
-    f.cost_amount
-FROM sales_dm.fact_sales f
-LEFT JOIN dim_conformed.xref_customer xc
-       ON xc.source_system = 'POS' AND xc.source_key = f.pos_customer_code
-LEFT JOIN dim_conformed.xref_product  xp
-       ON xp.source_system = 'POS' AND xp.source_key = f.pos_product_ean
-LEFT JOIN dim_conformed.xref_store    xs
-       ON xs.source_system = 'POS' AND xs.source_key = f.pos_store_code
+    f.gross_premium,
+    f.net_premium,
+    f.commission_amount,
+    f.policy_duration_months
+FROM pms_dm.fact_new_business f
+LEFT JOIN dim_conformed.xref_customer      xc
+       ON xc.source_system = 'PMS'
+      AND xc.country_code  = f.country_code
+      AND xc.source_key    = f.pms_customer_code
+LEFT JOIN dim_conformed.xref_policy        xp
+       ON xp.source_system = 'PMS'
+      AND xp.source_key    = f.pms_tariff_code
+LEFT JOIN dim_conformed.xref_intermediary  xi
+       ON xi.source_system = 'PMS'
+      AND xi.country_code  = f.country_code
+      AND xi.source_key    = f.pms_agent_code
 JOIN dim_conformed.dim_date xd
-       ON xd.calendar_date = f.sale_date;
+       ON xd.calendar_date = f.effective_date;
 ```
 
 Nessun reparto ha dovuto smettere di usare il proprio data mart. Chi voleva analisi mono-reparto, continuava a farle sul proprio. Chi aveva bisogno di cross-reparto, usava le viste conformi.
