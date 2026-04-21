@@ -122,3 +122,145 @@ Weekday average ~4 GB/day of write traffic. Net tablespace growth rate is typica
 Here the PM expects a single number. The honest answer: it depends on which tool you use, and the times can differ by an order of magnitude.
 
 On the same server (`mysql-03`, 218 GB of data + indexes, InnoDB tables with some leftover MyISAM that nobody has touched since 2014), I empirically measured four strategies.
+
+**`{{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}}` (logical, single-threaded):**
+
+```bash
+time mysqldump --single-transaction --quick --routines --triggers --events \
+    --default-character-set=utf8mb4 --hex-blob \
+    --all-databases > /backup/mysql-03-full.sql
+```
+
+Result: 2 hours 47 minutes. Uncompressed SQL file: 189 GB. With real-time pipe to `gzip` (`| gzip -3 > ...gz`): 3 hours 22 minutes, compressed file 38 GB.
+
+**`mysqldump` + `zstd` (my favorite for PA servers where CPU time matters less than the window):**
+
+```bash
+time mysqldump --single-transaction --quick --routines --triggers --events \
+    --default-character-set=utf8mb4 --hex-blob --all-databases | \
+    zstd -3 -T4 > /backup/mysql-03-full.sql.zst
+```
+
+Result: 2 hours 58 minutes, compressed file 42 GB. Slightly larger than gzip but **roughly twice as fast** to decompress during restore — which is the moment speed actually matters.
+
+**`{{< glossary term="mydumper" >}}mydumper{{< /glossary >}}` (logical, parallel):**
+
+```bash
+time mydumper --host=localhost --user=backup --socket=/var/lib/mysql/mysql.sock \
+    --threads=8 --compress --rows=500000 \
+    --outputdir=/backup/mysql-03-mydumper \
+    --logfile=/backup/mysql-03-mydumper.log
+```
+
+Result: 47 minutes. Output: directory with 312 compressed files, total 41 GB. Nearly 4x faster than `mysqldump` thanks to chunk-level table parallelism.
+
+**`xtrabackup` (physical, hot backup):**
+
+```bash
+time xtrabackup --backup --target-dir=/backup/mysql-03-xtra \
+    --user=backup --password=*** --parallel=4 --compress --compress-threads=4
+```
+
+Result: 22 minutes. Output: 179 GB uncompressed / 48 GB compressed. It's the fastest because it copies InnoDB files at the physical level instead of regenerating `INSERT`s, but it has one important constraint: **leftover MyISAM tables get locked** for the duration of their copy. Fortunately on `mysql-03` they were residual and only read by a nightly batch, so no impact.
+
+Summary I presented to the PM:
+
+| Tool                    | Backup time | Output size | Notes                                           |
+|-------------------------|------------:|------------:|-------------------------------------------------|
+| `mysqldump` + gzip      | 3h 22m      | 38 GB       | baseline, single-thread, available everywhere   |
+| `mysqldump` + zstd      | 2h 58m      | 42 GB       | faster on restore                               |
+| `mydumper` + compress   | 47m         | 41 GB       | parallel, excellent time/space tradeoff         |
+| `xtrabackup` + compress | 22m         | 48 GB       | physical, fastest, MyISAM constraints           |
+
+In the assessment I proposed standardizing on **`mydumper` for periodic backup** (daily, low disk footprint, flexible schema-level restore) and **`xtrabackup` for the pre-upgrade snapshot** (very fast, ideal for the tight maintenance window).
+
+## ⏱️ 4. How long the restore takes — the number the PM forgets to ask
+
+Restore is where badly-done assessments fail. A backup can take 47 minutes, but restoring the same dataset may take hours — and in the maintenance window, that's what matters.
+
+Again on `mysql-03`, empirical measurement of how long it takes to rebuild the database from scratch using the backups above, on a twin host (same CPU, same NVMe storage):
+
+**From `mysqldump.sql.gz`:**
+
+```bash
+time gunzip -c /backup/mysql-03-full.sql.gz | \
+    mysql --default-character-set=utf8mb4
+```
+
+Result: **5 hours 12 minutes**. Slow because logical restore regenerates every row with individual `INSERT`s, updates indexes transactionally, and cannot parallelize on a single table.
+
+**From `mysqldump.sql.zst`:**
+
+```bash
+time zstd -dc /backup/mysql-03-full.sql.zst | \
+    mysql --default-character-set=utf8mb4
+```
+
+Result: **4 hours 38 minutes**. Here you see the zstd decompression advantage (roughly 2x faster than gzip), which is the only element that differs from the previous test.
+
+**From `mydumper` with `myloader`:**
+
+```bash
+time myloader --host=localhost --user=root --socket=/var/lib/mysql/mysql.sock \
+    --threads=8 --directory=/backup/mysql-03-mydumper \
+    --disable-redo-log --overwrite-tables
+```
+
+Result: **1 hour 52 minutes**. The `--disable-redo-log` flag (MySQL 8.0.21+) is the real game-changer: it skips {{< glossary term="redo-log-mysql" >}}redo log{{< /glossary >}} generation during initial load, reducing I/O overhead. Use ONLY on an empty instance during import, never in production.
+
+**From `xtrabackup`:**
+
+```bash
+time xtrabackup --decompress --target-dir=/backup/mysql-03-xtra --parallel=4
+time xtrabackup --prepare --target-dir=/backup/mysql-03-xtra
+# then rsync of files to the new datadir + mysqld startup
+```
+
+Result: **34 minutes** (decompress) + **12 minutes** (prepare) + **6 minutes** (copy + restart) = **52 minutes total**. Physical restore: binary copy + crash recovery, no regenerated SQL. It's the only option that comes close to the backup time itself.
+
+Restore summary:
+
+| Strategy               | Restore time | Notes                                                   |
+|------------------------|-------------:|---------------------------------------------------------|
+| `mysqldump` + gzip     | 5h 12m       | to be avoided for datasets > 50 GB                      |
+| `mysqldump` + zstd     | 4h 38m       | only if you have no alternatives                        |
+| `mydumper` + myloader  | 1h 52m       | with `--disable-redo-log`, fast logical restore         |
+| `xtrabackup`           | 52m          | physical, the only option compatible with tight windows |
+
+## 📋 5. The response template for the PM
+
+After measurements across the four servers, I consolidated everything into a single table — because what the PM needs is a page to attach to the cutover plan, not thirty slides.
+
+| Server    | Current size | Estimated growth | Backup (`xtrabackup`) | Restore (`xtrabackup`) | Worst-case restore (`mysqldump+gz`) |
+|-----------|-------------:|-----------------:|----------------------:|-----------------------:|------------------------------------:|
+| mysql-01  |     172 GB   | +8 GB/month      |               18 min  |                45 min  |                          4h 10m     |
+| mysql-02  |      95 GB   | +3 GB/month      |               11 min  |                28 min  |                          2h 25m     |
+| mysql-03  |     219 GB   | +12 GB/month     |               22 min  |                52 min  |                          5h 12m     |
+| mysql-04  |      46 GB   | +2 GB/month      |                6 min  |                15 min  |                          1h 20m     |
+| **Total** |  **532 GB** | **+25 GB/month** |          **57 min**   |         **2h 20m**     |                    **13h 07m**      |
+
+Based on this table, the six-hour maintenance window is **compatible with an `xtrabackup`-based rollback** (57-minute snapshot + 2h 20m restore = 3h 17m, with a 2h 43m margin for debugging and verification), but **incompatible with a `mysqldump`-based rollback** (more than 13 hours). Operational decision: `xtrabackup` as the primary rollback strategy, `mydumper` as a fallback for targeted schema-by-schema restores if specific problems surface during the cutover.
+
+The PM asked for four numbers. I gave him twenty-four. But they're twenty-four measured numbers — not eyeballed estimates — and the difference is all there.
+
+## What I learned
+
+A pre-upgrade assessment isn't a technical document, it's a risk-governance tool. The customer asking "how long does the backup take" is actually asking *"if things go sideways in the maintenance window, can we get services back up before 6am?"*. If your answer is "about three hours, I think", that question is still unanswered and the risk hasn't been measured.
+
+The technical part — the queries, the tools, the measurements — is the easy part. The hard part is making sure the measured numbers end up in the cutover plan, that the PM reads them, that the ops team uses them to calibrate the window. In our case the PM wanted to add one more slide to the meeting with the new storage vendor: *"look, these are the reference numbers; if your array can't sustain these restore throughputs, the plan doesn't work"*. Which is exactly what a good PM should do.
+
+In the end the upgrade went through in four hours, not six. No rollback. The customer thanked us not for the short window, but for the fact that they had **always known what would happen if something went wrong**. Which is the real goal of a well-done pre-upgrade assessment.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**[information_schema](/en/glossary/information-schema/)** — MySQL system schema (read-only) that exposes metadata about databases, tables, indexes, users and server state. The starting point for any assessment, sizing or structural analysis.
+
+**[xtrabackup](/en/glossary/xtrabackup/)** — Hot physical backup tool for MySQL/MariaDB developed by Percona. Copies InnoDB files directly while the database is running, handling in-flight transactions via the redo log. Significantly faster than logical backups on large datasets.
+
+**[Pre-upgrade assessment](/en/glossary/pre-upgrade-assessment/)** — Structured measurement of size, growth rate, backup times and restore times of a database before an upgrade. Used to size the maintenance window and define a realistic rollback strategy.
+
+**[mysqldump](/en/glossary/mysqldump/)** — Logical backup utility included in every MySQL installation. Produces a sequential SQL file with all statements needed to recreate schema and data. Single-threaded, reliable but slow on large databases.
+
+**[mydumper](/en/glossary/mydumper/)** — Open-source logical backup tool for MySQL/MariaDB with real chunk-level parallelism. It splits large tables into pieces and exports them with multiple threads, with parallel restore via myloader.
