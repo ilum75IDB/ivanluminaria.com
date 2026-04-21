@@ -72,18 +72,14 @@ hugo server -D -F --navigateToChanged
 
 # Production build
 hugo --minify
-
-# Output goes to public/ (gitignored)
 ```
 
 Hugo **extended** version is required (for SCSS/PostCSS processing in the Congo theme).
 
-**Alias zsh disponibili** (definiti in `docs/SYS_CONF/zshrc.txt`, da copiare nel `~/.zshrc` dell'utente):
+**Alias zsh disponibili** (definiti in `docs/SYS_CONF/zshrc.txt`, da copiare nel `~/.zshrc` dell'utente, disponibili dopo `workwww`):
 
-- `hserve` → `hugo server -D --navigateToChanged` — simula esattamente cosa è online su GitHub Pages (no post futuri)
+- `hserve` → `hugo server -D --navigateToChanged` — simula esattamente cosa è online su GitHub Pages (draft visibili, post con data futura nascosti)
 - `hservepreview` → `hugo server -D -F --navigateToChanged` — include anche i post `scheduled` (data futura), utile per la revisione pre-pubblicazione
-
-In alternativa, lo script portabile `./scripts/serve-local.sh` offre la stessa vista completa di `hservepreview` + bind su `0.0.0.0` (accessibile da altri device in rete locale, es. iPhone/iPad per test mobile).
 
 ## Deployment
 
