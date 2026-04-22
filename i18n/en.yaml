@@ -1,6 +1,9 @@
 editorial:
   show_more: "Show more"
 
+tags:
+  title: "TAGS"
+
 glossary:
   title: "Glossary"
   related_articles: "Related articles"
