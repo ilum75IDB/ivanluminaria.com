@@ -624,6 +624,31 @@ a.skip-to-content:focus {
   transform: translateX(-50%);
 }
 
+/* Footer right-side navigation links (GLOSSARIO, TAG, RSS icon, LinkedIn icon)
+   — override the global `a` red color and provide consistent spacing and
+   vertical alignment between text labels and SVG icons. */
+footer .flex.flex-row.items-center > a {
+  color: rgb(82, 82, 82) !important;       /* neutral-600 */
+  margin-inline-end: 1.5rem;               /* 24px gap between items */
+  display: inline-flex;
+  align-items: center;                     /* vertical-center text vs icons */
+  line-height: 1;
+}
+footer .flex.flex-row.items-center > a:hover {
+  color: var(--ivan-blue) !important;      /* brand blue on hover */
+}
+.dark footer .flex.flex-row.items-center > a {
+  color: rgb(212, 212, 212) !important;    /* neutral-300 for dark bg */
+}
+.dark footer .flex.flex-row.items-center > a:hover {
+  color: var(--ivan-blue) !important;
+}
+/* SVG icons inside footer links: fixed size for visual balance with text */
+footer .flex.flex-row.items-center > a svg {
+  width: 1.125rem;                          /* 18px */
+  height: 1.125rem;
+}
+
 /* Footer full-width: break out of body's max-w-7xl container
    to align with the fixed navbar. Same pattern as nav:
    outer element full-width, inner container capped at 1600px */
