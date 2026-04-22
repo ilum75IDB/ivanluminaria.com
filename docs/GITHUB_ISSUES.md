@@ -50,7 +50,6 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 72 | https://github.com/ilum75IDB/ivanluminaria.com/issues/72 | Feature: link al Glossario nel footer, a sinistra del selettore lingua | aperta |
-| 73 | https://github.com/ilum75IDB/ivanluminaria.com/issues/73 | Feature: riposizionare pulsante 'scroll to top' sopra il selettore lingua nel footer | aperta |
 
 ## Issue Aperte — Bug
 
@@ -101,3 +100,4 @@ tool `WebFetch`.
 | 64 | https://github.com/ilum75IDB/ivanluminaria.com/issues/64 | MySQL pre-upgrade assessment: dimensioni, crescita, backup e tempi di restore | 2026-04-21 |
 | 65 | https://github.com/ilum75IDB/ivanluminaria.com/issues/65 | Articolo PM: 5 regole per creare team efficienti e di successo | 2026-04-21 |
 | 71 | https://github.com/ilum75IDB/ivanluminaria.com/issues/71 | Feature: comando zsh 'hugoserve' per avviare Hugo server con rendering dei post futuri | 2026-04-21 |
+| 73 | https://github.com/ilum75IDB/ivanluminaria.com/issues/73 | Feature: riposizionare pulsante 'scroll to top' sopra il selettore lingua nel footer | 2026-04-21 |
