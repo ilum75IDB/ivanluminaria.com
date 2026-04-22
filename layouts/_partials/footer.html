@@ -115,6 +115,28 @@
         class="me-6 text-sm uppercase text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
         title="{{ i18n "glossary.title" }}"
         >{{ i18n "glossary.title" }}</a>
+      {{/* Tags link — cross-section browsing by tag */}}
+      <a
+        href="{{ "/tags/" | relLangURL }}"
+        class="me-6 text-sm uppercase text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="{{ i18n "tags.title" }}"
+        >{{ i18n "tags.title" }}</a>
+      {{/* RSS feed — posts of the current language */}}
+      <a
+        href="{{ "/posts/index.xml" | relLangURL }}"
+        class="me-4 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="RSS"
+        aria-label="RSS"
+        >{{ partial "icon.html" "rss" }}</a>
+      {{/* LinkedIn — Ivan's recent activity stream */}}
+      <a
+        href="https://www.linkedin.com/in/ivanluminaria/recent-activity/all/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="me-6 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="LinkedIn"
+        aria-label="LinkedIn"
+        >{{ partial "icon.html" "linkedin" }}</a>
       {{/* Locale switcher — use our custom partial with flag icons */}}
       {{ if and (.IsTranslated) (eq ($.Scratch.Get "localeCount") 0) }}
         <div>
