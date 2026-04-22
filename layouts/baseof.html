@@ -23,7 +23,7 @@
         {{ block "main" . }}{{ end }}
         {{ if .Site.Params.footer.showScrollToTop | default true }}
           <div
-            class="pointer-events-none absolute bottom-0 -end-6 sm:-end-14 md:-end-24 lg:-end-32 top-[100vh] w-12"
+            class="pointer-events-none absolute bottom-0 inset-x-0 mx-auto top-[100vh] w-12"
             id="to-top"
             hidden="{{ .Site.Params.footer.showScrollToTop | default true -}}"
           >
