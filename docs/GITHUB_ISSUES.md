@@ -47,7 +47,9 @@ tool `WebFetch`.
 
 ## Issue Aperte — Enhancement (Dev Tools)
 
-*Nessuna issue aperta.*
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 72 | https://github.com/ilum75IDB/ivanluminaria.com/issues/72 | Feature: link al Glossario nel footer, a sinistra del selettore lingua | aperta |
 
 ## Issue Aperte — Bug
 
