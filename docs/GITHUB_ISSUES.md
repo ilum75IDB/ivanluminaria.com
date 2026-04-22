@@ -50,6 +50,7 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 72 | https://github.com/ilum75IDB/ivanluminaria.com/issues/72 | Feature: link al Glossario nel footer, a sinistra del selettore lingua | aperta |
+| 73 | https://github.com/ilum75IDB/ivanluminaria.com/issues/73 | Feature: riposizionare pulsante 'scroll to top' sopra il selettore lingua nel footer | aperta |
 
 ## Issue Aperte — Bug
 
