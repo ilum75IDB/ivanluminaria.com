@@ -614,11 +614,14 @@ a.skip-to-content:focus {
    SCROLL-TO-TOP — avoid overlap with language switcher (issue #3)
    ============================ */
 
-/* Move the button left so it doesn't sit on top of the footer
-   language dropdown (which opens upward in the same corner) */
+/* Center the scroll-to-top button horizontally.
+   Since the #to-top container is now placed inside <main> (see baseof.html),
+   it stops at the main/footer boundary and no longer overlaps the language
+   dropdown in the footer. So we can center it instead of offsetting left. */
 #to-top {
   z-index: 50 !important;        /* below language dropdown (z-9999+) */
-  margin-inline-end: 5.5rem;     /* shift left, clear the lang switcher fully */
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Footer full-width: break out of body's max-w-7xl container
