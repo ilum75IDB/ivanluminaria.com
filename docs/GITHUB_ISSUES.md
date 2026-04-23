@@ -48,7 +48,9 @@ tool `WebFetch`.
 
 ## Issue Aperte — Enhancement (Dev Tools)
 
-*Nessuna issue aperta.*
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 76 | https://github.com/ilum75IDB/ivanluminaria.com/issues/76 | Feature: redesign pagina list 'Database Strategy' - piu orizzontale, sezioni visibili above-the-fold | aperta |
 
 ## Issue Aperte — Bug
 
