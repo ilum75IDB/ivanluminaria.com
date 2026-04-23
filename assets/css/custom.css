@@ -635,13 +635,19 @@ footer .flex.flex-row.items-center > a {
   line-height: 1;
 }
 footer .flex.flex-row.items-center > a:hover {
-  color: var(--ivan-blue) !important;      /* brand blue on hover */
+  color: var(--ivan-red) !important;             /* Oracle red on hover */
+  font-weight: bold;                             /* stronger visual cue */
+  text-decoration: underline;
+  text-decoration-color: var(--ivan-red);        /* underline in same red */
 }
 .dark footer .flex.flex-row.items-center > a {
   color: rgb(212, 212, 212) !important;    /* neutral-300 for dark bg */
 }
 .dark footer .flex.flex-row.items-center > a:hover {
-  color: var(--ivan-blue) !important;
+  color: var(--ivan-red) !important;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--ivan-red);
 }
 /* SVG icons inside footer links: fixed size for visual balance with text */
 footer .flex.flex-row.items-center > a svg {
