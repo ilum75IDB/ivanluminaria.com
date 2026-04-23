@@ -3582,5 +3582,26 @@ footer {
   #menu-button,
   .burger-toggle {
     display: block !important;
+    /* Evita che in flex layout il label venga compresso o sparisca:
+       flex-shrink: 0 + min dimensions garantiscono visibilita e tap area. */
+    flex-shrink: 0 !important;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    position: relative;
+    z-index: 50;                              /* sopra menu-wrapper z-30 */
+  }
+  /* L'icona SVG dentro il label deve essere visibile */
+  #menu-button .icon,
+  #menu-button .icon svg,
+  .burger-toggle .icon,
+  .burger-toggle .icon svg {
+    display: inline-block !important;
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+    color: var(--ivan-gray-title);
+  }
+  .dark #menu-button .icon,
+  .dark .burger-toggle .icon {
+    color: rgb(229, 229, 229);
   }
 }
