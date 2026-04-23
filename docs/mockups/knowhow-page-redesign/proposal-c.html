@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Know-How page — Proposta C (Hero + timeline verticale "approfondimento")</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .crumbs { font-size: 0.85rem; color: var(--ivan-gray-obj); }
+    .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* HEADER (stesso delle altre due) */
+    .kh-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .kh-header-img { aspect-ratio: 3/2; overflow: hidden; background: #f3f4f6; }
+    .kh-header-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .kh-header-text { display: flex; flex-direction: column; justify-content: center; padding: 2rem 2.5rem; }
+    .kh-header-eyebrow { font-size: 0.75rem; font-weight: 700; color: var(--ivan-red); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.85rem; }
+    .kh-header-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; color: var(--ivan-gray-title); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .kh-header-tagline { font-size: 1.15rem; color: var(--ivan-gray-obj); font-style: italic; line-height: 1.55; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ivan-red); }
+    .kh-header-count { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--ivan-gray-title); font-weight: 600; }
+    .kh-header-count strong { font-size: 1.5rem; font-weight: 800; color: var(--ivan-red); }
+
+    /* INTRO centrata (accento sul concetto "approfondimento verticale") */
+    .kh-intro-centered {
+      max-width: 720px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #374151;
+    }
+    .kh-intro-centered p { margin-bottom: 1.2rem; }
+    .kh-intro-centered strong { color: var(--ivan-red); font-weight: 800; }
+    .kh-intro-centered p:first-child { font-size: 1.75rem; font-weight: 700; color: var(--ivan-gray-title); line-height: 1.3; letter-spacing: -0.01em; }
+
+    /* TIMELINE verticale con line red centrale */
+    .kh-timeline-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--ivan-gray-obj);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .kh-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+    .kh-timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--ivan-red) 0%, #fecaca 100%);
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    .kh-timeline-node {
+      position: relative;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      align-items: start;
+      gap: 0;
+    }
+    .kh-timeline-node:last-child { margin-bottom: 0; }
+    .kh-timeline-dot {
+      grid-column: 2;
+      width: 60px;
+      height: 60px;
+      background: white;
+      border: 4px solid var(--ivan-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ivan-gray-title);
+      font-weight: 800;
+      font-size: 0.85rem;
+      z-index: 2;
+      justify-self: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .kh-timeline-node[data-role="dwh"] .kh-timeline-dot { border-color: #1E3A5F; color: #1E3A5F; }
+    .kh-timeline-node[data-role="pm"] .kh-timeline-dot { border-color: #4a4a4a; color: #4a4a4a; }
+    .kh-timeline-node[data-role="oracle"] .kh-timeline-dot { border-color: #F80000; color: #F80000; }
+    .kh-timeline-node[data-role="plsql"] .kh-timeline-dot { border-color: #b30000; color: #b30000; }
+
+    .kh-timeline-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem 1.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: all 0.2s;
+    }
+    .kh-timeline-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--ivan-red); }
+
+    /* Alternanza SX / DX */
+    .kh-timeline-node:nth-child(odd) .kh-timeline-card {
+      grid-column: 1;
+      margin-right: 1rem;
+      position: relative;
+    }
+    .kh-timeline-node:nth-child(odd) .kh-timeline-card::after {
+      content: "";
+      position: absolute;
+      top: 2rem;
+      right: -12px;
+      width: 0; height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 12px solid white;
+      filter: drop-shadow(1px 0 0 var(--border));
+    }
+    .kh-timeline-node:nth-child(even) .kh-timeline-card {
+      grid-column: 3;
+      margin-left: 1rem;
+      position: relative;
+    }
+    .kh-timeline-node:nth-child(even) .kh-timeline-card::after {
+      content: "";
+      position: absolute;
+      top: 2rem;
+      left: -12px;
+      width: 0; height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 12px solid white;
+      filter: drop-shadow(-1px 0 0 var(--border));
+    }
+
+    .kh-role-title-tl { font-size: 1.25rem; font-weight: 800; color: var(--ivan-gray-title); margin-bottom: 0.5rem; line-height: 1.2; letter-spacing: -0.005em; }
+    .kh-role-body-tl { font-size: 0.9rem; line-height: 1.6; color: #4b5563; margin-bottom: 1rem; }
+    .kh-role-body-tl p { margin-bottom: 0.5rem; }
+    .kh-role-body-tl p:last-child { margin-bottom: 0; }
+    .kh-role-body-tl strong { color: var(--ivan-gray-title); }
+
+    .kh-sector-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+    .kh-sector-chip { font-size: 0.65rem; font-weight: 600; background: #f3f4f6; color: var(--ivan-gray-obj); padding: 0.2rem 0.55rem; border-radius: 999px; }
+
+    .kh-role-ctas { display: flex; gap: 0.5rem; flex-wrap: wrap; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+    .kh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .kh-btn-primary { background: var(--ivan-red); color: white; }
+    .kh-btn-primary:hover { background: var(--ivan-red-dark); }
+    .kh-btn-secondary { background: white; border: 1.5px solid var(--border); color: var(--ivan-gray-title); }
+    .kh-btn-secondary:hover { border-color: var(--ivan-red); color: var(--ivan-red); }
+
+    @media (max-width: 1024px) {
+      .kh-header { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .kh-header-text { padding: 1.5rem; }
+      .kh-header-title { font-size: 2rem; }
+      .kh-intro-centered p:first-child { font-size: 1.35rem; }
+      /* Timeline collassa a column singola, dot a sinistra */
+      .kh-timeline::before { left: 30px; transform: none; }
+      .kh-timeline-node { grid-template-columns: 60px 1fr; gap: 1rem; }
+      .kh-timeline-dot { grid-column: 1; justify-self: start; }
+      .kh-timeline-node:nth-child(odd) .kh-timeline-card,
+      .kh-timeline-node:nth-child(even) .kh-timeline-card {
+        grid-column: 2;
+        margin: 0;
+      }
+      .kh-timeline-node:nth-child(odd) .kh-timeline-card::after,
+      .kh-timeline-node:nth-child(even) .kh-timeline-card::after { display: none; }
+    }
+
+    .mockup-tag { position: fixed; top: 1rem; right: 1rem; background: #1E3A5F; color: white; padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta C • Timeline verticale "approfondimento"</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="crumbs"><a href="#">Home</a> › Know-How e Impatto</div>
+</nav>
+
+<main class="page">
+
+  <!-- ===== HERO HEADER ===== -->
+  <header class="kh-header">
+    <div class="kh-header-img">
+      <img src="../../../content/resumes/resumes.cover.jpg" alt="Know-How e Impatto">
+    </div>
+    <div class="kh-header-text">
+      <div class="kh-header-eyebrow">Know-How e Impatto</div>
+      <h1 class="kh-header-title">Esperienza, profondità, impatto</h1>
+      <p class="kh-header-tagline">Trent'anni di lavoro sui sistemi che non possono fermarsi — database, data warehouse, team. Profondità tecnica e impatto concreto sul business.</p>
+      <div class="kh-header-count"><strong>4</strong>&nbsp;profili professionali</div>
+    </div>
+  </header>
+
+  <!-- ===== INTRO CENTRATA ===== -->
+  <div class="kh-intro-centered">
+    <p>In circa trent'anni non ho cambiato mestiere. <strong>Ho cambiato profondità.</strong></p>
+    <p>Ogni ruolo che ho ricoperto non è stato un salto laterale. È stato un <strong>approfondimento verticale</strong>.</p>
+    <p style="font-size: 1rem; color: var(--ivan-gray-obj);">Quello che oggi offro non è un elenco di competenze. È la somma delle conseguenze che quelle competenze producono.</p>
+  </div>
+
+  <!-- ===== TIMELINE ===== -->
+  <div class="kh-timeline-title">I profili • scorri per esplorare</div>
+  <div class="kh-timeline">
+
+    <div class="kh-timeline-node" data-role="dwh">
+      <div class="kh-timeline-dot">▦</div>
+      <div class="kh-timeline-card">
+        <h3 class="kh-role-title-tl">Data Warehouse Architect</h3>
+        <div class="kh-role-body-tl">
+          <p>Architetture dati in contesti dove il dato è <strong>infrastruttura critica</strong>.</p>
+          <p>Nel Telco conta la scala. Nel Banking la precisione normativa. Nelle Assicurazioni la coerenza del rischio.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">TIM</span>
+          <span class="kh-sector-chip">Vodafone</span>
+          <span class="kh-sector-chip">Generali</span>
+          <span class="kh-sector-chip">Banca d'Italia</span>
+        </div>
+        <div class="kh-role-ctas">
+          <a href="#" class="kh-btn kh-btn-primary">→ Roadmap</a>
+          <a href="#" class="kh-btn kh-btn-secondary">⬇ PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kh-timeline-node" data-role="pm">
+      <div class="kh-timeline-dot">PM</div>
+      <div class="kh-timeline-card">
+        <h3 class="kh-role-title-tl">Project Manager con background tecnico</h3>
+        <div class="kh-role-body-tl">
+          <p>In questi settori, <strong>l'errore ha un costo reale</strong>.</p>
+          <p>Un PM tecnico conosce l'impatto delle scelte. Sa quando un compromesso è accettabile. E quando non lo è.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">Telco</span>
+          <span class="kh-sector-chip">Banche</span>
+          <span class="kh-sector-chip">Assicurazioni</span>
+          <span class="kh-sector-chip">PA</span>
+        </div>
+        <div class="kh-role-ctas">
+          <a href="#" class="kh-btn kh-btn-primary">→ Roadmap</a>
+          <a href="#" class="kh-btn kh-btn-secondary">⬇ PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kh-timeline-node" data-role="oracle">
+      <div class="kh-timeline-dot">O</div>
+      <div class="kh-timeline-card">
+        <h3 class="kh-role-title-tl">Oracle DBA &amp; Performance Tuning</h3>
+        <div class="kh-role-body-tl">
+          <p>Ambienti <strong>mission-critical</strong>. Alta disponibilità, carichi elevati, reperibilità reale.</p>
+          <p>Il tuning non è un miglioramento estetico. È protezione dell'operatività.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">TIM</span>
+          <span class="kh-sector-chip">Huawei</span>
+          <span class="kh-sector-chip">Banca d'Italia</span>
+          <span class="kh-sector-chip">Generali</span>
+        </div>
+        <div class="kh-role-ctas">
+          <a href="#" class="kh-btn kh-btn-primary">→ Roadmap</a>
+          <a href="#" class="kh-btn kh-btn-secondary">⬇ PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kh-timeline-node" data-role="plsql">
+      <div class="kh-timeline-dot">SQL</div>
+      <div class="kh-timeline-card">
+        <h3 class="kh-role-title-tl">Oracle PL/SQL — Senior &amp; Mentor</h3>
+        <div class="kh-role-body-tl">
+          <p>La logica nel database è parte della <strong>stabilità del sistema</strong>.</p>
+          <p>Ho insegnato SQL e PL/SQL per anni. Oggi guido, faccio mentoring, aiuto sviluppatori a crescere in profondità.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">Banking</span>
+          <span class="kh-sector-chip">Assicurazioni</span>
+          <span class="kh-sector-chip">Automotive</span>
+          <span class="kh-sector-chip">PA</span>
+        </div>
+        <div class="kh-role-ctas">
+          <a href="#" class="kh-btn kh-btn-primary">→ Roadmap</a>
+          <a href="#" class="kh-btn kh-btn-secondary">⬇ PDF</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>

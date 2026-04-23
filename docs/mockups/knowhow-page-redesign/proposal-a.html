@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Know-How page — Proposta A (Hero 2-col + grid 2x2 ruoli)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .crumbs { font-size: 0.85rem; color: var(--ivan-gray-obj); }
+    .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
+    .page { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* HEADER 2-col: image 3:2 + testo (stile section-page) */
+    .kh-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .kh-header-img { aspect-ratio: 3/2; overflow: hidden; background: #f3f4f6; }
+    .kh-header-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .kh-header-text { display: flex; flex-direction: column; justify-content: center; padding: 2rem 2.5rem; }
+    .kh-header-eyebrow { font-size: 0.75rem; font-weight: 700; color: var(--ivan-red); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.85rem; }
+    .kh-header-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; color: var(--ivan-gray-title); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .kh-header-tagline { font-size: 1.15rem; color: var(--ivan-gray-obj); font-style: italic; line-height: 1.55; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ivan-red); }
+    .kh-header-count { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--ivan-gray-title); font-weight: 600; }
+    .kh-header-count strong { font-size: 1.5rem; font-weight: 800; color: var(--ivan-red); }
+
+    /* INTRO manifesto */
+    .kh-intro {
+      background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--ivan-red);
+      border-radius: 1rem;
+      padding: 2rem 2.5rem;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: #374151;
+    }
+    .kh-intro p { margin-bottom: 1rem; }
+    .kh-intro p:last-child { margin-bottom: 0; }
+    .kh-intro strong { color: var(--ivan-gray-title); }
+
+    /* GRID 2x2 role cards */
+    .kh-roles-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--ivan-red);
+      padding-bottom: 0.5rem;
+    }
+    .kh-roles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .kh-role-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+    .kh-role-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--ivan-red); }
+    .kh-role-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .kh-role-icon {
+      width: 3.5rem; height: 3.5rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 0.75rem;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .kh-role-card[data-role="dwh"] .kh-role-icon { background: #1E3A5F; }
+    .kh-role-card[data-role="pm"] .kh-role-icon { background: #4a4a4a; }
+    .kh-role-card[data-role="oracle"] .kh-role-icon { background: #F80000; }
+    .kh-role-card[data-role="plsql"] .kh-role-icon { background: #b30000; }
+    .kh-role-title { font-size: 1.3rem; font-weight: 800; color: var(--ivan-gray-title); line-height: 1.2; letter-spacing: -0.005em; }
+    .kh-role-body { flex: 1; font-size: 0.95rem; line-height: 1.6; color: #4b5563; margin-bottom: 1.25rem; }
+    .kh-role-body p { margin-bottom: 0.75rem; }
+    .kh-sector-chips {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .kh-sector-chip {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: #f3f4f6;
+      color: var(--ivan-gray-obj);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+    .kh-role-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .kh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .kh-btn-primary { background: var(--ivan-red); color: white; }
+    .kh-btn-primary:hover { background: var(--ivan-red-dark); }
+    .kh-btn-secondary {
+      background: white;
+      border: 1.5px solid var(--border);
+      color: var(--ivan-gray-title);
+    }
+    .kh-btn-secondary:hover { border-color: var(--ivan-red); color: var(--ivan-red); }
+    .kh-btn-icon { font-size: 0.95rem; }
+
+    @media (max-width: 1024px) {
+      .kh-header { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .kh-header-text { padding: 1.5rem; }
+      .kh-header-title { font-size: 2rem; }
+      .kh-intro { padding: 1.5rem; }
+      .kh-roles-grid { grid-template-columns: 1fr; }
+      .kh-role-card { padding: 1.5rem; }
+    }
+
+    .mockup-tag { position: fixed; top: 1rem; right: 1rem; background: var(--ivan-red); color: white; padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta A • Hero + grid 2x2 ruoli</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="crumbs"><a href="#">Home</a> › Know-How e Impatto</div>
+</nav>
+
+<main class="page">
+
+  <!-- ===== HERO HEADER ===== -->
+  <header class="kh-header">
+    <div class="kh-header-img">
+      <img src="../../../content/resumes/resumes.cover.jpg" alt="Know-How e Impatto">
+    </div>
+    <div class="kh-header-text">
+      <div class="kh-header-eyebrow">Know-How e Impatto</div>
+      <h1 class="kh-header-title">Esperienza, profondità, impatto</h1>
+      <p class="kh-header-tagline">Trent'anni di lavoro sui sistemi che non possono fermarsi — database, data warehouse, team. Profondità tecnica e impatto concreto sul business.</p>
+      <div class="kh-header-count"><strong>4</strong>&nbsp;profili professionali</div>
+    </div>
+  </header>
+
+  <!-- ===== INTRO MANIFESTO ===== -->
+  <div class="kh-intro">
+    <p>In circa trent'anni di lavoro non ho cambiato mestiere. <strong>Ho cambiato profondità.</strong></p>
+    <p>Ogni ruolo che ho ricoperto non è stato un salto laterale. È stato un approfondimento verticale.</p>
+    <p>Quello che oggi offro non è un elenco di competenze. È la somma delle <strong>conseguenze</strong> che quelle competenze producono.</p>
+  </div>
+
+  <!-- ===== GRID 2x2 ROLE CARDS ===== -->
+  <h2 class="kh-roles-title">I profili</h2>
+  <div class="kh-roles-grid">
+
+    <a href="#" class="kh-role-card" data-role="dwh">
+      <div class="kh-role-header">
+        <div class="kh-role-icon">▦</div>
+        <h3 class="kh-role-title">Data Warehouse Architect</h3>
+      </div>
+      <div class="kh-role-body">
+        <p>Architetture dati in contesti dove il dato è infrastruttura critica. Affidabilità sopra ogni cosa: nel Telco la scala, nel Banking la precisione normativa, nelle Assicurazioni la coerenza del rischio.</p>
+      </div>
+      <div class="kh-sector-chips">
+        <span class="kh-sector-chip">TIM</span>
+        <span class="kh-sector-chip">Vodafone</span>
+        <span class="kh-sector-chip">Generali</span>
+        <span class="kh-sector-chip">Banca d'Italia</span>
+        <span class="kh-sector-chip">Automotive</span>
+      </div>
+      <div class="kh-role-ctas">
+        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
+        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+      </div>
+    </a>
+
+    <a href="#" class="kh-role-card" data-role="pm">
+      <div class="kh-role-header">
+        <div class="kh-role-icon">PM</div>
+        <h3 class="kh-role-title">Project Manager con background tecnico</h3>
+      </div>
+      <div class="kh-role-body">
+        <p>Gestione di progetto in contesti complessi. L'errore ha un costo reale: un PM tecnico sa quando un compromesso è accettabile. E quando non lo è. Collego visione strategica e dettaglio tecnico.</p>
+      </div>
+      <div class="kh-sector-chips">
+        <span class="kh-sector-chip">Telco internazionale</span>
+        <span class="kh-sector-chip">Banche</span>
+        <span class="kh-sector-chip">Assicurazioni</span>
+        <span class="kh-sector-chip">PA</span>
+      </div>
+      <div class="kh-role-ctas">
+        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
+        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+      </div>
+    </a>
+
+    <a href="#" class="kh-role-card" data-role="oracle">
+      <div class="kh-role-header">
+        <div class="kh-role-icon">O</div>
+        <h3 class="kh-role-title">Oracle DBA &amp; Performance Tuning</h3>
+      </div>
+      <div class="kh-role-body">
+        <p>Ambienti mission-critical. Sistemi ad alta disponibilità, carichi elevati, reperibilità reale. Qui il tuning non è un miglioramento estetico: è protezione dell'operatività.</p>
+      </div>
+      <div class="kh-sector-chips">
+        <span class="kh-sector-chip">TIM</span>
+        <span class="kh-sector-chip">Huawei</span>
+        <span class="kh-sector-chip">Banca d'Italia</span>
+        <span class="kh-sector-chip">Generali</span>
+      </div>
+      <div class="kh-role-ctas">
+        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
+        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+      </div>
+    </a>
+
+    <a href="#" class="kh-role-card" data-role="plsql">
+      <div class="kh-role-header">
+        <div class="kh-role-icon">SQL</div>
+        <h3 class="kh-role-title">Oracle PL/SQL — Senior &amp; Mentor</h3>
+      </div>
+      <div class="kh-role-body">
+        <p>La logica nel database è parte della stabilità del sistema. Ho insegnato SQL e PL/SQL per anni, oggi guido sviluppatori in profondità tecnica e progettuale. Non solo codice: mentoring.</p>
+      </div>
+      <div class="kh-sector-chips">
+        <span class="kh-sector-chip">Banking</span>
+        <span class="kh-sector-chip">Assicurazioni</span>
+        <span class="kh-sector-chip">Automotive</span>
+        <span class="kh-sector-chip">Farmaceutico</span>
+      </div>
+      <div class="kh-role-ctas">
+        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
+        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+      </div>
+    </a>
+
+  </div>
+
+</main>
+
+</body>
+</html>
