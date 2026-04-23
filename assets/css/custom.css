@@ -2175,6 +2175,10 @@ footer {
 
 .section-page {
   padding-top: 0;
+  /* Override della regola globale 2e: 'article { overflow-x: hidden }'
+     che crea un contesto di scroll e rompe position: sticky sulla sidebar
+     siblings. La section page non ha contenuti che overflow-ano orizzontalmente. */
+  overflow-x: visible !important;
 }
 
 /* ---------- HEADER: card bianca 2-col ---------- */
