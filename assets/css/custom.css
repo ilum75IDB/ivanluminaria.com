@@ -3404,3 +3404,103 @@ footer {
     flex: 1;
   }
 }
+
+/* ============================
+   MOBILE OVERFLOW SAFETY NET
+   Fix overflow orizzontale su mobile portrait (375-430px) nelle pagine
+   sezione e simili. Prima alcune tabelle markdown negli intro + minmax
+   grid forzavano la pagina oltre la viewport.
+   ============================ */
+
+/* Tabelle dentro gli intro e le card body: scrollabili orizzontalmente
+   invece di sforare il viewport. Wrappano in block + overflow: auto. */
+.section-page-intro table,
+.kh-intro table,
+.kh-role-body table,
+.about-manifesto table,
+.about-section-card-body table,
+.list-d1-intro-col table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Code blocks <pre> dentro gli intro: scrollabili orizzontalmente.
+   (I <code> inline gia fanno wrap correttamente.) */
+.section-page-intro pre,
+.kh-intro pre,
+.kh-role-body pre,
+.about-manifesto pre,
+.about-section-card-body pre,
+.list-d1-intro-col pre {
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safety overflow-wrap su tutti i container prose per gestire parole
+   molto lunghe (URL, token tecnici) senza sbordare la larghezza. */
+.section-page-intro,
+.kh-intro,
+.kh-role-body,
+.about-manifesto,
+.about-section-card-body,
+.list-d1-intro-col {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* /posts/ top-level hybrid: minmax(300px, 420px) sulla col sezioni non
+   funziona su mobile. A 640px collasso prima. */
+@media (max-width: 640px) {
+  .list-d1-hybrid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* Chip con parole lunghe (settori come 'Istituzioni finanziarie') —
+   permetti wrap su mobile per non sforare la row. */
+@media (max-width: 640px) {
+  .kh-sector-chips {
+    gap: 0.3rem;
+  }
+  .kh-sector-chip {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+/* Hero card section-page / kh a portrait stretto: assicura che siano
+   gia collassate. Il breakpoint 900px dovrebbe bastare ma aggiungo
+   belt-and-suspenders a 640px. */
+@media (max-width: 640px) {
+  .section-page-hero-card,
+  .kh-role-card,
+  .home-hero-card {
+    grid-template-columns: 1fr !important;
+  }
+  .section-page-hero-card {
+    flex-direction: column !important;
+    aspect-ratio: auto !important;
+  }
+  .kh-role-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+/* Ultimo layer: garantisci che nessun elemento prose interno non forzi
+   larghezze maggiori del viewport. Al mobile lo sticky sidebar non e
+   attivo (collapse gia avvenuto), quindi !important override sicuro
+   rispetto al 'overflow-x: visible !important' della regola section-page. */
+@media (max-width: 640px) {
+  .section-page,
+  .about-page,
+  .kh-page,
+  .list-d1 {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+}
