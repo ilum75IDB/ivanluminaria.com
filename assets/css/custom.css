@@ -206,8 +206,8 @@ nav ul li a {
   padding: 0 !important;
   list-style: none;
 }
-#menu-wrapper > ul > li a,
-#menu-wrapper > ul > li button {
+#menu-wrapper > ul > li > a,
+#menu-wrapper > ul > li > button {
   display: inline-block !important;
   text-align: center !important;
   max-width: 100%;
@@ -215,6 +215,29 @@ nav ul li a {
   word-break: break-word;
   padding: 0 !important;
   margin: 0 !important;
+}
+/* Language dropdown (<details><summary>...</summary><div>links</div></details>):
+   restore flex layout row, ogni lingua su una riga (bandiera + codice). */
+#menu-wrapper > ul > li details > div {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100%;
+  min-width: 6rem;
+}
+#menu-wrapper > ul > li details > div > a {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.5rem !important;
+  text-align: left !important;
+  padding: 0.5rem 0.75rem !important;
+  width: 100%;
+}
+#menu-wrapper > ul > li details > div > a img {
+  width: 1.5rem !important;
+  height: auto !important;
+  display: inline-block !important;
 }
 /* Primo <li> nel template Congo e il close button (X): estraggo dal
    flusso della lista e pino top-right dell'overlay. */
