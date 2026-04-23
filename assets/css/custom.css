@@ -3100,8 +3100,11 @@ footer {
   flex-direction: column;
   justify-content: center;
   padding: 2rem 2.5rem;
-  min-width: 0;
+  min-width: 0;                             /* permette al grid item di
+                                               ridursi sotto la larghezza
+                                               del contenuto senza sbordare */
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 .kh-header-eyebrow {
   font-size: 0.75rem;
@@ -3112,6 +3115,8 @@ footer {
   margin-bottom: 0.85rem;
 }
 .kh-header-title {
+  /* Font-size scala fluidamente: min 2rem, target 4vw, max 3.5rem.
+     Cosi il titolo si adatta allo spazio prima di collassare a 1 colonna. */
   font-size: clamp(2rem, 4vw, 3.5rem) !important;
   font-weight: 800 !important;
   color: var(--ivan-gray-title) !important;
@@ -3119,6 +3124,8 @@ footer {
   letter-spacing: -0.02em;
   margin: 0 0 1.25rem 0 !important;
   overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 .dark .kh-header-title {
   color: rgb(243, 244, 246) !important;
@@ -3352,9 +3359,18 @@ footer {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1024px) {
+/* Sotto i 1200px: header collassa a singola colonna (image sopra, testo sotto).
+   Il titolo 'Esperienza, profondita, impatto' e lungo e diventa illeggibile
+   compresso in mezza colonna sotto i 1200px. */
+@media (max-width: 1200px) {
   .kh-header {
     grid-template-columns: 1fr;
+  }
+  .kh-header-text {
+    padding: 1.75rem 2rem;
+  }
+  .kh-header-title {
+    font-size: 2.25rem !important;
   }
 }
 @media (max-width: 900px) {
