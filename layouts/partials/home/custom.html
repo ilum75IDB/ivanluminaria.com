@@ -65,8 +65,8 @@
             <a href="{{ $article.Permalink }}" class="editorial-grid-img-link">
               <img
                 class="editorial-grid-img"
-                srcset="{{ (.Fit "300x200 smart").Permalink }} 300w, {{ (.Fit "600x400 smart").Permalink }} 600w"
-                src="{{ (.Fit "300x200 smart").Permalink }}"
+                srcset="{{ (.Fit "300x200").Permalink }} 300w, {{ (.Fit "600x400").Permalink }} 600w"
+                src="{{ (.Fit "300x200").Permalink }}"
                 alt="{{ $article.Title }}"
                 width="300" height="200"
                 {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
@@ -185,8 +185,8 @@
                 <a href="{{ $article.Permalink }}" class="editorial-grid-img-link">
                   <img
                     class="editorial-grid-img"
-                    srcset="{{ (.Fit "300x200 smart").Permalink }} 300w, {{ (.Fit "600x400 smart").Permalink }} 600w"
-                    src="{{ (.Fit "300x200 smart").Permalink }}"
+                    srcset="{{ (.Fit "300x200").Permalink }} 300w, {{ (.Fit "600x400").Permalink }} 600w"
+                    src="{{ (.Fit "300x200").Permalink }}"
                     alt="{{ $article.Title }}"
                     width="300" height="200"
                     {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
