@@ -3504,3 +3504,76 @@ footer {
     overflow-x: hidden !important;
   }
 }
+
+/* ============================
+   TERM PAGE (taxonomy term — /tags/<tag>/)
+   Card D1 grid coerente col resto del sito.
+   ============================ */
+
+.term-page {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.term-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--ivan-red);
+}
+.term-page-breadcrumb {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.term-page-breadcrumb a,
+.term-page-breadcrumb a:visited {
+  color: var(--ivan-red) !important;
+  text-decoration: none !important;
+}
+.term-page-breadcrumb a:hover {
+  text-decoration: underline !important;
+}
+.term-page-breadcrumb-sep {
+  color: rgb(107, 114, 128);
+  margin-left: 0.25rem;
+}
+.term-page-title {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-weight: 800 !important;
+  color: var(--ivan-gray-title) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem 0 !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.dark .term-page-title {
+  color: rgb(243, 244, 246) !important;
+}
+.term-page-count {
+  font-size: 0.9rem;
+  color: rgb(107, 114, 128);
+  font-weight: 600;
+}
+.term-page-count strong {
+  color: var(--ivan-red);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.term-page-empty {
+  padding: 2rem 0;
+  color: rgb(107, 114, 128);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ============================
+   DEFENSIVE: hamburger menu mobile sempre visibile sotto 1190px
+   ============================ */
+@media (max-width: 1189px) {
+  #menu-button,
+  .burger-toggle {
+    display: block !important;
+  }
+}
