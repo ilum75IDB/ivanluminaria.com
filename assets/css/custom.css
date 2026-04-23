@@ -874,12 +874,15 @@ footer {
   nav .z-40 {
     align-items: center !important;
   }
-  /* Nav-inner: forza a max 100% viewport, non superare */
+  /* Nav-inner: forza a max 100% viewport, non superare.
+     Allineamento verticale CENTER per centrare burger + brand sulla stessa
+     linea (l'items-start di Tailwind lascia il burger in alto, brutto). */
   .nav-inner {
     max-width: 100% !important;
     width: 100% !important;
     min-width: 0 !important;
     justify-content: flex-start !important;   /* non space-between su mobile */
+    align-items: center !important;           /* center verticale burger + brand */
     gap: 0.75rem;
   }
   /* Burger menu A SINISTRA del brand su mobile (order flex) */
@@ -890,6 +893,7 @@ footer {
   nav .z-40,
   .nav-inner > div:first-child {
     order: 1 !important;                       /* dopo il burger */
+    align-self: center !important;
   }
 }
 
