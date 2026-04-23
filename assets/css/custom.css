@@ -2448,10 +2448,12 @@ footer {
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
 }
 .section-page-hero-card-img img {
-  position: absolute;
+  /* NB: 'article img { height: auto !important }' nella regola globale
+     al punto 2f sovrascrive il nostro height. Serve !important qui. */
+  position: absolute !important;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
   object-position: center center;
   display: block;
