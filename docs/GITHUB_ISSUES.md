@@ -50,7 +50,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 76 | https://github.com/ilum75IDB/ivanluminaria.com/issues/76 | Feature: redesign pagina list 'Database Strategy' - piu orizzontale, sezioni visibili above-the-fold | aperta |
+| 77 | https://github.com/ilum75IDB/ivanluminaria.com/issues/77 | Feature: uniformare il formato card degli articoli nella home con quello della pagina list (D1) | aperta |
 
 ## Issue Aperte — Bug
 
@@ -104,3 +104,4 @@ tool `WebFetch`.
 | 73 | https://github.com/ilum75IDB/ivanluminaria.com/issues/73 | Feature: riposizionare pulsante 'scroll to top' sopra il selettore lingua nel footer | 2026-04-21 |
 | 72 | https://github.com/ilum75IDB/ivanluminaria.com/issues/72 | Feature: link al Glossario nel footer, a sinistra del selettore lingua | 2026-04-22 |
 | 75 | https://github.com/ilum75IDB/ivanluminaria.com/issues/75 | Bug: colori hover sbagliati sui link del footer (azzurro invece di rosso + bold + underline) | 2026-04-23 |
+| 76 | https://github.com/ilum75IDB/ivanluminaria.com/issues/76 | Feature: redesign pagina list 'Database Strategy' - piu orizzontale, sezioni visibili above-the-fold | 2026-04-23 |
