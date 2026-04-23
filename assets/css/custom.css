@@ -190,12 +190,16 @@ nav ul li a {
   width: auto !important;
   max-width: 32rem !important;
   padding: 0 1.5rem !important;
-  margin: 0 !important;
+  /* margin-top 150px per posizionare la lista menu sotto il quarto superiore
+     della viewport (non perfetta centratura verticale perche su mobile con
+     align-items: center i link risultavano troppo in alto vicino al close X).
+     Right/left/bottom a 0 per non sbordare. */
+  margin: 150px 0 0 0 !important;
   text-align: center !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
   gap: 1.5rem;
   list-style: none;
 }
