@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Know-How page — Proposta A (Hero 2-col + grid 2x2 ruoli)</title>
+  <title>Know-How page — Proposta A (revisionata: card full-width + pulsantiera verticale)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -27,7 +27,7 @@
     .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
     .page { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-    /* HEADER 2-col: image 3:2 + testo (stile section-page) */
+    /* HEADER 2-col */
     .kh-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -65,7 +65,7 @@
     .kh-intro p:last-child { margin-bottom: 0; }
     .kh-intro strong { color: var(--ivan-gray-title); }
 
-    /* GRID 2x2 role cards */
+    /* ROLE CARDS full-width stacked con pulsantiera verticale */
     .kh-roles-title {
       font-size: 1.75rem;
       font-weight: 800;
@@ -74,23 +74,30 @@
       border-bottom: 3px solid var(--ivan-red);
       padding-bottom: 0.5rem;
     }
-    .kh-roles-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .kh-roles-list {
+      display: flex;
+      flex-direction: column;
       gap: 1.5rem;
       margin-bottom: 2rem;
     }
     .kh-role-card {
+      display: grid;
+      grid-template-columns: 1fr 240px;              /* MAIN + pulsantiera verticale */
+      gap: 0;
       background: white;
       border: 1px solid var(--border);
       border-radius: 1rem;
-      padding: 2rem 2rem;
+      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
       transition: all 0.2s;
     }
     .kh-role-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--ivan-red); }
+
+    .kh-role-main {
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+    }
     .kh-role-header {
       display: flex;
       align-items: center;
@@ -112,42 +119,76 @@
     .kh-role-card[data-role="pm"] .kh-role-icon { background: #4a4a4a; }
     .kh-role-card[data-role="oracle"] .kh-role-icon { background: #F80000; }
     .kh-role-card[data-role="plsql"] .kh-role-icon { background: #b30000; }
-    .kh-role-title { font-size: 1.3rem; font-weight: 800; color: var(--ivan-gray-title); line-height: 1.2; letter-spacing: -0.005em; }
-    .kh-role-body { flex: 1; font-size: 0.95rem; line-height: 1.6; color: #4b5563; margin-bottom: 1.25rem; }
+    .kh-role-title { font-size: 1.4rem; font-weight: 800; color: var(--ivan-gray-title); line-height: 1.2; letter-spacing: -0.005em; }
+
+    .kh-role-body { flex: 1; font-size: 0.95rem; line-height: 1.65; color: #4b5563; margin-bottom: 1.25rem; }
     .kh-role-body p { margin-bottom: 0.75rem; }
-    .kh-sector-chips {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
+    .kh-role-body p:last-child { margin-bottom: 0; }
+    .kh-role-body strong { color: var(--ivan-gray-title); }
+
+    .kh-sector-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .kh-sector-chip {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 600;
       background: #f3f4f6;
       color: var(--ivan-gray-obj);
-      padding: 0.25rem 0.65rem;
+      padding: 0.3rem 0.75rem;
       border-radius: 999px;
     }
-    .kh-role-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+    /* Pulsantiera verticale (lato destro, altezza piena della card) */
+    .kh-role-ctas {
+      background: #f9fafb;
+      border-left: 1px solid var(--border);
+      padding: 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .kh-role-card[data-role="dwh"] .kh-role-ctas { background: linear-gradient(180deg, rgba(30,58,95,0.04) 0%, rgba(30,58,95,0.08) 100%); }
+    .kh-role-card[data-role="pm"] .kh-role-ctas { background: linear-gradient(180deg, rgba(74,74,74,0.04) 0%, rgba(74,74,74,0.08) 100%); }
+    .kh-role-card[data-role="oracle"] .kh-role-ctas { background: linear-gradient(180deg, rgba(248,0,0,0.03) 0%, rgba(248,0,0,0.08) 100%); }
+    .kh-role-card[data-role="plsql"] .kh-role-ctas { background: linear-gradient(180deg, rgba(179,0,0,0.03) 0%, rgba(179,0,0,0.08) 100%); }
+
     .kh-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.6rem;
+      font-size: 0.9rem;
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s;
+      text-align: center;
+      width: 100%;
     }
-    .kh-btn-primary { background: var(--ivan-red); color: white; }
-    .kh-btn-primary:hover { background: var(--ivan-red-dark); }
+    .kh-btn-primary {
+      background: var(--ivan-red);
+      color: white;
+    }
+    .kh-btn-primary:hover { background: var(--ivan-red-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(248,0,0,0.25); }
     .kh-btn-secondary {
       background: white;
       border: 1.5px solid var(--border);
       color: var(--ivan-gray-title);
     }
-    .kh-btn-secondary:hover { border-color: var(--ivan-red); color: var(--ivan-red); }
-    .kh-btn-icon { font-size: 0.95rem; }
+    .kh-btn-secondary:hover { border-color: var(--ivan-red); color: var(--ivan-red); transform: translateY(-1px); }
+    .kh-btn-icon { font-size: 1rem; }
+    .kh-btn-label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.1;
+    }
+    .kh-btn-label-sub {
+      font-size: 0.7rem;
+      font-weight: 500;
+      opacity: 0.75;
+      margin-top: 0.1rem;
+    }
 
     @media (max-width: 1024px) {
       .kh-header { grid-template-columns: 1fr; }
@@ -156,8 +197,14 @@
       .kh-header-text { padding: 1.5rem; }
       .kh-header-title { font-size: 2rem; }
       .kh-intro { padding: 1.5rem; }
-      .kh-roles-grid { grid-template-columns: 1fr; }
-      .kh-role-card { padding: 1.5rem; }
+      .kh-role-card { grid-template-columns: 1fr; }
+      .kh-role-ctas {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        flex-direction: row;            /* su mobile pulsantiera orizzontale */
+        padding: 1rem 1.5rem;
+      }
+      .kh-btn { width: auto; flex: 1; }
     }
 
     .mockup-tag { position: fixed; top: 1rem; right: 1rem; background: var(--ivan-red); color: white; padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -165,7 +212,7 @@
 </head>
 <body>
 
-<div class="mockup-tag">Proposta A • Hero + grid 2x2 ruoli</div>
+<div class="mockup-tag">Proposta A v2 • Card full-width + pulsantiera verticale</div>
 
 <nav class="mock-nav">
   <div class="brand">Ivan Luminaria</div>
@@ -194,90 +241,142 @@
     <p>Quello che oggi offro non è un elenco di competenze. È la somma delle <strong>conseguenze</strong> che quelle competenze producono.</p>
   </div>
 
-  <!-- ===== GRID 2x2 ROLE CARDS ===== -->
+  <!-- ===== ROLE CARDS full-width stacked ===== -->
   <h2 class="kh-roles-title">I profili</h2>
-  <div class="kh-roles-grid">
+  <div class="kh-roles-list">
 
-    <a href="#" class="kh-role-card" data-role="dwh">
-      <div class="kh-role-header">
-        <div class="kh-role-icon">▦</div>
-        <h3 class="kh-role-title">Data Warehouse Architect</h3>
-      </div>
-      <div class="kh-role-body">
-        <p>Architetture dati in contesti dove il dato è infrastruttura critica. Affidabilità sopra ogni cosa: nel Telco la scala, nel Banking la precisione normativa, nelle Assicurazioni la coerenza del rischio.</p>
-      </div>
-      <div class="kh-sector-chips">
-        <span class="kh-sector-chip">TIM</span>
-        <span class="kh-sector-chip">Vodafone</span>
-        <span class="kh-sector-chip">Generali</span>
-        <span class="kh-sector-chip">Banca d'Italia</span>
-        <span class="kh-sector-chip">Automotive</span>
+    <div class="kh-role-card" data-role="dwh">
+      <div class="kh-role-main">
+        <div class="kh-role-header">
+          <div class="kh-role-icon">▦</div>
+          <h3 class="kh-role-title">Data Warehouse Architect</h3>
+        </div>
+        <div class="kh-role-body">
+          <p>La mia esperienza nel Data Warehouse si è sviluppata in contesti dove il dato è <strong>infrastruttura critica</strong>.</p>
+          <p>Ho progettato architetture dati in ambienti dove il margine di errore non è contemplato — nel Telco conta la scala, nel Banking la precisione normativa, nelle Assicurazioni la coerenza del rischio, nel Farmaceutico la compliance, nell'Automotive la qualità del dato lungo la filiera.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">TIM</span>
+          <span class="kh-sector-chip">Vodafone</span>
+          <span class="kh-sector-chip">Huawei</span>
+          <span class="kh-sector-chip">Generali</span>
+          <span class="kh-sector-chip">Banca d'Italia</span>
+          <span class="kh-sector-chip">Automotive</span>
+        </div>
       </div>
       <div class="kh-role-ctas">
-        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
-        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+        <a href="#" class="kh-btn kh-btn-primary">
+          <span class="kh-btn-icon">→</span>
+          <span class="kh-btn-label">Leggi la roadmap</span>
+        </a>
+        <a href="#" class="kh-btn kh-btn-secondary">
+          <span class="kh-btn-icon">⬇</span>
+          <span class="kh-btn-label">
+            Scarica PDF
+            <span class="kh-btn-label-sub">CV completo</span>
+          </span>
+        </a>
       </div>
-    </a>
+    </div>
 
-    <a href="#" class="kh-role-card" data-role="pm">
-      <div class="kh-role-header">
-        <div class="kh-role-icon">PM</div>
-        <h3 class="kh-role-title">Project Manager con background tecnico</h3>
-      </div>
-      <div class="kh-role-body">
-        <p>Gestione di progetto in contesti complessi. L'errore ha un costo reale: un PM tecnico sa quando un compromesso è accettabile. E quando non lo è. Collego visione strategica e dettaglio tecnico.</p>
-      </div>
-      <div class="kh-sector-chips">
-        <span class="kh-sector-chip">Telco internazionale</span>
-        <span class="kh-sector-chip">Banche</span>
-        <span class="kh-sector-chip">Assicurazioni</span>
-        <span class="kh-sector-chip">PA</span>
+    <div class="kh-role-card" data-role="pm">
+      <div class="kh-role-main">
+        <div class="kh-role-header">
+          <div class="kh-role-icon">PM</div>
+          <h3 class="kh-role-title">Project Manager con background tecnico</h3>
+        </div>
+        <div class="kh-role-body">
+          <p>La gestione di progetto è maturata coordinando attività in contesti complessi: Telecomunicazioni internazionali, Istituzioni finanziarie centrali, Assicurazioni, Farmaceutico, Automotive e Pubblica Amministrazione.</p>
+          <p>In questi settori, <strong>l'errore ha un costo reale</strong>. Un PM tecnico conosce l'impatto delle scelte. Sa quando un compromesso è accettabile. E quando non lo è. Collego visione strategica e dettaglio tecnico. Roadmap e implementazione.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">Telco internazionale</span>
+          <span class="kh-sector-chip">Istituzioni finanziarie</span>
+          <span class="kh-sector-chip">Assicurazioni</span>
+          <span class="kh-sector-chip">PA</span>
+          <span class="kh-sector-chip">Automotive</span>
+        </div>
       </div>
       <div class="kh-role-ctas">
-        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
-        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+        <a href="#" class="kh-btn kh-btn-primary">
+          <span class="kh-btn-icon">→</span>
+          <span class="kh-btn-label">Leggi la roadmap</span>
+        </a>
+        <a href="#" class="kh-btn kh-btn-secondary">
+          <span class="kh-btn-icon">⬇</span>
+          <span class="kh-btn-label">
+            Scarica PDF
+            <span class="kh-btn-label-sub">CV completo</span>
+          </span>
+        </a>
       </div>
-    </a>
+    </div>
 
-    <a href="#" class="kh-role-card" data-role="oracle">
-      <div class="kh-role-header">
-        <div class="kh-role-icon">O</div>
-        <h3 class="kh-role-title">Oracle DBA &amp; Performance Tuning</h3>
-      </div>
-      <div class="kh-role-body">
-        <p>Ambienti mission-critical. Sistemi ad alta disponibilità, carichi elevati, reperibilità reale. Qui il tuning non è un miglioramento estetico: è protezione dell'operatività.</p>
-      </div>
-      <div class="kh-sector-chips">
-        <span class="kh-sector-chip">TIM</span>
-        <span class="kh-sector-chip">Huawei</span>
-        <span class="kh-sector-chip">Banca d'Italia</span>
-        <span class="kh-sector-chip">Generali</span>
+    <div class="kh-role-card" data-role="oracle">
+      <div class="kh-role-main">
+        <div class="kh-role-header">
+          <div class="kh-role-icon">O</div>
+          <h3 class="kh-role-title">Oracle DBA &amp; Performance Tuning Expert</h3>
+        </div>
+        <div class="kh-role-body">
+          <p>La mia attività come Oracle DBA si è consolidata in ambienti <strong>mission-critical</strong> per operatori come TIM, Wind, Vodafone e 3, in contesti tecnologici complessi come Huawei, per istituzioni finanziarie come Banca d'Italia, Ufficio Italiano Cambi e Cassa Depositi e Prestiti, per realtà assicurative come Generali, e in progetti industriali in ambito Automotive.</p>
+          <p>Sistemi ad alta disponibilità. Carichi elevati. Reperibilità reale. Qui il tuning non è un miglioramento estetico. È <strong>protezione dell'operatività</strong>.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">TIM</span>
+          <span class="kh-sector-chip">Huawei</span>
+          <span class="kh-sector-chip">Banca d'Italia</span>
+          <span class="kh-sector-chip">Generali</span>
+          <span class="kh-sector-chip">Automotive</span>
+        </div>
       </div>
       <div class="kh-role-ctas">
-        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
-        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+        <a href="#" class="kh-btn kh-btn-primary">
+          <span class="kh-btn-icon">→</span>
+          <span class="kh-btn-label">Leggi la roadmap</span>
+        </a>
+        <a href="#" class="kh-btn kh-btn-secondary">
+          <span class="kh-btn-icon">⬇</span>
+          <span class="kh-btn-label">
+            Scarica PDF
+            <span class="kh-btn-label-sub">CV completo</span>
+          </span>
+        </a>
       </div>
-    </a>
+    </div>
 
-    <a href="#" class="kh-role-card" data-role="plsql">
-      <div class="kh-role-header">
-        <div class="kh-role-icon">SQL</div>
-        <h3 class="kh-role-title">Oracle PL/SQL — Senior &amp; Mentor</h3>
-      </div>
-      <div class="kh-role-body">
-        <p>La logica nel database è parte della stabilità del sistema. Ho insegnato SQL e PL/SQL per anni, oggi guido sviluppatori in profondità tecnica e progettuale. Non solo codice: mentoring.</p>
-      </div>
-      <div class="kh-sector-chips">
-        <span class="kh-sector-chip">Banking</span>
-        <span class="kh-sector-chip">Assicurazioni</span>
-        <span class="kh-sector-chip">Automotive</span>
-        <span class="kh-sector-chip">Farmaceutico</span>
+    <div class="kh-role-card" data-role="plsql">
+      <div class="kh-role-main">
+        <div class="kh-role-header">
+          <div class="kh-role-icon">SQL</div>
+          <h3 class="kh-role-title">Oracle PL/SQL — Senior &amp; Mentor</h3>
+        </div>
+        <div class="kh-role-body">
+          <p>Ho sviluppato PL/SQL in ambienti Telco, Banking, Assicurazioni, Automotive, Farmaceutico e Pubblica Amministrazione. In contesti come Generali o Banca d'Italia, <strong>la logica nel database è parte della stabilità del sistema</strong>.</p>
+          <p>Per anni ho insegnato SQL e PL/SQL, contribuendo alla crescita tecnica di sviluppatori che oggi operano su sistemi complessi. Oggi non mi limito a scrivere codice: posso guidare, fare mentoring, aiutare sviluppatori a crescere in profondità tecnica e progettuale.</p>
+        </div>
+        <div class="kh-sector-chips">
+          <span class="kh-sector-chip">Banking</span>
+          <span class="kh-sector-chip">Assicurazioni</span>
+          <span class="kh-sector-chip">Farmaceutico</span>
+          <span class="kh-sector-chip">Automotive</span>
+          <span class="kh-sector-chip">PA</span>
+        </div>
       </div>
       <div class="kh-role-ctas">
-        <a href="#" class="kh-btn kh-btn-primary"><span class="kh-btn-icon">→</span>Leggi la roadmap</a>
-        <a href="#" class="kh-btn kh-btn-secondary"><span class="kh-btn-icon">⬇</span>Scarica PDF</a>
+        <a href="#" class="kh-btn kh-btn-primary">
+          <span class="kh-btn-icon">→</span>
+          <span class="kh-btn-label">Leggi la roadmap</span>
+        </a>
+        <a href="#" class="kh-btn kh-btn-secondary">
+          <span class="kh-btn-icon">⬇</span>
+          <span class="kh-btn-label">
+            Scarica PDF
+            <span class="kh-btn-label-sub">CV completo</span>
+          </span>
+        </a>
       </div>
-    </a>
+    </div>
 
   </div>
 
