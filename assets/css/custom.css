@@ -171,6 +171,10 @@ nav ul li a {
   bottom: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
+  /* Override del Tailwind '.m-auto' applicato sul div: su position fixed
+     con inset: 0 + width/height 100%, margin auto crea un offset che
+     decentra l'overlay. Utente ha confermato visivamente. */
+  margin: 0 !important;
   z-index: 99999 !important;
   background: rgba(255, 255, 255, 0.98) !important; /* light mode: bianco solido */
   backdrop-filter: none !important;
