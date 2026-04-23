@@ -2734,3 +2734,323 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ============================
+   ABOUT PAGE (Issue #80 — Proposta B)
+   Layout card per la pagina /about/: profile header + manifesto
+   + section card con icone + passion grid + hero quote finale
+   ============================ */
+
+.about-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.about-content {
+  max-width: 100%;
+}
+
+/* ---------- PROFILE HEADER CARD (preservato, wrappato in card bianca) ---------- */
+.about-profile-card {
+  background: white;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 1rem;
+  padding: 2.5rem 3rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+}
+.dark .about-profile-card {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+}
+.about-profile-avatar {
+  flex: 0 0 auto;
+}
+.about-profile-avatar img {
+  width: 180px !important;
+  height: 180px !important;
+  border-radius: 50% !important;
+  border: 4px solid #f1f5f9;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+  display: block;
+  margin: 0 !important;
+  max-width: 180px !important;
+}
+.dark .about-profile-avatar img {
+  border-color: rgb(64, 64, 64);
+}
+.about-profile-info {
+  flex: 1;
+  min-width: 0;
+}
+.about-profile-name {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: var(--ivan-blue) !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem 0 !important;
+  line-height: 1.15;
+}
+.about-profile-role {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgb(107, 114, 128);
+  margin: 0 0 1rem 0;
+}
+.dark .about-profile-role {
+  color: rgb(156, 163, 175);
+}
+.about-profile-desc {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+.dark .about-profile-desc {
+  color: rgb(209, 213, 219);
+}
+.about-profile-desc strong {
+  color: var(--ivan-gray-title);
+}
+.dark .about-profile-desc strong {
+  color: rgb(243, 244, 246);
+}
+.about-profile-contacts {
+  font-size: 0.9rem;
+  color: rgb(107, 114, 128);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(229, 231, 235);
+}
+.dark .about-profile-contacts {
+  color: rgb(156, 163, 175);
+  border-top-color: rgb(64, 64, 64);
+}
+.about-profile-contacts a {
+  color: var(--ivan-red) !important;
+  text-decoration: none !important;
+  font-weight: 600;
+}
+.about-profile-contacts a:hover {
+  color: var(--ivan-red-dark) !important;
+  text-decoration: underline !important;
+}
+
+/* ---------- MANIFESTO INTRO (highlight card, bordo sinistro rosso) ---------- */
+.about-manifesto {
+  background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
+  border: 1px solid rgb(229, 231, 235);
+  border-left: 4px solid var(--ivan-red);
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #374151;
+}
+.dark .about-manifesto {
+  background: linear-gradient(135deg, rgb(48, 48, 48) 0%, rgb(38, 38, 38) 100%);
+  border-color: rgb(64, 64, 64);
+  border-left-color: var(--ivan-red);
+  color: rgb(209, 213, 219);
+}
+.about-manifesto p {
+  margin-bottom: 1.1rem;
+}
+.about-manifesto p:last-child {
+  margin-bottom: 0;
+}
+.about-manifesto strong {
+  color: var(--ivan-gray-title);
+}
+.dark .about-manifesto strong {
+  color: rgb(243, 244, 246);
+}
+
+/* ---------- SECTION CARD (card bianca con icona + titolo + prose) ---------- */
+.about-section-card {
+  background: white;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 1rem;
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.dark .about-section-card {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+}
+.about-section-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--ivan-red);
+}
+.about-section-card-icon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: #fef2f2;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.dark .about-section-card-icon {
+  background: rgba(248, 0, 0, 0.12);
+}
+.about-section-card-title {
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  color: var(--ivan-gray-title) !important;
+  letter-spacing: -0.01em;
+  margin: 0 !important;
+  line-height: 1.2;
+}
+.dark .about-section-card-title {
+  color: rgb(243, 244, 246) !important;
+}
+.about-section-card-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #374151;
+}
+.dark .about-section-card-body {
+  color: rgb(209, 213, 219);
+}
+.about-section-card-body p {
+  margin-bottom: 1rem;
+}
+.about-section-card-body p:last-child {
+  margin-bottom: 0;
+}
+.about-section-card-body strong {
+  color: var(--ivan-gray-title);
+}
+.dark .about-section-card-body strong {
+  color: rgb(243, 244, 246);
+}
+
+/* ---------- PASSION GRID + PILL (icona + nome) ---------- */
+.about-passions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+.about-passion-pill {
+  background: #f9fafb;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+.about-passion-pill:hover {
+  border-color: var(--ivan-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+.dark .about-passion-pill {
+  background: rgb(48, 48, 48);
+  border-color: rgb(64, 64, 64);
+}
+.about-passion-pill-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+.about-passion-pill-name {
+  font-weight: 700;
+  color: var(--ivan-gray-title);
+  font-size: 0.95rem;
+}
+.dark .about-passion-pill-name {
+  color: rgb(229, 229, 229);
+}
+
+/* ---------- HERO QUOTE FINALE (sfondo ivan-blue, testo bianco) ---------- */
+.about-hero-quote {
+  background: var(--ivan-blue);
+  color: white;
+  border-radius: 1rem;
+  padding: 3rem 3rem;
+  margin-top: 2.5rem;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(51, 103, 145, 0.25);
+}
+.about-hero-quote::before {
+  content: "\201C";
+  font-size: 5rem;
+  line-height: 0.5;
+  color: rgba(255, 255, 255, 0.25);
+  display: block;
+  margin-bottom: 1rem;
+  font-family: Georgia, serif;
+}
+.about-hero-quote blockquote {
+  font-size: 1.6rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: white !important;
+  border: none !important;
+  background: none !important;
+}
+.about-hero-quote blockquote p {
+  margin: 0 !important;
+  color: white !important;
+}
+.about-hero-quote-attr {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .about-profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .about-profile-contacts {
+    justify-content: center;
+  }
+  .about-manifesto {
+    padding: 1.5rem;
+  }
+  .about-section-card {
+    padding: 1.75rem 1.5rem;
+  }
+  .about-section-card-title {
+    font-size: 1.35rem !important;
+  }
+  .about-hero-quote {
+    padding: 2rem 1.5rem;
+  }
+  .about-hero-quote blockquote {
+    font-size: 1.25rem !important;
+  }
+  .about-passions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+}
