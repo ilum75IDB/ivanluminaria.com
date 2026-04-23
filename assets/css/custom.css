@@ -2286,8 +2286,10 @@ footer {
   max-width: none;
 }
 
-/* Sidebar siblings — scorre con il contenuto (no sticky) */
+/* Sidebar siblings — sticky: rimane visibile mentre scorri l'intro */
 .section-page-siblings {
+  position: sticky;
+  top: 5rem;                                /* offset per la navbar fixed */
   background: white;
   border: 1px solid rgb(229, 231, 235);
   border-radius: 1rem;
@@ -2696,6 +2698,10 @@ footer {
   .section-page-hybrid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  /* Su mobile niente sticky: la sidebar diventa un blocco sopra/sotto intro */
+  .section-page-siblings {
+    position: static;
   }
   /* Hero card collassa a colonna singola (image sopra, testo sotto).
      Reset dell'aspect-ratio card (aveva 10/3 per il layout orizzontale);
