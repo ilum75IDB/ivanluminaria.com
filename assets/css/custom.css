@@ -893,6 +893,141 @@ footer {
 }
 
 /* ============================
+   HOME HERO CARD (proposta A: 2-col orizzontale)
+   Issue #77: card hero in evidenza all'inizio di ogni sezione della home
+   ============================ */
+
+.home-hero-card,
+.home-hero-card:visited {
+  display: grid !important;
+  grid-template-columns: minmax(380px, 45%) 1fr;
+  gap: 0;
+  background: white;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  text-decoration: none !important;
+  color: var(--ivan-gray-title) !important;
+  transition: all 0.2s;
+}
+.home-hero-card:hover {
+  border-color: var(--ivan-red) !important;
+  color: var(--ivan-gray-title) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  text-decoration: none !important;
+  font-weight: inherit !important;
+}
+.dark .home-hero-card,
+.dark .home-hero-card:visited {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+  color: rgb(229, 229, 229) !important;
+}
+.dark .home-hero-card:hover {
+  border-color: var(--ivan-red) !important;
+  color: rgb(229, 229, 229) !important;
+}
+
+.home-hero-card-img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+.home-hero-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  margin: 0 !important;
+}
+.home-hero-card-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-hero-card-img-placeholder::before {
+  content: "📄";
+  font-size: 3rem;
+  color: rgb(156, 163, 175);
+}
+
+.home-hero-card-body {
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-hero-card-section {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ivan-red);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+.home-hero-card-title {
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  color: var(--ivan-gray-title) !important;
+  margin: 0 0 0.85rem 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em;
+}
+.dark .home-hero-card-title {
+  color: rgb(243, 244, 246) !important;
+}
+.home-hero-card-desc {
+  color: rgb(75, 85, 99);
+  font-size: 1rem;
+  margin: 0 0 1.25rem 0;
+  line-height: 1.55;
+}
+.dark .home-hero-card-desc {
+  color: rgb(156, 163, 175);
+}
+.home-hero-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: rgb(107, 114, 128);
+}
+.home-hero-card-reading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgb(243, 244, 246);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.home-hero-card-reading::before {
+  content: "⏱";
+  font-size: 0.85em;
+}
+.dark .home-hero-card-reading {
+  background: rgb(64, 64, 64);
+  color: rgb(209, 213, 219);
+}
+
+/* Mobile: collasso in colonna singola, image sopra */
+@media (max-width: 900px) {
+  .home-hero-card {
+    grid-template-columns: 1fr !important;
+  }
+  .home-hero-card-body {
+    padding: 1.5rem 1.25rem;
+  }
+  .home-hero-card-title {
+    font-size: 1.35rem !important;
+  }
+}
+
+/* ============================
    EDITORIAL HOMEPAGE
    ============================ */
 
