@@ -2307,19 +2307,21 @@ footer {
     right: 1rem !important;
     transform: none !important;
   }
-  /* Footer: impila copyright/credit sopra e menu (Glossario/Tag/rss/LI) sotto */
-  footer > .flex.items-center.justify-between {
-    flex-direction: column !important;
+  /* Footer: impila copyright/credit sopra e menu (Glossario/Tag/rss/LI) sotto.
+     NOTA: il container .flex.items-center.justify-between e dentro
+     .footer-inner (non direct child di footer), quindi descendant selector. */
+  footer .flex.items-center.justify-between {
+    flex-direction: column-reverse !important;    /* menu sopra, credit sotto (richiesta utente) */
     align-items: center !important;
-    gap: 1.25rem;
+    gap: 1.25rem !important;
     text-align: center;
   }
-  footer > .flex.items-center.justify-between > div {
+  footer .flex.items-center.justify-between > div {
     width: 100%;
     text-align: center;
   }
   /* Riga dei link/icone: wrap + spacing uniforme, centrata */
-  footer > .flex.items-center.justify-between > div.flex.flex-row.items-center {
+  footer .flex.items-center.justify-between > div.flex.flex-row.items-center {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.75rem 1.25rem;
