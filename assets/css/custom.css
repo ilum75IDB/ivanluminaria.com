@@ -2278,9 +2278,11 @@ footer {
   .list-d1-articles-grid {
     grid-template-columns: 1fr;
   }
-  .list-d1-hero {
-    height: 200px;
-  }
+  /* BUG FIX: height: 200px combinato con aspect-ratio: 3/1 faceva calcolare
+     width = 600px al container, sfondando la viewport mobile (390px) e
+     croppando a destra immagine, bottoni sezioni e testo libero. Rimosso
+     height: lascio che aspect-ratio 3/1 calcoli height da width = 100%
+     del viewport. */
   .list-d1-hero-overlay h1 {
     font-size: 2rem;
   }
@@ -3581,11 +3583,46 @@ footer {
 }
 
 /* /posts/ top-level hybrid: minmax(300px, 420px) sulla col sezioni non
-   funziona su mobile. A 640px collasso prima. */
+   funziona su mobile. A 640px collasso prima.
+   minmax(0, 1fr) invece di 1fr per permettere al grid cell di scendere
+   sotto min-content (prevent tabelle wide che espandono il layout). */
 @media (max-width: 640px) {
-  .list-d1-hybrid {
-    grid-template-columns: 1fr !important;
+  .list-d1-hybrid,
+  .section-page-hybrid {
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 1.5rem !important;
+  }
+  .list-d1-intro-col,
+  .section-page-intro,
+  .kh-intro,
+  .about-manifesto,
+  .about-section-card-body,
+  .kh-role-body {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  /* Tabelle, pre, img dentro prose containers: bloccano dimensione a 100% */
+  .list-d1-intro-col table,
+  .list-d1-intro-col pre,
+  .list-d1-intro-col img,
+  .section-page-intro table,
+  .section-page-intro pre,
+  .section-page-intro img,
+  .kh-intro table,
+  .kh-intro pre,
+  .kh-intro img,
+  .about-manifesto table,
+  .about-manifesto pre,
+  .about-manifesto img,
+  .about-section-card-body table,
+  .about-section-card-body pre,
+  .about-section-card-body img,
+  .kh-role-body table,
+  .kh-role-body pre,
+  .kh-role-body img {
+    max-width: 100% !important;
   }
 }
 
