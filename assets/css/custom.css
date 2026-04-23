@@ -178,6 +178,33 @@ nav ul li a {
   align-items: center !important;
   justify-content: center !important;
 }
+/* UL interna: center-allineata + max width contenuta, override del text-end
+   Tailwind che allineava i link al bordo destro (cut-off su mobile).
+   Anche padding orizzontale ridotto per mobile. */
+#menu-wrapper > ul {
+  width: 100% !important;
+  max-width: 32rem !important;
+  padding: 2rem 1.5rem !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 1.25rem;
+}
+#menu-wrapper > ul > li {
+  text-align: center !important;
+  width: 100%;
+  list-style: none;
+}
+#menu-wrapper > ul > li a,
+#menu-wrapper > ul > li button {
+  display: inline-block !important;
+  text-align: center !important;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
 .dark #menu-wrapper {
   background: rgba(17, 17, 17, 0.98) !important; /* dark mode: scuro solido */
 }
