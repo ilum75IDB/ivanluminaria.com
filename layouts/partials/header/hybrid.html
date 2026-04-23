@@ -6,11 +6,14 @@
       {{ partial "logo.html" . }}
     </div>
     {{ if or .Site.Menus.main (.Site.Params.enableSearch | default false) }}
-      {{/* Hamburger menu — visible below 1190px */}}
+      {{/* Hamburger menu — visible below 1190px.
+           Uso carattere Unicode ☰ invece di partial icon.html perche
+           quest'ultimo dipendeva dal theme submodule e lo span risultava
+           vuoto al rendering. Il carattere ☰ (U+2630) funziona sempre. */}}
       <label id="menu-button" for="menu-controller" class="block burger-toggle">
         <input type="checkbox" id="menu-controller" class="hidden" />
-        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
-          {{ partial "icon.html" "bars" }}
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 burger-icon-wrap">
+          <span class="burger-icon" aria-hidden="true">&#9776;</span>
         </div>
         <div
           id="menu-wrapper"
