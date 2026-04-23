@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Strategy — Proposta D1 (Sezioni sx + Intro dx + Grid C)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --bg: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: var(--bg);
+    }
+
+    .mock-nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .mock-nav .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ivan-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .mock-nav .links { display: flex; gap: 1.5rem; }
+    .mock-nav .links a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+    .mock-nav .links a:hover { color: var(--ivan-red); }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ============ Hero (stile C) ============ */
+    .hero {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      height: 260px;
+      margin-bottom: 1.5rem;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+    .hero h1 {
+      color: white;
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      color: var(--ivan-gray-title);
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+
+    /* ============ Hybrid two-column: SEZIONI SX + INTRO DX ============ */
+    .hybrid-block {
+      display: grid;
+      grid-template-columns: minmax(300px, 420px) 1fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+      align-items: start;
+    }
+
+    /* Colonna sinistra: pulsantiera sezioni */
+    .sections-col .sections-heading {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 1rem;
+    }
+    .section-button {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      border: 2px solid var(--border);
+      border-radius: 0.75rem;
+      margin-bottom: 0.65rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      background: white;
+    }
+    .section-button:hover {
+      border-color: var(--ivan-red);
+      transform: translateX(3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .section-button .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .section-button[data-sec="oracle"] .icon { background: #F80000; }
+    .section-button[data-sec="postgres"] .icon { background: #336791; }
+    .section-button[data-sec="mysql"] .icon { background: #00758F; }
+    .section-button[data-sec="dwh"] .icon { background: #1E3A5F; }
+    .section-button[data-sec="pm"] .icon { background: #4a4a4a; }
+    .section-button .name {
+      font-weight: 700;
+      color: var(--ivan-gray-title);
+      flex: 1;
+    }
+    .section-button .count {
+      font-size: 0.85rem;
+      color: var(--ivan-gray-obj);
+      background: #f3f4f6;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .section-button .arrow {
+      color: #d1d5db;
+      font-size: 1.25rem;
+      transition: color 0.2s;
+    }
+    .section-button:hover .arrow { color: var(--ivan-red); }
+
+    /* Colonna destra: intro testuale */
+    .intro-col {
+      padding: 0.5rem 0;
+    }
+    .intro-col .quote {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ivan-gray-title);
+      margin-bottom: 1.25rem;
+      padding-left: 1.25rem;
+      border-left: 4px solid var(--ivan-red);
+      line-height: 1.4;
+    }
+    .intro-col p {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .intro-col p.highlight {
+      font-weight: 600;
+      color: var(--ivan-gray-title);
+    }
+
+    /* ============ Articles grid (stile C) ============ */
+    .articles-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      margin-bottom: 1.5rem;
+    }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .article-card {
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: white;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover {
+      border-color: var(--ivan-red);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .article-card .thumb {
+      height: 140px;
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .article-card .body {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card .section-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--ivan-red);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .article-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ivan-gray-title);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .article-card .excerpt {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+    .article-card .meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .mock-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      margin-top: 4rem;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 900px) {
+      .hybrid-block {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .articles-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+    }
+
+    .mockup-tag {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #2e8b57;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 200;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta D1 • Sezioni SX + Intro DX</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="links">
+    <a href="#">Articoli</a>
+    <a href="#">Oracle</a>
+    <a href="#">PostgreSQL</a>
+    <a href="#">MySQL</a>
+    <a href="#">DWH</a>
+    <a href="#">PM</a>
+    <a href="#">About</a>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- Hero con titolo in overlay -->
+  <div class="hero">
+    <img src="../../../content/posts/database-strategy.cover.jpg" alt="Database Strategy">
+    <div class="overlay">
+      <h1>Database Strategy</h1>
+    </div>
+  </div>
+
+  <p class="tagline">Database, architettura e performance come leva strategica per il business moderno.</p>
+
+  <!-- HYBRID BLOCK: sezioni sx + intro dx -->
+  <div class="hybrid-block">
+
+    <!-- SINISTRA: pulsantiera sezioni -->
+    <div class="sections-col">
+      <div class="sections-heading">📂 Esplora per sezione</div>
+      <a href="#" class="section-button" data-sec="oracle">
+        <div class="icon">O</div>
+        <div class="name">Oracle</div>
+        <div class="count">5</div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="#" class="section-button" data-sec="postgres">
+        <div class="icon">Pg</div>
+        <div class="name">PostgreSQL</div>
+        <div class="count">5</div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="#" class="section-button" data-sec="mysql">
+        <div class="icon">My</div>
+        <div class="name">MySQL</div>
+        <div class="count">6</div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="#" class="section-button" data-sec="dwh">
+        <div class="icon">▦</div>
+        <div class="name">Data Warehouse</div>
+        <div class="count">4</div>
+        <div class="arrow">→</div>
+      </a>
+      <a href="#" class="section-button" data-sec="pm">
+        <div class="icon">PM</div>
+        <div class="name">Project Management</div>
+        <div class="count">8</div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+
+    <!-- DESTRA: intro testuale completo -->
+    <div class="intro-col">
+      <div class="quote">
+        La differenza tra un sistema che funziona e uno che guida davvero il business non è fortuna.
+      </div>
+      <p>È comprensione profonda dei piani di esecuzione.<br>
+      È controllo dei privilegi e sicurezza dei dati.<br>
+      È progettazione dei dati orientata agli obiettivi aziendali.<br>
+      È performance che regge quando il carico cresce.</p>
+      <p>I database sono il cuore operativo dell'ecosistema digitale di ogni azienda. Supportano processi critici, abilitano decisioni basate sui dati e determinano velocità ed efficienza operativa.</p>
+      <p class="highlight">Dentro il Motore è lo spazio in cui analizzo ciò che accade sotto il cofano di PostgreSQL, Oracle e MySQL: performance tuning, sicurezza, architettura e scelte tecniche applicabili in ambienti reali.</p>
+      <p>Perché nel mondo data-driven di oggi i database non sono semplici componenti software. Sono asset strategici che influenzano competitività, affidabilità e crescita sostenibile.</p>
+    </div>
+
+  </div>
+
+  <!-- Articoli in grid stile C -->
+  <h2 class="articles-title">Ultimi articoli</h2>
+  <div class="articles-grid">
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">PostgreSQL</div>
+        <h3>pg_stat_statements: la prima cosa da installare</h3>
+        <div class="excerpt">Un'estensione, una query, e scopri dove stava il collo di bottiglia.</div>
+        <div class="meta">21 aprile 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">MySQL</div>
+        <h3>mysqldump vs mysqlpump vs mydumper</h3>
+        <div class="excerpt">Tre strumenti, tre approcci, tre tempi di restore.</div>
+        <div class="meta">14 aprile 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Data Warehouse</div>
+        <h3>Partitioning nel DWH</h3>
+        <div class="excerpt">Quando 3 anni di dati pesano troppo: range partitioning + exchange.</div>
+        <div class="meta">7 aprile 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">MySQL</div>
+        <h3>Binary log in MySQL</h3>
+        <div class="excerpt">Cosa sono, come gestirli, quando cancellarli.</div>
+        <div class="meta">31 marzo 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">PostgreSQL</div>
+        <h3>VACUUM e autovacuum PostgreSQL</h3>
+        <div class="excerpt">Il silenzioso janitor del database: quando smette di funzionare.</div>
+        <div class="meta">24 marzo 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Project Management</div>
+        <h3>AI Manager e Project Management</h3>
+        <div class="excerpt">Quando l'AI entra nei progetti: governance e ruoli.</div>
+        <div class="meta">17 marzo 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Oracle</div>
+        <h3>AWR, ASH e i 10 minuti che hanno salvato un go-live</h3>
+        <div class="excerpt">Diagnosi performance Oracle con gli strumenti giusti.</div>
+        <div class="meta">10 febbraio 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Data Warehouse</div>
+        <h3>SCD Tipo 2</h3>
+        <div class="excerpt">La storia che il business non sapeva di volere.</div>
+        <div class="meta">11 novembre 2025</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Oracle</div>
+        <h3>Da single instance a Data Guard</h3>
+        <div class="excerpt">Il giorno in cui il CEO ha capito cosa vuol dire DR.</div>
+        <div class="meta">18 novembre 2025</div>
+      </div>
+    </a>
+
+  </div>
+
+</main>
+
+<footer class="mock-footer">
+  [footer del sito con GLOSSARIO • TAG • RSS • LinkedIn • combo lingua]
+</footer>
+
+</body>
+</html>
