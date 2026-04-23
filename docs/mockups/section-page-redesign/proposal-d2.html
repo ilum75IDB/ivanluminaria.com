@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Section page — Proposta D2 (hero image 3:2 centrata + testo xl sotto)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .crumbs { font-size: 0.85rem; color: var(--ivan-gray-obj); }
+    .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
+    .page { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* ========== HEADER: image 3:2 centrata large + testo XL sotto ========== */
+    .sec-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .sec-header-img {
+      aspect-ratio: 3 / 2;                    /* formato nativo */
+      width: 100%;
+      max-width: 900px;                       /* grande ma non opprimente */
+      margin: 0 auto 2rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      background: #f3f4f6;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+    .sec-header-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .sec-header-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ivan-red);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.85rem;
+    }
+    .sec-header-title {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .sec-header-tagline {
+      font-size: 1.2rem;
+      color: var(--ivan-gray-obj);
+      font-style: italic;
+      line-height: 1.55;
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 3px solid var(--ivan-red);
+      display: inline-block;
+    }
+    .sec-header-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--ivan-gray-title);
+      font-weight: 600;
+      background: #f9fafb;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .sec-header-count strong {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--ivan-red);
+    }
+
+    /* ========== SPLIT: intro + sidebar ========== */
+    .hybrid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+    .sec-intro {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #374151;
+    }
+    .sec-intro p { margin-bottom: 1.1rem; }
+    .sec-intro strong { color: var(--ivan-gray-title); }
+    .sec-intro hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .sec-intro h2 { font-size: 1.5rem; font-weight: 800; color: var(--ivan-gray-title); margin: 2rem 0 1rem; }
+    .sec-intro ul { margin: 0 0 1.1rem 1.5rem; }
+    .sec-intro li { margin-bottom: 0.4rem; }
+    .sec-intro table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+    .sec-intro th, .sec-intro td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .sec-intro th { background: #f9fafb; font-weight: 700; color: var(--ivan-gray-title); }
+
+    .siblings {
+      position: sticky;
+      top: 1.5rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+    }
+    .siblings-heading {
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 1rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sib-btn {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem 0.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none; color: var(--ivan-gray-title);
+      font-size: 0.95rem; font-weight: 600;
+      transition: all 0.2s;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .sib-btn:last-child { border-bottom: none; }
+    .sib-btn.active { background: #fef2f2; color: var(--ivan-red); pointer-events: none; }
+    .sib-btn:hover:not(.active) { background: #f9fafb; color: var(--ivan-red); padding-left: 0.75rem; }
+    .sib-icon {
+      width: 2rem; height: 2rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: var(--ivan-blue); color: white;
+      font-size: 0.8rem; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .sib-btn.active .sib-icon { background: var(--ivan-red); }
+    .sib-name { flex: 1; }
+    .sib-count {
+      background: #f3f4f6; color: var(--ivan-gray-obj);
+      padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700;
+    }
+    .sib-btn.active .sib-count { background: var(--ivan-red); color: white; }
+
+    /* ========== ARTICLES ========== */
+    .articles-section-title {
+      font-size: 1.75rem; font-weight: 800;
+      color: var(--ivan-gray-title);
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--ivan-red);
+      padding-bottom: 0.5rem;
+    }
+    .hero-card {
+      display: grid;
+      grid-template-columns: minmax(380px, 45%) 1fr;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      text-decoration: none; color: inherit;
+      transition: all 0.2s;
+    }
+    .hero-card:hover { border-color: var(--ivan-red); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .hero-card-img { aspect-ratio: 3/2; overflow: hidden; background: #f3f4f6; }
+    .hero-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-card-body { padding: 2rem 2.25rem; display: flex; flex-direction: column; justify-content: center; }
+    .hero-card-pill {
+      display: inline-flex; align-items: center;
+      background: var(--ivan-red); color: white;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 0.3rem 0.8rem; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 0.75rem; align-self: flex-start;
+    }
+    .hero-card-title { font-size: 1.75rem; font-weight: 800; color: var(--ivan-gray-title); margin-bottom: 0.85rem; line-height: 1.2; }
+    .hero-card-desc { color: #4b5563; font-size: 1rem; margin-bottom: 1.25rem; line-height: 1.55; }
+    .hero-card-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--ivan-gray-obj); }
+    .hero-card-reading { display: inline-flex; align-items: center; gap: 0.3rem; background: #f3f4f6; padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600; }
+    .hero-card-reading::before { content: "⏱"; }
+
+    .other-articles-title { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ivan-gray-obj); margin-bottom: 1rem; margin-top: 0.5rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+    .grid-card { border: 1px solid var(--border); border-radius: 0.75rem; overflow: hidden; background: white; transition: all 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+    .grid-card:hover { border-color: var(--ivan-red); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .grid-card-img { aspect-ratio: 16/9; overflow: hidden; background: #f3f4f6; }
+    .grid-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .grid-card-body { padding: 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; }
+    .grid-card-section { font-size: 0.7rem; font-weight: 700; color: var(--ivan-red); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+    .grid-card-title { font-size: 1rem; font-weight: 700; color: var(--ivan-gray-title); margin-bottom: 0.5rem; line-height: 1.3; }
+    .grid-card-desc { font-size: 0.85rem; color: #6b7280; flex: 1; margin-bottom: 0.75rem; }
+    .grid-card-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #9ca3af; }
+    .grid-card-reading { background: #f3f4f6; padding: 0.15rem 0.5rem; border-radius: 999px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.2rem; }
+    .grid-card-reading::before { content: "⏱"; }
+
+    .load-more-wrapper { text-align: center; margin: 1rem 0 3rem; }
+    .load-more {
+      background: white; border: 2px solid var(--ivan-red); color: var(--ivan-red);
+      font-family: inherit; font-size: 0.95rem; font-weight: 700;
+      padding: 0.7rem 2rem; border-radius: 999px; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .load-more:hover { background: var(--ivan-red); color: white; }
+
+    /* ========== PULSANTIERA ALTRE SEZIONI A FONDO ========== */
+    .other-sec-heading {
+      font-size: 1rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--ivan-gray-obj);
+      margin: 3rem 0 1rem;
+      text-align: center;
+    }
+    .other-sec-strip {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .other-sec-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: white;
+      text-decoration: none; color: var(--ivan-gray-title);
+      font-size: 0.9rem; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .other-sec-pill:hover { border-color: var(--ivan-red); color: var(--ivan-red); transform: translateY(-1px); }
+    .other-sec-pill .icon {
+      width: 1.6rem; height: 1.6rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: var(--ivan-blue); color: white;
+      font-size: 0.7rem; font-weight: 800;
+    }
+    .other-sec-pill .count { background: #f3f4f6; color: var(--ivan-gray-obj); padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.75rem; }
+
+    @media (max-width: 900px) {
+      .sec-header-title { font-size: 2.5rem; }
+      .hybrid { grid-template-columns: 1fr; gap: 2rem; }
+      .siblings { position: static; }
+      .hero-card { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .mockup-tag {
+      position: fixed; top: 1rem; right: 1rem;
+      background: var(--ivan-blue); color: white;
+      padding: 0.5rem 1rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta D2 • Hero centrato magazine (image 3:2 grande)</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="crumbs"><a href="#">Home</a> › <a href="#">Database Strategy</a> › Project Management</div>
+</nav>
+
+<main class="page">
+
+  <!-- ===== HEADER: image 3:2 centrata + testo XL sotto ===== -->
+  <header class="sec-header">
+    <div class="sec-header-img">
+      <img src="../../../content/posts/project-management/project-management.cover.jpg" alt="Project Management">
+    </div>
+    <div class="sec-header-eyebrow">Sezione • Database Strategy</div>
+    <h1 class="sec-header-title">Project Management</h1>
+    <div><p class="sec-header-tagline">Gestione di progetto nell'IT: smart working, Scrum, AI e consulenza. Articoli pratici da trent'anni di esperienza sul campo.</p></div>
+    <div><span class="sec-header-count"><strong>9</strong>&nbsp;articoli pubblicati</span></div>
+  </header>
+
+  <!-- ===== SPLIT: intro + sidebar sezioni ===== -->
+  <div class="hybrid">
+    <div class="sec-intro">
+      <p>Ho visto project manager far piangere sviluppatori senior in riunione. Ho visto team brillanti distrutti da PM che confondevano l'autorità con l'autoritarismo. Ho visto software consegnati "in tempo" che non funzionavano, e progetti da milioni di euro finiti nel nulla.</p>
+      <p>E ho visto l'esatto contrario: team piccoli, autonomi, rispettati — che costruivano sistemi solidi in una frazione del tempo e del budget.</p>
+      <p>La differenza non è mai stata la tecnologia. È sempre stata <strong>il metodo</strong>.</p>
+      <hr>
+      <p>Dopo trent'anni in questo mestiere, una cosa l'ho capita: <strong>le persone non danno il meglio quando hanno paura. Danno il meglio quando hanno fiducia.</strong></p>
+      <h2>📊 Come lavoro io</h2>
+      <p>Il mio approccio è Scrum — ma Scrum fatto sul serio, non la liturgia dei post-it. Misuro poche cose, ma le misuro bene:</p>
+      <table>
+        <tr><th>Metrica</th><th>Cosa dice</th></tr>
+        <tr><td><strong>Velocity</strong></td><td>Quanto il team consegna per sprint</td></tr>
+        <tr><td><strong>Lead time</strong></td><td>Quanto passa da richiesta a rilascio</td></tr>
+        <tr><td><strong>Bug escape rate</strong></td><td>Quanti difetti sfuggono in produzione</td></tr>
+        <tr><td><strong>Team happiness</strong></td><td>La metrica più importante</td></tr>
+      </table>
+    </div>
+
+    <aside class="siblings">
+      <div class="siblings-heading">Sezioni</div>
+      <a href="#" class="sib-btn active"><span class="sib-icon">PM</span><span class="sib-name">Project Management</span><span class="sib-count">9</span></a>
+      <a href="#" class="sib-btn"><span class="sib-icon">▦</span><span class="sib-name">Data Warehouse</span><span class="sib-count">4</span></a>
+      <a href="#" class="sib-btn"><span class="sib-icon">O</span><span class="sib-name">Oracle</span><span class="sib-count">6</span></a>
+      <a href="#" class="sib-btn"><span class="sib-icon">Pg</span><span class="sib-name">PostgreSQL</span><span class="sib-count">3</span></a>
+      <a href="#" class="sib-btn"><span class="sib-icon">My</span><span class="sib-name">MySQL</span><span class="sib-count">5</span></a>
+    </aside>
+  </div>
+
+  <!-- ===== HERO ARTICLE "In evidenza" ===== -->
+  <h2 class="articles-section-title">Ultimi articoli</h2>
+  <a href="#" class="hero-card">
+    <div class="hero-card-img">
+      <img src="../../../content/posts/project-management/team-di-progetto-che-reggono/team-di-progetto-che-reggono.cover.jpg" alt="">
+    </div>
+    <div class="hero-card-body">
+      <span class="hero-card-pill">In evidenza</span>
+      <h3 class="hero-card-title">5 regole che ho visto funzionare nei team di progetto che reggono</h3>
+      <p class="hero-card-desc">Un PM che cronometrava i minuti passati in bagno, un altro che filtrava il rumore e lasciava lavorare. Cinque regole osservate da entrambi i lati del tavolo che ricorrono nei team che tengono sotto pressione.</p>
+      <div class="hero-card-meta">
+        <span>19 maggio 2026</span>
+        <span class="hero-card-reading">12 min</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- ===== GRID DEGLI ALTRI ===== -->
+  <div class="other-articles-title">Altri articoli della sezione</div>
+  <div class="grid">
+    <a href="#" class="grid-card">
+      <div class="grid-card-img"><img src="../../../content/posts/project-management/ai-manager-project-management/ai-manager-project-management.cover.jpg" alt=""></div>
+      <div class="grid-card-body">
+        <span class="grid-card-section">Project Management</span>
+        <h3 class="grid-card-title">AI Manager e Project Management</h3>
+        <p class="grid-card-desc">Gestire l'AI non significa usare ChatGPT. Governare l'impatto su architetture, processi e persone.</p>
+        <div class="grid-card-meta"><span>17 mar 2026</span><span class="grid-card-reading">11 min</span></div>
+      </div>
+    </a>
+    <a href="#" class="grid-card">
+      <div class="grid-card-img"><img src="../../../content/posts/project-management/pagamenti-60-90-120-giorni/pagamenti-60-90-120-giorni.cover.jpg" alt=""></div>
+      <div class="grid-card-body">
+        <span class="grid-card-section">Project Management</span>
+        <h3 class="grid-card-title">Pagamenti a 60-90-120 giorni</h3>
+        <p class="grid-card-desc">Confronto tra regole europee e realtà italiana per chi lavora a partita IVA.</p>
+        <div class="grid-card-meta"><span>10 mar 2026</span><span class="grid-card-reading">10 min</span></div>
+      </div>
+    </a>
+    <a href="#" class="grid-card">
+      <div class="grid-card-img"><img src="../../../content/posts/project-management/bici-vs-auto-roma/bici-vs-auto-roma.cover.jpg" alt=""></div>
+      <div class="grid-card-body">
+        <span class="grid-card-section">Project Management</span>
+        <h3 class="grid-card-title">Bici vs Auto a Roma</h3>
+        <p class="grid-card-desc">Da Appio Latino a Prati in 50 minuti di traffico o 18 minuti di Brompton elettrica.</p>
+        <div class="grid-card-meta"><span>3 mar 2026</span><span class="grid-card-reading">8 min</span></div>
+      </div>
+    </a>
+    <a href="#" class="grid-card">
+      <div class="grid-card-img"><img src="../../../content/posts/project-management/smartworking-consulenza-it/smartworking-consulenza-it.cover.jpg" alt=""></div>
+      <div class="grid-card-body">
+        <span class="grid-card-section">Project Management</span>
+        <h3 class="grid-card-title">Smart working nella consulenza IT</h3>
+        <p class="grid-card-desc">I numeri che nessuno vuole guardare sulla convenienza del lavoro da remoto.</p>
+        <div class="grid-card-meta"><span>24 feb 2026</span><span class="grid-card-reading">9 min</span></div>
+      </div>
+    </a>
+    <a href="#" class="grid-card">
+      <div class="grid-card-img"><img src="../../../content/posts/project-management/ai-github-project-management/ai-github-project-management.cover.jpg" alt=""></div>
+      <div class="grid-card-body">
+        <span class="grid-card-section">Project Management</span>
+        <h3 class="grid-card-title">Quando il caos diventa metodo: AI e GitHub</h3>
+        <p class="grid-card-desc">Trasformare un progetto software caotico in un flusso di lavoro ordinato.</p>
+        <div class="grid-card-meta"><span>3 feb 2026</span><span class="grid-card-reading">10 min</span></div>
+      </div>
+    </a>
+    <a href="#" class="grid-card">
+      <div class="grid-card-img"><img src="../../../content/posts/project-management/standup-meeting-15-minuti/standup-meeting.cover.jpg" alt=""></div>
+      <div class="grid-card-body">
+        <span class="grid-card-section">Project Management</span>
+        <h3 class="grid-card-title">Standup meeting: perché funzionano solo se durano 15 minuti</h3>
+        <p class="grid-card-desc">Il vincolo dei 15 minuti come unica cosa che fa funzionare il daily meeting.</p>
+        <div class="grid-card-meta"><span>27 gen 2026</span><span class="grid-card-reading">7 min</span></div>
+      </div>
+    </a>
+  </div>
+  <div class="load-more-wrapper">
+    <button class="load-more">Carica altri articoli</button>
+  </div>
+
+  <!-- ===== ALTRE SEZIONI A FONDO ===== -->
+  <div class="other-sec-heading">Esplora le altre sezioni</div>
+  <div class="other-sec-strip">
+    <a href="#" class="other-sec-pill"><span class="icon">▦</span>Data Warehouse<span class="count">4</span></a>
+    <a href="#" class="other-sec-pill"><span class="icon">O</span>Oracle<span class="count">6</span></a>
+    <a href="#" class="other-sec-pill"><span class="icon">Pg</span>PostgreSQL<span class="count">3</span></a>
+    <a href="#" class="other-sec-pill"><span class="icon">My</span>MySQL<span class="count">5</span></a>
+  </div>
+
+</main>
+
+</body>
+</html>
