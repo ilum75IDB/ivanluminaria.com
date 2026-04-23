@@ -2211,6 +2211,11 @@ footer {
   flex-direction: column;
   justify-content: center;
   padding: 2rem 2.5rem;
+  min-width: 0;                             /* consente alla colonna grid di
+                                               rimpicciolirsi sotto la larghezza
+                                               del contenuto senza sbordare */
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .section-page-header-eyebrow {
   font-size: 0.75rem;
@@ -2221,12 +2226,17 @@ footer {
   margin-bottom: 0.85rem;
 }
 .section-page-header-title {
-  font-size: 3.5rem !important;
+  /* Font-size scala fluidamente: min 2rem, target 4vw, max 3.5rem.
+     Cosi il titolo si adatta allo spazio prima di collassare a 1 colonna. */
+  font-size: clamp(2rem, 4vw, 3.5rem) !important;
   font-weight: 800 !important;
   color: var(--ivan-gray-title) !important;
   line-height: 1.05 !important;
   letter-spacing: -0.02em;
   margin: 0 0 1.25rem 0 !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 .dark .section-page-header-title {
   color: rgb(243, 244, 246) !important;
@@ -2652,7 +2662,9 @@ footer {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+/* Sotto i 1024px: header collassa a singola colonna (image sopra, testo sotto)
+   per non comprimere il titolo al di sotto di ~2rem. */
+@media (max-width: 1024px) {
   .section-page-header {
     grid-template-columns: 1fr;
   }
@@ -2662,6 +2674,10 @@ footer {
   .section-page-header-title {
     font-size: 2.25rem !important;
   }
+}
+
+/* Sotto i 900px: collasso anche intro+sidebar e hero card articoli */
+@media (max-width: 900px) {
   .section-page-hybrid {
     grid-template-columns: 1fr;
     gap: 2rem;
