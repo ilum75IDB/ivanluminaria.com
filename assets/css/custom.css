@@ -180,21 +180,26 @@ nav ul li a {
 }
 /* UL interna: center-allineata + max width contenuta, override del text-end
    Tailwind che allineava i link al bordo destro (cut-off su mobile).
-   Anche padding orizzontale ridotto per mobile. */
+   Zero margini/padding sui <li> per evitare offset (Tailwind aggiunge
+   mb-1 su ogni li). */
 #menu-wrapper > ul {
-  width: 100% !important;
+  width: auto !important;
   max-width: 32rem !important;
-  padding: 2rem 1.5rem !important;
-  margin: 0 auto !important;
+  padding: 0 1.5rem !important;
+  margin: 0 !important;
   text-align: center !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 1.25rem;
+  justify-content: center !important;
+  gap: 1.5rem;
+  list-style: none;
 }
 #menu-wrapper > ul > li {
   text-align: center !important;
-  width: 100%;
+  width: auto;
+  margin: 0 !important;
+  padding: 0 !important;
   list-style: none;
 }
 #menu-wrapper > ul > li a,
@@ -204,6 +209,26 @@ nav ul li a {
   max-width: 100%;
   overflow-wrap: break-word;
   word-break: break-word;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+/* Primo <li> nel template Congo e il close button (X): estraggo dal
+   flusso della lista e pino top-right dell'overlay. */
+#menu-wrapper > ul > li:first-child {
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1.25rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+#menu-wrapper > ul > li:first-child span {
+  font-size: 1.75rem !important;
+  color: var(--ivan-gray-title) !important;
+  cursor: pointer;
+}
+#menu-wrapper > ul > li:first-child span:hover {
+  color: var(--ivan-red) !important;
 }
 .dark #menu-wrapper {
   background: rgba(17, 17, 17, 0.98) !important; /* dark mode: scuro solido */
