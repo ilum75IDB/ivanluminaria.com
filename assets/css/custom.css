@@ -2409,8 +2409,12 @@ footer {
 
 .section-page-hero-card,
 .section-page-hero-card:visited {
-  display: grid !important;
-  grid-template-columns: minmax(380px, 45%) 1fr;
+  /* FLEX invece di grid: cosi l'immagine (con aspect-ratio 3/2) definisce
+     l'altezza della card, e il body (flex: 1) si stira a quella stessa
+     altezza. Il testo eccedente e clippato via overflow: hidden sul body
+     + line-clamp su titolo e descrizione. L'immagine COMANDA su tutto. */
+  display: flex !important;
+  flex-direction: row;
   gap: 0;
   background: white;
   border: 1px solid rgb(229, 231, 235);
@@ -2434,15 +2438,16 @@ footer {
   text-decoration: none !important;
 }
 .section-page-hero-card-img {
-  /* Il container riempie l'intera altezza della grid cell (stretch).
-     L'img e posizionata in absolute + inset: 0 per garantire che riempia
-     SEMPRE tutto il container, qualunque sia l'aspect ratio nativo della
-     sorgente (3:2 o 16:9 — senza questa tecnica alcune combinazioni
-     grid+object-fit lasciano una fascia grigia sotto le 16:9). */
+  /* L'immagine COMANDA l'altezza della card. Aspect-ratio 3/2 fisso sulla
+     colonna immagine, il body flex: 1 si adatta a quella stessa altezza,
+     il testo eccedente viene clippato via overflow + line-clamp. */
+  flex: 0 0 45%;
+  min-width: 380px;
+  max-width: 45%;
+  aspect-ratio: 3 / 2;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-  min-height: 280px;
 }
 .section-page-hero-card-img img {
   position: absolute;
@@ -2465,11 +2470,15 @@ footer {
   color: rgb(156, 163, 175);
 }
 .section-page-hero-card-body {
+  flex: 1 1 auto;
+  min-width: 0;                             /* permette allo shrink di andare
+                                               sotto la larghezza del contenuto */
   padding: 2rem 2.25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden;                         /* clamp duro: il testo eccedente
+                                               sparisce sotto il bordo card */
 }
 .section-page-hero-card-pill {
   display: inline-flex;
@@ -2691,15 +2700,21 @@ footer {
   .section-page-siblings {
     position: static;
   }
+  /* Hero card collassa a colonna singola (image sopra, testo sotto).
+     Aspect-ratio dell'immagine rimane 3/2 (gia nella regola principale),
+     il body flow naturale senza overflow-clip. */
   .section-page-hero-card,
   .section-page-hero-card:visited {
-    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
   }
-  /* Su mobile l'image non ha piu la grid cell che la stretch-a: applichiamo
-     aspect-ratio 3/2 come fallback per mantenere proporzioni coerenti. */
   .section-page-hero-card-img {
-    aspect-ratio: 3 / 2;
-    min-height: auto;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .section-page-hero-card-body {
+    overflow: visible;
   }
   .section-page-articles-grid {
     grid-template-columns: 1fr;
