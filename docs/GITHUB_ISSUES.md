@@ -52,7 +52,9 @@ tool `WebFetch`.
 
 ## Issue Aperte — Bug
 
-*Nessuna issue aperta.*
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 75 | https://github.com/ilum75IDB/ivanluminaria.com/issues/75 | Bug: colori hover sbagliati sui link del footer (azzurro invece di rosso + bold + underline) | aperta |
 
 ## Issue Chiuse
 
