@@ -1838,6 +1838,11 @@ footer {
   display: flex !important;
   flex-direction: column;
 }
+/* Hidden cards: renderizzate nell'HTML (SEO) ma non mostrate
+   finche l'utente non clicca "Carica altri articoli" */
+.list-d1-article-card-hidden {
+  display: none !important;
+}
 .list-d1-article-card:hover {
   border-color: var(--ivan-red) !important;
   color: var(--ivan-gray-title) !important;
@@ -1949,6 +1954,42 @@ footer {
 .dark .list-d1-article-reading-time {
   background: rgb(64, 64, 64);
   color: rgb(209, 213, 219);
+}
+
+/* ---- Bottone "Carica altri articoli" ---- */
+.list-d1-load-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 3rem 0;
+}
+.list-d1-load-more {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2.25rem;
+  background: white;
+  color: var(--ivan-gray-title);
+  border: 2px solid rgb(229, 231, 235);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.list-d1-load-more:hover {
+  border-color: var(--ivan-red);
+  color: var(--ivan-red);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+.dark .list-d1-load-more {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+  color: rgb(229, 229, 229);
+}
+.dark .list-d1-load-more:hover {
+  border-color: var(--ivan-red);
+  color: var(--ivan-red);
 }
 
 /* ---- Responsive: collasso in colonna singola su mobile/tablet ---- */

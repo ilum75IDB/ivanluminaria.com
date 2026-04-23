@@ -4,6 +4,7 @@ editorial:
 list:
   explore_by_section: "📂 Esplora per sezione"
   latest_articles: "Ultimi articoli"
+  load_more: "Carica altri articoli"
 
 tags:
   title: "TAG"
