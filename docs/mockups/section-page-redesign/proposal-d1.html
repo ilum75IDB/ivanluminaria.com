@@ -27,26 +27,30 @@
     .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
     .page { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-    /* ========== HEADER: 2-COL IMAGE 3:2 INTERA + TESTO GRANDE ========== */
+    /* ========== HEADER: CARD BIANCA (image 3:2 + testo) ========== */
     .sec-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: center;
+      gap: 0;
+      align-items: stretch;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
       margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
     }
     .sec-header-img {
       aspect-ratio: 3 / 2;                  /* formato nativo, nessun taglio */
       overflow: hidden;
-      border-radius: 1rem;
       background: #f3f4f6;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
     .sec-header-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .sec-header-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 2rem 2.5rem;
     }
     .sec-header-eyebrow {
       font-size: 0.75rem;

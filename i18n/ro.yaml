@@ -5,6 +5,12 @@ list:
   explore_by_section: "📂 Explorează pe secțiune"
   latest_articles: "Ultimele articole"
   load_more: "Încarcă mai multe articole"
+  section_eyebrow: "Secțiune • Database Strategy"
+  articles_count: "articole publicate în această secțiune"
+  sections_heading: "Secțiuni"
+  featured: "Recomandat"
+  other_articles: "Alte articole din secțiune"
+  explore_other_sections: "Explorează alte secțiuni"
 
 tags:
   title: "ETICHETE"
