@@ -18,12 +18,7 @@
   {{- if $thumb -}}
     {{- with $page.Resources.GetMatch $thumb }}
       <div class="home-hero-card-img">
-        <img
-          src="{{ (.Fit "800x450 smart").Permalink }}"
-          srcset="{{ (.Fit "800x450 smart").Permalink }} 800w, {{ (.Fit "1200x675 smart").Permalink }} 1200w"
-          alt="{{ $page.Title }}"
-          loading="lazy"
-        />
+        <img src="{{ .RelPermalink }}" alt="{{ $page.Title }}" loading="lazy" />
       </div>
     {{- end -}}
   {{- else -}}
@@ -39,7 +34,7 @@
     {{ end }}
     <div class="home-hero-card-meta">
       <span class="home-hero-card-date">
-        {{ $page.Date.Format (site.Params.dateFormat | default "2 January 2006") }}
+        {{ $page.Date.Format (site.Params.dateFormat | default "2 January 2026") }}
       </span>
       <span class="home-hero-card-reading">
         {{ $page.ReadingTime }} min
