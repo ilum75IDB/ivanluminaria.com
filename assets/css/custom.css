@@ -2434,16 +2434,19 @@ footer {
   text-decoration: none !important;
 }
 .section-page-hero-card-img {
-  /* Stesso pattern della home-hero-card (gia approvato):
-     niente aspect-ratio sul container; l'immagine riempie l'intera altezza
-     della grid cell (stretch), il testo nella colonna DX resta compatto
-     grazie ai clamp su titolo (2 righe) e descrizione (3 righe). */
+  /* Il container riempie l'intera altezza della grid cell (stretch).
+     L'img e posizionata in absolute + inset: 0 per garantire che riempia
+     SEMPRE tutto il container, qualunque sia l'aspect ratio nativo della
+     sorgente (3:2 o 16:9 — senza questa tecnica alcune combinazioni
+     grid+object-fit lasciano una fascia grigia sotto le 16:9). */
+  position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-  height: 100%;
   min-height: 280px;
 }
 .section-page-hero-card-img img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
