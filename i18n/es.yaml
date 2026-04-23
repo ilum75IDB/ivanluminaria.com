@@ -4,6 +4,7 @@ editorial:
 list:
   explore_by_section: "📂 Explorar por sección"
   latest_articles: "Últimos artículos"
+  load_more: "Cargar más artículos"
 
 tags:
   title: "ETIQUETAS"

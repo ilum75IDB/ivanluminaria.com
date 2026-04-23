@@ -4,6 +4,7 @@ editorial:
 list:
   explore_by_section: "📂 Explorează pe secțiune"
   latest_articles: "Ultimele articole"
+  load_more: "Încarcă mai multe articole"
 
 tags:
   title: "ETICHETE"

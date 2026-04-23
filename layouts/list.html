@@ -66,17 +66,20 @@
 
       </div>
 
-      {{/* Articles grid — stile C, 3 colonne, senza tabs.
-           Limitati agli ultimi 6 articoli (2 righe): la pagina list e una
-           vetrina di anteprime, non il catalogo completo. Per vedere di
-           piu, l'utente clicca su una sezione specifica nella pulsantiera
-           qui sopra. */}}
-      {{ $latest := first 6 .RegularPagesRecursive.ByDate.Reverse }}
-      {{ if $latest }}
+      {{/* Articles grid — stile C, 3 colonne.
+           Renderizza TUTTI gli articoli ma nasconde (via CSS class) quelli
+           oltre i primi 6. Un pulsante "Carica altri articoli" svela 6
+           cards alla volta a ogni click. Tutto il contenuto e nell'HTML
+           (SEO-friendly), il JS e progressive enhancement. */}}
+      {{ $allArticles := .RegularPagesRecursive.ByDate.Reverse }}
+      {{ $initialCount := 6 }}
+      {{ $batchSize := 6 }}
+      {{ $total := len $allArticles }}
+      {{ if $allArticles }}
         <h2 class="list-d1-articles-title">{{ i18n "list.latest_articles" }}</h2>
         <div class="list-d1-articles-grid">
-          {{ range $latest }}
-            <a href="{{ .RelPermalink }}" class="list-d1-article-card">
+          {{ range $i, $article := $allArticles }}
+            <a href="{{ .RelPermalink }}" class="list-d1-article-card{{ if ge $i $initialCount }} list-d1-article-card-hidden{{ end }}">
               {{/* Thumbnail — use cover image if available */}}
               {{ $thumb := "" }}
               {{ with .Params.image }}
@@ -112,6 +115,36 @@
             </a>
           {{ end }}
         </div>
+
+        {{/* "Load more" button, shown only if there are more than $initialCount articles */}}
+        {{ if gt $total $initialCount }}
+          <div class="list-d1-load-more-wrapper">
+            <button
+              type="button"
+              class="list-d1-load-more"
+              data-batch-size="{{ $batchSize }}"
+              aria-label="{{ i18n "list.load_more" }}"
+            >{{ i18n "list.load_more" }}</button>
+          </div>
+          <script>
+            (function () {
+              var btn = document.querySelector('.list-d1-load-more');
+              if (!btn) return;
+              var grid = document.querySelector('.list-d1-articles-grid');
+              if (!grid) return;
+              var batchSize = parseInt(btn.getAttribute('data-batch-size') || '6', 10);
+              btn.addEventListener('click', function () {
+                var hidden = grid.querySelectorAll('.list-d1-article-card-hidden');
+                for (var i = 0; i < batchSize && i < hidden.length; i++) {
+                  hidden[i].classList.remove('list-d1-article-card-hidden');
+                }
+                if (grid.querySelectorAll('.list-d1-article-card-hidden').length === 0) {
+                  btn.parentElement.style.display = 'none';
+                }
+              });
+            })();
+          </script>
+        {{ end }}
       {{ end }}
 
     </article>
