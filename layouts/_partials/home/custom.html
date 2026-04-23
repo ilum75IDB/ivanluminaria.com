@@ -13,9 +13,18 @@
   {{- $hero := index $allPosts 0 -}}
   {{ partial "home-hero-card.html" $hero }}
 
-  {{/* Grid: next articles in formato D1 */}}
+  {{/* Grid: next articles in formato D1.
+       Regola: mostrare o 3 o 6 card (righe complete sulla grid 3-col).
+       Se articoli disponibili (escluso hero) >= 6 -> 6, else >= 3 -> 3, else 0. */}}
+  {{- $remaining := sub (len $allPosts) 1 -}}
+  {{- $gridCount := 0 -}}
+  {{- if ge $remaining 6 -}}
+    {{- $gridCount = 6 -}}
+  {{- else if ge $remaining 3 -}}
+    {{- $gridCount = 3 -}}
+  {{- end -}}
   {{- $gridPosts := after 1 $allPosts -}}
-  {{- $gridPosts = first (sub $recentLimit 1) $gridPosts -}}
+  {{- $gridPosts = first $gridCount $gridPosts -}}
   {{ if gt (len $gridPosts) 0 }}
     <div class="list-d1-articles-grid">
       {{- range $gridPosts }}
@@ -48,9 +57,18 @@
       {{- $sHero := index $sectionPosts 0 -}}
       {{ partial "home-hero-card.html" $sHero }}
 
-      {{/* Grid per altri post della sezione (max 4) in formato D1 */}}
+      {{/* Grid per altri post della sezione in formato D1.
+           Regola: mostrare o 3 o 6 card (righe complete sulla grid 3-col).
+           Se articoli rimanenti >= 6 -> 6, else >= 3 -> 3, else 0 (solo hero). */}}
+      {{- $sRemaining := sub (len $sectionPosts) 1 -}}
+      {{- $sGridCount := 0 -}}
+      {{- if ge $sRemaining 6 -}}
+        {{- $sGridCount = 6 -}}
+      {{- else if ge $sRemaining 3 -}}
+        {{- $sGridCount = 3 -}}
+      {{- end -}}
       {{- $sGrid := after 1 $sectionPosts -}}
-      {{- $sGrid = first 4 $sGrid -}}
+      {{- $sGrid = first $sGridCount $sGrid -}}
       {{ if gt (len $sGrid) 0 }}
         <div class="list-d1-articles-grid">
           {{- range $sGrid }}
