@@ -208,8 +208,15 @@ nav ul li a {
   color: #ffffff !important;
 }
 
-/* Show/hide hamburger overlay via CSS checkbox hack */
+/* Show/hide hamburger overlay via CSS checkbox hack.
+   IMPORTANTE: display: none quando NON checked per evitare che il
+   backdrop-blur del menu-wrapper copra visualmente l'icona hamburger
+   anche in stato 'invisible' (bug di rendering con backdrop-filter). */
+#menu-wrapper {
+  display: none !important;
+}
 #menu-controller:checked ~ #menu-wrapper {
+  display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
