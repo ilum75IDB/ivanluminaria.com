@@ -1,4 +1,4 @@
-{{/* Editorial homepage layout — inspired by magazine/newspaper style */}}
+{{/* Editorial homepage layout — hero orizzontale (proposta A) + grid D1 */}}
 {{- $recentLimit := .Site.Params.homepage.recentLimit | default 6 -}}
 
 {{/* Collect all regular pages from posts, sorted by date desc */}}
@@ -9,82 +9,17 @@
 <section class="editorial-section">
   <h2 class="editorial-section-title">{{ i18n "shortcode.recent_articles" | default "Latest" }}</h2>
 
-  {{/* Hero: most recent article */}}
+  {{/* Hero: most recent article — formato card orizzontale (proposta A) */}}
   {{- $hero := index $allPosts 0 -}}
-  <article class="editorial-hero">
-    {{- $images := $hero.Resources.ByType "image" }}
-    {{- $feature := "" }}
-    {{- if $hero.Params.image }}
-      {{- $feature = $images.GetMatch $hero.Params.image }}
-    {{- end }}
-    {{- if not $feature }}
-      {{- $thumbnail := $images.GetMatch ($hero.Params.thumbnail | default "*thumb*") }}
-      {{- $feature = $images.GetMatch ($hero.Params.feature | default "*feature*") | default $thumbnail }}
-    {{- end }}
-    {{- with $feature }}
-      <a href="{{ $hero.Permalink }}" class="editorial-hero-img-link">
-        <img
-          class="editorial-hero-img"
-          srcset="{{ (.Fit "800x533 smart").Permalink }} 800w, {{ (.Fit "1200x800 smart").Permalink }} 1200w"
-          src="{{ (.Fit "800x533 smart").Permalink }}"
-          alt="{{ $hero.Title }}"
-          width="1200" height="800"
-          {{ if $.Site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
-        />
-      </a>
-    {{- end }}
-    <h3 class="editorial-hero-title">
-      <a href="{{ $hero.Permalink }}">{{ $hero.Title | emojify }}</a>
-    </h3>
-    <div class="editorial-hero-meta">
-      {{ $hero.Date | time.Format ":date_long" }} · {{ $hero.ReadingTime }} min
-    </div>
-    {{ if $hero.Params.description }}
-      <p class="editorial-hero-desc">{{ $hero.Params.description }}</p>
-    {{ end }}
-  </article>
+  {{ partial "home-hero-card.html" $hero }}
 
-  {{/* Grid: next articles */}}
+  {{/* Grid: next articles in formato D1 */}}
   {{- $gridPosts := after 1 $allPosts -}}
   {{- $gridPosts = first (sub $recentLimit 1) $gridPosts -}}
   {{ if gt (len $gridPosts) 0 }}
-    <div class="editorial-grid">
+    <div class="list-d1-articles-grid">
       {{- range $gridPosts }}
-        {{- $article := . -}}
-        <article class="editorial-grid-item">
-          {{- $images := .Resources.ByType "image" }}
-          {{- $feature := "" }}
-          {{- if .Params.image }}
-            {{- $feature = $images.GetMatch .Params.image }}
-          {{- end }}
-          {{- if not $feature }}
-            {{- $thumbnail := $images.GetMatch (.Params.thumbnail | default "*thumb*") }}
-            {{- $feature = $images.GetMatch (.Params.feature | default "*feature*") | default $thumbnail }}
-          {{- end }}
-          {{- with $feature }}
-            <a href="{{ $article.Permalink }}" class="editorial-grid-img-link">
-              <img
-                class="editorial-grid-img"
-                srcset="{{ (.Fit "300x200 smart").Permalink }} 300w, {{ (.Fit "600x400 smart").Permalink }} 600w"
-                src="{{ (.Fit "300x200 smart").Permalink }}"
-                alt="{{ $article.Title }}"
-                width="600" height="400"
-                {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
-              />
-            </a>
-          {{- end }}
-          <div class="editorial-grid-text">
-            <h4 class="editorial-grid-title">
-              <a href="{{ .Permalink }}">{{ .Title | emojify }}</a>
-            </h4>
-            <div class="editorial-grid-meta">
-              {{ .Date | time.Format ":date_long" }} · {{ .ReadingTime }} min
-            </div>
-            {{ if .Params.description }}
-              <p class="editorial-grid-desc">{{ .Params.description }}</p>
-            {{ end }}
-          </div>
-        </article>
+        {{ partial "article-card.html" . }}
       {{- end }}
     </div>
   {{ end }}
@@ -109,84 +44,17 @@
     <section class="editorial-section">
       <h2 class="editorial-section-title">{{ $section.Title }}</h2>
 
-      {{/* Hero for this section — 2-column: image | text */}}
+      {{/* Hero per questa sezione — formato card orizzontale (proposta A) */}}
       {{- $sHero := index $sectionPosts 0 -}}
-      <article class="editorial-category-hero">
-        {{- $images := $sHero.Resources.ByType "image" }}
-        {{- $feature := "" }}
-        {{- if $sHero.Params.image }}
-          {{- $feature = $images.GetMatch $sHero.Params.image }}
-        {{- end }}
-        {{- if not $feature }}
-          {{- $thumbnail := $images.GetMatch ($sHero.Params.thumbnail | default "*thumb*") }}
-          {{- $feature = $images.GetMatch ($sHero.Params.feature | default "*feature*") | default $thumbnail }}
-        {{- end }}
-        {{- with $feature }}
-          <a href="{{ $sHero.Permalink }}" class="editorial-category-hero-img-link">
-            <img
-              class="editorial-category-hero-img"
-              srcset="{{ (.Fit "300x200 smart").Permalink }} 300w, {{ (.Fit "450x300 smart").Permalink }} 450w"
-              src="{{ (.Fit "300x200 smart").Permalink }}"
-              alt="{{ $sHero.Title }}"
-              width="450" height="300"
-              {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
-            />
-          </a>
-        {{- end }}
-        <div class="editorial-category-hero-text">
-          <h3 class="editorial-category-hero-title">
-            <a href="{{ $sHero.Permalink }}">{{ $sHero.Title | emojify }}</a>
-          </h3>
-          <div class="editorial-hero-meta">
-            {{ $sHero.Date | time.Format ":date_long" }} · {{ $sHero.ReadingTime }} min
-          </div>
-          {{ if $sHero.Params.description }}
-            <p class="editorial-category-hero-desc">{{ $sHero.Params.description }}</p>
-          {{ end }}
-        </div>
-      </article>
+      {{ partial "home-hero-card.html" $sHero }}
 
-      {{/* Grid for remaining posts in section */}}
+      {{/* Grid per altri post della sezione (max 4) in formato D1 */}}
       {{- $sGrid := after 1 $sectionPosts -}}
       {{- $sGrid = first 4 $sGrid -}}
       {{ if gt (len $sGrid) 0 }}
-        <div class="editorial-grid">
+        <div class="list-d1-articles-grid">
           {{- range $sGrid }}
-            {{- $article := . -}}
-            <article class="editorial-grid-item">
-              {{- $images := .Resources.ByType "image" }}
-              {{- $feature := "" }}
-              {{- if .Params.image }}
-                {{- $feature = $images.GetMatch .Params.image }}
-              {{- end }}
-              {{- if not $feature }}
-                {{- $thumbnail := $images.GetMatch (.Params.thumbnail | default "*thumb*") }}
-                {{- $feature = $images.GetMatch (.Params.feature | default "*feature*") | default $thumbnail }}
-              {{- end }}
-              {{- with $feature }}
-                <a href="{{ $article.Permalink }}" class="editorial-grid-img-link">
-                  <img
-                    class="editorial-grid-img"
-                    srcset="{{ (.Fit "300x200 smart").Permalink }} 300w, {{ (.Fit "600x400 smart").Permalink }} 600w"
-                    src="{{ (.Fit "300x200 smart").Permalink }}"
-                    alt="{{ $article.Title }}"
-                    width="600" height="400"
-                    {{ if site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
-                  />
-                </a>
-              {{- end }}
-              <div class="editorial-grid-text">
-                <h4 class="editorial-grid-title">
-                  <a href="{{ .Permalink }}">{{ .Title | emojify }}</a>
-                </h4>
-                <div class="editorial-grid-meta">
-                  {{ .Date | time.Format ":date_long" }} · {{ .ReadingTime }} min
-                </div>
-                {{ if .Params.description }}
-                  <p class="editorial-grid-desc">{{ .Params.description }}</p>
-                {{ end }}
-              </div>
-            </article>
+            {{ partial "article-card.html" . }}
           {{- end }}
         </div>
       {{ end }}

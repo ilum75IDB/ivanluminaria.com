@@ -80,40 +80,7 @@
         <h2 class="list-d1-articles-title">{{ i18n "list.latest_articles" }}</h2>
         <div class="list-d1-articles-grid">
           {{ range $i, $article := $allArticles }}
-            <a href="{{ .RelPermalink }}" class="list-d1-article-card{{ if ge $i $initialCount }} list-d1-article-card-hidden{{ end }}">
-              {{/* Thumbnail — use cover image if available */}}
-              {{ $thumb := "" }}
-              {{ with .Params.image }}
-                {{ $thumb = . }}
-              {{ end }}
-              {{ if $thumb }}
-                {{ with .Resources.GetMatch $thumb }}
-                  <div class="list-d1-article-thumb">
-                    <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
-                  </div>
-                {{ end }}
-              {{ else }}
-                <div class="list-d1-article-thumb list-d1-article-thumb-placeholder"></div>
-              {{ end }}
-              <div class="list-d1-article-body">
-                {{/* Section tag — derived from CurrentSection */}}
-                {{ with .CurrentSection }}
-                  <span class="list-d1-article-section">{{ .Title }}</span>
-                {{ end }}
-                <h3>{{ .Title | emojify }}</h3>
-                {{ with .Description }}
-                  <p class="list-d1-article-excerpt">{{ . | emojify }}</p>
-                {{ end }}
-                <div class="list-d1-article-meta">
-                  <span class="list-d1-article-date">
-                    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
-                  </span>
-                  <span class="list-d1-article-reading-time">
-                    {{ .ReadingTime }} min
-                  </span>
-                </div>
-              </div>
-            </a>
+            {{ partial "article-card.html" (dict "page" . "hidden" (ge $i $initialCount)) }}
           {{ end }}
         </div>
 

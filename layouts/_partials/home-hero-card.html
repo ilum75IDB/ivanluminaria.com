@@ -1,0 +1,49 @@
+{{/*
+  home-hero-card.html — hero card orizzontale (proposta A) per la homepage.
+  Usata sia nella sezione "Latest" che nelle sezioni categoria.
+
+  Context: article page (passata direttamente).
+
+  Layout:
+    [image 16:9 a sinistra] | [section tag, titolo, descrizione, data+reading time a destra]
+
+  Su mobile (<900px) collassa in colonna singola (image sopra, testo sotto).
+*/}}
+{{- $page := . -}}
+<a href="{{ $page.RelPermalink }}" class="home-hero-card">
+  {{- $thumb := "" -}}
+  {{- with $page.Params.image -}}
+    {{- $thumb = . -}}
+  {{- end -}}
+  {{- if $thumb -}}
+    {{- with $page.Resources.GetMatch $thumb }}
+      <div class="home-hero-card-img">
+        <img
+          src="{{ (.Fit "800x450 smart").Permalink }}"
+          srcset="{{ (.Fit "800x450 smart").Permalink }} 800w, {{ (.Fit "1200x675 smart").Permalink }} 1200w"
+          alt="{{ $page.Title }}"
+          loading="lazy"
+        />
+      </div>
+    {{- end -}}
+  {{- else -}}
+    <div class="home-hero-card-img home-hero-card-img-placeholder"></div>
+  {{- end }}
+  <div class="home-hero-card-body">
+    {{ with $page.CurrentSection }}
+      <span class="home-hero-card-section">{{ .Title }}</span>
+    {{ end }}
+    <h3 class="home-hero-card-title">{{ $page.Title | emojify }}</h3>
+    {{ with $page.Description }}
+      <p class="home-hero-card-desc">{{ . | emojify }}</p>
+    {{ end }}
+    <div class="home-hero-card-meta">
+      <span class="home-hero-card-date">
+        {{ $page.Date.Format (site.Params.dateFormat | default "2 January 2006") }}
+      </span>
+      <span class="home-hero-card-reading">
+        {{ $page.ReadingTime }} min
+      </span>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,52 @@
+{{/*
+  article-card.html — D1 article card riutilizzabile per grid layouts.
+
+  Context: page article direttamente, OPPURE dict con { page, hidden } per
+  usi avanzati (es. load more su list page che ha bisogno di marcare
+  alcune card come nascoste al primo load).
+
+  Usage:
+    {{ partial "article-card.html" . }}                                            semplice
+    {{ partial "article-card.html" (dict "page" . "hidden" (ge $i 6)) }}           con flag hidden
+*/}}
+{{- $page := . -}}
+{{- $hidden := false -}}
+{{- if and (not (.Permalink)) (isset . "page") -}}
+  {{- $page = .page -}}
+  {{- $hidden = .hidden -}}
+{{- end -}}
+<a
+  href="{{ $page.RelPermalink }}"
+  class="list-d1-article-card{{ if $hidden }} list-d1-article-card-hidden{{ end }}"
+>
+  {{- $thumb := "" -}}
+  {{- with $page.Params.image -}}
+    {{- $thumb = . -}}
+  {{- end -}}
+  {{- if $thumb -}}
+    {{- with $page.Resources.GetMatch $thumb }}
+      <div class="list-d1-article-thumb">
+        <img src="{{ .RelPermalink }}" alt="{{ $page.Title }}" loading="lazy" />
+      </div>
+    {{- end -}}
+  {{- else -}}
+    <div class="list-d1-article-thumb list-d1-article-thumb-placeholder"></div>
+  {{- end }}
+  <div class="list-d1-article-body">
+    {{ with $page.CurrentSection }}
+      <span class="list-d1-article-section">{{ .Title }}</span>
+    {{ end }}
+    <h3>{{ $page.Title | emojify }}</h3>
+    {{ with $page.Description }}
+      <p class="list-d1-article-excerpt">{{ . | emojify }}</p>
+    {{ end }}
+    <div class="list-d1-article-meta">
+      <span class="list-d1-article-date">
+        {{ $page.Date.Format (site.Params.dateFormat | default "2 January 2006") }}
+      </span>
+      <span class="list-d1-article-reading-time">
+        {{ $page.ReadingTime }} min
+      </span>
+    </div>
+  </div>
+</a>
