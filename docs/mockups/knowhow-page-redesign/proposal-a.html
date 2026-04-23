@@ -99,26 +99,10 @@
       flex-direction: column;
     }
     .kh-role-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
       margin-bottom: 1.25rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--border);
     }
-    .kh-role-icon {
-      width: 3.5rem; height: 3.5rem;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 0.75rem;
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-    .kh-role-card[data-role="dwh"] .kh-role-icon { background: #1E3A5F; }
-    .kh-role-card[data-role="pm"] .kh-role-icon { background: #4a4a4a; }
-    .kh-role-card[data-role="oracle"] .kh-role-icon { background: #F80000; }
-    .kh-role-card[data-role="plsql"] .kh-role-icon { background: #b30000; }
     .kh-role-title { font-size: 1.4rem; font-weight: 800; color: var(--ivan-gray-title); line-height: 1.2; letter-spacing: -0.005em; }
 
     .kh-role-body { flex: 1; font-size: 0.95rem; line-height: 1.65; color: #4b5563; margin-bottom: 1.25rem; }
@@ -136,9 +120,10 @@
       border-radius: 999px;
     }
 
-    /* Pulsantiera verticale (lato destro, altezza piena della card) */
+    /* Pulsantiera verticale (lato destro, altezza piena della card).
+       Sfondo uniforme grigio chiaro per tutte le card (no tinta ruolo). */
     .kh-role-ctas {
-      background: #f9fafb;
+      background: #f3f4f6;
       border-left: 1px solid var(--border);
       padding: 1.5rem 1.5rem;
       display: flex;
@@ -146,10 +131,6 @@
       gap: 0.75rem;
       justify-content: center;
     }
-    .kh-role-card[data-role="dwh"] .kh-role-ctas { background: linear-gradient(180deg, rgba(30,58,95,0.04) 0%, rgba(30,58,95,0.08) 100%); }
-    .kh-role-card[data-role="pm"] .kh-role-ctas { background: linear-gradient(180deg, rgba(74,74,74,0.04) 0%, rgba(74,74,74,0.08) 100%); }
-    .kh-role-card[data-role="oracle"] .kh-role-ctas { background: linear-gradient(180deg, rgba(248,0,0,0.03) 0%, rgba(248,0,0,0.08) 100%); }
-    .kh-role-card[data-role="plsql"] .kh-role-ctas { background: linear-gradient(180deg, rgba(179,0,0,0.03) 0%, rgba(179,0,0,0.08) 100%); }
 
     .kh-btn {
       display: inline-flex;
@@ -248,7 +229,6 @@
     <div class="kh-role-card" data-role="dwh">
       <div class="kh-role-main">
         <div class="kh-role-header">
-          <div class="kh-role-icon">▦</div>
           <h3 class="kh-role-title">Data Warehouse Architect</h3>
         </div>
         <div class="kh-role-body">
@@ -282,7 +262,6 @@
     <div class="kh-role-card" data-role="pm">
       <div class="kh-role-main">
         <div class="kh-role-header">
-          <div class="kh-role-icon">PM</div>
           <h3 class="kh-role-title">Project Manager con background tecnico</h3>
         </div>
         <div class="kh-role-body">
@@ -315,7 +294,6 @@
     <div class="kh-role-card" data-role="oracle">
       <div class="kh-role-main">
         <div class="kh-role-header">
-          <div class="kh-role-icon">O</div>
           <h3 class="kh-role-title">Oracle DBA &amp; Performance Tuning Expert</h3>
         </div>
         <div class="kh-role-body">
@@ -348,7 +326,6 @@
     <div class="kh-role-card" data-role="plsql">
       <div class="kh-role-main">
         <div class="kh-role-header">
-          <div class="kh-role-icon">SQL</div>
           <h3 class="kh-role-title">Oracle PL/SQL — Senior &amp; Mentor</h3>
         </div>
         <div class="kh-role-body">
