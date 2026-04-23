@@ -3115,12 +3115,13 @@ footer {
   margin-bottom: 0.85rem;
 }
 .kh-header-title {
-  /* Font-size scala fluidamente: min 2rem, target 4vw, max 3.5rem.
-     Cosi il titolo si adatta allo spazio prima di collassare a 1 colonna. */
-  font-size: clamp(2rem, 4vw, 3.5rem) !important;
+  /* Font-size scala fluidamente: min 1.75rem, target 3vw, max 2.75rem.
+     Valori piu contenuti perche il titolo 'Esperienza, profondita, impatto'
+     contiene una parola lunga ('profondita') che altrimenti forza la colonna. */
+  font-size: clamp(1.75rem, 3vw, 2.75rem) !important;
   font-weight: 800 !important;
   color: var(--ivan-gray-title) !important;
-  line-height: 1.05 !important;
+  line-height: 1.1 !important;
   letter-spacing: -0.02em;
   margin: 0 0 1.25rem 0 !important;
   overflow-wrap: break-word;
@@ -3359,10 +3360,12 @@ footer {
 }
 
 /* ---------- Responsive ---------- */
-/* Sotto i 1200px: header collassa a singola colonna (image sopra, testo sotto).
-   Il titolo 'Esperienza, profondita, impatto' e lungo e diventa illeggibile
-   compresso in mezza colonna sotto i 1200px. */
-@media (max-width: 1200px) {
+/* Sotto 1400px: header collassa a singola colonna (image sopra, testo sotto).
+   Il titolo 'Esperienza, profondita, impatto' contiene parole lunghe
+   ('profondita' 10 chars) e non sta mai in una mezza colonna stretta.
+   Breakpoint alto per prevenire definitivamente overflow in zona
+   tablet/laptop medio. */
+@media (max-width: 1400px) {
   .kh-header {
     grid-template-columns: 1fr;
   }
