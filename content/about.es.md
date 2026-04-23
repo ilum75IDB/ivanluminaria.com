@@ -4,34 +4,30 @@ description: "Casi 30 años de experiencia en bases de datos, arquitectura de da
 date: "2026-02-20"
 lastmod: "2026-02-26"
 draft: false
-layout: "simple"
+layout: "about"
 showTitle: false
 ---
 
-<div class="profile-header flex flex-col sm:flex-row sm:items-center items-start">
-  <div class="flex-none">
+<div class="about-profile-card">
+  <div class="about-profile-avatar">
     <img
       src='{{< staticurl "img/ivan_luminaria_avatar.png" >}}'
-      alt="Ivan Luminaria"
-      class="profile-avatar rounded-full shadow-xl border-4 border-slate-100">
+      alt="Ivan Luminaria">
   </div>
-
-  <div class="profile-text text-left">
-    <h1 class="mb-1">IVAN LUMINARIA</h1>
-    <h3 class="mt-0 text-slate-500">
-      Oracle, PostgreSQL & MySQL Expert | DWH Architect | Project Manager
-    </h3>
-    <p class="mt-4">
+  <div class="about-profile-info">
+    <h1 class="about-profile-name">IVAN LUMINARIA</h1>
+    <p class="about-profile-role">Oracle, PostgreSQL &amp; MySQL Expert · DWH Architect · Project Manager</p>
+    <p class="about-profile-desc">
       Profesional IT con aproximadamente <strong>30 años de experiencia</strong> en el diseño, implementación y gestión de soluciones de bases de datos y Data Warehouse en entornos Oracle, PostgreSQL y MySQL.
     </p>
-    <p class="mt-2" style="font-size: 0.9em;">
-      <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ivanluminaria/" target="_blank" rel="noopener">ivanluminaria</a><br>
-      <strong>Email:</strong> ivan (dot) luminaria (at) gmail (dot) com
-    </p>
+    <div class="about-profile-contacts">
+      <span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ivanluminaria/" target="_blank" rel="noopener">ivanluminaria</a></span>
+      <span><strong>Email:</strong> ivan (dot) luminaria (at) gmail (dot) com</span>
+    </div>
   </div>
 </div>
 
----
+<div class="about-manifesto">
 
 Trabajo con bases de datos desde hace unos treinta años.
 
@@ -45,11 +41,11 @@ Se fatiga.
 Se bloquea.  
 O escala.
 
-Empecé en entornos Oracle mission-critical, cuando “mission-critical” no era una frase de presentación.  
+Empecé en entornos Oracle mission-critical, cuando "mission-critical" no era una frase de presentación.  
 Era la diferencia entre un sistema que resiste y uno que cae a las tres de la mañana.
 
 He pasado incontables horas sobre AWR, ASH y planes de ejecución.  
-He visto sistemas ralentizarse “sin motivo aparente”.  
+He visto sistemas ralentizarse "sin motivo aparente".  
 Y aprendí que siempre hay un motivo.  
 Solo hay que buscarlo con método.
 
@@ -63,7 +59,7 @@ No luchar contra él.
 No creo en la optimización milagrosa.  
 Creo en estadísticas actualizadas.  
 En un modelo de datos correcto.  
-En la diferencia entre “funciona” y “resiste”.
+En la diferencia entre "funciona" y "resiste".
 
 Porque una base de datos lenta no es un problema técnico.  
 Es un problema de negocio.  
@@ -74,18 +70,18 @@ Una decisión tomada demasiado tarde.
 Y ahí es exactamente donde me gusta estar —  
 donde la tecnología se convierte en impacto real.
 
----
+</div>
 
-## Cómo trabajo
+{{< about-section-card icon="🔧" title="Cómo trabajo" >}}
 
-No me limito a “administrar” bases de datos.
+No me limito a "administrar" bases de datos.
 
 Las observo.  
 Las mido.  
 Las pongo a prueba.  
 Las protejo.
 
-Trabajo en performance tuning en entornos complejos — Oracle, RAC, Exadata — y también en PostgreSQL y MySQL en contextos modernos, a menudo open source, donde la ausencia de “magia propietaria” obliga a entender realmente lo que ocurre bajo el capó.
+Trabajo en performance tuning en entornos complejos — Oracle, RAC, Exadata — y también en PostgreSQL y MySQL en contextos modernos, a menudo open source, donde la ausencia de "magia propietaria" obliga a entender realmente lo que ocurre bajo el capó.
 
 Diseño arquitecturas de Data Warehouse porque los datos no están para almacenarse.  
 Están para comprenderse.
@@ -100,9 +96,9 @@ Refactorizo cuando es inevitable.
 No me interesan los efectos especiales.  
 Me interesa la solidez.
 
----
+{{< /about-section-card >}}
 
-## Visión
+{{< about-section-card icon="🎯" title="Visión" >}}
 
 Con los años he integrado profundidad técnica con perspectiva estratégica.
 
@@ -117,9 +113,9 @@ Pero sin competencia real, son solo etiquetas.
 Para mí, liderazgo significa algo simple:  
 tomar decisiones técnicas que resistan el paso del tiempo.
 
----
+{{< /about-section-card >}}
 
-## Más allá del trabajo
+{{< about-section-card icon="🎨" title="Más allá del trabajo" >}}
 
 Fuera del trabajo cultivo pasiones que, en el fondo, hablan el mismo idioma.
 
@@ -127,6 +123,14 @@ La fotografía me enseñó que la luz adecuada cambia la historia.
 La música — estoy aprendiendo saxofón y toco la guitarra — me recuerda que la técnica sin sensibilidad es solo ruido.  
 La cocina es arquitectura comestible: equilibrio, tiempos, proporción.  
 El ajedrez es estrategia pura: cada movimiento es una decisión, cada decisión tiene consecuencias.
+
+{{< about-passion-grid >}}
+{{< about-passion-pill icon="📷" name="Fotografía" >}}
+{{< about-passion-pill icon="🎷" name="Saxofón" >}}
+{{< about-passion-pill icon="🎸" name="Guitarra" >}}
+{{< about-passion-pill icon="🍳" name="Cocina" >}}
+{{< about-passion-pill icon="♟️" name="Ajedrez" >}}
+{{< /about-passion-grid >}}
 
 Quizás por eso me siento cómodo en sistemas complejos.  
 No me intimidan.  
@@ -138,6 +142,8 @@ Pero solo para hacer que el conjunto funcione mejor.
 No construyo bases de datos.  
 Construyo solidez.
 
----
+{{< /about-section-card >}}
 
-> "Transformo la complejidad de los datos en valor estratégico para el negocio."
+{{< about-hero-quote attr="Ivan Luminaria" >}}
+Transformo la complejidad de los datos en valor estratégico para el negocio.
+{{< /about-hero-quote >}}
