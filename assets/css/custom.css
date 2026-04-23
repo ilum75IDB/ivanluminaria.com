@@ -2407,12 +2407,14 @@ footer {
 
 .section-page-hero-card,
 .section-page-hero-card:visited {
-  /* FLEX invece di grid: cosi l'immagine (con aspect-ratio 3/2) definisce
-     l'altezza della card, e il body (flex: 1) si stira a quella stessa
-     altezza. Il testo eccedente e clippato via overflow: hidden sul body
-     + line-clamp su titolo e descrizione. L'immagine COMANDA su tutto. */
+  /* L'altezza della card e deterministica tramite aspect-ratio 10:3.
+     Calcolo: immagine 45% larghezza + aspect nativo 3:2 → altezza immagine =
+     45% × 2/3 = 30% della larghezza card → card aspect 10:3. Cosi la card
+     ha altezza fissa, il body flex: 1 si stira a quella stessa altezza,
+     il testo eccedente viene clippato via overflow: hidden + line-clamp. */
   display: flex !important;
   flex-direction: row;
+  aspect-ratio: 10 / 3;
   gap: 0;
   background: white;
   border: 1px solid rgb(229, 231, 235);
@@ -2436,13 +2438,11 @@ footer {
   text-decoration: none !important;
 }
 .section-page-hero-card-img {
-  /* L'immagine COMANDA l'altezza della card. Aspect-ratio 3/2 fisso sulla
-     colonna immagine, il body flex: 1 si adatta a quella stessa altezza,
-     il testo eccedente viene clippato via overflow + line-clamp. */
+  /* Colonna immagine: 45% larghezza, altezza = altezza card (da aspect-ratio
+     sulla card). Con 45% × 2/3 = 30% della larghezza card, l'immagine ha
+     naturalmente aspect 3:2. L'img e posizionata absolute inset: 0 per
+     garantire il fill completo qualunque sia l'aspect nativo della sorgente. */
   flex: 0 0 45%;
-  min-width: 380px;
-  max-width: 45%;
-  aspect-ratio: 3 / 2;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
@@ -2696,17 +2696,18 @@ footer {
     gap: 2rem;
   }
   /* Hero card collassa a colonna singola (image sopra, testo sotto).
-     Aspect-ratio dell'immagine rimane 3/2 (gia nella regola principale),
-     il body flow naturale senza overflow-clip. */
+     Reset dell'aspect-ratio card (aveva 10/3 per il layout orizzontale);
+     l'image prende aspect 3/2 (formato nativo) e il body sta sotto in
+     flow naturale senza overflow-clip. */
   .section-page-hero-card,
   .section-page-hero-card:visited {
     flex-direction: column !important;
+    aspect-ratio: auto !important;
   }
   .section-page-hero-card-img {
     flex: 0 0 auto;
     width: 100%;
-    max-width: 100%;
-    min-width: 0;
+    aspect-ratio: 3 / 2;
   }
   .section-page-hero-card-body {
     overflow: visible;
