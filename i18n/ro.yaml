@@ -1,6 +1,10 @@
 editorial:
   show_more: "Arată mai mult"
 
+list:
+  explore_by_section: "📂 Explorează pe secțiune"
+  latest_articles: "Ultimele articole"
+
 tags:
   title: "ETICHETE"
 

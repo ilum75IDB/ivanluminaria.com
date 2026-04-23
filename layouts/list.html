@@ -1,83 +1,198 @@
 {{ define "main" }}
-  {{ $toc := and (.Params.showTableOfContents | default (.Site.Params.list.showTableOfContents | default false)) (in .TableOfContents "<ul") }}
-  <article class="max-w-full">
-    <header>
+  {{/* D1 LAYOUT is applied ONLY on the top-level /<lang>/posts/ page
+       (identified by having subsections: Oracle, PostgreSQL, MySQL, DWH, PM).
+       Subsection lists (/posts/oracle/, /posts/mysql/, ...) and taxonomy pages
+       keep the previous simple layout. */}}
+  {{ $isTopSection := gt (len .Sections) 0 }}
 
-      {{/* HERO IMAGE for section/list pages */}}
+  {{ if $isTopSection }}
+
+    {{/* ============================================================
+         D1 — Hybrid: sections pulsantiera (SX) + intro (DX) + grid
+         ============================================================ */}}
+
+    <article class="max-w-full list-d1">
+
+      {{/* Hero with title overlay */}}
       {{ with .Params.image }}
         {{ $img := . }}
-
-        {{/* If it's a page bundle resource, prefer Resources */}}
-        {{ with $.Resources.GetMatch $img }}
-          <img
-            src="{{ .RelPermalink }}"
-            alt="{{ $.Title }}"
-            class="mb-6 w-full rounded-2xl"
-            loading="lazy"
-          />
-        {{ else }}
-          {{/* Otherwise treat it as a URL/path (e.g. /img/categories/...) */}}
-          <img
-            src="{{ $img | relURL }}"
-            alt="{{ $.Title }}"
-            class="mb-6 w-full rounded-2xl"
-            loading="lazy"
-          />
-        {{ end }}
-      {{ end }}
-
-      {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
-        {{ partial "breadcrumbs.html" . }}
-      {{ end }}
-
-      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-        {{ .Title | emojify }}
-      </h1>
-
-    </header>
-
-    <div id="content" class="scroll-mt-28"></div>
-
-
-    <section class="{{ if $toc -}} mt-12 {{- else -}} mt-6 {{- end }} prose flex max-w-full flex-col dark:prose-invert lg:flex-row">
-      {{ if $toc }}
-        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
-          <div class="toc ps-5 lg:sticky lg:top-10">
-            {{ partial "toc.html" . }}
+        <div class="list-d1-hero">
+          {{ with $.Resources.GetMatch $img }}
+            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
+          {{ else }}
+            <img src="{{ $img | relURL }}" alt="{{ $.Title }}" loading="lazy" />
+          {{ end }}
+          <div class="list-d1-hero-overlay">
+            <h1>{{ .Title | emojify }}</h1>
           </div>
         </div>
       {{ end }}
-      <div class="min-h-0 min-w-0 max-w-prose grow">
-        {{ .Content | emojify }}
-      </div>
-    </section>
 
-    {{ if .Pages }}
-      <section class="mt-10">
-        {{ if $.Params.groupByYear | default ($.Site.Params.list.groupByYear | default true) }}
-          {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
-            <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
-              {{ .Key }}
-            </h2>
-            <hr class="w-36 border-dotted border-neutral-400" />
-            {{ range .Pages }}
+      {{/* Tagline (site description for this page) */}}
+      {{ with .Description }}
+        <p class="list-d1-tagline">{{ . | emojify }}</p>
+      {{ end }}
+
+      {{/* HYBRID BLOCK: sections pulsantiera (LEFT) + intro (RIGHT) */}}
+      <div class="list-d1-hybrid">
+
+        {{/* LEFT column: sections buttons, ordered per editorial priority */}}
+        <div class="list-d1-sections-col">
+          <div class="list-d1-sections-heading">{{ i18n "list.explore_by_section" }}</div>
+          {{ range slice "data-warehouse" "project-management" "oracle" "postgresql" "mysql" }}
+            {{ $sectionSlug := . }}
+            {{ with $.GetPage (printf "/posts/%s" $sectionSlug) }}
+              <a href="{{ .RelPermalink }}" class="list-d1-section-button" data-sec="{{ $sectionSlug }}">
+                <span class="list-d1-section-icon">
+                  {{ if eq $sectionSlug "oracle" }}O
+                  {{ else if eq $sectionSlug "postgresql" }}Pg
+                  {{ else if eq $sectionSlug "mysql" }}My
+                  {{ else if eq $sectionSlug "data-warehouse" }}▦
+                  {{ else if eq $sectionSlug "project-management" }}PM
+                  {{ end }}
+                </span>
+                <span class="list-d1-section-name">{{ .Title }}</span>
+                <span class="list-d1-section-count">{{ len .Pages }}</span>
+                <span class="list-d1-section-arrow" aria-hidden="true">→</span>
+              </a>
+            {{ end }}
+          {{ end }}
+        </div>
+
+        {{/* RIGHT column: full intro content (markdown rendered) */}}
+        <div class="list-d1-intro-col prose dark:prose-invert">
+          {{ .Content | emojify }}
+        </div>
+
+      </div>
+
+      {{/* Articles grid — stile C, 3 colonne, senza tabs */}}
+      {{ if .Pages }}
+        <h2 class="list-d1-articles-title">{{ i18n "list.latest_articles" }}</h2>
+        <div class="list-d1-articles-grid">
+          {{ range (.Paginate .Pages).Pages }}
+            <a href="{{ .RelPermalink }}" class="list-d1-article-card">
+              {{/* Thumbnail — use cover image if available */}}
+              {{ $thumb := "" }}
+              {{ with .Params.image }}
+                {{ $thumb = . }}
+              {{ end }}
+              {{ if $thumb }}
+                {{ with .Resources.GetMatch $thumb }}
+                  <div class="list-d1-article-thumb">
+                    <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
+                  </div>
+                {{ end }}
+              {{ else }}
+                <div class="list-d1-article-thumb list-d1-article-thumb-placeholder"></div>
+              {{ end }}
+              <div class="list-d1-article-body">
+                {{/* Section tag — derived from CurrentSection or categories */}}
+                {{ with .CurrentSection }}
+                  <span class="list-d1-article-section">{{ .Title }}</span>
+                {{ end }}
+                <h3>{{ .Title | emojify }}</h3>
+                {{ with .Description }}
+                  <p class="list-d1-article-excerpt">{{ . | emojify }}</p>
+                {{ end }}
+                <div class="list-d1-article-meta">
+                  {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                </div>
+              </div>
+            </a>
+          {{ end }}
+        </div>
+
+        {{ partial "pagination.html" . }}
+      {{ end }}
+
+    </article>
+
+  {{ else }}
+
+    {{/* ============================================================
+         Fallback: existing simple layout for subsections and taxonomy pages
+         (unchanged behaviour from before)
+         ============================================================ */}}
+
+    {{ $toc := and (.Params.showTableOfContents | default (.Site.Params.list.showTableOfContents | default false)) (in .TableOfContents "<ul") }}
+    <article class="max-w-full">
+      <header>
+
+        {{/* HERO IMAGE for section/list pages */}}
+        {{ with .Params.image }}
+          {{ $img := . }}
+          {{ with $.Resources.GetMatch $img }}
+            <img
+              src="{{ .RelPermalink }}"
+              alt="{{ $.Title }}"
+              class="mb-6 w-full rounded-2xl"
+              loading="lazy"
+            />
+          {{ else }}
+            <img
+              src="{{ $img | relURL }}"
+              alt="{{ $.Title }}"
+              class="mb-6 w-full rounded-2xl"
+              loading="lazy"
+            />
+          {{ end }}
+        {{ end }}
+
+        {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
+          {{ partial "breadcrumbs.html" . }}
+        {{ end }}
+
+        <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+          {{ .Title | emojify }}
+        </h1>
+
+      </header>
+
+      <div id="content" class="scroll-mt-28"></div>
+
+
+      <section class="{{ if $toc -}} mt-12 {{- else -}} mt-6 {{- end }} prose flex max-w-full flex-col dark:prose-invert lg:flex-row">
+        {{ if $toc }}
+          <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
+            <div class="toc ps-5 lg:sticky lg:top-10">
+              {{ partial "toc.html" . }}
+            </div>
+          </div>
+        {{ end }}
+        <div class="min-h-0 min-w-0 max-w-prose grow">
+          {{ .Content | emojify }}
+        </div>
+      </section>
+
+      {{ if .Pages }}
+        <section class="mt-10">
+          {{ if $.Params.groupByYear | default ($.Site.Params.list.groupByYear | default true) }}
+            {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
+              <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+                {{ .Key }}
+              </h2>
+              <hr class="w-36 border-dotted border-neutral-400" />
+              {{ range .Pages }}
+                {{ partial "article-link.html" . }}
+              {{ end }}
+            {{ end }}
+          {{ else }}
+            {{ range (.Paginate .Pages).Pages }}
               {{ partial "article-link.html" . }}
             {{ end }}
           {{ end }}
-        {{ else }}
-          {{ range (.Paginate .Pages).Pages }}
-            {{ partial "article-link.html" . }}
-          {{ end }}
-        {{ end }}
-      </section>
+        </section>
 
-      {{ partial "pagination.html" . }}
-    {{ else }}
-      <section class="prose mt-10 dark:prose-invert">
-        <p class="border-t py-8">
-          <em>{{ i18n "list.no_articles" | emojify }}</em>
-        </p>
-      </section>
-    {{ end }}
-  </article>
+        {{ partial "pagination.html" . }}
+      {{ else }}
+        <section class="prose mt-10 dark:prose-invert">
+          <p class="border-t py-8">
+            <em>{{ i18n "list.no_articles" | emojify }}</em>
+          </p>
+        </section>
+      {{ end }}
+    </article>
+
+  {{ end }}
 {{ end }}

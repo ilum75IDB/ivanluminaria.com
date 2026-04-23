@@ -1630,3 +1630,317 @@ footer {
     flex: 1;
   }
 }
+
+/* ============================================================
+   LIST D1 LAYOUT — pagina "Database Strategy" (top-level /posts/)
+   ============================================================
+   Applicato solo al template list.html quando la pagina ha subsections.
+   Layout ibrido: hero + tagline + (sezioni SX | intro DX) + grid articoli.
+   Issue #76. */
+
+.list-d1 {
+  max-width: 100%;
+}
+
+/* ---- Hero con overlay titolo ---- */
+.list-d1-hero {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 260px;
+  margin-bottom: 1.5rem;
+}
+.list-d1-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 !important;   /* annulla eventuali margin dal prose */
+}
+.list-d1-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+.list-d1-hero-overlay h1 {
+  color: white !important;
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* ---- Tagline ---- */
+.list-d1-tagline {
+  font-size: 1.15rem;
+  color: var(--ivan-gray-title);
+  margin-bottom: 2.5rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.dark .list-d1-tagline {
+  color: rgb(209, 213, 219); /* neutral-300 */
+}
+
+/* ---- Hybrid block: sezioni (SX) + intro (DX) ---- */
+.list-d1-hybrid {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+  align-items: start;
+}
+
+/* ---- Colonna SX: pulsantiera sezioni ---- */
+.list-d1-sections-col .list-d1-sections-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ivan-gray-obj);
+  margin-bottom: 1rem;
+}
+
+.list-d1-section-button,
+.list-d1-section-button:visited {
+  display: flex !important;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border: 2px solid rgb(229, 231, 235); /* neutral-200 */
+  border-radius: 0.75rem;
+  margin-bottom: 0.65rem;
+  text-decoration: none !important;
+  color: var(--ivan-gray-title) !important;  /* override global a:red */
+  transition: all 0.2s;
+  background: white;
+}
+.list-d1-section-button:hover {
+  border-color: var(--ivan-red) !important;
+  color: var(--ivan-gray-title) !important;  /* mantiene colore normale su hover */
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-decoration: none !important;
+  font-weight: inherit !important;   /* neutralizza bold hover del footer rule */
+}
+.dark .list-d1-section-button,
+.dark .list-d1-section-button:visited {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+  color: rgb(229, 229, 229) !important;
+}
+.dark .list-d1-section-button:hover {
+  border-color: var(--ivan-red) !important;
+  color: rgb(229, 229, 229) !important;
+}
+
+.list-d1-section-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white !important;
+  flex-shrink: 0;
+}
+/* Colore di ciascuna sezione — stessa palette dei menu */
+.list-d1-section-button[data-sec="oracle"] .list-d1-section-icon { background: #F80000; }
+.list-d1-section-button[data-sec="postgresql"] .list-d1-section-icon { background: #336791; }
+.list-d1-section-button[data-sec="mysql"] .list-d1-section-icon { background: #00758F; }
+.list-d1-section-button[data-sec="data-warehouse"] .list-d1-section-icon { background: #1E3A5F; }
+.list-d1-section-button[data-sec="project-management"] .list-d1-section-icon { background: #4a4a4a; }
+
+.list-d1-section-name {
+  font-weight: 700;
+  flex: 1;
+}
+.list-d1-section-count {
+  font-size: 0.85rem;
+  background: rgb(243, 244, 246);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--ivan-gray-obj);
+}
+.dark .list-d1-section-count {
+  background: rgb(64, 64, 64);
+  color: rgb(209, 213, 219);
+}
+.list-d1-section-arrow {
+  color: rgb(209, 213, 219);
+  font-size: 1.25rem;
+  transition: color 0.2s;
+}
+.list-d1-section-button:hover .list-d1-section-arrow {
+  color: var(--ivan-red);
+}
+
+/* ---- Colonna DX: intro testuale ---- */
+.list-d1-intro-col {
+  padding: 0;
+  max-width: none;
+}
+/* Il contenuto è rendered con class="prose" che ha max-width;
+   qui lo liberiamo per riempire la colonna disponibile */
+.list-d1-intro-col.prose {
+  max-width: none !important;
+}
+.list-d1-intro-col blockquote {
+  border-left: 4px solid var(--ivan-red) !important;
+  font-style: normal !important;
+  font-weight: 700;
+  color: var(--ivan-gray-title) !important;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  padding-left: 1.25rem !important;
+  margin-left: 0 !important;
+}
+.dark .list-d1-intro-col blockquote {
+  color: rgb(243, 244, 246) !important;
+}
+
+/* ---- Titolo grid "Ultimi articoli" ---- */
+.list-d1-articles-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--ivan-gray-title);
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+.dark .list-d1-articles-title {
+  color: rgb(243, 244, 246);
+}
+
+/* ---- Grid articoli stile C ---- */
+.list-d1-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.list-d1-article-card,
+.list-d1-article-card:visited {
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: white;
+  transition: all 0.2s;
+  text-decoration: none !important;
+  color: var(--ivan-gray-title) !important;   /* override global a:red */
+  display: flex !important;
+  flex-direction: column;
+}
+.list-d1-article-card:hover {
+  border-color: var(--ivan-red) !important;
+  color: var(--ivan-gray-title) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  text-decoration: none !important;
+  font-weight: inherit !important;
+}
+.dark .list-d1-article-card,
+.dark .list-d1-article-card:visited {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+  color: rgb(229, 229, 229) !important;
+}
+.dark .list-d1-article-card:hover {
+  border-color: var(--ivan-red) !important;
+  color: rgb(229, 229, 229) !important;
+}
+
+.list-d1-article-thumb {
+  height: 160px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+.list-d1-article-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 !important;
+}
+.list-d1-article-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(156, 163, 175);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.list-d1-article-thumb-placeholder::before {
+  content: "📄";
+  font-size: 2rem;
+}
+
+.list-d1-article-body {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.list-d1-article-section {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ivan-red);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.list-d1-article-body h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ivan-gray-title);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+.dark .list-d1-article-body h3 {
+  color: rgb(243, 244, 246);
+}
+.list-d1-article-excerpt {
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128);
+  margin: 0 0 0.75rem 0;
+  flex: 1;
+  line-height: 1.5;
+}
+.dark .list-d1-article-excerpt {
+  color: rgb(156, 163, 175);
+}
+.list-d1-article-meta {
+  font-size: 0.75rem;
+  color: rgb(156, 163, 175);
+}
+
+/* ---- Responsive: collasso in colonna singola su mobile/tablet ---- */
+@media (max-width: 900px) {
+  .list-d1-hybrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .list-d1-articles-grid {
+    grid-template-columns: 1fr;
+  }
+  .list-d1-hero {
+    height: 200px;
+  }
+  .list-d1-hero-overlay h1 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  .list-d1-articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
