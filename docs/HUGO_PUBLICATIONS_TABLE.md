@@ -38,9 +38,9 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 | 23 | 2026-03-17 | —        | Tue | AI Manager e Project Management                            | project-management | #55   | 2026-03-16 | published |
 | 24 | 2026-03-24 | —        | Tue | VACUUM e autovacuum PostgreSQL                             | postgresql         | #47   | 2026-03-16 | published |
 | 25 | 2026-03-31 | —        | Tue | Binary log in MySQL: cosa sono, come gestirli e quando puoi cancellarli | mysql | #42 | 2026-03-18 | published |
-| 26 | 2026-04-07 | —        | Tue | Partitioning nel DWH: quando 3 anni di dati pesano troppo | data-warehouse | #41 | 2026-03-20 | scheduled |
-| 27 | 2026-04-14 | —        | Tue | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | mysql | #43 | 2026-03-20 | scheduled |
-| 28 | 2026-04-21 | —        | Tue | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | postgresql | #48 | 2026-03-21 | scheduled |
+| 26 | 2026-04-07 | —        | Tue | Partitioning nel DWH: quando 3 anni di dati pesano troppo | data-warehouse | #41 | 2026-03-20 | published |
+| 27 | 2026-04-14 | —        | Tue | mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte | mysql | #43 | 2026-03-20 | published |
+| 28 | 2026-04-21 | —        | Tue | pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL | postgresql | #48 | 2026-03-21 | published |
 | 29 | 2026-04-28 | —        | Tue | Oracle da on-premises a cloud: strategia, pianificazione e cutover | oracle | #53 | 2026-03-23 | scheduled |
 | 30 | 2026-05-05 | —        | Tue | Prima di aggiornare MySQL: le cifre che il cliente ti chiede e come trovarle davvero | mysql | #64 | 2026-04-21 | scheduled |
 | 31 | 2026-05-12 | —        | Tue | Tre data mart, tre verità sulle vendite: il bus matrix come terreno comune | data-warehouse | #40 | 2026-04-21 | scheduled |
