@@ -13,7 +13,10 @@
 
     <article class="max-w-full list-d1">
 
-      {{/* Hero with title overlay */}}
+      {{/* Hero: the cover image already contains the "Database Strategy"
+           lettering visually. The h1 below is rendered as screen-reader-only
+           to preserve accessibility and SEO without duplicating the text
+           on top of the image. */}}
       {{ with .Params.image }}
         {{ $img := . }}
         <div class="list-d1-hero">
@@ -22,9 +25,7 @@
           {{ else }}
             <img src="{{ $img | relURL }}" alt="{{ $.Title }}" loading="lazy" />
           {{ end }}
-          <div class="list-d1-hero-overlay">
-            <h1>{{ $.Title | emojify }}</h1>
-          </div>
+          <h1 class="list-d1-hero-title-sr">{{ $.Title | emojify }}</h1>
         </div>
       {{ end }}
 
