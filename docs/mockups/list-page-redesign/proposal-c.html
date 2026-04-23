@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Strategy — Proposta C (Tabs + Cards Grid)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --bg: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: var(--bg);
+    }
+
+    .mock-nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .mock-nav .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ivan-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .mock-nav .links { display: flex; gap: 1.5rem; }
+    .mock-nav .links a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+    .mock-nav .links a:hover { color: var(--ivan-red); }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ============ Hero ============ */
+    .hero {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      height: 260px;
+      margin-bottom: 1.5rem;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+    .hero h1 {
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      color: var(--ivan-gray-title);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* ============ Tabs bar (HIGHLIGHT della proposta C) ============ */
+    .tabs-bar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      overflow-x: auto;
+      position: sticky;
+      top: 73px;
+      background: white;
+      z-index: 50;
+    }
+    .tab {
+      padding: 0.65rem 1.25rem;
+      border-radius: 999px;
+      border: 2px solid var(--border);
+      background: white;
+      color: var(--ivan-gray-title);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+    .tab:hover {
+      border-color: var(--ivan-red);
+      color: var(--ivan-red);
+    }
+    .tab.active {
+      background: var(--ivan-red);
+      border-color: var(--ivan-red);
+      color: white;
+    }
+    .tab .count {
+      font-size: 0.75rem;
+      background: rgba(0,0,0,0.08);
+      padding: 0.125rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .tab.active .count {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ============ Cards grid ============ */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .article-card {
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: white;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card.hidden { display: none; }
+    .article-card:hover {
+      border-color: var(--ivan-red);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .article-card .thumb {
+      height: 140px;
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .article-card .body {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card .section-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--ivan-red);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .article-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ivan-gray-title);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .article-card .excerpt {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+    .article-card .meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    /* ============ Intro come accordion a fondo pagina ============ */
+    .intro-accordion {
+      background: #f9fafb;
+      border-radius: 0.75rem;
+      padding: 0;
+      margin-top: 3rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .intro-accordion summary {
+      padding: 1.25rem 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--ivan-gray-title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+    .intro-accordion summary::-webkit-details-marker { display: none; }
+    .intro-accordion summary::after {
+      content: "+";
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ivan-red);
+    }
+    .intro-accordion[open] summary::after { content: "−"; }
+    .intro-accordion .content {
+      padding: 0 1.5rem 1.5rem;
+      color: #4b5563;
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+    }
+    .intro-accordion .content p { margin-bottom: 0.75rem; }
+    .intro-accordion .content p:last-child { margin-bottom: 0; }
+
+    .mock-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      margin-top: 4rem;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 900px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+    }
+
+    .mockup-tag {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #1E3A5F;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 200;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta C • Tabs + Grid</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="links">
+    <a href="#">Articoli</a>
+    <a href="#">Oracle</a>
+    <a href="#">PostgreSQL</a>
+    <a href="#">MySQL</a>
+    <a href="#">DWH</a>
+    <a href="#">PM</a>
+    <a href="#">About</a>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- Hero con titolo -->
+  <div class="hero">
+    <img src="../../../content/posts/database-strategy.cover.jpg" alt="Database Strategy">
+    <div class="overlay">
+      <h1>Database Strategy</h1>
+    </div>
+  </div>
+
+  <p class="tagline">Database, architettura e performance come leva strategica per il business moderno.</p>
+
+  <!-- Tabs sticky con filtri -->
+  <div class="tabs-bar">
+    <button class="tab active" data-filter="all">Tutti <span class="count">28</span></button>
+    <button class="tab" data-filter="oracle">Oracle <span class="count">5</span></button>
+    <button class="tab" data-filter="postgres">PostgreSQL <span class="count">5</span></button>
+    <button class="tab" data-filter="mysql">MySQL <span class="count">6</span></button>
+    <button class="tab" data-filter="dwh">Data Warehouse <span class="count">4</span></button>
+    <button class="tab" data-filter="pm">Project Management <span class="count">8</span></button>
+  </div>
+
+  <!-- Cards grid -->
+  <div class="articles-grid">
+
+    <a href="#" class="article-card" data-section="postgres">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">PostgreSQL</div>
+        <h3>pg_stat_statements: la prima cosa da installare</h3>
+        <div class="excerpt">Un'estensione, una query, e scopri dove stava il collo di bottiglia.</div>
+        <div class="meta">21 aprile 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="mysql">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">MySQL</div>
+        <h3>mysqldump vs mysqlpump vs mydumper</h3>
+        <div class="excerpt">Tre strumenti, tre approcci, tre tempi di restore.</div>
+        <div class="meta">14 aprile 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="dwh">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Data Warehouse</div>
+        <h3>Partitioning nel DWH</h3>
+        <div class="excerpt">Quando 3 anni di dati pesano troppo: range partitioning + exchange.</div>
+        <div class="meta">7 aprile 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="mysql">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">MySQL</div>
+        <h3>Binary log in MySQL</h3>
+        <div class="excerpt">Cosa sono, come gestirli, quando cancellarli. La regola dei 3 giorni.</div>
+        <div class="meta">31 marzo 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="postgres">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">PostgreSQL</div>
+        <h3>VACUUM e autovacuum PostgreSQL</h3>
+        <div class="excerpt">Il silenzioso janitor del database: quando smette di funzionare.</div>
+        <div class="meta">24 marzo 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="pm">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Project Management</div>
+        <h3>AI Manager e Project Management</h3>
+        <div class="excerpt">Quando l'AI entra nei progetti: governance e ruoli.</div>
+        <div class="meta">17 marzo 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="dwh">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Data Warehouse</div>
+        <h3>SCD Tipo 2</h3>
+        <div class="excerpt">La storia che il business non sapeva di volere.</div>
+        <div class="meta">11 novembre 2025</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="oracle">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Oracle</div>
+        <h3>AWR, ASH e i 10 minuti che hanno salvato un go-live</h3>
+        <div class="excerpt">Diagnosi performance Oracle con gli strumenti giusti.</div>
+        <div class="meta">10 febbraio 2026</div>
+      </div>
+    </a>
+
+    <a href="#" class="article-card" data-section="oracle">
+      <div class="thumb">cover image</div>
+      <div class="body">
+        <div class="section-tag">Oracle</div>
+        <h3>Da single instance a Data Guard</h3>
+        <div class="excerpt">Il giorno in cui il CEO ha capito cosa vuol dire DR.</div>
+        <div class="meta">18 novembre 2025</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Intro come accordion -->
+  <details class="intro-accordion">
+    <summary>Cos'è Database Strategy</summary>
+    <div class="content">
+      <p>La differenza tra un sistema che funziona e uno che guida davvero il business non è fortuna.</p>
+      <p>È comprensione profonda dei piani di esecuzione. È controllo dei privilegi e sicurezza dei dati. È progettazione dei dati orientata agli obiettivi aziendali. È performance che regge quando il carico cresce.</p>
+      <p>Dentro il Motore è lo spazio in cui analizzo ciò che accade sotto il cofano di PostgreSQL, Oracle e MySQL: performance tuning, sicurezza, architettura e scelte tecniche applicabili in ambienti reali.</p>
+    </div>
+  </details>
+
+</main>
+
+<footer class="mock-footer">
+  [footer del sito con GLOSSARIO • TAG • RSS • LinkedIn • combo lingua]
+</footer>
+
+<script>
+  // Filter articles by section tab
+  const tabs = document.querySelectorAll('.tab');
+  const cards = document.querySelectorAll('.article-card');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.section === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

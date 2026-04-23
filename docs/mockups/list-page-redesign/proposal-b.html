@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Strategy — Proposta B (Two-column Sidebar)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --bg: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: var(--bg);
+    }
+
+    .mock-nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .mock-nav .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ivan-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .mock-nav .links { display: flex; gap: 1.5rem; }
+    .mock-nav .links a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+    .mock-nav .links a:hover { color: var(--ivan-red); }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ============ Hero compresso ============ */
+    .hero {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      height: 220px;
+      margin-bottom: 2.5rem;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ============ Two-column layout (HIGHLIGHT della proposta B) ============ */
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 3rem;
+    }
+
+    /* Left sidebar sticky */
+    .sidebar {
+      position: sticky;
+      top: 6rem;
+      align-self: start;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .sidebar h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .sidebar .intro-short {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      font-style: italic;
+      padding-left: 1rem;
+      border-left: 3px solid var(--ivan-red);
+    }
+    .sidebar .sections-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 0.75rem;
+    }
+    .section-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    .section-list li a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: var(--ivan-gray-title);
+      border-radius: 0.5rem;
+      border-left: 3px solid transparent;
+      font-weight: 600;
+      transition: all 0.15s;
+      margin-bottom: 0.25rem;
+    }
+    .section-list li a:hover {
+      background: #f9fafb;
+      border-left-color: var(--ivan-red);
+      color: var(--ivan-red);
+    }
+    .section-list li a .count {
+      font-size: 0.875rem;
+      color: #9ca3af;
+      background: #f3f4f6;
+      padding: 0.125rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+
+    /* Right articles list */
+    .articles {
+      min-width: 0;
+    }
+    .year-group {
+      margin-bottom: 3rem;
+    }
+    .year-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      margin-bottom: 0.5rem;
+    }
+    .year-separator {
+      border: 0;
+      border-top: 2px dotted #d1d5db;
+      width: 8rem;
+      margin-bottom: 1.5rem;
+    }
+    .article-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .article-item:hover h3 { color: var(--ivan-red); }
+    .article-item:last-child { border-bottom: 0; }
+    .article-item .meta-top {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .article-item .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ivan-red);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-item .date {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    .article-item h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ivan-gray-title);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+      transition: color 0.15s;
+    }
+    .article-item .excerpt {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .mock-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      margin-top: 4rem;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+        max-height: none;
+      }
+    }
+
+    .mockup-tag {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--ivan-blue);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 200;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta B • Two-column Sidebar</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="links">
+    <a href="#">Articoli</a>
+    <a href="#">Oracle</a>
+    <a href="#">PostgreSQL</a>
+    <a href="#">MySQL</a>
+    <a href="#">DWH</a>
+    <a href="#">PM</a>
+    <a href="#">About</a>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- Hero compresso -->
+  <div class="hero">
+    <img src="../../../content/posts/database-strategy.cover.jpg" alt="Database Strategy">
+  </div>
+
+  <!-- Two-column layout -->
+  <div class="layout">
+
+    <!-- LEFT: sticky sidebar con title, intro, sezioni -->
+    <aside class="sidebar">
+      <h1>Database Strategy</h1>
+      <div class="intro-short">
+        La differenza tra un sistema che funziona e uno che guida il business non è fortuna. È progettazione, performance, sicurezza. Dentro il Motore: sotto il cofano di PostgreSQL, Oracle e MySQL.
+      </div>
+
+      <div class="sections-heading">Esplora per sezione</div>
+      <ul class="section-list">
+        <li><a href="#"><span>Oracle</span><span class="count">5</span></a></li>
+        <li><a href="#"><span>PostgreSQL</span><span class="count">5</span></a></li>
+        <li><a href="#"><span>MySQL</span><span class="count">6</span></a></li>
+        <li><a href="#"><span>Data Warehouse</span><span class="count">4</span></a></li>
+        <li><a href="#"><span>Project Management</span><span class="count">8</span></a></li>
+      </ul>
+
+      <div class="sections-heading">Anno</div>
+      <ul class="section-list">
+        <li><a href="#"><span>2026</span><span class="count">11</span></a></li>
+        <li><a href="#"><span>2025</span><span class="count">17</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- RIGHT: articoli raggruppati per anno -->
+    <div class="articles">
+
+      <div class="year-group">
+        <h2 class="year-title">2026</h2>
+        <hr class="year-separator">
+
+        <a href="#" class="article-item">
+          <div class="meta-top">
+            <span class="section-tag">PostgreSQL</span>
+            <span class="date">21 aprile 2026</span>
+          </div>
+          <h3>pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL</h3>
+          <p class="excerpt">Un'estensione, una query, e improvvisamente scopri dove stava il collo di bottiglia che nessuno sapeva diagnosticare.</p>
+        </a>
+
+        <a href="#" class="article-item">
+          <div class="meta-top">
+            <span class="section-tag">MySQL</span>
+            <span class="date">14 aprile 2026</span>
+          </div>
+          <h3>mysqldump vs mysqlpump vs mydumper: il backup che non ti fa dormire la notte</h3>
+          <p class="excerpt">Tre strumenti, tre approcci, tre tempi di restore. Quale scegliere dipende dalla finestra che il PM ti concede.</p>
+        </a>
+
+        <a href="#" class="article-item">
+          <div class="meta-top">
+            <span class="section-tag">Data Warehouse</span>
+            <span class="date">7 aprile 2026</span>
+          </div>
+          <h3>Partitioning nel DWH: quando 3 anni di dati pesano troppo</h3>
+          <p class="excerpt">Range partitioning per data, exchange partition per la manutenzione, e una storia di caricamenti notturni che hanno smesso di sforare.</p>
+        </a>
+
+        <a href="#" class="article-item">
+          <div class="meta-top">
+            <span class="section-tag">MySQL</span>
+            <span class="date">31 marzo 2026</span>
+          </div>
+          <h3>Binary log in MySQL: cosa sono, come gestirli e quando puoi cancellarli</h3>
+          <p class="excerpt">Il log che ti salva la vita durante un incident diventa un problema quando nessuno lo ruota. La regola dei 3 giorni.</p>
+        </a>
+
+        <a href="#" class="article-item">
+          <div class="meta-top">
+            <span class="section-tag">PostgreSQL</span>
+            <span class="date">24 marzo 2026</span>
+          </div>
+          <h3>VACUUM e autovacuum PostgreSQL</h3>
+          <p class="excerpt">Il silenzioso janitor del database: quando funziona bene non lo noti, quando smette di funzionare rischi il wraparound.</p>
+        </a>
+
+      </div>
+
+      <div class="year-group">
+        <h2 class="year-title">2025</h2>
+        <hr class="year-separator">
+
+        <a href="#" class="article-item">
+          <div class="meta-top">
+            <span class="section-tag">Data Warehouse</span>
+            <span class="date">11 novembre 2025</span>
+          </div>
+          <h3>SCD Tipo 2: la storia che il business non sapeva di volere</h3>
+          <p class="excerpt">Slowly Changing Dimensions di tipo 2: come tracciare la storia delle entità nel data warehouse senza esplodere i record.</p>
+        </a>
+
+        <a href="#" class="article-item">
+          <div class="meta-top">
+            <span class="section-tag">Oracle</span>
+            <span class="date">18 novembre 2025</span>
+          </div>
+          <h3>Da single instance a Data Guard</h3>
+          <p class="excerpt">Il giorno in cui il CEO ha capito cosa vuol dire DR. Il dimostratore di standby fisico che ha cambiato la discussione.</p>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="mock-footer">
+  [footer del sito con GLOSSARIO • TAG • RSS • LinkedIn • combo lingua]
+</footer>
+
+</body>
+</html>
