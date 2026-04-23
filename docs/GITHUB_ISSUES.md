@@ -48,10 +48,7 @@ tool `WebFetch`.
 
 ## Issue Aperte — Enhancement (Dev Tools)
 
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 78 | https://github.com/ilum75IDB/ivanluminaria.com/issues/78 | Feature: applicare formato D1 card agli articoli nelle pagine delle sezioni (/posts/<section>/) | aperta |
-| 81 | https://github.com/ilum75IDB/ivanluminaria.com/issues/81 | Feature: redesign pagina Know-How e Impatto con layout card | aperta |
+*Nessuna issue aperta.*
 
 ## Issue Aperte — Bug
 
@@ -108,3 +105,5 @@ tool `WebFetch`.
 | 76 | https://github.com/ilum75IDB/ivanluminaria.com/issues/76 | Feature: redesign pagina list 'Database Strategy' - piu orizzontale, sezioni visibili above-the-fold | 2026-04-23 |
 | 77 | https://github.com/ilum75IDB/ivanluminaria.com/issues/77 | Feature: uniformare il formato card degli articoli nella home con quello della pagina list (D1) | 2026-04-23 |
 | 80 | https://github.com/ilum75IDB/ivanluminaria.com/issues/80 | Feature: redesign pagina Chi Sono con layout card (coerente con home e sezioni) | 2026-04-23 |
+| 78 | https://github.com/ilum75IDB/ivanluminaria.com/issues/78 | Feature: applicare formato D1 card agli articoli nelle pagine delle sezioni (/posts/<section>/) | 2026-04-23 |
+| 81 | https://github.com/ilum75IDB/ivanluminaria.com/issues/81 | Feature: redesign pagina Know-How e Impatto con layout card | 2026-04-23 |
