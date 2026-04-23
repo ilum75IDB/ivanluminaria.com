@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>About page — Proposta A (Profile card + split prose/TOC sidebar)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .crumbs { font-size: 0.85rem; color: var(--ivan-gray-obj); }
+    .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
+    .page { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* ========== PROFILE HEADER CARD (preservato + wrapper bianco coerente) ========== */
+    .profile-header-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.5rem 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .profile-avatar {
+      flex: 0 0 auto;
+    }
+    .profile-avatar img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #f1f5f9;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+      display: block;
+    }
+    .profile-info { flex: 1; }
+    .profile-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ivan-blue);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .profile-role {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 1rem;
+    }
+    .profile-desc {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .profile-desc strong { color: var(--ivan-gray-title); }
+    .profile-contacts {
+      font-size: 0.9rem;
+      color: var(--ivan-gray-obj);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .profile-contacts a {
+      color: var(--ivan-red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .profile-contacts a:hover { color: var(--ivan-red-dark); }
+
+    /* ========== SPLIT: prose narrativa (SX) + TOC sticky (DX) ========== */
+    .about-hybrid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .about-prose {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.5rem 3rem;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #374151;
+    }
+    .about-prose p { margin-bottom: 1.2rem; }
+    .about-prose strong { color: var(--ivan-gray-title); }
+    .about-prose hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .about-prose h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      margin: 2.25rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--ivan-red);
+      display: inline-block;
+    }
+    .about-prose blockquote {
+      margin-top: 2.5rem;
+      padding: 1.5rem 2rem;
+      background: #f9fafb;
+      border-left: 4px solid var(--ivan-red);
+      border-radius: 0.5rem;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ivan-gray-title);
+    }
+
+    /* TOC sticky (stesso pattern della sidebar section-page) */
+    .about-toc {
+      position: sticky;
+      top: 1.5rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+    }
+    .about-toc-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-toc a {
+      display: block;
+      padding: 0.6rem 0.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: var(--ivan-gray-title);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .about-toc a:last-child { border-bottom: none; }
+    .about-toc a:hover {
+      background: #f9fafb;
+      color: var(--ivan-red);
+      padding-left: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .profile-header-card { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.5rem; }
+      .profile-contacts { justify-content: center; }
+      .about-hybrid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-toc { position: static; }
+      .about-prose { padding: 1.75rem 1.5rem; }
+    }
+
+    .mockup-tag {
+      position: fixed; top: 1rem; right: 1rem;
+      background: var(--ivan-red); color: white;
+      padding: 0.5rem 1rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta A • Profile card + prose/TOC</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="crumbs"><a href="#">Home</a> › Chi Sono</div>
+</nav>
+
+<main class="page">
+
+  <!-- ===== PROFILE HEADER CARD (preservato, card bianca coerente con il sito) ===== -->
+  <div class="profile-header-card">
+    <div class="profile-avatar">
+      <img src="../../../static/img/ivan_luminaria_avatar.png" alt="Ivan Luminaria">
+    </div>
+    <div class="profile-info">
+      <h1 class="profile-name">Ivan Luminaria</h1>
+      <p class="profile-role">Oracle, PostgreSQL &amp; MySQL Expert · DWH Architect · Project Manager</p>
+      <p class="profile-desc">
+        Professionista IT con circa <strong>30 anni di esperienza</strong> nella progettazione, implementazione e gestione di soluzioni database e Data Warehouse in ambienti Oracle, PostgreSQL e MySQL.
+      </p>
+      <div class="profile-contacts">
+        <span><strong>LinkedIn:</strong> <a href="#" target="_blank">ivanluminaria</a></span>
+        <span><strong>Email:</strong> ivan (dot) luminaria (at) gmail (dot) com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SPLIT: prose + TOC sidebar ===== -->
+  <div class="about-hybrid">
+
+    <article class="about-prose">
+      <p>Lavoro con i database da circa trent'anni.</p>
+      <p>Sufficienti per aver visto cambiare motori, linguaggi, mode e slogan. Sufficienti per sapere che, sotto la superficie, le leggi non cambiano mai.</p>
+      <p>Un database non è un contenitore. È un organismo. Respira. Si affatica. Si blocca. Oppure scala.</p>
+      <p>Ho iniziato in ambienti Oracle quando "mission-critical" non era una parola da slide. Era la differenza tra un sistema che regge e uno che crolla alle tre di notte.</p>
+      <p>Non credo nelle ottimizzazioni miracolose. Credo nelle statistiche aggiornate. Nel modello dati corretto. Nella differenza tra "funziona" e "regge".</p>
+      <p>Perché un database lento non è un problema tecnico. È un problema di business. È un report che non arriva. È un cliente che aspetta. È una decisione presa in ritardo.</p>
+      <p>E a me piace stare esattamente lì. Nel punto in cui la tecnica incontra l'impatto reale.</p>
+
+      <h2 id="come-lavoro">Come lavoro</h2>
+      <p>Non mi limito ad "amministrare" database. Li osservo. Li misuro. Li metto sotto stress. Li metto in sicurezza.</p>
+      <p>Mi occupo di performance tuning su sistemi complessi — Oracle, RAC, Exadata — ma anche di PostgreSQL e MySQL in contesti moderni, spesso open source, dove l'assenza di "magia proprietaria" obbliga a capire davvero cosa succede sotto il cofano.</p>
+      <p>Progetto architetture Data Warehouse perché i dati non servono a essere accumulati. Servono a essere capiti.</p>
+      <p>Non mi interessa l'effetto speciale. Mi interessa la solidità.</p>
+
+      <h2 id="visione">Visione</h2>
+      <p>Negli anni ho integrato la profondità tecnica con una visione più ampia.</p>
+      <p>Ho coordinato piccoli team internazionali. Ho tradotto esigenze di business in scelte tecniche sostenibili. Ho imparato che la complessità non si elimina. Si governa.</p>
+      <p>Per me leadership significa una cosa semplice: prendere decisioni tecniche che reggano nel tempo.</p>
+
+      <h2 id="fuori-dal-database">Fuori dal database</h2>
+      <p>Fuori dal lavoro coltivo passioni che, in fondo, parlano la stessa lingua.</p>
+      <p>La fotografia mi ha insegnato che la luce giusta cambia la storia. La musica — sto imparando il sax — mi ricorda che la tecnica senza sensibilità è solo rumore. La cucina è architettura commestibile. Gli scacchi sono strategia pura.</p>
+      <p>Non costruisco database. Costruisco solidità.</p>
+
+      <blockquote>
+        "Trasformo la complessità dei dati in valore strategico per il business."
+      </blockquote>
+    </article>
+
+    <aside class="about-toc">
+      <div class="about-toc-heading">In questa pagina</div>
+      <a href="#come-lavoro">Come lavoro</a>
+      <a href="#visione">Visione</a>
+      <a href="#fuori-dal-database">Fuori dal database</a>
+    </aside>
+
+  </div>
+
+</main>
+
+</body>
+</html>

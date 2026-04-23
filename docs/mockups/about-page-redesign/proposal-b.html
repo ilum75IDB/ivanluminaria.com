@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>About page — Proposta B (Profile card + sequential section cards)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .crumbs { font-size: 0.85rem; color: var(--ivan-gray-obj); }
+    .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* ========== PROFILE HEADER CARD (preservato) ========== */
+    .profile-header-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.5rem 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .profile-avatar img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #f1f5f9;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+      display: block;
+    }
+    .profile-info { flex: 1; }
+    .profile-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ivan-blue);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .profile-role {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 1rem;
+    }
+    .profile-desc {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .profile-desc strong { color: var(--ivan-gray-title); }
+    .profile-contacts {
+      font-size: 0.9rem;
+      color: var(--ivan-gray-obj);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .profile-contacts a {
+      color: var(--ivan-red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ========== INTRO MANIFESTO (highlighted card) ========== */
+    .manifesto {
+      background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--ivan-red);
+      border-radius: 1rem;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #374151;
+    }
+    .manifesto p { margin-bottom: 1.1rem; }
+    .manifesto p:last-child { margin-bottom: 0; }
+    .manifesto strong { color: var(--ivan-gray-title); }
+
+    /* ========== SECTION CARDS ========== */
+    .section-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.25rem 2.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .section-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--ivan-red);
+    }
+    .section-card-icon {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      background: #fef2f2;
+      font-size: 1.5rem;
+    }
+    .section-card-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      letter-spacing: -0.01em;
+    }
+    .section-card-body {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #374151;
+    }
+    .section-card-body p { margin-bottom: 1rem; }
+    .section-card-body p:last-child { margin-bottom: 0; }
+    .section-card-body strong { color: var(--ivan-gray-title); }
+
+    /* ========== PASSIONS (pill chips per "Fuori dal database") ========== */
+    .passions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+    .passion-pill {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+    .passion-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+    .passion-name { font-weight: 700; color: var(--ivan-gray-title); font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .passion-desc { font-size: 0.8rem; color: var(--ivan-gray-obj); line-height: 1.4; }
+
+    /* ========== CLOSING QUOTE (hero quote card) ========== */
+    .quote-hero {
+      background: var(--ivan-blue);
+      color: white;
+      border-radius: 1rem;
+      padding: 3rem 3rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(51, 103, 145, 0.25);
+    }
+    .quote-hero::before {
+      content: "\201C";
+      font-size: 5rem;
+      line-height: 0.5;
+      color: rgba(255, 255, 255, 0.25);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .quote-hero blockquote {
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.35;
+      font-style: italic;
+      letter-spacing: -0.01em;
+    }
+    .quote-hero-attr {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    @media (max-width: 900px) {
+      .profile-header-card { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.5rem; }
+      .profile-contacts { justify-content: center; }
+      .manifesto { padding: 1.5rem; }
+      .section-card { padding: 1.75rem 1.5rem; }
+      .quote-hero { padding: 2rem 1.5rem; }
+      .quote-hero blockquote { font-size: 1.25rem; }
+    }
+
+    .mockup-tag {
+      position: fixed; top: 1rem; right: 1rem;
+      background: var(--ivan-blue); color: white;
+      padding: 0.5rem 1rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta B • Cards sequenziali con icone</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="crumbs"><a href="#">Home</a> › Chi Sono</div>
+</nav>
+
+<main class="page">
+
+  <!-- ===== PROFILE HEADER CARD ===== -->
+  <div class="profile-header-card">
+    <div class="profile-avatar">
+      <img src="../../../static/img/ivan_luminaria_avatar.png" alt="Ivan Luminaria">
+    </div>
+    <div class="profile-info">
+      <h1 class="profile-name">Ivan Luminaria</h1>
+      <p class="profile-role">Oracle, PostgreSQL &amp; MySQL Expert · DWH Architect · Project Manager</p>
+      <p class="profile-desc">
+        Professionista IT con circa <strong>30 anni di esperienza</strong> nella progettazione, implementazione e gestione di soluzioni database e Data Warehouse in ambienti Oracle, PostgreSQL e MySQL.
+      </p>
+      <div class="profile-contacts">
+        <span><strong>LinkedIn:</strong> <a href="#" target="_blank">ivanluminaria</a></span>
+        <span><strong>Email:</strong> ivan (dot) luminaria (at) gmail (dot) com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MANIFESTO ===== -->
+  <div class="manifesto">
+    <p>Lavoro con i database da circa trent'anni. Sufficienti per aver visto cambiare motori, linguaggi, mode e slogan. Sufficienti per sapere che, sotto la superficie, le leggi non cambiano mai.</p>
+    <p>Un database non è un contenitore. È <strong>un organismo</strong>. Respira. Si affatica. Si blocca. Oppure scala.</p>
+    <p>Non credo nelle ottimizzazioni miracolose. Credo nelle statistiche aggiornate. Nel modello dati corretto. Nella differenza tra "funziona" e "regge".</p>
+    <p>Perché un database lento non è un problema tecnico. È un problema di business. Un report che non arriva. Un cliente che aspetta. Una decisione presa in ritardo. E a me piace stare esattamente lì, nel punto in cui la <strong>tecnica incontra l'impatto reale</strong>.</p>
+  </div>
+
+  <!-- ===== SECTION CARD: COME LAVORO ===== -->
+  <section class="section-card">
+    <div class="section-card-header">
+      <div class="section-card-icon">🔧</div>
+      <h2 class="section-card-title">Come lavoro</h2>
+    </div>
+    <div class="section-card-body">
+      <p>Non mi limito ad "amministrare" database. Li osservo, li misuro, li metto sotto stress, li metto in sicurezza.</p>
+      <p>Mi occupo di performance tuning su sistemi complessi — Oracle, RAC, Exadata — ma anche di PostgreSQL e MySQL in contesti moderni, spesso open source, dove l'assenza di "magia proprietaria" obbliga a capire davvero cosa succede sotto il cofano.</p>
+      <p>Progetto architetture Data Warehouse perché i dati non servono a essere accumulati. <strong>Servono a essere capiti.</strong></p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION CARD: VISIONE ===== -->
+  <section class="section-card">
+    <div class="section-card-header">
+      <div class="section-card-icon">🎯</div>
+      <h2 class="section-card-title">Visione</h2>
+    </div>
+    <div class="section-card-body">
+      <p>Negli anni ho integrato la profondità tecnica con una visione più ampia. Ho coordinato piccoli team internazionali. Ho tradotto esigenze di business in scelte tecniche sostenibili.</p>
+      <p>Ho imparato che la complessità non si elimina. Si governa.</p>
+      <p>Per me leadership significa una cosa semplice: <strong>prendere decisioni tecniche che reggano nel tempo</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION CARD: FUORI DAL DATABASE ===== -->
+  <section class="section-card">
+    <div class="section-card-header">
+      <div class="section-card-icon">🎨</div>
+      <h2 class="section-card-title">Fuori dal database</h2>
+    </div>
+    <div class="section-card-body">
+      <p>Fuori dal lavoro coltivo passioni che, in fondo, parlano la stessa lingua.</p>
+      <div class="passions-grid">
+        <div class="passion-pill">
+          <span class="passion-icon">📷</span>
+          <div class="passion-name">Fotografia</div>
+          <div class="passion-desc">La luce giusta cambia la storia</div>
+        </div>
+        <div class="passion-pill">
+          <span class="passion-icon">🎷</span>
+          <div class="passion-name">Sassofono</div>
+          <div class="passion-desc">Tecnica senza sensibilità è solo rumore</div>
+        </div>
+        <div class="passion-pill">
+          <span class="passion-icon">🎸</span>
+          <div class="passion-name">Chitarra</div>
+          <div class="passion-desc">Ancorato al ritmo</div>
+        </div>
+        <div class="passion-pill">
+          <span class="passion-icon">🍳</span>
+          <div class="passion-name">Cucina</div>
+          <div class="passion-desc">Architettura commestibile</div>
+        </div>
+        <div class="passion-pill">
+          <span class="passion-icon">♟️</span>
+          <div class="passion-name">Scacchi</div>
+          <div class="passion-desc">Strategia pura</div>
+        </div>
+      </div>
+      <p>Non costruisco database. <strong>Costruisco solidità.</strong></p>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING QUOTE HERO ===== -->
+  <div class="quote-hero">
+    <blockquote>Trasformo la complessità dei dati in valore strategico per il business.</blockquote>
+    <div class="quote-hero-attr">— Ivan Luminaria</div>
+  </div>
+
+</main>
+
+</body>
+</html>
