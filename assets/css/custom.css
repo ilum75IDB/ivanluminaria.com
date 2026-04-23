@@ -2434,11 +2434,14 @@ footer {
   text-decoration: none !important;
 }
 .section-page-hero-card-img {
-  /* L'immagine 3:2 comanda l'altezza della card. Il testo nella colonna DX
-     si adatta con clamp su titolo e descrizione (vedi sotto). */
-  aspect-ratio: 3 / 2;
+  /* Stesso pattern della home-hero-card (gia approvato):
+     niente aspect-ratio sul container; l'immagine riempie l'intera altezza
+     della grid cell (stretch), il testo nella colonna DX resta compatto
+     grazie ai clamp su titolo (2 righe) e descrizione (3 righe). */
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  height: 100%;
+  min-height: 280px;
 }
 .section-page-hero-card-img img {
   width: 100%;
@@ -2688,6 +2691,12 @@ footer {
   .section-page-hero-card,
   .section-page-hero-card:visited {
     grid-template-columns: 1fr !important;
+  }
+  /* Su mobile l'image non ha piu la grid cell che la stretch-a: applichiamo
+     aspect-ratio 3/2 come fallback per mantenere proporzioni coerenti. */
+  .section-page-hero-card-img {
+    aspect-ratio: 3 / 2;
+    min-height: auto;
   }
   .section-page-articles-grid {
     grid-template-columns: 1fr;
