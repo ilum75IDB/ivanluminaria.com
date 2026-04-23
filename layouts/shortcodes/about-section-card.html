@@ -1,0 +1,17 @@
+{{/*
+  about-section-card.html — card bianca con icona + titolo + contenuto markdown
+
+  Usage:
+    {{</* about-section-card icon="🔧" title="Come lavoro" */>}}
+    Paragrafi in markdown...
+    {{</* /about-section-card */>}}
+*/}}
+<section class="about-section-card">
+  <div class="about-section-card-header">
+    <div class="about-section-card-icon">{{ .Get "icon" }}</div>
+    <h2 class="about-section-card-title">{{ .Get "title" }}</h2>
+  </div>
+  <div class="about-section-card-body">
+    {{ .Inner | markdownify }}
+  </div>
+</section>
