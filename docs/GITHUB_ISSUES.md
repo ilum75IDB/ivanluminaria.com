@@ -48,11 +48,15 @@ tool `WebFetch`.
 
 ## Issue Aperte — Enhancement (Dev Tools)
 
-*Nessuna issue aperta.*
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 83 | https://github.com/ilum75IDB/ivanluminaria.com/issues/83 | Feature: redesign pagina di ricerca con layout card coerente al resto del sito | aperta |
 
 ## Issue Aperte — Bug
 
-*Nessuna issue aperta.*
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 82 | https://github.com/ilum75IDB/ivanluminaria.com/issues/82 | Bug: Hugo build hangava 30+ minuti su image processing dopo hclean (libvips WEBP+JPEG) | aperta |
 
 ## Issue Chiuse
 
