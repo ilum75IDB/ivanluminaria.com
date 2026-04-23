@@ -1642,12 +1642,12 @@ footer {
   max-width: 100%;
 }
 
-/* ---- Hero con overlay titolo ---- */
+/* ---- Hero panoramico (ratio 3:1, la cover ha gia il lettering) ---- */
 .list-d1-hero {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
-  height: 260px;
+  aspect-ratio: 3 / 1;          /* coerente con la cover 2172x724 = 3:1 */
   margin-bottom: 1.5rem;
 }
 .list-d1-hero img {
@@ -1655,23 +1655,20 @@ footer {
   height: 100%;
   object-fit: cover;
   display: block;
-  margin: 0 !important;   /* annulla eventuali margin dal prose */
+  margin: 0 !important;
 }
-.list-d1-hero-overlay {
+/* Titolo h1 solo per screen reader / SEO — la cover contiene gia il
+   testo "Database Strategy" visualmente integrato nel lettering. */
+.list-d1-hero-title-sr {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
-  display: flex;
-  align-items: flex-end;
-  padding: 2rem;
-}
-.list-d1-hero-overlay h1 {
-  color: white !important;
-  font-size: 2.75rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 0;
-  line-height: 1.1;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* ---- Tagline ---- */
@@ -1866,7 +1863,10 @@ footer {
   aspect-ratio: 3 / 2;                       /* rispetta lo standard 3:2 delle cover */
   width: 100%;
   overflow: hidden;
-  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  background: transparent;                    /* se una cover non e 3:2, il
+                                                 letterboxing usa il colore
+                                                 della card invece di una
+                                                 fascia grigia visibile */
 }
 .list-d1-article-thumb img {
   width: 100%;
