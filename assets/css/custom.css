@@ -1860,18 +1860,16 @@ footer {
 }
 
 .list-d1-article-thumb {
-  aspect-ratio: 3 / 2;                       /* rispetta lo standard 3:2 delle cover */
+  aspect-ratio: 3 / 2;                       /* ratio uniforme per tutte le card */
   width: 100%;
   overflow: hidden;
-  background: transparent;                    /* se una cover non e 3:2, il
-                                                 letterboxing usa il colore
-                                                 della card invece di una
-                                                 fascia grigia visibile */
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);   /* visibile solo per placeholder (no cover) */
 }
 .list-d1-article-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: contain;                       /* non taglia: rispetta proporzioni originali */
+  object-fit: cover;                         /* fill uniforme; cover non-3:2 vengono croppate */
+  object-position: center center;            /* taglio simmetrico sopra/sotto (o dx/sx) */
   display: block;
   margin: 0 !important;
 }
