@@ -1,6 +1,10 @@
 editorial:
   show_more: "Mostra altro"
 
+list:
+  explore_by_section: "📂 Esplora per sezione"
+  latest_articles: "Ultimi articoli"
+
 tags:
   title: "TAG"
 
