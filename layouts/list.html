@@ -1,22 +1,18 @@
 {{ define "main" }}
-  {{/* D1 LAYOUT is applied ONLY on the top-level /<lang>/posts/ page
-       (identified by having subsections: Oracle, PostgreSQL, MySQL, DWH, PM).
-       Subsection lists (/posts/oracle/, /posts/mysql/, ...) and taxonomy pages
-       keep the previous simple layout. */}}
+  {{/* Three branches:
+       1) Top-level /<lang>/posts/ (has subsections): D1 layout with sections pulsantiera
+       2) Section pages (/posts/<section>/): new D1-like layout with 2-col header + sidebar + hero article + grid + bottom pulsantiera
+       3) Fallback (taxonomy pages, etc.): legacy simple layout */}}
   {{ $isTopSection := gt (len .Sections) 0 }}
 
   {{ if $isTopSection }}
 
     {{/* ============================================================
-         D1 — Hybrid: sections pulsantiera (SX) + intro (DX) + grid
+         1) TOP-LEVEL /posts/ — D1 hybrid: sections pulsantiera + intro + grid
          ============================================================ */}}
 
     <article class="max-w-full list-d1">
 
-      {{/* Hero: the cover image already contains the "Database Strategy"
-           lettering visually. The h1 below is rendered as screen-reader-only
-           to preserve accessibility and SEO without duplicating the text
-           on top of the image. */}}
       {{ with .Params.image }}
         {{ $img := . }}
         <div class="list-d1-hero">
@@ -29,15 +25,11 @@
         </div>
       {{ end }}
 
-      {{/* Tagline (site description for this page) */}}
       {{ with .Description }}
         <p class="list-d1-tagline">{{ . | emojify }}</p>
       {{ end }}
 
-      {{/* HYBRID BLOCK: sections pulsantiera (LEFT) + intro (RIGHT) */}}
       <div class="list-d1-hybrid">
-
-        {{/* LEFT column: sections buttons, ordered per editorial priority */}}
         <div class="list-d1-sections-col">
           <div class="list-d1-sections-heading">{{ i18n "list.explore_by_section" }}</div>
           {{ range slice "data-warehouse" "project-management" "oracle" "postgresql" "mysql" }}
@@ -60,18 +52,11 @@
           {{ end }}
         </div>
 
-        {{/* RIGHT column: full intro content (markdown rendered) */}}
         <div class="list-d1-intro-col prose dark:prose-invert">
           {{ .Content | emojify }}
         </div>
-
       </div>
 
-      {{/* Articles grid — stile C, 3 colonne.
-           Renderizza TUTTI gli articoli ma nasconde (via CSS class) quelli
-           oltre i primi 6. Un pulsante "Carica altri articoli" svela 6
-           cards alla volta a ogni click. Tutto il contenuto e nell'HTML
-           (SEO-friendly), il JS e progressive enhancement. */}}
       {{ $allArticles := .RegularPagesRecursive.ByDate.Reverse }}
       {{ $initialCount := 6 }}
       {{ $batchSize := 6 }}
@@ -84,7 +69,6 @@
           {{ end }}
         </div>
 
-        {{/* "Load more" button, shown only if there are more than $initialCount articles */}}
         {{ if gt $total $initialCount }}
           <div class="list-d1-load-more-wrapper">
             <button
@@ -117,34 +101,193 @@
 
     </article>
 
+  {{ else if eq .Kind "section" }}
+
+    {{/* ============================================================
+         2) SECTION PAGE — D1-like: 2-col header + hybrid intro/sidebar
+            + hero article + grid + bottom pulsantiera (Proposta D1)
+         ============================================================ */}}
+
+    {{ $currentSlug := path.Base .RelPermalink }}
+    {{ $allArticles := .Pages.ByDate.Reverse }}
+    {{ $featured := first 1 $allArticles }}
+    {{ $rest := after 1 $allArticles }}
+    {{ $initialRest := 6 }}
+    {{ $batchSize := 6 }}
+
+    <article class="max-w-full section-page">
+
+      {{/* HEADER: image 3:2 SX + testo grande DX */}}
+      <header class="section-page-header">
+        {{ with .Params.image }}
+          {{ $img := . }}
+          <div class="section-page-header-img">
+            {{ with $.Resources.GetMatch $img }}
+              <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
+            {{ else }}
+              <img src="{{ $img | relURL }}" alt="{{ $.Title }}" loading="lazy" />
+            {{ end }}
+          </div>
+        {{ end }}
+        <div class="section-page-header-text">
+          <div class="section-page-header-eyebrow">{{ i18n "list.section_eyebrow" }}</div>
+          <h1 class="section-page-header-title">{{ .Title | emojify }}</h1>
+          {{ with .Description }}
+            <p class="section-page-header-tagline">{{ . | emojify }}</p>
+          {{ end }}
+          <div class="section-page-header-count">
+            <strong>{{ len .Pages }}</strong>&nbsp;{{ i18n "list.articles_count" }}
+          </div>
+        </div>
+      </header>
+
+      {{/* SPLIT: intro principale + sidebar siblings sticky */}}
+      <div class="section-page-hybrid">
+        <div class="section-page-intro prose dark:prose-invert">
+          {{ .Content | emojify }}
+        </div>
+        <aside class="section-page-siblings">
+          <div class="section-page-siblings-heading">{{ i18n "list.sections_heading" }}</div>
+          {{ range slice "data-warehouse" "project-management" "oracle" "postgresql" "mysql" }}
+            {{ $sectionSlug := . }}
+            {{ with $.GetPage (printf "/posts/%s" $sectionSlug) }}
+              <a
+                href="{{ .RelPermalink }}"
+                class="section-page-sib-btn{{ if eq $sectionSlug $currentSlug }} active{{ end }}"
+                data-sec="{{ $sectionSlug }}"
+              >
+                <span class="section-page-sib-icon">
+                  {{ if eq $sectionSlug "oracle" }}O
+                  {{ else if eq $sectionSlug "postgresql" }}Pg
+                  {{ else if eq $sectionSlug "mysql" }}My
+                  {{ else if eq $sectionSlug "data-warehouse" }}▦
+                  {{ else if eq $sectionSlug "project-management" }}PM
+                  {{ end }}
+                </span>
+                <span class="section-page-sib-name">{{ .Title }}</span>
+                <span class="section-page-sib-count">{{ len .Pages }}</span>
+              </a>
+            {{ end }}
+          {{ end }}
+        </aside>
+      </div>
+
+      {{/* HERO ARTICLE "In evidenza" + GRID altri */}}
+      {{ if $allArticles }}
+        <h2 class="section-page-articles-title">{{ i18n "list.latest_articles" }}</h2>
+
+        {{ range $featured }}
+          <a href="{{ .RelPermalink }}" class="section-page-hero-card">
+            {{ $thumb := "" }}
+            {{ with .Params.image }}{{ $thumb = . }}{{ end }}
+            {{ if $thumb }}
+              {{ with .Resources.GetMatch $thumb }}
+                <div class="section-page-hero-card-img">
+                  <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
+                </div>
+              {{ end }}
+            {{ else }}
+              <div class="section-page-hero-card-img section-page-hero-card-img-placeholder"></div>
+            {{ end }}
+            <div class="section-page-hero-card-body">
+              <span class="section-page-hero-card-pill">{{ i18n "list.featured" }}</span>
+              <h3 class="section-page-hero-card-title">{{ .Title | emojify }}</h3>
+              {{ with .Description }}
+                <p class="section-page-hero-card-desc">{{ . | emojify }}</p>
+              {{ end }}
+              <div class="section-page-hero-card-meta">
+                <span class="section-page-hero-card-date">
+                  {{ .Date.Format (site.Params.dateFormat | default "2 January 2006") }}
+                </span>
+                <span class="section-page-hero-card-reading">
+                  {{ .ReadingTime }} min
+                </span>
+              </div>
+            </div>
+          </a>
+        {{ end }}
+
+        {{ if $rest }}
+          <div class="section-page-other-title">{{ i18n "list.other_articles" }}</div>
+          <div class="section-page-articles-grid">
+            {{ range $i, $article := $rest }}
+              {{ partial "article-card.html" (dict "page" . "hidden" (ge $i $initialRest)) }}
+            {{ end }}
+          </div>
+
+          {{ if gt (len $rest) $initialRest }}
+            <div class="section-page-load-more-wrapper">
+              <button
+                type="button"
+                class="section-page-load-more"
+                data-batch-size="{{ $batchSize }}"
+                aria-label="{{ i18n "list.load_more" }}"
+              >{{ i18n "list.load_more" }}</button>
+            </div>
+            <script>
+              (function () {
+                var btn = document.querySelector('.section-page-load-more');
+                if (!btn) return;
+                var grid = document.querySelector('.section-page-articles-grid');
+                if (!grid) return;
+                var batchSize = parseInt(btn.getAttribute('data-batch-size') || '6', 10);
+                btn.addEventListener('click', function () {
+                  var hidden = grid.querySelectorAll('.list-d1-article-card-hidden');
+                  for (var i = 0; i < batchSize && i < hidden.length; i++) {
+                    hidden[i].classList.remove('list-d1-article-card-hidden');
+                  }
+                  if (grid.querySelectorAll('.list-d1-article-card-hidden').length === 0) {
+                    btn.parentElement.style.display = 'none';
+                  }
+                });
+              })();
+            </script>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
+      {{/* PULSANTIERA "altre sezioni" a fondo pagina */}}
+      <div class="section-page-others-heading">{{ i18n "list.explore_other_sections" }}</div>
+      <div class="section-page-others-strip">
+        {{ range slice "data-warehouse" "project-management" "oracle" "postgresql" "mysql" }}
+          {{ $sectionSlug := . }}
+          {{ if ne $sectionSlug $currentSlug }}
+            {{ with $.GetPage (printf "/posts/%s" $sectionSlug) }}
+              <a href="{{ .RelPermalink }}" class="section-page-other-pill" data-sec="{{ $sectionSlug }}">
+                <span class="section-page-other-pill-icon">
+                  {{ if eq $sectionSlug "oracle" }}O
+                  {{ else if eq $sectionSlug "postgresql" }}Pg
+                  {{ else if eq $sectionSlug "mysql" }}My
+                  {{ else if eq $sectionSlug "data-warehouse" }}▦
+                  {{ else if eq $sectionSlug "project-management" }}PM
+                  {{ end }}
+                </span>
+                <span class="section-page-other-pill-name">{{ .Title }}</span>
+                <span class="section-page-other-pill-count">{{ len .Pages }}</span>
+              </a>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+
+    </article>
+
   {{ else }}
 
     {{/* ============================================================
-         Fallback: existing simple layout for subsections and taxonomy pages
-         (unchanged behaviour from before)
+         3) Fallback legacy layout for taxonomy pages (tags/categories)
          ============================================================ */}}
 
     {{ $toc := and (.Params.showTableOfContents | default (.Site.Params.list.showTableOfContents | default false)) (in .TableOfContents "<ul") }}
     <article class="max-w-full">
       <header>
 
-        {{/* HERO IMAGE for section/list pages */}}
         {{ with .Params.image }}
           {{ $img := . }}
           {{ with $.Resources.GetMatch $img }}
-            <img
-              src="{{ .RelPermalink }}"
-              alt="{{ $.Title }}"
-              class="mb-6 w-full rounded-2xl"
-              loading="lazy"
-            />
+            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="mb-6 w-full rounded-2xl" loading="lazy" />
           {{ else }}
-            <img
-              src="{{ $img | relURL }}"
-              alt="{{ $.Title }}"
-              class="mb-6 w-full rounded-2xl"
-              loading="lazy"
-            />
+            <img src="{{ $img | relURL }}" alt="{{ $.Title }}" class="mb-6 w-full rounded-2xl" loading="lazy" />
           {{ end }}
         {{ end }}
 
@@ -159,7 +302,6 @@
       </header>
 
       <div id="content" class="scroll-mt-28"></div>
-
 
       <section class="{{ if $toc -}} mt-12 {{- else -}} mt-6 {{- end }} prose flex max-w-full flex-col dark:prose-invert lg:flex-row">
         {{ if $toc }}

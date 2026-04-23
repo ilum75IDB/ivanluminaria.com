@@ -5,6 +5,12 @@ list:
   explore_by_section: "📂 Explorar por sección"
   latest_articles: "Últimos artículos"
   load_more: "Cargar más artículos"
+  section_eyebrow: "Sección • Database Strategy"
+  articles_count: "artículos publicados en esta sección"
+  sections_heading: "Secciones"
+  featured: "Destacado"
+  other_articles: "Más artículos de la sección"
+  explore_other_sections: "Explora otras secciones"
 
 tags:
   title: "ETIQUETAS"

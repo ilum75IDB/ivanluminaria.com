@@ -5,6 +5,12 @@ list:
   explore_by_section: "📂 Esplora per sezione"
   latest_articles: "Ultimi articoli"
   load_more: "Carica altri articoli"
+  section_eyebrow: "Sezione • Database Strategy"
+  articles_count: "articoli pubblicati in questa sezione"
+  sections_heading: "Sezioni"
+  featured: "In evidenza"
+  other_articles: "Altri articoli della sezione"
+  explore_other_sections: "Esplora le altre sezioni"
 
 tags:
   title: "TAG"
