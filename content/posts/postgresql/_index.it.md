@@ -9,7 +9,7 @@ Ho visto PostgreSQL in produzione con `shared_buffers` a 128MB su macchine con 2
 
 E ho visto l'esatto contrario: cluster Postgres che reggono migliaia di connessioni concorrenti, gestiscono terabyte di dati e sopravvivono a upgrade major senza un minuto di downtime percepito.
 
-La differenza non è nel codice. È in **chi ha letto la documentazione e ha avuto il coraggio di cambiare i default.**
+La differenza non è nel codice. È in **chi ha avuto il coraggio di toccare i default invece di subirli.**
 
 ------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ PostgreSQL non è solo un database open source. È il risultato di quasi quarant
 
 Nato nel 1986 all'Università di Berkeley come evoluzione di Ingres, il progetto POSTGRES introduceva concetti che all'epoca erano avanguardia: **estendibilità, tipi di dato personalizzati, regole e un modello relazionale avanzato**. Nel 1996 arriva il supporto SQL e il nome cambia in PostgreSQL. Il mondo però ha continuato a chiamarlo semplicemente "Postgres". E va bene così.
 
-Dopo vent'anni che ci lavoro sopra, una cosa l'ho capita: PostgreSQL **premia chi lo studia e punisce chi lo lascia a default**. È un motore progettato per essere tunato, non per essere installato e dimenticato. Le assunzioni dello sviluppo vengono smontate dalla realtà della produzione:
+Dopo vent'anni che ci lavoro sopra, una cosa l'ho capita: PostgreSQL **premia chi lo capisce e punisce chi lo lascia a default**. È un motore progettato per essere tunato, non per essere installato e dimenticato. Le assunzioni dello sviluppo vengono smontate dalla realtà della produzione:
 
 - **VACUUM e autovacuum** non sono optional — sono come lavarsi i denti
 - **`shared_buffers`** al default di 128MB è ragionevole solo su un portatile
@@ -47,10 +47,10 @@ Cinque parametri. Venti minuti di analisi. Mesi di problemi di performance evita
 
 Storie vere e scelte tecniche su PostgreSQL in produzione. Architettura, VACUUM e bloat, tuning dei parametri, replica streaming e logica, strategie di upgrade, backup con pg_basebackup e WAL archiving, estensioni che servono davvero (e quelle che si potevano evitare).
 
-Niente pezzi copiati dalla documentazione. Solo quello che ho visto funzionare su ambienti veri — postale, banche, pubblica amministrazione, telco — dove Postgres regge migliaia di istanze in parallelo e non può permettersi approssimazioni.
+Niente ricette preconfezionate. Solo quello che ho visto funzionare su ambienti veri — postale, banche, pubblica amministrazione, telco — dove Postgres regge migliaia di istanze in parallelo e non può permettersi approssimazioni.
 
 ------------------------------------------------------------------------
 
 Usare PostgreSQL non significa scegliere un database open source.
 
-Significa scegliere un motore progettato per essere esteso, analizzato e compreso — e accettare che senza un po' di studio i default non ti porteranno lontano.
+Significa scegliere un motore progettato per essere esteso, analizzato e compreso — e accettare che i default non ti porteranno lontano.
