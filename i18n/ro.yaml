@@ -20,3 +20,9 @@ glossary:
   related_articles: "Articole relevante"
   back_to_index: "Inapoi la glosar"
   read_more: "Citește mai mult →"
+
+knowhow:
+  count_text: "profiluri profesionale"
+  read_roadmap: "Citește roadmap-ul"
+  download_pdf: "Descarcă PDF"
+  pdf_sub: "CV complet"

@@ -1,0 +1,50 @@
+{{/*
+  layouts/resumes/list.html — layout dedicato alla pagina /resumes/ (Know-How e Impatto).
+  Issue #81: Proposta A v3.
+
+  Struttura:
+    - Header 2-col: cover 3:2 + eyebrow + titolo hero + tagline + count dinamico
+    - Intro manifesto (dentro .Content)
+    - Role card (via shortcode kh-role, dentro .Content)
+*/}}
+{{ define "main" }}
+  {{ $rolesCount := len .Pages }}
+  <article class="max-w-full kh-page">
+
+    <header class="kh-header">
+      {{ with .Params.image }}
+        {{ $img := . }}
+        <div class="kh-header-img">
+          {{ with $.Resources.GetMatch $img }}
+            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
+          {{ else }}
+            <img src="{{ $img | relURL }}" alt="{{ $.Title }}" loading="lazy" />
+          {{ end }}
+        </div>
+      {{ end }}
+      <div class="kh-header-text">
+        <div class="kh-header-eyebrow">{{ .Title | emojify }}</div>
+        <h1 class="kh-header-title">
+          {{- with .Params.hero_title -}}
+            {{ . | emojify }}
+          {{- else -}}
+            {{ .Title | emojify }}
+          {{- end -}}
+        </h1>
+        {{ with .Description }}
+          <p class="kh-header-tagline">{{ . | emojify }}</p>
+        {{ end }}
+        {{ if gt $rolesCount 0 }}
+          <div class="kh-header-count">
+            <strong>{{ $rolesCount }}</strong>&nbsp;{{ i18n "knowhow.count_text" }}
+          </div>
+        {{ end }}
+      </div>
+    </header>
+
+    <div class="kh-content">
+      {{ .Content | emojify }}
+    </div>
+
+  </article>
+{{ end }}

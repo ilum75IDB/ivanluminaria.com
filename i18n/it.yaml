@@ -20,3 +20,9 @@ glossary:
   related_articles: "Articoli correlati"
   back_to_index: "Torna al glossario"
   read_more: "Leggi di più →"
+
+knowhow:
+  count_text: "profili professionali"
+  read_roadmap: "Leggi la roadmap"
+  download_pdf: "Scarica PDF"
+  pdf_sub: "CV completo"
