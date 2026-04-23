@@ -1,0 +1,60 @@
+<!--
+  kh-role.html — card profilo per pagina Know-How e Impatto (Issue #81).
+
+  Params:
+    role    — slug del ruolo (dwh | pm | oracle | plsql) per data-attribute
+    title   — titolo del profilo (es. "Data Warehouse Architect")
+    roadmap — slug della sottosezione (es. "dwh-architect") per build URL localizzato
+    pdf     — filename del PDF in static/downloads/ (es. "CV_DWH_Architect...pdf")
+    sectors — elenco settori separati da virgola (es. "TIM,Vodafone,Generali")
+  Inner: narrativa in markdown
+-->
+{{- $role := .Get "role" -}}
+{{- $title := .Get "title" -}}
+{{- $roadmapSlug := .Get "roadmap" -}}
+{{- $pdfFile := .Get "pdf" -}}
+{{- $sectors := .Get "sectors" -}}
+{{- $roadmapUrl := "" -}}
+{{- if $roadmapSlug -}}
+  {{- with $.Page.Site.GetPage (printf "/resumes/%s" $roadmapSlug) -}}
+    {{- $roadmapUrl = .RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+{{- $pdfUrl := "" -}}
+{{- if $pdfFile -}}
+  {{- $pdfUrl = relURL (printf "downloads/%s" $pdfFile) -}}
+{{- end -}}
+<div class="kh-role-card" data-role="{{ $role }}">
+  <div class="kh-role-main">
+    <div class="kh-role-header">
+      <h3 class="kh-role-title">{{ $title }}</h3>
+    </div>
+    <div class="kh-role-body">
+      {{ .Inner | markdownify }}
+    </div>
+    {{ with $sectors }}
+      <div class="kh-sector-chips">
+        {{ range (split . ",") }}
+          <span class="kh-sector-chip">{{ . | strings.TrimSpace }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+  <div class="kh-role-ctas">
+    {{ if $roadmapUrl }}
+      <a href="{{ $roadmapUrl }}" class="kh-btn kh-btn-primary">
+        <span class="kh-btn-icon" aria-hidden="true">→</span>
+        <span class="kh-btn-label">{{ i18n "knowhow.read_roadmap" }}</span>
+      </a>
+    {{ end }}
+    {{ if $pdfUrl }}
+      <a href="{{ $pdfUrl }}" class="kh-btn kh-btn-secondary" target="_blank" rel="noopener">
+        <span class="kh-btn-icon" aria-hidden="true">⬇</span>
+        <span class="kh-btn-label">
+          {{ i18n "knowhow.download_pdf" }}
+          <span class="kh-btn-label-sub">{{ i18n "knowhow.pdf_sub" }}</span>
+        </span>
+      </a>
+    {{ end }}
+  </div>
+</div>
