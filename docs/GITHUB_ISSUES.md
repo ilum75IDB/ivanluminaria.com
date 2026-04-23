@@ -52,9 +52,7 @@ tool `WebFetch`.
 
 ## Issue Aperte — Bug
 
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 75 | https://github.com/ilum75IDB/ivanluminaria.com/issues/75 | Bug: colori hover sbagliati sui link del footer (azzurro invece di rosso + bold + underline) | aperta |
+*Nessuna issue aperta.*
 
 ## Issue Chiuse
 
@@ -103,3 +101,4 @@ tool `WebFetch`.
 | 71 | https://github.com/ilum75IDB/ivanluminaria.com/issues/71 | Feature: comando zsh 'hugoserve' per avviare Hugo server con rendering dei post futuri | 2026-04-21 |
 | 73 | https://github.com/ilum75IDB/ivanluminaria.com/issues/73 | Feature: riposizionare pulsante 'scroll to top' sopra il selettore lingua nel footer | 2026-04-21 |
 | 72 | https://github.com/ilum75IDB/ivanluminaria.com/issues/72 | Feature: link al Glossario nel footer, a sinistra del selettore lingua | 2026-04-22 |
+| 75 | https://github.com/ilum75IDB/ivanluminaria.com/issues/75 | Bug: colori hover sbagliati sui link del footer (azzurro invece di rosso + bold + underline) | 2026-04-23 |
