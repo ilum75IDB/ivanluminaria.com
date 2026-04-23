@@ -51,6 +51,7 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 77 | https://github.com/ilum75IDB/ivanluminaria.com/issues/77 | Feature: uniformare il formato card degli articoli nella home con quello della pagina list (D1) | aperta |
+| 78 | https://github.com/ilum75IDB/ivanluminaria.com/issues/78 | Feature: applicare formato D1 card agli articoli nelle pagine delle sezioni (/posts/<section>/) | aperta |
 
 ## Issue Aperte — Bug
 
