@@ -1,0 +1,26 @@
+{{/*
+  about.html — layout dedicato alla pagina "Chi Sono" (Issue #80).
+
+  Struttura (Proposta B):
+    - Profile card header (inline HTML nel content file)
+    - Manifesto intro (inline HTML wrapper nel content file)
+    - 3 section card (via shortcode about-section-card)
+    - Passion grid (via shortcode about-passion-grid + about-passion-pill)
+    - Hero quote finale (via shortcode about-hero-quote)
+
+  Il testo dei content file e preservato integralmente. Sono solo
+  aggiunti wrapper strutturali (HTML + shortcode).
+*/}}
+{{ define "main" }}
+  <article class="max-w-full about-page">
+    <div id="content" class="scroll-mt-28"></div>
+    <div class="about-content">
+      {{ .Content | emojify }}
+    </div>
+    {{ if .Site.Params.article.showShareButtons | default false }}
+      <footer class="pt-8">
+        {{ partial "sharing-links.html" . }}
+      </footer>
+    {{ end }}
+  </article>
+{{ end }}

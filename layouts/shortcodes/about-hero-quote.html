@@ -1,0 +1,14 @@
+{{/*
+  about-hero-quote.html — card citazione finale (sfondo ivan-blue, testo bianco)
+
+  Usage:
+    {{</* about-hero-quote attr="Ivan Luminaria" */>}}
+    Testo della citazione...
+    {{</* /about-hero-quote */>}}
+*/}}
+<div class="about-hero-quote">
+  <blockquote>{{ .Inner | markdownify }}</blockquote>
+  {{ with .Get "attr" }}
+    <div class="about-hero-quote-attr">— {{ . }}</div>
+  {{ end }}
+</div>

@@ -1,0 +1,10 @@
+{{/*
+  about-passion-pill.html — singola pill (icona + nome) dentro about-passion-grid
+
+  Usage:
+    {{</* about-passion-pill icon="📷" name="Fotografia" */>}}
+*/}}
+<div class="about-passion-pill">
+  <span class="about-passion-pill-icon">{{ .Get "icon" }}</span>
+  <div class="about-passion-pill-name">{{ .Get "name" }}</div>
+</div>
