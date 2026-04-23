@@ -66,11 +66,15 @@
 
       </div>
 
-      {{/* Articles grid — stile C, 3 colonne, senza tabs */}}
-      {{ if .Pages }}
+      {{/* Articles grid — stile C, 3 colonne, senza tabs.
+           IMPORTANTE: usare .RegularPagesRecursive perche .Pages su un
+           top-level section con subsections ritorna le subsections stesse,
+           non i posts. */}}
+      {{ $allArticles := .RegularPagesRecursive.ByDate.Reverse }}
+      {{ if $allArticles }}
         <h2 class="list-d1-articles-title">{{ i18n "list.latest_articles" }}</h2>
         <div class="list-d1-articles-grid">
-          {{ range (.Paginate .Pages).Pages }}
+          {{ range (.Paginate $allArticles).Pages }}
             <a href="{{ .RelPermalink }}" class="list-d1-article-card">
               {{/* Thumbnail — use cover image if available */}}
               {{ $thumb := "" }}
@@ -87,7 +91,7 @@
                 <div class="list-d1-article-thumb list-d1-article-thumb-placeholder"></div>
               {{ end }}
               <div class="list-d1-article-body">
-                {{/* Section tag — derived from CurrentSection or categories */}}
+                {{/* Section tag — derived from CurrentSection */}}
                 {{ with .CurrentSection }}
                   <span class="list-d1-article-section">{{ .Title }}</span>
                 {{ end }}
@@ -96,7 +100,12 @@
                   <p class="list-d1-article-excerpt">{{ . | emojify }}</p>
                 {{ end }}
                 <div class="list-d1-article-meta">
-                  {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                  <span class="list-d1-article-date">
+                    {{ .Date.Format (.Site.Params.dateFormat | default "2 January 2006") }}
+                  </span>
+                  <span class="list-d1-article-reading-time">
+                    {{ .ReadingTime }} min
+                  </span>
                 </div>
               </div>
             </a>
