@@ -1,20 +1,17 @@
 {{/*
   article-card.html — D1 article card riutilizzabile per grid layouts.
 
-  Context: page article direttamente, OPPURE dict con { page, hidden } per
-  usi avanzati (es. load more su list page che ha bisogno di marcare
-  alcune card come nascoste al primo load).
+  Context: SEMPRE un dict con i seguenti campi:
+    - page   (required): la Page dell'articolo
+    - hidden (optional): bool, se true aggiunge list-d1-article-card-hidden
+                         (per load more)
 
   Usage:
-    {{ partial "article-card.html" . }}                                            semplice
-    {{ partial "article-card.html" (dict "page" . "hidden" (ge $i 6)) }}           con flag hidden
+    {{ partial "article-card.html" (dict "page" .) }}
+    {{ partial "article-card.html" (dict "page" . "hidden" (ge $i 6)) }}
 */}}
-{{- $page := . -}}
-{{- $hidden := false -}}
-{{- if and (not (.Permalink)) (isset . "page") -}}
-  {{- $page = .page -}}
-  {{- $hidden = .hidden -}}
-{{- end -}}
+{{- $page := .page -}}
+{{- $hidden := .hidden | default false -}}
 <a
   href="{{ $page.RelPermalink }}"
   class="list-d1-article-card{{ if $hidden }} list-d1-article-card-hidden{{ end }}"
