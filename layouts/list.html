@@ -67,14 +67,15 @@
       </div>
 
       {{/* Articles grid — stile C, 3 colonne, senza tabs.
-           IMPORTANTE: usare .RegularPagesRecursive perche .Pages su un
-           top-level section con subsections ritorna le subsections stesse,
-           non i posts. */}}
-      {{ $allArticles := .RegularPagesRecursive.ByDate.Reverse }}
-      {{ if $allArticles }}
+           Limitati agli ultimi 6 articoli (2 righe): la pagina list e una
+           vetrina di anteprime, non il catalogo completo. Per vedere di
+           piu, l'utente clicca su una sezione specifica nella pulsantiera
+           qui sopra. */}}
+      {{ $latest := first 6 .RegularPagesRecursive.ByDate.Reverse }}
+      {{ if $latest }}
         <h2 class="list-d1-articles-title">{{ i18n "list.latest_articles" }}</h2>
         <div class="list-d1-articles-grid">
-          {{ range (.Paginate $allArticles).Pages }}
+          {{ range $latest }}
             <a href="{{ .RelPermalink }}" class="list-d1-article-card">
               {{/* Thumbnail — use cover image if available */}}
               {{ $thumb := "" }}
@@ -111,8 +112,6 @@
             </a>
           {{ end }}
         </div>
-
-        {{ partial "pagination.html" . }}
       {{ end }}
 
     </article>
