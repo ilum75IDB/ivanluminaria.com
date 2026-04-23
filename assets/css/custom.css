@@ -2295,7 +2295,39 @@ footer {
 
 
 /* ============================
-   SECTION PAGE (Proposta D1)
+   MOBILE FOOTER + SCROLL-TO-TOP FIX (<= 767px)
+   - scroll-up a destra invece che centrato sul contenuto
+   - footer copyright + menu in 2 righe invece di 2 colonne cramped
+   ============================ */
+@media (max-width: 767px) {
+  /* Scroll-to-top: sposta dal centro al bordo destro della main column
+     (su mobile il centro della viewport copre i contenuti) */
+  #to-top {
+    left: auto !important;
+    right: 1rem !important;
+    transform: none !important;
+  }
+  /* Footer: impila copyright/credit sopra e menu (Glossario/Tag/rss/LI) sotto */
+  footer > .flex.items-center.justify-between {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.25rem;
+    text-align: center;
+  }
+  footer > .flex.items-center.justify-between > div {
+    width: 100%;
+    text-align: center;
+  }
+  /* Riga dei link/icone: wrap + spacing uniforme, centrata */
+  footer > .flex.items-center.justify-between > div.flex.flex-row.items-center {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.25rem;
+  }
+  footer .flex.flex-row.items-center > a {
+    margin-inline-end: 0 !important;
+  }
+}
    Issue #78: redesign pagine /posts/<sezione>/
    - Header card bianca 2-col (image 3:2 SX + testo grande DX)
    - Split intro (main) + sidebar siblings sticky (DX)
