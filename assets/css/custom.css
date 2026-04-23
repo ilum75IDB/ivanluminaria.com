@@ -3624,26 +3624,18 @@ footer {
     height: 100%;
     color: var(--ivan-gray-title);
   }
-  /* L'icona SVG dentro il label deve essere visibile e dimensionata */
-  #menu-button .icon,
-  .burger-toggle .icon {
+  /* Carattere hamburger Unicode ☰ (U+2630): sempre visibile indipendentemente
+     dallo stato del theme. Il template ora usa &#9776; invece di SVG partial. */
+  #menu-button .burger-icon,
+  .burger-toggle .burger-icon {
     display: inline-block !important;
-    width: 1.75rem !important;
-    height: 1.75rem !important;
+    font-size: 1.75rem !important;
+    line-height: 1 !important;
     color: var(--ivan-gray-title) !important;
+    font-weight: 400;
   }
-  #menu-button .icon svg,
-  .burger-toggle .icon svg {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    fill: currentColor !important;
-    stroke: currentColor;
-  }
-  .dark #menu-button .icon,
-  .dark .burger-toggle .icon,
-  .dark #menu-button > div:not(#menu-wrapper),
-  .dark .burger-toggle > div:not(#menu-wrapper) {
+  .dark #menu-button .burger-icon,
+  .dark .burger-toggle .burger-icon {
     color: rgb(229, 229, 229) !important;
   }
 }
