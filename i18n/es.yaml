@@ -15,6 +15,9 @@ list:
 tags:
   title: "ETIQUETAS"
 
+term:
+  tagged_articles: "artículos etiquetados"
+
 glossary:
   title: "Glosario"
   related_articles: "Articulos relacionados"

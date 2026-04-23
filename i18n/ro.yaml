@@ -15,6 +15,9 @@ list:
 tags:
   title: "ETICHETE"
 
+term:
+  tagged_articles: "articole taguite"
+
 glossary:
   title: "Glosar"
   related_articles: "Articole relevante"

@@ -15,6 +15,9 @@ list:
 tags:
   title: "TAGS"
 
+term:
+  tagged_articles: "tagged articles"
+
 glossary:
   title: "Glossary"
   related_articles: "Related articles"
