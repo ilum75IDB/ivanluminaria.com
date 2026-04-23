@@ -1860,7 +1860,7 @@ footer {
 }
 
 .list-d1-article-thumb {
-  aspect-ratio: 3 / 2;                       /* ratio uniforme per tutte le card */
+  aspect-ratio: 16 / 9;                      /* ratio uniforme per tutte le card (cinematic) */
   width: 100%;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);   /* visibile solo per placeholder (no cover) */
@@ -1868,8 +1868,8 @@ footer {
 .list-d1-article-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;                         /* fill uniforme; cover non-3:2 vengono croppate */
-  object-position: center center;            /* taglio simmetrico sopra/sotto (o dx/sx) */
+  object-fit: cover;                         /* le cover 3:2 vengono croppate simmetricamente */
+  object-position: center center;            /* taglio sopra/sotto bilanciato al centro */
   display: block;
   margin: 0 !important;
 }
