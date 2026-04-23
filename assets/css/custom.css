@@ -3054,3 +3054,334 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
 }
+
+/* ============================
+   KNOW-HOW E IMPATTO PAGE (Issue #81 — Proposta A v3)
+   Pagina /resumes/: header 2-col card + intro manifesto + 4 role card
+   full-width con pulsantiera verticale uniforme
+   ============================ */
+
+.kh-page {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADER 2-col (image 3:2 + text) ---------- */
+.kh-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  background: white;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+.dark .kh-header {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+}
+.kh-header-img {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+.kh-header-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+  margin: 0 !important;
+}
+.kh-header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2.5rem;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.kh-header-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ivan-red);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.85rem;
+}
+.kh-header-title {
+  font-size: clamp(2rem, 4vw, 3.5rem) !important;
+  font-weight: 800 !important;
+  color: var(--ivan-gray-title) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem 0 !important;
+  overflow-wrap: break-word;
+}
+.dark .kh-header-title {
+  color: rgb(243, 244, 246) !important;
+}
+.kh-header-tagline {
+  font-size: 1.15rem;
+  color: rgb(107, 114, 128);
+  font-style: italic;
+  line-height: 1.55;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--ivan-red);
+}
+.dark .kh-header-tagline {
+  color: rgb(156, 163, 175);
+}
+.kh-header-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ivan-gray-title);
+  font-weight: 600;
+}
+.dark .kh-header-count {
+  color: rgb(209, 213, 219);
+}
+.kh-header-count strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ivan-red);
+}
+
+/* ---------- INTRO MANIFESTO ---------- */
+.kh-intro {
+  background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
+  border: 1px solid rgb(229, 231, 235);
+  border-left: 4px solid var(--ivan-red);
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: #374151;
+}
+.dark .kh-intro {
+  background: linear-gradient(135deg, rgb(48, 48, 48) 0%, rgb(38, 38, 38) 100%);
+  border-color: rgb(64, 64, 64);
+  border-left-color: var(--ivan-red);
+  color: rgb(209, 213, 219);
+}
+.kh-intro p {
+  margin-bottom: 1rem;
+}
+.kh-intro p:last-child {
+  margin-bottom: 0;
+}
+.kh-intro strong {
+  color: var(--ivan-gray-title);
+}
+.dark .kh-intro strong {
+  color: rgb(243, 244, 246);
+}
+
+/* ---------- ROLE CARDS full-width stacked ---------- */
+.kh-role-card {
+  display: grid;
+  grid-template-columns: 1fr 240px;           /* main + pulsantiera verticale */
+  gap: 0;
+  background: white;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s;
+}
+.kh-role-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--ivan-red);
+}
+.dark .kh-role-card {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+}
+
+.kh-role-main {
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+}
+.kh-role-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(229, 231, 235);
+}
+.dark .kh-role-header {
+  border-bottom-color: rgb(64, 64, 64);
+}
+.kh-role-title {
+  font-size: 1.4rem !important;
+  font-weight: 800 !important;
+  color: var(--ivan-gray-title) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.005em;
+  margin: 0 !important;
+}
+.dark .kh-role-title {
+  color: rgb(243, 244, 246) !important;
+}
+
+.kh-role-body {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin-bottom: 1.25rem;
+}
+.dark .kh-role-body {
+  color: rgb(209, 213, 219);
+}
+.kh-role-body p {
+  margin-bottom: 0.75rem;
+}
+.kh-role-body p:last-child {
+  margin-bottom: 0;
+}
+.kh-role-body strong {
+  color: var(--ivan-gray-title);
+}
+.dark .kh-role-body strong {
+  color: rgb(243, 244, 246);
+}
+
+/* Sector chips */
+.kh-sector-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.kh-sector-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: rgb(107, 114, 128);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+.dark .kh-sector-chip {
+  background: rgb(55, 55, 55);
+  color: rgb(209, 213, 219);
+}
+
+/* ---------- PULSANTIERA VERTICALE (destra, sfondo uniforme grigio) ---------- */
+.kh-role-ctas {
+  background: #f3f4f6;
+  border-left: 1px solid rgb(229, 231, 235);
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.dark .kh-role-ctas {
+  background: rgb(48, 48, 48);
+  border-left-color: rgb(64, 64, 64);
+}
+
+.kh-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.2s;
+  text-align: center;
+  width: 100%;
+}
+.kh-btn-primary,
+.kh-btn-primary:visited {
+  background: var(--ivan-red);
+  color: white !important;
+}
+.kh-btn-primary:hover {
+  background: var(--ivan-red-dark);
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(248, 0, 0, 0.25);
+}
+.kh-btn-secondary,
+.kh-btn-secondary:visited {
+  background: white;
+  border: 1.5px solid rgb(229, 231, 235);
+  color: var(--ivan-gray-title) !important;
+}
+.kh-btn-secondary:hover {
+  border-color: var(--ivan-red);
+  color: var(--ivan-red) !important;
+  transform: translateY(-1px);
+}
+.dark .kh-btn-secondary,
+.dark .kh-btn-secondary:visited {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+  color: rgb(229, 229, 229) !important;
+}
+.dark .kh-btn-secondary:hover {
+  border-color: var(--ivan-red);
+  color: var(--ivan-red) !important;
+}
+.kh-btn-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+.kh-btn-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+.kh-btn-label-sub {
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-top: 0.1rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .kh-header {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .kh-header-text {
+    padding: 1.5rem;
+  }
+  .kh-intro {
+    padding: 1.5rem;
+  }
+  .kh-role-card {
+    grid-template-columns: 1fr;
+  }
+  .kh-role-main {
+    padding: 1.5rem;
+  }
+  /* Pulsantiera orizzontale sotto il main su mobile */
+  .kh-role-ctas {
+    border-left: none;
+    border-top: 1px solid rgb(229, 231, 235);
+    flex-direction: row;
+    padding: 1rem 1.5rem;
+  }
+  .dark .kh-role-ctas {
+    border-top-color: rgb(64, 64, 64);
+  }
+  .kh-btn {
+    width: auto;
+    flex: 1;
+  }
+}
