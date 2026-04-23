@@ -19,7 +19,7 @@
   {{ if gt (len $gridPosts) 0 }}
     <div class="list-d1-articles-grid">
       {{- range $gridPosts }}
-        {{ partial "article-card.html" . }}
+        {{ partial "article-card.html" (dict "page" .) }}
       {{- end }}
     </div>
   {{ end }}
@@ -54,7 +54,7 @@
       {{ if gt (len $sGrid) 0 }}
         <div class="list-d1-articles-grid">
           {{- range $sGrid }}
-            {{ partial "article-card.html" . }}
+            {{ partial "article-card.html" (dict "page" .) }}
           {{- end }}
         </div>
       {{ end }}
