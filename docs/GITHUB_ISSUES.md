@@ -51,6 +51,8 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 78 | https://github.com/ilum75IDB/ivanluminaria.com/issues/78 | Feature: applicare formato D1 card agli articoli nelle pagine delle sezioni (/posts/<section>/) | aperta |
+| 80 | https://github.com/ilum75IDB/ivanluminaria.com/issues/80 | Feature: redesign pagina Chi Sono con layout card (coerente con home e sezioni) | aperta |
+| 81 | https://github.com/ilum75IDB/ivanluminaria.com/issues/81 | Feature: redesign pagina Know-How e Impatto con layout card | aperta |
 
 ## Issue Aperte — Bug
 

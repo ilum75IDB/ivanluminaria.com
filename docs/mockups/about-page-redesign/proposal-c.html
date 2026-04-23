@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>About page — Proposta C (Minimal centered narrative with accent strips)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .crumbs { font-size: 0.85rem; color: var(--ivan-gray-obj); }
+    .mock-nav .crumbs a { color: var(--ivan-red); text-decoration: none; }
+    .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* ========== PROFILE HEADER CARD (preservato) ========== */
+    .profile-header-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.5rem 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .profile-avatar img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #f1f5f9;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+      display: block;
+    }
+    .profile-info { flex: 1; }
+    .profile-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ivan-blue);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .profile-role {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 1rem;
+    }
+    .profile-desc {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .profile-desc strong { color: var(--ivan-gray-title); }
+    .profile-contacts {
+      font-size: 0.9rem;
+      color: var(--ivan-gray-obj);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .profile-contacts a {
+      color: var(--ivan-red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ========== NARRATIVE (centered, no cards, accent strips on H2) ========== */
+    .narrative {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #374151;
+    }
+    .narrative p { margin-bottom: 1.2rem; }
+    .narrative strong { color: var(--ivan-gray-title); }
+
+    .narrative-intro {
+      font-size: 1.25rem;
+      line-height: 1.75;
+      color: var(--ivan-gray-title);
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+    }
+
+    .narrative-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+    .narrative-divider::before,
+    .narrative-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .narrative-divider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ivan-red);
+    }
+
+    .narrative h2 {
+      position: relative;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      margin: 3rem 0 1.5rem;
+      padding-left: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .narrative h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.35rem;
+      bottom: 0.35rem;
+      width: 5px;
+      border-radius: 3px;
+      background: var(--ivan-red);
+    }
+
+    /* ========== CLOSING QUOTE (minimal, inline) ========== */
+    .closing-quote {
+      margin: 4rem 0 1rem;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .closing-quote blockquote {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.4;
+      font-style: italic;
+      color: var(--ivan-blue);
+      letter-spacing: -0.01em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .closing-quote blockquote::before {
+      content: "\201C";
+      color: var(--ivan-red);
+      font-size: 2rem;
+      line-height: 1;
+      vertical-align: -0.25rem;
+      margin-right: 0.25rem;
+    }
+    .closing-quote blockquote::after {
+      content: "\201D";
+      color: var(--ivan-red);
+      font-size: 2rem;
+      line-height: 1;
+      vertical-align: -0.25rem;
+      margin-left: 0.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .profile-header-card { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.5rem; }
+      .profile-contacts { justify-content: center; }
+      .narrative-intro { font-size: 1.1rem; }
+      .narrative h2 { font-size: 1.5rem; }
+      .closing-quote blockquote { font-size: 1.2rem; }
+    }
+
+    .mockup-tag {
+      position: fixed; top: 1rem; right: 1rem;
+      background: #1E3A5F; color: white;
+      padding: 0.5rem 1rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-tag">Proposta C • Minimal narrative con accent strips</div>
+
+<nav class="mock-nav">
+  <div class="brand">Ivan Luminaria</div>
+  <div class="crumbs"><a href="#">Home</a> › Chi Sono</div>
+</nav>
+
+<main class="page">
+
+  <!-- ===== PROFILE HEADER CARD ===== -->
+  <div class="profile-header-card">
+    <div class="profile-avatar">
+      <img src="../../../static/img/ivan_luminaria_avatar.png" alt="Ivan Luminaria">
+    </div>
+    <div class="profile-info">
+      <h1 class="profile-name">Ivan Luminaria</h1>
+      <p class="profile-role">Oracle, PostgreSQL &amp; MySQL Expert · DWH Architect · Project Manager</p>
+      <p class="profile-desc">
+        Professionista IT con circa <strong>30 anni di esperienza</strong> nella progettazione, implementazione e gestione di soluzioni database e Data Warehouse in ambienti Oracle, PostgreSQL e MySQL.
+      </p>
+      <div class="profile-contacts">
+        <span><strong>LinkedIn:</strong> <a href="#" target="_blank">ivanluminaria</a></span>
+        <span><strong>Email:</strong> ivan (dot) luminaria (at) gmail (dot) com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NARRATIVE ===== -->
+  <div class="narrative">
+
+    <div class="narrative-intro">
+      <p>Lavoro con i database da circa trent'anni. Sufficienti per aver visto cambiare motori, linguaggi, mode e slogan. Sufficienti per sapere che, sotto la superficie, le leggi non cambiano mai.</p>
+    </div>
+
+    <p>Un database non è un contenitore. È un organismo. Respira. Si affatica. Si blocca. Oppure scala.</p>
+    <p>Ho iniziato in ambienti Oracle quando "mission-critical" non era una parola da slide. Era la differenza tra un sistema che regge e uno che crolla alle tre di notte.</p>
+    <p>Ho passato innumerevoli ore su AWR, ASH, piani di esecuzione. Ho visto sistemi rallentare senza un motivo apparente. E ho imparato che un motivo c'è sempre. Solo che va cercato con metodo.</p>
+    <p>Non credo nelle ottimizzazioni miracolose. Credo nelle statistiche aggiornate. Nel modello dati corretto. Nella differenza tra <strong>"funziona" e "regge"</strong>.</p>
+    <p>Perché un database lento non è un problema tecnico. È un problema di business. È un report che non arriva. È un cliente che aspetta. È una decisione presa in ritardo. E a me piace stare esattamente lì. Nel punto in cui la tecnica incontra l'impatto reale.</p>
+
+    <div class="narrative-divider"><div class="narrative-divider-dot"></div></div>
+
+    <h2>Come lavoro</h2>
+    <p>Non mi limito ad "amministrare" database. Li osservo. Li misuro. Li metto sotto stress. Li metto in sicurezza.</p>
+    <p>Mi occupo di performance tuning su sistemi complessi — Oracle, RAC, Exadata — ma anche di PostgreSQL e MySQL in contesti moderni, spesso open source, dove l'assenza di "magia proprietaria" obbliga a capire davvero cosa succede sotto il cofano.</p>
+    <p>Progetto architetture Data Warehouse perché i dati non servono a essere accumulati. Servono a essere capiti. Non mi interessa l'effetto speciale. Mi interessa <strong>la solidità</strong>.</p>
+
+    <h2>Visione</h2>
+    <p>Negli anni ho integrato la profondità tecnica con una visione più ampia. Ho coordinato piccoli team internazionali. Ho tradotto esigenze di business in scelte tecniche sostenibili. Ho imparato che la complessità non si elimina. Si governa.</p>
+    <p>Per me leadership significa una cosa semplice: <strong>prendere decisioni tecniche che reggano nel tempo</strong>.</p>
+
+    <h2>Fuori dal database</h2>
+    <p>Fuori dal lavoro coltivo passioni che, in fondo, parlano la stessa lingua.</p>
+    <p>La fotografia mi ha insegnato che la luce giusta cambia la storia. La musica — sto imparando il sax — mi ricorda che la tecnica senza sensibilità è solo rumore. La chitarra mi tiene ancorato al ritmo. La cucina è architettura commestibile. Gli scacchi sono strategia pura.</p>
+    <p>Forse è per questo che mi trovo bene nei sistemi complessi. Non mi spaventano. Mi incuriosiscono. Mi piace entrare nel dettaglio. Ma solo per far funzionare meglio l'insieme.</p>
+    <p><strong>Non costruisco database. Costruisco solidità.</strong></p>
+
+  </div>
+
+  <!-- ===== CLOSING QUOTE ===== -->
+  <div class="closing-quote">
+    <blockquote>Trasformo la complessità dei dati in valore strategico per il business.</blockquote>
+  </div>
+
+</main>
+
+</body>
+</html>
