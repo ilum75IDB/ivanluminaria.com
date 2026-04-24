@@ -48,7 +48,9 @@ tool `WebFetch`.
 
 ## Issue Aperte — Enhancement (Dev Tools)
 
-*Nessuna issue aperta.*
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 84 | https://github.com/ilum75IDB/ivanluminaria.com/issues/84 | Feature: redesign pagina /tags/ con raggruppamento per sezione | aperta |
 
 ## Issue Aperte — Bug
 
