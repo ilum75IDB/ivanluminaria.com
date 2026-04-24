@@ -39,26 +39,24 @@
         {{- $section := site.GetPage (printf "/posts/%s" $sectionSlug) -}}
         {{- if $section -}}
 
-          {{/* Raccogli i tag unici dagli articoli di questa sezione */}}
-          {{- $tagsInSection := dict -}}
+          {{/* Raccogli le term page uniche dei tag presenti negli articoli
+               di questa sezione. .GetTerms "tags" ritorna direttamente le
+               term page risolte (no guess sul slug, multilingua-aware). */}}
+          {{- $termsInSection := dict -}}
           {{- range $section.RegularPagesRecursive -}}
-            {{- range .Params.tags -}}
-              {{- $tagsInSection = merge $tagsInSection (dict . true) -}}
+            {{- range .GetTerms "tags" -}}
+              {{- $termsInSection = merge $termsInSection (dict .RelPermalink .) -}}
             {{- end -}}
           {{- end -}}
 
           {{/* Costruisci la lista con count globale (.Pages della term page) */}}
           {{- $tagList := slice -}}
-          {{- range $tagName, $_ := $tagsInSection -}}
-            {{- $slug := $tagName | urlize -}}
-            {{- $termPage := site.GetPage (printf "/tags/%s" $slug) -}}
-            {{- if $termPage -}}
-              {{- $tagList = $tagList | append (dict
-                "name" $tagName
-                "permalink" $termPage.RelPermalink
-                "count" (len $termPage.Pages))
-              -}}
-            {{- end -}}
+          {{- range $_, $termPage := $termsInSection -}}
+            {{- $tagList = $tagList | append (dict
+              "name" $termPage.Title
+              "permalink" $termPage.RelPermalink
+              "count" (len $termPage.Pages))
+            -}}
           {{- end -}}
 
           {{/* Ordina per count desc, poi per nome asc */}}
