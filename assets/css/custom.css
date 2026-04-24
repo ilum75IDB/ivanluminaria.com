@@ -831,14 +831,15 @@ footer {
 }
 .dark .search-input-v2 { color: #e5e7eb; }
 
-/* Body: split grid — force grid layout anche senza classi Tailwind */
+/* Body: split grid — force grid layout anche senza classi Tailwind.
+   flex: 1 1 0 + min-height: 0 permette al body di shrinkare quando
+   la viewport e piccola, lasciando sempre visibile header e footer. */
 .search-body-v2 {
   display: grid !important;
   grid-template-columns: 380px 1fr !important;
-  min-height: 420px !important;
-  max-height: calc(100vh - 14rem) !important;
   overflow: hidden !important;
-  flex: 1 1 auto !important;
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
 }
 @media (max-width: 900px) {
   .search-body-v2 {
@@ -850,9 +851,17 @@ footer {
 #search-list {
   overflow-y: auto !important;
   border-right: 1px solid var(--border, #e5e7eb);
+  min-height: 0;
 }
 #search-preview {
   overflow-y: auto !important;
+  min-height: 0;
+}
+
+/* Header e footer non devono mai comprimersi */
+.search-header-v2,
+.search-footer-v2 {
+  flex-shrink: 0 !important;
 }
 
 /* Left: list */
