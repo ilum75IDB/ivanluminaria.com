@@ -1,0 +1,77 @@
+{{/*
+  layouts/_default/term.html — taxonomy term page (Tags, Categories).
+  Issue cards: refactor da lista legacy a grid D1 coerente col resto del sito.
+
+  Struttura:
+    - Header minimale: breadcrumb 'Tags /' + titolo tag
+    - Grid D1 di articoli (riusa .list-d1-articles-grid + article-card partial)
+    - Load more button se > 6 articoli
+*/}}
+{{ define "main" }}
+<!-- DEBUG: layouts/tags/term.html ATTIVO -->
+<div style="background:#fff200;color:#c00;padding:20px;font-size:24px;font-weight:bold;border:4px solid #c00;margin-bottom:20px;">
+  🔧 DEBUG / layouts/tags/term.html ATTIVO — Kind={{ .Kind }} · Title={{ .Title }} · Pages={{ len .Pages }}
+</div>
+  {{ $articles := .Pages.ByDate.Reverse }}
+  {{ $initialCount := 6 }}
+  {{ $batchSize := 6 }}
+  {{ $total := len $articles }}
+
+  <article class="max-w-full term-page">
+
+    <header class="term-page-header">
+      <div class="term-page-breadcrumb">
+        <a href="{{ "/tags/" | relLangURL }}">{{ i18n "tags.title" | default "Tags" }}</a>
+        <span class="term-page-breadcrumb-sep">/</span>
+      </div>
+      <h1 class="term-page-title">{{ .Title | emojify }}</h1>
+      {{ if gt $total 0 }}
+        <div class="term-page-count">
+          <strong>{{ $total }}</strong>&nbsp;{{ i18n "term.tagged_articles" | default "articoli" }}
+        </div>
+      {{ end }}
+    </header>
+
+    {{ if $articles }}
+      <div class="term-page-articles-grid list-d1-articles-grid">
+        {{ range $i, $article := $articles }}
+          {{ partial "article-card.html" (dict "page" . "hidden" (ge $i $initialCount)) }}
+        {{ end }}
+      </div>
+
+      {{ if gt $total $initialCount }}
+        <div class="list-d1-load-more-wrapper">
+          <button
+            type="button"
+            class="list-d1-load-more term-page-load-more"
+            data-batch-size="{{ $batchSize }}"
+            aria-label="{{ i18n "list.load_more" }}"
+          >{{ i18n "list.load_more" }}</button>
+        </div>
+        <script>
+          (function () {
+            var btn = document.querySelector('.term-page-load-more');
+            if (!btn) return;
+            var grid = document.querySelector('.term-page-articles-grid');
+            if (!grid) return;
+            var batchSize = parseInt(btn.getAttribute('data-batch-size') || '6', 10);
+            btn.addEventListener('click', function () {
+              var hidden = grid.querySelectorAll('.list-d1-article-card-hidden');
+              for (var i = 0; i < batchSize && i < hidden.length; i++) {
+                hidden[i].classList.remove('list-d1-article-card-hidden');
+              }
+              if (grid.querySelectorAll('.list-d1-article-card-hidden').length === 0) {
+                btn.parentElement.style.display = 'none';
+              }
+            });
+          })();
+        </script>
+      {{ end }}
+    {{ else }}
+      <p class="term-page-empty">
+        <em>{{ i18n "list.no_articles" | emojify | default "Nessun articolo." }}</em>
+      </p>
+    {{ end }}
+
+  </article>
+{{ end }}
