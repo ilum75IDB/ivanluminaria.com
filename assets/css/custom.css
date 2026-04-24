@@ -971,113 +971,27 @@ footer {
   margin-top: 0.125rem;
 }
 
-/* Right: preview */
+/* Right: preview.
+   La card della preview riutilizza direttamente .list-d1-article-card
+   del resto del sito (stessa classe usata nelle liste di articoli),
+   per ereditare dimensioni, aspect-ratio 16:9 sulla thumb, hover
+   effect e styling gia' testati. */
 .search-preview-v2 {
   padding: 1.5rem;
+  min-width: 0;
 }
-.search-preview-badge-v2 {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.625rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.875rem;
+.search-preview-card-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
-.search-preview-badge-article { background: #dbeafe; color: var(--ivan-blue); }
-.search-preview-badge-glossary { background: #fef3c7; color: #b45309; }
-.search-preview-badge-tag { background: #fef2f2; color: var(--ivan-red); }
-
-/* Cover container: padding-bottom trick per forzare aspect-ratio 3:2
-   su ogni browser, max-height come hard cap (thumb, non cover pagina),
-   position:relative per permettere all'img di essere absolute inset. */
-.search-preview-cover-v2 {
-  position: relative !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  max-height: 240px !important;
-  aspect-ratio: 3 / 2;
-  border-radius: 0.625rem;
-  margin-bottom: 1rem;
-  border: 1px solid var(--border, #e5e7eb);
-  overflow: hidden !important;
-  display: block;
-}
-.search-preview-cover-v2 img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.search-preview-title-v2 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--ivan-gray-title);
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
-}
-.dark .search-preview-title-v2 { color: #e5e7eb; }
-.search-preview-aka-v2 {
-  font-size: 0.85rem;
-  color: var(--ivan-gray-obj);
-  font-style: italic;
-  margin-bottom: 0.625rem;
-}
-.search-preview-meta-v2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--ivan-gray-obj);
-  margin-bottom: 0.875rem;
-}
-.search-preview-meta-sep-v2 { color: #d1d5db; }
-.search-preview-excerpt-v2 {
-  font-size: 0.95rem;
-  color: #374151;
-  line-height: 1.55;
-  margin-bottom: 1.125rem;
-}
-.dark .search-preview-excerpt-v2 { color: #d1d5db; }
-
-a.search-preview-cta-v2,
-.search-preview-cta-v2 {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.625rem 1.125rem !important;
-  border-radius: 0.5rem;
-  background: var(--ivan-red) !important;
-  color: #ffffff !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
-  text-decoration: none !important;
-  transition: background 0.15s;
-  line-height: 1.2;
-  width: auto !important;
-  max-width: fit-content;
-}
-a.search-preview-cta-v2:hover,
-.search-preview-cta-v2:hover {
-  background: var(--ivan-red-dark) !important;
-  color: #ffffff !important;
-}
-.search-preview-cta-v2 .search-preview-cta-label {
-  color: #ffffff !important;
-  white-space: nowrap;
-}
-.search-preview-cta-v2 svg {
-  flex-shrink: 0;
-  color: #ffffff;
+/* La card heritata da list-d1-article-card usa display:flex column
+   di default nelle liste. Qui siamo in un container largo, ma la
+   larghezza max e' quella del preview column (minmax(0,1fr)),
+   quindi si adatta automaticamente. */
+.search-preview-card-wrap .list-d1-article-card {
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Empty / no-results states */
