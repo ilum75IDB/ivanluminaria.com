@@ -1,0 +1,93 @@
+{{/*
+  layouts/_partials/search.html — override del tema Congo.
+
+  Nuovo markup: split column (proposta C).
+  - Sinistra: lista risultati raggruppati per kind (Articoli / Glossario / Tag)
+  - Destra: preview del risultato selezionato (cover, titolo, meta, excerpt, CTA)
+
+  Mantiene gli ID che il search.js (override) si aspetta:
+    #search-wrapper, #search-modal, #search-query, #close-search-button
+  Il vecchio #search-results (lista semplice) è sostituito da:
+    #search-list + #search-preview.
+
+  Il JS che gestisce apertura, ricerca Fuse e sync preview è in
+  assets/js/search.js (override del tema Congo via Hugo Pipes).
+*/}}
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 z-50 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50"
+  data-url="{{ "" | absLangURL }}"
+  data-lang="{{ site.Language.Lang }}"
+>
+  <div
+    id="search-modal"
+    class="search-modal-v2 mx-auto flex min-h-0 w-full max-w-6xl flex-col rounded-xl border border-neutral-200 bg-neutral shadow-2xl dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    {{/* --------- Header: search input + close button --------- */}}
+    <header class="search-header-v2 relative z-10 flex flex-none items-center gap-3 border-b border-neutral-200 px-5 py-4 dark:border-neutral-700">
+      <div class="search-icon-v2 flex h-6 w-6 flex-shrink-0 items-center justify-center text-neutral-400">
+        {{ partial "icon.html" "search" }}
+      </div>
+      <form class="flex min-w-0 flex-auto items-center" onsubmit="return false;">
+        <input
+          type="search"
+          id="search-query"
+          class="search-input-v2 flex h-10 w-full appearance-none border-none bg-transparent text-lg font-medium focus:outline-none focus:ring-0"
+          placeholder="{{ i18n "search.input_placeholder" }}"
+          autocomplete="off"
+          spellcheck="false"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="search-close-v2 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-neutral-500 hover:bg-neutral-100 hover:text-primary-600 dark:hover:bg-neutral-700 dark:hover:text-primary-400"
+        aria-label="{{ i18n "search.close_button_title" }}"
+        title="{{ i18n "search.close_button_title" }}"
+      >
+        {{ partial "icon.html" "xmark" }}
+      </button>
+    </header>
+
+    {{/* --------- Body: split list (sinistra) + preview (destra) --------- */}}
+    <div class="search-body-v2 grid flex-auto overflow-hidden">
+      {{/* LEFT: risultati raggruppati */}}
+      <div id="search-list" class="search-list-v2 overflow-y-auto border-r border-neutral-200 dark:border-neutral-700" role="listbox" aria-label="Search results">
+        {{/* Empty state iniziale */}}
+        <div class="search-empty-v2" data-empty-state>
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <p>{{ i18n "search.empty_placeholder" | default "Inizia a digitare per cercare…" }}</p>
+        </div>
+      </div>
+
+      {{/* RIGHT: preview (lato destro, opzionale su desktop) */}}
+      <div id="search-preview" class="search-preview-v2 overflow-y-auto">
+        <div class="search-preview-empty-v2" data-preview-empty>
+          <p>{{ i18n "search.preview_hint" | default "Seleziona un risultato per vedere l'anteprima" }}</p>
+        </div>
+      </div>
+    </div>
+
+    {{/* --------- Footer: scorciatoie tastiera --------- */}}
+    <footer class="search-footer-v2 flex flex-none items-center justify-between border-t border-neutral-200 px-5 py-2 text-xs text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+      <span id="search-count"></span>
+      <div class="search-footer-shortcuts-v2 flex gap-4">
+        <span class="inline-flex items-center gap-1">
+          <kbd class="search-kbd-v2">↑</kbd><kbd class="search-kbd-v2">↓</kbd>
+          {{ i18n "search.shortcut_navigate" | default "Naviga" }}
+        </span>
+        <span class="inline-flex items-center gap-1">
+          <kbd class="search-kbd-v2">↵</kbd>
+          {{ i18n "search.shortcut_open" | default "Apri" }}
+        </span>
+        <span class="inline-flex items-center gap-1">
+          <kbd class="search-kbd-v2">Esc</kbd>
+          {{ i18n "search.shortcut_close" | default "Chiudi" }}
+        </span>
+      </div>
+    </footer>
+  </div>
+</div>

@@ -24,6 +24,13 @@ glossary:
   back_to_index: "Back to glossary"
   read_more: "Read more →"
 
+search:
+  empty_placeholder: "Start typing to search…"
+  preview_hint: "Select a result to see the preview"
+  shortcut_navigate: "Navigate"
+  shortcut_open: "Open"
+  shortcut_close: "Close"
+
 knowhow:
   count_text: "professional profiles"
   read_roadmap: "Read the roadmap"

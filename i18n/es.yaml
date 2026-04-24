@@ -24,6 +24,13 @@ glossary:
   back_to_index: "Volver al glosario"
   read_more: "Leer más →"
 
+search:
+  empty_placeholder: "Empieza a escribir para buscar…"
+  preview_hint: "Selecciona un resultado para ver la vista previa"
+  shortcut_navigate: "Navegar"
+  shortcut_open: "Abrir"
+  shortcut_close: "Cerrar"
+
 knowhow:
   count_text: "perfiles profesionales"
   read_roadmap: "Leer la roadmap"
