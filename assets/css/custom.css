@@ -977,16 +977,22 @@ footer {
 .search-preview-badge-tag { background: #fef2f2; color: var(--ivan-red); }
 
 .search-preview-cover-v2 {
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   aspect-ratio: 3 / 2;
-  background-size: cover;
-  background-position: center;
   border-radius: 0.625rem;
   margin-bottom: 1rem;
   border: 1px solid var(--border, #e5e7eb);
+  overflow: hidden !important;
+  display: block;
 }
-.search-preview-cover-placeholder-v2 {
-  background: linear-gradient(135deg, #ddd6c0 0%, #c9b88d 100%);
+.search-preview-cover-v2 img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 !important;
 }
 
 .search-preview-title-v2 {
