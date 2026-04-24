@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Tags page — Proposta C (Indice alfabetico con jump-bar)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .menu { display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--ivan-red); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+
+    .page { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem 5rem; display: grid; grid-template-columns: 1fr 64px; gap: 2rem; align-items: start; }
+
+    .tags-main { min-width: 0; }
+
+    .tags-header {
+      margin-bottom: 2.25rem;
+    }
+    .tags-eyebrow {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--ivan-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .tags-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      line-height: 1.1;
+      margin: 0.25rem 0 0.625rem;
+    }
+    .tags-subtitle {
+      font-size: 1rem;
+      color: var(--ivan-gray-obj);
+      max-width: 720px;
+      margin-bottom: 0.875rem;
+    }
+    .tags-count {
+      font-size: 0.875rem;
+      color: var(--ivan-gray-obj);
+    }
+    .tags-count strong {
+      color: var(--ivan-red);
+      font-size: 1.05rem;
+    }
+
+    .alpha-section {
+      margin-top: 2.5rem;
+    }
+    .alpha-letter {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--ivan-red);
+      line-height: 1;
+      margin-bottom: 0.875rem;
+      padding-bottom: 0.625rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .alpha-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .alpha-grid { grid-template-columns: 1fr; }
+    }
+    .alpha-tag {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: var(--ivan-red);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.12s, color 0.12s;
+      border-left: 3px solid transparent;
+    }
+    .alpha-tag:hover {
+      background: #fef2f2;
+      border-left-color: var(--ivan-red);
+    }
+    .alpha-tag-count {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--ivan-gray-obj);
+    }
+
+    /* Jump bar A-Z, sticky a destra */
+    .jump-bar {
+      position: sticky;
+      top: 6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.125rem;
+      align-self: start;
+      padding: 0.75rem 0.5rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .jump-bar a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ivan-gray-obj);
+      text-decoration: none;
+      border-radius: 0.25rem;
+    }
+    .jump-bar a:hover, .jump-bar a.active {
+      color: white;
+      background: var(--ivan-red);
+    }
+    .jump-bar a.disabled {
+      color: #d1d5db;
+      pointer-events: none;
+    }
+
+    .tags-footer {
+      grid-column: 1 / -1;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--ivan-gray-obj);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="mock-nav">
+  <div class="brand">IVAN LUMINARIA</div>
+  <div class="menu">
+    <span>CHI SONO</span>
+    <span>DATABASE STRATEGY</span>
+    <span>KNOW-HOW E IMPATTO</span>
+    <span>IT</span>
+    <span>🔍</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="tags-main">
+
+    <div class="tags-header">
+      <div class="tags-eyebrow">Tassonomia</div>
+      <h1 class="tags-title">Tag</h1>
+      <p class="tags-subtitle">
+        Indice alfabetico di tutti i tag del blog. Usa la barra A-Z laterale per saltare rapidamente alla lettera che ti interessa.
+      </p>
+      <div class="tags-count">
+        <strong>87</strong> tag · <strong>32</strong> articoli totali
+      </div>
+    </div>
+
+    <!-- A -->
+    <section class="alpha-section" id="letter-a">
+      <div class="alpha-letter">A</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>agile</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>ai</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>ai-manager</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>architecture</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>ash</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>audit</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>authentication</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>autovacuum</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>awr</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- B -->
+    <section class="alpha-section" id="letter-b">
+      <div class="alpha-letter">B</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>backup</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>binary-log</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>binlog</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>bloat</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>bug-fixing</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- C -->
+    <section class="alpha-section" id="letter-c">
+      <div class="alpha-letter">C</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>cluster</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>communication</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>conflict-management</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>consulting</span><span class="alpha-tag-count">3</span></a>
+        <a class="alpha-tag" href="#"><span>csv-export</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>cycling</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- D -->
+    <section class="alpha-section" id="letter-d">
+      <div class="alpha-letter">D</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>data-guard</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>data-warehouse</span><span class="alpha-tag-count">5</span></a>
+        <a class="alpha-tag" href="#"><span>diagnostic</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>diagnostics</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>dimensional-modeling</span><span class="alpha-tag-count">3</span></a>
+        <a class="alpha-tag" href="#"><span>disaster-recovery</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>disk-space</span><span class="alpha-tag-count">2</span></a>
+      </div>
+    </section>
+
+    <!-- E -->
+    <section class="alpha-section" id="letter-e">
+      <div class="alpha-letter">E</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>etl</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>european-union</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>execution-plan</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>explain</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- F -->
+    <section class="alpha-section" id="letter-f">
+      <div class="alpha-letter">F</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>fact-table</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>freelance</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- G -->
+    <section class="alpha-section" id="letter-g">
+      <div class="alpha-letter">G</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>galera</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>github</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>go-live</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>governance</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>grain</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>grant</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>granularity</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>group-replication</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- H -->
+    <section class="alpha-section" id="letter-h">
+      <div class="alpha-letter">H</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>health</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>hierarchies</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>high-availability</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>hugepages</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- I -->
+    <section class="alpha-section" id="letter-i">
+      <div class="alpha-letter">I</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>indexes</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>innodb-cluster</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>insurance</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>italy</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- ... segue con K, L, M, O, P, Q, R, S ... -->
+
+    <!-- K -->
+    <section class="alpha-section" id="letter-k">
+      <div class="alpha-letter">K</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>kernel</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>kimball</span><span class="alpha-tag-count">3</span></a>
+      </div>
+    </section>
+
+    <!-- L -->
+    <section class="alpha-section" id="letter-l">
+      <div class="alpha-letter">L</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>linux</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- M -->
+    <section class="alpha-section" id="letter-m">
+      <div class="alpha-letter">M</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>mariadb</span><span class="alpha-tag-count">4</span></a>
+        <a class="alpha-tag" href="#"><span>meeting</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>monitoring</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>multi-instance</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>mvcc</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>mydumper</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>mysqldump</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- O -->
+    <section class="alpha-section" id="letter-o">
+      <div class="alpha-letter">O</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>olap</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>optimizer</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>oracle</span><span class="alpha-tag-count">4</span></a>
+        <a class="alpha-tag" href="#"><span>outsourcing</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- P -->
+    <section class="alpha-section" id="letter-p">
+      <div class="alpha-letter">P</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>partitioning</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>payments</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>performance</span><span class="alpha-tag-count">8</span></a>
+        <a class="alpha-tag" href="#"><span>pg_stat_statements</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>pg_trgm</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>privileges</span><span class="alpha-tag-count">3</span></a>
+        <a class="alpha-tag" href="#"><span>productivity</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>project-management</span><span class="alpha-tag-count">2</span></a>
+      </div>
+    </section>
+
+    <!-- Q -->
+    <section class="alpha-section" id="letter-q">
+      <div class="alpha-letter">Q</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>query-tuning</span><span class="alpha-tag-count">2</span></a>
+      </div>
+    </section>
+
+    <!-- R -->
+    <section class="alpha-section" id="letter-r">
+      <div class="alpha-letter">R</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>recovery</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>remote-work</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>replication</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>reporting</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>restore</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>revoke</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>roles</span><span class="alpha-tag-count">2</span></a>
+      </div>
+    </section>
+
+    <!-- S -->
+    <section class="alpha-section" id="letter-s">
+      <div class="alpha-letter">S</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>scd</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>scrum</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>secure-file-priv</span><span class="alpha-tag-count">1</span></a>
+        <a class="alpha-tag" href="#"><span>security</span><span class="alpha-tag-count">3</span></a>
+        <a class="alpha-tag" href="#"><span>smart-working</span><span class="alpha-tag-count">2</span></a>
+        <a class="alpha-tag" href="#"><span>socket</span><span class="alpha-tag-count">1</span></a>
+      </div>
+    </section>
+
+    <!-- T -->
+    <section class="alpha-section" id="letter-t">
+      <div class="alpha-letter">T</div>
+      <div class="alpha-grid">
+        <a class="alpha-tag" href="#"><span>tuning</span><span class="alpha-tag-count">4</span></a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Jump bar laterale A-Z -->
+  <nav class="jump-bar" aria-label="Naviga A-Z">
+    <a href="#letter-a" class="active">A</a>
+    <a href="#letter-b">B</a>
+    <a href="#letter-c">C</a>
+    <a href="#letter-d">D</a>
+    <a href="#letter-e">E</a>
+    <a href="#letter-f">F</a>
+    <a href="#letter-g">G</a>
+    <a href="#letter-h">H</a>
+    <a href="#letter-i">I</a>
+    <a class="disabled">J</a>
+    <a href="#letter-k">K</a>
+    <a href="#letter-l">L</a>
+    <a href="#letter-m">M</a>
+    <a class="disabled">N</a>
+    <a href="#letter-o">O</a>
+    <a href="#letter-p">P</a>
+    <a href="#letter-q">Q</a>
+    <a href="#letter-r">R</a>
+    <a href="#letter-s">S</a>
+    <a href="#letter-t">T</a>
+    <a class="disabled">U</a>
+    <a class="disabled">V</a>
+    <a class="disabled">W</a>
+    <a class="disabled">X</a>
+    <a class="disabled">Y</a>
+    <a class="disabled">Z</a>
+  </nav>
+
+  <div class="tags-footer">
+    Pattern stile rubrica/glossario: scalabile fino a 200+ tag senza perdere ordine. La jump-bar A-Z resta sticky durante lo scroll.
+  </div>
+
+</div>
+
+</body>
+</html>
