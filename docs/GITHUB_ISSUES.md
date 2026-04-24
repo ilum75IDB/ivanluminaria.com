@@ -54,14 +54,13 @@ tool `WebFetch`.
 
 ## Issue Aperte — Bug
 
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 82 | https://github.com/ilum75IDB/ivanluminaria.com/issues/82 | Bug: Hugo build hangava 30+ minuti su image processing dopo hclean (libvips WEBP+JPEG) | aperta |
+*Nessuna issue aperta.*
 
 ## Issue Chiuse
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 82 | https://github.com/ilum75IDB/ivanluminaria.com/issues/82 | Bug: Hugo build hangava 30+ minuti su image processing dopo hclean (libvips WEBP+JPEG) | 2026-04-24 |
 | 20 | https://github.com/ilum75IDB/ivanluminaria.com/issues/20 | Da single instance a Data Guard - il giorno in cui il CEO ha capito il DR | 2026-03-09 |
 | 21 | https://github.com/ilum75IDB/ivanluminaria.com/issues/21 | AWR, ASH e i 10 minuti che hanno salvato un go-live | 2026-03-09 |
 | 23 | https://github.com/ilum75IDB/ivanluminaria.com/issues/23 | Oracle su Linux - i parametri kernel che nessuno configura | 2026-03-09 |
