@@ -801,10 +801,12 @@ footer {
 }
 
 /* Modal container — grid 3 righe (header / body / footer) garantisce
-   footer sempre visibile indipendentemente dalla viewport. */
+   footer sempre visibile indipendentemente dalla viewport.
+   width: min(1080, 100vw - 2rem) evita che su viewport < 1080 il
+   modal esca a destra/sinistra. */
 .search-modal-v2 {
-  width: 100% !important;
-  max-width: 1080px !important;
+  width: min(1080px, calc(100vw - 2rem)) !important;
+  max-width: min(1080px, calc(100vw - 2rem)) !important;
   max-height: calc(100vh - 6rem) !important;
   margin: 4rem auto 0 !important;
   overflow: hidden !important;
@@ -972,26 +974,48 @@ footer {
 }
 
 /* Right: preview.
-   La card della preview riutilizza direttamente .list-d1-article-card
-   del resto del sito (stessa classe usata nelle liste di articoli),
-   per ereditare dimensioni, aspect-ratio 16:9 sulla thumb, hover
-   effect e styling gia' testati. */
+   La card riutilizza .list-d1-article-card del resto del sito. Nelle
+   liste e' vincolata dalla grid 3-col; qui e' sola nella colonna e
+   senza vincoli si espanderebbe (e l'img nativa spingerebbe il grid
+   oltre il modal). Vincolo wrap a 420px e forzo tutti i livelli a
+   rispettare il container. */
 .search-preview-v2 {
   padding: 1.5rem;
   min-width: 0;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
 }
 .search-preview-card-wrap {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  width: 100% !important;
+  max-width: 420px !important;
+  margin: 0 auto !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
 }
-/* La card heritata da list-d1-article-card usa display:flex column
-   di default nelle liste. Qui siamo in un container largo, ma la
-   larghezza max e' quella del preview column (minmax(0,1fr)),
-   quindi si adatta automaticamente. */
 .search-preview-card-wrap .list-d1-article-card {
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+/* Thumb con height fisso: niente aspect-ratio (piu' robusto su tutti
+   i browser), object-fit cover fa il crop. */
+.search-preview-card-wrap .list-d1-article-thumb {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 200px !important;
+  aspect-ratio: unset !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+.search-preview-card-wrap .list-d1-article-thumb img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 !important;
 }
 
 /* Empty / no-results states */
