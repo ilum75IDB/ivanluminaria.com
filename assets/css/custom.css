@@ -4110,6 +4110,227 @@ footer {
 }
 
 /* ============================
+   TAGS PAGE — taxonomy listing /tags/
+   Tag raggruppati per sezione, classificazione automatica multi-sezione,
+   count globale. Mobile <900px: sezioni accordion chiuse di default.
+   ============================ */
+
+.tags-page {
+  --tag-oracle: #F80000;
+  --tag-oracle-bg: #fef2f2;
+  --tag-oracle-border: #fecaca;
+  --tag-postgres: #336791;
+  --tag-postgres-bg: #eff6ff;
+  --tag-postgres-border: #bfdbfe;
+  --tag-mysql: #00758F;
+  --tag-mysql-bg: #ecfeff;
+  --tag-mysql-border: #a5f3fc;
+  --tag-dwh: #1E3A5F;
+  --tag-dwh-bg: #f1f5f9;
+  --tag-dwh-border: #cbd5e1;
+  --tag-pm: #4a4a4a;
+  --tag-pm-bg: #fafafa;
+  --tag-pm-border: #d4d4d4;
+}
+
+.tags-page-header {
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+}
+.tags-page-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ivan-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.tags-page-title {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--ivan-gray-title);
+  line-height: 1.1;
+  margin: 0.25rem 0 0.75rem;
+}
+.dark .tags-page-title { color: #e5e7eb; }
+.tags-page-subtitle {
+  font-size: 1rem;
+  color: var(--ivan-gray-obj);
+  max-width: 720px;
+  line-height: 1.55;
+  margin-bottom: 0.875rem;
+}
+.tags-page-count {
+  font-size: 0.875rem;
+  color: var(--ivan-gray-obj);
+}
+.tags-page-count strong {
+  color: var(--ivan-red);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* Grid 2-col delle sezioni; collassa a 1-col sotto 900px */
+.tags-page-sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .tags-page-sections { grid-template-columns: 1fr; gap: 0.875rem; }
+}
+
+.tags-section-card {
+  background: white;
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+.dark .tags-section-card {
+  background: rgb(38, 38, 38);
+  border-color: rgb(64, 64, 64);
+}
+
+.tags-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 1.125rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: default;
+  font-family: inherit;
+  text-align: left;
+}
+.tags-section-icon {
+  width: 2rem; height: 2rem;
+  border-radius: 0.5rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: white;
+  flex-shrink: 0;
+}
+.tags-section-name {
+  flex: 1;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.tags-section-count {
+  font-size: 0.75rem;
+  color: var(--ivan-gray-obj);
+  font-weight: 500;
+}
+.tags-section-chevron {
+  display: none;
+  margin-left: 0.25rem;
+  transition: transform 0.2s;
+  color: var(--ivan-gray-obj);
+  flex-shrink: 0;
+}
+
+.tags-section-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.tags-section-tag-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.3125rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  line-height: 1.2;
+  border-width: 1.5px;
+  border-style: solid;
+}
+.tags-section-tag-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+.tags-section-tag-count {
+  font-size: 0.7em;
+  opacity: 0.65;
+  font-weight: 500;
+}
+
+/* Color variants per sezione */
+.tags-page .sec-oracle .tags-section-icon { background: var(--tag-oracle); }
+.tags-page .sec-oracle .tags-section-name { color: var(--tag-oracle); }
+.tags-page .sec-oracle .tags-section-tag-chip {
+  background: var(--tag-oracle-bg); color: var(--tag-oracle); border-color: var(--tag-oracle-border);
+}
+.tags-page .sec-oracle .tags-section-tag-chip:hover { background: var(--tag-oracle); color: white; }
+
+.tags-page .sec-postgresql .tags-section-icon { background: var(--tag-postgres); }
+.tags-page .sec-postgresql .tags-section-name { color: var(--tag-postgres); }
+.tags-page .sec-postgresql .tags-section-tag-chip {
+  background: var(--tag-postgres-bg); color: var(--tag-postgres); border-color: var(--tag-postgres-border);
+}
+.tags-page .sec-postgresql .tags-section-tag-chip:hover { background: var(--tag-postgres); color: white; }
+
+.tags-page .sec-mysql .tags-section-icon { background: var(--tag-mysql); }
+.tags-page .sec-mysql .tags-section-name { color: var(--tag-mysql); }
+.tags-page .sec-mysql .tags-section-tag-chip {
+  background: var(--tag-mysql-bg); color: var(--tag-mysql); border-color: var(--tag-mysql-border);
+}
+.tags-page .sec-mysql .tags-section-tag-chip:hover { background: var(--tag-mysql); color: white; }
+
+.tags-page .sec-data-warehouse .tags-section-icon { background: var(--tag-dwh); }
+.tags-page .sec-data-warehouse .tags-section-name { color: var(--tag-dwh); }
+.tags-page .sec-data-warehouse .tags-section-tag-chip {
+  background: var(--tag-dwh-bg); color: var(--tag-dwh); border-color: var(--tag-dwh-border);
+}
+.tags-page .sec-data-warehouse .tags-section-tag-chip:hover { background: var(--tag-dwh); color: white; }
+
+.tags-page .sec-project-management .tags-section-icon { background: var(--tag-pm); }
+.tags-page .sec-project-management .tags-section-name { color: var(--tag-pm); }
+.tags-page .sec-project-management .tags-section-tag-chip {
+  background: var(--tag-pm-bg); color: var(--tag-pm); border-color: var(--tag-pm-border);
+}
+.tags-page .sec-project-management .tags-section-tag-chip:hover { background: var(--tag-pm); color: white; }
+
+/* Mobile <900px: header diventa pulsante toggle (cursor pointer + chevron),
+   tags nascosti finche' la card non e' .is-open */
+@media (max-width: 900px) {
+  .tags-section-header {
+    cursor: pointer;
+    padding: 1rem 1.125rem;
+  }
+  .tags-section-chevron {
+    display: inline-block;
+  }
+  .tags-section-card.is-open .tags-section-chevron {
+    transform: rotate(90deg);
+    color: var(--ivan-red);
+  }
+  .tags-section-card:not(.is-open) .tags-section-tags {
+    display: none;
+  }
+  .tags-section-tags {
+    padding: 0 1.125rem 1.125rem;
+    border-top: 1px solid var(--border, #e5e7eb);
+    padding-top: 1rem;
+  }
+}
+
+.tags-page-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border, #e5e7eb);
+  font-size: 0.875rem;
+  color: var(--ivan-gray-obj);
+}
+
+/* ============================
    DEFENSIVE: hamburger menu mobile sempre visibile sotto 1190px
    ============================ */
 @media (max-width: 1189px) {

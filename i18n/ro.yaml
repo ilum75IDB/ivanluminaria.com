@@ -14,6 +14,11 @@ list:
 
 tags:
   title: "ETICHETE"
+  eyebrow: "Taxonomie"
+  subtitle: "Toate etichetele blogului grupate pe arie tematica. O eticheta poate aparea in mai multe sectiuni daca este folosita in articole din sectiuni diferite — contorul din chip este intotdeauna global."
+  tags_label: "etichete"
+  articles_label: "articole totale"
+  footer_hint: "O eticheta poate aparea in mai multe sectiuni: numarul din chip este totalul global de articole cu acea eticheta."
 
 term:
   tagged_articles: "articole taguite"

@@ -14,6 +14,11 @@ list:
 
 tags:
   title: "TAGS"
+  eyebrow: "Taxonomy"
+  subtitle: "All blog tags grouped by topic area. A tag can appear in multiple sections if used in articles from different sections — the chip count is always global."
+  tags_label: "tags"
+  articles_label: "total articles"
+  footer_hint: "A tag can appear in multiple sections: the number in the chip is the global total of articles with that tag."
 
 term:
   tagged_articles: "tagged articles"
