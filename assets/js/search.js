@@ -31,8 +31,67 @@
   var listEl = document.getElementById("search-list");
   var previewEl = document.getElementById("search-preview");
   var countEl = document.getElementById("search-count");
+  var mobileBackdrop = document.getElementById("search-mobile-backdrop");
 
   if (!wrapper || !input || !listEl || !previewEl) return;
+
+  // L'innerHTML della preview va in .search-preview-inner per non
+  // distruggere la handle mobile che sta fuori.
+  function previewContentEl() {
+    return previewEl.querySelector(".search-preview-inner") || previewEl;
+  }
+
+  // ----- Mobile bottom sheet helpers -----
+  var mobileMedia = window.matchMedia("(max-width: 900px)");
+  function isMobile() { return mobileMedia.matches; }
+
+  function openMobileSheet() {
+    if (!isMobile()) return;
+    previewEl.classList.add("is-sheet-open");
+    if (mobileBackdrop) mobileBackdrop.classList.add("is-open");
+  }
+  function closeMobileSheet() {
+    previewEl.classList.remove("is-sheet-open");
+    previewEl.style.transform = "";
+    previewEl.style.transition = "";
+    if (mobileBackdrop) mobileBackdrop.classList.remove("is-open");
+  }
+  if (mobileBackdrop) {
+    mobileBackdrop.addEventListener("click", function (ev) {
+      ev.stopPropagation();
+      closeMobileSheet();
+    });
+  }
+
+  // ----- Swipe down sulla handle per chiudere lo sheet (mobile) -----
+  (function () {
+    var startY = 0, currentY = 0, dragging = false;
+    var handle = previewEl.querySelector(".search-mobile-handle");
+    if (!handle) return;
+    handle.addEventListener("touchstart", function (ev) {
+      if (!isMobile()) return;
+      startY = ev.touches[0].clientY;
+      dragging = true;
+      previewEl.style.transition = "none";
+    }, { passive: true });
+    handle.addEventListener("touchmove", function (ev) {
+      if (!dragging) return;
+      currentY = ev.touches[0].clientY;
+      var delta = Math.max(0, currentY - startY);
+      previewEl.style.transform = "translateY(" + delta + "px)";
+    }, { passive: true });
+    handle.addEventListener("touchend", function () {
+      if (!dragging) return;
+      dragging = false;
+      previewEl.style.transition = "";
+      var delta = currentY - startY;
+      if (delta > 100) {
+        closeMobileSheet();
+      } else {
+        previewEl.style.transform = "";
+      }
+    });
+  })();
 
   var showButtons = document.querySelectorAll("[id^='search-button']");
   var lang = wrapper.getAttribute("data-lang") || "it";
@@ -87,6 +146,7 @@
   }
   function hideSearch() {
     if (!searchVisible) return;
+    closeMobileSheet();
     document.body.style.overflow = "visible";
     wrapper.style.visibility = "hidden";
     input.value = "";
@@ -162,14 +222,14 @@
       '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>' +
       '<p>' + escapeHTML(L.emptyQuery) + '</p>' +
       '</div>';
-    previewEl.innerHTML = '<div class="search-preview-empty-v2" data-preview-empty><p>' + escapeHTML(L.previewHint) + '</p></div>';
+    previewContentEl().innerHTML = '<div class="search-preview-empty-v2" data-preview-empty><p>' + escapeHTML(L.previewHint) + '</p></div>';
   }
 
   function renderNoResults(q) {
     listEl.innerHTML = '<div class="search-noresults-v2">' +
       '<p>' + escapeHTML(L.noResults) + ' <strong>"' + escapeHTML(q) + '"</strong></p>' +
       '</div>';
-    previewEl.innerHTML = '<div class="search-preview-empty-v2" data-preview-empty><p>' + escapeHTML(L.previewHint) + '</p></div>';
+    previewContentEl().innerHTML = '<div class="search-preview-empty-v2" data-preview-empty><p>' + escapeHTML(L.previewHint) + '</p></div>';
   }
 
   function renderResults(q, results) {
@@ -190,10 +250,10 @@
 
     listEl.innerHTML = html;
 
-    // Click → seleziona la riga e mostra la preview (NON naviga).
-    // Double-click → apre la pagina (shortcut per utenti che lo preferiscono).
-    // La navigazione avviene tramite Enter sulla tastiera o click sul CTA
-    // nella card di preview a destra.
+    // Click → seleziona la riga, aggiorna la preview e su mobile
+    // apre il bottom sheet. Su desktop la preview e' gia' visibile
+    // a destra e il click la aggiorna in place.
+    // Double-click → apre la pagina (shortcut desktop).
     var rows = listEl.querySelectorAll("[data-result-idx]");
     rows.forEach(function (row) {
       row.addEventListener("click", function (ev) {
@@ -201,6 +261,7 @@
         selectedIndex = parseInt(row.getAttribute("data-result-idx"), 10);
         applySelectionStyles();
         renderPreview(lastResults[selectedIndex]);
+        if (isMobile()) openMobileSheet();
       });
       row.addEventListener("dblclick", function (ev) {
         ev.preventDefault();
@@ -272,7 +333,7 @@
   // gia' testati (aspect-ratio 16:9, object-fit cover, ecc.).
   function renderPreview(result) {
     if (!result) {
-      previewEl.innerHTML = '<div class="search-preview-empty-v2"><p>' + escapeHTML(L.previewHint) + '</p></div>';
+      previewContentEl().innerHTML = '<div class="search-preview-empty-v2"><p>' + escapeHTML(L.previewHint) + '</p></div>';
       return;
     }
     var item = result.item;
@@ -318,7 +379,7 @@
       '</a>' +
     '</div>';
 
-    previewEl.innerHTML = html;
+    previewContentEl().innerHTML = html;
   }
 
   // ----- Helpers -----

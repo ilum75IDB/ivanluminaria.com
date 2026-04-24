@@ -49,7 +49,9 @@
       </button>
     </header>
 
-    {{/* --------- Body: split list (sinistra) + preview (destra) --------- */}}
+    {{/* --------- Body: split list (sinistra) + preview (destra) ---------
+         Su mobile (<900px) il preview diventa un bottom sheet che sale
+         dal basso al tap su un risultato (vedi assets/js/search.js). */}}
     <div class="search-body-v2 grid flex-auto overflow-hidden">
       {{/* LEFT: risultati raggruppati */}}
       <div id="search-list" class="search-list-v2 overflow-y-auto border-r border-neutral-200 dark:border-neutral-700" role="listbox" aria-label="Search results">
@@ -63,10 +65,18 @@
         </div>
       </div>
 
-      {{/* RIGHT: preview (lato destro, opzionale su desktop) */}}
+      {{/* Mobile only: backdrop che appare dietro il bottom sheet */}}
+      <div id="search-mobile-backdrop" class="search-mobile-backdrop" aria-hidden="true"></div>
+
+      {{/* RIGHT (desktop) / BOTTOM SHEET (mobile): preview */}}
       <div id="search-preview" class="search-preview-v2 overflow-y-auto">
-        <div class="search-preview-empty-v2" data-preview-empty>
-          <p>{{ i18n "search.preview_hint" | default "Seleziona un risultato per vedere l'anteprima" }}</p>
+        <div class="search-mobile-handle" aria-hidden="true">
+          <div class="search-mobile-handle-bar"></div>
+        </div>
+        <div class="search-preview-inner">
+          <div class="search-preview-empty-v2" data-preview-empty>
+            <p>{{ i18n "search.preview_hint" | default "Seleziona un risultato per vedere l'anteprima" }}</p>
+          </div>
         </div>
       </div>
     </div>
