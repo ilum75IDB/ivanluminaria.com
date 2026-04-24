@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Tags page — Proposta B (Raggruppato per sezione)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+      --c-oracle: #F80000;
+      --c-oracle-bg: #fef2f2;
+      --c-oracle-border: #fecaca;
+      --c-postgres: #336791;
+      --c-postgres-bg: #eff6ff;
+      --c-postgres-border: #bfdbfe;
+      --c-mysql: #00758F;
+      --c-mysql-bg: #ecfeff;
+      --c-mysql-border: #a5f3fc;
+      --c-dwh: #1E3A5F;
+      --c-dwh-bg: #f1f5f9;
+      --c-dwh-border: #cbd5e1;
+      --c-pm: #4a4a4a;
+      --c-pm-bg: #fafafa;
+      --c-pm-border: #d4d4d4;
+      --c-misc: #6b7280;
+      --c-misc-bg: #f9fafb;
+      --c-misc-border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .menu { display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--ivan-red); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+
+    .page { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+    .tags-header {
+      margin-bottom: 2.5rem;
+    }
+    .tags-eyebrow {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--ivan-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .tags-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      line-height: 1.1;
+      margin: 0.25rem 0 0.625rem;
+    }
+    .tags-subtitle {
+      font-size: 1rem;
+      color: var(--ivan-gray-obj);
+      max-width: 720px;
+      margin-bottom: 0.875rem;
+    }
+    .tags-count {
+      font-size: 0.875rem;
+      color: var(--ivan-gray-obj);
+    }
+    .tags-count strong {
+      color: var(--ivan-red);
+      font-size: 1.05rem;
+    }
+
+    /* Section grid 2 col */
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .sections-grid { grid-template-columns: 1fr; }
+    }
+
+    .section-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem 1.625rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 0.625rem;
+      margin-bottom: 1.125rem;
+      padding-bottom: 0.875rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-icon {
+      width: 2rem; height: 2rem;
+      border-radius: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    .section-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      flex: 1;
+    }
+    .section-count {
+      font-size: 0.75rem;
+      color: var(--ivan-gray-obj);
+      font-weight: 500;
+    }
+
+    .section-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+    }
+    .tag-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      padding: 0.3125rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      line-height: 1.2;
+      border-width: 1.5px;
+      border-style: solid;
+    }
+    .tag-chip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+    .tag-chip-count {
+      font-size: 0.7em;
+      opacity: 0.65;
+      font-weight: 500;
+    }
+
+    /* Color variants per section */
+    .sec-oracle .section-icon { background: var(--c-oracle); }
+    .sec-oracle .section-name { color: var(--c-oracle); }
+    .sec-oracle .section-header { border-bottom-color: var(--c-oracle); }
+    .sec-oracle .tag-chip { background: var(--c-oracle-bg); color: var(--c-oracle); border-color: var(--c-oracle-border); }
+    .sec-oracle .tag-chip:hover { background: var(--c-oracle); color: white; }
+
+    .sec-postgres .section-icon { background: var(--c-postgres); }
+    .sec-postgres .section-name { color: var(--c-postgres); }
+    .sec-postgres .section-header { border-bottom-color: var(--c-postgres); }
+    .sec-postgres .tag-chip { background: var(--c-postgres-bg); color: var(--c-postgres); border-color: var(--c-postgres-border); }
+    .sec-postgres .tag-chip:hover { background: var(--c-postgres); color: white; }
+
+    .sec-mysql .section-icon { background: var(--c-mysql); }
+    .sec-mysql .section-name { color: var(--c-mysql); }
+    .sec-mysql .section-header { border-bottom-color: var(--c-mysql); }
+    .sec-mysql .tag-chip { background: var(--c-mysql-bg); color: var(--c-mysql); border-color: var(--c-mysql-border); }
+    .sec-mysql .tag-chip:hover { background: var(--c-mysql); color: white; }
+
+    .sec-dwh .section-icon { background: var(--c-dwh); }
+    .sec-dwh .section-name { color: var(--c-dwh); }
+    .sec-dwh .section-header { border-bottom-color: var(--c-dwh); }
+    .sec-dwh .tag-chip { background: var(--c-dwh-bg); color: var(--c-dwh); border-color: var(--c-dwh-border); }
+    .sec-dwh .tag-chip:hover { background: var(--c-dwh); color: white; }
+
+    .sec-pm .section-icon { background: var(--c-pm); }
+    .sec-pm .section-name { color: var(--c-pm); }
+    .sec-pm .section-header { border-bottom-color: var(--c-pm); }
+    .sec-pm .tag-chip { background: var(--c-pm-bg); color: var(--c-pm); border-color: var(--c-pm-border); }
+    .sec-pm .tag-chip:hover { background: var(--c-pm); color: white; }
+
+    .sec-misc .section-icon { background: var(--c-misc); }
+    .sec-misc .section-name { color: var(--c-misc); }
+    .sec-misc .section-header { border-bottom-color: var(--c-misc); }
+    .sec-misc .tag-chip { background: var(--c-misc-bg); color: var(--c-misc); border-color: var(--c-misc-border); }
+    .sec-misc .tag-chip:hover { background: var(--c-misc); color: white; }
+
+    .tags-footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--ivan-gray-obj);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="mock-nav">
+  <div class="brand">IVAN LUMINARIA</div>
+  <div class="menu">
+    <span>CHI SONO</span>
+    <span>DATABASE STRATEGY</span>
+    <span>KNOW-HOW E IMPATTO</span>
+    <span>IT</span>
+    <span>🔍</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="tags-header">
+    <div class="tags-eyebrow">Tassonomia</div>
+    <h1 class="tags-title">Tag</h1>
+    <p class="tags-subtitle">
+      Tutti i tag del blog raggruppati per area tematica. Clicca un tag per vedere gli articoli che lo includono.
+    </p>
+    <div class="tags-count">
+      <strong>87</strong> tag · <strong>32</strong> articoli totali
+    </div>
+  </div>
+
+  <div class="sections-grid">
+
+    <!-- Oracle -->
+    <div class="section-card sec-oracle">
+      <div class="section-header">
+        <div class="section-icon">O</div>
+        <div class="section-name">Oracle</div>
+        <div class="section-count">14 tag</div>
+      </div>
+      <div class="section-tags">
+        <a class="tag-chip" href="#">oracle <span class="tag-chip-count">4</span></a>
+        <a class="tag-chip" href="#">data-guard <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">partitioning <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">privileges <span class="tag-chip-count">3</span></a>
+        <a class="tag-chip" href="#">roles <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">tuning <span class="tag-chip-count">4</span></a>
+        <a class="tag-chip" href="#">awr <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">ash <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">audit <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">disaster-recovery <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">hugepages <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">kernel <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">linux <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">go-live <span class="tag-chip-count">1</span></a>
+      </div>
+    </div>
+
+    <!-- PostgreSQL -->
+    <div class="section-card sec-postgres">
+      <div class="section-header">
+        <div class="section-icon">Pg</div>
+        <div class="section-name">PostgreSQL</div>
+        <div class="section-count">10 tag</div>
+      </div>
+      <div class="section-tags">
+        <a class="tag-chip" href="#">autovacuum <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">vacuum <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">bloat <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">mvcc <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">explain <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">execution-plan <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">indexes <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">pg_stat_statements <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">pg_trgm <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">optimizer <span class="tag-chip-count">1</span></a>
+      </div>
+    </div>
+
+    <!-- MySQL -->
+    <div class="section-card sec-mysql">
+      <div class="section-header">
+        <div class="section-icon">My</div>
+        <div class="section-name">MySQL</div>
+        <div class="section-count">17 tag</div>
+      </div>
+      <div class="section-tags">
+        <a class="tag-chip" href="#">mariadb <span class="tag-chip-count">4</span></a>
+        <a class="tag-chip" href="#">cluster <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">galera <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">group-replication <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">innodb-cluster <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">replication <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">backup <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">mydumper <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">mysqldump <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">binary-log <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">binlog <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">disk-space <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">authentication <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">multi-instance <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">socket <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">secure-file-priv <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">csv-export <span class="tag-chip-count">1</span></a>
+      </div>
+    </div>
+
+    <!-- DWH -->
+    <div class="section-card sec-dwh">
+      <div class="section-header">
+        <div class="section-icon">▦</div>
+        <div class="section-name">Data Warehouse</div>
+        <div class="section-count">11 tag</div>
+      </div>
+      <div class="section-tags">
+        <a class="tag-chip" href="#">data-warehouse <span class="tag-chip-count">5</span></a>
+        <a class="tag-chip" href="#">kimball <span class="tag-chip-count">3</span></a>
+        <a class="tag-chip" href="#">dimensional-modeling <span class="tag-chip-count">3</span></a>
+        <a class="tag-chip" href="#">fact-table <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">etl <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">scd <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">grain <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">granularity <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">hierarchies <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">olap <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">reporting <span class="tag-chip-count">1</span></a>
+      </div>
+    </div>
+
+    <!-- Project Management -->
+    <div class="section-card sec-pm">
+      <div class="section-header">
+        <div class="section-icon">PM</div>
+        <div class="section-name">Project Management</div>
+        <div class="section-count">25 tag</div>
+      </div>
+      <div class="section-tags">
+        <a class="tag-chip" href="#">project-management <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">consulting <span class="tag-chip-count">3</span></a>
+        <a class="tag-chip" href="#">ai <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">ai-manager <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">smart-working <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">remote-work <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">meeting <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">scrum <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">agile <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">communication <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">conflict-management <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">freelance <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">payments <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">italy <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">european-union <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">outsourcing <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">governance <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">github <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">cycling <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">health <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">productivity <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">insurance <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">bug-fixing <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">architecture <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">strategy <span class="tag-chip-count">1</span></a>
+      </div>
+    </div>
+
+    <!-- Misc / Cross-sezione -->
+    <div class="section-card sec-misc">
+      <div class="section-header">
+        <div class="section-icon">∼</div>
+        <div class="section-name">Cross-section</div>
+        <div class="section-count">10 tag</div>
+      </div>
+      <div class="section-tags">
+        <a class="tag-chip" href="#">performance <span class="tag-chip-count">8</span></a>
+        <a class="tag-chip" href="#">security <span class="tag-chip-count">3</span></a>
+        <a class="tag-chip" href="#">grant <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">revoke <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">restore <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">recovery <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">query-tuning <span class="tag-chip-count">2</span></a>
+        <a class="tag-chip" href="#">monitoring <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">diagnostic <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">diagnostics <span class="tag-chip-count">1</span></a>
+        <a class="tag-chip" href="#">high-availability <span class="tag-chip-count">2</span></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tags-footer">
+    Suggerimento: i tag in <em>Cross-section</em> compaiono in articoli di sezioni diverse e non hanno una appartenenza univoca.
+  </div>
+
+</div>
+
+</body>
+</html>
