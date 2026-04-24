@@ -293,7 +293,7 @@
         html += '<p class="search-preview-excerpt-v2">' + escapeHTML(item.excerpt) + '</p>';
       }
       html += '<a class="search-preview-cta-v2" href="' + item.permalink + '">' +
-        escapeHTML(L.readTheArticle) +
+        '<span class="search-preview-cta-label">' + escapeHTML(L.readTheArticle) + '</span>' +
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>' +
       '</a>';
     } else if (kind === "glossary") {
@@ -306,7 +306,7 @@
         html += '<p class="search-preview-excerpt-v2">' + escapeHTML(item.excerpt) + '</p>';
       }
       html += '<a class="search-preview-cta-v2" href="' + item.permalink + '">' +
-        escapeHTML(L.readDefinition) +
+        '<span class="search-preview-cta-label">' + escapeHTML(L.readDefinition) + '</span>' +
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>' +
       '</a>';
     } else if (kind === "tag") {
@@ -319,7 +319,7 @@
         html += '<p class="search-preview-excerpt-v2">' + escapeHTML(item.excerpt) + '</p>';
       }
       html += '<a class="search-preview-cta-v2" href="' + item.permalink + '">' +
-        escapeHTML(L.viewTag) +
+        '<span class="search-preview-cta-label">' + escapeHTML(L.viewTag) + '</span>' +
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>' +
       '</a>';
     }
