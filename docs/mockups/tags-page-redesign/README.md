@@ -9,8 +9,10 @@ Redesign della pagina `/it/tags/` (taxonomy listing — lista di tutti i tag) pe
 - **Proposta A — Tag cloud editoriale** [`proposal-a.html`](proposal-a.html)
   Pillole rosse con dimensione proporzionale alla popolarità del tag. Header minimo + cloud centrato. Ordinamento per frequenza. Pattern classico tag cloud, immediato visivamente. Hover effect con leggera scala.
 
-- **Proposta B — Raggruppato per sezione** [`proposal-b.html`](proposal-b.html)
-  Tag classificati in 6 gruppi tematici (Oracle, PostgreSQL, MySQL, Data Warehouse, Project Management, Misc). Ogni gruppo con header colorato sulla scia delle sezioni del sito. Tag come pillole all'interno. Navigabile per dominio.
+- **Proposta B — Raggruppato per sezione** [`proposal-b.html`](proposal-b.html) ⭐ **scelta**
+  Tag classificati per sezione (Oracle, PostgreSQL, MySQL, Data Warehouse, Project Management). Ogni gruppo con header colorato sulla scia delle sezioni del sito, tag come pillole all'interno.
+
+  **Classificazione automatica multi-sezione**: un tag appare in **tutte** le sezioni dove ha almeno un articolo. Es. `partitioning` (Oracle + DWH) appare in entrambe le sezioni; `performance` (in 5 sezioni) appare in tutte e 5. Niente sezione "Cross-section" — la classificazione riflette i dati reali. Il count nel chip è **globale** (totale articoli con quel tag, indipendentemente dalla sezione in cui appare): cliccando si va a `/tags/<slug>/` che mostra tutti gli articoli.
 
 - **Proposta C — Indice alfabetico** [`proposal-c.html`](proposal-c.html)
   Layout a 3 colonne con header alfabetici A, B, C... e jump-bar laterale per scorrere rapidamente. Pattern stile rubrica/glossario: scalabile a 200+ tag senza perdere ordine. Più pulito.
@@ -26,13 +28,13 @@ Redesign della pagina `/it/tags/` (taxonomy listing — lista di tutti i tag) pe
 - **Proposta C mobile — Indice con quick-jump A-Z** [`mobile-proposal-c.html`](mobile-proposal-c.html)
   Lista a una colonna con header alfabetici e barra laterale verticale A-Z (stile Contatti iOS) che scrolla all'inizio della sezione corrispondente.
 
-## Raccomandazione
+## Decisione
 
-**Proposta B (raggruppato per sezione)** è la più coerente col resto del sito (lo stesso pattern delle sezioni Oracle/MySQL/PG/DWH/PM è già presente in homepage, search, menu). Aiuta il lettore a trovare tag per dominio invece che doverli scorrere alfabeticamente. Il costo: serve una classificazione manuale o euristica (es. associare ogni tag alla categoria più frequente tra gli articoli che lo usano).
+**Proposta B (raggruppato per sezione)** ⭐ con classificazione automatica multi-sezione.
 
-**Proposta C (indice alfabetico)** è la più pulita e scalabile a lungo termine — ottima se il numero di tag crescerà a 200+ nei prossimi 2 anni.
+Coerente col resto del sito (stesso pattern delle sezioni Oracle/MySQL/PG/DWH/PM già presente in homepage, search, menu). Aiuta il lettore a trovare tag per dominio invece che doverli scorrere alfabeticamente. La classificazione è automatica: per ogni sezione, Hugo estrae i tag dagli articoli appartenenti a quella sezione. Un tag può apparire in più sezioni — riflette esattamente la realtà dei dati senza richiedere mappatura manuale.
 
-**Proposta A (cloud)** è quella visivamente più di impatto ma con il range attuale (1-8 articoli per tag) la differenza tra "popolare" e "raro" è poca.
+(Le proposte A e C restano qui come riferimento ma non saranno implementate.)
 
 ## Elementi condivisi
 
