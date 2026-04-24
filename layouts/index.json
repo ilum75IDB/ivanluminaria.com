@@ -1,0 +1,107 @@
+{{/*
+  layouts/index.json — override del template search index del tema Congo.
+
+  Genera un JSON strutturato per Fuse.js con:
+    - kind: "article" | "glossary" | "tag"  (per raggruppamento nella search)
+    - title, permalink
+    - section: etichetta leggibile ("Database Strategy", "Oracle", "Glossario", "Tag")
+    - date: solo articoli (null per glossario e tag)
+    - readingTime: solo articoli
+    - summary: testo breve (1-2 righe) — per la lista
+    - excerpt: testo lungo (preview) — per la card preview destra
+    - thumbnail: cover image per articoli (null altrove)
+    - articleCount: numero di articoli taggati (solo tag)
+    - content: testo full plain per matching Fuse (non mostrato)
+
+  Esclude: landing pages, home, about, resumes, taxonomy roots.
+  Include: articoli (content/posts/**), mini-pagine glossario (content/glossary/<term>/), term pages (tag).
+*/}}
+{{- $index := slice -}}
+
+{{/* ===== Articoli ===== */}}
+{{- range where .Site.RegularPages "Section" "posts" -}}
+  {{- $section := .Site.GetPage "section" .Section -}}
+  {{- $sectionTitle := "" -}}
+  {{- with .CurrentSection -}}
+    {{- $sectionTitle = .Title -}}
+  {{- end -}}
+  {{- $thumb := "" -}}
+  {{- with .Params.image -}}
+    {{- with $.Resources.GetMatch . -}}
+      {{- $thumb = .RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $summary := "" -}}
+  {{- with .Description -}}
+    {{- $summary = . -}}
+  {{- else -}}
+    {{- $summary = .Summary | plainify | truncate 160 -}}
+  {{- end -}}
+  {{- $excerpt := "" -}}
+  {{- with .Description -}}
+    {{- $excerpt = . -}}
+  {{- else -}}
+    {{- $excerpt = .Plain | truncate 400 -}}
+  {{- end -}}
+  {{- $content := .Plain | truncate 2000 -}}
+  {{- $index = $index | append (dict
+    "kind" "article"
+    "title" (.Title | emojify | safeJS)
+    "section" ($sectionTitle | emojify | safeJS)
+    "date" (.Date | time.Format (site.Params.dateFormat | default ":date_long"))
+    "readingTime" .ReadingTime
+    "summary" ($summary | emojify | safeJS)
+    "excerpt" ($excerpt | emojify | safeJS)
+    "thumbnail" $thumb
+    "content" ($content | safeJS)
+    "permalink" .Permalink
+    )
+  -}}
+{{- end -}}
+
+{{/* ===== Glossario: mini-pagine ===== */}}
+{{- range where .Site.RegularPages "Section" "glossary" -}}
+  {{- $summary := .Description | default (.Plain | plainify | truncate 160) -}}
+  {{- $excerpt := .Description | default (.Plain | plainify | truncate 400) -}}
+  {{- $content := .Plain | truncate 2000 -}}
+  {{- $aka := "" -}}
+  {{- with .Params.aka -}}
+    {{- $aka = . -}}
+  {{- end -}}
+  {{- $index = $index | append (dict
+    "kind" "glossary"
+    "title" (.Title | emojify | safeJS)
+    "section" (i18n "glossary.label" | default "Glossario")
+    "aka" ($aka | safeJS)
+    "summary" ($summary | emojify | safeJS)
+    "excerpt" ($excerpt | emojify | safeJS)
+    "content" ($content | safeJS)
+    "permalink" .Permalink
+    )
+  -}}
+{{- end -}}
+
+{{/* ===== Tag (term pages) ===== */}}
+{{- range .Site.Taxonomies.tags -}}
+  {{- $term := .Page -}}
+  {{- $count := len .Pages -}}
+  {{- $titles := slice -}}
+  {{- range first 5 (.Pages.ByDate.Reverse) -}}
+    {{- $titles = $titles | append .Title -}}
+  {{- end -}}
+  {{- $excerpt := delimit $titles " · " -}}
+  {{- $summary := printf "%d %s" $count (i18n "tag.articles_count" | default "articoli taggati") -}}
+  {{- $index = $index | append (dict
+    "kind" "tag"
+    "title" $term.Title
+    "section" (i18n "tags.title" | default "Tag")
+    "articleCount" $count
+    "summary" $summary
+    "excerpt" $excerpt
+    "content" (printf "%s %s" $term.Title $excerpt)
+    "permalink" $term.Permalink
+    )
+  -}}
+{{- end -}}
+
+{{- $index | jsonify -}}

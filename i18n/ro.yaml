@@ -24,6 +24,13 @@ glossary:
   back_to_index: "Inapoi la glosar"
   read_more: "Citește mai mult →"
 
+search:
+  empty_placeholder: "Începe să scrii pentru a căuta…"
+  preview_hint: "Selectează un rezultat pentru previzualizare"
+  shortcut_navigate: "Navighează"
+  shortcut_open: "Deschide"
+  shortcut_close: "Închide"
+
 knowhow:
   count_text: "profiluri profesionale"
   read_roadmap: "Citește roadmap-ul"
