@@ -1,17 +1,20 @@
 {{/*
-  layouts/_default/term.html — taxonomy term page (Tags, Categories).
-  Issue cards: refactor da lista legacy a grid D1 coerente col resto del sito.
+  layouts/tags/term.html — taxonomy term page per tag (/tags/<slug>/).
 
-  Struttura:
-    - Header minimale: breadcrumb 'Tags /' + titolo tag
-    - Grid D1 di articoli (riusa .list-d1-articles-grid + article-card partial)
-    - Load more button se > 6 articoli
+  Override esplicito (project layouts/tags/term.html) che vince su
+  qualsiasi layout del tema Congo per specificity in lookup order.
+  Necessario perche' Hugo, in alcune configurazioni, sceglieva un
+  template diverso da layouts/_default/term.html per le term page
+  della taxonomy 'tags'.
+
+  Struttura: header minimale (breadcrumb + titolo tag + count) +
+  grid D1 di articoli (riusa .list-d1-articles-grid + article-card
+  partial) + load more button se > 6 articoli.
+
+  Identico a layouts/_default/term.html: quest'ultimo resta come
+  fallback per altre taxonomie (es. categories).
 */}}
 {{ define "main" }}
-<!-- DEBUG: layouts/tags/term.html ATTIVO -->
-<div style="background:#fff200;color:#c00;padding:20px;font-size:24px;font-weight:bold;border:4px solid #c00;margin-bottom:20px;">
-  🔧 DEBUG / layouts/tags/term.html ATTIVO — Kind={{ .Kind }} · Title={{ .Title }} · Pages={{ len .Pages }}
-</div>
   {{ $articles := .Pages.ByDate.Reverse }}
   {{ $initialCount := 6 }}
   {{ $batchSize := 6 }}

@@ -8,7 +8,6 @@
     - Load more button se > 6 articoli
 */}}
 {{ define "main" }}
-<!-- DEBUG: layouts/_default/term.html (Kind={{ .Kind }} Title={{ .Title }}) -->
   {{ $articles := .Pages.ByDate.Reverse }}
   {{ $initialCount := 6 }}
   {{ $batchSize := 6 }}

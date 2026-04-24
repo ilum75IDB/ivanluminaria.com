@@ -48,9 +48,7 @@ tool `WebFetch`.
 
 ## Issue Aperte — Enhancement (Dev Tools)
 
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 84 | https://github.com/ilum75IDB/ivanluminaria.com/issues/84 | Feature: redesign pagina /tags/ con raggruppamento per sezione | aperta |
+*Nessuna issue aperta.*
 
 ## Issue Aperte — Bug
 
@@ -60,6 +58,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 84 | https://github.com/ilum75IDB/ivanluminaria.com/issues/84 | Feature: redesign pagina /tags/ con raggruppamento per sezione | 2026-04-25 |
 | 83 | https://github.com/ilum75IDB/ivanluminaria.com/issues/83 | Feature: redesign pagina di ricerca con layout card coerente al resto del sito | 2026-04-24 |
 | 82 | https://github.com/ilum75IDB/ivanluminaria.com/issues/82 | Bug: Hugo build hangava 30+ minuti su image processing dopo hclean (libvips WEBP+JPEG) | 2026-04-24 |
 | 20 | https://github.com/ilum75IDB/ivanluminaria.com/issues/20 | Da single instance a Data Guard - il giorno in cui il CEO ha capito il DR | 2026-03-09 |
