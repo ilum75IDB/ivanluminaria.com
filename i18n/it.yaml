@@ -14,6 +14,11 @@ list:
 
 tags:
   title: "TAG"
+  eyebrow: "Tassonomia"
+  subtitle: "Tutti i tag del blog raggruppati per area tematica. Un tag puo' apparire in piu' sezioni se e' usato in articoli di sezioni diverse — il count nel chip e' sempre globale."
+  tags_label: "tag"
+  articles_label: "articoli totali"
+  footer_hint: "Un tag puo' apparire in piu' sezioni: il numero nel chip e' il totale globale di articoli con quel tag."
 
 term:
   tagged_articles: "articoli taggati"

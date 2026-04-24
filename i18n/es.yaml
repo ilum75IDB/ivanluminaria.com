@@ -14,6 +14,11 @@ list:
 
 tags:
   title: "ETIQUETAS"
+  eyebrow: "Taxonomía"
+  subtitle: "Todas las etiquetas del blog agrupadas por área temática. Una etiqueta puede aparecer en varias secciones si se usa en artículos de secciones diferentes — el contador del chip es siempre global."
+  tags_label: "etiquetas"
+  articles_label: "artículos totales"
+  footer_hint: "Una etiqueta puede aparecer en varias secciones: el número en el chip es el total global de artículos con esa etiqueta."
 
 term:
   tagged_articles: "artículos etiquetados"

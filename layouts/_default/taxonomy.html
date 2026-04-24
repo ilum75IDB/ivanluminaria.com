@@ -1,0 +1,138 @@
+{{/*
+  layouts/_default/taxonomy.html — taxonomy listing page (es. /tags/).
+  Redesign #84: tag raggruppati per sezione, classificazione automatica
+  multi-sezione (un tag appare in tutte le sezioni dove ha articoli),
+  count globale (totale articoli con quel tag, indipendente dalla
+  sezione in cui si vede il chip).
+
+  Mobile (<900px): sezioni accordion chiuse di default, tap per aprire.
+*/}}
+{{ define "main" }}
+  {{/* Sezioni del sito nell'ordine del menu */}}
+  {{- $sectionSlugs := slice "data-warehouse" "project-management" "oracle" "postgresql" "mysql" -}}
+
+  {{/* Conta tag e articoli totali per il subtitle */}}
+  {{- $allTagPages := slice -}}
+  {{- with .Site.GetPage "/tags" -}}
+    {{- $allTagPages = .Pages -}}
+  {{- end -}}
+  {{- $totalTags := len $allTagPages -}}
+  {{- $totalArticles := len (where .Site.RegularPages "Section" "posts") -}}
+
+  <article class="max-w-full tags-page">
+
+    <header class="tags-page-header">
+      <div class="tags-page-eyebrow">{{ i18n "tags.eyebrow" | default "Tassonomia" }}</div>
+      <h1 class="tags-page-title">{{ .Title | emojify }}</h1>
+      <p class="tags-page-subtitle">
+        {{ i18n "tags.subtitle" | default "Tutti i tag del blog raggruppati per area tematica. Un tag puo' apparire in piu' sezioni se e' usato in articoli di sezioni diverse — il count nel chip e' sempre globale." }}
+      </p>
+      <div class="tags-page-count">
+        <strong>{{ $totalTags }}</strong>&nbsp;{{ i18n "tags.tags_label" | default "tag" }}
+        &nbsp;·&nbsp;
+        <strong>{{ $totalArticles }}</strong>&nbsp;{{ i18n "tags.articles_label" | default "articoli totali" }}
+      </div>
+    </header>
+
+    <div class="tags-page-sections">
+      {{- range $sectionSlug := $sectionSlugs -}}
+        {{- $section := site.GetPage (printf "/posts/%s" $sectionSlug) -}}
+        {{- if $section -}}
+
+          {{/* Raccogli i tag unici dagli articoli di questa sezione */}}
+          {{- $tagsInSection := dict -}}
+          {{- range $section.RegularPagesRecursive -}}
+            {{- range .Params.tags -}}
+              {{- $tagsInSection = merge $tagsInSection (dict . true) -}}
+            {{- end -}}
+          {{- end -}}
+
+          {{/* Costruisci la lista con count globale (.Pages della term page) */}}
+          {{- $tagList := slice -}}
+          {{- range $tagName, $_ := $tagsInSection -}}
+            {{- $slug := $tagName | urlize -}}
+            {{- $termPage := site.GetPage (printf "/tags/%s" $slug) -}}
+            {{- if $termPage -}}
+              {{- $tagList = $tagList | append (dict
+                "name" $tagName
+                "permalink" $termPage.RelPermalink
+                "count" (len $termPage.Pages))
+              -}}
+            {{- end -}}
+          {{- end -}}
+
+          {{/* Ordina per count desc, poi per nome asc */}}
+          {{- $tagList = sort (sort $tagList "name" "asc") "count" "desc" -}}
+
+          {{- if gt (len $tagList) 0 -}}
+          <section class="tags-section-card sec-{{ $sectionSlug }} is-open" data-section="{{ $sectionSlug }}">
+            <button type="button" class="tags-section-header" aria-expanded="true">
+              <span class="tags-section-icon" aria-hidden="true">
+                {{- if eq $sectionSlug "oracle" -}}O
+                {{- else if eq $sectionSlug "postgresql" -}}Pg
+                {{- else if eq $sectionSlug "mysql" -}}My
+                {{- else if eq $sectionSlug "data-warehouse" -}}▦
+                {{- else if eq $sectionSlug "project-management" -}}PM
+                {{- end -}}
+              </span>
+              <span class="tags-section-name">{{ $section.Title }}</span>
+              <span class="tags-section-count">{{ len $tagList }}&nbsp;{{ i18n "tags.tags_label" | default "tag" }}</span>
+              <svg class="tags-section-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </button>
+            <div class="tags-section-tags">
+              {{- range $tagList -}}
+                <a class="tags-section-tag-chip" href="{{ .permalink }}">
+                  {{ .name }}<span class="tags-section-tag-count">{{ .count }}</span>
+                </a>
+              {{- end -}}
+            </div>
+          </section>
+          {{- end -}}
+
+        {{- end -}}
+      {{- end -}}
+    </div>
+
+    <footer class="tags-page-footer">
+      <em>{{ i18n "tags.footer_hint" | default "Un tag puo' apparire in piu' sezioni: il numero nel chip e' il totale globale di articoli con quel tag." }}</em>
+    </footer>
+
+  </article>
+
+  {{/* JS: toggle accordion (mobile only). Su desktop le sezioni
+       restano sempre aperte; su <900px partono chiuse e si toggla
+       al tap sull'header. */}}
+  <script>
+    (function () {
+      var mq = window.matchMedia('(max-width: 900px)');
+      var cards = document.querySelectorAll('.tags-section-card');
+
+      function applyMobileState() {
+        cards.forEach(function (card) {
+          if (mq.matches) {
+            card.classList.remove('is-open');
+            var btn = card.querySelector('.tags-section-header');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          } else {
+            card.classList.add('is-open');
+            var btn = card.querySelector('.tags-section-header');
+            if (btn) btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      }
+      applyMobileState();
+      if (mq.addEventListener) mq.addEventListener('change', applyMobileState);
+
+      cards.forEach(function (card) {
+        var btn = card.querySelector('.tags-section-header');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          card.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', card.classList.contains('is-open') ? 'true' : 'false');
+        });
+      });
+    })();
+  </script>
+{{ end }}
