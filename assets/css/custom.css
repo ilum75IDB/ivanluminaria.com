@@ -800,15 +800,16 @@ footer {
   z-index: 100000 !important;
 }
 
-/* Modal container — impongo dimensioni senza dipendere da Tailwind purge */
+/* Modal container — grid 3 righe (header / body / footer) garantisce
+   footer sempre visibile indipendentemente dalla viewport. */
 .search-modal-v2 {
   width: 100% !important;
   max-width: 1080px !important;
   max-height: calc(100vh - 6rem) !important;
   margin: 4rem auto 0 !important;
   overflow: hidden !important;
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-rows: auto 1fr auto !important;
 }
 
 /* Header */
@@ -831,14 +832,13 @@ footer {
 }
 .dark .search-input-v2 { color: #e5e7eb; }
 
-/* Body: split grid — force grid layout anche senza classi Tailwind.
-   flex: 1 1 0 + min-height: 0 permette al body di shrinkare quando
-   la viewport e piccola, lasciando sempre visibile header e footer. */
+/* Body: split grid interno (lista + preview). Il modal parent e
+   gia grid con grid-template-rows auto 1fr auto, quindi il body
+   riempie automaticamente lo spazio tra header e footer. */
 .search-body-v2 {
   display: grid !important;
   grid-template-columns: 380px 1fr !important;
   overflow: hidden !important;
-  flex: 1 1 0 !important;
   min-height: 0 !important;
 }
 @media (max-width: 900px) {

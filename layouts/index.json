@@ -20,13 +20,14 @@
 
 {{/* ===== Articoli ===== */}}
 {{- range where .Site.RegularPages "Section" "posts" -}}
+  {{- $page := . -}}
   {{- $sectionTitle := "" -}}
   {{- with .CurrentSection -}}
     {{- $sectionTitle = .Title -}}
   {{- end -}}
   {{- $thumb := "" -}}
   {{- with .Params.image -}}
-    {{- with $.Resources.GetMatch . -}}
+    {{- with $page.Resources.GetMatch . -}}
       {{- $thumb = .RelPermalink -}}
     {{- end -}}
   {{- end -}}
