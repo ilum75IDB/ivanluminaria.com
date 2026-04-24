@@ -267,60 +267,56 @@
   }
 
   // ----- Preview (right side) -----
+  // Riusa lo stesso pattern .list-d1-article-card usato nelle liste
+  // del sito, cosi' la preview eredita dimensioni, responsive e stile
+  // gia' testati (aspect-ratio 16:9, object-fit cover, ecc.).
   function renderPreview(result) {
-    if (!result) { previewEl.innerHTML = '<div class="search-preview-empty-v2"><p>' + escapeHTML(L.previewHint) + '</p></div>'; return; }
+    if (!result) {
+      previewEl.innerHTML = '<div class="search-preview-empty-v2"><p>' + escapeHTML(L.previewHint) + '</p></div>';
+      return;
+    }
     var item = result.item;
     var kind = item.kind || "article";
-    var html = '';
+    var sectionLabel = "";
+    var excerpt = item.excerpt || "";
+    var metaLeft = "";
+    var metaRight = "";
 
     if (kind === "article") {
-      var coverHTML = item.thumbnail
-        ? '<div class="search-preview-cover-v2"><img src="' + escapeHTML(item.thumbnail) + '" alt="" loading="lazy"></div>'
-        : '';
-      html += '<span class="search-preview-badge-v2 search-preview-badge-article">' + escapeHTML(L.articles) + '</span>';
-      html += coverHTML;
-      html += '<h2 class="search-preview-title-v2">' + escapeHTML(item.title) + '</h2>';
-      var metaParts = [];
-      if (item.section) metaParts.push('<span>' + escapeHTML(item.section) + '</span>');
-      if (item.date) metaParts.push('<span>' + escapeHTML(item.date) + '</span>');
-      if (item.readingTime) metaParts.push('<span>' + item.readingTime + ' min</span>');
-      if (metaParts.length) {
-        html += '<div class="search-preview-meta-v2">' + metaParts.join('<span class="search-preview-meta-sep-v2">·</span>') + '</div>';
-      }
-      if (item.excerpt) {
-        html += '<p class="search-preview-excerpt-v2">' + escapeHTML(item.excerpt) + '</p>';
-      }
-      html += '<a class="search-preview-cta-v2" href="' + item.permalink + '">' +
-        '<span class="search-preview-cta-label">' + escapeHTML(L.readTheArticle) + '</span>' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>' +
-      '</a>';
+      sectionLabel = item.section || L.articles;
+      metaLeft = item.date ? escapeHTML(item.date) : "";
+      metaRight = item.readingTime ? item.readingTime + " min" : "";
     } else if (kind === "glossary") {
-      html += '<span class="search-preview-badge-v2 search-preview-badge-glossary">' + escapeHTML(L.glossary) + '</span>';
-      html += '<h2 class="search-preview-title-v2">' + escapeHTML(item.title) + '</h2>';
-      if (item.aka) {
-        html += '<p class="search-preview-aka-v2">' + escapeHTML(item.aka) + '</p>';
-      }
-      if (item.excerpt) {
-        html += '<p class="search-preview-excerpt-v2">' + escapeHTML(item.excerpt) + '</p>';
-      }
-      html += '<a class="search-preview-cta-v2" href="' + item.permalink + '">' +
-        '<span class="search-preview-cta-label">' + escapeHTML(L.readDefinition) + '</span>' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>' +
-      '</a>';
+      sectionLabel = L.glossary;
+      if (item.aka) excerpt = item.aka + " — " + excerpt;
     } else if (kind === "tag") {
-      html += '<span class="search-preview-badge-v2 search-preview-badge-tag">' + escapeHTML(L.tags) + '</span>';
-      html += '<h2 class="search-preview-title-v2">#' + escapeHTML(item.title) + '</h2>';
-      if (item.summary) {
-        html += '<p class="search-preview-meta-v2"><span>' + escapeHTML(item.summary) + '</span></p>';
-      }
-      if (item.excerpt) {
-        html += '<p class="search-preview-excerpt-v2">' + escapeHTML(item.excerpt) + '</p>';
-      }
-      html += '<a class="search-preview-cta-v2" href="' + item.permalink + '">' +
-        '<span class="search-preview-cta-label">' + escapeHTML(L.viewTag) + '</span>' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>' +
-      '</a>';
+      sectionLabel = L.tags;
+      metaLeft = item.summary ? escapeHTML(item.summary) : "";
     }
+
+    var thumbHTML = item.thumbnail
+      ? '<div class="list-d1-article-thumb"><img src="' + escapeHTML(item.thumbnail) + '" alt="" loading="lazy"></div>'
+      : '';
+
+    var metaHTML = "";
+    if (metaLeft || metaRight) {
+      metaHTML = '<div class="list-d1-article-meta">' +
+        (metaLeft ? '<span class="list-d1-article-date">' + metaLeft + '</span>' : '') +
+        (metaRight ? '<span class="list-d1-article-reading-time">' + metaRight + '</span>' : '') +
+      '</div>';
+    }
+
+    var html = '<div class="search-preview-card-wrap">' +
+      '<a class="list-d1-article-card" href="' + item.permalink + '">' +
+        thumbHTML +
+        '<div class="list-d1-article-body">' +
+          '<span class="list-d1-article-section">' + escapeHTML(sectionLabel) + '</span>' +
+          '<h3>' + escapeHTML(kind === "tag" ? "#" + item.title : item.title) + '</h3>' +
+          (excerpt ? '<p class="list-d1-article-excerpt">' + escapeHTML(excerpt) + '</p>' : '') +
+          metaHTML +
+        '</div>' +
+      '</a>' +
+    '</div>';
 
     previewEl.innerHTML = html;
   }
