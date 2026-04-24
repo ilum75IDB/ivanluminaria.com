@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Mobile — Proposta A (Drill-down stile iOS)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+      --bg-soft: #f8fafc;
+      --selected: #fef2f2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      background: #262626;
+      color: #1f2937;
+      min-height: 100vh;
+      padding: 2rem 0;
+    }
+    .mockup-label {
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .phones-grid {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+
+    /* iPhone-like frame */
+    .phone {
+      width: 390px;
+      height: 780px;
+      border-radius: 40px;
+      background: #000;
+      padding: 10px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      background: white;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 28px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 100;
+    }
+    .phone-label {
+      text-align: center;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 0.875rem;
+      opacity: 0.9;
+    }
+    .phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Status bar fake */
+    .status-bar {
+      height: 44px;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: 0.35rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1f2937;
+      background: white;
+      flex-shrink: 0;
+    }
+
+    /* ========== SCHERMO 1: Input + Lista ========== */
+    .s1-header {
+      padding: 0.875rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .s1-close {
+      background: none; border: none; cursor: pointer;
+      width: 2.25rem; height: 2.25rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ivan-gray-obj);
+      flex-shrink: 0;
+    }
+    .s1-close svg { width: 1.375rem; height: 1.375rem; }
+    .s1-input-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-soft);
+      border-radius: 0.625rem;
+      padding: 0.5rem 0.75rem;
+    }
+    .s1-input-wrap svg {
+      width: 1rem; height: 1rem;
+      color: var(--ivan-gray-obj);
+      flex-shrink: 0;
+    }
+    .s1-input {
+      flex: 1; border: none; outline: none;
+      background: transparent;
+      font-family: inherit; font-size: 1rem;
+      color: var(--ivan-gray-title);
+    }
+    .s1-clear {
+      background: #d1d5db; border: none;
+      width: 1.125rem; height: 1.125rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: 0.7rem;
+    }
+
+    .s1-results {
+      flex: 1;
+      overflow-y: auto;
+      background: #fafbfc;
+    }
+    .s1-group { padding: 0.5rem 0 0.25rem; }
+    .s1-group-label {
+      padding: 0.875rem 1rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--ivan-gray-obj);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .s1-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    .s1-row:active { background: var(--selected); }
+    .s1-icon {
+      flex-shrink: 0;
+      width: 2rem; height: 2rem;
+      border-radius: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .s1-icon-article { background: #dbeafe; color: var(--ivan-blue); }
+    .s1-icon-glossary { background: #fef3c7; color: #b45309; }
+    .s1-icon-tag { background: #fef2f2; color: var(--ivan-red); }
+    .s1-content { flex: 1; min-width: 0; }
+    .s1-title {
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--ivan-gray-title);
+      line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .s1-title mark { background: #fde68a; padding: 0 2px; border-radius: 2px; }
+    .s1-subtitle {
+      font-size: 0.72rem; color: var(--ivan-gray-obj);
+      margin-top: 0.125rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .s1-chevron {
+      color: #d1d5db;
+      flex-shrink: 0;
+    }
+    .s1-chevron svg { width: 1rem; height: 1rem; }
+
+    .s1-footer {
+      padding: 0.625rem 1rem;
+      font-size: 0.7rem;
+      color: var(--ivan-gray-obj);
+      text-align: center;
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ========== SCHERMO 2: Preview full-screen ========== */
+    .s2-header {
+      padding: 0.625rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .s2-back {
+      background: none; border: none; cursor: pointer;
+      width: 2.25rem; height: 2.25rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ivan-red);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .s2-back svg { width: 1rem; height: 1rem; margin-right: 0.125rem; }
+    .s2-title-bar {
+      flex: 1;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ivan-gray-title);
+      text-align: center;
+      padding-right: 2.25rem;
+    }
+
+    .s2-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    .s2-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .s2-cover {
+      width: 100%; height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+    .s2-card-body { padding: 1.125rem; }
+    .s2-section {
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--ivan-red);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .s2-main-title {
+      font-size: 1.25rem; font-weight: 800;
+      color: var(--ivan-gray-title);
+      line-height: 1.25;
+      margin-bottom: 0.625rem;
+    }
+    .s2-meta {
+      display: flex; gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 0.875rem;
+    }
+    .s2-meta-sep { color: #d1d5db; }
+    .s2-excerpt {
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.55;
+    }
+
+    .s2-cta-bar {
+      padding: 0.875rem 1rem calc(0.875rem + 1.25rem);
+      background: white;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .s2-cta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.125rem;
+      border-radius: 0.75rem;
+      background: var(--ivan-red);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      width: 100%;
+    }
+    .s2-cta svg { width: 1rem; height: 1rem; }
+  </style>
+</head>
+<body>
+
+<div class="mockup-label">Proposta A — Drill-down stile iOS (2 schermate)</div>
+
+<div class="phones-grid">
+
+  <!-- ========== SCHERMO 1: Lista risultati ========== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>● ● ● ●</span>
+        </div>
+
+        <div class="s1-header">
+          <button class="s1-close" aria-label="Chiudi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+          <div class="s1-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input class="s1-input" type="text" value="bin">
+            <button class="s1-clear">×</button>
+          </div>
+        </div>
+
+        <div class="s1-results">
+
+          <div class="s1-group">
+            <div class="s1-group-label">Articoli · 2</div>
+            <a class="s1-row" href="#">
+              <div class="s1-icon s1-icon-article">📄</div>
+              <div class="s1-content">
+                <div class="s1-title"><mark>Bin</mark>ary log in MySQL: cosa sono…</div>
+                <div class="s1-subtitle">Database Strategy · 31 marzo 2026</div>
+              </div>
+              <div class="s1-chevron">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+              </div>
+            </a>
+            <a class="s1-row" href="#">
+              <div class="s1-icon s1-icon-article">📄</div>
+              <div class="s1-content">
+                <div class="s1-title">Disco pieno su un cluster MySQL…</div>
+                <div class="s1-subtitle">MySQL · 14 ottobre 2025</div>
+              </div>
+              <div class="s1-chevron">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+              </div>
+            </a>
+          </div>
+
+          <div class="s1-group">
+            <div class="s1-group-label">Glossario · 2</div>
+            <a class="s1-row" href="#">
+              <div class="s1-icon s1-icon-glossary">📖</div>
+              <div class="s1-content">
+                <div class="s1-title"><mark>Bin</mark>ary log</div>
+                <div class="s1-subtitle">Glossario · binlog</div>
+              </div>
+              <div class="s1-chevron">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+              </div>
+            </a>
+            <a class="s1-row" href="#">
+              <div class="s1-icon s1-icon-glossary">📖</div>
+              <div class="s1-content">
+                <div class="s1-title">mysql<mark>bin</mark>log</div>
+                <div class="s1-subtitle">Glossario</div>
+              </div>
+              <div class="s1-chevron">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+              </div>
+            </a>
+          </div>
+
+          <div class="s1-group">
+            <div class="s1-group-label">Tag · 2</div>
+            <a class="s1-row" href="#">
+              <div class="s1-icon s1-icon-tag">🏷</div>
+              <div class="s1-content">
+                <div class="s1-title">#<mark>bin</mark>log</div>
+                <div class="s1-subtitle">3 articoli</div>
+              </div>
+              <div class="s1-chevron">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+              </div>
+            </a>
+            <a class="s1-row" href="#">
+              <div class="s1-icon s1-icon-tag">🏷</div>
+              <div class="s1-content">
+                <div class="s1-title">#<mark>bin</mark>ary-log</div>
+                <div class="s1-subtitle">2 articoli</div>
+              </div>
+              <div class="s1-chevron">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="s1-footer">6 risultati per "bin"</div>
+
+      </div>
+    </div>
+    <div class="phone-label">1. Lista risultati (full width)</div>
+  </div>
+
+  <!-- ========== SCHERMO 2: Preview full-screen ========== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>● ● ● ●</span>
+        </div>
+
+        <div class="s2-header">
+          <button class="s2-back" aria-label="Indietro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+            Indietro
+          </button>
+          <div class="s2-title-bar">Anteprima</div>
+        </div>
+
+        <div class="s2-body">
+          <div class="s2-card">
+            <div class="s2-cover" style="background-image: url('https://ivanluminaria.com/it/posts/mysql/binary-log-mysql.cover_hu_76b04c2e92d5c7b.jpg');"></div>
+            <div class="s2-card-body">
+              <div class="s2-section">Database Strategy</div>
+              <h2 class="s2-main-title">Binary log in MySQL: cosa sono, come gestirli e quando puoi cancellarli</h2>
+              <div class="s2-meta">
+                <span>31 marzo 2026</span>
+                <span class="s2-meta-sep">·</span>
+                <span>10 min di lettura</span>
+              </div>
+              <p class="s2-excerpt">
+                Un server MySQL con il disco al 95%, 180 GB di binary log accumulati in sei mesi. Da lì parte un viaggio nei binlog: cosa contengono, perché esistono, come funzionano con la replica e il point-in-time recovery, e soprattutto come gestirli senza fare danni.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="s2-cta-bar">
+          <a class="s2-cta" href="#">
+            Leggi l'articolo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="phone-label">2. Preview full-screen (dopo tap)</div>
+  </div>
+
+</div>
+
+</body>
+</html>

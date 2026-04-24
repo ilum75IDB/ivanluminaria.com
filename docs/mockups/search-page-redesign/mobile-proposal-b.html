@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Mobile — Proposta B (Bottom sheet stile Apple Maps)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+      --bg-soft: #f8fafc;
+      --selected: #fef2f2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      background: #262626;
+      color: #1f2937;
+      min-height: 100vh;
+      padding: 2rem 0;
+    }
+    .mockup-label {
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .phones-grid {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+
+    .phone {
+      width: 390px;
+      height: 780px;
+      border-radius: 40px;
+      background: #000;
+      padding: 10px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      background: white;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 28px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 100;
+    }
+    .phone-label {
+      text-align: center;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 0.875rem;
+      opacity: 0.9;
+    }
+    .phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .status-bar {
+      height: 44px;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: 0.35rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1f2937;
+      background: white;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    /* ===== Header + Input (sempre visibile) ===== */
+    .m-header {
+      padding: 0.875rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      z-index: 3;
+    }
+    .m-close {
+      background: none; border: none; cursor: pointer;
+      width: 2.25rem; height: 2.25rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ivan-gray-obj);
+      flex-shrink: 0;
+    }
+    .m-close svg { width: 1.375rem; height: 1.375rem; }
+    .m-input-wrap {
+      flex: 1;
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--bg-soft);
+      border-radius: 0.625rem;
+      padding: 0.5rem 0.75rem;
+    }
+    .m-input-wrap svg {
+      width: 1rem; height: 1rem;
+      color: var(--ivan-gray-obj);
+      flex-shrink: 0;
+    }
+    .m-input {
+      flex: 1; border: none; outline: none;
+      background: transparent;
+      font-family: inherit; font-size: 1rem;
+      color: var(--ivan-gray-title);
+    }
+
+    /* ===== Lista risultati ===== */
+    .m-body {
+      flex: 1;
+      overflow-y: auto;
+      background: #fafbfc;
+      position: relative;
+    }
+    .m-group-label {
+      padding: 0.875rem 1rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--ivan-gray-obj);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .m-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+    }
+    .m-row.is-selected {
+      background: var(--selected);
+      border-left-color: var(--ivan-red);
+    }
+    .m-icon {
+      flex-shrink: 0;
+      width: 2rem; height: 2rem;
+      border-radius: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .m-icon-article { background: #dbeafe; color: var(--ivan-blue); }
+    .m-icon-glossary { background: #fef3c7; color: #b45309; }
+    .m-icon-tag { background: #fef2f2; color: var(--ivan-red); }
+    .m-content { flex: 1; min-width: 0; }
+    .m-title {
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--ivan-gray-title);
+      line-height: 1.3;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .m-title mark { background: #fde68a; padding: 0 2px; border-radius: 2px; }
+    .m-subtitle {
+      font-size: 0.72rem; color: var(--ivan-gray-obj);
+      margin-top: 0.125rem;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+
+    /* ===== Bottom sheet (preview sale dal basso) ===== */
+    .bottom-sheet-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+    .bottom-sheet {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      background: white;
+      border-radius: 1.25rem 1.25rem 0 0;
+      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2);
+      z-index: 11;
+      max-height: 70%;
+      display: flex;
+      flex-direction: column;
+      animation: slide-up 0.3s ease-out;
+    }
+    @keyframes slide-up {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .bs-handle {
+      padding: 0.5rem 0 0.25rem;
+      display: flex; justify-content: center;
+      flex-shrink: 0;
+      cursor: grab;
+    }
+    .bs-handle-bar {
+      width: 2.5rem; height: 0.25rem;
+      background: #d1d5db;
+      border-radius: 999px;
+    }
+    .bs-body {
+      overflow-y: auto;
+      padding: 0.5rem 1rem 1rem;
+    }
+
+    .bs-section {
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--ivan-red);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .bs-cover {
+      width: 100%; height: 150px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 0.75rem;
+      margin-bottom: 0.875rem;
+      border: 1px solid var(--border);
+    }
+    .bs-main-title {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--ivan-gray-title);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    .bs-meta {
+      display: flex; gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--ivan-gray-obj);
+      margin-bottom: 0.75rem;
+    }
+    .bs-meta-sep { color: #d1d5db; }
+    .bs-excerpt {
+      font-size: 0.85rem;
+      color: #374151;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+    .bs-cta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.125rem;
+      border-radius: 0.75rem;
+      background: var(--ivan-red);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      width: 100%;
+    }
+    .bs-cta svg { width: 1rem; height: 1rem; }
+  </style>
+</head>
+<body>
+
+<div class="mockup-label">Proposta B — Bottom sheet stile Apple Maps</div>
+
+<div class="phones-grid">
+
+  <!-- ========== SCHERMO 1: Lista senza sheet ========== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>● ● ● ●</span>
+        </div>
+
+        <div class="m-header">
+          <button class="m-close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+          <div class="m-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input class="m-input" type="text" value="bin">
+          </div>
+        </div>
+
+        <div class="m-body">
+          <div class="m-group-label">Articoli · 2</div>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-article">📄</div>
+            <div class="m-content">
+              <div class="m-title"><mark>Bin</mark>ary log in MySQL: cosa sono…</div>
+              <div class="m-subtitle">Database Strategy · 31 marzo 2026</div>
+            </div>
+          </a>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-article">📄</div>
+            <div class="m-content">
+              <div class="m-title">Disco pieno su un cluster MySQL…</div>
+              <div class="m-subtitle">MySQL · 14 ottobre 2025</div>
+            </div>
+          </a>
+
+          <div class="m-group-label">Glossario · 2</div>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-glossary">📖</div>
+            <div class="m-content">
+              <div class="m-title"><mark>Bin</mark>ary log</div>
+              <div class="m-subtitle">Glossario · binlog</div>
+            </div>
+          </a>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-glossary">📖</div>
+            <div class="m-content">
+              <div class="m-title">mysql<mark>bin</mark>log</div>
+              <div class="m-subtitle">Glossario</div>
+            </div>
+          </a>
+
+          <div class="m-group-label">Tag · 2</div>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-tag">🏷</div>
+            <div class="m-content">
+              <div class="m-title">#<mark>bin</mark>log</div>
+              <div class="m-subtitle">3 articoli</div>
+            </div>
+          </a>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-tag">🏷</div>
+            <div class="m-content">
+              <div class="m-title">#<mark>bin</mark>ary-log</div>
+              <div class="m-subtitle">2 articoli</div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="phone-label">1. Lista (sheet chiusa)</div>
+  </div>
+
+  <!-- ========== SCHERMO 2: Bottom sheet aperto ========== -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>● ● ● ●</span>
+        </div>
+
+        <div class="m-header">
+          <button class="m-close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+          <div class="m-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input class="m-input" type="text" value="bin">
+          </div>
+        </div>
+
+        <div class="m-body">
+          <div class="m-group-label">Articoli · 2</div>
+          <a class="m-row is-selected" href="#">
+            <div class="m-icon m-icon-article">📄</div>
+            <div class="m-content">
+              <div class="m-title"><mark>Bin</mark>ary log in MySQL: cosa sono…</div>
+              <div class="m-subtitle">Database Strategy · 31 marzo 2026</div>
+            </div>
+          </a>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-article">📄</div>
+            <div class="m-content">
+              <div class="m-title">Disco pieno su un cluster MySQL…</div>
+              <div class="m-subtitle">MySQL · 14 ottobre 2025</div>
+            </div>
+          </a>
+          <div class="m-group-label">Glossario · 2</div>
+          <a class="m-row" href="#">
+            <div class="m-icon m-icon-glossary">📖</div>
+            <div class="m-content">
+              <div class="m-title"><mark>Bin</mark>ary log</div>
+              <div class="m-subtitle">Glossario · binlog</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Bottom sheet con preview -->
+        <div class="bottom-sheet-backdrop"></div>
+        <div class="bottom-sheet">
+          <div class="bs-handle">
+            <div class="bs-handle-bar"></div>
+          </div>
+          <div class="bs-body">
+            <div class="bs-section">Database Strategy</div>
+            <div class="bs-cover" style="background-image: url('https://ivanluminaria.com/it/posts/mysql/binary-log-mysql.cover_hu_76b04c2e92d5c7b.jpg');"></div>
+            <h2 class="bs-main-title">Binary log in MySQL: cosa sono, come gestirli e quando puoi cancellarli</h2>
+            <div class="bs-meta">
+              <span>31 marzo 2026</span>
+              <span class="bs-meta-sep">·</span>
+              <span>10 min</span>
+            </div>
+            <p class="bs-excerpt">
+              Un server MySQL con il disco al 95%, 180 GB di binary log accumulati in sei mesi. Da lì parte un viaggio nei binlog: cosa contengono, perché esistono, come funzionano con la replica e il point-in-time recovery.
+            </p>
+            <a class="bs-cta" href="#">
+              Leggi l'articolo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="phone-label">2. Bottom sheet salito (dopo tap)</div>
+  </div>
+
+</div>
+
+</body>
+</html>
