@@ -114,10 +114,8 @@
           threshold: 0.0,
           includeMatches: true,
           keys: [
-            { name: "title", weight: 0.6 },
-            { name: "aka", weight: 0.25 },
-            { name: "summary", weight: 0.1 },
-            { name: "section", weight: 0.05 }
+            { name: "title", weight: 0.7 },
+            { name: "aka", weight: 0.3 }
           ]
         };
         fuse = new Fuse(data, options);
