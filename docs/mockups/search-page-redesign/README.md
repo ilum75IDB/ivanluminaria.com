@@ -31,6 +31,23 @@ Tutti e tre i mockup presuppongono che l'indice Fuse.js venga ripulito prima del
 
 **Proposta A** — è la più coerente col redesign recente (sezioni, tag page, Know-How, Chi Sono tutti usano lo stile editoriale raggruppato con intestazione + conteggio). Il salto da B/C al resto del sito sarebbe troppo netto.
 
+## Proposte mobile (iPhone-like 390×780)
+
+La versione desktop (split column) non funziona su mobile: la colonna preview a destra occupa troppo spazio. Tre approcci differenti alla stessa query "bin":
+
+- **Proposta A mobile — Drill-down stile iOS** [`mobile-proposal-a.html`](mobile-proposal-a.html)
+  2 schermate: la prima è l'input + lista risultati full-width, tap su un risultato porta alla seconda schermata con preview intera (cover + meta + excerpt + CTA "Leggi l'articolo"). Back button in alto per tornare alla lista. Pattern familiare iOS (Mail, Messages, Impostazioni).
+
+- **Proposta B mobile — Bottom sheet stile Apple Maps** [`mobile-proposal-b.html`](mobile-proposal-b.html)
+  Lista sempre visibile in alto; tap su un risultato fa salire dal basso un bottom sheet con la preview (maniglia di trascinamento in cima). Swipe down o tap sul backdrop per chiudere. Rimani ancorato al contesto, ottima UX touch, leggermente più complesso da implementare (animazione swipe).
+
+- **Proposta C mobile — Accordion inline** [`mobile-proposal-c.html`](mobile-proposal-c.html)
+  Tap su un risultato espande quella singola riga in-place mostrando la preview sotto (cover + meta + excerpt + CTA). Gli altri risultati restano visibili scorrendo. Nessun cambio di schermata, pattern molto semplice, zero gesture custom.
+
+### Raccomandazione mobile
+
+**Proposta A (drill-down)** è la scelta più sicura: pattern universale su iOS e Android, implementazione banale (solo toggle di due view), e il full-screen preview è ottimo per letture lunghe. **Proposta B** è la più "premium" ma richiede gestire animazioni di swipe. **Proposta C** è la più compatta ma rischia di creare confusione quando l'utente ha già scrollato in fondo alla lista e tappa un item in cima.
+
 ## Elementi condivisi
 
 - Colori brand: `--ivan-blue #336791`, `--ivan-red #F80000`
