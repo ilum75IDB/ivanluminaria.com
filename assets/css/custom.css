@@ -834,12 +834,15 @@ footer {
 
 /* Body: split grid interno (lista + preview). Il modal parent e
    gia grid con grid-template-rows auto 1fr auto, quindi il body
-   riempie automaticamente lo spazio tra header e footer. */
+   riempie automaticamente lo spazio tra header e footer.
+   min-width:0 sui figli impedisce a contenuti larghi (es. immagini)
+   di far sforare la colonna del grid. */
 .search-body-v2 {
   display: grid !important;
-  grid-template-columns: 380px 1fr !important;
+  grid-template-columns: 380px minmax(0, 1fr) !important;
   overflow: hidden !important;
   min-height: 0 !important;
+  min-width: 0 !important;
 }
 @media (max-width: 900px) {
   .search-body-v2 {
@@ -852,10 +855,21 @@ footer {
   overflow-y: auto !important;
   border-right: 1px solid var(--border, #e5e7eb);
   min-height: 0;
+  min-width: 0;
 }
 #search-preview {
   overflow-y: auto !important;
+  overflow-x: hidden !important;
   min-height: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Regola di sicurezza: nessuna immagine nella preview puo'
+   uscire dal container o essere piu' larga del parent */
+.search-preview-v2 img {
+  max-width: 100% !important;
+  height: auto;
 }
 
 /* Header e footer non devono mai comprimersi */
@@ -976,9 +990,14 @@ footer {
 .search-preview-badge-glossary { background: #fef3c7; color: #b45309; }
 .search-preview-badge-tag { background: #fef2f2; color: var(--ivan-red); }
 
+/* Cover container: padding-bottom trick per forzare aspect-ratio 3:2
+   su ogni browser, max-height come hard cap (thumb, non cover pagina),
+   position:relative per permettere all'img di essere absolute inset. */
 .search-preview-cover-v2 {
+  position: relative !important;
   width: 100% !important;
   max-width: 100% !important;
+  max-height: 240px !important;
   aspect-ratio: 3 / 2;
   border-radius: 0.625rem;
   margin-bottom: 1rem;
@@ -987,12 +1006,16 @@ footer {
   display: block;
 }
 .search-preview-cover-v2 img {
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
   max-width: 100% !important;
+  max-height: 100% !important;
   object-fit: cover !important;
   display: block !important;
   margin: 0 !important;
+  padding: 0 !important;
 }
 
 .search-preview-title-v2 {
