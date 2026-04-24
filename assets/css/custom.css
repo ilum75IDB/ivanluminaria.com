@@ -800,18 +800,24 @@ footer {
   z-index: 100000 !important;
 }
 
-/* Modal container — grid 3 righe (header / body / footer) garantisce
-   footer sempre visibile indipendentemente dalla viewport.
-   width: min(1080, 100vw - 2rem) evita che su viewport < 1080 il
-   modal esca a destra/sinistra. */
+/* Modal container — flex column con header/footer fissi e body che
+   riempie. width/max-width su min(1080, viewport-2rem) garantisce
+   che il modal non esca mai dal viewport. */
 .search-modal-v2 {
   width: min(1080px, calc(100vw - 2rem)) !important;
   max-width: min(1080px, calc(100vw - 2rem)) !important;
   max-height: calc(100vh - 6rem) !important;
   margin: 4rem auto 0 !important;
   overflow: hidden !important;
-  display: grid !important;
-  grid-template-rows: auto 1fr auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+.search-header-v2,
+.search-footer-v2 {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* Header */
@@ -834,44 +840,47 @@ footer {
 }
 .dark .search-input-v2 { color: #e5e7eb; }
 
-/* Body: split grid interno (lista + preview). Il modal parent e
-   gia grid con grid-template-rows auto 1fr auto, quindi il body
-   riempie automaticamente lo spazio tra header e footer.
-   min-width:0 sui figli impedisce a contenuti larghi (es. immagini)
-   di far sforare la colonna del grid. */
+/* Body: split flex row. Flex e' piu' prevedibile del grid per questo
+   tipo di layout e non permette al contenuto di spostare le colonne. */
 .search-body-v2 {
-  display: grid !important;
-  grid-template-columns: 380px minmax(0, 1fr) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
   overflow: hidden !important;
   min-height: 0 !important;
   min-width: 0 !important;
-}
-@media (max-width: 900px) {
-  .search-body-v2 {
-    grid-template-columns: 1fr !important;
-  }
-  #search-preview { display: none !important; }
-  #search-list { border-right: none !important; }
+  box-sizing: border-box !important;
 }
 #search-list {
-  overflow-y: auto !important;
-  border-right: 1px solid var(--border, #e5e7eb);
-  min-height: 0;
-  min-width: 0;
-}
-#search-preview {
+  flex: 0 0 380px !important;
+  width: 380px !important;
+  max-width: 380px !important;
+  min-width: 0 !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  min-height: 0;
-  min-width: 0;
-  max-width: 100%;
+  border-right: 1px solid var(--border, #e5e7eb);
+  background: #fafbfc;
+  box-sizing: border-box !important;
 }
-
-/* Regola di sicurezza: nessuna immagine nella preview puo'
-   uscire dal container o essere piu' larga del parent */
-.search-preview-v2 img {
+#search-preview {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
   max-width: 100% !important;
-  height: auto;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+@media (max-width: 900px) {
+  #search-list {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-right: none !important;
+  }
+  #search-preview { display: none !important; }
 }
 
 /* Header e footer non devono mai comprimersi */
