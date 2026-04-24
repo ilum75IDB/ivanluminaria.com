@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Tags page — Proposta A (Tag cloud editoriale)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivan-blue: #336791;
+      --ivan-red: #F80000;
+      --ivan-red-dark: #b30000;
+      --ivan-gray-title: #4a4a4a;
+      --ivan-gray-obj: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    .mock-nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .mock-nav .brand { font-size: 1.5rem; font-weight: 800; color: var(--ivan-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mock-nav .menu { display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--ivan-red); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+
+    .page { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+    .tags-header {
+      display: flex; align-items: baseline; gap: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    .tags-eyebrow {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--ivan-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .tags-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--ivan-gray-title);
+      line-height: 1.1;
+      margin: 0.25rem 0 0.625rem;
+    }
+    .tags-subtitle {
+      font-size: 1rem;
+      color: var(--ivan-gray-obj);
+      max-width: 700px;
+      margin-bottom: 0.875rem;
+    }
+    .tags-count {
+      font-size: 0.875rem;
+      color: var(--ivan-gray-obj);
+    }
+    .tags-count strong {
+      color: var(--ivan-red);
+      font-size: 1.05rem;
+    }
+
+    .tags-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2rem 0;
+    }
+
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem 0.75rem;
+      align-items: baseline;
+    }
+    .tag-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: white;
+      border: 1.5px solid #fecaca;
+      color: var(--ivan-red);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.15s;
+      line-height: 1.2;
+    }
+    .tag-chip:hover {
+      background: var(--ivan-red);
+      color: white;
+      border-color: var(--ivan-red);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(248, 0, 0, 0.2);
+    }
+    .tag-chip-count {
+      font-size: 0.7em;
+      opacity: 0.65;
+      font-weight: 500;
+    }
+    /* Dimensioni proporzionali alla popolarità */
+    .tag-size-1 { font-size: 0.85rem; padding: 0.375rem 0.75rem; }
+    .tag-size-2 { font-size: 0.95rem; }
+    .tag-size-3 { font-size: 1.1rem; padding: 0.625rem 1.125rem; }
+    .tag-size-4 { font-size: 1.3rem; font-weight: 700; padding: 0.75rem 1.25rem; }
+    .tag-size-5 { font-size: 1.55rem; font-weight: 700; padding: 0.875rem 1.5rem; }
+
+    .tags-footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--ivan-gray-obj);
+    }
+    .sort-toggle {
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .sort-toggle button {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.375rem 0.875rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--ivan-gray-obj);
+    }
+    .sort-toggle button.active {
+      background: var(--ivan-red);
+      color: white;
+      border-color: var(--ivan-red);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="mock-nav">
+  <div class="brand">IVAN LUMINARIA</div>
+  <div class="menu">
+    <span>CHI SONO</span>
+    <span>DATABASE STRATEGY</span>
+    <span>KNOW-HOW E IMPATTO</span>
+    <span>IT</span>
+    <span>🔍</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="tags-header">
+    <div>
+      <div class="tags-eyebrow">Tassonomia</div>
+      <h1 class="tags-title">Tag</h1>
+      <p class="tags-subtitle">
+        Naviga gli argomenti del blog attraverso i tag. La dimensione del chip indica la popolarità del tag (numero di articoli che lo usano).
+      </p>
+      <div class="tags-count">
+        <strong>87</strong> tag · <strong>32</strong> articoli totali
+      </div>
+    </div>
+  </div>
+
+  <div class="tags-divider"></div>
+
+  <div class="sort-toggle" style="margin-bottom: 1.5rem;">
+    <span style="font-size: 0.78rem; color: var(--ivan-gray-obj); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Ordina per</span>
+    <button class="active">Popolarità</button>
+    <button>A-Z</button>
+  </div>
+
+  <div class="tags-cloud">
+    <a class="tag-chip tag-size-5" href="#">performance <span class="tag-chip-count">8</span></a>
+    <a class="tag-chip tag-size-4" href="#">data-warehouse <span class="tag-chip-count">5</span></a>
+    <a class="tag-chip tag-size-4" href="#">oracle <span class="tag-chip-count">4</span></a>
+    <a class="tag-chip tag-size-4" href="#">mariadb <span class="tag-chip-count">4</span></a>
+    <a class="tag-chip tag-size-4" href="#">tuning <span class="tag-chip-count">4</span></a>
+    <a class="tag-chip tag-size-3" href="#">dimensional-modeling <span class="tag-chip-count">3</span></a>
+    <a class="tag-chip tag-size-3" href="#">consulting <span class="tag-chip-count">3</span></a>
+    <a class="tag-chip tag-size-3" href="#">privileges <span class="tag-chip-count">3</span></a>
+    <a class="tag-chip tag-size-3" href="#">security <span class="tag-chip-count">3</span></a>
+    <a class="tag-chip tag-size-3" href="#">kimball <span class="tag-chip-count">3</span></a>
+    <a class="tag-chip tag-size-3" href="#">project-management <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-3" href="#">cluster <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">backup <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">replication <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">ai <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">smart-working <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">data-guard <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">disk-space <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">execution-plan <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">fact-table <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">grant <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">high-availability <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">meeting <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">mydumper <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">partitioning <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">query-tuning <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">restore <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">revoke <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-2" href="#">roles <span class="tag-chip-count">2</span></a>
+    <a class="tag-chip tag-size-1" href="#">agile <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">ai-manager <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">architecture <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">ash <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">audit <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">authentication <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">autovacuum <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">awr <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">binary-log <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">binlog <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">bloat <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">bug-fixing <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">communication <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">conflict-management <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">csv-export <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">cycling <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">diagnostic <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">diagnostics <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">disaster-recovery <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">etl <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">european-union <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">explain <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">freelance <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">galera <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">github <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">go-live <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">governance <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">grain <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">granularity <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">group-replication <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">health <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">hierarchies <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">hugepages <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">indexes <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">innodb-cluster <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">insurance <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">italy <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">kernel <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">linux <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">monitoring <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">multi-instance <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">mvcc <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">mysqldump <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">olap <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">optimizer <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">outsourcing <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">payments <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">pg_stat_statements <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">pg_trgm <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">productivity <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">recovery <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">remote-work <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">reporting <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">scd <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">scrum <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">secure-file-priv <span class="tag-chip-count">1</span></a>
+    <a class="tag-chip tag-size-1" href="#">socket <span class="tag-chip-count">1</span></a>
+  </div>
+
+  <div class="tags-footer">
+    Suggerimento: clicca un tag per vedere tutti gli articoli che lo includono.
+  </div>
+
+</div>
+
+</body>
+</html>
