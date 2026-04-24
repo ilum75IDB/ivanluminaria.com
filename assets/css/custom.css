@@ -795,11 +795,15 @@ footer {
    + preview card a destra. Vedi docs/mockups/search-page-redesign.
    ============================ */
 
-/* Modal container */
+/* Modal container — impongo dimensioni senza dipendere da Tailwind purge */
 .search-modal-v2 {
-  max-height: calc(100vh - 6rem);
-  margin-top: 4rem;
-  overflow: hidden;
+  width: 100% !important;
+  max-width: 1080px !important;
+  max-height: calc(100vh - 6rem) !important;
+  margin: 4rem auto 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* Header */
@@ -821,16 +825,28 @@ footer {
 }
 .dark .search-input-v2 { color: #e5e7eb; }
 
-/* Body: split grid */
+/* Body: split grid — force grid layout anche senza classi Tailwind */
 .search-body-v2 {
-  grid-template-columns: 380px 1fr;
-  min-height: 420px;
-  max-height: calc(100vh - 14rem);
+  display: grid !important;
+  grid-template-columns: 380px 1fr !important;
+  min-height: 420px !important;
+  max-height: calc(100vh - 14rem) !important;
+  overflow: hidden !important;
+  flex: 1 1 auto !important;
 }
 @media (max-width: 900px) {
-  .search-body-v2 { grid-template-columns: 1fr; }
+  .search-body-v2 {
+    grid-template-columns: 1fr !important;
+  }
   #search-preview { display: none !important; }
   #search-list { border-right: none !important; }
+}
+#search-list {
+  overflow-y: auto !important;
+  border-right: 1px solid var(--border, #e5e7eb);
+}
+#search-preview {
+  overflow-y: auto !important;
 }
 
 /* Left: list */

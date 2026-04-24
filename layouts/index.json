@@ -5,7 +5,7 @@
     - kind: "article" | "glossary" | "tag"  (per raggruppamento nella search)
     - title, permalink
     - section: etichetta leggibile ("Database Strategy", "Oracle", "Glossario", "Tag")
-    - date: solo articoli (null per glossario e tag)
+    - date: solo articoli (null per glossario e tag, e per articoli con date-zero)
     - readingTime: solo articoli
     - summary: testo breve (1-2 righe) — per la lista
     - excerpt: testo lungo (preview) — per la card preview destra
@@ -20,7 +20,6 @@
 
 {{/* ===== Articoli ===== */}}
 {{- range where .Site.RegularPages "Section" "posts" -}}
-  {{- $section := .Site.GetPage "section" .Section -}}
   {{- $sectionTitle := "" -}}
   {{- with .CurrentSection -}}
     {{- $sectionTitle = .Title -}}
@@ -44,11 +43,15 @@
     {{- $excerpt = .Plain | truncate 400 -}}
   {{- end -}}
   {{- $content := .Plain | truncate 2000 -}}
+  {{- $date := "" -}}
+  {{- if not .Date.IsZero -}}
+    {{- $date = .Date | time.Format (site.Params.dateFormat | default ":date_long") -}}
+  {{- end -}}
   {{- $index = $index | append (dict
     "kind" "article"
     "title" (.Title | emojify | safeJS)
     "section" ($sectionTitle | emojify | safeJS)
-    "date" (.Date | time.Format (site.Params.dateFormat | default ":date_long"))
+    "date" $date
     "readingTime" .ReadingTime
     "summary" ($summary | emojify | safeJS)
     "excerpt" ($excerpt | emojify | safeJS)
@@ -71,7 +74,7 @@
   {{- $index = $index | append (dict
     "kind" "glossary"
     "title" (.Title | emojify | safeJS)
-    "section" (i18n "glossary.label" | default "Glossario")
+    "section" (i18n "glossary.title" | default "Glossario")
     "aka" ($aka | safeJS)
     "summary" ($summary | emojify | safeJS)
     "excerpt" ($excerpt | emojify | safeJS)
@@ -81,27 +84,32 @@
   -}}
 {{- end -}}
 
-{{/* ===== Tag (term pages) ===== */}}
-{{- range .Site.Taxonomies.tags -}}
-  {{- $term := .Page -}}
-  {{- $count := len .Pages -}}
-  {{- $titles := slice -}}
-  {{- range first 5 (.Pages.ByDate.Reverse) -}}
-    {{- $titles = $titles | append .Title -}}
+{{/* ===== Tag (term pages) =====
+     Iteriamo sulla taxonomy landing /tags/ e prendiamo le term pages reali.
+     Evitiamo il range diretto su .Site.Taxonomies.tags che non espone .Page
+     come oggetto singolo.
+*/}}
+{{- with .Site.GetPage "/tags" -}}
+  {{- range .Pages -}}
+    {{- $count := len .Pages -}}
+    {{- $titles := slice -}}
+    {{- range first 5 (.Pages.ByDate.Reverse) -}}
+      {{- $titles = $titles | append .Title -}}
+    {{- end -}}
+    {{- $excerpt := delimit $titles " · " -}}
+    {{- $summary := printf "%d %s" $count (i18n "tags.title" | default "articoli taggati") -}}
+    {{- $index = $index | append (dict
+      "kind" "tag"
+      "title" .Title
+      "section" (i18n "tags.title" | default "Tag")
+      "articleCount" $count
+      "summary" $summary
+      "excerpt" $excerpt
+      "content" (printf "%s %s" .Title $excerpt)
+      "permalink" .Permalink
+      )
+    -}}
   {{- end -}}
-  {{- $excerpt := delimit $titles " · " -}}
-  {{- $summary := printf "%d %s" $count (i18n "tag.articles_count" | default "articoli taggati") -}}
-  {{- $index = $index | append (dict
-    "kind" "tag"
-    "title" $term.Title
-    "section" (i18n "tags.title" | default "Tag")
-    "articleCount" $count
-    "summary" $summary
-    "excerpt" $excerpt
-    "content" (printf "%s %s" $term.Title $excerpt)
-    "permalink" $term.Permalink
-    )
-  -}}
 {{- end -}}
 
 {{- $index | jsonify -}}
