@@ -275,7 +275,7 @@
 
     if (kind === "article") {
       var coverHTML = item.thumbnail
-        ? '<div class="search-preview-cover-v2" style="background-image:url(' + JSON.stringify(item.thumbnail) + ');"></div>'
+        ? '<div class="search-preview-cover-v2"><img src="' + escapeHTML(item.thumbnail) + '" alt="" loading="lazy"></div>'
         : '';
       html += '<span class="search-preview-badge-v2 search-preview-badge-article">' + escapeHTML(L.articles) + '</span>';
       html += coverHTML;
