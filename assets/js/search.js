@@ -115,10 +115,9 @@
           includeMatches: true,
           keys: [
             { name: "title", weight: 0.6 },
-            { name: "aka", weight: 0.3 },
-            { name: "summary", weight: 0.3 },
-            { name: "section", weight: 0.1 },
-            { name: "content", weight: 0.2 }
+            { name: "aka", weight: 0.25 },
+            { name: "summary", weight: 0.1 },
+            { name: "section", weight: 0.05 }
           ]
         };
         fuse = new Fuse(data, options);
@@ -193,18 +192,22 @@
 
     listEl.innerHTML = html;
 
-    // Click + hover → select row
+    // Click → seleziona la riga e mostra la preview (NON naviga).
+    // Double-click → apre la pagina (shortcut per utenti che lo preferiscono).
+    // La navigazione avviene tramite Enter sulla tastiera o click sul CTA
+    // nella card di preview a destra.
     var rows = listEl.querySelectorAll("[data-result-idx]");
     rows.forEach(function (row) {
       row.addEventListener("click", function (ev) {
         ev.preventDefault();
-        var idx = parseInt(row.getAttribute("data-result-idx"), 10);
-        window.location.href = lastResults[idx].item.permalink;
-      });
-      row.addEventListener("mouseenter", function () {
         selectedIndex = parseInt(row.getAttribute("data-result-idx"), 10);
         applySelectionStyles();
         renderPreview(lastResults[selectedIndex]);
+      });
+      row.addEventListener("dblclick", function (ev) {
+        ev.preventDefault();
+        var idx = parseInt(row.getAttribute("data-result-idx"), 10);
+        window.location.href = lastResults[idx].item.permalink;
       });
     });
 
