@@ -1,16 +1,17 @@
-# LinkedIn post — Nuovo layout sito (23 aprile 2026)
+# LinkedIn post — Nuovo layout sito (preparato 23 aprile 2026, aggiornato 26 aprile 2026)
 
-Post preparato per annunciare il restyling completo del sito (chiusura Issue #78 + #80 + #81).
+Post preparato per annunciare il restyling completo del sito.
+Aggiornato dopo aver chiuso anche #82 (build hang Hugo), #83 (search redesign desktop split column + mobile bottom sheet) e #84 (pagina Tag raggruppata per sezione).
 
-Chiede un parere ai follower nei commenti su usabilità, estetica e responsive.
+Tono leggero, chiede un parere ai follower nei commenti su usabilità, estetica e responsive.
 
 ---
 
 🇬🇧 English version:
 
-Just published the new layout of my site — full restyle, more modern, tailor-made.
+I rebuilt my site from scratch. Section pages, About, Know-How — and now also search with live preview and the new Tags page, everything in card layout, desktop and mobile.
 
-Section pages rebuilt from scratch, new "About me", new "Know-How and Impact".
+Try the search: type a word, see articles + glossary entries + tags side by side, with preview on the right. On mobile the preview slides up from the bottom like Apple Maps.
 
 Now I genuinely need a second pair of eyes. Does it read well? Is it too busy? Too clean? Does it hold up on mobile?
 
@@ -22,9 +23,9 @@ And if you find it useful, bookmark it — new article every Tuesday morning.
 
 🇮🇹 Versione italiana:
 
-Ho appena pubblicato il nuovo layout del sito — restyling completo, più moderno, fatto su misura.
+Ho ricostruito il sito da capo. Pagine delle sezioni, Chi sono, Know-How — e ora anche la ricerca con anteprima live e la nuova pagina Tag, tutto a card, desktop e mobile.
 
-Pagine delle sezioni ricostruite da zero, nuova "Chi sono", nuovo "Know-How e Impatto".
+Provate la ricerca: digitate una parola, vedete articoli + glossario + tag affiancati, con anteprima a destra. Da telefono l'anteprima sale dal basso come su Apple Maps.
 
 Ora mi serve un secondo paio d'occhi. Si legge bene? È troppo carico? Troppo pulito? Da mobile regge?
 
@@ -34,4 +35,4 @@ Lasciatemi la prima impressione nei commenti — quella che vi salta all'occhio 
 
 E se vi sembra utile, salvatelo tra i preferiti — nuovo articolo ogni martedì mattina.
 
-#webdesign #UX #UIdesign #siteredesign #Hugo #GitHub #designsystem #databaseblog #personalbrand #consulenzaIT #italiandesign #feedback #sitoweb #webdevelopment #ivanluminaria
+#webdesign #UX #UIdesign #siteredesign #Hugo #searchUX #responsive #mobileUX #databaseblog #personalbrand #consulenzaIT #italiandesign #feedback #sitoweb #ivanluminaria
