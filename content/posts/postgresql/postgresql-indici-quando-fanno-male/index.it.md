@@ -206,7 +206,7 @@ Marco ha guardato la tabella, poi me. "Cioè abbiamo migliorato sia la lettura c
 
 Quel giorno gli ho detto la stessa cosa in tre modi diversi, perché volevo che la portasse via:
 
-> Un indice non è "in più che male non fa". Un indice è un costo permanente su ogni `INSERT`, `UPDATE`, `DELETE` — più disco, più WAL, più VACUUM, più contention. Esiste solo se serve. Se non serve, va via.
+> Quando pensi ad un indice da creare su una tabella, non pensi "mettiamone uno in più tanto male non fa". Un indice è un costo permanente su ogni `INSERT`, `UPDATE`, `DELETE` — più disco, più WAL, più VACUUM, più contention. Lo crei solo se serve veramente. E se c'è e non serve, va via.
 
 Marco lo ha scritto nel suo quaderno. Anni dopo è diventato lui il senior in un altro progetto. Mi è arrivato un messaggio: *"Mi è capitata una tabella con ventidue indici. Otto a zero. Ho fatto la pulizia. Pensavo a te."*
 
