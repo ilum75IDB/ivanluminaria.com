@@ -47,7 +47,7 @@ WHERE relname = 'cittadini_servizi'
 ORDER BY idx_scan ASC;
 ```
 
-L'output è uscito brutale. Otto indici con `idx_scan = 0`. Mai. Usati. Una. Volta.
+L'output è uscito brutale. Otto indici con `idx_scan = 0`. Mai — usati — una — volta.
 
 Marco ha guardato lo schermo. "Mai? Nemmeno per sbaglio?"
 
@@ -55,7 +55,7 @@ Marco ha guardato lo schermo. "Mai? Nemmeno per sbaglio?"
 
 "Allora si tolgono e via."
 
-"Ferma. Prima dobbiamo capire perché ci sono."
+"Frena. Prima dobbiamo capire perché ci sono."
 
 Quella frase lì — non eliminare niente prima di aver capito perché esiste — è la regola d'oro quando arrivi su un sistema che non hai costruito tu. Quei `CREATE INDEX` qualcuno li aveva scritti. Magari aveva un motivo. Magari pensava di averlo. Magari non ce l'aveva proprio. Vai a sapere.
 
@@ -83,7 +83,7 @@ Tempi: **8.4 secondi**. Plan: `Seq Scan on cittadini_servizi`. Filter: tutti gli
 
 "Ma c'era un indice su `servizi_attivi`!"
 
-"C'era. Era un B-tree. Il B-tree non sa cosa fare con `&&`."
+"C'è! È un B-tree. Il B-tree non sa cosa fare con `&&`."
 
 ## Quando il B-tree basta — e quando no
 
@@ -200,7 +200,7 @@ Risultato netto:
 
 Marco ha guardato la tabella, poi me. "Cioè abbiamo migliorato sia la lettura che la scrittura, semplicemente togliendo cose."
 
-"E mettendo le tre giuste al posto giusto. Ma sì, prevalentemente togliendo. Ogni indice è un costo. Su ogni write. Per sempre."
+"E mettendo le tre giuste al posto giusto. Ma sì, prevalentemente togliendo. Ogni indice è un costo. Su ogni DML. Per sempre."
 
 ## La frase che gli ho ripetuto tre volte
 
