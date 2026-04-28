@@ -259,7 +259,7 @@ Each category section hero uses a **2-column layout** (CSS class `.editorial-cat
 
 ## Publication Schedule
 
-Articles are published **one per week, every Tuesday at 08:03 CET**, starting from 16 December 2025. Hugo cron runs at 08:10, so the article is already online before the LinkedIn post goes out (scheduled on Buffer at ~10:05–10:15 CET).
+Articles are published **one per week, every Tuesday at 08:03 CET**, starting from 16 December 2025. Three GitHub Actions cron run on Tuesday at 05:47 UTC, 06:47 UTC and 09:05 UTC (≈ 07:47 / 08:47 / 11:05 CEST in summer): the first publishes the article, the second is backup in case the first is delayed by GitHub Actions queue (common during peak hours like `:00`/`:05`), the third is a last-resort safety net (deploy after the LinkedIn post but ensures publication eventually). The article is online well before the LinkedIn post goes out (scheduled on Buffer at ~10:05–10:15 CET).
 
 ### Rules
 
