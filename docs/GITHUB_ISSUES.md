@@ -32,7 +32,6 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
-| 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | aperta |
 | 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
 
 ## Issue Aperte — Sezione Project Management
@@ -58,6 +57,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | 2026-04-28 |
 | 84 | https://github.com/ilum75IDB/ivanluminaria.com/issues/84 | Feature: redesign pagina /tags/ con raggruppamento per sezione | 2026-04-25 |
 | 83 | https://github.com/ilum75IDB/ivanluminaria.com/issues/83 | Feature: redesign pagina di ricerca con layout card coerente al resto del sito | 2026-04-24 |
 | 82 | https://github.com/ilum75IDB/ivanluminaria.com/issues/82 | Bug: Hugo build hangava 30+ minuti su image processing dopo hclean (libvips WEBP+JPEG) | 2026-04-24 |
