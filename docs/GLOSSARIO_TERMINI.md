@@ -26,7 +26,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Branch | Ramo di sviluppo indipendente in un sistema di version control, permette di lavorare su modifiche isolate senza influenzare il codice principale | ai-github-project-management |
 | Bicicletta Pieghevole | Bicicletta che si ripiega in 10-20 secondi diventando un bagaglio trasportabile in ufficio, in metro o in treno | bici-vs-auto-roma |
 | Bloat | Spazio morto accumulato in una tabella o indice PostgreSQL a causa di dead tuples non rimossi, che gonfia la dimensione su disco | vacuum-autovacuum-postgresql |
-| B-Tree | Struttura dati ad albero bilanciato, tipo di indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, inadatto per LIKE con wildcard iniziale | like-optimization-postgresql |
+| B-Tree | Struttura dati ad albero bilanciato, tipo di indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, inadatto per LIKE con wildcard iniziale | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration |
@@ -62,7 +62,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Lift-and-Shift | Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione | tecnica-si-e-yes-and |
 | Local Index | Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente | oracle-partitioning, partitioning-dwh |
 | GRANT | Comando SQL per assegnare privilegi specifici a un utente o ruolo su database, tabelle o colonne | mysql-users-and-hosts, postgresql_roles_and_users |
-| GIN Index | Generalized Inverted Index — tipo di indice PostgreSQL ottimizzato per ricerche full-text, pattern matching con trigrammi e query su array e JSONB | like-optimization-postgresql |
+| GIN Index | Generalized Inverted Index — tipo di indice PostgreSQL ottimizzato per ricerche full-text, pattern matching con trigrammi e query su array e JSONB | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
+| GiST Index | Generalized Search Tree — famiglia di indici PostgreSQL per dati con struttura geometrica, range o di similarità, indispensabile per query spaziali e su intervalli | postgresql-indici-quando-fanno-male |
 | Grain | Livello di dettaglio (granularità) di una fact table nel data warehouse. Determina cosa rappresenta ciascuna riga e quali domande il modello dimensionale può soddisfare | fatto-grana-sbagliata |
 | Full Table Scan | Operazione di lettura in cui il database legge tutti i blocchi di una tabella senza utilizzare indici. In Oracle si manifesta come wait event `db file scattered read` | oracle-awr-ash, partitioning-dwh |
 | GTID | Global Transaction Identifier — identificativo univoco assegnato a ogni transazione in MySQL, che semplifica la gestione della replica e il tracking delle transazioni tra master e slave | mysqldump-mysqlpump-mydumper, mysql-group-replication-binlog-migration |
@@ -70,6 +71,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Hash Join | Strategia di join che costruisce una hash table dalla tabella più piccola e poi scansiona la più grande cercando corrispondenze con lookup O(1). Efficiente su grandi volumi senza indici | explain-analyze-postgresql |
 | Hot Desk | Modello di organizzazione degli spazi ufficio in cui le postazioni non sono assegnate: chi viene in ufficio occupa una scrivania libera | smartworking-consulenza-it |
 | Huge Pages | Pagine di memoria da 2 MB che riducono drasticamente la pressione sulla MMU e sul TLB, migliorando le performance di Oracle su Linux | oracle-linux-kernel |
+| Indice Parziale | Indice PostgreSQL che copre solo un sottoinsieme delle righe della tabella, definito con WHERE nella CREATE INDEX. Riduce spazio e tempo di manutenzione | postgresql-indici-quando-fanno-male |
 | Issue Tracker | Sistema di tracciamento integrato per bug, richieste evolutive e task di progetto, su GitHub integrato direttamente nel repository | ai-github-project-management |
 | Interessi di Mora | Interessi automatici previsti dalla legge (tasso BCE + 8%) che maturano su ogni fattura pagata in ritardo | pagamenti-60-90-120-giorni |
 | information_schema | Schema di sistema MySQL/MariaDB in sola lettura che espone metadati su database, tabelle, indici, utenti e stato del server. Punto di partenza per assessment, sizing e analisi strutturale | mysql-pre-upgrade-assessment |
@@ -96,6 +98,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Presenteismo | Cultura organizzativa che equipara la presenza fisica in ufficio alla produttività, indipendentemente dai risultati prodotti | smartworking-consulenza-it |
 | Partita IVA | Regime fiscale italiano per lavoratori autonomi e liberi professionisti, che nella consulenza IT implica l'assunzione diretta del rischio di credito | pagamenti-60-90-120-giorni |
 | pg_stat_statements | Estensione PostgreSQL che raccoglie statistiche di esecuzione per tutte le query SQL: tempi, conteggi, righe restituite e blocchi letti. Strumento fondamentale per la diagnostica delle performance | pg-stat-statements |
+| pg_stat_user_indexes | Vista di sistema PostgreSQL che traccia quante volte ogni indice è stato usato dal planner — strumento principe per identificare indici inutili in produzione | postgresql-indici-quando-fanno-male |
 | Partition Pruning | Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo quelle corrispondenti al predicato | oracle-partitioning, partitioning-dwh |
 | Pre-upgrade assessment | Misurazione strutturata di dimensioni, crescita, tempi di backup e restore di un database prima di un upgrade. Serve a dimensionare la finestra di manutenzione e a definire una strategia di rollback realistica | mysql-pre-upgrade-assessment |
 | Psychological Safety | Clima di team in cui le persone possono ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione | team-di-progetto-che-reggono |
@@ -158,6 +161,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-04-21
-**Totale termini**: 141
-**Totale articoli con glossario**: 31
+**Ultimo aggiornamento**: 2026-04-28
+**Totale termini**: 144
+**Totale articoli con glossario**: 32
