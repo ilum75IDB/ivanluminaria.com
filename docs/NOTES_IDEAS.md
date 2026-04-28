@@ -50,3 +50,20 @@
   - Retention policy chiara
 - **Pre-requisito "soft"**: definire prima un tema editoriale della newsletter che NON sia solo "link al nuovo articolo" (per evitare di duplicare RSS/LinkedIn)
 - **Data nota**: 2026-04-21
+
+### Log delle azioni / engineering log del sito
+- **Sezione**: Sito / Trasparenza
+- **Concept**: Pagina pubblica `/log/` con elenco cronologico delle azioni fatte sul sito giorno per giorno: modifiche al layout, articoli pubblicati, fix tecnici, decisioni di design. Stile *engineering log*, non *diary personale*: bullet asciutti, niente celebrazioni di sé, solo fatti. Coerente col posizionamento Database Strategy: mostra che il sito è curato come un sistema vivo, applicando la stessa mentalità DBA al sito stesso (osservabilità, tracciabilità, post-mortem).
+- **Target**: altri tecnici curiosi del processo, eventuali clienti che vogliono vedere un fornitore "vivo" e metodico, archivio personale per ricordare il "perché" di una decisione presa mesi prima.
+- **Tre forme possibili**:
+  - **Auto da git log**: pagina generata da Hugo a ogni build, derivata dai commit. Pro: zero manutenzione, sempre aggiornato. Contro: i messaggi commit sono tecnici e vanno filtrati/riscritti
+  - **Manuale asciutto**: pagina aggiornata a mano, una riga al giorno max. Pro: tono curato e selezionato. Contro: alta probabilità di abbandono dopo 2-3 settimane se ci si dimentica
+  - **Ibrido (consigliato)**: auto-generato dai commit + override manuale settimanale per "summary di alto livello". Bilanciamento sostenibile
+- **Stile imprescindibile**: niente celebrazione ("oggi ho fatto tante cose"), niente narrativa personale, solo fatti tecnici. Es. "redesign /tags/ raggruppato per sezione" invece di "ho dedicato l'intera giornata al redesign della pagina tag e finalmente sono soddisfatto del risultato".
+- **Domande aperte da chiarire prima di implementare**:
+  - Granularità: quotidiana, settimanale, per release?
+  - Visibilità: link nel footer, voce di menu, o solo accessibile via URL diretto?
+  - Tutte le modifiche o solo quelle "rilevanti per il lettore"? (es. fix di un typo non serve)
+  - Retention: tutto lo storico o ultimi 6-12 mesi?
+- **Pattern di riferimento (da studiare)**: `/changelog` di Linear, `/now` di Derek Sivers, `build log` di @levelsio, GitHub releases.
+- **Data nota**: 2026-04-28
