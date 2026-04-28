@@ -5,7 +5,18 @@ on:
     branches:
       - main
   schedule:
-    # Every Tuesday at 09:05 UTC (10:05 CET) to publish scheduled articles
+    # Pubblicazione articoli schedulati al martedi'.
+    # Articolo schedulato alle 08:03 +01:00 (07:03 UTC inverno / 06:03 UTC estate).
+    # Post LinkedIn alle 10:05 CEST = 08:05 UTC.
+    #
+    # Tre cron in finestra mattutina, fuori dai picchi 0X:00 / 0X:05:
+    # - 05:47 UTC = 07:47 CEST (estate) / 06:47 CET (inverno) — primo tentativo
+    # - 06:47 UTC = 08:47 CEST (estate) / 07:47 CET (inverno) — backup +1h
+    # - 09:05 UTC = 11:05 CEST (estate) / 10:05 CET (inverno) — paracadute
+    # I primi due garantiscono articolo online prima del post LinkedIn (10:05 CEST);
+    # il terzo e' ridondante (deploy dopo LinkedIn) ma lasciato come ultima rete.
+    - cron: '47 5 * * 2'
+    - cron: '47 6 * * 2'
     - cron: '5 9 * * 2'
 
 permissions:
