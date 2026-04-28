@@ -65,7 +65,7 @@ Marco ha annuito e ha aperto il git log della repo dei DDL.
 
 Domanda giusta. Sbagliata.
 
-Perché parte dal presupposto che "più indici = più veloce", che è uno dei miti più persistenti dei primi anni di PostgreSQL. La realtà è che un indice serve solo se il planner lo sceglie, e il planner sceglie solo gli indici che il **tipo giusto** per la query che sta valutando.
+Perché parte dal presupposto che "più indici = più veloce", che è uno dei miti più persistenti dei primi anni di PostgreSQL. La realtà è che un indice serve solo se il planner lo sceglie, e il planner sceglie solo gli indici che sono del **tipo giusto** per la query che sta valutando.
 
 Ho aperto una delle query critiche, una di quelle che il monitoring segnalava come lenta:
 
@@ -128,7 +128,7 @@ Da 8400 a 240 millisecondi. Un fattore 35.
 
 Marco ha esultato sottovoce. Poi: "Ma se è così potente, perché non lo si usa sempre?"
 
-"Perché su una scrittura ti costa caro. Ogni `INSERT` o `UPDATE` su quella colonna deve aggiornare tutti i posting in cui quel valore compare. È il prezzo del *trovare velocemente le tabelle ad alto churn lo pagano*."
+"Perché su una scrittura ti costa caro. Ogni `INSERT` o `UPDATE` su quella colonna deve aggiornare tutti i posting in cui quel valore compare. È il prezzo del trovare velocemente — e le tabelle ad alto churn lo pagano caro."
 
 "Quindi GIN sì, ma se la tabella è prevalentemente in lettura."
 
