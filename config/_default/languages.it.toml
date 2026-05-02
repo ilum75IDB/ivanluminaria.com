@@ -1,6 +1,6 @@
-languageCode = "it"
-languageName = "Italiano"
-languageDirection = "ltr"
+locale = "it"
+label = "Italiano"
+direction = "ltr"
 weight = 1
 
 title = "Ivan Luminaria"
