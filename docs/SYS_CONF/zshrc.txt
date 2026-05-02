@@ -44,7 +44,7 @@ alias fixbrew='brew completions link && rm -f ~/.zcompdump* && exec zsh'
 # ===================================================================
 # COMPLETAMENTI E OPZIONI ZSH
 # ===================================================================
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
 setopt AUTO_CD              # Cambia directory senza cd
 setopt AUTO_PUSHD          # Mantieni stack directory
 setopt PUSHD_IGNORE_DUPS   # No duplicati nello stack
