@@ -1,6 +1,6 @@
-languageCode = "ro"
-languageName = "Română"
-languageDirection = "ltr"
+locale = "ro"
+label = "Română"
+direction = "ltr"
 weight = 4
 
 title = "Ivan Luminaria"
