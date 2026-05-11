@@ -144,6 +144,54 @@ Nel caso del tracking spedizioni, alla fine la riscrittura è andata in direzion
 
 ---
 
+## Lookup table fatta bene
+
+Se decidi di andare in direzione lookup, vale la pena disegnarla nel modo che ti permette di crescere nel tempo. Il pattern naturale — quello che vediamo nei sistemi maturi — separa due ruoli che ENUM teneva mescolati: l'**identificatore** del valore e la **descrizione** del valore.
+
+```sql
+CREATE TABLE stati_spedizione (
+  id          SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  codice      VARCHAR(20) NOT NULL UNIQUE,
+  descrizione VARCHAR(200) NOT NULL,
+  ordine      SMALLINT NOT NULL DEFAULT 0,
+  attivo      BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+INSERT INTO stati_spedizione (codice, descrizione, ordine) VALUES
+  ('RICEVUTO',    'Spedizione ricevuta in deposito',  10),
+  ('IN_DEPOSITO', 'In attesa di smistamento',         20),
+  ('IN_CONSEGNA', 'Affidata al corriere',             30),
+  ('CONSEGNATO',  'Consegnata al destinatario',       40),
+  ('RESPINTO',    'Respinta dal destinatario',        50);
+
+CREATE TABLE spedizioni (
+  id        INT PRIMARY KEY,
+  stato_id  SMALLINT UNSIGNED NOT NULL,
+  CONSTRAINT fk_stato FOREIGN KEY (stato_id) REFERENCES stati_spedizione(id)
+);
+```
+
+Tre cose interessanti emergono da questo schema.
+
+**La master porta solo l'id**, non il codice. Due byte per riga (`SMALLINT`) invece dei 20+ di un `VARCHAR(20)`. Su una tabella da 150 milioni di righe sono 2-3 GB di differenza tra dati e indici, oltre a JOIN più veloci grazie al confronto su intero.
+
+**Il codice e la descrizione sono attributi della lookup, non chiave**. Questo significa che rinominare uno stato — passare da "Consegnato" a "Consegnato al destinatario" — è una `UPDATE` su una sola riga della lookup. Nessuna migrazione, nessun rebuild, nessun `ALTER`. Lo schema delle tabelle figlie non viene toccato. Avere il `codice` come chiave naturale sembrava elegante quattro anni fa, ma alla prima volta che il business chiede di cambiare il testo di un'etichetta capisci perché l'id surrogato esisteva.
+
+**Gli attributi extra costano niente da aggiungere**: una colonna `descrizione_breve` per i tracciati SMS, una colonna `ordine` per il sort visuale nelle dashboard, una tabella collegata per le traduzioni multilingua. Tutto questo era impossibile con ENUM, ed è normale con una lookup table ben disegnata.
+
+Il prezzo da pagare è che le query ad-hoc richiedono un JOIN per leggere il nome dello stato in chiaro:
+
+```sql
+SELECT s.id, ss.codice
+FROM spedizioni s
+JOIN stati_spedizione ss ON ss.id = s.stato_id
+WHERE ss.codice = 'IN_CONSEGNA';
+```
+
+Più verbose di un `WHERE status = 'IN_CONSEGNA'` su ENUM, ma è il prezzo della flessibilità. E sui report più frequenti il JOIN si ottimizza con un indice composto e una `view` che incapsula la complessità, lasciando le query applicative leggibili.
+
+---
+
 ## La regola d'oro
 
 La sintesi che porto via da questa storia, e che ripeto ai team quando arriva la domanda "ENUM o lookup?", è semplice:
