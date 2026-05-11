@@ -151,7 +151,7 @@ Se decidi di andare in direzione lookup, vale la pena disegnarla nel modo che ti
 ```sql
 CREATE TABLE stati_spedizione (
   id          SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  codice      VARCHAR(20) NOT NULL UNIQUE,
+  codice      ENUM('RICEVUTO','IN_DEPOSITO','IN_CONSEGNA','CONSEGNATO','RESPINTO') NOT NULL UNIQUE,
   descrizione VARCHAR(200) NOT NULL,
   ordine      SMALLINT NOT NULL DEFAULT 0,
   attivo      BOOLEAN NOT NULL DEFAULT TRUE
@@ -171,13 +171,15 @@ CREATE TABLE spedizioni (
 );
 ```
 
+Avete notato la sorpresa? Nella lookup, il campo `codice` è ancora un **`ENUM`**. Non un `VARCHAR(20)`, non una stringa libera. ENUM, lo stesso che abbiamo appena finito di criticare. Ed è esattamente la scelta giusta: tutti i contro che abbiamo visto prima — il rebuild su modifica, l'ordinamento posizionale, l'effetto sulle tabelle grandi — qui semplicemente *non fanno male*. La lookup ha 5, 20, al massimo 50 righe. Un rebuild su 50 righe è un battito di ciglia. Il vincolo "ammette solo questi valori" lo paghiamo a costo zero, senza scrivere un `CHECK` esplicito.
+
 Tre cose interessanti emergono da questo schema.
 
 **La master porta solo l'id**, non il codice. Due byte per riga (`SMALLINT`) invece dei 20+ di un `VARCHAR(20)`. Su una tabella da 150 milioni di righe sono 2-3 GB di differenza tra dati e indici, oltre a JOIN più veloci grazie al confronto su intero.
 
-**Il codice e la descrizione sono attributi della lookup, non chiave**. Questo significa che rinominare uno stato — passare da "Consegnato" a "Consegnato al destinatario" — è una `UPDATE` su una sola riga della lookup. Nessuna migrazione, nessun rebuild, nessun `ALTER`. Lo schema delle tabelle figlie non viene toccato. Avere il `codice` come chiave naturale sembrava elegante quattro anni fa, ma alla prima volta che il business chiede di cambiare il testo di un'etichetta capisci perché l'id surrogato esisteva.
+**Il codice e la descrizione sono attributi della lookup, non chiave**. Rinominare uno stato — passare da "Consegnato" a "Consegnato al destinatario" — è una `UPDATE` su una sola riga della lookup. Nessuna migrazione, nessun rebuild, nessun `ALTER` sulla master. Lo schema delle tabelle figlie non viene toccato. Avere il `codice` come chiave naturale sembrava elegante quattro anni fa, ma alla prima volta che il business chiede di cambiare il testo di un'etichetta capisci perché l'id surrogato esisteva.
 
-**Gli attributi extra costano niente da aggiungere**: una colonna `descrizione_breve` per i tracciati SMS, una colonna `ordine` per il sort visuale nelle dashboard, una tabella collegata per le traduzioni multilingua. Tutto questo era impossibile con ENUM, ed è normale con una lookup table ben disegnata.
+**Gli attributi extra costano niente da aggiungere**: una colonna `descrizione_breve` per i tracciati SMS, una colonna `ordine` per il sort visuale nelle dashboard, una tabella collegata per le traduzioni multilingua. Tutto questo era impossibile con ENUM "puro", ed è normale con una lookup table ben disegnata.
 
 Il prezzo da pagare è che le query ad-hoc richiedono un JOIN per leggere il nome dello stato in chiaro:
 
@@ -189,6 +191,39 @@ WHERE ss.codice = 'IN_CONSEGNA';
 ```
 
 Più verbose di un `WHERE status = 'IN_CONSEGNA'` su ENUM, ma è il prezzo della flessibilità. E sui report più frequenti il JOIN si ottimizza con un indice composto e una `view` che incapsula la complessità, lasciando le query applicative leggibili.
+
+### Aggiungere un valore e riordinare l'ENUM
+
+Vediamo come si fanno le due operazioni "delicate" su questo pattern. Il business chiede di aggiungere lo stato `PRENOTATO`, per le spedizioni annunciate ma non ancora ricevute.
+
+**Caso 1 — aggiungere in fondo all'ENUM, con `ordine` logico controllato dal campo**:
+
+```sql
+-- Estendi l'ENUM aggiungendo il valore in fondo (operazione veloce)
+ALTER TABLE stati_spedizione
+  MODIFY COLUMN codice 
+    ENUM('RICEVUTO','IN_DEPOSITO','IN_CONSEGNA','CONSEGNATO','RESPINTO','PRENOTATO') NOT NULL;
+
+-- Inserisci la nuova riga, l'ordine logico è 5 (prima di RICEVUTO=10)
+INSERT INTO stati_spedizione (codice, descrizione, ordine, attivo) VALUES
+  ('PRENOTATO', 'Spedizione annunciata, non ancora ricevuta', 5, TRUE);
+```
+
+Notate la separazione di responsabilità: l'**ordine di dichiarazione dell'ENUM** non corrisponde necessariamente all'**ordine logico** dello stato nel workflow. Quest'ultimo è gestito dalla colonna `ordine`, che è esplicita e ordinabile come vogliamo. Il valore numerico dell'ENUM interno è un dettaglio di implementazione che ignoriamo.
+
+**Caso 2 — riordinare proprio l'ENUM** (se proprio vogliamo che `PRENOTATO` sia in prima posizione anche internamente):
+
+```sql
+ALTER TABLE stati_spedizione
+  MODIFY COLUMN codice 
+    ENUM('PRENOTATO','RICEVUTO','IN_DEPOSITO','IN_CONSEGNA','CONSEGNATO','RESPINTO') NOT NULL;
+```
+
+Su una tabella da 6 righe, MySQL rebuilda in millisecondi. Gli `id` delle righe esistenti restano identici (la sequence di AUTO_INCREMENT non viene toccata dal rebuild), il valore ENUM viene rimappato internamente dal motore, e l'integrità referenziale dalla master `spedizioni` resta intatta. La master non sa nulla di tutto questo: continua a contenere `stato_id = 3` e attraverso la FK risolve sempre alla riga giusta della lookup.
+
+Questo è il vero punto: **gli id stabili della lookup sono l'ancora dell'integrità referenziale**. Qualunque cosa cambiamo nella lookup — riordino ENUM, rinomina codice, modifica descrizione — la master continua a funzionare. Le 150 milioni di righe non vengono mai toccate.
+
+ENUM, in questo posto, è tornato a essere lo strumento giusto. Lo stesso strumento che era un problema sulla master è un vantaggio sulla lookup. Cambia il contesto, cambia il giudizio.
 
 ---
 
