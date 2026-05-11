@@ -2,6 +2,13 @@
 
 ## Issue create
 
+### Articolo PM: UML e RUP - storia dei Three Amigos — Issue #85
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/85
+- **Concept**: Spiegazione a un collega su cosa siano UML/RUP diventata storia: i "Three Amigos" (Booch, Rumbaugh, Jacobson) da rivali a co-autori dentro Rational Software, fusione delle tre metodologie object-oriented, standardizzazione OMG, arrivo di Agile/Scrum, nicchia di sopravvivenza di RUP in contesti regolamentati (brevetti, medicale, aviazione). Angolo "storia umana di collaborazione" + filo del presente con Agile.
+- **Sezione**: Project Management
+- **Data nota**: 2026-05-11
+- **Data issue**: 2026-05-11
+
 ### Articolo PM: L'importanza della documentazione progettuale — Issue #66
 - **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/66
 - **Data nota**: 2026-03-29

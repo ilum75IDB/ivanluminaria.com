@@ -40,6 +40,7 @@ tool `WebFetch`.
 |----|-------|--------|-------|
 | 66 | https://github.com/ilum75IDB/ivanluminaria.com/issues/66 | Articolo PM: importanza documentazione progettuale per il successo di un progetto | aperta |
 | 67 | https://github.com/ilum75IDB/ivanluminaria.com/issues/67 | Articolo PM: misurare i risultati come obiettivo per il successo di un progetto | aperta |
+| 85 | https://github.com/ilum75IDB/ivanluminaria.com/issues/85 | Articolo PM: UML e RUP - storia dei Three Amigos da rivali a co-autori | aperta |
 
 ## Issue Aperte — Enhancement (Glossario)
 
