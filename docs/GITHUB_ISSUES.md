@@ -27,6 +27,7 @@ tool `WebFetch`.
 | 54 | https://github.com/ilum75IDB/ivanluminaria.com/issues/54 | Galera Cluster: due nodi giu - diagnosi e recovery da ticket reali | aperta |
 | 68 | https://github.com/ilum75IDB/ivanluminaria.com/issues/68 | Articolo MySQL: patching MySQL 8.0 dal backup alla verifica passo per passo | aperta |
 | 74 | https://github.com/ilum75IDB/ivanluminaria.com/issues/74 | Articolo MySQL: saturazione swap su InnoDB Cluster 3-nodi - analisi e fix dei parametri di memoria | aperta |
+| 86 | https://github.com/ilum75IDB/ivanluminaria.com/issues/86 | Articolo MySQL: enumerazioni - ENUM nativo, CHECK constraint, tabelle lookup | aperta |
 
 ## Issue Aperte — Sezione PostgreSQL
 
