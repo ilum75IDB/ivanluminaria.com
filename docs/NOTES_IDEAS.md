@@ -2,6 +2,15 @@
 
 ## Issue create
 
+### Articolo MySQL: Enumerazioni con ENUM nativo, CHECK e tabelle lookup — Issue #86
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/86
+- **Concept**: Le tre strade per modellare enumerazioni in MySQL (ENUM nativo, CHECK constraint da 8.0.16+, tabelle di lookup con FK). Tono didattico con caso reale. Valorizzazione di ENUM nativo come feature distintiva di MySQL, ma onestà sui limiti (case-insensitive, ALTER TABLE per modifiche, ordinamento posizionale). Primo pezzo della mini-serie cross-DB.
+- **Sezione**: MySQL
+- **Mini-serie cross-DB**: questo (MySQL) → PostgreSQL (da creare) → Oracle (#70 già aperta)
+- **Slot proposto**: 2026-06-02
+- **Data nota**: 2026-03-31
+- **Data issue**: 2026-05-11
+
 ### Articolo PM: UML e RUP - storia dei Three Amigos — Issue #85
 - **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/85
 - **Concept**: Spiegazione a un collega su cosa siano UML/RUP diventata storia: i "Three Amigos" (Booch, Rumbaugh, Jacobson) da rivali a co-autori dentro Rational Software, fusione delle tre metodologie object-oriented, standardizzazione OMG, arrivo di Agile/Scrum, nicchia di sopravvivenza di RUP in contesti regolamentati (brevetti, medicale, aviazione). Angolo "storia umana di collaborazione" + filo del presente con Agile.
@@ -22,16 +31,10 @@
 - **Fonte**: https://oracle-base.com/articles/26/assertions-26
 - **Data nota**: 2026-03-31
 
-### Articolo MySQL: Enumerazioni in MySQL con caso reale
-- **Sezione**: MySQL
-- **Concept**: Come gestire le enumerazioni in MySQL (ENUM nativo, CHECK constraint, tabelle di lookup). Caso reale concreto. Da scrivere prima dell'articolo Oracle #70 per poterlo linkare come confronto cross-database.
-- **Collegamento**: si linka dall'articolo #70 (enumerazioni Oracle) e viceversa
-- **Data nota**: 2026-03-31
-
 ### Articolo PostgreSQL: Enumerazioni in PostgreSQL con caso reale
 - **Sezione**: PostgreSQL
-- **Concept**: Come gestire le enumerazioni in PostgreSQL (CREATE TYPE ... AS ENUM, ALTER TYPE ADD VALUE, pro e contro). Caso reale concreto. Da scrivere prima dell'articolo Oracle #70 per poterlo linkare come confronto cross-database.
-- **Collegamento**: si linka dall'articolo #70 (enumerazioni Oracle) e viceversa
+- **Concept**: Come gestire le enumerazioni in PostgreSQL (CREATE TYPE ... AS ENUM, ALTER TYPE ADD VALUE, pro e contro). Caso reale concreto. Secondo pezzo della mini-serie cross-DB (dopo MySQL #86, prima di Oracle #70).
+- **Collegamento**: mini-serie cross-DB con #86 (MySQL) e #70 (Oracle)
 - **Data nota**: 2026-03-31
 
 ## Idee feature sito / marketing
