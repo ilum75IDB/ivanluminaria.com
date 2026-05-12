@@ -1,6 +1,7 @@
 ---
 title: "Roluri și utilizatori în PostgreSQL: de ce totul este (doar) un ROLE"
-description: "PostgreSQL nu distinge între utilizatori și roluri: totul este un ROLE. Modelul mental corect, un caz real și un exemplu complet pentru a construi un utilizator read-only cu adevărat mentenabil."
+seoTitle: "PostgreSQL ROLE: utilizatori, roluri și GRANT least privilege"
+description: "PostgreSQL ROLE: utilizatorii și rolurile sunt același obiect. Model mental, GRANT, NOINHERIT și construirea unui utilizator read-only mentenabil."
 date: "2026-02-10T08:03:00+01:00"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false
