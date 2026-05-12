@@ -55,17 +55,28 @@
 
   /* ========== BARRA/BADGE VARIANTE 6 ========== */
   /* 3px sotto navbar (#01) + badge % a width FISSA in basso a destra.
+     Barra container-width (1280px centrata, coerente col layout sito).
      Width: 56px e text-align center + tabular-nums per zero jitter
-     anche durante il passaggio da 0% a 100%. */
+     anche durante il passaggio da 0% a 100%.
+     Badge persistente da pct > 5 fino a fine pagina (no sparizione a 100%). */
   .reading-progress-bar {
     position: fixed;
     top: 86px;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1280px;
     height: 3px;
-    width: 0%;
-    background: var(--ivan-red);
+    background: rgba(248, 0, 0, 0.08);  /* track sottile per dare contesto al container */
     z-index: 9998;
+    pointer-events: none;
+  }
+  .reading-progress-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: var(--progress, 0%);
+    background: var(--ivan-red);
     transition: width 50ms linear;
   }
   .reading-percent {
@@ -333,10 +344,10 @@
       if (totalScrollable <= 0) return;
       const progress = Math.max(0, Math.min(1, (scrollY - articleTop) / totalScrollable));
       const pct = Math.round(progress * 100);
-      bar.style.width = pct + '%';
+      bar.style.setProperty('--progress', pct + '%');
       if (percent) {
         percent.textContent = pct + '%';
-        if (pct > 5 && pct < 98) percent.classList.add('visible');
+        if (pct > 5) percent.classList.add('visible');
         else percent.classList.remove('visible');
       }
     }
