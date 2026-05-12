@@ -1,6 +1,7 @@
 ---
 title: "Oracle Partitioning: when 2 billion rows no longer fit in a query"
-description: "A client with a 2-billion-row transaction table and reporting queries that had gone from seconds to hours. How I solved it with Oracle partitioning — range, interval, partition pruning and local indexes."
+seoTitle: "Oracle Partitioning: range, interval and partition pruning"
+description: "Oracle Partitioning on a 2-billion-row table: range, interval, partition pruning, local indexes. From hours to seconds on reporting queries."
 date: "2025-12-23T08:03:00+01:00"
 draft: false
 translationKey: "oracle_partitioning"
