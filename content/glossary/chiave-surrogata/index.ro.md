@@ -5,6 +5,7 @@ translationKey: "glossary_chiave_surrogata"
 aka: "Surrogate key"
 articles:
   - "/posts/data-warehouse/scd-tipo-2"
+  - "/posts/mysql/enum-mysql-semplifica-o-complica"
 ---
 
 **Cheia surogat** (surrogate key) este un identificator numeric secvențial generat intern de data warehouse, fără nicio semnificație de business. Este distinctă de cheia naturală — cea care vine din sistemul sursă (ex. codul clientului, numărul de angajat).

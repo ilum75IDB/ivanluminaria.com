@@ -5,6 +5,7 @@ translationKey: "glossary_chiave_surrogata"
 aka: "Surrogate key"
 articles:
   - "/posts/data-warehouse/scd-tipo-2"
+  - "/posts/mysql/enum-mysql-semplifica-o-complica"
 ---
 
 La **clave subrogada** (surrogate key) es un identificador numérico secuencial generado internamente por el data warehouse, sin ningún significado de negocio. Es distinta de la clave natural — la que proviene del sistema fuente (ej. el código de cliente, el número de empleado).

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup 9 — Combo: barra rossa + badge grigio bottom-right + badge rosso sidebar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivan-blue: #336791;
+    --ivan-red: #F80000;
+    --ivan-red-dark: #b30000;
+    --ivan-gray-title: #4a4a4a;
+    --ivan-gray-obj: #6b7280;
+    --ivan-sql-green: #2e8b57;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #1f2937;
+    background: #fefefe;
+    padding-top: 86px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  a { color: var(--ivan-red); text-decoration: none; }
+  a:hover { color: var(--ivan-red-dark); text-decoration: underline; }
+
+  /* ---- Navbar fissa (riproduce navbar del sito) ---- */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 86px;
+    background: white;
+    border-bottom: 1px solid #f3f4f6;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    font-weight: 700;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .navbar .brand { color: var(--ivan-blue); font-size: 24px; letter-spacing: 0.04em; }
+  .navbar .nav-right { margin-left: auto; display: flex; align-items: center; gap: 32px; }
+  .navbar .nav-link { color: var(--ivan-red); text-transform: uppercase; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+  .navbar .lang { color: var(--ivan-gray-obj); font-size: 14px; font-weight: 500; }
+  .navbar .search-icon { font-size: 18px; color: var(--ivan-gray-obj); }
+
+  /* ========== BARRA/BADGE VARIANTE 9 (COMBO) ========== */
+  /* Combinazione delle migliori scelte fatte finora:
+     - Barra 3px rossa sotto navbar, container-width 1280px (#06)
+     - Badge bottom-right grigio scuro (#06)
+     - Badge nella sidebar autore in rosso brand (#08 variante B)
+     Entrambi i badge sono persistenti da pct > 5 in poi e si aggiornano
+     in sincrono col progresso. */
+
+  /* --- Barra --- */
+  .reading-progress-bar {
+    position: fixed;
+    top: 86px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1280px;
+    height: 3px;
+    background: rgba(248, 0, 0, 0.08);
+    z-index: 9998;
+    pointer-events: none;
+  }
+  .reading-progress-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: var(--progress, 0%);
+    background: var(--ivan-red);
+    transition: width 50ms linear;
+  }
+
+  /* --- Badge floating bottom-right (grigio scuro) --- */
+  .reading-percent {
+    position: fixed;
+    bottom: 24px;
+    right: calc(50vw - 640px + 24px);
+    width: 56px;
+    text-align: center;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    padding: 6px 0;
+    border-radius: 12px;
+    z-index: 9997;
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+  }
+  @media (max-width: 1280px) {
+    .reading-percent { right: 24px; }
+  }
+  .reading-percent.visible { opacity: 1; }
+
+  /* --- Badge nella sidebar autore: mini-bar rossa con label blu --- */
+  .reading-percent-sidebar {
+    margin-top: 16px;
+    padding: 10px 12px;
+    width: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .reading-percent-sidebar.visible { opacity: 1; }
+  .reading-percent-sidebar .label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ivan-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .reading-percent-sidebar .percent-val {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ivan-red);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .reading-percent-sidebar .mini-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(248, 0, 0, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .reading-percent-sidebar .mini-bar-fill {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: var(--ivan-red);
+    transition: width 50ms linear;
+    border-radius: 2px;
+  }
+  /* ===================================================== */
+
+  /* ---- Layout articolo a due colonne ---- */
+  .article-two-col {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+    padding: 24px 32px;
+  }
+
+  /* Sidebar autore */
+  .article-sidebar { position: relative; min-width: 0; }
+  .author-sidebar-card {
+    position: sticky;
+    top: 110px;
+    text-align: center;
+  }
+  .author-sidebar-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d1d5db, #9ca3af);
+    margin: 0 auto;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .author-sidebar-name {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--ivan-gray-title);
+  }
+  .author-sidebar-roles {
+    margin-top: 0.3rem;
+    font-size: 0.65rem;
+    color: var(--ivan-gray-obj);
+    line-height: 1.5;
+  }
+
+  /* Articolo */
+  article { max-width: 100%; }
+  .cover-img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    background: linear-gradient(135deg, #8b4513 0%, #d4a574 50%, #5d3317 100%);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-img::after {
+    content: '🏷️ 📦 📦';
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 80px;
+    opacity: 0.6;
+  }
+  .breadcrumbs { color: var(--ivan-red); font-size: 16px; margin-bottom: 16px; font-weight: 500; }
+  .breadcrumbs span { color: var(--ivan-gray-obj); }
+  h1 {
+    font-size: 40px;
+    color: var(--ivan-gray-title);
+    margin-bottom: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  .meta {
+    color: var(--ivan-gray-obj);
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+  .tag {
+    color: var(--ivan-red);
+    background: white;
+    border: 1px solid var(--ivan-red);
+    padding: 2px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  hr { border: 0; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+  h2 {
+    font-size: 26px;
+    color: var(--ivan-gray-title);
+    margin: 40px 0 16px;
+    font-weight: 700;
+  }
+  p { margin-bottom: 16px; }
+  code { background: #eff6ff; color: var(--ivan-blue); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono', Menlo, monospace; }
+  pre {
+    background: #f9fafb;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 16px 0;
+    border: 1px solid #e5e7eb;
+    font-family: 'SF Mono', Menlo, monospace;
+  }
+  pre code { background: none; padding: 0; }
+  .sql-kw { color: var(--ivan-sql-green); font-weight: 600; }
+  .sql-str { color: #c2410c; }
+
+  /* Indicatore mockup */
+  .mockup-badge {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    background: var(--ivan-red);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 9997;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  @media print { .reading-progress-bar { display: none; } }
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <span class="brand">IVAN LUMINARIA</span>
+    <div class="nav-right">
+      <a class="nav-link" href="#">CHI SONO</a>
+      <a class="nav-link" href="#">DATABASE STRATEGY</a>
+      <a class="nav-link" href="#">KNOW-HOW E IMPATTO</a>
+      <span class="lang">🇮🇹 IT ▾</span>
+      <span class="search-icon">🔍</span>
+    </div>
+  </nav>
+
+  <!-- BARRA -->
+  <div class="reading-progress-bar" id="progress" aria-hidden="true"></div>
+  <div class="reading-percent" id="percent" aria-hidden="true">0%</div>
+
+  <div class="mockup-badge">Mockup 9 · combo barra + bottom-right grigio + sidebar rosso</div>
+
+  <div class="article-two-col">
+    <aside class="article-sidebar">
+      <div class="author-sidebar-card">
+        <div class="author-sidebar-img"></div>
+        <div class="author-sidebar-name">Ivan Luminaria</div>
+        <div class="author-sidebar-roles">DWH Architect · Project Manager · Oracle DBA &amp; Performance Tuning · PL/SQL Senior &amp; Mentor</div>
+        <div class="reading-percent-sidebar" id="percentSidebar" aria-hidden="true">
+          <span class="label">Letto:</span>
+          <span class="percent-val" id="percentSidebarVal">0%</span>
+          <div class="mini-bar"><span class="mini-bar-fill" id="miniBarFill"></span></div>
+        </div>
+      </div>
+    </aside>
+
+    <article>
+      <div class="cover-img"></div>
+      <div class="breadcrumbs"><a href="#">Database Strategy</a> <span>/</span> <a href="#">MySQL</a> <span>/</span></div>
+      <h1>ENUM in MySQL: quando ti semplifica la vita e quando ti complica i giorni</h1>
+      <div class="meta">2 giugno 2026 · 12 minuti</div>
+      <div class="tags">
+        <span class="tag">Mysql</span><span class="tag">Enum</span><span class="tag">Data-Modeling</span><span class="tag">Schema-Design</span><span class="tag">Alter-Table</span><span class="tag">Check-Constraint</span>
+      </div>
+      <hr>
+
+      <p>C'è una scena che si ripete in ogni progetto, prima o poi. Stai disegnando una tabella nuova, devi modellare una colonna <code>status</code> o <code>type</code> o <code>category</code>, e la domanda arriva sempre uguale: "ENUM nativo, CHECK constraint, o tabella di lookup?". Tre strade, tre filosofie, e tre risultati molto diversi a seconda di come evolve il sistema.</p>
+
+      <p>ENUM è una di quelle feature che caratterizzano MySQL. Pochi altri DBMS mainstream hanno un tipo enumerativo nativo — PostgreSQL ce l'ha, Oracle è arrivato a qualcosa di simile solo con i SQL Domains della 23ai. Per anni, in MySQL, la scelta di usare ENUM è stata praticamente automatica: poche righe di DDL, leggibile, performante, niente JOIN. Funziona. Finché non ti volti, sei anni dopo, e il <code>status</code> di quella tabella è diventato un campo minato.</p>
+
+      <hr>
+
+      <h2>Le tre strade, in due righe ciascuna</h2>
+      <p>Prima di entrare nel merito, le tre opzioni schematizzate. Useremo l'esempio di una tabella <code>ordini</code> con uno stato che assume un set chiuso di valori.</p>
+
+      <p><strong>ENUM nativo</strong>:</p>
+      <pre><span class="sql-kw">CREATE TABLE</span> ordini (
+  id     <span class="sql-kw">INT PRIMARY KEY</span>,
+  status <span class="sql-kw">ENUM</span>(<span class="sql-str">'NUOVO'</span>,<span class="sql-str">'IN_LAVORAZIONE'</span>,<span class="sql-str">'SPEDITO'</span>,<span class="sql-str">'CONSEGNATO'</span>) <span class="sql-kw">NOT NULL</span>
+);</pre>
+
+      <p>Il tipo <code>ENUM</code> è una stringa con vincolo: ammette solo i valori dichiarati. Internamente MySQL memorizza un intero (1 o 2 byte, a seconda di quanti valori) che funge da indice nella lista. Risultato: storage compatto, lettura leggibile.</p>
+
+      <h2>Quando ENUM è la scelta giusta</h2>
+      <p>ENUM brilla in un contesto specifico: <strong>set di valori stabile, semantica controllata da schema</strong>. Quando questi due ingredienti ci sono, ENUM è la scelta più pulita.</p>
+
+      <p>Casi tipici dove la stabilità c'è davvero: giorni della settimana, stati binari o ternari fissi, tipologie di transazione contabile dove il piano dei conti è normato da legge, polarità o segno in misure tecniche.</p>
+
+      <h2>Il caso concreto: un sistema di tracking spedizioni</h2>
+      <p>Qualche tempo fa stavo lavorando con il team IT di un grande operatore postale italiano. Si trattava di disegnare il modello dati per un sistema di tracking delle spedizioni: pacchi che entrano in deposito, vengono presi in carico, smistati, consegnati.</p>
+
+      <p>Nella prima versione del sistema, gli stati erano cinque, ben definiti dal business: <code>RICEVUTO</code>, <code>IN_DEPOSITO</code>, <code>IN_CONSEGNA</code>, <code>CONSEGNATO</code>, <code>RESPINTO</code>. ENUM, mano sulla coscienza, era la scelta giusta. Per due anni di produzione ha funzionato in silenzio.</p>
+
+      <h2>I limiti, raccontati onestamente</h2>
+      <p>Il primo segnale è arrivato con una mail dal product manager: serve aggiungere uno stato <code>PRENOTATO</code>. Operazione apparentemente banale. Operazione che, in realtà, mostra tutti i limiti di ENUM: case-insensitive, ordinamento per posizione, rebuild su modifiche.</p>
+
+      <p>Nel sistema di tracking, sei anni dopo, di stati ne erano stati aggiunti dodici. Ogni nuovo stato era un ALTER notturno con DBA in piedi davanti al monitor.</p>
+
+      <h2>Lookup table fatta bene</h2>
+      <p>Se decidi di andare in direzione lookup, vale la pena disegnarla nel modo che ti permette di crescere nel tempo. Il pattern naturale separa due ruoli che ENUM teneva mescolati: l'<strong>identificatore</strong> del valore e la <strong>descrizione</strong> del valore.</p>
+
+      <pre><span class="sql-kw">CREATE TABLE</span> stati_spedizione (
+  id          <span class="sql-kw">SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT</span>,
+  codice      <span class="sql-kw">ENUM</span>(<span class="sql-str">'RICEVUTO'</span>,<span class="sql-str">'IN_DEPOSITO'</span>,<span class="sql-str">'IN_CONSEGNA'</span>,<span class="sql-str">'CONSEGNATO'</span>,<span class="sql-str">'RESPINTO'</span>) <span class="sql-kw">NOT NULL UNIQUE</span>,
+  descrizione <span class="sql-kw">VARCHAR</span>(200) <span class="sql-kw">NOT NULL</span>,
+  ordine      <span class="sql-kw">SMALLINT NOT NULL DEFAULT</span> 0,
+  attivo      <span class="sql-kw">BOOLEAN NOT NULL DEFAULT TRUE</span>
+);</pre>
+
+      <p>Avete notato la sorpresa? Nella lookup, il campo <code>codice</code> è ancora un <strong><code>ENUM</code></strong>. La master porta solo l'id, non il codice. Due byte per riga (<code>SMALLINT</code>) invece dei 20+ di un <code>VARCHAR(20)</code>.</p>
+
+      <h2>La regola d'oro</h2>
+      <p>La sintesi che porto via da questa storia: <strong>se i valori non cambieranno mai, ENUM è la scelta giusta. Se cambieranno — anche solo "ogni tanto" — non legare il vocabolario allo schema</strong>.</p>
+
+      <p>Tutto qui. Il difficile non è scegliere tra le tre strade. Il difficile è capire onestamente, al momento della scelta, in quale dei due mondi ti trovi. E quello, di solito, lo capisci solo guardando come è cambiato il dominio negli ultimi due o tre anni.</p>
+
+      <h2>La mini-serie cross-DB</h2>
+      <p>Questo è il primo di quattro articoli sulle enumerazioni nei diversi DBMS. La domanda "ENUM o lookup?" non riguarda solo MySQL — ogni database ha la sua filosofia, ed è interessante vedere come la stessa scelta cambi forma passando da un mondo all'altro.</p>
+
+      <p>I prossimi appuntamenti: PostgreSQL (CREATE TYPE AS ENUM, ALTER TYPE ADD VALUE), Oracle (CHECK constraint e SQL Domains 23ai), Oracle deep-dive verticale (evoluzione 19c → 26ai).</p>
+
+      <p>Stessa domanda, tre filosofie. Il bello è proprio nel confronto.</p>
+
+      <p style="height: 300px; background: #f9fafb; padding: 20px; border-radius: 8px; margin-top: 40px; color: #6b7280; font-style: italic;">[Continua... spazio extra per testare lo scroll completo della progress bar fino al 100%.]</p>
+    </article>
+  </div>
+
+<script>
+  (function() {
+    const bar = document.getElementById('progress');
+    const percent = document.getElementById('percent');
+    const percentSidebar = document.getElementById('percentSidebar');
+    const percentSidebarVal = document.getElementById('percentSidebarVal');
+    const miniBarFill = document.getElementById('miniBarFill');
+    const article = document.querySelector('article');
+    if (!bar || !article) return;
+    function update() {
+      const articleTop = article.offsetTop;
+      const articleHeight = article.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      const totalScrollable = articleHeight - viewportHeight;
+      if (totalScrollable <= 0) return;
+      const progress = Math.max(0, Math.min(1, (scrollY - articleTop) / totalScrollable));
+      const pct = Math.round(progress * 100);
+      bar.style.setProperty('--progress', pct + '%');
+      const shouldShow = pct > 5;
+      if (percent) {
+        percent.textContent = pct + '%';
+        percent.classList.toggle('visible', shouldShow);
+      }
+      if (percentSidebar && percentSidebarVal) {
+        percentSidebarVal.textContent = pct + '%';
+        percentSidebar.classList.toggle('visible', shouldShow);
+      }
+      if (miniBarFill) {
+        miniBarFill.style.width = pct + '%';
+      }
+    }
+    window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    update();
+  })();
+</script>
+</body>
+</html>
