@@ -4399,16 +4399,18 @@ footer {
      (.Section == "posts" in single.html / author-sidebar.html)
    =========================================================================== */
 
-/* --- Background fixed che copre da top a navHeight + 10px.
-   Sta dietro alla navbar (z 9999) e alla barra rossa (z 9998), e sopra
-   al contenuto scrollato. Risolve la "fascia di trasparenza" tra fine
-   navbar e inizio articolo dove il testo scrollato era visibile. */
+/* --- Background fixed che copre da top a (navHeight + 13px). I 13px =
+   3px (altezza barra rossa) + 10px (striscia bianca sotto la barra,
+   visibile prima del contenuto). Sta dietro alla navbar (z 9999) e
+   alla barra rossa (z 9998), e sopra al contenuto scrollato. Risolve
+   la "fascia di trasparenza" tra fine navbar e inizio articolo dove
+   il testo scrollato era visibile. */
 .reading-progress-header-bg {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: calc(var(--reading-bar-top, 4.5rem) + 10px);
+  height: calc(var(--reading-bar-top, 4.5rem) + 13px);
   background: #ffffff;
   z-index: 9997;
   pointer-events: none;
