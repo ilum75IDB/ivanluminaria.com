@@ -1,7 +1,7 @@
 ---
 title: "Oracle DBA & Performance Tuning Expert"
 seoTitle: "Ivan Luminaria | Oracle DBA & Performance Tuning Expert"
-description: "Oracle DBA & Performance Tuning Expert — aproape 30 de ani de experiență în administrarea și optimizarea bazelor de date Oracle mission-critical."
+description: "Ivan Luminaria, Oracle DBA & Performance Tuning Expert: 30 ani administrând baze de date mission-critical, RAC, Data Guard, AWR/ASH și cloud migration."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false

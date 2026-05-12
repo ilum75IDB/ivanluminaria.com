@@ -1,7 +1,7 @@
 ---
 title: "Know-How și Impact"
 seoTitle: "Know-How și Impact: 30 ani de DBA, DWH și echipe IT"
-description: "Treizeci de ani de muncă pe sisteme care nu se pot opri — baze de date, data warehouse, echipe. Profunzime tehnică și impact pe business."
+description: "Know-How și Impact Ivan Luminaria: cele 4 profiluri profesionale — DWH Architect, Oracle DBA, Oracle PL/SQL Developer, Project Manager Scrum/Agile."
 hero_title: "Experiență, profunzime, impact"
 date: "2026-02-23"
 lastmod: "2026-02-26"

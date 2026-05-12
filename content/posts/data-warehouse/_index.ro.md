@@ -2,7 +2,7 @@
 title: "Data Warehouse"
 seoTitle: "Data Warehouse: arhitectură, modelare, ETL"
 date: "2026-03-10T08:03:00+01:00"
-description: "Arhitectură Data Warehouse în practică: modelare dimensională, ierarhii, ETL și strategii de încărcare. De la date la suport decizional."
+description: "Articole Data Warehouse: modelare dimensională Kimball, SCD Tip 2, fact table grain, bus matrix, range partitioning, ragged hierarchy și ETL practici."
 image: "data-warehouse.cover.jpg"
 layout: "list"
 ---

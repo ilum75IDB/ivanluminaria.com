@@ -1,7 +1,7 @@
 ---
 title: "Database Strategy"
 seoTitle: "Database Strategy: blog de Ivan Luminaria sobre DB y arquitectura"
-description: "Bases de datos, arquitectura y rendimiento como palanca estratégica para el negocio moderno: análisis técnico aplicado a entornos reales."
+description: "Database Strategy: blog técnico sobre Oracle, PostgreSQL, MySQL, data warehouse y project management. Artículos prácticos de 30 años de consultoría IT."
 layout: "list"
 image: "database-strategy.cover.jpg"
 ---

@@ -1,5 +1,5 @@
 ---
-description: "PostgreSQL: arquitectura, rendimiento y diseño en uno de los sistemas de bases de datos open source más avanzados y longevos."
+description: "Artículos PostgreSQL: EXPLAIN ANALYZE, optimización de queries, pg_stat_statements, índices GIN/B-tree, VACUUM, autovacuum, ROLE, GRANT y best practices."
 layout: "list"
 title: "PostgreSQL"
 seoTitle: "PostgreSQL: arquitectura, rendimiento y tuning"

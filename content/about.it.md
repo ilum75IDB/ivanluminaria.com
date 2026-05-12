@@ -1,7 +1,7 @@
 ---
 title: "Chi sono"
 seoTitle: "Ivan Luminaria: DBA Oracle, PostgreSQL e DWH Architect"
-description: "Oltre 30 anni di esperienza tra database, architetture dati e trasformazione digitale. Una storia professionale costruita su metodo, impatto e curiosità."
+description: "Ivan Luminaria: 30 anni di esperienza come DBA Oracle, PostgreSQL e DWH Architect. Specialista in performance tuning, alta disponibilità e sicurezza database."
 date: "2026-02-20"
 lastmod: "2026-02-26"
 draft: false
