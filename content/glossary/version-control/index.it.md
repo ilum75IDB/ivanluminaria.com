@@ -1,6 +1,6 @@
 ---
 title: "Version Control"
-description: "Sistema che traccia ogni modifica al codice sorgente, permettendo di visualizzare la cronologia, annullare cambiamenti e collaborare senza sovrascritture. Git è lo standard attuale."
+description: "Sistema che traccia ogni modifica al codice sorgente, permettendo di visualizzare la cronologia, annullare cambiamenti e collaborare senza sovrascritture."
 translationKey: "glossary_version-control"
 aka: "Controllo versione, VCS"
 articles:

@@ -1,6 +1,6 @@
 ---
 title: "Psychological Safety"
-description: "Climat al echipei în care oamenii pot recunoaște greșelile, spune 'nu știu' și ridica probleme fără a se teme de consecințe asupra evaluării profesionale. Premisa echipelor care rezistă sub presiune."
+description: "Climat al echipei în care oamenii pot recunoaște greșelile, spune 'nu știu' și ridica probleme fără a se teme de consecințe asupra evaluării profesionale."
 translationKey: "glossary_psychological_safety"
 aka: "Siguranță psihologică, Permisiunea de a nu ști"
 articles:

@@ -1,6 +1,6 @@
 ---
 title: "Float Financiar"
-description: "Lichiditate la cost zero generată de diferența dintre timpii de încasare de la clienți și timpii de plată către furnizori, folosită ca capital circulant gratuit."
+description: "Lichiditate la cost zero generată de diferența dintre timpii de încasare de la clienți și timpii de plată către furnizori..."
 translationKey: "glossary_float-finanziario"
 aka: "Financial Float"
 articles:

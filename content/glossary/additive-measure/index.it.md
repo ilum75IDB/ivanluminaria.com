@@ -1,6 +1,6 @@
 ---
 title: "Additive Measure"
-description: "Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni — importi, quantità, conteggi. Fondamentale nella progettazione del data warehouse."
+description: "Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni — importi, quantità, conteggi."
 translationKey: "glossary_additive_measure"
 aka: "Misura additiva, Fully additive measure"
 articles:

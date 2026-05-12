@@ -1,6 +1,7 @@
 ---
 title: "Utenti, ruoli e privilegi in Oracle: perché GRANT ALL non è mai la risposta"
-description: "Un cliente con tutti gli utenti applicativi connessi come schema owner con ruolo DBA. Come ho ristrutturato il modello di sicurezza Oracle applicando il principio del least privilege — con SQL reale, ruoli custom e Unified Audit."
+seoTitle: "Oracle ruoli e privilegi: least privilege con SQL reale"
+description: "Sicurezza Oracle: ridisegno del modello GRANT con ruoli custom e Unified Audit, applicando il least privilege. Caso reale con SQL pronto."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"

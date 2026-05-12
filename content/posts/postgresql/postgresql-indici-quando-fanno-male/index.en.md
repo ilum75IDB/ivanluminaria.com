@@ -1,6 +1,7 @@
 ---
 title: "When an index does more harm than good: cleaning PostgreSQL waste"
-description: "A Ministry's central database, a table with 15 indexes (8 of them never used), a junior who wanted to understand everything. The cleanup that put the queries back on track, told as if it happened yesterday."
+seoTitle: "PostgreSQL: unused indexes and pg_stat_user_indexes"
+description: "PostgreSQL: how to find and drop unused indexes with pg_stat_user_indexes. Real case: a table with 15 indexes, 8 of them never used."
 date: "2026-05-26T08:03:00+01:00"
 draft: false
 translationKey: "postgresql_indici_quando_fanno_male"

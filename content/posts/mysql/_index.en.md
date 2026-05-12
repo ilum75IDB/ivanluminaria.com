@@ -1,7 +1,8 @@
 ---
 title: "MySQL"
+seoTitle: "MySQL and MariaDB: performance and security articles"
 layout: "list"
-description: "MySQL and MariaDB: security, performance and architecture on one of the world's most widely deployed databases."
+description: "MySQL and MariaDB articles: binary log, Galera Cluster, Group Replication, backup with mysqldump/mydumper, authentication, GRANT and pre-upgrade assessment."
 image: "mysql.cover.jpg"
 ---
 

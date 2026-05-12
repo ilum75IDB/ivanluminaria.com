@@ -1,5 +1,6 @@
 ---
 title: "Glosar"
-description: "Termeni tehnici, acronime si concepte cheie din lumea bazelor de date, data warehouse si managementul proiectelor. Fiecare intrare include o definitie clara si linkuri catre articolele relevante."
+seoTitle: "Glosar Database și Project Management: termeni tehnici"
+description: "Glosar Database Strategy: sute de termeni despre Oracle, PostgreSQL, MySQL, data warehouse și management de proiect cu definiții și articole relevante."
 layout: "glossary-list"
 ---

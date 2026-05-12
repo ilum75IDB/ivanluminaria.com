@@ -1,6 +1,6 @@
 ---
 title: "Partition Pruning"
-description: "Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo le partizioni che contengono dati corrispondenti al predicato."
+description: "Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query..."
 translationKey: "glossary_partition-pruning"
 articles:
   - "/posts/oracle/oracle-partitioning"

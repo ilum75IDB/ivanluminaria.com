@@ -1,6 +1,6 @@
 ---
 title: "Additive Measure"
-description: "Măsură numerică într-o fact table care poate fi sumată de-a lungul tuturor dimensiunilor — sume, cantități, contorizări. Fundamentală în proiectarea data warehouse-ului."
+description: "Măsură numerică într-o fact table care poate fi sumată de-a lungul tuturor dimensiunilor — sume, cantități, contorizări."
 translationKey: "glossary_additive_measure"
 aka: "Măsură aditivă, Fully additive measure"
 articles:

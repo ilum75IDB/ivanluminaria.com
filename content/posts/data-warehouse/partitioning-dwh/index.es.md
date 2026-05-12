@@ -1,6 +1,7 @@
 ---
 title: "Partitioning en el DWH: cuando 3 años de datos pesan demasiado"
-description: "Una fact table de 800 millones de filas sin partitioning, queries trimestrales que tardaban 12 minutos y un negocio que quería respuestas en tiempo real. Cómo implementé el range partitioning mensual y llevé los tiempos a 40 segundos."
+seoTitle: "Partitioning DWH: range partitioning en fact table"
+description: "Range partitioning en fact table de 800M filas: de queries trimestrales de 12 minutos a 40 segundos. Implementación mensual, exchange e índices locales."
 date: "2026-04-07T08:03:00+01:00"
 draft: false
 translationKey: "partitioning_dwh"

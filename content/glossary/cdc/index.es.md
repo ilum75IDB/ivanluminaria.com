@@ -1,6 +1,6 @@
 ---
 title: "CDC"
-description: "Change Data Capture — técnica para interceptar y propagar los cambios en los datos en tiempo real, frecuentemente basada en la lectura de los logs de transacciones."
+description: "Change Data Capture — técnica para interceptar y propagar los cambios en los datos en tiempo real..."
 translationKey: "glossary_cdc"
 aka: "Change Data Capture"
 articles:

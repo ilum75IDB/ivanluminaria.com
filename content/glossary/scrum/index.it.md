@@ -1,6 +1,6 @@
 ---
 title: "Scrum"
-description: "Framework agile per la gestione di progetti che organizza il lavoro in sprint a durata fissa, con ruoli definiti (Product Owner, Scrum Master, Team) e cerimonie strutturate."
+description: "Framework agile per la gestione di progetti che organizza il lavoro in sprint a durata fissa, con ruoli definiti (Product Owner, Scrum Master..."
 translationKey: "glossary_scrum"
 aka: "Framework Scrum"
 articles:

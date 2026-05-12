@@ -1,6 +1,7 @@
 ---
 title: "Usuarios, roles y privilegios en Oracle: por qué GRANT ALL nunca es la respuesta"
-description: "Un cliente donde todos los usuarios aplicativos se conectaban como schema owner con el rol DBA. Cómo reestructuré el modelo de seguridad Oracle aplicando el principio del mínimo privilegio — con SQL real, roles personalizados y Unified Audit."
+seoTitle: "Seguridad Oracle: roles, privilegios y mínimo privilegio"
+description: "Seguridad Oracle: rediseño del modelo GRANT con roles personalizados y Unified Audit, aplicando el mínimo privilegio. Caso real con SQL listo."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"

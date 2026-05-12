@@ -1,6 +1,6 @@
 ---
 title: "Unix Socket"
-description: "Mecanismo de comunicación inter-proceso local en sistemas Unix/Linux, usado por MySQL para conexiones más rápidas que TCP cuando cliente y servidor están en el mismo host."
+description: "Mecanismo de comunicación inter-proceso local en sistemas Unix/Linux, usado por MySQL para conexiones más rápidas que TCP cuando cliente y servidor están en..."
 translationKey: "glossary_unix-socket"
 articles:
   - "/posts/mysql/mysql-multi-istanza-secure-file-priv"

@@ -1,6 +1,6 @@
 ---
 title: "Scrum"
-description: "Agile framework for project management that organizes work into fixed-length sprints, with defined roles (Product Owner, Scrum Master, Team) and structured ceremonies."
+description: "Agile framework for project management that organizes work into fixed-length sprints, with defined roles (Product Owner, Scrum Master..."
 translationKey: "glossary_scrum"
 aka: "Scrum Framework"
 articles:

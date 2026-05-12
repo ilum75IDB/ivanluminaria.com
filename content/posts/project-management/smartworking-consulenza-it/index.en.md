@@ -1,6 +1,7 @@
 ---
 title: "Smart working in IT consulting: the numbers nobody wants to look at"
-description: "A concrete analysis of the economic and strategic benefits of remote work in IT consulting companies. With real numbers, Rome's ring road, and a morning run at 6 AM."
+seoTitle: "Smart working in IT consulting: the real numbers"
+description: "Smart working in IT consulting: economic and strategic analysis of remote work. Real numbers, KPIs, presenteeism and productivity compared to in-office."
 date: "2026-02-24T08:03:00+01:00"
 draft: false
 translationKey: "smartworking_consulenza_it"

@@ -1,6 +1,6 @@
 ---
 title: "B-Tree"
-description: "Structură de date de arbore echilibrat, tipul implicit de index în majoritatea bazelor de date relaționale. Eficient pentru căutări de egalitate și interval, dar inadecvat pentru LIKE cu wildcard inițial."
+description: "Structură de date de arbore echilibrat, tipul implicit de index în majoritatea bazelor de date relaționale."
 translationKey: "glossary_b-tree"
 articles:
   - "/posts/postgresql/like-optimization-postgresql"

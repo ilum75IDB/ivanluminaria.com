@@ -1,8 +1,9 @@
 ---
 title: "Oracle"
+seoTitle: "Oracle Database: DBA, performance and tuning articles"
 layout: "list"
 date: "2026-03-10T08:03:00+01:00"
-description: "Oracle Database: security, performance and architecture on the longest-running and most complex enterprise database on the market."
+description: "Oracle 19c+ articles: DBA administration, performance tuning, Data Guard, partitioning, AWR/ASH, security and migration to Oracle Cloud (OCI)."
 image: "oracle.cover.jpg"
 ---
 

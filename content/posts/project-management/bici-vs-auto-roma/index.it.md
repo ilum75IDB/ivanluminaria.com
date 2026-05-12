@@ -1,6 +1,7 @@
 ---
 title: "Bici vs Auto a Roma: la mattina che mi ha aperto gli occhi"
-description: "Da Appio Latino a Prati in 50 minuti di traffico e 35€ di parcheggio, oppure in 18 minuti di Brompton elettrica. La scelta che ha cambiato le mie giornate — e che potrebbe cambiare le tue."
+seoTitle: "Bici elettrica vs auto a Roma: pendolarismo a confronto"
+description: "Pendolarismo Roma: bici elettrica Brompton vs auto. 18 minuti vs 50, 35€ di parcheggio risparmiati. La scelta di mobilità sostenibile, dati reali."
 date: "2026-03-03T08:03:00+01:00"
 draft: false
 translationKey: "bici_vs_auto_roma"

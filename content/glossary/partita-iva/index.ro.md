@@ -1,6 +1,6 @@
 ---
 title: "Partita IVA"
-description: "Regim fiscal italian pentru lucrătorii independenți și liber-profesioniști, care în consultanța IT implică asumarea directă a riscului de credit față de clienți."
+description: "Regim fiscal italian pentru lucrătorii independenți și liber-profesioniști, care în consultanța IT implică asumarea directă a riscului de credit față de..."
 translationKey: "glossary_partita-iva"
 aka: "Cod TVA / Freelancer"
 articles:

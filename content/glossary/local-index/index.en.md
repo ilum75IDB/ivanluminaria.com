@@ -1,6 +1,6 @@
 ---
 title: "Local Index"
-description: "Oracle index partitioned with the same key as the table, where each table partition has its corresponding index partition. More maintainable than a global index."
+description: "Oracle index partitioned with the same key as the table, where each table partition has its corresponding index partition."
 translationKey: "glossary_local-index"
 articles:
   - "/posts/oracle/oracle-partitioning"

@@ -1,6 +1,6 @@
 ---
 title: "Scope Creep"
-description: "Expansión incontrolada de los requisitos de un proyecto más allá del alcance inicial, que lleva a retrasos, aumento de costes y frecuentemente al fracaso del proyecto."
+description: "Expansión incontrolada de los requisitos de un proyecto más allá del alcance inicial, que lleva a retrasos..."
 translationKey: "glossary_scope-creep"
 articles:
   - "/posts/project-management/4-milioni-nessun-software"

@@ -1,6 +1,6 @@
 ---
 title: "Carbon Footprint"
-description: "Total amount of greenhouse gases emitted directly or indirectly by an activity, expressed in tonnes of CO₂ equivalent — a car in Roman traffic produces 120-150 g/km."
+description: "Total amount of greenhouse gases emitted directly or indirectly by an activity, expressed in tonnes of CO₂ equivalent"
 translationKey: "glossary_carbon-footprint"
 aka: "Carbon Emissions"
 articles:

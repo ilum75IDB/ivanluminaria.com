@@ -1,6 +1,6 @@
 ---
 title: "Vendor Lock-in"
-description: "Dependență structurală de un furnizor extern care face schimbarea providerului dificilă sau costisitoare, adesea cauzată de pierderea know-how-ului și a proprietății codului."
+description: "Dependență structurală de un furnizor extern care face schimbarea providerului dificilă sau costisitoare..."
 translationKey: "glossary_vendor-lock-in"
 articles:
   - "/posts/project-management/4-milioni-nessun-software"

@@ -1,6 +1,6 @@
 ---
 title: "ROLE"
-description: "Entitatea fundamentală a PostgreSQL care unifică conceptul de utilizator și grup de permisiuni: un ROLE cu LOGIN este un utilizator, fără LOGIN este un container de privilegii."
+description: "Entitatea fundamentală a PostgreSQL care unifică conceptul de utilizator și grup de permisiuni: un ROLE cu LOGIN este un utilizator..."
 translationKey: "glossary_postgresql-role"
 aka: "Rol PostgreSQL"
 articles:

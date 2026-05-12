@@ -1,6 +1,6 @@
 ---
 title: "AI Manager"
-description: "Rol profesional care guvernează impactul inteligenței artificiale asupra arhitecturilor, proceselor și persoanelor dintr-un proiect, separând valoarea reală de zgomot."
+description: "Rol profesional care guvernează impactul inteligenței artificiale asupra arhitecturilor, proceselor și persoanelor dintr-un proiect..."
 translationKey: "glossary_ai-manager"
 aka: "Responsabil AI / AI Governance Manager"
 articles:

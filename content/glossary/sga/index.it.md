@@ -1,6 +1,6 @@
 ---
 title: "SGA"
-description: "System Global Area — area di memoria condivisa di Oracle Database che contiene buffer cache, shared pool, redo log buffer e altre strutture critiche per le performance."
+description: "System Global Area — area di memoria condivisa di Oracle Database che contiene buffer cache, shared pool..."
 translationKey: "glossary_sga"
 aka: "System Global Area"
 articles:

@@ -1,6 +1,7 @@
 ---
 title: "4 millones de euros, dos multinacionales, cero software: historia real de un fracaso anunciado"
-description: "Un cliente del sector asegurador gastó más de 4 millones de euros confiando en dos gigantes de la consultoría IT para un software a medida. Resultado: nada. En comparación, un data warehouse construido por dos personas en 3 años con 60.000 líneas de código que funciona cada día."
+seoTitle: "Fracaso proyecto IT: 4 millones y cero software"
+description: "Caso real de gestión de proyectos: cliente asegurador gasta 4 millones en consultoría IT y obtiene cero software funcionando. Lecciones vendor lock-in."
 date: "2025-12-30T08:03:00+01:00"
 draft: false
 translationKey: "consulenza_it_milioni_sprecati"

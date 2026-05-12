@@ -1,6 +1,7 @@
 ---
 title: "Tres data marts, tres verdades sobre las ventas: el bus matrix como terreno común"
-description: "Un grupo asegurador multi-país con tres departamentos, tres data marts crecidos en autonomía y tres números diferentes para las pólizas emitidas en febrero. El bus matrix no lo resolvió en una tarde — pero dio un terreno compartido sobre el que empezar a hablar."
+seoTitle: "Bus matrix Kimball: data marts y conformed dimensions"
+description: "Bus matrix de Kimball para alinear data marts aislados: conformed dimensions, procesos de negocio y ventas comparables. Caso real grupo asegurador."
 date: "2026-05-12T08:03:00+01:00"
 draft: false
 translationKey: "bus_matrix_terreno_comune"

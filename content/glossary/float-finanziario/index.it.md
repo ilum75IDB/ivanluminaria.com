@@ -1,6 +1,6 @@
 ---
 title: "Float Finanziario"
-description: "Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori, usata come capitale circolante gratuito."
+description: "Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori..."
 translationKey: "glossary_float-finanziario"
 aka: "Financial Float"
 articles:

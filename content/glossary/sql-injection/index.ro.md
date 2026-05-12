@@ -1,6 +1,6 @@
 ---
 title: "SQL Injection"
-description: "Tehnică de atac care inserează cod SQL malițios în input-urile unei aplicații pentru a manipula interogările executate de baza de date, accesând potențial date neautorizate sau compromițând sistemul."
+description: "Tehnică de atac care inserează cod SQL malițios în input-urile unei aplicații pentru a manipula interogările executate de baza de date..."
 translationKey: "glossary_sql-injection"
 articles:
   - "/posts/mysql/mysql-multi-istanza-secure-file-priv"

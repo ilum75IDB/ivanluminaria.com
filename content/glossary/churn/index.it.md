@@ -1,6 +1,6 @@
 ---
 title: "Churn"
-description: "Misura di quanto una tabella database cambia dopo l'inserimento iniziale dei dati, in termini di UPDATE e DELETE. Determina il costo di manutenzione degli indici."
+description: "Misura di quanto una tabella database cambia dopo l'inserimento iniziale dei dati, in termini di UPDATE e DELETE."
 translationKey: "glossary_churn"
 articles:
   - "/posts/postgresql/like-optimization-postgresql"

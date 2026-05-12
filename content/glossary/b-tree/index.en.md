@@ -1,6 +1,6 @@
 ---
 title: "B-Tree"
-description: "Balanced tree data structure, the default index type in most relational databases. Efficient for equality and range searches, but unsuitable for LIKE with leading wildcard."
+description: "Balanced tree data structure, the default index type in most relational databases. Efficient for equality and range searches..."
 translationKey: "glossary_b-tree"
 articles:
   - "/posts/postgresql/like-optimization-postgresql"

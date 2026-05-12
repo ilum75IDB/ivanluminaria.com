@@ -1,6 +1,6 @@
 ---
 title: "DSO"
-description: "Days Sales Outstanding — número medio de días que una empresa tarda en cobrar sus créditos comerciales. En Italia la media es de 80 días, casi tres veces la media europea."
+description: "Days Sales Outstanding — número medio de días que una empresa tarda en cobrar sus créditos comerciales."
 translationKey: "glossary_dso"
 aka: "Days Sales Outstanding"
 articles:

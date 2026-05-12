@@ -1,6 +1,7 @@
 ---
 title: "EXPLAIN ANALYZE is not enough: how to actually read a PostgreSQL execution plan"
-description: "A real-world case where the optimizer chose a nested loop on 2 million rows because statistics were stale. How to read an execution plan, spot the red flags, and fix the root cause."
+seoTitle: "EXPLAIN ANALYZE PostgreSQL: reading the execution plan"
+description: "PostgreSQL EXPLAIN ANALYZE: reading an execution plan, spotting costly nested loops and stale statistics. Real case on 2-million-row table."
 date: "2025-10-28T08:03:00+01:00"
 draft: false
 translationKey: "explain_analyze_postgresql"

@@ -1,6 +1,6 @@
 ---
 title: "Version Control"
-description: "Sistema que rastrea cada cambio en el código fuente, permitiendo visualizar el historial, revertir cambios y colaborar sin sobreescrituras. Git es el estándar actual."
+description: "Sistema que rastrea cada cambio en el código fuente, permitiendo visualizar el historial, revertir cambios y colaborar sin sobreescrituras."
 translationKey: "glossary_version-control"
 aka: "Control de versiones, VCS"
 articles:

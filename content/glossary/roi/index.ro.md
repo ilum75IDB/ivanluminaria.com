@@ -1,6 +1,6 @@
 ---
 title: "ROI"
-description: "Return on Investment — raportul între beneficiul obținut și costul suportat pentru o investiție, adesea abuzat în prezentările comerciale despre AI unde promisiunile depășesc realitatea."
+description: "Return on Investment — raportul între beneficiul obținut și costul suportat pentru o investiție..."
 translationKey: "glossary_roi"
 aka: "Return on Investment / Randamentul investiției"
 articles:

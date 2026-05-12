@@ -1,6 +1,6 @@
 ---
 title: "Stakeholder"
-description: "Persoană sau grup cu un interes direct în rezultatul unui proiect: client, utilizator final, sponsor, echipă tehnică sau orice parte afectată de deciziile proiectului."
+description: "Persoană sau grup cu un interes direct în rezultatul unui proiect: client, utilizator final, sponsor..."
 translationKey: "glossary_stakeholder"
 aka: "Parte interesată"
 articles:

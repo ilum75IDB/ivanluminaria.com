@@ -1,6 +1,6 @@
 ---
 title: "Huge Pages"
-description: "Páginas de memoria de 2 MB (en lugar de los 4 KB estándar) que reducen drásticamente la presión sobre la MMU y el TLB, mejorando el rendimiento de Oracle en Linux."
+description: "Páginas de memoria de 2 MB (en lugar de los 4 KB estándar) que reducen drásticamente la presión sobre la MMU y el TLB..."
 translationKey: "glossary_huge-pages"
 aka: "HugePages / Large Pages"
 articles:

@@ -1,6 +1,7 @@
 ---
 title: "Ragged hierarchies: when the client has no parent and the group has no grandparent"
-description: "A client with a three-level hierarchy — Top Group, Group, Client — where not all branches are complete. How I balanced a ragged hierarchy with self-parenting: whoever has no parent becomes their own parent."
+seoTitle: "Ragged hierarchy: unbalanced trees with self-parenting"
+description: "Ragged hierarchy in the data warehouse: balancing unbalanced trees with the self-parenting technique. Correct drill-down on customers and groups."
 date: "2026-01-20T08:03:00+01:00"
 draft: false
 translationKey: "ragged_hierarchies"

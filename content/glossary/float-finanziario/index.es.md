@@ -1,6 +1,6 @@
 ---
 title: "Float Financiero"
-description: "Liquidez a coste cero generada por la diferencia entre los tiempos de cobro de los clientes y los tiempos de pago a los proveedores, usada como capital circulante gratuito."
+description: "Liquidez a coste cero generada por la diferencia entre los tiempos de cobro de los clientes y los tiempos de pago a los proveedores..."
 translationKey: "glossary_float-finanziario"
 aka: "Financial Float"
 articles:

@@ -1,6 +1,7 @@
 ---
 title: "La tecnica del Sì-E: come ho evitato una discussione che stava per esplodere"
-description: "La tecnica del Yes-And, nata nel teatro di improvvisazione, applicata alla gestione dei conflitti nei team IT. Un caso reale di una riunione che stava degenerando — e come tre parole hanno cambiato tutto."
+seoTitle: "Tecnica Yes-And: gestione conflitti nei team IT"
+description: "La tecnica Yes-And dal teatro di improvvisazione applicata alla gestione dei conflitti nei team IT. Caso reale di riunione che stava degenerando."
 date: "2026-01-13T08:03:00+01:00"
 draft: false
 translationKey: "tecnica_si_e_yes_and"

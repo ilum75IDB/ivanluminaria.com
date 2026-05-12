@@ -1,6 +1,6 @@
 ---
 title: "Churn"
-description: "Măsură a cât de mult se modifică o tabelă de baze de date după inserarea inițială a datelor, în termeni de UPDATE și DELETE. Determină costul de mentenanță al indexurilor."
+description: "Măsură a cât de mult se modifică o tabelă de baze de date după inserarea inițială a datelor, în termeni de UPDATE și DELETE."
 translationKey: "glossary_churn"
 articles:
   - "/posts/postgresql/like-optimization-postgresql"

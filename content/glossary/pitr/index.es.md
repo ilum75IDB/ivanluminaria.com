@@ -1,6 +1,6 @@
 ---
 title: "PITR"
-description: "Point-in-Time Recovery — técnica de restauración que permite llevar una base de datos a un momento preciso en el tiempo, combinando backups y logs de transacciones."
+description: "Point-in-Time Recovery — técnica de restauración que permite llevar una base de datos a un momento preciso en el tiempo..."
 translationKey: "glossary_pitr"
 aka: "Point-in-Time Recovery"
 articles:

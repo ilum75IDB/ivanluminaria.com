@@ -1,6 +1,7 @@
 ---
 title: "Project Management"
-description: "Managementul proiectelor IT: smart working, Scrum, AI și consultanță. Articole practice din treizeci de ani de experiență pe teren."
+seoTitle: "Project Management IT: Scrum, AI, consultanță"
+description: "Articole Project Management IT: Scrum, standup meetings, smart working, AI Manager, management echipe, freelance și consultanță IT. Cazuri reale din 30 ani."
 layout: "list"
 image: "project-management.cover.jpg"
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Know-How & Impact"
-description: "Thirty years working on systems that cannot fail — databases, data warehouses, teams. Technical depth and concrete impact on the business."
+seoTitle: "Know-How and Impact: 30 years of DBA, DWH and IT teams"
+description: "Ivan Luminaria's Know-How and Impact: the 4 professional profiles — DWH Architect, Oracle DBA, Oracle PL/SQL Developer, Scrum/Agile Project Manager."
 hero_title: "Experience, depth, impact"
 date: "2026-02-23"
 lastmod: "2026-02-26"
