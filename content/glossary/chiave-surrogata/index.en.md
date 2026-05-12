@@ -5,6 +5,7 @@ translationKey: "glossary_chiave_surrogata"
 aka: "Chiave surrogata"
 articles:
   - "/posts/data-warehouse/scd-tipo-2"
+  - "/posts/mysql/enum-mysql-semplifica-o-complica"
 ---
 
 A **surrogate key** is a sequential numeric identifier generated internally by the data warehouse, with no business meaning. It is distinct from the natural key — the one coming from the source system (e.g. customer code, employee number).

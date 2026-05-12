@@ -248,3 +248,17 @@ I prossimi appuntamenti:
 - **Oracle, deep-dive verticale** — come si modellavano le enumerazioni in 19c, cosa è cambiato in 21c, 23ai e 26ai, fino alle nuove Assertions
 
 Stessa domanda, tre filosofie. Il bello è proprio nel confronto.
+
+------------------------------------------------------------------------
+
+## Glossario
+
+**[ENUM (MySQL)](/it/glossary/mysql-enum/)** — Tipo di dato MySQL che ammette un set predefinito di valori stringa, memorizzato internamente come indice numerico di 1-2 byte. Una delle feature caratteristiche di MySQL.
+
+**[CHECK constraint](/it/glossary/check-constraint/)** — Vincolo SQL standard che limita i valori ammessi in una colonna tramite un'espressione booleana. In MySQL è realmente applicato solo dalla versione 8.0.16.
+
+**[Lookup table](/it/glossary/lookup-table/)** — Tabella di riferimento collegata via foreign key che memorizza i valori validi di un'enumerazione, con eventuali attributi descrittivi (etichetta, ordine, flag attivo).
+
+**[Online DDL](/it/glossary/mysql-online-ddl/)** — Meccanismo MySQL/InnoDB che permette di eseguire ALTER TABLE senza bloccare le scritture concorrenti, con tre algoritmi (`INSTANT`, `INPLACE`, `COPY`) scelti automaticamente in base all'operazione.
+
+**[Chiave surrogata](/it/glossary/chiave-surrogata/)** — Identificativo numerico generato dal database (tipicamente un `AUTO_INCREMENT`) distinto dalla chiave naturale. Sulla lookup table è l'ancora dell'integrità referenziale, perché resta stabile anche quando il codice o la descrizione cambiano.
