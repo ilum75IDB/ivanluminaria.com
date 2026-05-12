@@ -1,6 +1,7 @@
 ---
 title: "VACUUM și autovacuum: de ce PostgreSQL are nevoie ca cineva să facă curățenie"
-description: "O bază de date PostgreSQL de 200 GB cu tabele umflate la triplul dimensiunii reale. Autovacuum era activ, dar prost configurat. Cum diagnostichezi bloat-ul, citești pg_stat_user_tables și faci tuning fără să dezactivezi nimic."
+seoTitle: "PostgreSQL VACUUM și autovacuum: diagnostic și tuning bloat"
+description: "PostgreSQL VACUUM și autovacuum: diagnostic bloat pe bază de date 200 GB, citirea pg_stat_user_tables și tuning fără a dezactiva nimic."
 date: "2026-03-24T08:03:00+01:00"
 lastmod: "2026-03-24T08:03:00+01:00"
 draft: false

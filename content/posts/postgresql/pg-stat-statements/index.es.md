@@ -1,6 +1,7 @@
 ---
 title: "pg_stat_statements: lo primero que instalar en cualquier PostgreSQL"
-description: "Un PostgreSQL en producción durante dos años sin pg_stat_statements. Cuando lo activamos, tres queries consumían el 80% de los recursos — cada una se resolvía con un solo índice. Cómo instalar, consultar y leer los resultados de la extensión más importante para la diagnóstica de PostgreSQL."
+seoTitle: "pg_stat_statements: diagnóstico de queries PostgreSQL"
+description: "PostgreSQL pg_stat_statements: la extensión de diagnóstico de queries a instalar primero. Encontrar las tres queries que consumen el 80%."
 date: "2026-04-21T08:03:00+01:00"
 draft: false
 translationKey: "pg_stat_statements"
