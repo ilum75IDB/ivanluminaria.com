@@ -2,6 +2,48 @@
 
 ## Issue create
 
+### Mini-serie cross-DB sulle enumerazioni (4 articoli, giugno 2026)
+
+Quattro articoli in quattro settimane consecutive, stesso tono didattico (linee guida applicate come commento alle 4 issue):
+
+1. **MySQL #86** — le tre strade in MySQL (ENUM nativo, CHECK, lookup). Slot **2026-06-02**
+2. **PostgreSQL #87** — le tre strade in PostgreSQL (CREATE TYPE ENUM, CHECK, lookup). Slot **2026-06-09**
+3. **Oracle #70** — le tre strade in Oracle + chiusura confronto cross-DB. Slot **2026-06-16**
+4. **Oracle #88** — deep-dive verticale: evoluzione delle feature 19c → 21c → 23ai → 26ai. Slot **2026-06-23**
+
+I quattro articoli si linkeranno reciprocamente nella sezione "Aggancio cross-DB".
+
+### Articolo MySQL: Enumerazioni con ENUM nativo, CHECK e tabelle lookup — Issue #86
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/86
+- **Concept**: Le tre strade per modellare enumerazioni in MySQL (ENUM nativo, CHECK constraint da 8.0.16+, tabelle di lookup con FK). Tono didattico con caso reale. Valorizzazione di ENUM nativo come feature distintiva di MySQL, ma onestà sui limiti (case-insensitive, ALTER TABLE per modifiche, ordinamento posizionale). Primo pezzo della mini-serie cross-DB.
+- **Sezione**: MySQL
+- **Slot proposto**: 2026-06-02
+- **Data nota**: 2026-03-31
+- **Data issue**: 2026-05-11
+
+### Articolo PostgreSQL: Enumerazioni con CREATE TYPE ENUM, CHECK e tabelle lookup — Issue #87
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/87
+- **Concept**: Le tre strade per modellare enumerazioni in PostgreSQL (CREATE TYPE ... AS ENUM, CHECK constraint, tabelle di lookup con FK). Valorizzazione del tipo ENUM PostgreSQL (case-sensitive, ordinabile, transaction-safe) e della feature chiave ALTER TYPE ADD VALUE. Secondo pezzo della mini-serie cross-DB.
+- **Sezione**: PostgreSQL
+- **Slot proposto**: 2026-06-09
+- **Data nota**: 2026-03-31
+- **Data issue**: 2026-05-11
+
+### Articolo Oracle: Enumerazioni - evoluzione delle feature da 19c a 26ai — Issue #88
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/88
+- **Concept**: Deep-dive verticale Oracle che chiude la mini-serie. Come si modellavano le enumerazioni in 19c (solo CHECK e lookup), cosa cambia in 21c, l'arrivo di SQL Domains in 23ai, le Assertions in 26ai. Tabella riepilogativa CHECK / Lookup / Domain / Assertion x 19c / 21c / 23ai / 26ai.
+- **Sezione**: Oracle
+- **Slot proposto**: 2026-06-23
+- **Data nota**: 2026-05-11
+- **Data issue**: 2026-05-11
+
+### Articolo PM: UML e RUP - storia dei Three Amigos — Issue #85
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/85
+- **Concept**: Spiegazione a un collega su cosa siano UML/RUP diventata storia: i "Three Amigos" (Booch, Rumbaugh, Jacobson) da rivali a co-autori dentro Rational Software, fusione delle tre metodologie object-oriented, standardizzazione OMG, arrivo di Agile/Scrum, nicchia di sopravvivenza di RUP in contesti regolamentati (brevetti, medicale, aviazione). Angolo "storia umana di collaborazione" + filo del presente con Agile.
+- **Sezione**: Project Management
+- **Data nota**: 2026-05-11
+- **Data issue**: 2026-05-11
+
 ### Articolo PM: L'importanza della documentazione progettuale — Issue #66
 - **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/66
 - **Data nota**: 2026-03-29
@@ -11,20 +53,8 @@
 
 ### Articolo Oracle: Assertions in Oracle 26ai
 - **Sezione**: Oracle
-- **Concept**: Le Assertions sono vincoli di integrita cross-tabella introdotti in Oracle 26ai. Sintassi SQL standard (CREATE ASSERTION ... CHECK), espressioni existential e universal. Feature nuova che pochi conoscono — potenziale articolo forte.
+- **Concept**: Le Assertions sono vincoli di integrita cross-tabella introdotti in Oracle 26ai. Sintassi SQL standard (CREATE ASSERTION ... CHECK), espressioni existential e universal. Feature nuova che pochi conoscono — potenziale articolo forte. Parzialmente coperto dall'articolo #88 (Oracle evoluzione 19c→26ai) come sezione finale, ma resta materiale per un eventuale approfondimento dedicato.
 - **Fonte**: https://oracle-base.com/articles/26/assertions-26
-- **Data nota**: 2026-03-31
-
-### Articolo MySQL: Enumerazioni in MySQL con caso reale
-- **Sezione**: MySQL
-- **Concept**: Come gestire le enumerazioni in MySQL (ENUM nativo, CHECK constraint, tabelle di lookup). Caso reale concreto. Da scrivere prima dell'articolo Oracle #70 per poterlo linkare come confronto cross-database.
-- **Collegamento**: si linka dall'articolo #70 (enumerazioni Oracle) e viceversa
-- **Data nota**: 2026-03-31
-
-### Articolo PostgreSQL: Enumerazioni in PostgreSQL con caso reale
-- **Sezione**: PostgreSQL
-- **Concept**: Come gestire le enumerazioni in PostgreSQL (CREATE TYPE ... AS ENUM, ALTER TYPE ADD VALUE, pro e contro). Caso reale concreto. Da scrivere prima dell'articolo Oracle #70 per poterlo linkare come confronto cross-database.
-- **Collegamento**: si linka dall'articolo #70 (enumerazioni Oracle) e viceversa
 - **Data nota**: 2026-03-31
 
 ## Idee feature sito / marketing

@@ -10,6 +10,7 @@ tool `WebFetch`.
 |----|-------|--------|-------|
 | 52 | https://github.com/ilum75IDB/ivanluminaria.com/issues/52 | Migrazione Oracle 12c to 21c: 12 TB, nuovo server, 4 ore di downtime | aperta |
 | 70 | https://github.com/ilum75IDB/ivanluminaria.com/issues/70 | Articolo Oracle: enumerazioni, tabelle tipologiche e SQL Domains da CHECK a 23ai | aperta |
+| 88 | https://github.com/ilum75IDB/ivanluminaria.com/issues/88 | Articolo Oracle: enumerazioni - evoluzione delle feature da 19c a 26ai | aperta |
 
 ## Issue Aperte — Sezione Data Warehouse
 
@@ -33,6 +34,7 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
+| 87 | https://github.com/ilum75IDB/ivanluminaria.com/issues/87 | Articolo PostgreSQL: enumerazioni - CREATE TYPE ENUM, CHECK constraint, tabelle lookup | aperta |
 
 ## Issue Aperte — Sezione Project Management
 
@@ -40,6 +42,7 @@ tool `WebFetch`.
 |----|-------|--------|-------|
 | 66 | https://github.com/ilum75IDB/ivanluminaria.com/issues/66 | Articolo PM: importanza documentazione progettuale per il successo di un progetto | aperta |
 | 67 | https://github.com/ilum75IDB/ivanluminaria.com/issues/67 | Articolo PM: misurare i risultati come obiettivo per il successo di un progetto | aperta |
+| 85 | https://github.com/ilum75IDB/ivanluminaria.com/issues/85 | Articolo PM: UML e RUP - storia dei Three Amigos da rivali a co-autori | aperta |
 
 ## Issue Aperte — Enhancement (Glossario)
 
@@ -49,6 +52,16 @@ tool `WebFetch`.
 
 *Nessuna issue aperta.*
 
+## Issue Aperte — Enhancement (Site Improvements)
+
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 89 | https://github.com/ilum75IDB/ivanluminaria.com/issues/89 | SEO: audit e fix delle meta descriptions mancanti su pagine non-articolo | aperta |
+| 90 | https://github.com/ilum75IDB/ivanluminaria.com/issues/90 | Performance: valutare policy di cache per asset statici (GitHub Pages vs CDN) | aperta |
+| 91 | https://github.com/ilum75IDB/ivanluminaria.com/issues/91 | UX mobile: leggibilita di code blocks e tabelle su viewport stretti | aperta |
+| 92 | https://github.com/ilum75IDB/ivanluminaria.com/issues/92 | UX: aggiungere reading progress bar in cima agli articoli lunghi | aperta |
+| 93 | https://github.com/ilum75IDB/ivanluminaria.com/issues/93 | UX: valutare un sistema di feedback leggero a fine articolo | aperta |
+
 ## Issue Aperte — Bug
 
 *Nessuna issue aperta.*
@@ -57,6 +70,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 86 | https://github.com/ilum75IDB/ivanluminaria.com/issues/86 | Articolo MySQL: enumerazioni - ENUM nativo, CHECK constraint, tabelle lookup | 2026-05-11 |
 | 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | 2026-04-28 |
 | 84 | https://github.com/ilum75IDB/ivanluminaria.com/issues/84 | Feature: redesign pagina /tags/ con raggruppamento per sezione | 2026-04-25 |
 | 83 | https://github.com/ilum75IDB/ivanluminaria.com/issues/83 | Feature: redesign pagina di ricerca con layout card coerente al resto del sito | 2026-04-24 |

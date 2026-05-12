@@ -747,25 +747,33 @@ footer .flex.flex-row.items-center > a svg {
 
 /* Footer full-width: break out of body's max-w-7xl container
    to align with the fixed navbar. Same pattern as nav:
-   outer element full-width, inner container capped at 1600px */
+   outer element full-width, inner container capped at 1600px.
+   La linea rossa di separazione e' applicata al .footer-inner (max 1600px),
+   non al <footer> esterno, cosi' rispetta la width della pagina. */
 footer {
   width: 100vw !important;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  padding-left: 1.5rem !important;   /* matches navbar px-6 */
+  padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
-  border-top: 1px solid;
-  border-color: rgb(229 231 235); /* neutral-200 */
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+  border-top: none !important;
 }
 .footer-inner {
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  border-top: 1px solid var(--ivan-red);
+  padding-top: 1rem;
 }
 .dark footer {
-  border-color: rgb(var(--color-neutral-700)); /* coerente col tema */
+  border-color: transparent;
+}
+.dark .footer-inner {
+  border-top-color: var(--ivan-red);
 }
 
 #to-top a {
@@ -1219,7 +1227,7 @@ footer {
   position: sticky;
   top: 3rem;
   text-align: center;
-  padding-top: 0;
+  padding-top: 35px;
 }
 
 .author-sidebar-card img,
@@ -4384,4 +4392,253 @@ footer {
       0 -0.5rem 0 currentColor,
       0  0.5rem 0 currentColor;
   }
+}
+
+/* ===========================================================================
+   READING PROGRESS BAR (issue #92)
+   - Barra rossa 3px sotto navbar, container-width 1280px (max-w-7xl)
+   - Badge floating "X%" in basso a destra, width fissa, allineato al container
+   - Mini-card nella sidebar autore (label blu + percentuale rossa + mini-bar)
+   - Container bianco fisso sotto navbar (10px piu' alto della navbar) che
+     copre il contenuto dell'articolo scrollato, evitando che il testo si
+     veda dietro la fascia tra navbar e inizio articolo
+   - Tutti gli elementi persistenti da pct > 5 fino a 100%, gestiti da
+     /js/reading-progress.js, e renderizzati solo nelle pagine articolo
+     (.Section == "posts" in single.html / author-sidebar.html)
+   =========================================================================== */
+
+/* --- Background fixed che copre da top a (navHeight + 30px). I 30px
+   coprono l'altezza della reading bar + lo spazio bianco sotto, fino a
+   nascondere il body padding-top dove altrimenti il contenuto scrollato
+   sarebbe visibile prima dell'inizio dell'articolo. Valore calibrato
+   sperimentalmente per dare ~10px puliti di striscia bianca tra fine
+   barra rossa e inizio testo dell'articolo. Sta dietro alla navbar
+   (z 9999) e alla barra rossa (z 9998), e sopra al contenuto scrollato
+   (z 0). */
+.reading-progress-header-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--reading-bar-top, 4.5rem) + 30px);
+  background: #ffffff;
+  z-index: 9997;
+  pointer-events: none;
+}
+.dark .reading-progress-header-bg {
+  background: rgb(var(--color-neutral-800));
+}
+
+/* --- Barra principale --- */
+.reading-progress-bar {
+  position: fixed;
+  /* Top dinamico: misurato runtime dal JS sull'altezza reale della <nav>.
+     Fallback 4.5rem se JS non gira o se la nav non e' trovata. */
+  top: var(--reading-bar-top, 4.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1600px;            /* allineata al body max-width del sito */
+  height: 3px;
+  background: rgba(248, 0, 0, 0.08);
+  z-index: 9998;
+  pointer-events: none;
+}
+.reading-progress-bar-fill {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--ivan-red);
+  transition: width 50ms linear;
+}
+.dark .reading-progress-bar {
+  background: rgba(248, 0, 0, 0.15);
+}
+
+/* --- Badge floating bottom-right (grigio scuro) --- */
+.reading-percent {
+  position: fixed;
+  bottom: 24px;
+  right: calc(50vw - 800px + 24px);   /* 24px dal bordo del container 1600px */
+  width: 56px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  padding: 0;
+  border-radius: 12px;
+  z-index: 9997;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.reading-percent.visible { opacity: 1; }
+
+/* Sotto i 1600px il badge si attacca al bordo del viewport */
+@media (max-width: 1600px) {
+  .reading-percent { right: 24px; }
+}
+
+/* Quando il footer e' in viewport, nascondi badge + scroll-to-top
+   per non sovrapporli ai link di navigazione/icone del footer */
+.reading-percent.near-footer { opacity: 0 !important; }
+#to-top.near-footer { opacity: 0 !important; pointer-events: none; }
+
+/* --- Scroll-to-top: spostato vicino al badge percentuale e dimensionato
+   a 40x40 per matchare l'altezza del badge (issue #92). Il theme Congo
+   lo aveva centrato in basso a 48x48, ora e' subito a sinistra del badge
+   percentuale, stessa altezza (40px), gap di 8px tra i due elementi. */
+#to-top {
+  position: fixed !important;
+  top: auto !important;
+  bottom: 24px !important;
+  /* A sinistra del badge: 24px (gap badge dal bordo container) + 56px
+     (width badge) + 8px (gap tra scroll-up e badge) = 88px dal bordo */
+  right: calc(50vw - 800px + 88px) !important;
+  left: auto !important;
+  width: 40px !important;
+  height: 40px !important;
+  z-index: 9997;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+#to-top.visible { opacity: 1; }
+
+@media (max-width: 1600px) {
+  #to-top { right: 88px !important; }
+}
+
+#to-top a {
+  position: static !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#to-top a svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* --- Mini-card nella sidebar autore --- */
+.reading-percent-sidebar {
+  margin-top: 16px;
+  padding: 10px 12px;
+  width: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.reading-percent-sidebar.visible { opacity: 1; }
+.dark .reading-percent-sidebar {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+.reading-percent-sidebar-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ivan-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.dark .reading-percent-sidebar-label {
+  color: #6ea3cf;     /* blu Postgres alleggerito per dark mode */
+}
+.reading-percent-sidebar-val {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ivan-red);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.reading-percent-mini {
+  width: 100%;
+  height: 3px;
+  background: rgba(248, 0, 0, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.reading-percent-mini-fill {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--ivan-red);
+  transition: width 50ms linear;
+  border-radius: 2px;
+}
+.dark .reading-percent-mini {
+  background: rgba(248, 0, 0, 0.20);
+}
+
+/* Su mobile la sidebar autore e' nascosta, quindi anche la mini-card non
+   appare; resta solo il badge floating bottom-right. */
+
+/* Stampa: nascondi tutti gli elementi della reading progress */
+@media print {
+  .reading-progress-bar,
+  .reading-percent,
+  .reading-percent-sidebar {
+    display: none !important;
+  }
+}
+
+/* Gap di ~10px tra la reading-bar e il contenuto dell'articolo.
+   La barra e' attaccata alla navbar (no gap sopra) e finisce a
+   navHeight + 3. Il body ha padding-top 4.5rem (72px) e la navbar e'
+   ~60.5px, quindi il contenuto inizia naturalmente con ~8.5px di gap
+   sotto la barra. Aggiungiamo 2px extra di margine alla colonna
+   articolo per arrivare a ~10px puliti, solo nelle pagine articolo. */
+body:has(.reading-progress-bar) .article-two-col {
+  margin-top: 2px;
+}
+
+/* ===========================================================================
+   FOOTER & ARTICLE PAGINATION - linee di separazione coordinate
+   - Linea sopra il footer (copyright) — rosso, dentro footer-inner (max 1600px)
+   - Linea sopra l'article-pagination ("articolo precedente/successivo")
+     — rossa solida (era grigia dotted)
+   - Spazi compatti tra blocchi
+   =========================================================================== */
+
+/* HR dell'article-pagination: rosso solido al posto di grigio dotted */
+.pt-8 > hr.border-dotted,
+.pt-8 > hr {
+  border-top: 1px solid var(--ivan-red) !important;
+  border-style: solid !important;
+  border-color: var(--ivan-red) !important;
+}
+.dark .pt-8 > hr.border-dotted,
+.dark .pt-8 > hr {
+  border-top-color: var(--ivan-red) !important;
+}
+
+/* Riduci il padding-top del wrapper article-pagination (era pt-8 = 2rem) */
+article + .pt-8,
+article ~ * .pt-8:has(> hr) {
+  padding-top: 1rem !important;
+}
+
+/* Spazio sotto il copyright/theme attribution e a destra dei link footer:
+   riduci eventuali margin verticali residui dentro footer-inner */
+.footer-inner > .flex.items-center.justify-between {
+  margin-top: 0 !important;
 }

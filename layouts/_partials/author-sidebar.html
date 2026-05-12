@@ -17,5 +17,14 @@
     <div class="author-sidebar-roles">
       DWH Architect · Project Manager · Oracle DBA &amp; Performance Tuning · PL/SQL Senior &amp; Mentor
     </div>
+
+    {{/* Reading progress mini-card: solo pagine articolo */}}
+    {{ if eq .Section "posts" }}
+      <div class="reading-percent-sidebar" aria-hidden="true">
+        <span class="reading-percent-sidebar-label">{{ i18n "reading_progress_label" | default "Letto:" }}</span>
+        <span class="reading-percent-val reading-percent-sidebar-val">0%</span>
+        <div class="reading-percent-mini"><span class="reading-percent-mini-fill"></span></div>
+      </div>
+    {{ end }}
   </div>
 {{ end }}
