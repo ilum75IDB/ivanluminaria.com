@@ -28,7 +28,6 @@ tool `WebFetch`.
 | 54 | https://github.com/ilum75IDB/ivanluminaria.com/issues/54 | Galera Cluster: due nodi giu - diagnosi e recovery da ticket reali | aperta |
 | 68 | https://github.com/ilum75IDB/ivanluminaria.com/issues/68 | Articolo MySQL: patching MySQL 8.0 dal backup alla verifica passo per passo | aperta |
 | 74 | https://github.com/ilum75IDB/ivanluminaria.com/issues/74 | Articolo MySQL: saturazione swap su InnoDB Cluster 3-nodi - analisi e fix dei parametri di memoria | aperta |
-| 86 | https://github.com/ilum75IDB/ivanluminaria.com/issues/86 | Articolo MySQL: enumerazioni - ENUM nativo, CHECK constraint, tabelle lookup | aperta |
 
 ## Issue Aperte — Sezione PostgreSQL
 
@@ -61,6 +60,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 86 | https://github.com/ilum75IDB/ivanluminaria.com/issues/86 | Articolo MySQL: enumerazioni - ENUM nativo, CHECK constraint, tabelle lookup | 2026-05-11 |
 | 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | 2026-04-28 |
 | 84 | https://github.com/ilum75IDB/ivanluminaria.com/issues/84 | Feature: redesign pagina /tags/ con raggruppamento per sezione | 2026-04-25 |
 | 83 | https://github.com/ilum75IDB/ivanluminaria.com/issues/83 | Feature: redesign pagina di ricerca con layout card coerente al resto del sito | 2026-04-24 |
