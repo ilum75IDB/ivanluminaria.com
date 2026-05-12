@@ -2,28 +2,43 @@
 
 Mockup HTML autonomi per la issue #92. Apri ciascun file direttamente nel browser (doppio click) e scrolla il contenuto dell'articolo per vedere il comportamento della barra.
 
-Ogni mockup riproduce la navbar fissa del sito (70px, z-index 9999), usa la palette del brand (`--ivan-red` `#F80000`, `--ivan-blue` `#336791`), il font Inter, e contiene lo stesso testo fittizio (estratto dall'articolo MySQL #86) per consentire un confronto a parità di contenuto.
+Tutti i mockup ora riproducono il **layout reale del sito**:
+- Navbar fissa con brand "IVAN LUMINARIA" + menu (CHI SONO, DATABASE STRATEGY, KNOW-HOW E IMPATTO) + selettore lingua + search icon
+- Layout a due colonne: **sidebar 160px** con badge autore (foto + nome + ruoli) + **colonna articolo 1fr**
+- Cover image, breadcrumbs, titolo, data + reading time, tag chips
+- Container max-width 1280px centrato
+- Contenuto identico in tutti i mockup (estratto dall'articolo MySQL #86) per confronto a parità di scroll
 
-## Le 5 varianti
+## Le 8 varianti
 
-| # | File | Posizione | Spessore | Colore | Extra |
-|---|---|---|---|---|---|
-| 1 | `01-thin-under-navbar.html` | sotto navbar (top: 70px) | 3px | rosso brand pieno | — |
-| 2 | `02-bold-above-navbar.html` | sopra navbar (top: 0) | 5px | rosso brand pieno | navbar shiftata di 5px |
-| 3 | `03-gradient-under-navbar.html` | sotto navbar | 4px | gradient rosso → blu | track grigio chiaro |
-| 4 | `04-thin-with-percent-badge.html` | sotto navbar | 3px | rosso brand pieno | badge percentuale in basso a destra (appare > 5% e scompare > 98%) |
-| 5 | `05-ultra-thin-track.html` | sotto navbar | 2px | blu Postgres | track blu chiaro 15% per contesto visivo |
+| # | File | Linea | Spessore | Posizione | Colore | Extra |
+|---|---|---|---|---|---|---|
+| 1 | `01-thin-under-navbar.html` | linea piena | 3px | sotto navbar | rosso brand | — |
+| 2 | `02-bold-above-navbar.html` | linea piena | 5px | sopra navbar | rosso brand | navbar shiftata di 5px |
+| 3 | `03-gradient-under-navbar.html` | linea piena | 4px | sotto navbar | gradient rosso→blu | track grigio chiaro |
+| 4 | `04-thin-with-percent-badge.html` | linea piena | 3px | sotto navbar | rosso brand | badge % bottom-right, **width variabile** (mostra il jitter) |
+| 5 | `05-ultra-thin-track.html` | linea piena | 2px | sotto navbar | blu Postgres | track blu 15% |
+| 6 | `06-percent-bottom-right.html` | linea piena | 3px | sotto navbar | rosso brand | **badge % width fissa (56px) bottom-right** |
+| 7 | `07-percent-top-right.html` | linea piena | 3px | sotto navbar | rosso brand | **badge % width fissa (56px) top-right** (sotto navbar) |
+| 8 | `08-percent-under-author.html` | linea piena | 3px | sotto navbar | rosso brand | **badge % nella sidebar**, sotto il badge autore |
 
-## Cosa valutare confrontandoli
+## Cosa cambia tra 4, 6, 7, 8
 
-- **Visibilità**: una barra di 2px è discreta, una di 5px è in faccia. Quale serve al lettore senza distrarlo?
-- **Posizione**: sotto la navbar si confonde col layout esistente, sopra la navbar è più visibile ma è la prima cosa che si vede
-- **Colore**: rosso brand (energia), blu Postgres (calma), gradient (doppia identità). Coerenza con la voce del blog?
-- **Track sì/no**: il track (#5 e #3) mostra "quanto manca", il fill puro (#1, #2, #4) mostra "quanto fatto". Diversa filosofia
-- **Badge percentuale (#4)**: utile per articoli lunghi? Distrazione su mobile?
+Tutti partono dalla stessa base (linea 3px rosso sotto navbar, variante 01 preferita).
+
+- **#4**: badge auto-width per mostrare il problema del jitter (la larghezza cambia da "5%" a "10%" a "100%")
+- **#6**: badge a width fissa 56px + `font-variant-numeric: tabular-nums` → zero jitter, bottom-right discreto
+- **#7**: stesso badge fisso, ma in alto a destra subito sotto la navbar → più visibile, segue la lettura naturale
+- **#8**: badge integrato nella sidebar autore con label "LETTO" → niente overlay sul contenuto, segue la sticky della sidebar
+
+## Cosa valutare confrontando 6, 7, 8
+
+- **#6 bottom-right**: discreto, fuori dal flusso di lettura. Vantaggio: non distrae. Svantaggio: l'utente potrebbe non accorgersene
+- **#7 top-right**: in linea con la barra fissa, più visibile. Vantaggio: vicino alla barra, contesto chiaro. Svantaggio: occupa angolo importante che potrebbe servire per future features
+- **#8 sidebar**: integrato visivamente nel layout, niente floating. Vantaggio: pulizia totale, niente overlay. Svantaggio: visibile solo su desktop (la sidebar scompare su mobile)
 
 ## Suggerimento di lettura
 
-Ti consiglio di aprirli **uno dopo l'altro nello stesso ordine** (1, 2, 3, 4, 5), scrollando dall'inizio alla fine ogni volta. Dopo il quinto saprai quale dei cinque ti convince di più.
+Aprili nell'ordine 1→8, scrollando dall'inizio alla fine ogni volta. Le varianti più importanti per la decisione finale sono **6, 7, 8** (le tre posizioni del badge fisso).
 
-Quando hai scelto, fammi sapere e implemento la variante scelta direttamente nel sito (~50 righe di codice, 4 file modificati come da piano in #92).
+Quando hai scelto, fammi sapere e implemento la variante scelta direttamente nel sito reale.
