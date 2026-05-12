@@ -20,7 +20,8 @@ Tutti i mockup ora riproducono il **layout reale del sito**:
 | 5 | `05-ultra-thin-track.html` | linea piena | 2px | sotto navbar | blu Postgres | track blu 15% |
 | 6 | `06-percent-bottom-right.html` | linea piena | 3px | sotto navbar | rosso brand | **badge % width fissa (56px) bottom-right** |
 | 7 | `07-percent-top-right.html` | linea piena | 3px | sotto navbar | rosso brand | **badge % width fissa (56px) top-right** (sotto navbar) |
-| 8 | `08-percent-under-author.html` | linea piena | 3px | sotto navbar | rosso brand | **badge % nella sidebar**, sotto il badge autore |
+| 8 | `08-percent-under-author.html` | linea piena | 3px | sotto navbar | rosso brand | **4 varianti di sfondo** del badge nella sidebar (A grigio chiaro / B rosso / C blu / D grigio scuro) |
+| 9 | `09-combo-bottomright-sidebar.html` | linea piena | 3px | sotto navbar | rosso brand | **combo finale**: badge grigio scuro bottom-right + badge rosso nella sidebar autore — i due badge si aggiornano sincronizzati |
 
 ## Cosa cambia tra 4, 6, 7, 8
 
