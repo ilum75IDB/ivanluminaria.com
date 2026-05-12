@@ -1219,7 +1219,7 @@ footer {
   position: sticky;
   top: 3rem;
   text-align: center;
-  padding-top: 0;
+  padding-top: 35px;
 }
 
 .author-sidebar-card img,
@@ -4457,8 +4457,7 @@ footer {
 
 /* --- Mini-card nella sidebar autore --- */
 .reading-percent-sidebar {
-  /* 16px base + 10px extra di respiro tra badge autore e mini-card */
-  margin-top: 26px;
+  margin-top: 16px;
   padding: 10px 12px;
   width: 110px;
   margin-left: auto;
