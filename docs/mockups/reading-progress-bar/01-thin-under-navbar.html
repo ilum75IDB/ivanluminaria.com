@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup 1 — Barra sottile sotto navbar (3px, rosso brand)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivan-blue: #336791;
+    --ivan-red: #F80000;
+    --ivan-red-dark: #b30000;
+    --ivan-gray-title: #4a4a4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #222;
+    background: #fefefe;
+    padding-top: 70px;
+  }
+
+  /* Navbar fissa (riproduce la navbar reale del sito) */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    font-weight: 700;
+  }
+  .navbar .brand { color: var(--ivan-blue); font-size: 22px; }
+  .navbar .nav-link { margin-left: 32px; color: var(--ivan-red); text-decoration: none; }
+
+  /* ========== VARIANTE 1 ==========
+     Barra sottile (3px), subito sotto la navbar, rosso brand pieno.
+     Approccio minimal "blogger standard".
+  */
+  .reading-progress-bar {
+    position: fixed;
+    top: 70px;            /* subito sotto la navbar */
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--ivan-red);
+    z-index: 9998;
+    transition: width 50ms linear;
+  }
+
+  /* Layout articolo */
+  .container { max-width: 760px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 40px; color: var(--ivan-gray-title); margin-bottom: 16px; line-height: 1.2; }
+  .meta { color: #888; font-size: 16px; margin-bottom: 32px; }
+  h2 { font-size: 28px; color: var(--ivan-gray-title); margin: 40px 0 16px; }
+  p { margin-bottom: 16px; }
+  pre {
+    background: #f4f4f4;
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 16px 0;
+  }
+  .badge {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--ivan-red);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 9997;
+  }
+  @media print { .reading-progress-bar { display: none; } }
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <span class="brand">Ivan Luminaria</span>
+    <a class="nav-link" href="#">Database Strategy</a>
+    <a class="nav-link" href="#">Chi sono</a>
+  </nav>
+
+  <div class="reading-progress-bar" id="progress" aria-hidden="true"></div>
+
+  <div class="badge">Mockup 1 · 3px sotto navbar</div>
+
+  <article class="container">
+    <h1>ENUM in MySQL: quando ti semplifica la vita e quando ti complica i giorni</h1>
+    <div class="meta">2 giugno 2026 · 13 min di lettura · mysql, schema-design</div>
+
+    <p>C'è una scena che si ripete in ogni progetto, prima o poi. Stai disegnando una tabella nuova, devi modellare una colonna <code>status</code> o <code>type</code> o <code>category</code>, e la domanda arriva sempre uguale: "ENUM nativo, CHECK constraint, o tabella di lookup?". Tre strade, tre filosofie, e tre risultati molto diversi a seconda di come evolve il sistema.</p>
+
+    <p>ENUM è una di quelle feature che caratterizzano MySQL. Pochi altri DBMS mainstream hanno un tipo enumerativo nativo — PostgreSQL ce l'ha, Oracle è arrivato a qualcosa di simile solo con i SQL Domains della 23ai. Per anni, in MySQL, la scelta di usare ENUM è stata praticamente automatica: poche righe di DDL, leggibile, performante, niente JOIN. Funziona. Finché non ti volti, sei anni dopo, e il <code>status</code> di quella tabella è diventato un campo minato.</p>
+
+    <h2>Le tre strade, in due righe ciascuna</h2>
+    <p>Prima di entrare nel merito, le tre opzioni schematizzate. Useremo l'esempio di una tabella ordini con uno stato che assume un set chiuso di valori.</p>
+
+    <pre>CREATE TABLE ordini (
+  id     INT PRIMARY KEY,
+  status ENUM('NUOVO','IN_LAVORAZIONE','SPEDITO','CONSEGNATO') NOT NULL
+);</pre>
+
+    <p>Il tipo ENUM è una stringa con vincolo: ammette solo i valori dichiarati. Internamente MySQL memorizza un intero (1 o 2 byte, a seconda di quanti valori) che funge da indice nella lista. Risultato: storage compatto, lettura leggibile.</p>
+
+    <h2>Quando ENUM è la scelta giusta</h2>
+    <p>ENUM brilla in un contesto specifico: set di valori stabile, semantica controllata da schema. Quando questi due ingredienti ci sono, ENUM è la scelta più pulita. Casi tipici dove la stabilità c'è davvero: giorni della settimana, stati binari o ternari fissi, tipologie di transazione contabile dove il piano dei conti è normato da legge.</p>
+
+    <p>In tutti questi casi ENUM ti dà tre vantaggi concreti: storage compatto (1-2 byte per riga contro i 4 di un INT FK), leggibilità nelle query (niente JOIN), niente migration extra (la tabella di lookup è già lo schema stesso).</p>
+
+    <h2>Il caso concreto</h2>
+    <p>Qualche tempo fa stavo lavorando con il team IT di un grande operatore postale italiano. Si trattava di disegnare il modello dati per un sistema di tracking delle spedizioni. Nella prima versione del sistema, gli stati erano cinque, ben definiti dal business. ENUM, mano sulla coscienza, era la scelta giusta. Per due anni di produzione ha funzionato in silenzio.</p>
+
+    <p>Poi sono iniziati i problemi. Il primo segnale è arrivato con una mail dal product manager: serve aggiungere uno stato PRENOTATO, per gestire le spedizioni che il cliente ha annunciato ma non ancora consegnato al deposito.</p>
+
+    <h2>I limiti, raccontati onestamente</h2>
+    <p>Case-insensitive: 'ATTIVO' e 'attivo' sono lo stesso valore. Ordinamento per posizione di dichiarazione, non alfabetico. Modifiche pesanti su tabelle grandi: aggiungere un valore in fondo è leggero, modificare la posizione, rinominare un valore, rimuovere un valore richiede un rebuild.</p>
+
+    <p>Nel sistema di tracking, sei anni dopo, di stati ne erano stati aggiunti dodici. Ogni nuovo stato — perché un nuovo corriere, perché un nuovo canale, perché una nuova policy di reso — era un ALTER notturno con DBA in piedi davanti al monitor.</p>
+
+    <h2>Quando passare a CHECK o a lookup</h2>
+    <p>La domanda diventa: a partire da quale punto conviene mollare ENUM e prendere un'altra strada? Le bandiere rosse sono tre: i valori cambiano spesso, servono attributi aggiuntivi, tante decine di valori in crescita.</p>
+
+    <h2>Lookup table fatta bene</h2>
+    <p>Se decidi di andare in direzione lookup, vale la pena disegnarla nel modo che ti permette di crescere nel tempo. Il pattern naturale separa due ruoli che ENUM teneva mescolati: l'identificatore del valore e la descrizione del valore.</p>
+
+    <pre>CREATE TABLE stati_spedizione (
+  id          SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  codice      ENUM('RICEVUTO','IN_DEPOSITO','IN_CONSEGNA','CONSEGNATO','RESPINTO') NOT NULL UNIQUE,
+  descrizione VARCHAR(200) NOT NULL,
+  ordine      SMALLINT NOT NULL DEFAULT 0,
+  attivo      BOOLEAN NOT NULL DEFAULT TRUE
+);</pre>
+
+    <p>La master porta solo l'id, non il codice. Due byte per riga (SMALLINT) invece dei 20+ di un VARCHAR(20). Su una tabella da 150 milioni di righe sono 2-3 GB di differenza tra dati e indici.</p>
+
+    <h2>La regola d'oro</h2>
+    <p>La sintesi che porto via da questa storia, e che ripeto ai team quando arriva la domanda "ENUM o lookup?", è semplice: se i valori non cambieranno mai, ENUM è la scelta giusta. Se cambieranno — anche solo "ogni tanto" — non legare il vocabolario allo schema.</p>
+
+    <p>Tutto qui. Il difficile non è scegliere tra le tre strade. Il difficile è capire onestamente, al momento della scelta, in quale dei due mondi ti trovi.</p>
+
+    <p style="height: 400px; background: #f9f9f9; padding: 20px; border-radius: 6px; margin-top: 40px;">[Continua... testo di riempimento per simulare un articolo lungo. Scrolla per vedere la progress bar in azione.]</p>
+  </article>
+
+<script>
+  (function() {
+    const bar = document.getElementById('progress');
+    const article = document.querySelector('article');
+    if (!bar || !article) return;
+    function update() {
+      const articleTop = article.offsetTop;
+      const articleHeight = article.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      const totalScrollable = articleHeight - viewportHeight;
+      if (totalScrollable <= 0) return;
+      const progress = Math.max(0, Math.min(1, (scrollY - articleTop) / totalScrollable));
+      bar.style.width = (progress * 100) + '%';
+    }
+    window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    update();
+  })();
+</script>
+</body>
+</html>
