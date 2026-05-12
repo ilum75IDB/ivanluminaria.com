@@ -59,7 +59,6 @@ tool `WebFetch`.
 | 89 | https://github.com/ilum75IDB/ivanluminaria.com/issues/89 | SEO: audit e fix delle meta descriptions mancanti su pagine non-articolo | aperta |
 | 90 | https://github.com/ilum75IDB/ivanluminaria.com/issues/90 | Performance: valutare policy di cache per asset statici (GitHub Pages vs CDN) | aperta |
 | 91 | https://github.com/ilum75IDB/ivanluminaria.com/issues/91 | UX mobile: leggibilita di code blocks e tabelle su viewport stretti | aperta |
-| 92 | https://github.com/ilum75IDB/ivanluminaria.com/issues/92 | UX: aggiungere reading progress bar in cima agli articoli lunghi | aperta |
 | 93 | https://github.com/ilum75IDB/ivanluminaria.com/issues/93 | UX: valutare un sistema di feedback leggero a fine articolo | aperta |
 
 ## Issue Aperte — Bug
@@ -70,6 +69,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 92 | https://github.com/ilum75IDB/ivanluminaria.com/issues/92 | UX: aggiungere reading progress bar in cima agli articoli lunghi | 2026-05-12 |
 | 86 | https://github.com/ilum75IDB/ivanluminaria.com/issues/86 | Articolo MySQL: enumerazioni - ENUM nativo, CHECK constraint, tabelle lookup | 2026-05-11 |
 | 49 | https://github.com/ilum75IDB/ivanluminaria.com/issues/49 | Indici in PostgreSQL: B-tree, GIN, GiST e quando usare quale | 2026-04-28 |
 | 84 | https://github.com/ilum75IDB/ivanluminaria.com/issues/84 | Feature: redesign pagina /tags/ con raggruppamento per sezione | 2026-04-25 |
