@@ -1,6 +1,7 @@
 ---
 title: "MySQL multi-instancia: un ticket, un CSV y el muro de secure-file-priv"
-description: "Una operación que debía durar cinco minutos — extraer un CSV de MySQL — se convierte en una investigación entre instancias múltiples en el mismo servidor, sockets Unix, puertos diferentes y la directiva secure-file-priv que bloquea todo. Desde la conexión a la instancia correcta hasta el export desde shell."
+seoTitle: "MySQL multi-instancia: secure-file-priv y export CSV"
+description: "MySQL multi-instancia en Linux: exportar un CSV con INTO OUTFILE bloqueado por secure-file-priv. Conexión por socket Unix y workaround desde shell."
 date: "2025-11-04T08:03:00+01:00"
 draft: false
 translationKey: "mysql_multi_istanza_secure_file_priv"

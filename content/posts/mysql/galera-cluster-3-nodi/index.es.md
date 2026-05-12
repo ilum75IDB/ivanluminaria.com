@@ -1,6 +1,7 @@
 ---
 title: "Galera Cluster con 3 nodos: cómo resolví un problema de disponibilidad en MySQL"
-description: "Un cliente con un MySQL standalone que caía cada mes llevándose la aplicación entera. Mi solución: un Galera Cluster de 3 nodos con replicación síncrona. Desde el diagnóstico hasta la puesta en producción, con todos los archivos de configuración y los parámetros críticos."
+seoTitle: "MySQL Galera Cluster 3 nodos: replicación síncrona y quórum"
+description: "MySQL Galera Cluster de 3 nodos para alta disponibilidad: replicación síncrona, quórum, SST/IST. Configuración contra el single point of failure."
 date: "2026-02-17T08:03:00+01:00"
 draft: false
 translationKey: "galera_cluster_3_nodi"

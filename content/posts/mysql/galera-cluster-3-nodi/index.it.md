@@ -1,6 +1,7 @@
 ---
 title: "Galera Cluster a 3 nodi: come ho risolto un problema di disponibilità su MySQL"
-description: "Un cliente con un MySQL standalone che cadeva ogni mese portando giù l'intera applicazione. La mia soluzione: un Galera Cluster a 3 nodi con replica sincrona. Dalla diagnosi alla messa in produzione, con tutti i file di configurazione e i parametri critici."
+seoTitle: "MySQL Galera Cluster 3 nodi: replica sincrona e quorum"
+description: "MySQL Galera Cluster a 3 nodi per l'alta disponibilità: replica sincrona, quorum, SST/IST. Configurazione completa contro il single point of failure."
 date: "2026-02-17T08:03:00+01:00"
 draft: false
 translationKey: "galera_cluster_3_nodi"
