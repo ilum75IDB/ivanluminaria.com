@@ -1,6 +1,6 @@
 ---
 title: "Pedalata Assistita"
-description: "Sistema di propulsione elettrica che amplifica la forza della pedalata del ciclista, eliminando il problema delle salite e del sudore nei tragitti urbani casa-lavoro."
+description: "Sistema di propulsione elettrica che amplifica la forza della pedalata del ciclista..."
 translationKey: "glossary_pedalata-assistita"
 aka: "E-bike / Bici elettrica a pedalata assistita"
 articles:

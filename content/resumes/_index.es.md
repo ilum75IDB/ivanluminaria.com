@@ -1,6 +1,7 @@
 ---
 title: "Know-How e Impacto"
-description: "Treinta años de trabajo en sistemas que no pueden detenerse — bases de datos, data warehouse, equipos. Profundidad técnica e impacto concreto en el negocio."
+seoTitle: "Know-How e Impacto: 30 años de DBA, DWH y equipos IT"
+description: "Treinta años de trabajo en sistemas que no pueden detenerse — bases de datos, data warehouse, equipos. Profundidad técnica e impacto en el negocio."
 hero_title: "Experiencia, profundidad, impacto"
 date: "2026-02-23"
 lastmod: "2026-02-26"

@@ -1,6 +1,6 @@
 ---
 title: "NOLOGGING"
-description: "Modalità Oracle che sopprime la generazione di redo log durante operazioni bulk (CTAS, INSERT APPEND, ALTER TABLE MOVE), velocizzando le operazioni ma richiedendo un backup immediato."
+description: "Modalità Oracle che sopprime la generazione di redo log durante operazioni bulk (CTAS, INSERT APPEND, ALTER TABLE MOVE)..."
 translationKey: "glossary_nologging"
 articles:
   - "/posts/oracle/oracle-partitioning"

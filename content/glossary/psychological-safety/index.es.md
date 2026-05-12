@@ -1,6 +1,6 @@
 ---
 title: "Psychological Safety"
-description: "Clima de equipo en el que las personas pueden admitir errores, decir 'no lo sé' y plantear problemas sin temer consecuencias sobre la valoración profesional. Prerrequisito de los equipos que aguantan bajo presión."
+description: "Clima de equipo en el que las personas pueden admitir errores, decir 'no lo sé' y plantear problemas sin temer consecuencias sobre la valoración profesional."
 translationKey: "glossary_psychological_safety"
 aka: "Seguridad psicológica, Permiso para no saber"
 articles:

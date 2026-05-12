@@ -1,6 +1,6 @@
 ---
 title: "ASH"
-description: "Active Session History — componenta Oracle care inregistreaza starea fiecarei sesiuni active o data pe secunda, folosita pentru diagnosticarea punctuala a problemelor de performanta."
+description: "Active Session History — componenta Oracle care inregistreaza starea fiecarei sesiuni active o data pe secunda..."
 translationKey: "glossary_ash"
 aka: "Active Session History"
 articles:

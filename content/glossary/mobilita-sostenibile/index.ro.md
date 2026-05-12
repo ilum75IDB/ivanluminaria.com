@@ -1,6 +1,6 @@
 ---
 title: "Mobilitate Durabilă"
-description: "Abordare a transportului urban care privilegiază mijloace cu impact scăzut asupra mediului — bicicletă, transport public, vehicule electrice — reducând emisiile, traficul și costurile."
+description: "Abordare a transportului urban care privilegiază mijloace cu impact scăzut asupra mediului — bicicletă, transport public, vehicule electrice"
 translationKey: "glossary_mobilita-sostenibile"
 aka: "Sustainable Mobility"
 articles:

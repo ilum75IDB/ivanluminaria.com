@@ -1,5 +1,6 @@
 ---
 title: "Oracle"
+seoTitle: "Oracle Database: artículos sobre DBA, rendimiento, tuning"
 layout: "list"
 date: "2026-03-10T08:03:00+01:00"
 description: "Oracle Database: seguridad, rendimiento y arquitectura en la base de datos empresarial más longeva y compleja del mercado."

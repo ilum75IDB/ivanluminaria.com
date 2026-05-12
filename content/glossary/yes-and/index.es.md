@@ -1,6 +1,6 @@
 ---
 title: "Yes-And"
-description: "Técnica de comunicación nacida en el teatro de improvisación que sustituye el 'No, pero...' por 'Sí, y...', transformando las discusiones en construcción colaborativa."
+description: "Técnica de comunicación nacida en el teatro de improvisación que sustituye el 'No, pero...' por 'Sí, y...'..."
 translationKey: "glossary_yes-and"
 aka: "Sí-Y / Técnica Yes-And"
 articles:

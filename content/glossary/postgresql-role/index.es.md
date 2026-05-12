@@ -1,6 +1,6 @@
 ---
 title: "ROLE"
-description: "Entidad fundamental de PostgreSQL que unifica el concepto de usuario y grupo de permisos: un ROLE con LOGIN es un usuario, sin LOGIN es un contenedor de privilegios."
+description: "Entidad fundamental de PostgreSQL que unifica el concepto de usuario y grupo de permisos: un ROLE con LOGIN es un usuario..."
 translationKey: "glossary_postgresql-role"
 aka: "Rol PostgreSQL"
 articles:

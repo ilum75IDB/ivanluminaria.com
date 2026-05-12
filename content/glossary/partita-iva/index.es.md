@@ -1,6 +1,6 @@
 ---
 title: "Partita IVA"
-description: "Régimen fiscal italiano para trabajadores autónomos y profesionales independientes, que en la consultoría IT implica asumir directamente el riesgo de crédito hacia los clientes."
+description: "Régimen fiscal italiano para trabajadores autónomos y profesionales independientes..."
 translationKey: "glossary_partita-iva"
 aka: "Número de IVA / Autónomo"
 articles:

@@ -1,6 +1,6 @@
 ---
 title: "Version Control"
-description: "Sistem care urmărește fiecare modificare a codului sursă, permițând vizualizarea istoricului, anularea modificărilor și colaborarea fără suprascrieri. Git este standardul actual."
+description: "Sistem care urmărește fiecare modificare a codului sursă, permițând vizualizarea istoricului, anularea modificărilor și colaborarea fără suprascrieri."
 translationKey: "glossary_version-control"
 aka: "Control versiuni, VCS"
 articles:

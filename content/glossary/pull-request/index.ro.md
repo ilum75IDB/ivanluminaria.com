@@ -1,6 +1,6 @@
 ---
 title: "Pull Request"
-description: "Mecanism de propunere și revizuire a modificărilor de cod pe platforme precum GitHub. Permite code review, discuție și aprobare înainte de merge în branch-ul principal."
+description: "Mecanism de propunere și revizuire a modificărilor de cod pe platforme precum GitHub. Permite code review..."
 translationKey: "glossary_pull-request"
 aka: "PR, Merge Request"
 articles:

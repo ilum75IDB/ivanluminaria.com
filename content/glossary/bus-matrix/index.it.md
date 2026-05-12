@@ -1,6 +1,6 @@
 ---
 title: "Bus Matrix"
-description: "Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH."
+description: "Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne."
 translationKey: "glossary_bus_matrix"
 aka: "Kimball Bus Matrix, Data Warehouse Bus Architecture"
 articles:

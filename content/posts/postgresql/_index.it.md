@@ -1,5 +1,6 @@
 ---
 title: "PostgreSQL"
+seoTitle: "PostgreSQL: architettura, performance e tuning"
 layout: "list"
 description: "PostgreSQL: architettura, performance e progettazione su uno dei database open source più avanzati e longevi della storia."
 image: "postgresql.cover.jpg"

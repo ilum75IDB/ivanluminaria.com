@@ -1,6 +1,6 @@
 ---
 title: "Swappiness"
-description: "Parametro kernel Linux (vm.swappiness) che controlla la propensione del sistema a spostare pagine di memoria nello swap, critico per i server database dove la SGA deve restare in RAM."
+description: "Parametro kernel Linux (vm.swappiness) che controlla la propensione del sistema a spostare pagine di memoria nello swap..."
 translationKey: "glossary_swappiness"
 aka: "vm.swappiness"
 articles:

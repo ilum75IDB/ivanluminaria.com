@@ -1,6 +1,6 @@
 ---
 title: "DEFAULT PRIVILEGES"
-description: "Mecanismo PostgreSQL que define automáticamente los privilegios a asignar a todos los objetos futuros creados en un schema, evitando repetir los GRANT manualmente."
+description: "Mecanismo PostgreSQL que define automáticamente los privilegios a asignar a todos los objetos futuros creados en un schema..."
 translationKey: "glossary_default-privileges"
 aka: "ALTER DEFAULT PRIVILEGES"
 articles:

@@ -1,5 +1,6 @@
 ---
 title: "Database Strategy"
+seoTitle: "Database Strategy: blogul Ivan Luminaria pe DB și arhitectură"
 description: "Baze de date, arhitectură și performanță ca avantaj strategic pentru businessul modern: analiză tehnică aplicată în medii reale."
 layout: "list"
 image: "database-strategy.cover.jpg"

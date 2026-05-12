@@ -1,5 +1,6 @@
 ---
 title: "Data Warehouse Architect"
+seoTitle: "Ivan Luminaria | Data Warehouse Architect Oracle/PostgreSQL"
 description: "Data Warehouse Architect & Oracle/PostgreSQL Expert — casi 30 años de experiencia en el diseño y gestión de soluciones DWH complejas y de alto rendimiento."
 date: "2026-03-10"
 lastmod: "2026-03-10"

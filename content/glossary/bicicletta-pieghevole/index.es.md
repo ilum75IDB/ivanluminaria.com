@@ -1,6 +1,6 @@
 ---
 title: "Bicicleta Plegable"
-description: "Bicicleta que se pliega en 10-20 segundos convirtiéndose en un equipaje transportable a la oficina, al metro o al tren, eliminando el problema del aparcamiento y el robo."
+description: "Bicicleta que se pliega en 10-20 segundos convirtiéndose en un equipaje transportable a la oficina, al metro o al tren..."
 translationKey: "glossary_bicicletta-pieghevole"
 aka: "Folding Bike / Brompton"
 articles:

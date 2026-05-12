@@ -1,6 +1,6 @@
 ---
 title: "THP"
-description: "Transparent Huge Pages — Linux kernel feature that automatically promotes normal pages to huge pages, but causes unpredictable latencies and must be disabled for Oracle."
+description: "Transparent Huge Pages — Linux kernel feature that automatically promotes normal pages to huge pages..."
 translationKey: "glossary_thp"
 aka: "Transparent Huge Pages"
 articles:

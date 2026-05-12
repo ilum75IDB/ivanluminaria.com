@@ -1,6 +1,6 @@
 ---
 title: "Local Index"
-description: "Index Oracle partițional cu aceeași cheie ca tabela, unde fiecare partiție a tabelei are partiția de index corespunzătoare. Mai ușor de întreținut decât un index global."
+description: "Index Oracle partițional cu aceeași cheie ca tabela, unde fiecare partiție a tabelei are partiția de index corespunzătoare."
 translationKey: "glossary_local-index"
 articles:
   - "/posts/oracle/oracle-partitioning"

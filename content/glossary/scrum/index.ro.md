@@ -1,6 +1,6 @@
 ---
 title: "Scrum"
-description: "Framework agil pentru gestionarea proiectelor care organizează munca în sprinturi cu durată fixă, cu roluri definite (Product Owner, Scrum Master, Echipă) și ceremonii structurate."
+description: "Framework agil pentru gestionarea proiectelor care organizează munca în sprinturi cu durată fixă, cu roluri definite (Product Owner, Scrum Master..."
 translationKey: "glossary_scrum"
 aka: "Framework Scrum"
 articles:

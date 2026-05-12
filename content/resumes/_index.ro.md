@@ -1,6 +1,7 @@
 ---
 title: "Know-How și Impact"
-description: "Treizeci de ani de muncă pe sisteme care nu se pot opri — baze de date, data warehouse, echipe. Profunzime tehnică și impact concret asupra business-ului."
+seoTitle: "Know-How și Impact: 30 ani de DBA, DWH și echipe IT"
+description: "Treizeci de ani de muncă pe sisteme care nu se pot opri — baze de date, data warehouse, echipe. Profunzime tehnică și impact pe business."
 hero_title: "Experiență, profunzime, impact"
 date: "2026-02-23"
 lastmod: "2026-02-26"

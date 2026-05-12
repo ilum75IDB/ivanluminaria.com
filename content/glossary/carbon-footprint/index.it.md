@@ -1,6 +1,6 @@
 ---
 title: "Carbon Footprint"
-description: "Quantità totale di gas serra emessi direttamente o indirettamente da un'attività, espressa in tonnellate di CO₂ equivalente — un'auto nel traffico romano produce 120-150 g/km."
+description: "Quantità totale di gas serra emessi direttamente o indirettamente da un'attività, espressa in tonnellate di CO₂ equivalente"
 translationKey: "glossary_carbon-footprint"
 aka: "Impronta di carbonio"
 articles:

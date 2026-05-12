@@ -1,7 +1,8 @@
 ---
 title: "Data Warehouse"
+seoTitle: "Data Warehouse: architecture, modeling, ETL"
 date: "2026-03-10T08:03:00+01:00"
-description: "Data Warehouse architecture in practice: dimensional modeling, hierarchies, ETL and loading strategies. When data is not just meant to work, but to drive decisions."
+description: "Data Warehouse architecture in practice: dimensional modeling, hierarchies, ETL and loading strategies. When data drives decisions, not just operations."
 image: "data-warehouse.cover.jpg"
 layout: "list"
 ---

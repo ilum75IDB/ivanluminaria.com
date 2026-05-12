@@ -1,6 +1,6 @@
 ---
 title: "secure-file-priv"
-description: "Directiva de seguridad MySQL que limita los directorios donde el servidor puede leer y escribir archivos, protegiendo el filesystem de operaciones no autorizadas."
+description: "Directiva de seguridad MySQL que limita los directorios donde el servidor puede leer y escribir archivos..."
 translationKey: "glossary_secure-file-priv"
 articles:
   - "/posts/mysql/mysql-multi-istanza-secure-file-priv"

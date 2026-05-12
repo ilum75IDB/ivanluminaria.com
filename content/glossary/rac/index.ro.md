@@ -1,6 +1,6 @@
 ---
 title: "RAC"
-description: "Real Application Clusters — tehnologie Oracle care permite mai multor instante sa acceseze simultan aceeasi baza de date, asigurand disponibilitate ridicata si scalabilitate."
+description: "Real Application Clusters — tehnologie Oracle care permite mai multor instante sa acceseze simultan aceeasi baza de date..."
 translationKey: "glossary_rac"
 aka: "Real Application Clusters"
 articles:

@@ -1,6 +1,7 @@
 ---
 title: "Oracle DBA & Performance Tuning Expert"
-description: "Oracle DBA Performance Tuning Expert — nearly 30 years of specialized experience in administration, optimization, and management of complex, mission-critical Oracle databases."
+seoTitle: "Ivan Luminaria | Oracle DBA & Performance Tuning Expert"
+description: "Oracle DBA & Performance Tuning Expert — nearly 30 years of experience in administration, optimization and management of mission-critical Oracle databases."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false

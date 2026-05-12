@@ -1,5 +1,6 @@
 ---
 title: "Database Strategy"
+seoTitle: "Database Strategy: Ivan Luminaria's blog on DB and architecture"
 description: "Databases, architecture and performance as strategic leverage for modern business: technical analysis applied to real-world environments."
 layout: "list"
 image: "database-strategy.cover.jpg"
