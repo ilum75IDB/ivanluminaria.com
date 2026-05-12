@@ -4385,3 +4385,138 @@ footer {
       0  0.5rem 0 currentColor;
   }
 }
+
+/* ===========================================================================
+   READING PROGRESS BAR (issue #92)
+   - Barra rossa 3px sotto navbar, container-width 1280px (max-w-7xl)
+   - Badge floating "X%" in basso a destra, width fissa, allineato al container
+   - Mini-card nella sidebar autore (label blu + percentuale rossa + mini-bar)
+   - Tutti gli elementi persistenti da pct > 5 fino a 100%, gestiti da
+     /js/reading-progress.js, e renderizzati solo nelle pagine articolo
+     (.Section == "posts" in single.html / author-sidebar.html)
+   =========================================================================== */
+
+/* --- Barra principale --- */
+.reading-progress-bar {
+  position: fixed;
+  top: 86px;                    /* sotto la navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 80rem;             /* 1280px - coincide con max-w-7xl di Tailwind */
+  height: 3px;
+  background: rgba(248, 0, 0, 0.08);
+  z-index: 9998;
+  pointer-events: none;
+}
+.reading-progress-bar-fill {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--ivan-red);
+  transition: width 50ms linear;
+}
+.dark .reading-progress-bar {
+  background: rgba(248, 0, 0, 0.15);
+}
+
+/* --- Badge floating bottom-right (grigio scuro) --- */
+.reading-percent {
+  position: fixed;
+  bottom: 24px;
+  right: calc(50vw - 640px + 24px);   /* 24px dal bordo del container 1280px */
+  width: 56px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  padding: 6px 0;
+  border-radius: 12px;
+  z-index: 9997;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.reading-percent.visible { opacity: 1; }
+
+/* Su viewport < 1280px il badge si attacca al bordo del viewport */
+@media (max-width: 1280px) {
+  .reading-percent { right: 24px; }
+}
+
+/* --- Mini-card nella sidebar autore --- */
+.reading-percent-sidebar {
+  margin-top: 16px;
+  padding: 10px 12px;
+  width: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.reading-percent-sidebar.visible { opacity: 1; }
+.dark .reading-percent-sidebar {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+.reading-percent-sidebar-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ivan-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.dark .reading-percent-sidebar-label {
+  color: #6ea3cf;     /* blu Postgres alleggerito per dark mode */
+}
+.reading-percent-sidebar-val {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ivan-red);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.reading-percent-mini {
+  width: 100%;
+  height: 3px;
+  background: rgba(248, 0, 0, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.reading-percent-mini-fill {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--ivan-red);
+  transition: width 50ms linear;
+  border-radius: 2px;
+}
+.dark .reading-percent-mini {
+  background: rgba(248, 0, 0, 0.20);
+}
+
+/* Su mobile la sidebar autore e' nascosta, quindi anche la mini-card non
+   appare; resta solo il badge floating bottom-right. */
+
+/* Stampa: nascondi tutti gli elementi della reading progress */
+@media print {
+  .reading-progress-bar,
+  .reading-percent,
+  .reading-percent-sidebar {
+    display: none !important;
+  }
+}
