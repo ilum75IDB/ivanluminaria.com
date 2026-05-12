@@ -1,6 +1,7 @@
 ---
 title: "Standup meeting: de ce funcționează doar dacă durează 15 minute"
-description: "Un standup care începe bine și în trei săptămâni devine o ședință de 45 de minute. Cum să impui constrângerea de 15 minute și de ce este singurul lucru care face ca daily meeting-ul să funcționeze cu adevărat."
+seoTitle: "Standup meeting Scrum: 15 minute care funcționează"
+description: "Standup meeting Scrum: de ce doar 15 minute le fac să funcționeze. Timeboxing, parking lot și reguli practice ale daily meeting care rezistă în timp."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "standup_meeting_15_minuti"

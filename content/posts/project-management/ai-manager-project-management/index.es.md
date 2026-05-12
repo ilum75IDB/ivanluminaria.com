@@ -1,6 +1,7 @@
 ---
 title: "AI Manager y Project Management: cuando la inteligencia artificial entra en los proyectos"
-description: "Gestionar la IA en un proyecto no significa usar ChatGPT. Significa gobernar el impacto de la inteligencia artificial sobre arquitecturas, procesos y personas. Reflexiones desde casi treinta años de sistemas mission-critical."
+seoTitle: "AI Manager: el rol que gobierna la IA en los proyectos"
+description: "AI Manager: el rol que gobierna el impacto de la inteligencia artificial sobre arquitecturas, procesos y personas. Reflexiones desde 30 años en IT."
 date: "2026-03-17T08:03:00+01:00"
 draft: false
 translationKey: "ai_manager_project_management"

@@ -1,6 +1,7 @@
 ---
 title: "Pagos a 60-90-120 días: la normalidad italiana que no existe en Europa"
-description: "En Italia, pagar a un consultor IT a 90 días es la norma. En el resto de Europa, es una anomalía. Comparación directa entre las reglas europeas y la realidad italiana, con números, directivas y estrategias concretas para freelancers."
+seoTitle: "Pagos 60-90-120 días: Italia vs Europa"
+description: "Pagos a 60-90-120 días en consultoría IT italiana: comparación con las reglas europeas. DSO, directiva 2011/7/UE y estrategias para freelancers IT."
 date: "2026-03-10T08:03:00+01:00"
 draft: false
 translationKey: "pagamenti_60_90_120_giorni"

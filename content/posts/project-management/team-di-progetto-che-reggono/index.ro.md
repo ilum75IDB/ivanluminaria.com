@@ -1,6 +1,7 @@
 ---
 title: "5 reguli pe care le-am văzut funcționând în echipele de proiect care rezistă"
-description: "Un PM care ținea un Excel cu minutele petrecute la baie, și un altul care filtra zgomotul și lăsa echipa să lucreze. Cinci reguli observate de pe ambele părți ale mesei — ca consultant și ca responsabil — care reapar în echipele de proiect care rezistă sub presiune."
+seoTitle: "Management proiect: 5 reguli pentru echipe care rezistă"
+description: "Management proiect: 5 reguli observate în echipele care rezistă sub presiune. Psychological safety, bus factor, outcome vs output, knowledge transfer."
 date: "2026-05-19T08:03:00+01:00"
 draft: false
 translationKey: "team_di_progetto_che_reggono"

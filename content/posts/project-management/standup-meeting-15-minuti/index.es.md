@@ -1,6 +1,7 @@
 ---
 title: "Standup meeting: por qué solo funcionan si duran 15 minutos"
-description: "Un standup que empieza bien y en tres semanas se convierte en una reunión de 45 minutos. Cómo imponer la restricción de los 15 minutos y por qué es lo único que hace funcionar de verdad el daily meeting."
+seoTitle: "Standup meeting Scrum: los 15 minutos que funcionan"
+description: "Standup meeting Scrum: por qué solo los 15 minutos los hacen funcionar. Timeboxing, parking lot y reglas prácticas del daily meeting que aguantan."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "standup_meeting_15_minuti"

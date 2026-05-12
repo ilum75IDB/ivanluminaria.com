@@ -1,6 +1,7 @@
 ---
 title: "Bici vs Coche en Roma: la mañana que me abrió los ojos"
-description: "De Appio Latino a Prati en 50 minutos de tráfico y 35€ de aparcamiento, o en 18 minutos con una Brompton eléctrica. La elección que cambió mis días — y que podría cambiar los tuyos."
+seoTitle: "Bici eléctrica vs coche en Roma: pendolarismo"
+description: "Pendolarismo en Roma: Brompton eléctrica vs coche. 18 minutos vs 50, 35€ de aparcamiento ahorrados. La elección de movilidad sostenible, datos reales."
 date: "2026-03-03T08:03:00+01:00"
 draft: false
 translationKey: "bici_vs_auto_roma"
