@@ -4399,9 +4399,9 @@ footer {
 /* --- Barra principale --- */
 .reading-progress-bar {
   position: fixed;
-  /* Top dinamico: misurato runtime dal JS = nav.offsetHeight + 10px di gap.
-     Fallback se JS non gira: 4.5rem + 10px. */
-  top: var(--reading-bar-top, calc(4.5rem + 10px));
+  /* Top dinamico: misurato runtime dal JS sull'altezza reale della <nav>.
+     Fallback 4.5rem se JS non gira o se la nav non e' trovata. */
+  top: var(--reading-bar-top, 4.5rem);
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -4529,12 +4529,12 @@ footer {
   }
 }
 
-/* Gap di 10px tra la reading-bar e il contenuto dell'articolo.
-   La barra finisce a navHeight + 10 + 3 = navHeight + 13. Il body ha
-   padding-top 4.5rem (72px) e la navbar e' ~60.5px, quindi il contenuto
-   inizia naturalmente a 72px. Per portarlo a navHeight + 23 = 83.5px
-   servono ~12px extra di margine sulla colonna articolo, applicati solo
-   nelle pagine dove esiste la reading-bar. */
+/* Gap di ~10px tra la reading-bar e il contenuto dell'articolo.
+   La barra e' attaccata alla navbar (no gap sopra) e finisce a
+   navHeight + 3. Il body ha padding-top 4.5rem (72px) e la navbar e'
+   ~60.5px, quindi il contenuto inizia naturalmente con ~8.5px di gap
+   sotto la barra. Aggiungiamo 2px extra di margine alla colonna
+   articolo per arrivare a ~10px puliti, solo nelle pagine articolo. */
 body:has(.reading-progress-bar) .article-two-col {
-  margin-top: 12px;
+  margin-top: 2px;
 }

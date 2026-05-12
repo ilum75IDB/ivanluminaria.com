@@ -14,14 +14,13 @@
   if (!bar || !article) return;
 
   // Misura l'altezza reale della navbar runtime e setta una CSS variable
-  // usata dal CSS per posizionare la barra. Aggiunge 10px di gap sopra la
-  // barra per dare respiro tra navbar e barra di lettura.
+  // usata dal CSS per posizionare la barra esattamente alla base della navbar.
+  // Funziona su desktop e mobile, qualunque sia l'altezza effettiva.
   const nav = document.querySelector('nav');
-  const NAV_GAP_PX = 10;
   function setNavHeight() {
     if (!nav) return;
     document.documentElement.style.setProperty(
-      '--reading-bar-top', (nav.offsetHeight + NAV_GAP_PX) + 'px'
+      '--reading-bar-top', nav.offsetHeight + 'px'
     );
   }
   setNavHeight();
