@@ -59,6 +59,8 @@ tool `WebFetch`.
 | 89 | https://github.com/ilum75IDB/ivanluminaria.com/issues/89 | SEO: audit e fix delle meta descriptions mancanti su pagine non-articolo | aperta |
 | 90 | https://github.com/ilum75IDB/ivanluminaria.com/issues/90 | Performance: valutare policy di cache per asset statici (GitHub Pages vs CDN) | aperta |
 | 91 | https://github.com/ilum75IDB/ivanluminaria.com/issues/91 | UX mobile: leggibilita di code blocks e tabelle su viewport stretti | aperta |
+| 92 | https://github.com/ilum75IDB/ivanluminaria.com/issues/92 | UX: aggiungere reading progress bar in cima agli articoli lunghi | aperta |
+| 93 | https://github.com/ilum75IDB/ivanluminaria.com/issues/93 | UX: valutare un sistema di feedback leggero a fine articolo | aperta |
 
 ## Issue Aperte — Bug
 
