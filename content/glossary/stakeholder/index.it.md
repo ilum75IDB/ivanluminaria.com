@@ -1,6 +1,6 @@
 ---
 title: "Stakeholder"
-description: "Persona o gruppo con un interesse diretto nel risultato di un progetto: committente, utente finale, sponsor, team tecnico o qualsiasi parte influenzata dalle decisioni progettuali."
+description: "Persona o gruppo con un interesse diretto nel risultato di un progetto: committente, utente finale, sponsor..."
 translationKey: "glossary_stakeholder"
 aka: "Portatore di interesse"
 articles:

@@ -1,5 +1,6 @@
 ---
 title: "Project Management"
+seoTitle: "Project Management IT: Scrum, AI, consultoría"
 description: "Gestión de proyectos IT: smart working, Scrum, IA y consultoría. Artículos prácticos desde treinta años de experiencia en el campo."
 layout: "list"
 image: "project-management.cover.jpg"

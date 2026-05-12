@@ -1,6 +1,6 @@
 ---
 title: "SCAN Listener"
-description: "Single Client Access Name — componente de Oracle RAC que proporciona un unico punto de acceso al cluster, distribuyendo las conexiones entre los nodos disponibles."
+description: "Single Client Access Name — componente de Oracle RAC que proporciona un unico punto de acceso al cluster..."
 translationKey: "glossary_scan_listener"
 aka: "Single Client Access Name"
 articles:

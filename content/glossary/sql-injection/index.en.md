@@ -1,6 +1,6 @@
 ---
 title: "SQL Injection"
-description: "Attack technique that inserts malicious SQL code into application inputs to manipulate queries executed by the database, potentially accessing unauthorised data or compromising the system."
+description: "Attack technique that inserts malicious SQL code into application inputs to manipulate queries executed by the database..."
 translationKey: "glossary_sql-injection"
 articles:
   - "/posts/mysql/mysql-multi-istanza-secure-file-priv"

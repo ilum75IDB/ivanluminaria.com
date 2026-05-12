@@ -1,5 +1,6 @@
 ---
 title: "Glosario"
-description: "Terminos tecnicos, acronimos y conceptos clave del mundo de las bases de datos, data warehouse y gestion de proyectos. Cada entrada incluye una definicion clara y enlaces a los articulos relacionados."
+seoTitle: "Glosario Database y Project Management: 150+ términos técnicos"
+description: "Glosario de términos técnicos y acrónimos de bases de datos, data warehouse y gestión de proyectos. Cada entrada incluye definición y artículos relacionados."
 layout: "glossary-list"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Pre-upgrade Assessment"
-description: "Medición estructurada del tamaño, crecimiento, tiempos de backup y tiempos de restore de una base de datos antes de un upgrade. Sirve para dimensionar la ventana de mantenimiento y definir un rollback realista."
+description: "Medición estructurada del tamaño, crecimiento, tiempos de backup y tiempos de restore de una base de datos antes de un upgrade."
 translationKey: "glossary_pre_upgrade_assessment"
 aka: "Upgrade Readiness Check, Database Sizing & Timing Assessment"
 articles:

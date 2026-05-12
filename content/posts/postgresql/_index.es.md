@@ -2,6 +2,7 @@
 description: "PostgreSQL: arquitectura, rendimiento y diseño en uno de los sistemas de bases de datos open source más avanzados y longevos."
 layout: "list"
 title: "PostgreSQL"
+seoTitle: "PostgreSQL: arquitectura, rendimiento y tuning"
 image: "postgresql.cover.jpg"
 ---
 

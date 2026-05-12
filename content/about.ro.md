@@ -1,5 +1,6 @@
 ---
 title: "Despre mine"
+seoTitle: "Ivan Luminaria: DBA Oracle, PostgreSQL și DWH Architect"
 description: "Aproape 30 de ani de experiență în baze de date, arhitecturi de date și transformare digitală—construiți pe metodă, impact și curiozitate."
 date: "2026-02-20"
 lastmod: "2026-02-26"

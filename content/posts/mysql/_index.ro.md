@@ -1,5 +1,6 @@
 ---
 title: "MySQL"
+seoTitle: "MySQL și MariaDB: articole performanță și securitate"
 layout: "list"
 description: "MySQL și MariaDB: securitate, performanță și arhitectură pe una dintre cele mai utilizate baze de date din lume."
 image: "mysql.cover.jpg"

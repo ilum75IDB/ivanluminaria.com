@@ -1,6 +1,6 @@
 ---
 title: "information_schema"
-description: "Schema de sistem MySQL/MariaDB read-only care expune metadate despre baze de date, tabele, indecși, utilizatori și starea serverului. Baza oricărui assessment și analiză structurală."
+description: "Schema de sistem MySQL/MariaDB read-only care expune metadate despre baze de date, tabele, indecși, utilizatori și starea serverului."
 translationKey: "glossary_information_schema"
 aka: "Information Schema, INFORMATION_SCHEMA"
 articles:

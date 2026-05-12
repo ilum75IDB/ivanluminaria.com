@@ -1,6 +1,6 @@
 ---
 title: "Knowledge Transfer"
-description: "Proces de transfer al cunoștințelor între persoane, echipe sau sisteme, critic în proiectele IT unde pierderea know-how-ului poate compromite continuitatea operațională."
+description: "Proces de transfer al cunoștințelor între persoane, echipe sau sisteme, critic în proiectele IT unde pierderea know-how-ului poate compromite continuitatea..."
 translationKey: "glossary_knowledge-transfer"
 aka: "Transfer de cunoștințe / KT"
 articles:

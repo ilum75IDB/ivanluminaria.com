@@ -1,6 +1,6 @@
 ---
 title: "B-Tree"
-description: "Estructura de datos de árbol balanceado, tipo de índice predeterminado en la mayoría de bases de datos relacionales. Eficiente para búsquedas de igualdad y rango, pero inadecuado para LIKE con wildcard inicial."
+description: "Estructura de datos de árbol balanceado, tipo de índice predeterminado en la mayoría de bases de datos relacionales."
 translationKey: "glossary_b-tree"
 articles:
   - "/posts/postgresql/like-optimization-postgresql"

@@ -1,6 +1,6 @@
 ---
 title: "Outsourcing"
-description: "Externalización de actividades o proyectos IT a proveedores externos, con riesgos significativos de pérdida de know-how y vendor lock-in si no se gestiona correctamente."
+description: "Externalización de actividades o proyectos IT a proveedores externos, con riesgos significativos de pérdida de know-how y vendor lock-in si no se gestiona..."
 translationKey: "glossary_outsourcing"
 articles:
   - "/posts/project-management/4-milioni-nessun-software"

@@ -1,7 +1,8 @@
 ---
 title: "Data Warehouse"
+seoTitle: "Data Warehouse: architettura, modellazione, ETL"
 date: "2026-03-10T08:03:00+01:00"
-description: "Architettura Data Warehouse nella pratica: modellazione dimensionale, gerarchie, ETL e strategie di caricamento. Quando i dati non servono solo a funzionare, ma a decidere."
+description: "Architettura Data Warehouse nella pratica: modellazione dimensionale, gerarchie, ETL e strategie di caricamento. Dai dati al supporto decisionale."
 image: "data-warehouse.cover.jpg"
 layout: "list"
 ---

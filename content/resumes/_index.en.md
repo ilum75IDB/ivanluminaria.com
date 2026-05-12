@@ -1,5 +1,6 @@
 ---
 title: "Know-How & Impact"
+seoTitle: "Know-How and Impact: 30 years of DBA, DWH and IT teams"
 description: "Thirty years working on systems that cannot fail — databases, data warehouses, teams. Technical depth and concrete impact on the business."
 hero_title: "Experience, depth, impact"
 date: "2026-02-23"

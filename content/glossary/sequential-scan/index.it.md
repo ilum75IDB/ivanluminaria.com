@@ -1,6 +1,6 @@
 ---
 title: "Sequential Scan"
-description: "Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella senza utilizzare indici, efficiente su tabelle piccole ma problematica su tabelle grandi."
+description: "Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella senza utilizzare indici..."
 translationKey: "glossary_sequential-scan"
 aka: "Seq Scan / Full Table Scan"
 articles:

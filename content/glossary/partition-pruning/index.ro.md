@@ -1,6 +1,6 @@
 ---
 title: "Partition Pruning"
-description: "Mecanism automat Oracle care exclude partițiile nerelevante în timpul execuției unei interogări, citind doar partițiile care conțin date corespunzătoare predicatului."
+description: "Mecanism automat Oracle care exclude partițiile nerelevante în timpul execuției unei interogări..."
 translationKey: "glossary_partition-pruning"
 articles:
   - "/posts/oracle/oracle-partitioning"

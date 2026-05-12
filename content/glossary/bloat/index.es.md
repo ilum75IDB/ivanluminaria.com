@@ -1,6 +1,6 @@
 ---
 title: "Bloat"
-description: "Espacio muerto acumulado en una tabla o índice PostgreSQL debido a dead tuples no eliminados, que hincha el tamaño en disco y degrada el rendimiento de las queries."
+description: "Espacio muerto acumulado en una tabla o índice PostgreSQL debido a dead tuples no eliminados..."
 translationKey: "glossary_bloat"
 aka: "Table Bloat / Index Bloat"
 articles:

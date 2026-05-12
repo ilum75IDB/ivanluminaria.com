@@ -1,6 +1,6 @@
 ---
 title: "Local Index"
-description: "Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente. Più manutenibile di un indice globale."
+description: "Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente."
 translationKey: "glossary_local-index"
 articles:
   - "/posts/oracle/oracle-partitioning"

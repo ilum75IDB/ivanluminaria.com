@@ -1,6 +1,6 @@
 ---
 title: "Bus Factor"
-description: "Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste."
+description: "Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto."
 translationKey: "glossary_bus_factor"
 aka: "Truck Factor, Lottery Factor"
 articles:

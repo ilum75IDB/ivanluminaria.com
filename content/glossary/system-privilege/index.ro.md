@@ -1,6 +1,6 @@
 ---
 title: "System Privilege"
-description: "Privilegiu Oracle care autorizează operațiuni globale pe baza de date precum CREATE TABLE, CREATE SESSION sau ALTER SYSTEM, independente de orice obiect specific."
+description: "Privilegiu Oracle care autorizează operațiuni globale pe baza de date precum CREATE TABLE, CREATE SESSION sau ALTER SYSTEM..."
 translationKey: "glossary_system-privilege"
 aka: "Privilegiu de sistem Oracle"
 articles:

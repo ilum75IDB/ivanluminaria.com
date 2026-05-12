@@ -1,6 +1,6 @@
 ---
 title: "DSO"
-description: "Days Sales Outstanding — numero medio di giorni che un'azienda impiega per incassare i propri crediti commerciali. In Italia la media è di 80 giorni, quasi tre volte la media europea."
+description: "Days Sales Outstanding — numero medio di giorni che un'azienda impiega per incassare i propri crediti commerciali."
 translationKey: "glossary_dso"
 aka: "Days Sales Outstanding"
 articles:

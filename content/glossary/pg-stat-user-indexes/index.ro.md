@@ -1,6 +1,6 @@
 ---
 title: "pg_stat_user_indexes"
-description: "View de sistem PostgreSQL care urmărește de câte ori a fost folosit fiecare index de către planner — instrumentul principal pentru identificarea indexurilor inutile în producție."
+description: "View de sistem PostgreSQL care urmărește de câte ori a fost folosit fiecare index de către planner..."
 translationKey: "glossary_pg_stat_user_indexes"
 aka: ""
 articles:

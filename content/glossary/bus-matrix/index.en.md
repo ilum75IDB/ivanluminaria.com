@@ -1,6 +1,6 @@
 ---
 title: "Bus Matrix"
-description: "Ralph Kimball's two-dimensional grid with business processes as rows and conformed dimensions as columns. An organizational alignment tool used before the physical design of the data warehouse."
+description: "Ralph Kimball's two-dimensional grid with business processes as rows and conformed dimensions as columns."
 translationKey: "glossary_bus_matrix"
 aka: "Kimball Bus Matrix, Data Warehouse Bus Architecture"
 articles:

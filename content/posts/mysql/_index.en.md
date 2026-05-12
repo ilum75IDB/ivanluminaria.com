@@ -1,5 +1,6 @@
 ---
 title: "MySQL"
+seoTitle: "MySQL and MariaDB: performance and security articles"
 layout: "list"
 description: "MySQL and MariaDB: security, performance and architecture on one of the world's most widely deployed databases."
 image: "mysql.cover.jpg"

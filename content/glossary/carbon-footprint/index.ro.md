@@ -1,6 +1,6 @@
 ---
 title: "Carbon Footprint"
-description: "Cantitatea totală de gaze cu efect de seră emise direct sau indirect de o activitate, exprimată în tone de CO₂ echivalent — o mașină în traficul roman produce 120-150 g/km."
+description: "Cantitatea totală de gaze cu efect de seră emise direct sau indirect de o activitate, exprimată în tone de CO₂ echivalent"
 translationKey: "glossary_carbon-footprint"
 aka: "Amprenta de carbon"
 articles:

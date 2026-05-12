@@ -1,6 +1,6 @@
 ---
 title: "Issue Tracker"
-description: "Sistema di tracciamento integrato per bug, richieste evolutive e task di progetto. Su GitHub, le issue vivono nello stesso posto del codice, garantendo tracciabilità completa."
+description: "Sistema di tracciamento integrato per bug, richieste evolutive e task di progetto. Su GitHub, le issue vivono nello stesso posto del codice..."
 translationKey: "glossary_issue-tracker"
 articles:
   - "/posts/project-management/ai-github-project-management"

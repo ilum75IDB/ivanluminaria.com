@@ -1,6 +1,6 @@
 ---
 title: "CTAS"
-description: "Create Table As Select — técnica Oracle para crear una nueva tabla poblándola con resultados de una query, usada para migraciones y reestructuraciones de tablas de gran tamaño."
+description: "Create Table As Select — técnica Oracle para crear una nueva tabla poblándola con resultados de una query..."
 translationKey: "glossary_ctas"
 aka: "Create Table As Select"
 articles:

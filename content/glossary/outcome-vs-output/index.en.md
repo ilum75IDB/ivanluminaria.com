@@ -1,6 +1,6 @@
 ---
 title: "Outcome vs Output"
-description: "Distinction between what the team produces (output: code, documents, deliverables) and the final result measured by the business (outcome: go-live, revenue, KPIs)."
+description: "Distinction between what the team produces (output: code, documents, deliverables) and the final result measured by the business (outcome:"
 translationKey: "glossary_outcome_vs_output"
 aka: "Output vs Outcome, Effort vs Result"
 articles:

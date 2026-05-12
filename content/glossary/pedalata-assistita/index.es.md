@@ -1,6 +1,6 @@
 ---
 title: "Pedaleo Asistido"
-description: "Sistema de propulsión eléctrica que amplifica la fuerza del pedaleo del ciclista, eliminando el problema de las cuestas y el sudor en los trayectos urbanos casa-trabajo."
+description: "Sistema de propulsión eléctrica que amplifica la fuerza del pedaleo del ciclista..."
 translationKey: "glossary_pedalata-assistita"
 aka: "E-bike / Bicicleta eléctrica con pedaleo asistido"
 articles:

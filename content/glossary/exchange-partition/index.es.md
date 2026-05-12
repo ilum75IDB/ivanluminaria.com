@@ -1,6 +1,6 @@
 ---
 title: "Exchange Partition"
-description: "Operación DDL de Oracle que intercambia instantáneamente los segmentos de datos entre una tabla no particionada y una partición, sin mover físicamente ningún dato."
+description: "Operación DDL de Oracle que intercambia instantáneamente los segmentos de datos entre una tabla no particionada y una partición..."
 translationKey: "glossary_exchange-partition"
 aka: "Intercambio de partición"
 articles:

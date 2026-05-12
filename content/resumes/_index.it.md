@@ -1,5 +1,6 @@
 ---
 title: "Know-How e Impatto"
+seoTitle: "Know-How e Impatto: 30 anni di DBA, DWH e team IT"
 description: "Trent'anni di lavoro sui sistemi che non possono fermarsi — database, data warehouse, team. Profondità tecnica e impatto concreto sul business."
 hero_title: "Esperienza, profondità, impatto"
 date: "2026-02-23"

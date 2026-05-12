@@ -1,6 +1,6 @@
 ---
 title: "NOLOGGING"
-description: "Oracle mode that suppresses redo log generation during bulk operations (CTAS, INSERT APPEND, ALTER TABLE MOVE), speeding up operations but requiring an immediate backup."
+description: "Oracle mode that suppresses redo log generation during bulk operations (CTAS, INSERT APPEND, ALTER TABLE MOVE)..."
 translationKey: "glossary_nologging"
 articles:
   - "/posts/oracle/oracle-partitioning"

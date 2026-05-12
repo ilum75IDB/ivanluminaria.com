@@ -1,6 +1,6 @@
 ---
 title: "Unified Audit"
-description: "Sistema de auditoría centralizado introducido en Oracle 12c que unifica todos los tipos de auditoría en una única infraestructura, sustituyendo el antiguo audit tradicional."
+description: "Sistema de auditoría centralizado introducido en Oracle 12c que unifica todos los tipos de auditoría en una única infraestructura..."
 translationKey: "glossary_unified-audit"
 aka: "Oracle Unified Auditing"
 articles:

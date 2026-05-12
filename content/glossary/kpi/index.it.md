@@ -1,6 +1,6 @@
 ---
 title: "KPI"
-description: "Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito, usata per misurare risultati concreti invece di ore di presenza."
+description: "Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito..."
 translationKey: "glossary_kpi"
 aka: "Key Performance Indicator"
 articles:

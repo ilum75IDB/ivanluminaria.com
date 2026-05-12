@@ -1,6 +1,6 @@
 ---
 title: "information_schema"
-description: "Esquema de sistema de MySQL/MariaDB en solo lectura que expone metadatos sobre bases de datos, tablas, índices, usuarios y estado del servidor. Base de cualquier assessment y análisis estructural."
+description: "Esquema de sistema de MySQL/MariaDB en solo lectura que expone metadatos sobre bases de datos, tablas, índices, usuarios y estado del servidor."
 translationKey: "glossary_information_schema"
 aka: "Information Schema, INFORMATION_SCHEMA"
 articles:

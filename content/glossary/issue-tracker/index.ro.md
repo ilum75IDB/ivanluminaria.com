@@ -1,6 +1,6 @@
 ---
 title: "Issue Tracker"
-description: "Sistem integrat de urmărire pentru bug-uri, cereri de funcționalități și task-uri de proiect. Pe GitHub, issue-urile trăiesc în același loc cu codul, garantând trasabilitate completă."
+description: "Sistem integrat de urmărire pentru bug-uri, cereri de funcționalități și task-uri de proiect. Pe GitHub, issue-urile trăiesc în același loc cu codul..."
 translationKey: "glossary_issue-tracker"
 articles:
   - "/posts/project-management/ai-github-project-management"

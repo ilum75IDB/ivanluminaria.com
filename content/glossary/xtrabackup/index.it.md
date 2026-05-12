@@ -1,6 +1,6 @@
 ---
 title: "xtrabackup"
-description: "Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione, gestendo le transazioni attive tramite il redo log."
+description: "Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione..."
 translationKey: "glossary_xtrabackup"
 aka: "Percona XtraBackup"
 articles:

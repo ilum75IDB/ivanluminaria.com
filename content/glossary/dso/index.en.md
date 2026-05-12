@@ -1,6 +1,6 @@
 ---
 title: "DSO"
-description: "Days Sales Outstanding — average number of days a company takes to collect its trade receivables. In Italy the average is 80 days, nearly three times the European average."
+description: "Days Sales Outstanding — average number of days a company takes to collect its trade receivables. In Italy the average is 80 days..."
 translationKey: "glossary_dso"
 aka: "Days Sales Outstanding"
 articles:
