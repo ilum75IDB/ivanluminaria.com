@@ -63,7 +63,9 @@ tool `WebFetch`.
 
 ## Issue Aperte — Bug
 
-*Nessuna issue aperta.*
+| #  | Issue | Titolo | Stato |
+|----|-------|--------|-------|
+| 94 | https://github.com/ilum75IDB/ivanluminaria.com/issues/94 | Bug: like-optimization-postgresql versione ES ha titolo e corpo in inglese | aperta |
 
 ## Issue Chiuse
 
