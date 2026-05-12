@@ -1,6 +1,7 @@
 ---
 title: "Da single instance a Data Guard: il giorno in cui il CEO ha capito il DR"
-description: "Un database Oracle in produzione senza alcuna ridondanza. Un guasto disco che ha fermato tutto per sei ore. E la decisione del CEO di investire in un'architettura Active Data Guard con switchover automatico."
+seoTitle: "Oracle Data Guard 19c: caso reale DR e switchover automatico"
+description: "Oracle Data Guard 19c: migrazione da single instance dopo un crash di 6 ore. Architettura DR, primary/standby, switchover automatico."
 date: "2025-12-16T08:03:00+01:00"
 draft: false
 translationKey: "oracle_data_guard"
