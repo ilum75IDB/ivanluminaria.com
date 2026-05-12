@@ -4428,13 +4428,16 @@ footer {
   bottom: 24px;
   right: calc(50vw - 800px + 24px);   /* 24px dal bordo del container 1600px */
   width: 56px;
-  text-align: center;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(0, 0, 0, 0.75);
   color: #ffffff;
   font-size: 12px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  padding: 6px 0;
+  padding: 0;
   border-radius: 12px;
   z-index: 9997;
   opacity: 0;
@@ -4455,10 +4458,10 @@ footer {
 .reading-percent.near-footer { opacity: 0 !important; }
 #to-top.near-footer { opacity: 0 !important; pointer-events: none; }
 
-/* --- Scroll-to-top: spostato vicino al badge percentuale e ridotto a 30px
-   per matchare l'altezza del badge (issue #92). Il theme Congo lo aveva
-   centrato in basso, ora e' subito a sinistra del badge percentuale,
-   stessa altezza, gap di 8px tra i due elementi. */
+/* --- Scroll-to-top: spostato vicino al badge percentuale e dimensionato
+   a 40x40 per matchare l'altezza del badge (issue #92). Il theme Congo
+   lo aveva centrato in basso a 48x48, ora e' subito a sinistra del badge
+   percentuale, stessa altezza (40px), gap di 8px tra i due elementi. */
 #to-top {
   position: fixed !important;
   top: auto !important;
@@ -4467,8 +4470,8 @@ footer {
      (width badge) + 8px (gap tra scroll-up e badge) = 88px dal bordo */
   right: calc(50vw - 800px + 88px) !important;
   left: auto !important;
-  width: 30px !important;
-  height: 30px !important;
+  width: 40px !important;
+  height: 40px !important;
   z-index: 9997;
   opacity: 0;
   transition: opacity 200ms ease-out;
@@ -4481,15 +4484,15 @@ footer {
 
 #to-top a {
   position: static !important;
-  width: 30px !important;
-  height: 30px !important;
+  width: 40px !important;
+  height: 40px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 #to-top a svg {
-  width: 14px !important;
-  height: 14px !important;
+  width: 18px !important;
+  height: 18px !important;
 }
 
 /* --- Mini-card nella sidebar autore --- */
