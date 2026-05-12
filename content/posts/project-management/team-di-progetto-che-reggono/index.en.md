@@ -1,6 +1,7 @@
 ---
 title: "5 rules I've seen work in project teams that hold"
-description: "A PM who kept a spreadsheet of bathroom-break minutes, and another one who filtered the noise and let the team work. Five rules observed from both sides of the table — as a consultant and as a lead — that keep showing up in project teams that hold under pressure."
+seoTitle: "Project management: 5 rules for teams that hold"
+description: "Project management: 5 rules observed in teams that hold under pressure. Psychological safety, bus factor, outcome vs output, knowledge transfer."
 date: "2026-05-19T08:03:00+01:00"
 draft: false
 translationKey: "team_di_progetto_che_reggono"

@@ -1,6 +1,7 @@
 ---
 title: "Cuando el caos se convierte en método: AI y GitHub para gestionar un proyecto que nadie quería tocar"
-description: "Un caso real de gestión de proyectos: cómo propuse GitHub e inteligencia artificial para transformar un proyecto de software caótico en un flujo de trabajo ordenado, medible y más rápido."
+seoTitle: "Gestión proyectos con AI y GitHub: workflow ordenado"
+description: "Gestión de proyectos con AI y GitHub: transformar un proyecto caótico en workflow medible con issue tracking, code review e inteligencia artificial."
 date: "2026-02-03T08:03:00+01:00"
 draft: false
 translationKey: "ai_github_project_management"

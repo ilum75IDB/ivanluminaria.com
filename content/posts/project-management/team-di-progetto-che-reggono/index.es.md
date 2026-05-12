@@ -1,6 +1,7 @@
 ---
 title: "5 reglas que he visto funcionar en los equipos de proyecto que aguantan"
-description: "Un PM que llevaba una hoja de Excel con los minutos pasados en el baño, y otro que filtraba el ruido y dejaba trabajar al equipo. Cinco reglas observadas desde los dos lados de la mesa — como consultor y como responsable — que siguen apareciendo en los equipos de proyecto que aguantan bajo presión."
+seoTitle: "Gestión proyectos: 5 reglas para equipos que aguantan"
+description: "Gestión de proyectos: 5 reglas observadas en equipos que aguantan bajo presión. Psychological safety, bus factor, outcome vs output, knowledge transfer."
 date: "2026-05-19T08:03:00+01:00"
 draft: false
 translationKey: "team_di_progetto_che_reggono"

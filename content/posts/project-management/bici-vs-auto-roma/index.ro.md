@@ -1,6 +1,7 @@
 ---
 title: "Bicicletă vs Mașină la Roma: dimineața care mi-a deschis ochii"
-description: "Din Appio Latino până în Prati în 50 de minute de trafic și 35€ parcare, sau în 18 minute cu o Brompton electrică. Alegerea care mi-a schimbat zilele — și care ar putea să le schimbe și pe ale tale."
+seoTitle: "Bicicletă electrică vs mașină la Roma: pendulare"
+description: "Pendulare în Roma: Brompton electrică vs mașină. 18 minute vs 50, 35€ de parcare economisiți. Alegerea mobilității sustenabile, date reale."
 date: "2026-03-03T08:03:00+01:00"
 draft: false
 translationKey: "bici_vs_auto_roma"

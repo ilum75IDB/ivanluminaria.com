@@ -1,6 +1,7 @@
 ---
 title: "The Yes-And technique: how I defused a meeting that was about to blow up"
-description: "The Yes-And technique, born in improvisational theatre, applied to conflict management in IT teams. A real case of a meeting that was going south — and how three words changed everything."
+seoTitle: "Yes-And technique: conflict management in IT teams"
+description: "The Yes-And technique from improvisational theatre applied to conflict management in IT teams. Real case of a meeting that was about to blow up."
 date: "2026-01-13T08:03:00+01:00"
 draft: false
 translationKey: "tecnica_si_e_yes_and"
