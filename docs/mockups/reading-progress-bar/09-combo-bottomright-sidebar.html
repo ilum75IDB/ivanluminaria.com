@@ -108,33 +108,54 @@
   }
   .reading-percent.visible { opacity: 1; }
 
-  /* --- Badge nella sidebar autore (rosso brand) --- */
+  /* --- Badge nella sidebar autore: mini-bar rossa con label blu --- */
   .reading-percent-sidebar {
     margin-top: 16px;
-    padding: 8px 0;
-    width: 80px;
+    padding: 10px 12px;
+    width: 110px;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-    background: var(--ivan-red);
-    color: white;
-    font-size: 11px;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
-    border: 1px solid var(--ivan-red-dark);
+    text-align: center;
     opacity: 0;
     transition: opacity 200ms ease-out;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .reading-percent-sidebar.visible { opacity: 1; }
   .reading-percent-sidebar .label {
     display: block;
-    font-size: 9px;
-    font-weight: 500;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ivan-blue);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 2px;
-    opacity: 0.85;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .reading-percent-sidebar .percent-val {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ivan-red);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .reading-percent-sidebar .mini-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(248, 0, 0, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .reading-percent-sidebar .mini-bar-fill {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: var(--ivan-red);
+    transition: width 50ms linear;
+    border-radius: 2px;
   }
   /* ===================================================== */
 
@@ -293,8 +314,9 @@
         <div class="author-sidebar-name">Ivan Luminaria</div>
         <div class="author-sidebar-roles">DWH Architect · Project Manager · Oracle DBA &amp; Performance Tuning · PL/SQL Senior &amp; Mentor</div>
         <div class="reading-percent-sidebar" id="percentSidebar" aria-hidden="true">
-          <span class="label">Letto</span>
-          <span id="percentSidebarVal">0%</span>
+          <span class="label">Letto:</span>
+          <span class="percent-val" id="percentSidebarVal">0%</span>
+          <div class="mini-bar"><span class="mini-bar-fill" id="miniBarFill"></span></div>
         </div>
       </div>
     </aside>
@@ -376,6 +398,7 @@
     const percent = document.getElementById('percent');
     const percentSidebar = document.getElementById('percentSidebar');
     const percentSidebarVal = document.getElementById('percentSidebarVal');
+    const miniBarFill = document.getElementById('miniBarFill');
     const article = document.querySelector('article');
     if (!bar || !article) return;
     function update() {
@@ -396,6 +419,9 @@
       if (percentSidebar && percentSidebarVal) {
         percentSidebarVal.textContent = pct + '%';
         percentSidebar.classList.toggle('visible', shouldShow);
+      }
+      if (miniBarFill) {
+        miniBarFill.style.width = pct + '%';
       }
     }
     window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
