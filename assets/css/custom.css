@@ -4399,7 +4399,9 @@ footer {
 /* --- Barra principale --- */
 .reading-progress-bar {
   position: fixed;
-  top: 4.5rem;                  /* sotto la navbar (alta 4.5rem come body padding-top) */
+  /* Top dinamico: misurato runtime dal JS sull'altezza reale della <nav>.
+     Fallback 4.5rem se JS non gira o se la nav non e' trovata. */
+  top: var(--reading-bar-top, 4.5rem);
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
