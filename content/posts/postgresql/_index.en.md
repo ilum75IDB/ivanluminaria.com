@@ -1,5 +1,5 @@
 ---
-description: "PostgreSQL: architecture, performance and design insights on one of the most advanced and long-standing open source databases."
+description: "PostgreSQL articles: EXPLAIN ANALYZE, query optimization, pg_stat_statements, GIN/B-tree indexes, VACUUM, autovacuum, ROLE, GRANT and best practices."
 layout: "list"
 title: "PostgreSQL"
 seoTitle: "PostgreSQL: architecture, performance and tuning articles"

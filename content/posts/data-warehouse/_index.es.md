@@ -2,7 +2,7 @@
 title: "Data Warehouse"
 seoTitle: "Data Warehouse: arquitectura, modelado, ETL"
 date: "2026-03-10T08:03:00+01:00"
-description: "Arquitectura Data Warehouse en la práctica: modelado dimensional, jerarquías, ETL y estrategias de carga. De los datos al soporte de decisiones."
+description: "Artículos Data Warehouse: modelado dimensional Kimball, SCD Tipo 2, fact table grain, bus matrix, range partitioning, ragged hierarchy y ETL prácticos."
 image: "data-warehouse.cover.jpg"
 layout: "list"
 ---

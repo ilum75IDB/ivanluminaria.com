@@ -1,7 +1,7 @@
 ---
 title: "Project Management"
 seoTitle: "IT Project Management: Scrum, AI, consulting"
-description: "IT project management: smart working, Scrum, AI and consulting. Practical articles from thirty years of field experience."
+description: "IT Project Management articles: Scrum, standup meetings, smart working, AI Manager, team management, freelance and IT consulting. Real cases from 30 years."
 layout: "list"
 image: "project-management.cover.jpg"
 ---

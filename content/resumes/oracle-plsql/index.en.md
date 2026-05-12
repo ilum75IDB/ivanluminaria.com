@@ -1,7 +1,7 @@
 ---
 title: "Oracle PL/SQL Developer"
 seoTitle: "Ivan Luminaria | Oracle PL/SQL Developer & SQL Tuning"
-description: "Oracle PL/SQL Developer & SQL Performance Tuning Expert — nearly 30 years designing, developing and optimizing robust PL/SQL code for data-intensive apps."
+description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning: 30 years developing, refactoring and optimizing PL/SQL code for enterprise data-intensive apps."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false

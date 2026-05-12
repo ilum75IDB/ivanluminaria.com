@@ -2,7 +2,7 @@
 title: "MySQL"
 seoTitle: "MySQL y MariaDB: artículos de rendimiento y seguridad"
 layout: "list"
-description: "MySQL y MariaDB: seguridad, rendimiento y arquitectura en una de las bases de datos más utilizadas del mundo."
+description: "Artículos MySQL y MariaDB: binary log, Galera Cluster, Group Replication, backup con mysqldump/mydumper, autenticación, GRANT y pre-upgrade assessment."
 image: "mysql.cover.jpg"
 ---
 
