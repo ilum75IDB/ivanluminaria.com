@@ -54,22 +54,33 @@
   .navbar .search-icon { font-size: 18px; color: var(--ivan-gray-obj); }
 
   /* ========== BARRA/BADGE VARIANTE 7 ========== */
-  /* 3px sotto navbar + badge % a width FISSA in ALTO a destra (sotto navbar). */
+  /* 3px sotto navbar + badge % a width FISSA in ALTO a destra (sotto navbar).
+     Barra container-width (1280px centrata, coerente col layout sito).
+     Badge persistente da pct > 5 fino a fine pagina (no sparizione a 100%). */
   .reading-progress-bar {
     position: fixed;
     top: 86px;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1280px;
     height: 3px;
-    width: 0%;
-    background: var(--ivan-red);
+    background: rgba(248, 0, 0, 0.08);
     z-index: 9998;
+    pointer-events: none;
+  }
+  .reading-progress-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: var(--progress, 0%);
+    background: var(--ivan-red);
     transition: width 50ms linear;
   }
   .reading-percent {
     position: fixed;
-    top: 102px;   /* 86 navbar + 3 barra + 13 margine */
-    right: 24px;
+    top: 102px;
+    right: calc(50vw - 640px + 24px);  /* 24px dal bordo del container 1280px */
     width: 56px;
     text-align: center;
     background: rgba(0,0,0,0.75);
@@ -84,6 +95,10 @@
     transition: opacity 200ms ease-out;
     backdrop-filter: blur(4px);
     pointer-events: none;
+  }
+  /* Su viewport < 1280px torna ad attaccarsi al bordo del viewport */
+  @media (max-width: 1280px) {
+    .reading-percent { right: 24px; }
   }
   .reading-percent.visible { opacity: 1; }
   /* ============================================ */
@@ -331,10 +346,10 @@
       if (totalScrollable <= 0) return;
       const progress = Math.max(0, Math.min(1, (scrollY - articleTop) / totalScrollable));
       const pct = Math.round(progress * 100);
-      bar.style.width = pct + '%';
+      bar.style.setProperty('--progress', pct + '%');
       if (percent) {
         percent.textContent = pct + '%';
-        if (pct > 5 && pct < 98) percent.classList.add('visible');
+        if (pct > 5) percent.classList.add('visible');
         else percent.classList.remove('visible');
       }
     }

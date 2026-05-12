@@ -26,10 +26,17 @@ Tutti i mockup ora riproducono il **layout reale del sito**:
 
 Tutti partono dalla stessa base (linea 3px rosso sotto navbar, variante 01 preferita).
 
-- **#4**: badge auto-width per mostrare il problema del jitter (la larghezza cambia da "5%" a "10%" a "100%")
-- **#6**: badge a width fissa 56px + `font-variant-numeric: tabular-nums` → zero jitter, bottom-right discreto
-- **#7**: stesso badge fisso, ma in alto a destra subito sotto la navbar → più visibile, segue la lettura naturale
-- **#8**: badge integrato nella sidebar autore con label "LETTO" → niente overlay sul contenuto, segue la sticky della sidebar
+- **#4**: badge auto-width per mostrare il problema del jitter (la larghezza cambia da "5%" a "10%" a "100%"). Barra wide-screen.
+- **#6**: badge a width fissa 56px + `font-variant-numeric: tabular-nums` → zero jitter, bottom-right discreto. **Barra container-width (1280px centrata), badge persistente fino a fine pagina**
+- **#7**: stesso badge fisso, ma in alto a destra (allineato al bordo del container 1280px) → più visibile, segue la lettura naturale. **Barra container-width, badge persistente**
+- **#8**: badge integrato nella sidebar autore con label "LETTO" → niente overlay sul contenuto, segue la sticky della sidebar. **Barra container-width, badge persistente**
+
+### Due fix applicati ai mockup 6, 7, 8 (rispetto ai precedenti)
+
+1. **Barra container-width (1280px centrata)** invece di wide-screen — coerente col layout del sito che ha già un `max-width` definito. Sotto i 1280px di viewport, la barra si comporta naturalmente come full-width (perché coincide col viewport)
+2. **Badge persistente da 5% in poi** — niente sparizione a 98%. Il "100%" resta visibile come feedback di completamento, sparisce solo se l'utente torna proprio all'inizio della pagina
+
+Sui mockup 1-5 lascio il comportamento "wide + badge che spariva a 98%" come reference storica delle prime versioni.
 
 ## Cosa valutare confrontando 6, 7, 8
 
