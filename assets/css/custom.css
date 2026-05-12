@@ -4399,9 +4399,9 @@ footer {
 /* --- Barra principale --- */
 .reading-progress-bar {
   position: fixed;
-  /* Top dinamico: misurato runtime dal JS sull'altezza reale della <nav>.
-     Fallback 4.5rem se JS non gira o se la nav non e' trovata. */
-  top: var(--reading-bar-top, 4.5rem);
+  /* Top dinamico: misurato runtime dal JS = nav.offsetHeight + 10px di gap.
+     Fallback se JS non gira: 4.5rem + 10px. */
+  top: var(--reading-bar-top, calc(4.5rem + 10px));
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -4457,7 +4457,8 @@ footer {
 
 /* --- Mini-card nella sidebar autore --- */
 .reading-percent-sidebar {
-  margin-top: 16px;
+  /* 16px base + 10px extra di respiro tra badge autore e mini-card */
+  margin-top: 26px;
   padding: 10px 12px;
   width: 110px;
   margin-left: auto;
@@ -4526,4 +4527,14 @@ footer {
   .reading-percent-sidebar {
     display: none !important;
   }
+}
+
+/* Gap di 10px tra la reading-bar e il contenuto dell'articolo.
+   La barra finisce a navHeight + 10 + 3 = navHeight + 13. Il body ha
+   padding-top 4.5rem (72px) e la navbar e' ~60.5px, quindi il contenuto
+   inizia naturalmente a 72px. Per portarlo a navHeight + 23 = 83.5px
+   servono ~12px extra di margine sulla colonna articolo, applicati solo
+   nelle pagine dove esiste la reading-bar. */
+body:has(.reading-progress-bar) .article-two-col {
+  margin-top: 12px;
 }
