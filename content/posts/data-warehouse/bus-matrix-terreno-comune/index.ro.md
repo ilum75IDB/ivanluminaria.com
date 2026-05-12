@@ -1,6 +1,7 @@
 ---
 title: "Trei data marts, trei adevăruri despre vânzări: bus matrix ca teren comun"
-description: "Un grup de asigurări multi-țară cu trei departamente, trei data marts crescute autonom și trei numere diferite pentru polițele emise în februarie. Bus matrix nu a rezolvat totul într-o după-amiază — dar a dat un teren comun pe care să începem să discutăm."
+seoTitle: "Bus matrix Kimball: data marts și conformed dimensions"
+description: "Bus matrix Kimball pentru alinierea data marts izolate: conformed dimensions, procese de business și vânzări comparabile. Caz real grup asigurări."
 date: "2026-05-12T08:03:00+01:00"
 draft: false
 translationKey: "bus_matrix_terreno_comune"

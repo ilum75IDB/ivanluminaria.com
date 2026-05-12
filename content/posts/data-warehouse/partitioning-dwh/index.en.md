@@ -1,6 +1,7 @@
 ---
 title: "DWH Partitioning: When 3 Years of Data Weigh Too Much"
-description: "An 800-million-row fact table with no partitioning, quarterly queries running for 12 minutes, and a business demanding real-time answers. How I implemented monthly range partitioning and brought query times down to 40 seconds."
+seoTitle: "DWH partitioning: range partitioning on fact tables"
+description: "Range partitioning on an 800-million-row fact table: from 12-minute quarterly queries to 40 seconds. Monthly implementation, exchange and local indexes."
 date: "2026-04-07T08:03:00+01:00"
 draft: false
 translationKey: "partitioning_dwh"
