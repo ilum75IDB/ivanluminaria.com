@@ -4399,11 +4399,11 @@ footer {
 /* --- Barra principale --- */
 .reading-progress-bar {
   position: fixed;
-  top: 86px;                    /* sotto la navbar */
+  top: 4.5rem;                  /* sotto la navbar (alta 4.5rem come body padding-top) */
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 80rem;             /* 1280px - coincide con max-w-7xl di Tailwind */
+  max-width: 1600px;            /* allineata al body max-width del sito */
   height: 3px;
   background: rgba(248, 0, 0, 0.08);
   z-index: 9998;
@@ -4424,7 +4424,7 @@ footer {
 .reading-percent {
   position: fixed;
   bottom: 24px;
-  right: calc(50vw - 640px + 24px);   /* 24px dal bordo del container 1280px */
+  right: calc(50vw - 800px + 24px);   /* 24px dal bordo del container 1600px */
   width: 56px;
   text-align: center;
   background: rgba(0, 0, 0, 0.75);
@@ -4443,10 +4443,15 @@ footer {
 }
 .reading-percent.visible { opacity: 1; }
 
-/* Su viewport < 1280px il badge si attacca al bordo del viewport */
-@media (max-width: 1280px) {
+/* Sotto i 1600px il badge si attacca al bordo del viewport */
+@media (max-width: 1600px) {
   .reading-percent { right: 24px; }
 }
+
+/* Quando il footer e' in viewport, nascondi badge + scroll-to-top
+   per non sovrapporli ai link di navigazione/icone del footer */
+.reading-percent.near-footer { opacity: 0 !important; }
+#to-top.near-footer { opacity: 0; pointer-events: none; transition: opacity 200ms ease-out; }
 
 /* --- Mini-card nella sidebar autore --- */
 .reading-percent-sidebar {
