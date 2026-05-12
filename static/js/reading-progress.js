@@ -32,6 +32,7 @@
   const sideBadge = document.querySelector('.reading-percent-sidebar');
   const sideBadgeVal = sideBadge ? sideBadge.querySelector('.reading-percent-val') : null;
   const sideMini = sideBadge ? sideBadge.querySelector('.reading-percent-mini-fill') : null;
+  const toTopRef = document.getElementById('to-top');
 
   let scheduled = false;
 
@@ -59,6 +60,9 @@
       if (floatBadgeVal) floatBadgeVal.textContent = pctStr;
       floatBadge.classList.toggle('visible', shouldShow);
     }
+    if (toTopRef) {
+      toTopRef.classList.toggle('visible', shouldShow);
+    }
     if (sideBadge) {
       if (sideBadgeVal) sideBadgeVal.textContent = pctStr;
       if (sideMini) sideMini.style.width = pctStr;
@@ -80,12 +84,11 @@
   // floating (badge percentuale + scroll-to-top del theme Congo) per
   // evitare la sovrapposizione con i link di navigazione e le icone social.
   const footer = document.querySelector('footer');
-  const toTop = document.getElementById('to-top');
   if (footer && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       const nearFooter = entries[0].isIntersecting;
       if (floatBadge) floatBadge.classList.toggle('near-footer', nearFooter);
-      if (toTop) toTop.classList.toggle('near-footer', nearFooter);
+      if (toTopRef) toTopRef.classList.toggle('near-footer', nearFooter);
     }, { rootMargin: '0px 0px -80px 0px' });
     observer.observe(footer);
   }

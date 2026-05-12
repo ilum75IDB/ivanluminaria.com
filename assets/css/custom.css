@@ -4453,7 +4453,44 @@ footer {
 /* Quando il footer e' in viewport, nascondi badge + scroll-to-top
    per non sovrapporli ai link di navigazione/icone del footer */
 .reading-percent.near-footer { opacity: 0 !important; }
-#to-top.near-footer { opacity: 0; pointer-events: none; transition: opacity 200ms ease-out; }
+#to-top.near-footer { opacity: 0 !important; pointer-events: none; }
+
+/* --- Scroll-to-top: spostato vicino al badge percentuale e ridotto a 30px
+   per matchare l'altezza del badge (issue #92). Il theme Congo lo aveva
+   centrato in basso, ora e' subito a sinistra del badge percentuale,
+   stessa altezza, gap di 8px tra i due elementi. */
+#to-top {
+  position: fixed !important;
+  top: auto !important;
+  bottom: 24px !important;
+  /* A sinistra del badge: 24px (gap badge dal bordo container) + 56px
+     (width badge) + 8px (gap tra scroll-up e badge) = 88px dal bordo */
+  right: calc(50vw - 800px + 88px) !important;
+  left: auto !important;
+  width: 30px !important;
+  height: 30px !important;
+  z-index: 9997;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+#to-top.visible { opacity: 1; }
+
+@media (max-width: 1600px) {
+  #to-top { right: 88px !important; }
+}
+
+#to-top a {
+  position: static !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#to-top a svg {
+  width: 14px !important;
+  height: 14px !important;
+}
 
 /* --- Mini-card nella sidebar autore --- */
 .reading-percent-sidebar {
