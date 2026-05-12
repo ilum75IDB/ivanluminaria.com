@@ -4399,9 +4399,9 @@ footer {
 /* --- Barra principale --- */
 .reading-progress-bar {
   position: fixed;
-  /* Top dinamico: misurato runtime dal JS sull'altezza reale della <nav>.
-     Fallback 4.5rem se JS non gira o se la nav non e' trovata. */
-  top: var(--reading-bar-top, 4.5rem);
+  /* Top dinamico: misurato runtime dal JS sull'altezza reale della <nav>
+     piu' 15px di gap. Fallback se JS non gira. */
+  top: var(--reading-bar-top, calc(4.5rem + 15px));
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -4526,4 +4526,14 @@ footer {
   .reading-percent-sidebar {
     display: none !important;
   }
+}
+
+/* Spazio di respiro tra la reading-progress-bar e il contenuto dell'articolo.
+   La barra e' alta 3px e posizionata a navHeight + 15px, finisce a
+   navHeight + 18px. Vogliamo 15px di spazio prima del contenuto. Il body ha
+   gia' padding-top di 4.5rem (72px), quindi aggiungiamo margin-top alla
+   colonna articolo per arrivare a navHeight + 33px totali.
+   Si applica solo dove esiste .reading-progress-bar (cioe' pagine articolo). */
+body:has(.reading-progress-bar) .article-two-col {
+  margin-top: 21px;
 }
