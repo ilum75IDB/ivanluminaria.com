@@ -1,6 +1,7 @@
 ---
 title: "Wrong grain: when the fact table can't answer the right questions"
-description: "A fact table built on monthly invoice totals looked perfect. Then the business asked for product-level, line-level, customer-level detail. And the data warehouse went silent."
+seoTitle: "Data warehouse: fact table grain explained"
+description: "Data warehouse: fact table grain determines which questions you can answer. Common mistakes in granularity and their impact on the dimensional model."
 date: "2025-10-21T08:03:00+01:00"
 draft: false
 translationKey: "fatto_grana_sbagliata"
