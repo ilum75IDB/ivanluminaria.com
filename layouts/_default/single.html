@@ -8,6 +8,16 @@
     {{- $feature = $images.GetMatch .Params.image }}
   {{- end }}
 
+  {{/* ---- READING PROGRESS BAR (solo pagine articolo) ---- */}}
+  {{ if eq .Section "posts" }}
+    <div class="reading-progress-bar print:hidden" aria-hidden="true">
+      <span class="reading-progress-bar-fill"></span>
+    </div>
+    <div class="reading-percent print:hidden" aria-hidden="true">
+      <span class="reading-percent-val">0%</span>
+    </div>
+  {{ end }}
+
   <div class="article-two-col">
     {{/* ---- LEFT SIDEBAR: Author ---- */}}
     <aside class="article-sidebar print:hidden">

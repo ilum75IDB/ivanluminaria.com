@@ -41,3 +41,5 @@ knowhow:
   read_roadmap: "Leer la roadmap"
   download_pdf: "Descargar PDF"
   pdf_sub: "CV completo"
+
+reading_progress_label: "Leído:"
