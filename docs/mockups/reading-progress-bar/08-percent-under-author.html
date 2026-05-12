@@ -79,6 +79,7 @@
     background: var(--ivan-red);
     transition: width 50ms linear;
   }
+  /* Base condivisa per tutte le 4 varianti di sfondo del badge sidebar */
   .reading-percent-sidebar {
     margin-top: 16px;
     padding: 8px 0;
@@ -86,13 +87,10 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    background: rgba(0,0,0,0.06);
-    color: var(--ivan-gray-title);
     font-size: 11px;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.08);
     opacity: 0;
     transition: opacity 200ms ease-out;
   }
@@ -101,10 +99,45 @@
     display: block;
     font-size: 9px;
     font-weight: 500;
-    color: var(--ivan-gray-obj);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 2px;
+    opacity: 0.7;
+  }
+  /* Etichetta varianti */
+  .variant-name {
+    display: block;
+    font-size: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ivan-gray-obj);
+    margin-top: 4px;
+    opacity: 0.6;
+  }
+  /* Variante A: grigio chiaro (originale) */
+  .reading-percent-sidebar.bg-light-gray {
+    background: rgba(0,0,0,0.06);
+    color: var(--ivan-gray-title);
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  /* Variante B: rosso brand */
+  .reading-percent-sidebar.bg-red {
+    background: var(--ivan-red);
+    color: white;
+    border: 1px solid var(--ivan-red-dark);
+  }
+  /* Variante C: blu brand */
+  .reading-percent-sidebar.bg-blue {
+    background: var(--ivan-blue);
+    color: white;
+    border: 1px solid #234d6e;
+  }
+  /* Variante D: grigio scuro */
+  .reading-percent-sidebar.bg-dark-gray {
+    background: #374151;
+    color: white;
+    border: 1px solid #1f2937;
   }
   /* ============================================ */
 
@@ -253,7 +286,7 @@
   <!-- BARRA -->
   <div class="reading-progress-bar" id="progress" aria-hidden="true"></div>
 
-  <div class="mockup-badge">Mockup 8 · 3px + % nella sidebar</div>
+  <div class="mockup-badge">Mockup 8 · 4 varianti di sfondo del badge sidebar</div>
 
   <div class="article-two-col">
     <aside class="article-sidebar">
@@ -261,10 +294,34 @@
         <div class="author-sidebar-img"></div>
         <div class="author-sidebar-name">Ivan Luminaria</div>
         <div class="author-sidebar-roles">DWH Architect · Project Manager · Oracle DBA &amp; Performance Tuning · PL/SQL Senior &amp; Mentor</div>
-        <div class="reading-percent-sidebar" id="percent" aria-hidden="true">
+
+        <!-- VARIANTE A: grigio chiaro (originale) -->
+        <div class="reading-percent-sidebar bg-light-gray percent-badge" aria-hidden="true">
           <span class="label">Letto</span>
-          <span id="percentVal">0%</span>
+          <span class="percent-val">0%</span>
         </div>
+        <span class="variant-name">A · Grigio chiaro</span>
+
+        <!-- VARIANTE B: rosso brand -->
+        <div class="reading-percent-sidebar bg-red percent-badge" aria-hidden="true">
+          <span class="label">Letto</span>
+          <span class="percent-val">0%</span>
+        </div>
+        <span class="variant-name">B · Rosso brand</span>
+
+        <!-- VARIANTE C: blu brand -->
+        <div class="reading-percent-sidebar bg-blue percent-badge" aria-hidden="true">
+          <span class="label">Letto</span>
+          <span class="percent-val">0%</span>
+        </div>
+        <span class="variant-name">C · Blu brand</span>
+
+        <!-- VARIANTE D: grigio scuro -->
+        <div class="reading-percent-sidebar bg-dark-gray percent-badge" aria-hidden="true">
+          <span class="label">Letto</span>
+          <span class="percent-val">0%</span>
+        </div>
+        <span class="variant-name">D · Grigio scuro</span>
       </div>
     </aside>
 
@@ -342,8 +399,8 @@
 <script>
   (function() {
     const bar = document.getElementById('progress');
-    const percent = document.getElementById('percent');
-    const percentVal = document.getElementById('percentVal');
+    const badges = document.querySelectorAll('.percent-badge');
+    const vals = document.querySelectorAll('.percent-val');
     const article = document.querySelector('article');
     if (!bar || !article) return;
     function update() {
@@ -356,11 +413,11 @@
       const progress = Math.max(0, Math.min(1, (scrollY - articleTop) / totalScrollable));
       const pct = Math.round(progress * 100);
       bar.style.setProperty('--progress', pct + '%');
-      if (percent && percentVal) {
-        percentVal.textContent = pct + '%';
-        if (pct > 5) percent.classList.add('visible');
-        else percent.classList.remove('visible');
-      }
+      vals.forEach(v => v.textContent = pct + '%');
+      badges.forEach(b => {
+        if (pct > 5) b.classList.add('visible');
+        else b.classList.remove('visible');
+      });
     }
     window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
     update();
