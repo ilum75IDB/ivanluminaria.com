@@ -1,6 +1,7 @@
 ---
 title: "Smart working nella consulenza IT: i numeri che nessuno vuole guardare"
-description: "Un'analisi concreta sulla convenienza economica e strategica del lavoro da remoto nelle aziende di consulenza informatica. Con i numeri veri, il raccordo anulare di Roma, e una corsa al parco alle 6 di mattina."
+seoTitle: "Smart working consulenza IT: i numeri reali"
+description: "Smart working nella consulenza IT: analisi economica e strategica del lavoro da remoto. Numeri reali, KPI, presenteismo e produttività vs ufficio."
 date: "2026-02-24T08:03:00+01:00"
 draft: false
 translationKey: "smartworking_consulenza_it"

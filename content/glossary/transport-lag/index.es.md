@@ -1,6 +1,6 @@
 ---
 title: "Transport Lag"
-description: "Retardo en la transmision de los redo logs desde la base de datos primary al standby en una configuracion Data Guard. Indicador critico de la salud de la replicacion."
+description: "Retardo en la transmision de los redo logs desde la base de datos primary al standby en una configuracion Data Guard."
 translationKey: "glossary_transport_lag"
 articles:
   - "/posts/oracle/oracle-cloud-migration"

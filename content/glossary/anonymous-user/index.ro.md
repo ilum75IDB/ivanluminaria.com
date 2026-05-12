@@ -1,6 +1,6 @@
 ---
 title: "Anonymous User"
-description: "Utilizator MySQL/MariaDB fără nume creat automat în timpul instalării. Reprezintă un risc de securitate deoarece poate interfera cu matching-ul utilizatorilor legitimi."
+description: "Utilizator MySQL/MariaDB fără nume creat automat în timpul instalării. Reprezintă un risc de securitate deoarece poate interfera cu matching-ul..."
 translationKey: "glossary_anonymous-user"
 aka: "Utilizator anonim"
 articles:

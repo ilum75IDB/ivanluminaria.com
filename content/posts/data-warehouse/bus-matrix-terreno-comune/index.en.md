@@ -1,6 +1,7 @@
 ---
 title: "Three data marts, three truths about sales: the bus matrix as common ground"
-description: "A multi-country insurance group with three departments, three data marts that grew in isolation and three different numbers for policies written in February. The bus matrix didn't fix it in an afternoon — but it gave us shared ground to start talking on."
+seoTitle: "Kimball bus matrix: data marts and conformed dimensions"
+description: "Kimball bus matrix to align isolated data marts: conformed dimensions, business processes and comparable sales. Real insurance group case."
 date: "2026-05-12T08:03:00+01:00"
 draft: false
 translationKey: "bus_matrix_terreno_comune"

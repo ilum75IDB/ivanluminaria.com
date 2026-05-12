@@ -1,6 +1,6 @@
 ---
 title: "Directiva 2011/7/UE"
-description: "Directivă europeană privind întârzierile la plată care fixează termenul standard la 30 de zile, maximul la 60, și prevede dobânzi de întârziere automate la rata BCE + 8%."
+description: "Directivă europeană privind întârzierile la plată care fixează termenul standard la 30 de zile, maximul la 60..."
 translationKey: "glossary_direttiva-2011-7-ue"
 aka: "Late Payment Directive"
 articles:

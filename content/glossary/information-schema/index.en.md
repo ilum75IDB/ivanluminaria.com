@@ -1,6 +1,6 @@
 ---
 title: "information_schema"
-description: "Read-only MySQL/MariaDB system schema exposing metadata about databases, tables, indexes, users and server state. Foundation for any assessment or structural analysis."
+description: "Read-only MySQL/MariaDB system schema exposing metadata about databases, tables, indexes, users and server state."
 translationKey: "glossary_information_schema"
 aka: "Information Schema, INFORMATION_SCHEMA"
 articles:

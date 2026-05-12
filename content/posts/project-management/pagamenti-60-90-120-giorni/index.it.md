@@ -1,6 +1,7 @@
 ---
 title: "Pagamenti a 60-90-120 giorni: la normalità italiana che in Europa non esiste"
-description: "In Italia pagare un consulente IT a 90 giorni è la prassi. Nel resto d'Europa è un'anomalia. Confronto diretto tra le regole europee e la realtà italiana, con numeri, direttive e strategie concrete per chi lavora a partita IVA."
+seoTitle: "Pagamenti 60-90-120 giorni: Italia vs Europa"
+description: "Pagamenti a 60-90-120 giorni nella consulenza IT italiana: confronto con le regole europee. DSO, direttiva 2011/7/UE e strategie per freelance."
 date: "2026-03-10T08:03:00+01:00"
 draft: false
 translationKey: "pagamenti_60_90_120_giorni"

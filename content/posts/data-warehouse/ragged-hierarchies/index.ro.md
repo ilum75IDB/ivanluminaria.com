@@ -1,6 +1,7 @@
 ---
 title: "Ierarhii dezechilibrate: când clientul nu are părinte și grupul nu are bunic"
-description: "Un client cu o ierarhie pe trei niveluri — Top Group, Group, Client — unde nu toate ramurile sunt complete. Cum am echilibrat o ragged hierarchy cu self-parenting: cine nu are părinte devine propriul părinte."
+seoTitle: "Ragged hierarchy: ierarhii dezechilibrate cu self-parenting"
+description: "Ragged hierarchy în data warehouse: echilibrarea ierarhiilor dezechilibrate cu tehnica self-parenting. Drill-down corect pe clienți și grupuri."
 date: "2026-01-20T08:03:00+01:00"
 draft: false
 translationKey: "ragged_hierarchies"

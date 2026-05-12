@@ -1,6 +1,6 @@
 ---
 title: "Knowledge Transfer"
-description: "Proceso de transferencia de conocimiento entre personas, equipos o sistemas, crítico en proyectos IT donde la pérdida de know-how puede comprometer la continuidad operativa."
+description: "Proceso de transferencia de conocimiento entre personas, equipos o sistemas, crítico en proyectos IT donde la pérdida de know-how puede comprometer la..."
 translationKey: "glossary_knowledge-transfer"
 aka: "Transferencia de conocimiento / KT"
 articles:

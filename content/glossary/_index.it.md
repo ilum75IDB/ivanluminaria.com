@@ -1,5 +1,6 @@
 ---
 title: "Glossario"
-description: "Termini tecnici, acronimi e concetti chiave del mondo database, data warehouse e project management. Ogni voce include una definizione chiara e i link agli articoli correlati."
+seoTitle: "Glossario Database e Project Management: termini tecnici"
+description: "Glossario Database Strategy: centinaia di termini su Oracle, PostgreSQL, MySQL, data warehouse e project management con definizioni e articoli correlati."
 layout: "glossary-list"
 ---

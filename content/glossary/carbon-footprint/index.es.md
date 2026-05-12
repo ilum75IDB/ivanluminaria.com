@@ -1,6 +1,6 @@
 ---
 title: "Carbon Footprint"
-description: "Cantidad total de gases de efecto invernadero emitidos directa o indirectamente por una actividad, expresada en toneladas de CO₂ equivalente — un coche en el tráfico romano produce 120-150 g/km."
+description: "Cantidad total de gases de efecto invernadero emitidos directa o indirectamente por una actividad, expresada en toneladas de CO₂ equivalente"
 translationKey: "glossary_carbon-footprint"
 aka: "Huella de carbono"
 articles:

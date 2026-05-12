@@ -1,6 +1,6 @@
 ---
 title: "Online DDL"
-description: "Meccanismo MySQL/InnoDB che permette di eseguire operazioni di ALTER TABLE senza bloccare le scritture concorrenti, con limiti precisi a seconda dell'operazione."
+description: "Meccanismo MySQL/InnoDB che permette di eseguire operazioni di ALTER TABLE senza bloccare le scritture concorrenti..."
 translationKey: "glossary_mysql_online_ddl"
 aka: "MySQL Online DDL"
 articles:

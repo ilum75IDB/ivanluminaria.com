@@ -1,6 +1,6 @@
 ---
 title: "Partita IVA"
-description: "Regime fiscale italiano per lavoratori autonomi e liberi professionisti, che nella consulenza IT implica l'assunzione diretta del rischio di credito verso i clienti."
+description: "Regime fiscale italiano per lavoratori autonomi e liberi professionisti, che nella consulenza IT implica l'assunzione diretta del rischio di credito verso i..."
 translationKey: "glossary_partita-iva"
 aka: "VAT Number / Freelance"
 articles:

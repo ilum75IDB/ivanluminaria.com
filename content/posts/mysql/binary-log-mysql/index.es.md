@@ -1,6 +1,7 @@
 ---
 title: "Binary log en MySQL: qué son, cómo gestionarlos y cuándo puedes borrarlos"
-description: "Un servidor MySQL con el disco al 95%, 180 GB de binary log acumulados en seis meses. De ahí parte un viaje por los binlog: qué contienen, por qué existen, cómo funcionan con la replicación y el point-in-time recovery, y sobre todo cómo gestionarlos sin causar daños."
+seoTitle: "MySQL binary log: gestión, retención y PITR"
+description: "MySQL binary log: gestión, retención y point-in-time recovery. Caso real de servidor con disco al 95% y 180 GB de binlog en seis meses."
 date: "2026-03-31T08:03:00+01:00"
 draft: false
 translationKey: "binary_log_mysql"

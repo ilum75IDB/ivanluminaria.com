@@ -1,6 +1,6 @@
 ---
 title: "DSO"
-description: "Days Sales Outstanding — numărul mediu de zile pe care o companie le necesită pentru a-și încasa creanțele comerciale. În Italia media este de 80 de zile, aproape de trei ori media europeană."
+description: "Days Sales Outstanding — numărul mediu de zile pe care o companie le necesită pentru a-și încasa creanțele comerciale."
 translationKey: "glossary_dso"
 aka: "Days Sales Outstanding"
 articles:

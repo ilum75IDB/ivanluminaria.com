@@ -1,6 +1,6 @@
 ---
 title: "Authentication Plugin"
-description: "Módulo MySQL/MariaDB que gestiona el método de verificación de credenciales durante la conexión. El default cambia entre versiones y puede causar problemas de compatibilidad."
+description: "Módulo MySQL/MariaDB que gestiona el método de verificación de credenciales durante la conexión."
 translationKey: "glossary_authentication-plugin"
 articles:
   - "/posts/mysql/mysql-users-and-hosts"

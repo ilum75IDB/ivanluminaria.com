@@ -1,6 +1,7 @@
 ---
 title: "pg_stat_statements: primul lucru de instalat pe orice PostgreSQL"
-description: "Un PostgreSQL în producție de doi ani fără pg_stat_statements. Când l-am activat, trei query-uri consumau 80% din resurse — fiecare se rezolva cu un singur index. Cum să instalezi, să interoghezi și să citești rezultatele celei mai importante extensii de diagnosticare PostgreSQL."
+seoTitle: "pg_stat_statements: diagnosticare query PostgreSQL"
+description: "PostgreSQL pg_stat_statements: extensia de diagnosticare query de instalat prima. Găsește cele trei query-uri care consumă 80% din resurse."
 date: "2026-04-21T08:03:00+01:00"
 draft: false
 translationKey: "pg_stat_statements"

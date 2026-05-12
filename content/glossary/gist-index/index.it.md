@@ -1,6 +1,6 @@
 ---
 title: "GiST Index"
-description: "Generalized Search Tree — famiglia di indici PostgreSQL per dati con struttura geometrica, range o di similarità, indispensabile per query spaziali e su intervalli."
+description: "Generalized Search Tree — famiglia di indici PostgreSQL per dati con struttura geometrica, range o di similarità..."
 translationKey: "glossary_gist_index"
 aka: "Generalized Search Tree"
 articles:

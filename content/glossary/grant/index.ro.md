@@ -1,6 +1,6 @@
 ---
 title: "GRANT"
-description: "Comandă SQL pentru atribuirea de privilegii specifice unui utilizator sau rol pe baze de date, tabele sau coloane. În MySQL 8 nu mai creează utilizatori implicit."
+description: "Comandă SQL pentru atribuirea de privilegii specifice unui utilizator sau rol pe baze de date, tabele sau coloane."
 translationKey: "glossary_grant"
 articles:
   - "/posts/mysql/mysql-users-and-hosts"

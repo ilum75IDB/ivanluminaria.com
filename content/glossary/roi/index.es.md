@@ -1,6 +1,6 @@
 ---
 title: "ROI"
-description: "Return on Investment — relación entre el beneficio obtenido y el coste incurrido en una inversión, frecuentemente abusado en los discursos comerciales sobre IA donde las promesas superan la realidad."
+description: "Return on Investment — relación entre el beneficio obtenido y el coste incurrido en una inversión..."
 translationKey: "glossary_roi"
 aka: "Return on Investment / Retorno de la inversión"
 articles:

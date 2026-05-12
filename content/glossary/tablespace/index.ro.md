@@ -1,6 +1,6 @@
 ---
 title: "Tablespace"
-description: "Unitate logică de stocare în Oracle care grupează unul sau mai multe fișiere de date fizice. Permite organizarea, gestionarea și optimizarea spațiului pe disc pentru tabele, indexuri și partiții."
+description: "Unitate logică de stocare în Oracle care grupează unul sau mai multe fișiere de date fizice. Permite organizarea..."
 translationKey: "glossary_tablespace"
 articles:
   - "/posts/oracle/oracle-partitioning"

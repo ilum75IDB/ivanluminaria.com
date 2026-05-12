@@ -1,6 +1,6 @@
 ---
 title: "Psychological Safety"
-description: "Clima di team in cui le persone possono ammettere errori, dire 'non lo so' e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione."
+description: "Clima di team in cui le persone possono ammettere errori, dire 'non lo so' e sollevare problemi senza temere conseguenze sul giudizio professionale."
 translationKey: "glossary_psychological_safety"
 aka: "Sicurezza psicologica, Permesso di non sapere"
 articles:

@@ -1,6 +1,6 @@
 ---
 title: "Compliance"
-description: "Conformità alle normative, regolamenti e standard applicabili — nel contesto AI include GDPR, regolamenti di settore e policy interne sull'uso dei dati e dei modelli."
+description: "Conformità alle normative, regolamenti e standard applicabili — nel contesto AI include GDPR..."
 translationKey: "glossary_compliance"
 aka: "Conformità normativa"
 articles:

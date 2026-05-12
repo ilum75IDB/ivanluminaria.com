@@ -1,6 +1,7 @@
 ---
 title: "Disco lleno en un cluster MySQL: binary logs, Group Replication y una migración que no admite errores"
-description: "Filesystem al 92% en un cluster MySQL Group Replication de 3 nodos. ¿La causa? Binary logs acumulados en el volumen principal. Desde la alerta hasta la migración a un volumen dedicado, nodo por nodo, sin perder el quórum."
+seoTitle: "MySQL Group Replication: binary logs en volumen dedicado"
+description: "MySQL Group Replication de 3 nodos: migración de binary logs a un volumen dedicado sin perder el quórum. Caso real con filesystem al 92%."
 date: "2025-10-14T08:03:00+01:00"
 draft: false
 translationKey: "mysql_group_replication_binlog_migration"

@@ -1,6 +1,7 @@
 ---
 title: "5 regole che ho visto funzionare nei team di progetto che reggono"
-description: "Un PM che cronometrava i minuti passati in bagno, un altro che filtrava il rumore e lasciava lavorare. Cinque regole osservate da entrambi i lati del tavolo — da consulente e da responsabile — che ricorrono nei team di progetto che tengono sotto pressione."
+seoTitle: "Project management: 5 regole per team che reggono"
+description: "Project management: 5 regole osservate nei team che reggono sotto pressione. Psychological safety, bus factor, outcome vs output, knowledge transfer."
 date: "2026-05-19T08:03:00+01:00"
 draft: false
 translationKey: "team_di_progetto_che_reggono"

@@ -1,6 +1,7 @@
 ---
 title: "Cuando un índice hace más mal que bien: limpiar PostgreSQL del despilfarro"
-description: "La base de datos central de un Ministerio, una tabla con 15 índices de los cuales 8 nunca usados, un junior que quería entenderlo todo. La limpieza que volvió a poner las consultas en su sitio, contada como si fuera ayer."
+seoTitle: "PostgreSQL: índices no usados y pg_stat_user_indexes"
+description: "PostgreSQL: encontrar y eliminar índices no usados con pg_stat_user_indexes. Caso real: una tabla con 15 índices, 8 nunca usados."
 date: "2026-05-26T08:03:00+01:00"
 draft: false
 translationKey: "postgresql_indici_quando_fanno_male"

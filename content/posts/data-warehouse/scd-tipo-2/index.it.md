@@ -1,6 +1,7 @@
 ---
 title: "SCD Tipo 2: la storia che il business non sapeva di volere"
-description: "Un direttore commerciale chiede quanti clienti aveva la regione Nord a giugno scorso. Il DWH non sa rispondere perché ogni aggiornamento sovrascrive i dati precedenti. Come ho implementato una SCD Tipo 2 con chiavi surrogate e date di validità per restituire al business la memoria storica."
+seoTitle: "SCD Tipo 2: Slowly Changing Dimensions con chiavi surrogate"
+description: "SCD Tipo 2 nel data warehouse: storicizzare dimensioni con chiavi surrogate e date di validità. Caso reale: dimensione clienti che evolve nel tempo."
 date: "2025-11-11T08:03:00+01:00"
 draft: false
 translationKey: "scd_tipo_2"

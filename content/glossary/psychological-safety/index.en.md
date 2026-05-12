@@ -1,6 +1,6 @@
 ---
 title: "Psychological Safety"
-description: "Team climate in which people can admit mistakes, say 'I don't know' and raise problems without fearing consequences to their professional standing. The prerequisite of teams that hold under pressure."
+description: "Team climate in which people can admit mistakes, say 'I don't know' and raise problems without fearing consequences to their professional standing."
 translationKey: "glossary_psychological_safety"
 aka: "Safety to speak up, Permission not to know"
 articles:

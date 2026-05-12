@@ -1,6 +1,6 @@
 ---
 title: "NOLOGGING"
-description: "Mod Oracle care suprimă generarea de redo log în timpul operațiunilor masive (CTAS, INSERT APPEND, ALTER TABLE MOVE), accelerând operațiunile dar necesitând un backup imediat."
+description: "Mod Oracle care suprimă generarea de redo log în timpul operațiunilor masive (CTAS, INSERT APPEND, ALTER TABLE MOVE)..."
 translationKey: "glossary_nologging"
 articles:
   - "/posts/oracle/oracle-partitioning"

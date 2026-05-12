@@ -1,6 +1,6 @@
 ---
 title: "Tablespace"
-description: "Logical storage unit in Oracle that groups one or more physical datafiles. Enables organising, managing and optimising disk space for tables, indexes and partitions."
+description: "Logical storage unit in Oracle that groups one or more physical datafiles. Enables organising, managing and optimising disk space for tables..."
 translationKey: "glossary_tablespace"
 articles:
   - "/posts/oracle/oracle-partitioning"

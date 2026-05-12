@@ -1,6 +1,7 @@
 ---
 title: "Partitioning în DWH: când 3 ani de date sunt prea mulți"
-description: "O fact table de 800 de milioane de rânduri fără partitioning, query-uri trimestriale care durau 12 minute și un business care voia răspunsuri în timp real. Cum am implementat range partitioning lunar și am adus timpii la 40 de secunde."
+seoTitle: "DWH partitioning: range partitioning pe fact table"
+description: "Range partitioning pe fact table de 800 milioane rânduri: de la query-uri trimestriale de 12 minute la 40 de secunde. Implementare lunară, exchange."
 date: "2026-04-07T08:03:00+01:00"
 draft: false
 translationKey: "partitioning_dwh"

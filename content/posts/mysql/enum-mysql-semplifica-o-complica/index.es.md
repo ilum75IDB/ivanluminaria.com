@@ -1,6 +1,7 @@
 ---
 title: "ENUM en MySQL: cuando te simplifica la vida y cuando te complica los días"
-description: "Las tres vías para modelar una enumeración en MySQL — ENUM nativo, CHECK constraint, tabla de lookup. Contadas en pareja: dónde ENUM es la elección correcta, dónde se convierte en una losa. Con la historia de un sistema de seguimiento de envíos que atravesó ambas fases."
+seoTitle: "MySQL ENUM vs CHECK vs lookup: las tres vías"
+description: "MySQL ENUM vs CHECK constraint vs tabla de lookup: tres vías para modelar una enumeración. Ventajas, límites y caso real de seguimiento de envíos."
 date: "2026-06-02T08:03:00+01:00"
 draft: false
 translationKey: "enum_mysql_semplifica_o_complica"

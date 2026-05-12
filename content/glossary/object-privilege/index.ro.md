@@ -1,6 +1,6 @@
 ---
 title: "Object Privilege"
-description: "Privilegiu Oracle care autorizează operațiuni pe un obiect specific al bazei de date precum SELECT, INSERT, UPDATE sau EXECUTE pe o tabelă, vizualizare sau procedură."
+description: "Privilegiu Oracle care autorizează operațiuni pe un obiect specific al bazei de date precum SELECT, INSERT, UPDATE sau EXECUTE pe o tabelă..."
 translationKey: "glossary_object-privilege"
 aka: "Privilegiu de obiect Oracle"
 articles:

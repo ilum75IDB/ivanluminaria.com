@@ -1,6 +1,7 @@
 ---
 title: "4 milioni di euro, due multinazionali, zero software: storia vera di un fallimento annunciato"
-description: "Un cliente del settore assicurativo ha speso oltre 4 milioni di euro affidandosi a due colossi della consulenza IT per un gestionale su misura. Risultato: nulla. A confronto, un data warehouse costruito in due persone in 3 anni con 60.000 righe di codice che funziona ogni giorno."
+seoTitle: "Fallimento progetto IT: 4 milioni e zero software"
+description: "Project management caso reale: cliente assicurativo spende 4 milioni in consulenza IT e ottiene zero software funzionante. Lezioni di vendor lock-in."
 date: "2025-12-30T08:03:00+01:00"
 draft: false
 translationKey: "consulenza_it_milioni_sprecati"

@@ -1,6 +1,7 @@
 ---
 title: "ENUM in MySQL: când îți simplifică viața și când îți complică zilele"
-description: "Cele trei căi pentru modelarea unei enumerări în MySQL — ENUM nativ, CHECK constraint, tabelă de lookup. Povestite în pereche: unde ENUM este alegerea potrivită, unde devine o piatră de moară. Cu povestea unui sistem de tracking pentru expedieri care a trecut prin ambele faze."
+seoTitle: "MySQL ENUM vs CHECK vs lookup: cele trei căi"
+description: "MySQL ENUM vs CHECK constraint vs tabelă lookup: trei căi pentru modelarea unei enumerări. Avantaje, limite și caz real de tracking expedieri."
 date: "2026-06-02T08:03:00+01:00"
 draft: false
 translationKey: "enum_mysql_semplifica_o_complica"

@@ -1,6 +1,6 @@
 ---
 title: "Mobilità Sostenibile"
-description: "Approccio ai trasporti urbani che privilegia mezzi a basso impatto ambientale — bicicletta, mezzi pubblici, veicoli elettrici — riducendo emissioni, traffico e costi."
+description: "Approccio ai trasporti urbani che privilegia mezzi a basso impatto ambientale — bicicletta, mezzi pubblici, veicoli elettrici"
 translationKey: "glossary_mobilita-sostenibile"
 aka: "Sustainable Mobility"
 articles:

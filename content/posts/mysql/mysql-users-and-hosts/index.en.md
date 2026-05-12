@@ -1,6 +1,7 @@
 ---
 title: "MySQL Users: Why 'mario' and 'mario'@'localhost' Are Not the Same Person"
-description: "In MySQL and MariaDB a user's identity depends on the host they connect from. A real case, the authentication model explained in depth and the most common mistakes in access management."
+seoTitle: "MySQL users and hosts: authentication and GRANT explained"
+description: "MySQL users and hosts: 'mario' and 'mario'@'localhost' are different entities. MySQL/MariaDB authentication model, common mistakes and correct GRANTs."
 date: "2026-01-13T08:03:00+01:00"
 draft: false
 translationKey: "mysql_users_and_hosts"

@@ -1,7 +1,8 @@
 ---
 title: "PostgreSQL"
+seoTitle: "PostgreSQL: architettura, performance e tuning"
 layout: "list"
-description: "PostgreSQL: architettura, performance e progettazione su uno dei database open source più avanzati e longevi della storia."
+description: "Articoli PostgreSQL: EXPLAIN ANALYZE, ottimizzazione query, pg_stat_statements, indici GIN/B-tree, VACUUM, autovacuum, ROLE, GRANT e best practice."
 image: "postgresql.cover.jpg"
 ---
 

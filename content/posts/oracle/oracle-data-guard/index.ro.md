@@ -1,6 +1,7 @@
 ---
 title: "De la single instance la Data Guard: ziua în care CEO-ul a înțeles DR-ul"
-description: "O bază de date Oracle în producție fără nicio redundanță. O defecțiune de disc care a oprit totul timp de șase ore. Și decizia CEO-ului de a investi într-o arhitectură Active Data Guard cu switchover automat."
+seoTitle: "Oracle Data Guard 19c: caz real DR cu switchover automat"
+description: "Oracle Data Guard 19c: migrare de la single instance după 6 ore de downtime. Arhitectură DR, primary/standby, switchover automat real."
 date: "2025-12-16T08:03:00+01:00"
 draft: false
 translationKey: "oracle_data_guard"

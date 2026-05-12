@@ -1,6 +1,7 @@
 ---
 title: "Project Manager"
-description: "Project Manager (Scrum/Agile) con solido background tecnico in Oracle & Data Warehouse — quasi 30 anni di esperienza IT."
+seoTitle: "Ivan Luminaria | Project Manager Scrum/Agile in IT"
+description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 anni di gestione progetti software con solido background tecnico Oracle e Data Warehouse. Casi reali."
 date: "2026-03-10"
 lastmod: "2026-03-10"
 draft: false

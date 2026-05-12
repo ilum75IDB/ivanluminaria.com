@@ -1,6 +1,6 @@
 ---
 title: "Pull Request"
-description: "Mecanismo de propuesta y revisión de cambios en el código en plataformas como GitHub. Permite code review, discusión y aprobación antes del merge en el branch principal."
+description: "Mecanismo de propuesta y revisión de cambios en el código en plataformas como GitHub. Permite code review..."
 translationKey: "glossary_pull-request"
 aka: "PR, Merge Request"
 articles:

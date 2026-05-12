@@ -1,6 +1,7 @@
 ---
 title: "Când un index face mai mult rău decât bine: curățarea PostgreSQL de risipă"
-description: "Baza de date centrală a unui Minister, un tabel cu 15 indici dintre care 8 nefolosiți, un junior care voia să înțeleagă tot. Curățarea care a readus interogările pe linia dreaptă, povestită ca și cum ar fi fost ieri."
+seoTitle: "PostgreSQL: indecși nefolosiți și pg_stat_user_indexes"
+description: "PostgreSQL: cum găsești și elimini indecșii nefolosiți cu pg_stat_user_indexes. Caz real: tabel cu 15 indecși, 8 nefolosiți niciodată."
 date: "2026-05-26T08:03:00+01:00"
 draft: false
 translationKey: "postgresql_indici_quando_fanno_male"

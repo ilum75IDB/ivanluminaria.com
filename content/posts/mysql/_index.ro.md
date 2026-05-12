@@ -1,7 +1,8 @@
 ---
 title: "MySQL"
+seoTitle: "MySQL și MariaDB: articole performanță și securitate"
 layout: "list"
-description: "MySQL și MariaDB: securitate, performanță și arhitectură pe una dintre cele mai utilizate baze de date din lume."
+description: "Articole MySQL și MariaDB: binary log, Galera Cluster, Group Replication, backup cu mysqldump/mydumper, autentificare, GRANT și pre-upgrade assessment."
 image: "mysql.cover.jpg"
 ---
 

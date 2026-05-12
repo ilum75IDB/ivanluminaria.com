@@ -1,7 +1,8 @@
 ---
-description: "PostgreSQL: arhitectură, performanță și proiectare într-unul dintre cele mai avansate și longevive sisteme open source de baze de date."
+description: "Articole PostgreSQL: EXPLAIN ANALYZE, optimizare query-uri, pg_stat_statements, indecși GIN/B-tree, VACUUM, autovacuum, ROLE, GRANT și best practices."
 layout: "list"
 title: "PostgreSQL"
+seoTitle: "PostgreSQL: arhitectură, performanță și tuning"
 image: "postgresql.cover.jpg"
 ---
 

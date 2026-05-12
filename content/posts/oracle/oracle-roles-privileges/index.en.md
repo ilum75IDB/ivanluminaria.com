@@ -1,6 +1,7 @@
 ---
 title: "Users, Roles and Privileges in Oracle: Why GRANT ALL Is Never the Answer"
-description: "A client where every application user connected as the schema owner with the DBA role. How I restructured the Oracle security model by applying the principle of least privilege — with real SQL, custom roles and Unified Audit."
+seoTitle: "Oracle security: roles, privileges and least privilege"
+description: "Oracle security: redesigning the GRANT model with custom roles and Unified Audit, applying least privilege. Real case with copy-paste SQL."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"

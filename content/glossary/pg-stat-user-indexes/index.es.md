@@ -1,6 +1,6 @@
 ---
 title: "pg_stat_user_indexes"
-description: "Vista de sistema PostgreSQL que registra cuántas veces ha sido usado cada índice por el planner — la herramienta principal para identificar índices inútiles en producción."
+description: "Vista de sistema PostgreSQL que registra cuántas veces ha sido usado cada índice por el planner..."
 translationKey: "glossary_pg_stat_user_indexes"
 aka: ""
 articles:

@@ -1,6 +1,6 @@
 ---
 title: "KPI"
-description: "Key Performance Indicator — metrică măsurabilă care evaluează eficacitatea unei activități față de un obiectiv definit, folosită pentru a măsura rezultate concrete în loc de ore de prezență."
+description: "Key Performance Indicator — metrică măsurabilă care evaluează eficacitatea unei activități față de un obiectiv definit..."
 translationKey: "glossary_kpi"
 aka: "Key Performance Indicator"
 articles:

@@ -1,6 +1,7 @@
 ---
 title: "Quando un LIKE '%valore%' rallenta tutto: un caso reale di ottimizzazione PostgreSQL"
-description: "Un caso reale di performance in PostgreSQL dove un LIKE '%valore%' ha generato un full scan degradando i tempi di risposta. Analisi del piano di esecuzione e strategia di indicizzazione scalabile."
+seoTitle: "PostgreSQL LIKE con %valore%: GIN index e pg_trgm"
+description: "Ottimizzazione PostgreSQL: LIKE '%valore%' genera full scan. Uso di pg_trgm e indice GIN per trasformare un wildcard search in lookup veloce."
 date: "2026-01-06T08:03:00+01:00"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false

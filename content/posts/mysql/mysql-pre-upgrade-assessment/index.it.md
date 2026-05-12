@@ -1,6 +1,7 @@
 ---
 title: "Prima di aggiornare MySQL: le cifre che il cliente ti chiede e come trovarle davvero"
-description: "Quattro server MySQL 8.0 in produzione, un responsabile infrastruttura che prepara la finestra di manutenzione e quattro domande dirette: quanto pesano, quanto crescono, quanto dura il backup, quanto dura il restore. Come rispondere con numeri misurati invece che stime a occhio."
+seoTitle: "MySQL 8.0 pre-upgrade assessment: dimensioni e tempi"
+description: "MySQL 8.0 pre-upgrade assessment: misurare dimensioni, crescita, tempi di backup e restore con information_schema. Cifre vere per pianificare."
 date: "2026-05-05T08:03:00+01:00"
 draft: false
 translationKey: "mysql_pre_upgrade_assessment"

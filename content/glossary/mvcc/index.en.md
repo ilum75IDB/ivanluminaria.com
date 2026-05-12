@@ -1,6 +1,6 @@
 ---
 title: "MVCC"
-description: "Multi-Version Concurrency Control — PostgreSQL's concurrency model that maintains multiple row versions to ensure transactional isolation without exclusive locks on reads."
+description: "Multi-Version Concurrency Control — PostgreSQL's concurrency model that maintains multiple row versions to ensure transactional isolation without exclusive..."
 translationKey: "glossary_mvcc"
 aka: "Multi-Version Concurrency Control"
 articles:

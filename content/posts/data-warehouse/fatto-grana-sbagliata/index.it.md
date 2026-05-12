@@ -1,6 +1,7 @@
 ---
 title: "Fatto a grana sbagliata: quando la fact table non risponde alle domande giuste"
-description: "Una fact table costruita sul totale mensile della fattura sembrava perfetta. Poi il business ha chiesto il dettaglio per prodotto, per riga, per cliente. E il data warehouse è diventato muto."
+seoTitle: "Data warehouse: la grana della fact table"
+description: "Data warehouse: la grana della fact table determina quali domande puoi rispondere. Errori frequenti nella granularità e impatto sul modello dimensionale."
 date: "2025-10-21T08:03:00+01:00"
 draft: false
 translationKey: "fatto_grana_sbagliata"

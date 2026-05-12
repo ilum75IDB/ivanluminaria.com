@@ -1,6 +1,6 @@
 ---
 title: "CHECK constraint"
-description: "Constrângere SQL standard care limitează valorile admise într-o coloană printr-o expresie booleană. În MySQL este aplicată cu adevărat doar de la versiunea 8.0.16."
+description: "Constrângere SQL standard care limitează valorile admise într-o coloană printr-o expresie booleană."
 translationKey: "glossary_check_constraint"
 aka: "CHECK constraint"
 articles:
