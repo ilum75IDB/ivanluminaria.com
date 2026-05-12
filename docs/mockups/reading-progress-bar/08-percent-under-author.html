@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mockup 3 — Barra con gradient (4px, rosso → blu)</title>
+<title>Mockup 8 — 3px rosso + badge % nella sidebar (sotto autore)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -53,25 +53,47 @@
   .navbar .lang { color: var(--ivan-gray-obj); font-size: 14px; font-weight: 500; }
   .navbar .search-icon { font-size: 18px; color: var(--ivan-gray-obj); }
 
-  /* ========== BARRA/BADGE VARIANTE 3 ========== */
-  /* 4px sotto navbar con gradient rosso → blu */
+  /* ========== BARRA/BADGE VARIANTE 8 ========== */
+  /* 3px sotto navbar + badge % integrato nella sidebar autore.
+     Niente overlay sull'articolo, niente floating. Il badge segue
+     la sidebar sticky. Width fissa con tabular-nums. */
   .reading-progress-bar {
     position: fixed;
     top: 86px;
     left: 0;
     right: 0;
-    height: 4px;
-    width: 100%;
-    background: rgba(0,0,0,0.05);
+    height: 3px;
+    width: 0%;
+    background: var(--ivan-red);
     z-index: 9998;
-  }
-  .reading-progress-bar::after {
-    content: '';
-    display: block;
-    height: 100%;
-    width: var(--progress, 0%);
-    background: linear-gradient(90deg, var(--ivan-red) 0%, var(--ivan-blue) 100%);
     transition: width 50ms linear;
+  }
+  .reading-percent-sidebar {
+    margin-top: 16px;
+    padding: 8px 0;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: rgba(0,0,0,0.06);
+    color: var(--ivan-gray-title);
+    font-size: 11px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+  }
+  .reading-percent-sidebar.visible { opacity: 1; }
+  .reading-percent-sidebar .label {
+    display: block;
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--ivan-gray-obj);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
   }
   /* ============================================ */
 
@@ -220,7 +242,7 @@
   <!-- BARRA -->
   <div class="reading-progress-bar" id="progress" aria-hidden="true"></div>
 
-  <div class="mockup-badge">Mockup 3 · 4px gradient rosso → blu</div>
+  <div class="mockup-badge">Mockup 8 · 3px + % nella sidebar</div>
 
   <div class="article-two-col">
     <aside class="article-sidebar">
@@ -228,6 +250,10 @@
         <div class="author-sidebar-img"></div>
         <div class="author-sidebar-name">Ivan Luminaria</div>
         <div class="author-sidebar-roles">DWH Architect · Project Manager · Oracle DBA &amp; Performance Tuning · PL/SQL Senior &amp; Mentor</div>
+        <div class="reading-percent-sidebar" id="percent" aria-hidden="true">
+          <span class="label">Letto</span>
+          <span id="percentVal">0%</span>
+        </div>
       </div>
     </aside>
 
@@ -305,6 +331,8 @@
 <script>
   (function() {
     const bar = document.getElementById('progress');
+    const percent = document.getElementById('percent');
+    const percentVal = document.getElementById('percentVal');
     const article = document.querySelector('article');
     if (!bar || !article) return;
     function update() {
@@ -315,7 +343,13 @@
       const totalScrollable = articleHeight - viewportHeight;
       if (totalScrollable <= 0) return;
       const progress = Math.max(0, Math.min(1, (scrollY - articleTop) / totalScrollable));
-      bar.style.setProperty('--progress', (progress * 100) + '%');
+      const pct = Math.round(progress * 100);
+      bar.style.width = pct + '%';
+      if (percent && percentVal) {
+        percentVal.textContent = pct + '%';
+        if (pct > 5 && pct < 98) percent.classList.add('visible');
+        else percent.classList.remove('visible');
+      }
     }
     window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
     update();
