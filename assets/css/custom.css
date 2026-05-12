@@ -747,25 +747,33 @@ footer .flex.flex-row.items-center > a svg {
 
 /* Footer full-width: break out of body's max-w-7xl container
    to align with the fixed navbar. Same pattern as nav:
-   outer element full-width, inner container capped at 1600px */
+   outer element full-width, inner container capped at 1600px.
+   La linea rossa di separazione e' applicata al .footer-inner (max 1600px),
+   non al <footer> esterno, cosi' rispetta la width della pagina. */
 footer {
   width: 100vw !important;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  padding-left: 1.5rem !important;   /* matches navbar px-6 */
+  padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
-  border-top: 1px solid;
-  border-color: rgb(229 231 235); /* neutral-200 */
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+  border-top: none !important;
 }
 .footer-inner {
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  border-top: 1px solid var(--ivan-red);
+  padding-top: 1rem;
 }
 .dark footer {
-  border-color: rgb(var(--color-neutral-700)); /* coerente col tema */
+  border-color: transparent;
+}
+.dark .footer-inner {
+  border-top-color: var(--ivan-red);
 }
 
 #to-top a {
@@ -4601,4 +4609,36 @@ footer {
    articolo per arrivare a ~10px puliti, solo nelle pagine articolo. */
 body:has(.reading-progress-bar) .article-two-col {
   margin-top: 2px;
+}
+
+/* ===========================================================================
+   FOOTER & ARTICLE PAGINATION - linee di separazione coordinate
+   - Linea sopra il footer (copyright) — rosso, dentro footer-inner (max 1600px)
+   - Linea sopra l'article-pagination ("articolo precedente/successivo")
+     — rossa solida (era grigia dotted)
+   - Spazi compatti tra blocchi
+   =========================================================================== */
+
+/* HR dell'article-pagination: rosso solido al posto di grigio dotted */
+.pt-8 > hr.border-dotted,
+.pt-8 > hr {
+  border-top: 1px solid var(--ivan-red) !important;
+  border-style: solid !important;
+  border-color: var(--ivan-red) !important;
+}
+.dark .pt-8 > hr.border-dotted,
+.dark .pt-8 > hr {
+  border-top-color: var(--ivan-red) !important;
+}
+
+/* Riduci il padding-top del wrapper article-pagination (era pt-8 = 2rem) */
+article + .pt-8,
+article ~ * .pt-8:has(> hr) {
+  padding-top: 1rem !important;
+}
+
+/* Spazio sotto il copyright/theme attribution e a destra dei link footer:
+   riduci eventuali margin verticali residui dentro footer-inner */
+.footer-inner > .flex.items-center.justify-between {
+  margin-top: 0 !important;
 }
