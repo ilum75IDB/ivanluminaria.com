@@ -4391,10 +4391,31 @@ footer {
    - Barra rossa 3px sotto navbar, container-width 1280px (max-w-7xl)
    - Badge floating "X%" in basso a destra, width fissa, allineato al container
    - Mini-card nella sidebar autore (label blu + percentuale rossa + mini-bar)
+   - Container bianco fisso sotto navbar (10px piu' alto della navbar) che
+     copre il contenuto dell'articolo scrollato, evitando che il testo si
+     veda dietro la fascia tra navbar e inizio articolo
    - Tutti gli elementi persistenti da pct > 5 fino a 100%, gestiti da
      /js/reading-progress.js, e renderizzati solo nelle pagine articolo
      (.Section == "posts" in single.html / author-sidebar.html)
    =========================================================================== */
+
+/* --- Background fixed che copre da top a navHeight + 10px.
+   Sta dietro alla navbar (z 9999) e alla barra rossa (z 9998), e sopra
+   al contenuto scrollato. Risolve la "fascia di trasparenza" tra fine
+   navbar e inizio articolo dove il testo scrollato era visibile. */
+.reading-progress-header-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--reading-bar-top, 4.5rem) + 10px);
+  background: #ffffff;
+  z-index: 9997;
+  pointer-events: none;
+}
+.dark .reading-progress-header-bg {
+  background: rgb(var(--color-neutral-800));
+}
 
 /* --- Barra principale --- */
 .reading-progress-bar {
