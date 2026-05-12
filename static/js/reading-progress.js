@@ -62,4 +62,18 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   update();
+
+  // Rileva quando il footer entra in viewport e nasconde gli elementi
+  // floating (badge percentuale + scroll-to-top del theme Congo) per
+  // evitare la sovrapposizione con i link di navigazione e le icone social.
+  const footer = document.querySelector('footer');
+  const toTop = document.getElementById('to-top');
+  if (footer && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      const nearFooter = entries[0].isIntersecting;
+      if (floatBadge) floatBadge.classList.toggle('near-footer', nearFooter);
+      if (toTop) toTop.classList.toggle('near-footer', nearFooter);
+    }, { rootMargin: '0px 0px -80px 0px' });
+    observer.observe(footer);
+  }
 })();
