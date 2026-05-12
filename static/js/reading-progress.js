@@ -13,6 +13,19 @@
   const article = document.querySelector('article');
   if (!bar || !article) return;
 
+  // Misura l'altezza reale della navbar runtime e setta una CSS variable
+  // usata dal CSS per posizionare la barra esattamente alla base della navbar.
+  // Funziona su desktop e mobile, qualunque sia l'altezza effettiva.
+  const nav = document.querySelector('nav');
+  function setNavHeight() {
+    if (!nav) return;
+    document.documentElement.style.setProperty(
+      '--reading-bar-top', nav.offsetHeight + 'px'
+    );
+  }
+  setNavHeight();
+  window.addEventListener('resize', setNavHeight, { passive: true });
+
   const barFill = bar.querySelector('.reading-progress-bar-fill');
   const floatBadge = document.querySelector('.reading-percent');
   const floatBadgeVal = floatBadge ? floatBadge.querySelector('.reading-percent-val') : null;
