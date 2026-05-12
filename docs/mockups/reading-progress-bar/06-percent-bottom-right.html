@@ -82,7 +82,7 @@
   .reading-percent {
     position: fixed;
     bottom: 24px;
-    right: 24px;
+    right: calc(50vw - 640px + 24px);  /* 24px dal bordo del container 1280px */
     width: 56px;
     text-align: center;
     background: rgba(0,0,0,0.75);
@@ -97,6 +97,10 @@
     transition: opacity 200ms ease-out;
     backdrop-filter: blur(4px);
     pointer-events: none;
+  }
+  /* Su viewport < 1280px torna ad attaccarsi al bordo del viewport */
+  @media (max-width: 1280px) {
+    .reading-percent { right: 24px; }
   }
   .reading-percent.visible { opacity: 1; }
   /* ============================================ */
