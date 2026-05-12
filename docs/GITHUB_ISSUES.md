@@ -62,14 +62,13 @@ tool `WebFetch`.
 
 ## Issue Aperte — Bug
 
-| #  | Issue | Titolo | Stato |
-|----|-------|--------|-------|
-| 94 | https://github.com/ilum75IDB/ivanluminaria.com/issues/94 | Bug: like-optimization-postgresql versione ES ha titolo e corpo in inglese | aperta |
+*Nessuna issue aperta.*
 
 ## Issue Chiuse
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 94 | https://github.com/ilum75IDB/ivanluminaria.com/issues/94 | Bug: like-optimization-postgresql versione ES ha titolo e corpo in inglese | 2026-05-12 |
 | 89 | https://github.com/ilum75IDB/ivanluminaria.com/issues/89 | SEO: audit e fix delle meta descriptions mancanti su pagine non-articolo | 2026-05-12 |
 | 92 | https://github.com/ilum75IDB/ivanluminaria.com/issues/92 | UX: aggiungere reading progress bar in cima agli articoli lunghi | 2026-05-12 |
 | 86 | https://github.com/ilum75IDB/ivanluminaria.com/issues/86 | Articolo MySQL: enumerazioni - ENUM nativo, CHECK constraint, tabelle lookup | 2026-05-11 |
