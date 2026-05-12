@@ -248,3 +248,17 @@ Următoarele apariții:
 - **Oracle, deep-dive vertical** — cum se modelau enumerările în 19c, ce se schimbă în 21c, 23ai și 26ai, până la noile Assertions
 
 Aceeași întrebare, trei filosofii. Frumusețea este chiar în comparație.
+
+------------------------------------------------------------------------
+
+## Glosar
+
+**[ENUM (MySQL)](/ro/glossary/mysql-enum/)** — Tip de date MySQL care admite un set predefinit de valori șir, stocat intern ca index numeric de 1-2 octeți. Una dintre feature-urile caracteristice MySQL.
+
+**[CHECK constraint](/ro/glossary/check-constraint/)** — Constrângere SQL standard care limitează valorile admise într-o coloană printr-o expresie booleană. În MySQL este aplicată cu adevărat doar de la versiunea 8.0.16.
+
+**[Lookup table](/ro/glossary/lookup-table/)** — Tabelă de referință conectată prin foreign key care stochează valorile valide ale unei enumerări, cu eventuale atribute descriptive (etichetă, ordine, flag activ).
+
+**[Online DDL](/ro/glossary/mysql-online-ddl/)** — Mecanism MySQL/InnoDB care permite executarea ALTER TABLE fără a bloca scrierile concurente, cu trei algoritmi (`INSTANT`, `INPLACE`, `COPY`) aleși automat în funcție de operațiune.
+
+**[Cheie surogat](/ro/glossary/chiave-surrogata/)** — Identificator numeric generat de baza de date (de obicei un `AUTO_INCREMENT`) distinct de cheia naturală. Pe lookup table este ancora integrității referențiale, deoarece rămâne stabil chiar și când codul sau descrierea se schimbă.

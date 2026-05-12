@@ -31,12 +31,13 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
-| Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2 |
+| Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica |
 | Cutover | Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura | oracle-cloud-migration |
 | CTAS | Create Table As Select — tecnica Oracle per creare una nuova tabella popolandola con i risultati di una query, usata per migrazioni di tabelle di grandi dimensioni | oracle-partitioning |
 | Churn | Misura di quanto una tabella database cambia dopo l'inserimento iniziale dei dati (UPDATE/DELETE). Determina il costo di manutenzione degli indici GIN | like-optimization-postgresql |
 | Carbon Footprint | Quantità totale di gas serra emessi da un'attività — un'auto nel traffico romano produce 120-150 g di CO₂ per km, una bici zero | bici-vs-auto-roma |
 | CDC | Change Data Capture — tecnica per intercettare e propagare le modifiche ai dati in tempo reale, spesso basata sulla lettura dei log delle transazioni | binary-log-mysql |
+| CHECK constraint | Vincolo SQL standard che limita i valori ammessi in una colonna tramite un'espressione booleana. In MySQL è realmente applicato solo dalla versione 8.0.16 | enum-mysql-semplifica-o-complica |
 | Compliance | Conformità alle normative, regolamenti e standard applicabili — nel contesto AI include GDPR, regolamenti di settore e policy interne | ai-manager-project-management |
 | Code Review | Pratica di revisione del codice da parte di un collega prima del merge, per catturare bug e condividere conoscenza nel team | ai-github-project-management |
 | COALESCE | Funzione SQL che restituisce il primo valore non NULL da una lista di espressioni. Spesso usata come workaround per le gerarchie incomplete, ma non risolve il problema strutturale nel modello | ragged-hierarchies |
@@ -50,6 +51,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Direttiva 2011/7/UE | Direttiva europea sui ritardi di pagamento che fissa il termine standard a 30 giorni, il massimo a 60, con interessi di mora automatici | pagamenti-60-90-120-giorni |
 | Drill-down | Navigazione nei report dal livello aggregato al livello di dettaglio. Richiede una gerarchia completa e bilanciata per funzionare correttamente | ragged-hierarchies, fatto-grana-sbagliata |
 | Data Warehouse | Sistema centralizzato di raccolta e storicizzazione dati provenienti da fonti diverse, progettato per l'analisi e il supporto alle decisioni aziendali | 4-milioni-nessun-software |
+| ENUM (MySQL) | Tipo di dato MySQL che ammette un set predefinito di valori stringa, memorizzato internamente come indice numerico di 1-2 byte. Una delle feature caratteristiche di MySQL | enum-mysql-semplifica-o-complica |
 | DSO | Days Sales Outstanding — numero medio di giorni per incassare i crediti commerciali. In Italia la media è 80 giorni, quasi tre volte la media europea | pagamenti-60-90-120-giorni |
 | ETL | Extract, Transform, Load — processo di estrazione, trasformazione e caricamento dati dai sistemi sorgente al data warehouse | scd-tipo-2, ragged-hierarchies, 4-milioni-nessun-software, fatto-grana-sbagliata, partitioning-dwh |
 | Exchange Partition | Operazione DDL Oracle che scambia istantaneamente i segmenti dati tra una tabella non partizionata e una partizione, senza spostare fisicamente i dati | partitioning-dwh |
@@ -61,6 +63,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
 | Lift-and-Shift | Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione | tecnica-si-e-yes-and |
 | Local Index | Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente | oracle-partitioning, partitioning-dwh |
+| Lookup table | Tabella di riferimento collegata via foreign key che memorizza i valori validi di un'enumerazione, insieme ad eventuali attributi descrittivi (etichetta, ordine, flag attivo) | enum-mysql-semplifica-o-complica |
 | GRANT | Comando SQL per assegnare privilegi specifici a un utente o ruolo su database, tabelle o colonne | mysql-users-and-hosts, postgresql_roles_and_users |
 | GIN Index | Generalized Inverted Index — tipo di indice PostgreSQL ottimizzato per ricerche full-text, pattern matching con trigrammi e query su array e JSONB | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
 | GiST Index | Generalized Search Tree — famiglia di indici PostgreSQL per dati con struttura geometrica, range o di similarità, indispensabile per query spaziali e su intervalli | postgresql-indici-quando-fanno-male |
@@ -107,6 +110,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | pg_trgm | Estensione PostgreSQL che fornisce funzioni e operatori per la ricerca di similarità basata su trigrammi, abilitando l'uso di indici GIN per LIKE con wildcard | like-optimization-postgresql |
 | NOLOGGING | Modalità Oracle che sopprime la generazione di redo log durante operazioni bulk, velocizzando le operazioni ma richiedendo un backup RMAN immediato | oracle-partitioning |
 | OCI | Oracle Cloud Infrastructure — piattaforma cloud di Oracle con vantaggi significativi di licensing per i database Oracle grazie al programma BYOL e al rapporto 1:1 delle OCPU | oracle-cloud-migration |
+| Online DDL | Meccanismo MySQL/InnoDB che permette di eseguire ALTER TABLE senza bloccare le scritture concorrenti, con tre algoritmi (INSTANT, INPLACE, COPY) scelti automaticamente in base all'operazione | enum-mysql-semplifica-o-complica |
 | Outsourcing | Esternalizzazione di attività o progetti IT a fornitori esterni, con rischi significativi di perdita di know-how e vendor lock-in se non gestita correttamente | 4-milioni-nessun-software |
 | OLAP | Online Analytical Processing — elaborazione orientata all'analisi multidimensionale dei dati, tipica dei data warehouse. Contrapposta all'OLTP dei sistemi transazionali | ragged-hierarchies |
 | Outcome vs Output | Distinzione tra ciò che il team produce concretamente (output: codice, documenti, deliverable) e il risultato finale misurato dal business (outcome: go-live, fatturato, KPI) | team-di-progetto-che-reggono |
@@ -161,6 +165,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-04-28
-**Totale termini**: 144
-**Totale articoli con glossario**: 32
+**Ultimo aggiornamento**: 2026-05-11
+**Totale termini**: 148
+**Totale articoli con glossario**: 33
