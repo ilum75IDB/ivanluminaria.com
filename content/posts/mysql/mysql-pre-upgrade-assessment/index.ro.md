@@ -1,6 +1,7 @@
 ---
 title: "Înainte de a face upgrade la MySQL: cifrele pe care clientul ți le cere și cum să le găsești cu adevărat"
-description: "Patru servere MySQL 8.0 în producție, un responsabil de infrastructură care planifică fereastra de mentenanță și patru întrebări directe: cât de mari sunt, cât de repede cresc, cât durează un backup complet, cât durează un restore complet. Cum să răspunzi cu cifre măsurate în loc de estimări aproximative."
+seoTitle: "MySQL 8.0 pre-upgrade assessment: dimensiuni și timpi"
+description: "MySQL 8.0 pre-upgrade assessment: dimensiuni, creștere, timpi de backup și restore cu information_schema. Cifre reale pentru planificare."
 date: "2026-05-05T08:03:00+01:00"
 draft: false
 translationKey: "mysql_pre_upgrade_assessment"

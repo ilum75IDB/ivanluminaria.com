@@ -1,6 +1,7 @@
 ---
 title: "mysqldump vs mysqlpump vs mydumper: the backup that keeps you up at night"
-description: "A 60 GB database, a mysqldump that took three hours and blocked writes. I tested mysqlpump and mydumper on the same environment, with real dump and restore times. Here's what I found — and why choosing a backup tool is an architectural decision, not an operational one."
+seoTitle: "MySQL backup: mysqldump vs mydumper vs mysqlpump"
+description: "MySQL backup tools compared: mysqldump vs mydumper vs mysqlpump on a 60 GB database. Real dump and restore times, parallelism and architectural choice."
 date: "2026-04-14T08:03:00+01:00"
 draft: false
 translationKey: "mysqldump_mysqlpump_mydumper"

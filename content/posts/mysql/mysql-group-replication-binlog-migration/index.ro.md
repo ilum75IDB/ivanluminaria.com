@@ -1,6 +1,7 @@
 ---
 title: "Disc plin pe un cluster MySQL: binary logs, Group Replication și o migrare care nu acceptă erori"
-description: "Filesystem la 92% pe un cluster MySQL Group Replication cu 3 noduri. Cauza? Binary logs acumulate pe volumul principal. De la alertă la migrarea pe un volum dedicat, nod cu nod, fără a pierde quorum-ul."
+seoTitle: "MySQL Group Replication: binary logs pe volum dedicat"
+description: "MySQL Group Replication cu 3 noduri: migrare binary logs pe un volum dedicat fără pierderea quorum-ului. Caz real cu filesystem la 92%."
 date: "2025-10-14T08:03:00+01:00"
 draft: false
 translationKey: "mysql_group_replication_binlog_migration"
