@@ -46,7 +46,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 | 31 | 2026-05-12 | —        | Tue | Tre data mart, tre verità sulle vendite: il bus matrix come terreno comune | data-warehouse | #40 | 2026-04-21 | scheduled |
 | 32 | 2026-05-19 | —        | Tue | 5 regole che ho visto funzionare nei team di progetto che reggono | project-management | #65 | 2026-04-21 | scheduled |
 | 33 | 2026-05-26 | —        | Tue | Quando un indice fa più male che bene: pulire PostgreSQL dagli sprechi | postgresql | #49 | 2026-04-28 | scheduled |
-| 34 | 2026-06-02 | —        | Tue | ENUM in MySQL: quando ti semplifica la vita e quando ti complica i giorni | mysql | #86 | 2026-05-11 | scheduled |
+| 34 | 2026-06-03 | —        | Wed | ENUM in MySQL: quando ti semplifica la vita e quando ti complica i giorni *(shift da martedì 02/06 — Festa della Repubblica)* | mysql | #86 | 2026-05-11 | scheduled |
 
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-06-09 (Tuesday)

@@ -2,7 +2,7 @@
 title: "ENUM in MySQL: when it makes your day, and when it ruins your week"
 seoTitle: "MySQL ENUM vs CHECK vs lookup: the three roads"
 description: "MySQL ENUM vs CHECK constraint vs lookup table: three ways to model an enumeration. Pros, cons and real case of a shipment tracking system."
-date: "2026-06-02T08:03:00+01:00"
+date: "2026-06-03T08:03:00+01:00"
 draft: false
 translationKey: "enum_mysql_semplifica_o_complica"
 tags: ["enum", "data-modeling", "schema-design", "alter-table", "check-constraint"]
