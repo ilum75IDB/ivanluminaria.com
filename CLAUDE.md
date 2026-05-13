@@ -139,6 +139,7 @@ When writing a new blog article, **always** follow these steps:
    - `docs/AI_CONTENT_GUIDELINES_IT.md` (Italian version)
    - `docs/prompt-master.md` (master prompt with tone & style rules)
    - `docs/DESCRIZIONE_PROGETTO_DATABASE_STRATEGY_BLOG.md` and `docs/database_strategy_blog_project_description_FULL.md` (project context)
+   - `docs/STILE_LINGUISTICO.md` (vocabolario di termini da evitare e relative sostituzioni — consultare in scrittura e in revisione)
 2. **Write like a human** — the text **must not** sound AI-generated. Avoid generic filler, motivational closings, bullet-point-heavy structures, and overly polished phrasing. Use Ivan's voice: direct, experienced, occasionally ironic, grounded in real-world project stories. Vary sentence length, use colloquial turns where appropriate, and let opinions show.
 3. **No AI tells** — never use patterns like "In conclusion…", "It's worth noting that…", "Let's dive in…", "In today's fast-paced world…", or similar clichés typical of LLM output.
 4. **Riferimenti temporali vicini** — evitare riferimenti troppo indietro nel tempo (es. "due anni fa", "tre mesi fa") a meno che non sia richiesto esplicitamente dal contesto dell'articolo. Preferire sempre espressioni vicine: "l'altro giorno", "qualche giorno fa", "ieri", "la settimana scorsa", "la scorsa settimana". Se il racconto richiede un arco temporale più lungo (mese precedente, un paio di mesi fa), giustificarlo nel testo con frasi tipo: "È un po' che volevo scrivere su questo argomento e non ho trovato il tempo… finalmente eccomi" o simili.
@@ -195,7 +196,7 @@ La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è trop
 **Regole:**
 - **Commit + push dopo ogni step** — non accumulare mai più di uno step senza committare
 - **Se la sessione riparte**, leggere lo stato del repo (ultimo commit, file esistenti) per capire da quale step riprendere
-- **Lo step 0 (lettura)** legge solo `docs/AI_CONTENT_GUIDELINES.md` e `docs/database_strategy_blog_project_description_FULL.md` (non leggere i duplicati in italiano né articoli esistenti)
+- **Lo step 0 (lettura)** legge solo `docs/AI_CONTENT_GUIDELINES.md`, `docs/database_strategy_blog_project_description_FULL.md` e `docs/STILE_LINGUISTICO.md` (non leggere i duplicati in italiano né articoli esistenti)
 - **Lo step 0b (proposta titoli)** è obbligatorio: proporre 3 titoli all'utente e permettergli di sceglierne uno o suggerirne un altro
 - **Gli step 1-4 (scrittura lingue)** sono sequenziali: IT è il master, le altre sono traduzioni adattate (non letterali)
 - **Lo step 5 (glossario)** può essere fatto tutto insieme perché le mini-pagine sono brevi
