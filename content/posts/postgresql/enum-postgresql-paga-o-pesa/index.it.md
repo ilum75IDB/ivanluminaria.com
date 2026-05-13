@@ -130,7 +130,7 @@ Poi, dopo qualche trimestre, sono arrivati i problemi.
 
 ---
 
-## I limiti, raccontati onestamente
+## I limiti, racconti dall'esperienza
 
 I limiti di PostgreSQL ENUM esistono. Non sono peggio di quelli di MySQL — sono **diversi**, e si manifestano in punti diversi del ciclo di vita.
 
@@ -161,7 +161,7 @@ Le bandiere rosse sono le stesse di MySQL — il database cambia, la logica del 
 2. **Servono attributi aggiuntivi** — descrizioni multilingua, etichetta breve/estesa, ordine di display, flag attivo. ENUM non li ospita
 3. **Decine di valori in crescita** — oltre i 20-30, il `CREATE TYPE` diventa una lista chilometrica difficile da leggere
 
-`CHECK` constraint in PostgreSQL è un compromesso intermedio onesto: più facile da modificare di un ENUM (basta un `ALTER TABLE ... DROP CONSTRAINT ... ADD CONSTRAINT ...`), meno strutturato di una vera lookup. Va bene per insiemi di 5-15 valori che ogni tanto si toccano.
+`CHECK` constraint in PostgreSQL è un compromesso intermedio pulito: più facile da modificare di un ENUM (basta un `ALTER TABLE ... DROP CONSTRAINT ... ADD CONSTRAINT ...`), meno strutturato di una vera lookup. Va bene per insiemi di 5-15 valori che ogni tanto si toccano.
 
 Nel caso degli abbonamenti, la prima ondata di evoluzione (4 → 11 stati) l'avevamo digerita con `ALTER TYPE ADD VALUE`. La seconda ondata — quella che chiedeva rimozioni e rinomine multiple — è stata l'occasione per la riscrittura verso una lookup table. Non perché ENUM fosse "sbagliato" dall'inizio. Era giusto per un dominio piccolo e stabile, è diventato scomodo quando il dominio ha smesso di essere stabile.
 
