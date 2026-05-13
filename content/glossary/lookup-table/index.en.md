@@ -5,6 +5,7 @@ translationKey: "glossary_lookup_table"
 aka: "Reference table"
 articles:
   - "/posts/mysql/enum-mysql-semplifica-o-complica"
+  - "/posts/postgresql/enum-postgresql-paga-o-pesa"
 ---
 
 A **lookup table** is a reference table that stores the valid values of an enumerated domain, linked to the tables using it via a foreign key. It's the "pure-database" way to model an enumeration, an alternative to native types like ENUM or to CHECK constraints.
