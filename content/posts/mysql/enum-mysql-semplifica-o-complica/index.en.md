@@ -41,7 +41,7 @@ CREATE TABLE orders (
 );
 ```
 
-The SQL-standard approach. More verbose but more flexible (CHECK conditions can be arbitrarily complex). Heads up: before MySQL 8.0.16, CHECK constraints were parsed and silently ignored. They've only been actually enforced since 8.0.16.
+The SQL-standard approach. More verbose, in exchange more flexible (CHECK conditions can be arbitrarily complex). Heads up: before MySQL 8.0.16, CHECK constraints were parsed and silently ignored. They've only been actually enforced since 8.0.16.
 
 **Lookup table with FK**:
 
@@ -59,7 +59,7 @@ CREATE TABLE orders (
 );
 ```
 
-The "pure-database" way. More tables, more JOINs, but also more flexibility: you can add attributes (localised labels, display order, active/inactive flags), modify values without touching child schemas, and manage everything at runtime.
+The "pure-database" way. More tables, more JOINs, and in exchange more flexibility: you can add attributes (localised labels, display order, active/inactive flags), modify values without touching child schemas, and manage everything at runtime.
 
 ---
 
@@ -76,7 +76,7 @@ Typical cases where stability is real:
 
 In all these cases ENUM gives you three concrete advantages:
 
-1. **Compact storage**: 1-2 bytes per row instead of the 4 of an INT FK. On a table with 200 million rows that's 400-600 MB saved. Not the main reason to choose ENUM, but a bonus
+1. **Compact storage**: 1-2 bytes per row instead of the 4 of an INT FK. On a table with 200 million rows that's 400-600 MB saved. Not the main reason to choose ENUM; still a bonus
 2. **Readable queries**: `WHERE status = 'SHIPPED'` with no JOIN, no extra table aliases. When you're debugging at three in the morning, that matters
 3. **No extra migration**: the "lookup table" is the schema itself. No data seed, no synchronisation, no FK to manage at deploy time
 
@@ -113,15 +113,15 @@ ALTER TABLE shipments
   NOT NULL DEFAULT 'RECEIVED';
 ```
 
-Looks like one line. But if you want to add `BOOKED` **before** `RECEIVED` (for semantic coherence in the sequence), MySQL has to rewrite the whole table. All of it. On `shipments` at one hundred fifty million rows, in production, with Online DDL configured properly, you still get hours of extra load on storage and replication lag. Simply tacking it on at the end with `MODIFY COLUMN status ENUM(...,'BOOKED')` would have been lighter — but it would have produced a value set with an absurd positional ordering: `DELIVERED` "comes before" `BOOKED` in the sort? Technically yes.
+Looks like one line. In reality, if you want to add `BOOKED` **before** `RECEIVED` (for semantic coherence in the sequence), MySQL has to rewrite the whole table. All of it. On `shipments` at one hundred fifty million rows, in production, with Online DDL configured properly, you still get hours of extra load on storage and replication lag. Simply tacking it on at the end with `MODIFY COLUMN status ENUM(...,'BOOKED')` would have been lighter — except it would have produced a value set with an absurd positional ordering: `DELIVERED` "comes before" `BOOKED` in the sort? Technically yes.
 
 There they are, the limits of ENUM, told without pity:
 
-**Case-insensitive**. `'ACTIVE'` and `'active'` are the same value. For someone coming from PostgreSQL this can be a nasty surprise. In MySQL it's an explicit design choice, but it's worth knowing up front.
+**Case-insensitive**. `'ACTIVE'` and `'active'` are the same value. For someone coming from PostgreSQL this can be a nasty surprise. In MySQL it's an explicit design choice; worth knowing up front.
 
 **Ordering by declaration position**, not alphabetical. If a query does `ORDER BY status`, the order is the one in which you declared the values in the `CREATE TABLE`. Subtle bug: you add `'BOOKED'` at the end to avoid rebuilding the table, and suddenly your report sorted by status shows `'BOOKED'` after `'REFUSED'`. Nobody complains until somebody notices.
 
-**Heavy changes on large tables**. Appending a value at the end is light. Changing position, renaming, removing — all require a rebuild. With Online DDL on MySQL 8 it's less painful than before, but it's not free.
+**Heavy changes on large tables**. Appending a value at the end is light. Changing position, renaming, removing — all require a rebuild. With Online DDL on MySQL 8 it's less painful than before; it isn't free.
 
 **Table locks in certain scenarios**. The combinations of operations that require `ALGORITHM=COPY` still exist, and on critical tables they need to be evaluated carefully.
 
@@ -137,9 +137,9 @@ Three red flags:
 
 1. **Values change often**: if every quarter the business asks to add, rename or disable a value, the schema shouldn't be the "table" of enumerations. A real lookup table managed from an admin panel is the way
 2. **You need extra attributes**: localised description in four languages, short label vs long, display order, active/inactive flag. None of this fits in ENUM. With a lookup table, every value is a row that can have as many columns as you like
-3. **Many tens of values, growing**: past 20-30 values, ENUM becomes hard to read and to maintain in the `CREATE TABLE`. The `DDL` turns into an endless list
+3. **Many tens of values, growing**: past 20-30 values, ENUM becomes unwieldy to read and to maintain in the `CREATE TABLE`. The `DDL` turns into an endless list
 
-In these cases `CHECK` constraint is an intermediate compromise: more flexible than ENUM (renaming a value is just an `ALTER CONSTRAINT`), less structured than a real lookup table. Fine for sets of 5-15 values that get touched occasionally, but without the need for extra attributes.
+In these cases `CHECK` constraint is an intermediate compromise: more flexible than ENUM (renaming a value is just an `ALTER CONSTRAINT`), less structured than a real lookup table. Fine for sets of 5-15 values that get touched occasionally, provided no extra attributes are needed.
 
 In the tracking shipments case, the rewrite ended up going the lookup table direction. Worth saying: not because ENUM was "wrong" in version 1. It was right, six years earlier, for a domain that was genuinely small and stable. It became wrong when the domain changed, and nobody had foreseen it. Which is exactly what happens in many real projects.
 
@@ -178,9 +178,9 @@ Three interesting things emerge from this schema.
 
 **The master only carries the id**, not the code. Two bytes per row (`SMALLINT`) versus 20+ for a `VARCHAR(20)`. On a table with 150 million rows that's 2-3 GB difference between data and indexes, plus faster JOINs thanks to integer comparison.
 
-**Code and description are attributes of the lookup, not the key**. Renaming a status — going from "Delivered" to "Delivered to recipient" — is an `UPDATE` on one row of the lookup. No migration, no rebuild, no `ALTER` on the master. Child schemas are not touched. Having the `code` as a natural key seemed elegant four years ago, but the first time the business asks to change a label's text you understand why surrogate ids existed.
+**Code and description are attributes of the lookup, not the key**. Renaming a status — going from "Delivered" to "Delivered to recipient" — is an `UPDATE` on one row of the lookup. No migration, no rebuild, no `ALTER` on the master. Child schemas are not touched. Having the `code` as a natural key seemed elegant at the start of the project; the first time the business asks to change a label's text you understand why surrogate ids existed.
 
-**Extra attributes cost nothing to add**: a `short_description` column for SMS notifications, a `display_order` column for visual sorting in dashboards, a linked table for multilingual translations. All this was impossible with pure ENUM, and it's normal with a well-designed lookup table.
+**Extra attributes cost nothing to add**: a `short_description` column for SMS notifications, a `display_order` column for visual sorting in dashboards, a linked table for multilingual translations. None of this was reachable with pure ENUM, and it's normal with a well-designed lookup table.
 
 The price you pay is that ad-hoc queries need a JOIN to read the status name in plain text:
 
@@ -191,11 +191,11 @@ JOIN shipment_statuses ss ON ss.id = s.status_id
 WHERE ss.code = 'IN_DELIVERY';
 ```
 
-More verbose than a `WHERE status = 'IN_DELIVERY'` on ENUM, but that's the price of flexibility. And on the most frequent reports the JOIN is optimised with a composite index and a `view` that wraps the complexity, leaving application queries clean.
+More verbose than a `WHERE status = 'IN_DELIVERY'` on ENUM — that's the price of flexibility. And on the most frequent reports the JOIN is optimised with a composite index and a `view` that wraps the complexity, leaving application queries clean.
 
 ### Adding a value and reordering the ENUM
 
-Let's see how the two "delicate" operations work on this pattern. The business asks to add a `BOOKED` status, for shipments announced but not yet received.
+Here's how the two "delicate" operations work on this pattern. The business asks to add a `BOOKED` status, for shipments announced but not yet received.
 
 **Case 1 — append to the end of the ENUM, with logical `display_order` controlled by the column**:
 
@@ -224,7 +224,7 @@ On a 6-row table, MySQL rebuilds in milliseconds. Existing row `id`s stay identi
 
 This is the real point: **the stable lookup ids are the anchor of referential integrity**. Whatever we change in the lookup — ENUM reorder, code rename, description edit — the master keeps working. The 150 million rows never get touched.
 
-ENUM, in this place, is back to being the right tool. The same tool that was a problem on the master is an advantage on the lookup. Change the context, change the verdict.
+ENUM, in this place, is back to being the right tool. The same tool that made life harder on the master is an advantage on the lookup. Change the context, change the verdict.
 
 ---
 
@@ -234,7 +234,7 @@ The takeaway I bring away from this story, and that I repeat to teams when the "
 
 > If the values will never change, ENUM is the right call. If they will change — even just "every now and then" — don't tie the vocabulary to the schema.
 
-That's all. The hard part isn't picking among the three roads. The hard part is honestly figuring out, at decision time, which of the two worlds you're in. And usually you only get that by looking at how the domain has changed in the last two or three years — not by reading the requirements of the next sprint.
+That's all. The real challenge isn't picking among the three roads. The real challenge is figuring out, at decision time, which of the two worlds you're actually in. And you only get that by looking at how the domain has changed in the last two or three years — not by reading the requirements of the next sprint.
 
 ---
 
