@@ -48,7 +48,7 @@ CREATE TABLE abbonamenti (
 );
 ```
 
-Approccio SQL standard. Più verboso ma più flessibile (le condizioni di `CHECK` possono essere arbitrariamente complesse). In PostgreSQL i `CHECK` constraint sono pienamente applicati da sempre — niente "silenziosamente ignorati" come accadeva in MySQL prima della 8.0.16.
+Approccio SQL standard. Più verboso, in cambio più flessibile (le condizioni di `CHECK` possono essere arbitrariamente complesse). In PostgreSQL i `CHECK` constraint sono pienamente applicati da sempre — niente "silenziosamente ignorati" come accadeva in MySQL prima della 8.0.16.
 
 **Tabella di lookup con FK**:
 
@@ -67,7 +67,7 @@ CREATE TABLE abbonamenti (
 );
 ```
 
-La via "database-puro". Più tabelle, più JOIN, ma anche più flessibilità: attributi aggiuntivi, etichette localizzate, ordine di display, attivazione/disattivazione a runtime.
+La via "database-puro". Più tabelle, più JOIN, e in cambio più flessibilità: attributi aggiuntivi, etichette localizzate, ordine di display, attivazione/disattivazione a runtime.
 
 ---
 
@@ -75,7 +75,7 @@ La via "database-puro". Più tabelle, più JOIN, ma anche più flessibilità: at
 
 Se arrivi da MySQL, ci sono tre dettagli che faresti bene a tenere in tasca prima di scrivere il primo `CREATE TYPE`.
 
-**Case-sensitive**. `'ATTIVO'` e `'attivo'` sono due valori diversi. In MySQL erano lo stesso valore — un design choice che a molti sembrava "comodo" e ad altri "scivoloso". PostgreSQL prende la strada opposta: se hai dichiarato `'ATTIVO'`, dovrai sempre scrivere `'ATTIVO'`. Le query non normalizzate falliranno con un *invalid input value*. È rigore, e una volta che ci si abitua si apprezza, ma il primo giorno è una sorpresa che costa qualche minuto.
+**Case-sensitive**. `'ATTIVO'` e `'attivo'` sono due valori diversi. In MySQL erano lo stesso valore — un design choice che a molti sembrava "comodo" e ad altri "scivoloso". PostgreSQL prende la strada opposta: se hai dichiarato `'ATTIVO'`, dovrai sempre scrivere `'ATTIVO'`. Le query non normalizzate falliranno con un *invalid input value*. È rigore, e una volta che ci si abitua si apprezza; il primo giorno è una sorpresa che costa qualche minuto.
 
 **Type safety vera, non simulata**. ENUM è un tipo, non un vincolo su `VARCHAR`. Puoi creare una funzione che accetta `stato_abbonamento` come parametro, e il motore rifiuterà al parse-time qualunque chiamata con una stringa libera. Lo stesso vale per le procedure, per le view, per gli indici parziali. In MySQL questa sicurezza non esiste — `ENUM` è una colonna `VARCHAR` decorata.
 
@@ -88,7 +88,7 @@ Se arrivi da MySQL, ci sono tre dettagli che faresti bene a tenere in tasca prim
 Lo stesso principio di MySQL, calato nel contesto PostgreSQL: **set di valori stabile, semantica controllata da schema**. Quando questi due ingredienti ci sono, ENUM in PostgreSQL ha persino qualche vantaggio in più rispetto al cugino MySQL:
 
 1. **Type safety end-to-end**: ENUM è un tipo che attraversa funzioni, procedure, foreign data wrapper. Non è solo un vincolo su una colonna, è una garanzia di coerenza che PostgreSQL applica a tutto lo stack di codice SQL
-2. **Storage compatto**: 4 byte per riga (come un `INT` che fa da FK), confrontabile con MySQL. Su tabelle da centinaia di milioni di righe non è il driver principale, ma è coerente
+2. **Storage compatto**: 4 byte per riga (come un `INT` che fa da FK), confrontabile con MySQL. Su tabelle da centinaia di milioni di righe non è il driver principale; resta comunque coerente
 3. **ALTER TYPE ADD VALUE economico**: la modifica più frequente — aggiungere un nuovo valore — costa praticamente zero
 4. **DDL transazionale**: aggiungere un valore dentro una transazione che comprende anche il deploy del codice applicativo è una garanzia di atomicità che pochi altri DBMS ti regalano
 
@@ -134,7 +134,7 @@ Poi, dopo qualche trimestre, sono arrivati i problemi.
 
 I limiti di PostgreSQL ENUM esistono. Non sono peggio di quelli di MySQL — sono **diversi**, e si manifestano in punti diversi del ciclo di vita.
 
-**Non si rimuove un valore in modo nativo**. Sembra un dettaglio, ma è il limite più grosso. Se il business decide di "ritirare" lo stato `SCADUTO` (perché magari nel nuovo modello commerciale viene assorbito da `TERMINATO`), in PostgreSQL non hai un `ALTER TYPE DROP VALUE`. Devi:
+**Non si rimuove un valore in modo nativo**. Sembra un dettaglio; è il limite più grosso. Se il business decide di "ritirare" lo stato `SCADUTO` (perché ad esempio nel nuovo modello commerciale viene assorbito da `TERMINATO`), in PostgreSQL non hai un `ALTER TYPE DROP VALUE`. Devi:
 
 1. Creare un nuovo tipo con i valori ridotti
 2. Aggiornare tutte le righe della tabella per migrarle al nuovo set
@@ -143,11 +143,11 @@ I limiti di PostgreSQL ENUM esistono. Non sono peggio di quelli di MySQL — son
 
 Tutto questo, su una tabella grande, è esattamente la migration pesante che in MySQL avresti pagato per **aggiungere** un valore — qui la paghi per **toglierne** uno. La simmetria è simpatica solo a parole: in produzione, è comunque tanto carico.
 
-**Rinominare un valore è facile, ma transazionale**. `ALTER TYPE ... RENAME VALUE 'X' TO 'Y'` esiste da PostgreSQL 10. Operazione veloce e pulita. Ma — qui c'è una sottigliezza — l'ALTER TYPE è dentro la transazione, sì, ma se la rinomina avviene in una transazione che altre sessioni hanno aperto su quel tipo, potresti incontrare lock. Su sistemi con alta concorrenza non è banale come sembra.
+**Rinominare un valore è facile, anche se transazionale**. `ALTER TYPE ... RENAME VALUE 'X' TO 'Y'` esiste da PostgreSQL 10. Operazione veloce e pulita. C'è però una sottigliezza: l'ALTER TYPE è dentro la transazione, sì, e se la rinomina avviene in una transazione che altre sessioni hanno aperto su quel tipo, potresti incontrare lock. Su sistemi con alta concorrenza non è banale come sembra.
 
 **Ordinamento per posizione**. Come in MySQL, l'ordine in cui hai dichiarato i valori conta per `ORDER BY`. Se hai aggiunto `SOSPESO_PER_MOROSITA` `AFTER 'SOSPESO'`, l'ordine è coerente. Ma se ti scordi e fai `ALTER TYPE ... ADD VALUE 'NUOVO'` senza specificare la posizione, il valore va in coda. Il sort delle dashboard può sorprenderti.
 
-**Indici GIN/GiST non lo trattano come stringa**. Vantaggio o svantaggio a seconda del caso d'uso, ma se hai pensato di farci sopra una full text search, ricordati che ENUM non è `text`. Va casted, e il cast a volte impedisce l'uso dell'indice.
+**Indici GIN/GiST non lo trattano come stringa**. Vantaggio o svantaggio a seconda del caso d'uso; se hai pensato di farci sopra una full text search, ricordati che ENUM non è `text`. Va casted, e il cast a volte impedisce l'uso dell'indice.
 
 Nel sistema degli abbonamenti, dopo due anni gli stati erano diventati undici, e una richiesta di "pulizia" del dominio (rimuoverne tre, rinominarne due) ha trasformato un'apparente "modifica banale" in una migration di un weekend, con dump-restore parziale di alcune tabelle satellite che usavano il tipo. Il prezzo era arrivato — solo a un punto diverso del ciclo di vita rispetto a MySQL.
 
@@ -159,7 +159,7 @@ Le bandiere rosse sono le stesse di MySQL — il database cambia, la logica del 
 
 1. **I valori cambiano spesso** — non solo aggiunti, ma rinominati o ritirati. Se il vocabolario è in evoluzione attiva, lo schema non è il posto giusto per tenerlo
 2. **Servono attributi aggiuntivi** — descrizioni multilingua, etichetta breve/estesa, ordine di display, flag attivo. ENUM non li ospita
-3. **Decine di valori in crescita** — oltre i 20-30, il `CREATE TYPE` diventa una lista chilometrica difficile da leggere
+3. **Decine di valori in crescita** — oltre i 20-30, il `CREATE TYPE` diventa una lista chilometrica scomoda da leggere
 
 `CHECK` constraint in PostgreSQL è un compromesso intermedio pulito: più facile da modificare di un ENUM (basta un `ALTER TABLE ... DROP CONSTRAINT ... ADD CONSTRAINT ...`), meno strutturato di una vera lookup. Va bene per insiemi di 5-15 valori che ogni tanto si toccano.
 
@@ -257,7 +257,7 @@ Il messaggio che porto via dal caso degli abbonamenti — e che vale, identico, 
 
 La differenza tra i due database non è in questa regola. È in **dove cade il prezzo** quando il dominio cambia:
 
-- **In MySQL**, aggiungere un valore in posizione specifica costa un rebuild della tabella. Aggiungerlo in coda è economico, ma corrompe l'ordinamento.
+- **In MySQL**, aggiungere un valore in posizione specifica costa un rebuild della tabella. Aggiungerlo in coda è economico; corrompe però l'ordinamento.
 - **In PostgreSQL**, aggiungere è sempre economico (anche in posizione specifica). Rimuovere o riorganizzare è la migration pesante.
 
 Capire il proprio caso d'uso vuol dire capire **quale tipo di evoluzione probabilmente subirà il dominio**. Solo aggiunte? PostgreSQL ENUM è un alleato. Aggiunte e rimozioni? Meglio una lookup table fin dall'inizio.
