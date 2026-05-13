@@ -41,7 +41,7 @@ CREATE TABLE pedidos (
 );
 ```
 
-Enfoque SQL estándar. Más verboso pero más flexible (las condiciones de CHECK pueden ser arbitrariamente complejas). Ojo: antes de MySQL 8.0.16 los CHECK se parseaban y se ignoraban silenciosamente. Solo desde la 8.0.16 se aplican de verdad.
+Enfoque SQL estándar. Más verboso, a cambio más flexible (las condiciones de CHECK pueden ser arbitrariamente complejas). Ojo: antes de MySQL 8.0.16 los CHECK se parseaban y se ignoraban silenciosamente. Solo desde la 8.0.16 se aplican de verdad.
 
 **Tabla de lookup con FK**:
 
@@ -59,7 +59,7 @@ CREATE TABLE pedidos (
 );
 ```
 
-La vía "puramente base de datos". Más tablas, más JOIN, pero también más flexibilidad: puedes añadir atributos (etiquetas localizadas, orden de visualización, flags activo/inactivo), modificar los valores sin tocar el schema de las tablas hijas, y gestionar todo en runtime.
+La vía "puramente base de datos". Más tablas, más JOIN, y a cambio más flexibilidad: puedes añadir atributos (etiquetas localizadas, orden de visualización, flags activo/inactivo), modificar los valores sin tocar el schema de las tablas hijas, y gestionar todo en runtime.
 
 ---
 
@@ -76,7 +76,7 @@ Casos típicos donde la estabilidad existe de verdad:
 
 En todos estos casos ENUM te da tres ventajas concretas:
 
-1. **Almacenamiento compacto**: 1-2 bytes por fila contra los 4 de un INT que hace de FK. En una tabla con 200 millones de filas son 400-600 MB ahorrados. No es la razón principal para elegir ENUM, pero es un bonus
+1. **Almacenamiento compacto**: 1-2 bytes por fila contra los 4 de un INT que hace de FK. En una tabla con 200 millones de filas son 400-600 MB ahorrados. No es la razón principal para elegir ENUM; sigue siendo un bonus
 2. **Legibilidad en las queries**: `WHERE status = 'ENVIADO'` sin JOIN, sin alias de tablas adicionales. Cuando tienes que debuggear a las tres de la mañana, cuenta
 3. **Sin migración extra**: la "tabla de lookup" ya es el propio schema. Sin seed de datos, sin sincronización, sin FK que gestionar en el deploy
 
@@ -113,15 +113,15 @@ ALTER TABLE envios
   NOT NULL DEFAULT 'RECIBIDO';
 ```
 
-Parece una sola línea. Pero si quieres añadir `RESERVADO` **antes** de `RECIBIDO` (por coherencia semántica en la secuencia), MySQL tiene que reescribir la tabla. Toda ella. Sobre `envios` con ciento cincuenta millones de filas, en producción, incluso con `Online DDL` bien configurado, son bastantes horas de carga extra sobre el storage y sobre el replication lag. Añadirlo simplemente al final con `MODIFY COLUMN status ENUM(...,'RESERVADO')` habría sido más ligero — pero habría creado un conjunto de valores con un ordenamiento posicional absurdo: ¿`ENTREGADO` viene "antes" que `RESERVADO` en el sort? Técnicamente sí.
+Parece una sola línea. En realidad, si quieres añadir `RESERVADO` **antes** de `RECIBIDO` (por coherencia semántica en la secuencia), MySQL tiene que reescribir la tabla. Toda ella. Sobre `envios` con ciento cincuenta millones de filas, en producción, incluso con `Online DDL` bien configurado, son bastantes horas de carga extra sobre el storage y sobre el replication lag. Añadirlo simplemente al final con `MODIFY COLUMN status ENUM(...,'RESERVADO')` habría sido más ligero — solo que habría creado un conjunto de valores con un ordenamiento posicional absurdo: ¿`ENTREGADO` viene "antes" que `RESERVADO` en el sort? Técnicamente sí.
 
 Aquí están, los límites de ENUM, contados sin compasión:
 
-**Case-insensitive**. `'ACTIVO'` y `'activo'` son el mismo valor. Para quien viene de PostgreSQL puede ser una sorpresa amarga. En MySQL es un design choice explícito, pero conviene saberlo de antemano.
+**Case-insensitive**. `'ACTIVO'` y `'activo'` son el mismo valor. Para quien viene de PostgreSQL puede ser una sorpresa amarga. En MySQL es un design choice explícito; conviene saberlo de antemano.
 
 **Ordenamiento por posición de declaración**, no alfabético. Si la query hace `ORDER BY status`, el orden es el de cómo declaraste los valores en el `CREATE TABLE`. Bug sutil: añades `'RESERVADO'` al final para no rehacer la tabla, y de repente tu reporte ordenado por estado muestra `'RESERVADO'` después de `'RECHAZADO'`. Nadie se queja hasta que alguien se da cuenta.
 
-**Modificaciones pesadas en tablas grandes**. Añadir un valor al final es ligero. Cambiar la posición, renombrar un valor, eliminar un valor — todo requiere un rebuild. Con Online DDL en MySQL 8 es menos doloroso que antes, pero no es gratis.
+**Modificaciones pesadas en tablas grandes**. Añadir un valor al final es ligero. Cambiar la posición, renombrar un valor, eliminar un valor — todo requiere un rebuild. Con Online DDL en MySQL 8 es menos doloroso que antes; no es gratis.
 
 **Lock de tabla en algunos escenarios**. Las combinaciones de operaciones que requieren `ALGORITHM=COPY` siguen existiendo, y en tablas críticas hay que evaluarlas con cuidado.
 
@@ -137,9 +137,9 @@ Las banderas rojas son tres:
 
 1. **Los valores cambian a menudo**: si cada trimestre el negocio pide añadir, renombrar o desactivar un valor, el schema no debería ser la "tabla" de las enumeraciones. Una verdadera tabla de lookup gestionada desde un panel de admin es la vía
 2. **Hacen falta atributos adicionales**: descripción localizada en 4 idiomas, etiqueta corta vs extendida, orden de visualización, flag activo/inactivo. Todo esto en ENUM no lo metes. Con lookup table, cada valor es una fila que puede tener cuantas columnas quieras
-3. **Decenas de valores en crecimiento**: pasados los 20-30 valores, ENUM se vuelve difícil de leer y mantener en el `CREATE TABLE`. El `DDL` se convierte en una lista interminable
+3. **Decenas de valores en crecimiento**: pasados los 20-30 valores, ENUM se vuelve incómodo de leer y mantener en el `CREATE TABLE`. El `DDL` se convierte en una lista interminable
 
-En estos casos `CHECK` constraint es un compromiso intermedio: más flexible que ENUM (renombrar un valor es solo un `ALTER CONSTRAINT`), menos estructurado que una verdadera lookup table. Va bien para conjuntos de 5-15 valores que se tocan de vez en cuando, pero sin necesidad de atributos.
+En estos casos `CHECK` constraint es un compromiso intermedio: más flexible que ENUM (renombrar un valor es solo un `ALTER CONSTRAINT`), menos estructurado que una verdadera lookup table. Va bien para conjuntos de 5-15 valores que se tocan de vez en cuando, siempre que no hagan falta atributos.
 
 En el caso del seguimiento de envíos, al final la reescritura fue hacia lookup table. Vale la pena decirlo: no porque ENUM fuera "equivocado" en la versión 1. Era correcto, seis años antes, para un dominio que era realmente pequeño y estable. Se volvió equivocado cuando el dominio cambió, y nadie lo había previsto. Que es exactamente lo que pasa en muchos proyectos reales.
 
@@ -178,9 +178,9 @@ Tres cosas interesantes emergen de este schema.
 
 **La master lleva solo el id**, no el código. Dos bytes por fila (`SMALLINT`) en lugar de los 20+ de un `VARCHAR(20)`. En una tabla con 150 millones de filas son 2-3 GB de diferencia entre datos e índices, además de JOIN más rápidos gracias a la comparación entre enteros.
 
-**El código y la descripción son atributos de la lookup, no clave**. Renombrar un estado — pasar de "Entregado" a "Entregado al destinatario" — es un `UPDATE` sobre una sola fila de la lookup. Sin migración, sin rebuild, sin `ALTER` sobre la master. El schema de las tablas hijas no se toca. Tener el `codigo` como clave natural parecía elegante hace cuatro años, pero la primera vez que el negocio pide cambiar el texto de una etiqueta entiendes por qué existía el id sustituto.
+**El código y la descripción son atributos de la lookup, no clave**. Renombrar un estado — pasar de "Entregado" a "Entregado al destinatario" — es un `UPDATE` sobre una sola fila de la lookup. Sin migración, sin rebuild, sin `ALTER` sobre la master. El schema de las tablas hijas no se toca. Tener el `codigo` como clave natural al inicio del proyecto parecía elegante; la primera vez que el negocio pide cambiar el texto de una etiqueta entiendes por qué existía el id sustituto.
 
-**Los atributos extra cuestan nada de añadir**: una columna `descripcion_corta` para los tracciados SMS, una columna `orden` para el sort visual en dashboards, una tabla relacionada para las traducciones multilingües. Todo esto era imposible con ENUM "puro", y es normal con una lookup table bien diseñada.
+**Los atributos extra cuestan nada de añadir**: una columna `descripcion_corta` para los tracciados SMS, una columna `orden` para el sort visual en dashboards, una tabla relacionada para las traducciones multilingües. Todo esto no se podía hacer con ENUM "puro", y es normal con una lookup table bien diseñada.
 
 El precio a pagar es que las queries ad-hoc requieren un JOIN para leer el nombre del estado en claro:
 
@@ -191,11 +191,11 @@ JOIN estados_envio ee ON ee.id = e.estado_id
 WHERE ee.codigo = 'EN_ENTREGA';
 ```
 
-Más verboso que un `WHERE status = 'EN_ENTREGA'` sobre ENUM, pero es el precio de la flexibilidad. Y sobre los reportes más frecuentes el JOIN se optimiza con un índice compuesto y una `view` que encapsula la complejidad, dejando las queries aplicativas legibles.
+Más verboso que un `WHERE status = 'EN_ENTREGA'` sobre ENUM — es el precio de la flexibilidad. Y sobre los reportes más frecuentes el JOIN se optimiza con un índice compuesto y una `view` que encapsula la complejidad, dejando las queries aplicativas legibles.
 
 ### Añadir un valor y reordenar el ENUM
 
-Veamos cómo se hacen las dos operaciones "delicadas" sobre este patrón. El negocio pide añadir el estado `RESERVADO`, para los envíos anunciados pero aún no recibidos.
+Así se hacen las dos operaciones "delicadas" sobre este patrón. El negocio pide añadir el estado `RESERVADO`, para los envíos anunciados pero aún no recibidos.
 
 **Caso 1 — añadir al final del ENUM, con `orden` lógico controlado por la columna**:
 
@@ -224,7 +224,7 @@ Sobre una tabla de 6 filas, MySQL rebuilda en milisegundos. Los `id` de las fila
 
 Este es el punto real: **los id estables de la lookup son el ancla de la integridad referencial**. Cualquier cosa que cambiemos en la lookup — reorden ENUM, renombre código, modificación descripción — la master sigue funcionando. Los 150 millones de filas no se tocan nunca.
 
-ENUM, en este sitio, ha vuelto a ser la herramienta adecuada. La misma herramienta que era un problema en la master es una ventaja en la lookup. Cambia el contexto, cambia el juicio.
+ENUM, en este sitio, ha vuelto a ser la herramienta adecuada. La misma herramienta que complicaba la vida en la master es una ventaja en la lookup. Cambia el contexto, cambia el juicio.
 
 ---
 
@@ -234,7 +234,7 @@ La síntesis que me llevo de esta historia, y que repito a los equipos cuando ll
 
 > Si los valores no van a cambiar nunca, ENUM es la elección correcta. Si van a cambiar — aunque sea solo "de vez en cuando" — no ates el vocabulario al schema.
 
-Eso es todo. Lo difícil no es escoger entre las tres vías. Lo difícil es entender con honestidad, al momento de la elección, en cuál de los dos mundos estás. Y eso, normalmente, lo entiendes mirando cómo ha cambiado el dominio en los últimos dos o tres años — no leyendo los requisitos del próximo sprint.
+Eso es todo. El desafío no es escoger entre las tres vías. El desafío es entender, al momento de la elección, en cuál de los dos mundos estás realmente. Y eso lo entiendes mirando cómo ha cambiado el dominio en los últimos dos o tres años — no leyendo los requisitos del próximo sprint.
 
 ---
 
