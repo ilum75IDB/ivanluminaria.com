@@ -17,6 +17,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Authentication Plugin | Modulo MySQL/MariaDB che gestisce il metodo di verifica delle credenziali durante la connessione | mysql-users-and-hosts |
 | Additive Measure | Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni (importi, quantità, conteggi). Le misure semi-additive e non-additive hanno regole di aggregazione diverse | fatto-grana-sbagliata |
 | AI Manager | Ruolo professionale che governa l'impatto dell'intelligenza artificiale su architetture, processi e persone all'interno di un progetto | ai-manager-project-management |
+| ALTER TYPE ADD VALUE | Comando PostgreSQL che aggiunge un valore a un ENUM esistente. Operazione di metadata, transazionale, senza rebuild della tabella. Disponibile dalla 9.1, con posizionamento BEFORE/AFTER dalla 9.6 | enum-postgresql-paga-o-pesa |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
@@ -31,16 +32,17 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
-| Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica |
+| Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
 | Cutover | Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura | oracle-cloud-migration |
 | CTAS | Create Table As Select — tecnica Oracle per creare una nuova tabella popolandola con i risultati di una query, usata per migrazioni di tabelle di grandi dimensioni | oracle-partitioning |
 | Churn | Misura di quanto una tabella database cambia dopo l'inserimento iniziale dei dati (UPDATE/DELETE). Determina il costo di manutenzione degli indici GIN | like-optimization-postgresql |
 | Carbon Footprint | Quantità totale di gas serra emessi da un'attività — un'auto nel traffico romano produce 120-150 g di CO₂ per km, una bici zero | bici-vs-auto-roma |
 | CDC | Change Data Capture — tecnica per intercettare e propagare le modifiche ai dati in tempo reale, spesso basata sulla lettura dei log delle transazioni | binary-log-mysql |
-| CHECK constraint | Vincolo SQL standard che limita i valori ammessi in una colonna tramite un'espressione booleana. In MySQL è realmente applicato solo dalla versione 8.0.16 | enum-mysql-semplifica-o-complica |
+| CHECK constraint | Vincolo SQL standard che limita i valori ammessi in una colonna tramite un'espressione booleana. In MySQL è realmente applicato solo dalla versione 8.0.16 | enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
 | Compliance | Conformità alle normative, regolamenti e standard applicabili — nel contesto AI include GDPR, regolamenti di settore e policy interne | ai-manager-project-management |
 | Code Review | Pratica di revisione del codice da parte di un collega prima del merge, per catturare bug e condividere conoscenza nel team | ai-github-project-management |
 | COALESCE | Funzione SQL che restituisce il primo valore non NULL da una lista di espressioni. Spesso usata come workaround per le gerarchie incomplete, ma non risolve il problema strutturale nel modello | ragged-hierarchies |
+| CREATE TYPE AS ENUM | Statement DDL di PostgreSQL che crea un tipo enumerativo come oggetto di prima classe, riutilizzabile su più colonne e modificabile con ALTER TYPE | enum-postgresql-paga-o-pesa |
 | Conformed Dimension | Dimensione condivisa tra più data mart con la stessa struttura, semantica e chiave. Permette analisi cross-processo coerenti e sommabili | bus-matrix-terreno-comune |
 | Dead Tuple | Riga obsoleta in una tabella PostgreSQL, marcata come non più visibile dopo un UPDATE o DELETE ma non ancora rimossa fisicamente | vacuum-autovacuum-postgresql |
 | Daily Standup | Riunione quotidiana di massimo 15 minuti in cui ogni membro del team risponde a tre domande: cosa ho fatto ieri, cosa farò oggi, cosa mi blocca | standup-meeting-15-minuti |
@@ -63,7 +65,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
 | Lift-and-Shift | Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione | tecnica-si-e-yes-and |
 | Local Index | Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente | oracle-partitioning, partitioning-dwh |
-| Lookup table | Tabella di riferimento collegata via foreign key che memorizza i valori validi di un'enumerazione, insieme ad eventuali attributi descrittivi (etichetta, ordine, flag attivo) | enum-mysql-semplifica-o-complica |
+| Lookup table | Tabella di riferimento collegata via foreign key che memorizza i valori validi di un'enumerazione, insieme ad eventuali attributi descrittivi (etichetta, ordine, flag attivo) | enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
 | GRANT | Comando SQL per assegnare privilegi specifici a un utente o ruolo su database, tabelle o colonne | mysql-users-and-hosts, postgresql_roles_and_users |
 | GIN Index | Generalized Inverted Index — tipo di indice PostgreSQL ottimizzato per ricerche full-text, pattern matching con trigrammi e query su array e JSONB | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
 | GiST Index | Generalized Search Tree — famiglia di indici PostgreSQL per dati con struttura geometrica, range o di similarità, indispensabile per query spaziali e su intervalli | postgresql-indici-quando-fanno-male |
@@ -110,7 +112,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | pg_trgm | Estensione PostgreSQL che fornisce funzioni e operatori per la ricerca di similarità basata su trigrammi, abilitando l'uso di indici GIN per LIKE con wildcard | like-optimization-postgresql |
 | NOLOGGING | Modalità Oracle che sopprime la generazione di redo log durante operazioni bulk, velocizzando le operazioni ma richiedendo un backup RMAN immediato | oracle-partitioning |
 | OCI | Oracle Cloud Infrastructure — piattaforma cloud di Oracle con vantaggi significativi di licensing per i database Oracle grazie al programma BYOL e al rapporto 1:1 delle OCPU | oracle-cloud-migration |
-| Online DDL | Meccanismo MySQL/InnoDB che permette di eseguire ALTER TABLE senza bloccare le scritture concorrenti, con tre algoritmi (INSTANT, INPLACE, COPY) scelti automaticamente in base all'operazione | enum-mysql-semplifica-o-complica |
+| OID (Object Identifier) | Identificatore numerico interno usato da PostgreSQL per riferirsi a oggetti di sistema (tabelle, tipi, funzioni). Per gli ENUM il valore è memorizzato come OID interno di 4 byte | enum-postgresql-paga-o-pesa |
+| Online DDL | Meccanismo MySQL/InnoDB che permette di eseguire ALTER TABLE senza bloccare le scritture concorrenti, con tre algoritmi (INSTANT, INPLACE, COPY) scelti automaticamente in base all'operazione | enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
 | Outsourcing | Esternalizzazione di attività o progetti IT a fornitori esterni, con rischi significativi di perdita di know-how e vendor lock-in se non gestita correttamente | 4-milioni-nessun-software |
 | OLAP | Online Analytical Processing — elaborazione orientata all'analisi multidimensionale dei dati, tipica dei data warehouse. Contrapposta all'OLTP dei sistemi transazionali | ragged-hierarchies |
 | Outcome vs Output | Distinzione tra ciò che il team produce concretamente (output: codice, documenti, deliverable) e il risultato finale misurato dal business (outcome: go-live, fatturato, KPI) | team-di-progetto-che-reggono |
@@ -148,6 +151,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | THP | Transparent Huge Pages — funzione del kernel Linux che promuove automaticamente le pagine normali a pagine grandi, causa latenze imprevedibili e deve essere disabilitata per Oracle | oracle-linux-kernel |
 | Timeboxing | Tecnica di gestione del tempo che assegna un intervallo fisso e non negoziabile a un'attività, forzando la conclusione entro il limite stabilito | tecnica-si-e-yes-and, standup-meeting-15-minuti |
 | Transport Lag | Ritardo nella trasmissione dei redo log dal database primary allo standby in una configurazione Data Guard, indicatore critico della salute della replica | oracle-cloud-migration |
+| Type safety | Proprietà di un sistema di tipi che impedisce, a parse-time, l'uso di valori incompatibili con il tipo dichiarato di colonna, parametro o variabile | enum-postgresql-paga-o-pesa |
 | Swappiness | Parametro kernel Linux (vm.swappiness) che controlla la propensione del sistema a spostare pagine di memoria nello swap | oracle-linux-kernel |
 | Switchover | Operazione pianificata di Data Guard che inverte i ruoli tra primary e standby senza perdita di dati, reversibile e controllata | oracle-cloud-migration |
 | System Privilege | Privilegio Oracle che autorizza operazioni globali sul database come CREATE TABLE, CREATE SESSION o ALTER SYSTEM, indipendenti da qualsiasi oggetto specifico | oracle-roles-privileges |
@@ -165,6 +169,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-05-11
-**Totale termini**: 148
-**Totale articoli con glossario**: 33
+**Ultimo aggiornamento**: 2026-05-13
+**Totale termini**: 152
+**Totale articoli con glossario**: 34
