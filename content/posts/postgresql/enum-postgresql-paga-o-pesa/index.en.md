@@ -48,7 +48,7 @@ CREATE TABLE subscriptions (
 );
 ```
 
-Standard SQL approach. More verbose but more flexible (the `CHECK` expression can be arbitrarily complex). In PostgreSQL `CHECK` constraints have always been fully enforced — none of the "silently ignored" behavior that haunted MySQL until 8.0.16.
+Standard SQL approach. More verbose, in exchange more flexible (the `CHECK` expression can be arbitrarily complex). In PostgreSQL `CHECK` constraints have always been fully enforced — none of the "silently ignored" behavior that haunted MySQL until 8.0.16.
 
 **Lookup table with FK**:
 
@@ -67,7 +67,7 @@ CREATE TABLE subscriptions (
 );
 ```
 
-The "pure-database" road. More tables, more JOINs, but also more flexibility: extra attributes, localized labels, display ordering, runtime activation/deactivation.
+The "pure-database" road. More tables, more JOINs, and in exchange more flexibility: extra attributes, localized labels, display ordering, runtime activation/deactivation.
 
 ---
 
@@ -75,7 +75,7 @@ The "pure-database" road. More tables, more JOINs, but also more flexibility: ex
 
 If you come from MySQL, three details deserve a pre-flight check before you write your first `CREATE TYPE`.
 
-**Case-sensitive**. `'ACTIVE'` and `'active'` are two different values. In MySQL they were the same value — a design choice many found "convenient" and others found "slippery". PostgreSQL goes the other way: if you declared `'ACTIVE'`, you'll always have to write `'ACTIVE'`. Unnormalized queries fail with *invalid input value*. It's rigor, and once you get used to it you appreciate it, but day one it costs a few minutes.
+**Case-sensitive**. `'ACTIVE'` and `'active'` are two different values. In MySQL they were the same value — a design choice many found "convenient" and others found "slippery". PostgreSQL goes the other way: if you declared `'ACTIVE'`, you'll always have to write `'ACTIVE'`. Unnormalized queries fail with *invalid input value*. It's rigor, and once you get used to it you appreciate it; on day one it costs a few minutes.
 
 **Real type safety, not simulated**. ENUM is a type, not a constraint on a `VARCHAR`. You can write a function that takes `subscription_status` as a parameter, and the engine will reject at parse-time any call with a free-form string. The same holds for procedures, views, partial indexes. In MySQL this kind of safety doesn't exist — `ENUM` is a decorated `VARCHAR` column.
 
@@ -88,7 +88,7 @@ If you come from MySQL, three details deserve a pre-flight check before you writ
 The principle is the same as in MySQL, applied to PostgreSQL: **stable set of values, schema-controlled semantics**. When both ingredients are present, ENUM in PostgreSQL even has a few extra advantages compared to its MySQL cousin:
 
 1. **End-to-end type safety**: ENUM is a type that travels across functions, procedures, foreign data wrappers. It's not just a column constraint; it's a coherence guarantee PostgreSQL applies to the whole SQL code stack
-2. **Compact storage**: 4 bytes per row (the same as an `INT` foreign key), comparable to MySQL. On tables with hundreds of millions of rows it isn't the main driver, but it's consistent
+2. **Compact storage**: 4 bytes per row (the same as an `INT` foreign key), comparable to MySQL. On tables with hundreds of millions of rows it isn't the main driver; it remains consistent
 3. **Cheap ALTER TYPE ADD VALUE**: the most common modification — adding a new value — costs practically nothing
 4. **Transactional DDL**: adding a value inside a transaction that also includes the application code deployment is an atomicity guarantee very few other DBMS hand you
 
@@ -134,7 +134,7 @@ Then, a few quarters later, the trouble began.
 
 PostgreSQL ENUM has limits. They aren't worse than MySQL's — they're **different**, and they show up at different points in the lifecycle.
 
-**You can't drop a value natively**. Sounds like a small detail, but it's the biggest limitation. If the business decides to retire the `EXPIRED` status (because in the new commercial model it's absorbed into `TERMINATED`), PostgreSQL has no `ALTER TYPE DROP VALUE`. You need to:
+**You can't drop a value natively**. Sounds like a small detail; it's the biggest limitation. If the business decides to retire the `EXPIRED` status (because in the new commercial model it gets absorbed into `TERMINATED`), PostgreSQL has no `ALTER TYPE DROP VALUE`. You need to:
 
 1. Create a new type with the reduced set of values
 2. Update every row of the table to migrate it to the new set
@@ -143,11 +143,11 @@ PostgreSQL ENUM has limits. They aren't worse than MySQL's — they're **differe
 
 All of this, on a large table, is exactly the heavy migration that in MySQL you'd have paid to **add** a value — here you pay it to **remove** one. The symmetry is cute only on paper: in production, it's still a lot of load.
 
-**Renaming a value is easy, but transactional**. `ALTER TYPE ... RENAME VALUE 'X' TO 'Y'` has been available since PostgreSQL 10. Fast and clean operation. But — subtlety — the ALTER TYPE runs inside the transaction, yes, but if the rename happens while other sessions hold open transactions on that type, you may run into locks. On high-concurrency systems it's not as trivial as it looks.
+**Renaming a value is easy, even if transactional**. `ALTER TYPE ... RENAME VALUE 'X' TO 'Y'` has been available since PostgreSQL 10. Fast and clean operation. There's a subtlety though: the ALTER TYPE runs inside the transaction, yes, and if the rename happens while other sessions hold open transactions on that type, you may run into locks. On high-concurrency systems it's not as trivial as it looks.
 
 **Position-based ordering**. As in MySQL, the order in which values were declared matters for `ORDER BY`. If you added `SUSPENDED_NONPAYMENT` `AFTER 'SUSPENDED'`, the order is consistent. But if you forget and run `ALTER TYPE ... ADD VALUE 'NEW_ONE'` without specifying position, the value goes to the end. Dashboard sorts can surprise you.
 
-**GIN/GiST indexes don't treat it as text**. Could be an advantage or a problem depending on your use case, but if you were planning full-text search on it, remember ENUM isn't `text`. It needs to be cast, and the cast sometimes prevents index use.
+**GIN/GiST indexes don't treat it as text**. Could be an advantage or a problem depending on your use case; if you were planning full-text search on it, remember ENUM isn't `text`. It needs to be cast, and the cast sometimes prevents index use.
 
 In the subscriptions system, two years in, the statuses had grown to eleven, and a "cleanup" request from the business — drop three, rename two — turned an apparently-trivial change into a weekend-long migration, with partial dump-restore of a few satellite tables that used the type. The price had arrived — just at a different point in the lifecycle than in MySQL.
 
@@ -257,7 +257,7 @@ The takeaway from the subscriptions case — and it holds, identical, in Postgre
 
 The difference between the two databases isn't in the rule. It's in **where the price falls** when the domain changes:
 
-- **In MySQL**, adding a value in a specific position costs a table rebuild. Adding it at the end is cheap, but it corrupts the ordering.
+- **In MySQL**, adding a value in a specific position costs a table rebuild. Adding it at the end is cheap; it corrupts the ordering however.
 - **In PostgreSQL**, adding is always cheap (even in a specific position). Removing or reorganizing is the heavy migration.
 
 Understanding your use case means understanding **what kind of evolution the domain is likely to undergo**. Only additions? PostgreSQL ENUM is an ally. Additions and removals? Better a lookup table from day one.
