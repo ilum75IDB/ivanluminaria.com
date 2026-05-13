@@ -279,6 +279,8 @@ Articles are published **one per week, every Tuesday at 08:03 CET**, starting fr
    - **Previous available slot**: the first Tuesday before the oldest article's date. Used when inserting backdated articles
    - **Next available slot**: the first Tuesday after the most recent article's date. Used for new articles
    - Both must be updated after every schedule change
+11. **Martedì festivo (festività italiane)**: se uno slot martedì coincide con una **festività italiana** (vedi `docs/HOLIDAYS_CALENDAR.md`), spostare la pubblicazione al **mercoledì successivo** alle 08:03 CET. Il post LinkedIn principale segue lo slot (anche al mercoledì). Per le festività degli altri paesi (UK/ES/RO) **non si fa alcuno shift** — l'articolo è online in tutte le lingue ma non c'è una "pubblicazione" locale. Casi noti 2026: martedì 06/01 (Epifania) → mercoledì 07/01; martedì 02/06 (Festa della Repubblica) → mercoledì 03/06; martedì 08/12 (Immacolata) → mercoledì 09/12.
+12. **Calendario festività**: consultare `docs/HOLIDAYS_CALENDAR.md` per le festività ufficiali IT/UK/ES/RO. **Il 15 dicembre di ogni anno** preparare il calendario dell'anno successivo aggiungendo una nuova sezione al file.
 
 ### Current Schedule
 
@@ -446,7 +448,7 @@ Quando l'utente chiede di creare un post LinkedIn per promuovere un nuovo artico
 Due post a settimana:
 
 1. **Martedì** — post principale con link all'articolo appena pubblicato (l'articolo è online dalle 08:10 CET, il post va schedulato su Buffer per le ~10:05–10:15 CET)
-2. **Venerdì ~15:00** — post teaser che anticipa l'articolo del martedì successivo, creando curiosità senza spoilerare il contenuto. **Se il venerdì cade su una festività** (es. 1 maggio, 25 aprile, 15 agosto, 1 novembre, 8 dicembre, 25-26 dicembre, Pasquetta, 2 giugno, 1 gennaio, 6 gennaio), **anticipare il teaser al giovedì stesso orario** — l'engagement in giornata festiva è quasi zero e il post va sprecato
+2. **Venerdì ~15:00** — post teaser che anticipa l'articolo del martedì successivo, creando curiosità senza spoilerare il contenuto. **Se il venerdì cade su una festività italiana** (vedi `docs/HOLIDAYS_CALENDAR.md`), **anticipare il teaser al giovedì stesso orario** — l'engagement in giornata festiva è quasi zero e il post va sprecato
 
 Quando l'utente chiede "fammi i post della settimana" o simili, generare **entrambi** i post: quello del martedì per l'articolo in uscita e quello del venerdì per l'articolo della settimana successiva.
 
