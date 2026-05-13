@@ -102,7 +102,7 @@ Poi sono iniziati i problemi.
 
 ---
 
-## I limiti, raccontati onestamente
+## I limiti, racconti dall'esperienza
 
 Il primo segnale è arrivato con una mail dal product manager: serve aggiungere uno stato `PRENOTATO`, per gestire le spedizioni che il cliente ha annunciato ma non ancora consegnato al deposito. Operazione apparentemente banale. Operazione che richiede questo:
 
@@ -115,7 +115,7 @@ ALTER TABLE spedizioni
 
 Sembra una riga sola. Ma se vuoi aggiungere `PRENOTATO` **prima** di `RICEVUTO` (per coerenza semantica nella sequenza), MySQL deve riscrivere la tabella. Tutta. Su `spedizioni` da centocinquanta milioni di righe, in produzione, con `Online DDL` configurato bene, sono comunque parecchie ore di carico extra sullo storage e sul replication lag. Aggiungere semplicemente in fondo `MODIFY COLUMN status ENUM(...,'PRENOTATO')` sarebbe stato più leggero — ma avrebbe creato un set di valori con un ordinamento posizionale assurdo: `CONSEGNATO` viene "prima" di `PRENOTATO` nel sort? Tecnicamente sì.
 
-Eccoli, i limiti di ENUM, raccontati senza pietà:
+Eccoli, i limiti di ENUM, uno per uno:
 
 **Case-insensitive**. `'ATTIVO'` e `'attivo'` sono lo stesso valore. Per chi viene da PostgreSQL può essere una sorpresa amara. In MySQL è un design choice esplicito, ma è bene saperlo prima.
 
@@ -234,7 +234,7 @@ La sintesi che porto via da questa storia, e che ripeto ai team quando arriva la
 
 > Se i valori non cambieranno mai, ENUM è la scelta giusta. Se cambieranno — anche solo "ogni tanto" — non legare il vocabolario allo schema.
 
-Tutto qui. Il difficile non è scegliere tra le tre strade. Il difficile è capire onestamente, al momento della scelta, in quale dei due mondi ti trovi. E quello, di solito, lo capisci solo guardando come è cambiato il dominio negli ultimi due o tre anni — non leggendo i requisiti del prossimo sprint.
+Tutto qui. Il difficile non è scegliere tra le tre strade. Il difficile è capire, al momento della scelta, in quale dei due mondi ti trovi davvero. E quello lo capisci solo guardando come è cambiato il dominio negli ultimi due o tre anni — non leggendo i requisiti del prossimo sprint.
 
 ---
 
