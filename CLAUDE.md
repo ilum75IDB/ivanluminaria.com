@@ -463,6 +463,22 @@ Due post a settimana:
 1. **Martedì** — post principale con link all'articolo appena pubblicato (l'articolo è online dalle 08:10 CET, il post va schedulato su Buffer per le ~10:05–10:15 CET)
 2. **Venerdì ~15:00** — post teaser che anticipa l'articolo del martedì successivo, creando curiosità senza spoilerare il contenuto. **Se il venerdì cade su una festività italiana** (vedi `docs/HOLIDAYS_CALENDAR.md`), **anticipare il teaser al giovedì stesso orario** — l'engagement in giornata festiva è quasi zero e il post va sprecato
 
+### Slot Buffer principali
+
+Gli slot fissi configurati su Buffer per la pubblicazione automatica dei post LinkedIn sono:
+
+| Slot                         | Quando si usa                                             | Orario CET |
+|------------------------------|-----------------------------------------------------------|------------|
+| **Martedì 10:15**            | Post principale (settimana standard)                      | 10:15      |
+| **Mercoledì 16:20**          | Post principale (quando il martedì è festività italiana)  | 16:20      |
+| **Giovedì 17:10**            | Teaser (quando il venerdì è festività italiana)           | 17:10      |
+| **Venerdì 15:20**            | Teaser (settimana standard)                               | 15:20      |
+
+**Importante — non confondere gli orari**:
+- L'**articolo Hugo** va online sul sito alle **08:03 CET** (cron GitHub Actions). Questo orario riguarda solo il sito, non il post LinkedIn
+- Il **post LinkedIn** segue invece gli slot Buffer sopra
+- Nei testi dei post LinkedIn **non specificare orari** — usare solo il giorno della settimana (es. "Next Wednesday on the blog", "Mercoledì prossimo sul blog"). Questo evita disallineamenti tra orario articolo (08:03 CET) e orario post Buffer
+
 Quando l'utente chiede "fammi i post della settimana" o simili, generare **entrambi** i post: quello del martedì per l'articolo in uscita e quello del venerdì per l'articolo della settimana successiva.
 
 ### Post teaser del venerdì — regole specifiche
