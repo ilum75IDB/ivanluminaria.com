@@ -14,13 +14,13 @@ The call came on a Friday afternoon — because these things always happen on Fr
 
 We could talk. In fact, we should have talked about this a while ago.
 
-The setup was a classic: MySQL 8.0 on Rocky Linux, roughly 60 GB database, a business application with about thirty InnoDB tables, four or five of which were truly large — the orders table, the warehouse movements table, the tracking history. The backup ran every night via a mysqldump launched by cron at 2:00 AM. It had worked for years. The problem was that the database had grown in the meantime.
+The setup was a classic: MySQL 8.0 on Rocky Linux, roughly 60 GB database, a business application with about thirty InnoDB tables, four or five of which were truly large — the orders table, the warehouse movements table, the tracking history. The backup ran every night via a mysqldump launched by cron at 2:00 AM. It had worked for years. The point was that the database had grown in the meantime.
 
 Three hours of mysqldump means three hours of `--lock-all-tables` — or in the best case three hours of a consistent transaction with `--single-transaction` that still holds an InnoDB snapshot open the entire time. And when the dump finishes at 5:00 AM and a test restore (which nobody ever did) would have taken another four hours, the backup window simply doesn't exist anymore.
 
 ---
 
-## The real problem: mysqldump is single-threaded
+## The real point: mysqldump is single-threaded
 
 The first thing to understand about {{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}} is that it does one thing at a time. One table after another, one row after another, one SQL file as output. Period.
 
@@ -34,7 +34,7 @@ mysqldump --single-transaction --routines --triggers --events \
   --all-databases > /backup/full_backup.sql
 ```
 
-The paradox is that mysqldump has one enormous advantage: it's everywhere. It's included in every MySQL installation, requires nothing extra, produces readable SQL. If you need to move a 500-row table between two environments, it's perfect. If you need to back up a 60 GB production database — no.
+The paradox is that mysqldump has one enormous advantage: it's everywhere. It's included in every MySQL installation, requires nothing extra, produces readable SQL. If moving a 500-row table between two environments is what you need, it's perfect. If backing up a 60 GB production database is what you need — no.
 
 I explained to the client that we had two alternatives: mysqlpump and mydumper. Two tools with different philosophies, different limitations, and performance that on paper promises a lot but in reality needs to be tested.
 
@@ -51,11 +51,11 @@ mysqlpump --single-transaction --default-parallelism=4 \
   --compress-output=zlib --all-databases > /backup/full_backup.sql.zlib
 ```
 
-The result? 48 minutes for the dump, versus three and a half hours with mysqldump. A significant improvement. But then I looked closer.
+The result? 48 minutes for the dump, versus three and a half hours with mysqldump. A significant improvement. Only then I looked closer.
 
-mysqlpump's parallelism works at the table level: if you have 4 threads, it dumps 4 tables simultaneously. The problem is that when you have one 30 GB table and three 50 MB tables, three threads finish in thirty seconds and then a single thread drags on for forty minutes on the big table. Parallelism is only as effective as your database is balanced — and production databases are never balanced.
+mysqlpump's parallelism works at the table level: if you have 4 threads, it dumps 4 tables simultaneously. The point is that when you have one 30 GB table and three 50 MB tables, three threads finish in thirty seconds and then a single thread drags on for forty minutes on the big table. Parallelism is only as effective as your database is balanced — and production databases are never balanced.
 
-But the more serious problem is something else. mysqlpump with `--single-transaction` does not guarantee consistent backup across different tables. The documentation itself says so, in a note that most people don't read:
+Only the more serious point is something else. mysqlpump with `--single-transaction` does not guarantee consistent backup across different tables. The documentation itself says so, in a note that most people don't read:
 
 > *mysqlpump does not guarantee consistency of the dumped data across tables when using parallelism. Tables dumped in different threads may be at different points in time.*
 
@@ -120,7 +120,7 @@ A few notes on the numbers:
 
 ---
 
-## Critical options you must never forget
+## Critical options never to forget
 
 Whatever tool you choose, there are options you must always include. I've seen them forgotten too many times, with consequences ranging from inconvenience to disaster.
 
@@ -184,7 +184,7 @@ Logical backup is convenient because it's portable — you can restore on any My
 
 The following Friday, the client's DBA messaged me on Teams again. But this time the message was different: "Backup finished in 23 minutes. No impact on users. Thanks."
 
-You're welcome. But next time, don't wait until the backup takes three hours to ask for help.
+You're welcome. Yet next time, don't wait until the backup takes three hours to ask for help.
 
 ------------------------------------------------------------------------
 

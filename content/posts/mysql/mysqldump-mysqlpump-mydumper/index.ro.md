@@ -14,13 +14,13 @@ Apelul a venit într-o vineri după-amiază — pentru că aceste lucruri se în
 
 Puteam discuta, da. De fapt, ar fi trebuit să discutăm demult.
 
-Setup-ul era un clasic: MySQL 8.0 pe Rocky Linux, bază de date de aproximativ 60 GB, un gestional cu vreo treizeci de tabele InnoDB din care patru sau cinci erau cu adevărat mari — tabela comenzilor, cea a mișcărilor de depozit, istoricul de tracking. Backup-ul se făcea în fiecare noapte cu un mysqldump lansat de cron la 2:00. Funcționase ani de zile. Problema era că baza de date între timp crescuse.
+Setup-ul era un clasic: MySQL 8.0 pe Rocky Linux, bază de date de aproximativ 60 GB, un gestional cu vreo treizeci de tabele InnoDB din care patru sau cinci erau cu adevărat mari — tabela comenzilor, cea a mișcărilor de depozit, istoricul de tracking. Backup-ul se făcea în fiecare noapte cu un mysqldump lansat de cron la 2:00. Funcționase ani de zile. Chestiunea era că baza de date între timp crescuse.
 
 Trei ore de mysqldump înseamnă trei ore de `--lock-all-tables` — sau în cel mai bun caz trei ore de tranzacție consistentă cu `--single-transaction` care oricum ține un snapshot InnoDB deschis tot timpul. Și când dump-ul se termină la 5:00 și un restore de test (pe care nimeni nu-l făcea) ar fi durat încă patru ore, fereastra de backup pur și simplu nu mai există.
 
 ---
 
-## Problema reală: mysqldump este single-threaded
+## Punctul real: mysqldump este single-threaded
 
 Primul lucru de înțeles despre {{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}} este că face un singur lucru la un moment dat. O tabelă după alta, un rând după altul, un fișier SQL la ieșire. Atât.
 
@@ -34,7 +34,7 @@ mysqldump --single-transaction --routines --triggers --events \
   --all-databases > /backup/full_backup.sql
 ```
 
-Paradoxal, mysqldump are un avantaj enorm: este peste tot. Este inclus în fiecare instalare MySQL, nu necesită nimic suplimentar, produce SQL lizibil. Dacă trebuie să muți o tabelă de 500 de rânduri între două medii, este perfect. Dacă trebuie să faci backup la o bază de date de 60 GB în producție — nu.
+Paradoxal, mysqldump are un avantaj enorm: este peste tot. Este inclus în fiecare instalare MySQL, nu necesită nimic suplimentar, produce SQL lizibil. Dacă îți trebuie să muți o tabelă de 500 de rânduri între două medii, este perfect. Dacă îți trebuie să faci backup la o bază de date de 60 GB în producție — nu.
 
 I-am explicat clientului că aveam două alternative: mysqlpump și mydumper. Două instrumente cu filozofii diferite, limitări diferite și performanțe care pe hârtie promit mult dar în realitate trebuie testate.
 
@@ -51,11 +51,11 @@ mysqlpump --single-transaction --default-parallelism=4 \
   --compress-output=zlib --all-databases > /backup/full_backup.sql.zlib
 ```
 
-Rezultatul? 48 de minute pentru dump, față de trei ore și jumătate cu mysqldump. O îmbunătățire importantă. Dar apoi am privit mai atent.
+Rezultatul? 48 de minute pentru dump, față de trei ore și jumătate cu mysqldump. O îmbunătățire importantă. Doar că apoi am privit mai atent.
 
-Paralelismul lui mysqlpump funcționează la nivel de tabelă: dacă ai 4 thread-uri, face dump la 4 tabele simultan. Problema este că atunci când ai o tabelă de 30 GB și trei tabele de 50 MB, trei thread-uri termină în treizeci de secunde și apoi un singur thread se târăște patruzeci de minute pe tabela mare. Paralelismul este la fel de eficient pe cât de echilibrată este baza ta de date — și bazele de date de producție nu sunt niciodată echilibrate.
+Paralelismul lui mysqlpump funcționează la nivel de tabelă: dacă ai 4 thread-uri, face dump la 4 tabele simultan. Chestiunea este că atunci când ai o tabelă de 30 GB și trei tabele de 50 MB, trei thread-uri termină în treizeci de secunde și apoi un singur thread se târăște patruzeci de minute pe tabela mare. Paralelismul este la fel de eficient pe cât de echilibrată este baza ta de date — și bazele de date de producție nu sunt niciodată echilibrate.
 
-Dar problema mai gravă este alta. mysqlpump cu `--single-transaction` nu garantează un backup consistent între tabele diferite. O spune documentația însăși, într-o notă pe care majoritatea oamenilor nu o citesc:
+Doar că chestiunea mai gravă este alta. mysqlpump cu `--single-transaction` nu garantează un backup consistent între tabele diferite. O spune documentația însăși, într-o notă pe care majoritatea oamenilor nu o citesc:
 
 > *mysqlpump does not guarantee consistency of the dumped data across tables when using parallelism. Tables dumped in different threads may be at different points in time.*
 
@@ -120,7 +120,7 @@ Câteva note despre numere:
 
 ---
 
-## Opțiunile critice pe care nu trebuie să le uiți
+## Opțiunile critice de neuitat
 
 Oricare instrument ai alege, există opțiuni pe care trebuie să le incluzi întotdeauna. Le-am văzut uitate de prea multe ori, cu consecințe care variază de la neplăceri la dezastre.
 
@@ -184,7 +184,7 @@ Backup-ul logic este comod pentru că este portabil — poți face restore pe or
 
 Vinerea următoare, DBA-ul clientului mi-a scris din nou pe Teams. Dar de data aceasta mesajul era diferit: "Backup terminat în 23 de minute. Niciun impact asupra utilizatorilor. Mulțumesc."
 
-Cu plăcere. Dar data viitoare, nu aștepta ca backup-ul să dureze trei ore ca să-mi ceri ajutorul.
+Cu plăcere. Însă data viitoare, nu aștepta ca backup-ul să dureze trei ore ca să-mi ceri ajutorul.
 
 ------------------------------------------------------------------------
 
