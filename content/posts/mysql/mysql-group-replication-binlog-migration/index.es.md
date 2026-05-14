@@ -18,7 +18,7 @@ La primera pregunta que te viene a la cabeza es "¿cuánto espacio necesitamos?"
 
 ## La causa: binary logs en el volumen equivocado
 
-Verificar fue rápido:
+Verificar fue rápido [1]:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin';
@@ -64,9 +64,9 @@ SHOW SLAVE STATUS\G
 
 Empty set en los dos nodos que comprobé. Ninguna replicación tradicional activa.
 
-Después probé con `SHOW REPLICA STATUS` — pero en MySQL 8.0.20 ese comando todavía no existe. Se introdujo en la 8.0.22. Un detalle que la documentación online suele olvidar mencionar, dejándote persiguiendo un error de sintaxis que no es tal.
+Después probé con `SHOW REPLICA STATUS` — pero en MySQL 8.0.20 ese comando todavía no existe. Se introdujo en la 8.0.22 [2]. Un detalle que la documentación online suele olvidar mencionar, dejándote persiguiendo un error de sintaxis que no es tal.
 
-Siguiente paso — Group Replication:
+Siguiente paso — Group Replication [3] [4]:
 
 ```sql
 SELECT MEMBER_HOST, MEMBER_STATE, MEMBER_ROLE
@@ -99,7 +99,7 @@ SHOW VARIABLES LIKE 'group_replication_single_primary_mode';
 ON
 ```
 
-Ahora sabía exactamente lo que tenía delante. No una réplica clásica, no un Galera, no un NDB Cluster. Un MySQL Group Replication single-primary con tres nodos, GTID habilitados, formato de binlog ROW. El panorama completo.
+Ahora sabía exactamente lo que tenía delante. No una réplica clásica, no un Galera, no un NDB Cluster. Un MySQL Group Replication single-primary con tres nodos [5], GTID habilitados, formato de binlog ROW. El panorama completo.
 
 La tentación siempre es saltarse esta fase. "Ya sé que es un cluster, vamos." Pero saltarse el diagnóstico en un cluster es como operar sin un TAC: puede que tengas suerte, o puede que provoques un desastre.
 
@@ -271,6 +271,16 @@ Separar los binary logs en un volumen dedicado no es solo un fix. Es endurecimie
 Y la parte más importante de toda la intervención no fue el cambio en el `my.cnf` — eso es una línea. La parte importante fue el diagnóstico: entender qué tipo de cluster tenía delante, verificar el estado de cada nodo, preparar el storage, probar los permisos, planificar el orden de ejecución. Todo antes de tocar un solo parámetro.
 
 Un DBA senior y un DBA junior conocen ambos el comando `systemctl stop mysqld`. La diferencia está en todo lo que sucede antes.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. MySQL 8.0 Reference Manual — [Binary Logging Options and Variables (`log_bin`, `log_bin_basename`)](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html)
+2. MySQL 8.0 Reference Manual — [`SHOW REPLICA STATUS` / `SHOW SLAVE STATUS`](https://dev.mysql.com/doc/refman/8.0/en/show-replica-status.html)
+3. MySQL 8.0 Reference Manual — [The `replication_group_members` Table](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-replication-group-members-table.html)
+4. MySQL 8.0 Reference Manual — [Group Replication](https://dev.mysql.com/doc/refman/8.0/en/group-replication.html)
+5. MySQL 8.0 Reference Manual — [Group Replication — Single-Primary Mode](https://dev.mysql.com/doc/refman/8.0/en/group-replication-single-primary-mode.html)
 
 ------------------------------------------------------------------------
 
