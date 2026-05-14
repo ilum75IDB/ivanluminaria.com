@@ -83,7 +83,7 @@ And so it did: it read 800 million rows to return 64 million.
 
 Forty gigabytes of I/O for a quarterly query. In an environment where the buffer pool was sized at 16 GB, that meant reading more than twice the entire cache from disk. Twelve minutes.
 
-## 🏗️ The solution: monthly range partitioning
+## 🏗️ The solution: monthly range partitioning [1]
 
 Range partitioning by date is the natural choice for a fact table in a data warehouse. Data enters in chronological order, queries filter by time period, old data goes cold and new data stays hot. The date is the perfect partition key.
 
@@ -111,7 +111,7 @@ PARTITION BY RANGE (data_vendita) (
 );
 ```
 
-With a {{< glossary term="local-index" >}}local index{{< /glossary >}} on the date:
+With a {{< glossary term="local-index" >}}local index{{< /glossary >}} on the date [2]:
 
 ```sql
 CREATE INDEX idx_vendite_data_local ON fact_vendite_part (data_vendita) LOCAL;
@@ -161,7 +161,7 @@ ALTER TABLE fact_vendite_part RENAME TO fact_vendite;
 
 I kept the original table for a week as a safety net, then dropped it.
 
-## ⚡ {{< glossary term="partition-pruning" >}}Partition pruning{{< /glossary >}} in action
+## ⚡ {{< glossary term="partition-pruning" >}}Partition pruning{{< /glossary >}} in action [3]
 
 With partitioning in place, the same quarterly query had a completely different execution plan:
 
@@ -200,7 +200,7 @@ The result? From 12 minutes to 40 seconds.
 
 Not because the hardware was faster, not because I rewrote the queries. Only because the database now knew where *not* to look.
 
-## 🔄 Exchange partition: the zero-cost load
+## 🔄 Exchange partition: the zero-cost load [4]
 
 In a data warehouse, data arrives on a regular cadence — in our case, a nightly {{< glossary term="etl" >}}ETL{{< /glossary >}} that loaded each day's sales. The classic partitioning point is: how do you load new data into the correct partition without impacting queries?
 
@@ -259,6 +259,15 @@ Partitioning is not a magic wand. It doesn't replace indexes — if the query do
 But for a fact table in a data warehouse — where data is chronological, queries filter by time period, and volumes grow every day — range partitioning by date is not optional. It's an architectural requirement.
 
 The colleague with the 12-minute report didn't have a hardware problem or badly written queries. He had a table that had grown past the point where the lack of physical structure becomes a bottleneck. Partitioning put things back in their place: 40 seconds, and not a single row read needlessly.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-concepts.html)
+2. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning of Tables and Indexes](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-create-tables-indexes.html)
+3. Oracle Database VLDB and Partitioning Guide 19c — [Partition Pruning](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-pruning.html)
+4. Oracle Database VLDB and Partitioning Guide 19c — [Partition Maintenance Operations (Exchange Partition)](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/maintenance-partition-tables-indexes.html)
 
 ------------------------------------------------------------------------
 
