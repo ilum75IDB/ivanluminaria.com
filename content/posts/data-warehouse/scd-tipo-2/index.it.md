@@ -14,7 +14,7 @@ Il direttore commerciale si presenta alla riunione del lunedì mattina con una d
 
 Risposta del DWH: silenzio.
 
-Non perché il sistema fosse giù, o perché mancasse la tabella. Il dato c'era, tecnicamente. Ma era sbagliato. Il DWH rispondeva con i clienti che *oggi* sono nella regione Nord — non quelli che c'erano a giugno. Perché ogni notte, il processo di caricamento sovrascriveva l'anagrafica clienti con i dati correnti, cancellando ogni traccia di quello che c'era prima.
+Non perché il sistema fosse giù, o perché mancasse la tabella. Il dato c'era, tecnicamente. Solo che era errato. Il DWH rispondeva con i clienti che *oggi* sono nella regione Nord — non quelli che c'erano a giugno. Perché ogni notte, il processo di caricamento sovrascriveva l'anagrafica clienti con i dati correnti, cancellando ogni traccia di quello che c'era prima.
 
 Un cliente che a giugno era in regione Nord e a settembre si è spostato in regione Centro? Per il DWH, quel cliente è sempre stato in regione Centro. La storia non esiste.
 
@@ -56,7 +56,7 @@ WHEN NOT MATCHED THEN INSERT (
 );
 ```
 
-Semplice, pulito, veloce. E completamente sbagliato per un data warehouse.
+Semplice, pulito, veloce. E completamente errato per un data warehouse.
 
 Questo è quello che {{< glossary term="kimball" >}}Kimball{{< /glossary >}} chiama **SCD Tipo 1** — Slowly Changing Dimension di Tipo 1. Sovrascrivi il vecchio valore con il nuovo. Nessuna storia, nessun versioning. Il dato attuale cancella il dato precedente.
 
@@ -334,7 +334,7 @@ Nel progetto assicurativo i numeri erano questi:
 
 Da 120K a 220K in cinque anni. Un aumento del 83% — che sembra tanto in percentuale ma è trascurabile in termini assoluti. 220K righe sono niente per Oracle. La query con indice sulla chiave surrogata resta nell'ordine dei millisecondi.
 
-Il problema si pone quando hai milioni di clienti con alti tassi di cambio. In quel caso monitori la crescita, consideri il partizionamento della dimensione, e sopratutto scegli con cura *quali* attributi tracciare. Non tutti gli attributi meritano la Tipo 2. Il numero di telefono del cliente? Tipo 1, sovrascrittura. La regione commerciale? Tipo 2, perché ha impatto sull'analisi del fatturato.
+La situazione si pone quando hai milioni di clienti con alti tassi di cambio. In quel caso monitori la crescita, consideri il partizionamento della dimensione, e sopratutto scegli con cura *quali* attributi tracciare. Non tutti gli attributi meritano la Tipo 2. Il numero di telefono del cliente? Tipo 1, sovrascrittura. La regione commerciale? Tipo 2, perché ha impatto sull'analisi del fatturato.
 
 La scelta di quali attributi tracciare con Tipo 2 è una decisione di business, non tecnica. Chiedi al business: "Se questo campo cambia, vi serve sapere qual era il valore precedente?" Se la risposta è sì, è Tipo 2. Se è no, è Tipo 1.
 

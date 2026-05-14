@@ -14,7 +14,7 @@ El director comercial se presenta en la reunión del lunes por la mañana con un
 
 Respuesta del DWH: silencio.
 
-No porque el sistema estuviera caído, ni porque faltara la tabla. El dato estaba ahí, técnicamente. Pero era erróneo. El DWH devolvía los clientes que *hoy* están en la región Norte — no los que estaban en junio. Porque cada noche, el proceso de carga sobrescribía la tabla maestra de clientes con los valores actuales, borrando cualquier rastro de lo que había antes.
+No porque el sistema estuviera caído, ni porque faltara la tabla. El dato estaba ahí, técnicamente. Solo que era errado. El DWH devolvía los clientes que *hoy* están en la región Norte — no los que estaban en junio. Porque cada noche, el proceso de carga sobrescribía la tabla maestra de clientes con los valores actuales, borrando cualquier rastro de lo que había antes.
 
 Un cliente que en junio estaba en la región Norte y en septiembre se trasladó a la región Centro? Para el DWH, ese cliente siempre había estado en la región Centro. La historia no existía.
 
@@ -56,7 +56,7 @@ WHEN NOT MATCHED THEN INSERT (
 );
 ```
 
-Simple, limpio, rápido. Y completamente equivocado para un data warehouse.
+Simple, limpio, rápido. Y completamente errado para un data warehouse.
 
 Esto es lo que {{< glossary term="kimball" >}}Kimball{{< /glossary >}} llama **SCD Tipo 1** — Slowly Changing Dimension de Tipo 1. Sobrescribes el valor antiguo con el nuevo. Sin historia, sin versionado. El valor actual borra el anterior.
 
@@ -334,7 +334,7 @@ En el proyecto asegurador los números eran estos:
 
 De 120K a 220K en cinco años. Un aumento del 83% — que parece mucho en porcentaje pero es despreciable en términos absolutos. 220K filas son nada para Oracle. La consulta con índice sobre la clave subrogada se mantiene en el orden de los milisegundos.
 
-El problema se presenta cuando tienes millones de clientes con altas tasas de cambio. En ese caso monitorizas el crecimiento, consideras el particionamiento de la dimensión, y sobre todo eliges con cuidado *qué* atributos rastrear. No todos los atributos merecen Tipo 2. ¿El teléfono del cliente? Tipo 1, sobrescritura. ¿La región comercial? Tipo 2, porque impacta en el análisis de facturación.
+La situación se presenta cuando tienes millones de clientes con altas tasas de cambio. En ese caso monitorizas el crecimiento, consideras el particionamiento de la dimensión, y sobre todo eliges con cuidado *qué* atributos rastrear. No todos los atributos merecen Tipo 2. ¿El teléfono del cliente? Tipo 1, sobrescritura. ¿La región comercial? Tipo 2, porque impacta en el análisis de facturación.
 
 La elección de qué atributos rastrear con Tipo 2 es una decisión de negocio, no técnica. Pregunta al negocio: "Si este campo cambia, ¿necesitáis saber cuál era el valor anterior?" Si la respuesta es sí, es Tipo 2. Si es no, es Tipo 1.
 

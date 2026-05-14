@@ -14,7 +14,7 @@ Directorul comercial apare la ședința de luni dimineața cu o întrebare simpl
 
 Răspunsul DWH-ului: liniște.
 
-Nu pentru că sistemul era căzut, sau pentru că lipsea tabela. Datele erau acolo, tehnic vorbind. Dar erau greșite. DWH-ul returna clienții care *astăzi* sunt în regiunea Nord — nu pe cei care erau acolo în iunie. Pentru că în fiecare noapte, procesul de încărcare suprascria datele master ale clienților cu valorile curente, ștergând orice urmă a ceea ce fusese înainte.
+Nu pentru că sistemul era căzut, sau pentru că lipsea tabela. Datele erau acolo, tehnic vorbind. Doar că erau eronate. DWH-ul returna clienții care *astăzi* sunt în regiunea Nord — nu pe cei care erau acolo în iunie. Pentru că în fiecare noapte, procesul de încărcare suprascria datele master ale clienților cu valorile curente, ștergând orice urmă a ceea ce fusese înainte.
 
 Un client care în iunie era în regiunea Nord și în septembrie s-a mutat în regiunea Centru? Pentru DWH, acel client fusese întotdeauna în regiunea Centru. Istoria nu exista.
 
@@ -56,7 +56,7 @@ WHEN NOT MATCHED THEN INSERT (
 );
 ```
 
-Simplu, curat, rapid. Și complet greșit pentru un data warehouse.
+Simplu, curat, rapid. Și complet eronat pentru un data warehouse.
 
 Aceasta este ceea ce {{< glossary term="kimball" >}}Kimball{{< /glossary >}} numește **SCD Tip 1** — Slowly Changing Dimension de Tip 1. Suprascrii valoarea veche cu cea nouă. Fără istorie, fără versionare. Valoarea actuală șterge valoarea anterioară.
 
@@ -334,7 +334,7 @@ Costul Tipului 2 este creșterea tabelei dimensionale. Cu Tipul 1, fiecare clien
 
 De la 120K la 220K în cinci ani. O creștere de 83% — care pare mult în procente dar este neglijabilă în termeni absoluți. 220K linii sunt nimic pentru Oracle. Interogarea cu index pe cheia surogat rămâne în ordinul milisecundelor.
 
-Problema apare când ai milioane de clienți cu rate mari de schimbare. În acel caz monitorizezi creșterea, consideri partiționarea dimensiunii, și mai ales alegi cu grijă *care* atribute să le urmărești. Nu toate atributele merită Tip 2. Telefonul clientului? Tip 1, suprascriere. Regiunea comercială? Tip 2, pentru că impactează analiza cifrei de afaceri.
+Situația apare când ai milioane de clienți cu rate mari de schimbare. În acel caz monitorizezi creșterea, consideri partiționarea dimensiunii, și mai ales alegi cu grijă *care* atribute să le urmărești. Nu toate atributele merită Tip 2. Telefonul clientului? Tip 1, suprascriere. Regiunea comercială? Tip 2, pentru că impactează analiza cifrei de afaceri.
 
 Alegerea atributelor de urmărit cu Tip 2 este o decizie de business, nu tehnică. Întreabă business-ul: "Dacă acest câmp se schimbă, aveți nevoie să știți care era valoarea anterioară?" Dacă răspunsul este da, este Tip 2. Dacă este nu, este Tip 1.
 
