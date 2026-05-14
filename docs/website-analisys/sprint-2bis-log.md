@@ -27,6 +27,11 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 
 **Regola critica**: ZERO link 404 in produzione. Se un link non è verificabile, scartare o sostituire.
 
+## ✅ Sprint 2-bis COMPLETATO — 20/20 articoli (2026-05-14)
+
+Totale: 20 articoli con sezione `## Fonti ufficiali`, **~85 link verificati 200 OK** pre-commit.
+Zero link 404 in produzione. Sezione presente in tutte e 4 le lingue per ciascun articolo.
+
 ## Articoli candidati (20 totali)
 
 ### Oracle (3 articoli)
