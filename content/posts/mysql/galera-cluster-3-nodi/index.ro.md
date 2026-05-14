@@ -144,9 +144,11 @@ Consecința: ID-urile auto-increment **nu vor fi secvențiale** între noduri. D
 
 ### `innodb_flush_log_at_trx_commit=2`
 
-Aici se face un compromis conștient. Valoarea 1 (implicită) garantează durabilitate totală — fiecare commit este scris și fsynced pe disc. Dar într-un cluster Galera, durabilitatea este deja garantată de replicarea sincronă pe trei noduri. Valoarea 2 scrie în buffer-ul sistemului de operare la fiecare commit și face fsync doar în fiecare secundă, îmbunătățind performanța de scriere cu 30-40% în testele noastre.
+Aici se face un compromis conștient. Valoarea `1` (implicită) garantează durabilitate totală chiar și în cazul unui crash de OS sau power loss pe nodul individual — fiecare commit este scris și fsynced pe disc înainte de a fi considerat închis [1]. Valoarea `2` scrie în buffer-ul sistemului de operare la fiecare commit și face fsync doar în fiecare secundă, îmbunătățind performanța de scriere cu 30-40% în testele noastre.
 
-Dacă pierzi un nod, datele sunt pe celelalte două. Dacă pierzi întregul datacenter... ei bine, asta e altă discuție.
+Într-un cluster Galera, replicarea sincronă pe trei noduri **atenuează** riscul: chiar dacă un nod pierde ultima secundă de tranzacții într-un crash, celelalte două copii au deja datele certificate înainte de commit [2]. Valoarea `2` este deci un compromis **rezonabil în acest context**, nu un echivalent al lui `1` — marja de risc rămâne pe crash-urile simultane (power loss al întregului datacenter, mentenanță coordonată planificată prost).
+
+Dacă pierzi un nod, datele sunt pe celelalte două. Dacă pierzi întregul datacenter, chiar și cu `flush=1` pe toate nodurile tranzacțiile din ultima secundă ar fi în risc: acolo nu mai e o decizie de flush, e o decizie de disaster recovery cu replicare geografică.
 
 ### `wsrep_sst_method=mariabackup`
 
@@ -396,6 +398,14 @@ Ce m-a impresionat cel mai mult a fost fraza lui: "Înainte trăiam cu anxietate
 Aceasta este adevărata valoare a unui cluster Galera bine configurat. Nu este tehnologia în sine — este liniștea pe care o aduce. Certitudinea că o singură defecțiune nu mai oprește compania.
 
 Partea tehnică este cea mai simplă. Ceea ce face diferența este înțelegerea **de ce** fiecare parametru este setat într-un anumit fel, ce se întâmplă când lucrurile merg prost și cum să diagnostichezi problemele înainte ca ele să devină urgențe. Un cluster care funcționează în demo și unul care rezistă în producție: distanța dintre cele două stă toată în detaliile pe care le-am povestit aici.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. MySQL 8.0 Reference Manual — [`innodb_flush_log_at_trx_commit`](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit)
+2. MariaDB Documentation — [Galera Cluster — Certification Based Replication](https://mariadb.com/docs/server/architecture/galera-cluster/replication-and-state-transfers)
+3. MariaDB Documentation — [Configuring MariaDB Galera Cluster](https://mariadb.com/docs/server/architecture/galera-cluster/configuring-mariadb-galera-cluster)
 
 ------------------------------------------------------------------------
 

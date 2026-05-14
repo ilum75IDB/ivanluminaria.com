@@ -144,9 +144,11 @@ The consequence: auto-increment IDs **won't be sequential** across nodes. If you
 
 ### `innodb_flush_log_at_trx_commit=2`
 
-Here we make a conscious trade-off. Value 1 (default) guarantees total durability — every commit is written and fsynced to disk. But in a Galera cluster, durability is already guaranteed by synchronous replication across three nodes. Value 2 writes to the OS buffer on each commit and fsyncs only every second, improving write performance by 30-40% in our tests.
+Here we make a conscious trade-off. Value `1` (default) guarantees total durability even against OS crashes or power loss on a single node — every commit is written and fsynced to disk before being considered closed [1]. Value `2` writes to the OS buffer on each commit and fsyncs only every second, improving write performance by 30-40% in our tests.
 
-If you lose one node, the data is on the other two. If you lose the entire datacenter... well, that's another conversation.
+In a Galera cluster, synchronous replication across three nodes **mitigates** the risk: even if one node loses the last second of transactions in a crash, the other two copies already hold the data certified before commit [2]. Value `2` is therefore a **reasonable trade-off in this context**, not an equivalent of `1` — the residual risk is on simultaneous crashes (full datacenter power loss, badly-planned coordinated maintenance).
+
+If you lose one node, the data is on the other two. If you lose the entire datacenter, even with `flush=1` on every node the last-second transactions would still be at risk: at that point it's no longer a flush decision, it's a disaster recovery decision with geographic replication.
 
 ### `wsrep_sst_method=mariabackup`
 
@@ -396,6 +398,14 @@ What struck me most was his comment: "We used to live with the anxiety of the da
 That's the real value of a well-configured Galera cluster. It's not the technology itself — it's the peace of mind it brings. The certainty that a single failure no longer stops the business.
 
 The technical part is the easiest. What makes the difference is understanding **why** each parameter is set a certain way, what happens when things go wrong, and how to diagnose problems before they become emergencies. A cluster that works in a demo and one that holds in production: the distance between the two is all in the details I've described here.
+
+------------------------------------------------------------------------
+
+## Official sources
+
+1. MySQL 8.0 Reference Manual — [`innodb_flush_log_at_trx_commit`](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit)
+2. MariaDB Documentation — [Galera Cluster — Certification Based Replication](https://mariadb.com/docs/server/architecture/galera-cluster/replication-and-state-transfers)
+3. MariaDB Documentation — [Configuring MariaDB Galera Cluster](https://mariadb.com/docs/server/architecture/galera-cluster/configuring-mariadb-galera-cluster)
 
 ------------------------------------------------------------------------
 
