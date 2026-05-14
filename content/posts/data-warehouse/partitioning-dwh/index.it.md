@@ -14,7 +14,7 @@ La settimana scorsa un collega mi ha raccontato di un progetto dove le query sul
 
 Non ho dovuto chiedere altro. Conoscevo già il copione.
 
-Una {{< glossary term="fact-table" >}}fact table{{< /glossary >}} che parte piccola, cresce ogni giorno, e nessuno si preoccupa della struttura fisica finché un giorno le query non tornano più. Non è un bug, non è un errore di codice. È il peso dei dati che alla fine si fa sentire.
+Una {{< glossary term="fact-table" >}}fact table{{< /glossary >}} che parte piccola, cresce ogni giorno, e nessuno si preoccupa della struttura fisica finché un giorno le query non tornano più. Non è un bug, non è una svista di codice. È il peso dei dati che alla fine si fa sentire.
 
 ---
 
@@ -63,7 +63,7 @@ GROUP BY pv.regione, cat.famiglia
 ORDER BY fatturato DESC;
 ```
 
-Il predicato su `data_vendita` avrebbe dovuto usare l'indice. E in effetti lo usava — un anno prima, quando la tabella aveva 500 milioni di righe. Ma con 800 milioni, l'optimizer aveva deciso che l'indice non conveniva più. Il calcolo era semplice: un trimestre = circa il 8% delle righe totali. Con un index range scan, Oracle avrebbe dovuto fare 64 milioni di accessi random ai blocchi dati. Un {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} sequenziale costava meno.
+Il predicato su `data_vendita` avrebbe dovuto usare l'indice. E in effetti lo usava — un anno prima, quando la tabella aveva 500 milioni di righe. Solo che con 800 milioni, l'optimizer aveva deciso che l'indice non conveniva più. Il calcolo era semplice: un trimestre = circa il 8% delle righe totali. Con un index range scan, Oracle avrebbe dovuto fare 64 milioni di accessi random ai blocchi dati. Un {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} sequenziale costava meno.
 
 E così faceva: leggeva 800 milioni di righe per restituirne 64 milioni.
 
@@ -83,7 +83,7 @@ E così faceva: leggeva 800 milioni di righe per restituirne 64 milioni.
 
 Quaranta gigabyte di I/O per una query trimestrale. In un ambiente dove il buffer pool era dimensionato a 16 GB, significava leggere più di due volte l'intero cache da disco. Dodici minuti.
 
-## 🏗️ La soluzione: range partitioning per mese
+## 🏗️ La soluzione: range partitioning per mese [1]
 
 Il partizionamento range per data è la scelta naturale per una fact table in un data warehouse. I dati entrano in ordine cronologico, le query filtrano per periodo, i dati vecchi diventano freddi e quelli nuovi caldi. La data è la chiave di partizionamento perfetta.
 
@@ -111,7 +111,7 @@ PARTITION BY RANGE (data_vendita) (
 );
 ```
 
-Con un {{< glossary term="local-index" >}}indice locale{{< /glossary >}} sulla data:
+Con un {{< glossary term="local-index" >}}indice locale{{< /glossary >}} sulla data [2]:
 
 ```sql
 CREATE INDEX idx_vendite_data_local ON fact_vendite_part (data_vendita) LOCAL;
@@ -161,7 +161,7 @@ ALTER TABLE fact_vendite_part RENAME TO fact_vendite;
 
 La tabella originale l'ho tenuta per una settimana come rete di sicurezza, poi l'ho droppata.
 
-## ⚡ Il {{< glossary term="partition-pruning" >}}partition pruning{{< /glossary >}} in azione
+## ⚡ Il {{< glossary term="partition-pruning" >}}partition pruning{{< /glossary >}} in azione [3]
 
 Con il partizionamento in posizione, la stessa query trimestrale di prima cambiava completamente execution plan:
 
@@ -200,9 +200,9 @@ Il risultato? Da 12 minuti a 40 secondi.
 
 Non perché l'hardware fosse più veloce, non perché avessi riscritto le query. Solo perché il database adesso sapeva dove *non* cercare.
 
-## 🔄 Exchange partition: il caricamento che non costa nulla
+## 🔄 Exchange partition: il caricamento che non costa nulla [4]
 
-In un data warehouse, i dati arrivano con una cadenza regolare — nel nostro caso, un {{< glossary term="etl" >}}ETL{{< /glossary >}} notturno che caricava le vendite del giorno. Il problema classico del partizionamento è: come carichi i nuovi dati nella partizione corretta senza impattare le query?
+In un data warehouse, i dati arrivano con una cadenza regolare — nel nostro caso, un {{< glossary term="etl" >}}ETL{{< /glossary >}} notturno che caricava le vendite del giorno. La sfida classica del partizionamento è: come carichi i nuovi dati nella partizione corretta senza impattare le query?
 
 La risposta si chiama {{< glossary term="exchange-partition" >}}exchange partition{{< /glossary >}}.
 
@@ -259,6 +259,15 @@ Il partizionamento non è una bacchetta magica. Non sostituisce gli indici — s
 Ma per una fact table in un data warehouse — dove i dati sono cronologici, le query filtrano per periodo, e i volumi crescono ogni giorno — il partizionamento range per data non è un'opzione. È un requisito architetturale.
 
 Il collega con il report da 12 minuti non aveva un problema di hardware o di query mal scritte. Aveva una tabella che era cresciuta oltre il punto in cui la mancanza di struttura fisica diventa un collo di bottiglia. Il partizionamento ha rimesso le cose al loro posto: 40 secondi, e nessuna riga letta inutilmente.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-concepts.html)
+2. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning of Tables and Indexes](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-create-tables-indexes.html)
+3. Oracle Database VLDB and Partitioning Guide 19c — [Partition Pruning](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-pruning.html)
+4. Oracle Database VLDB and Partitioning Guide 19c — [Partition Maintenance Operations (Exchange Partition)](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/maintenance-partition-tables-indexes.html)
 
 ------------------------------------------------------------------------
 

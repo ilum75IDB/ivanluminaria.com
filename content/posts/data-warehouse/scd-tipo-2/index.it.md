@@ -14,7 +14,7 @@ Il direttore commerciale si presenta alla riunione del lunedì mattina con una d
 
 Risposta del DWH: silenzio.
 
-Non perché il sistema fosse giù, o perché mancasse la tabella. Il dato c'era, tecnicamente. Ma era sbagliato. Il DWH rispondeva con i clienti che *oggi* sono nella regione Nord — non quelli che c'erano a giugno. Perché ogni notte, il processo di caricamento sovrascriveva l'anagrafica clienti con i dati correnti, cancellando ogni traccia di quello che c'era prima.
+Non perché il sistema fosse giù, o perché mancasse la tabella. Il dato c'era, tecnicamente. Solo che era errato. Il DWH rispondeva con i clienti che *oggi* sono nella regione Nord — non quelli che c'erano a giugno. Perché ogni notte, il processo di caricamento sovrascriveva l'anagrafica clienti con i dati correnti, cancellando ogni traccia di quello che c'era prima.
 
 Un cliente che a giugno era in regione Nord e a settembre si è spostato in regione Centro? Per il DWH, quel cliente è sempre stato in regione Centro. La storia non esiste.
 
@@ -56,9 +56,9 @@ WHEN NOT MATCHED THEN INSERT (
 );
 ```
 
-Semplice, pulito, veloce. E completamente sbagliato per un data warehouse.
+Semplice, pulito, veloce. E completamente errato per un data warehouse.
 
-Questo è quello che {{< glossary term="kimball" >}}Kimball{{< /glossary >}} chiama **SCD Tipo 1** — Slowly Changing Dimension di Tipo 1. Sovrascrivi il vecchio valore con il nuovo. Nessuna storia, nessun versioning. Il dato attuale cancella il dato precedente.
+Questo è quello che {{< glossary term="kimball" >}}Kimball{{< /glossary >}} chiama **SCD Tipo 1** — Slowly Changing Dimension di Tipo 1 [1]. Sovrascrivi il vecchio valore con il nuovo. Nessuna storia, nessun versioning. Il dato attuale cancella il dato precedente.
 
 Per un sistema OLTP è perfetto: vuoi sempre l'indirizzo corrente del cliente, il telefono aggiornato, la mail valida. Ma un data warehouse non è un sistema transazionale. Un data warehouse è una macchina del tempo. E una macchina del tempo che sovrascrive il passato è inutile.
 
@@ -82,13 +82,13 @@ A un certo punto il CFO ha chiesto un report di analisi trimestrale che confront
 
 ## SCD Tipo 2: il principio
 
-La Tipo 2 non sovrascrive. Versiona.
+La Tipo 2 non sovrascrive. Versiona [2].
 
 Quando un attributo cambia, il record corrente viene chiuso — gli si assegna una data di fine validità — e viene inserito un nuovo record con i valori aggiornati e una nuova data di inizio validità. Il vecchio record resta nel database, intatto, con tutti i valori che aveva quando era corrente.
 
 Per farlo servono tre elementi aggiuntivi nella tabella dimensionale:
 
-1. **Una {{< glossary term="chiave-surrogata" >}}chiave surrogata{{< /glossary >}}** — un identificativo generato dal DWH, distinto dalla chiave naturale del sistema sorgente. Serve perché lo stesso cliente avrà più record (uno per ogni versione), quindi la chiave naturale non è più univoca.
+1. **Una {{< glossary term="chiave-surrogata" >}}chiave surrogata{{< /glossary >}}** — un identificativo generato dal DWH, distinto dalla chiave naturale del sistema sorgente [3]. Serve perché lo stesso cliente avrà più record (uno per ogni versione), quindi la chiave naturale non è più univoca.
 2. **Date di validità** — `valid_from` e `valid_to` — che definiscono l'intervallo temporale in cui ogni versione del record era corrente.
 3. **Un flag di versione corrente** — `is_current` — che permette di recuperare rapidamente la versione attiva senza filtrare sulle date.
 
@@ -334,7 +334,7 @@ Nel progetto assicurativo i numeri erano questi:
 
 Da 120K a 220K in cinque anni. Un aumento del 83% — che sembra tanto in percentuale ma è trascurabile in termini assoluti. 220K righe sono niente per Oracle. La query con indice sulla chiave surrogata resta nell'ordine dei millisecondi.
 
-Il problema si pone quando hai milioni di clienti con alti tassi di cambio. In quel caso monitori la crescita, consideri il partizionamento della dimensione, e sopratutto scegli con cura *quali* attributi tracciare. Non tutti gli attributi meritano la Tipo 2. Il numero di telefono del cliente? Tipo 1, sovrascrittura. La regione commerciale? Tipo 2, perché ha impatto sull'analisi del fatturato.
+La situazione si pone quando hai milioni di clienti con alti tassi di cambio. In quel caso monitori la crescita, consideri il partizionamento della dimensione, e sopratutto scegli con cura *quali* attributi tracciare. Non tutti gli attributi meritano la Tipo 2. Il numero di telefono del cliente? Tipo 1, sovrascrittura. La regione commerciale? Tipo 2, perché ha impatto sull'analisi del fatturato.
 
 La scelta di quali attributi tracciare con Tipo 2 è una decisione di business, non tecnica. Chiedi al business: "Se questo campo cambia, vi serve sapere qual era il valore precedente?" Se la risposta è sì, è Tipo 2. Se è no, è Tipo 1.
 
@@ -361,6 +361,14 @@ Il direttore commerciale non sapeva di avere bisogno della storia finché non gl
 Questo è il punto. Non si implementa la Tipo 2 perché "è best practice" o perché "Kimball lo dice nel capitolo 5". Si implementa perché un data warehouse senza storia è un database operativo con una {{< glossary term="star-schema" >}}star schema{{< /glossary >}} appiccicata sopra. Funziona per i report del mese corrente, ma non risponde alla domanda che prima o poi qualcuno farà: "Com'era prima?"
 
 La domanda arriva sempre. La questione è se il tuo DWH è pronto a rispondere.
+
+---
+
+## Fonti ufficiali
+
+1. Kimball Group — [Type 1: Overwrite (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-1/)
+2. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
+3. Kimball Group — [Surrogate Key](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/surrogate-key/)
 
 ---
 

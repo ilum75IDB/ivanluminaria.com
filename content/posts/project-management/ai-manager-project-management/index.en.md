@@ -116,7 +116,7 @@ AI is not magic. It is architecture applied to intelligence.
 
 A model is a component. Like a database, like a message broker, like a load balancer. It needs clean inputs, monitoring, maintenance, governance. It needs someone who understands what it does, what it can do, and above all what it cannot do.
 
-The Project Manager who ignores these aspects and delegates everything to the technical team is making the same mistake as the one who delegated security to the sysadmin and then was surprised by the data breach.
+The Project Manager who ignores these aspects and delegates everything to the technical team is making the same oversight as the one who delegated security to the sysadmin and then was surprised by the data breach.
 
 AI is an architectural responsibility. And like all architectural responsibilities, it must be governed from above. Not from below.
 

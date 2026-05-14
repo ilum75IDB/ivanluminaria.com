@@ -1,22 +1,24 @@
 ---
 title: "default_statistics_target"
-description: "Parametrul PostgreSQL care controleaza cate esantioane colecteaza ANALYZE pentru a estima distributia datelor in fiecare coloana."
+description: "Parametrul PostgreSQL care controleaza granularitatea statisticilor colectate de ANALYZE (dimensiunea MCV si a histogramei)."
 translationKey: "glossary_postgresql_default_statistics_target"
 aka: "default_statistics_target (PostgreSQL)"
 articles:
   - "/posts/postgresql/explain-analyze-postgresql"
 ---
 
-**default_statistics_target** este parametrul PostgreSQL care defineste numarul de esantioane colectate de comanda `ANALYZE` pentru a construi statisticile fiecarei coloane. Valoarea implicita este 100.
+**default_statistics_target** este parametrul PostgreSQL care controleaza **granularitatea statisticilor** pe care `ANALYZE` le construieste pentru fiecare coloana. Valoarea implicita este 100.
 
 ## Cum functioneaza
 
-PostgreSQL esantioneaza un anumit numar de valori pentru fiecare coloana si le foloseste pentru a construi doua structuri:
+ANALYZE construieste pentru fiecare coloana doua structuri statistice folosite de optimizator:
 
 - **Most common values (MCV)**: lista valorilor celor mai frecvente, cu frecventele respective
 - **Histograma**: distributia valorilor ramase, impartita in bucket-uri de populatie egala
 
-Parametrul `default_statistics_target` determina cate elemente vor avea aceste structuri. Cu valoarea implicita de 100, histograma va avea 100 de bucket-uri si lista MCV va contine pana la 100 de valori.
+`default_statistics_target` determina cate elemente pot avea aceste structuri. Cu valoarea `100`: pana la 100 de valori in lista MCV si pana la 100 de bucket-uri in histograma.
+
+**Numarul de randuri esantionate este o chestiune separata si depinde de target**: este aproximativ `300 × default_statistics_target`. Cu default-ul de 100, ANALYZE citeste ~30.000 de randuri per coloana; cu un target de 500, ~150.000. Asadar cresterea target-ului mareste atat granularitatea statisticilor **cat si** costul ANALYZE.
 
 ## Cand trebuie crescut
 

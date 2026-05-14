@@ -13,7 +13,7 @@ image: "vacuum-autovacuum-postgresql.cover.jpg"
 
 Un paio d'anni fa mi chiedono di guardare un PostgreSQL in produzione che
 "rallenta ogni settimana". Sempre lo stesso pattern: lunedì va bene,
-venerdì è un disastro. Il weekend qualcuno riavvia il servizio e si
+venerdì la situazione si era degradata pesantemente. Il weekend qualcuno riavvia il servizio e si
 ricomincia.
 
 Database da circa 200 GB. Tabelle principali che occupavano quasi il
@@ -28,7 +28,7 @@ l'aveva nemmeno configurato.
 
 ## 🧠 MVCC: perché PostgreSQL genera "spazzatura"
 
-Per capire il problema serve un passo indietro. PostgreSQL usa MVCC —
+Per capire la dinamica serve un passo indietro. PostgreSQL usa MVCC —
 Multi-Version Concurrency Control. Ogni volta che fai un UPDATE, il
 database non sovrascrive la riga originale. Crea una nuova versione e
 segna la vecchia come "morta".
@@ -48,7 +48,7 @@ qualcuno passi a pulire.
 ## 🔧 VACUUM: cosa fa davvero
 
 Il comando `VACUUM` fa una cosa semplice: recupera lo spazio occupato
-dai dead tuples e lo rende riutilizzabile per nuovi inserimenti.
+dai dead tuples e lo rende riutilizzabile per nuovi inserimenti [1].
 
 Non restituisce spazio al sistema operativo. Non riorganizza la tabella.
 Non compatta nulla. Segna le pagine come riscrivibili.
@@ -100,17 +100,17 @@ quando i dead tuples superano **2.000.050**. Due milioni di righe morte
 prima che qualcuno faccia pulizia.
 
 Per una tabella con 500.000 update al giorno, significa che
-l'autovacuum si attiva forse ogni 4 giorni. Nel frattempo il bloat
+l'autovacuum si attiva all'incirca ogni 4 giorni. Nel frattempo il bloat
 cresce, le scansioni rallentano, gli indici si gonfiano.
 
-Ecco perché lunedì andava tutto bene e venerdì era un disastro.
+Ecco perché lunedì andava tutto bene e venerdì il sistema era al limite.
 
 ------------------------------------------------------------------------
 
 ## 📊 Diagnostica: leggere pg_stat_user_tables
 
-La prima cosa da fare quando sospetti un problema di vacuum è
-interrogare `pg_stat_user_tables`:
+La prima cosa da fare quando sospetti una criticità di vacuum è
+interrogare `pg_stat_user_tables` [2]:
 
 ``` sql
 SELECT
@@ -149,7 +149,7 @@ Il trucco non è disabilitare l'autovacuum. Mai. Il trucco è configurarlo
 per le tabelle che ne hanno bisogno.
 
 PostgreSQL permette di impostare parametri di autovacuum **per singola
-tabella**:
+tabella** [3]:
 
 ``` sql
 ALTER TABLE reporting.transactions SET (
@@ -164,7 +164,7 @@ tuples invece che a 2 milioni.
 
 ### cost_delay: non strangolare il vacuum
 
-Un altro parametro critico è `autovacuum_vacuum_cost_delay`. Controlla
+Un altro parametro critico è `autovacuum_vacuum_cost_delay` [4]. Controlla
 quanto il vacuum "rallenta sé stesso" per non sovraccaricare l'I/O.
 
 Il default è 2 millisecondi. Su server moderni con SSD, è troppo
@@ -193,7 +193,7 @@ autovacuum_max_workers = 5
 
 Come fai a sapere quanto spazio stanno sprecando le tue tabelle?
 
-La query classica usa `pgstattuple`:
+La query classica usa `pgstattuple` [5]:
 
 ``` sql
 CREATE EXTENSION IF NOT EXISTS pgstattuple;
@@ -225,7 +225,7 @@ lo spazio frammentato resta.
 `VACUUM FULL` funziona, ma blocca tutto.
 
 L'alternativa in produzione è **pg_repack**: ricostruisce la tabella
-online, senza lock esclusivi prolungati.
+online, senza lock esclusivi prolungati [6].
 
 ``` bash
 pg_repack -d mydb -t reporting.transactions
@@ -262,6 +262,17 @@ Tre cose da portarsi via:
 
 I database non si mantengono da soli. Nemmeno quelli che hanno un
 daemon che ci prova.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. PostgreSQL Documentation — [`VACUUM`](https://www.postgresql.org/docs/current/sql-vacuum.html)
+2. PostgreSQL Documentation — [Monitoring Database Activity (`pg_stat_user_tables`)](https://www.postgresql.org/docs/current/monitoring-stats.html)
+3. PostgreSQL Documentation — [Routine Vacuuming](https://www.postgresql.org/docs/current/routine-vacuuming.html)
+4. PostgreSQL Documentation — [Automatic Vacuuming (autovacuum parameters)](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html)
+5. PostgreSQL Documentation — [`pgstattuple`](https://www.postgresql.org/docs/current/pgstattuple.html)
+6. pg_repack — [Reorganize tables in PostgreSQL databases with minimal locks](https://reorg.github.io/pg_repack/)
 
 ------------------------------------------------------------------------
 

@@ -75,7 +75,7 @@ Am lucrat cu echipe distribuite pe trei fusuri orare. Am gestionat baze de date 
 
 ## 📊 Cifrele pentru companie: ce nu vor să vadă directorii financiari
 
-Companiile de consultanță IT din Roma au o problemă structurală pe care se prefac că nu o au.
+Companiile de consultanță IT din Roma au o chestiune structurală pe care se prefac că nu o au.
 
 Să luăm o companie cu 50 de consultanți. Să facem calculele:
 
@@ -105,7 +105,7 @@ Un milion șapte sute de mii de euro. În fiecare an. Ca să ții cincizeci de o
 **Economie anuală: peste 1.400.000€.**\
 Și fac estimări conservatoare.
 
-Dar cifra cea mai importantă nu e cea financiară.\
+Cifra cea mai importantă, însă, nu e cea financiară.\
 Cifra cea mai importantă sunt acele **26.400 de ore** redate productivității.\
 Ore în care oamenii lucrează lucizi, odihniți, concentrați.\
 Nu ore în care se uită la un parbrize pe Cristoforo Colombo.
@@ -126,7 +126,7 @@ Consultantul IT nu lucrează pe bandă de montaj. Nu trebuie să fie fizic preze
 
 Toate acestea se fac mai bine de acasă decât într-un open space zgomotos unde telefonul sună la fiecare cinci minute și cineva te întrerupe să te întrebe "ai un minut?" (care nu e niciodată doar un minut).
 
-Problema reală e **controlul**. Unele companii nu știu să gestioneze munca pe obiective. Știu doar să gestioneze prezența. Și confundă cele două lucruri.
+Chestiunea reală e **controlul**. Unele companii nu știu să gestioneze munca pe obiective. Știu doar să gestioneze prezența. Și confundă cele două lucruri.
 
 Dacă un consultant închide 20 de tichete într-o săptămână lucrând de acasă în pantaloni scurți, e mai productiv decât unul care închide 8 în costum la birou de la 9 la 18.
 

@@ -12,7 +12,7 @@ image: "enum-postgresql-paga-o-pesa.cover.jpg"
 
 The question is the same we faced [in MySQL](/en/posts/mysql/enum-mysql-semplifica-o-complica/): a `status` or `type` column with a closed set of values, and three roads in front of you — native enumerated type, CHECK constraint, lookup table. Change the database, and the philosophy changes too — along with the place where the price gets paid.
 
-PostgreSQL has its own ENUM, declared as a standalone type with `CREATE TYPE ... AS ENUM`. It's designed differently from MySQL's: type-safe like a domain, transactional like every other piece of DDL, and with one detail that trips almost everyone at first — it's **case-sensitive**. If you come from MySQL it's uncomfortable; if you've always worked in PostgreSQL it feels natural.
+PostgreSQL has its own ENUM, declared as a standalone type with `CREATE TYPE ... AS ENUM` [1] [2]. It's designed differently from MySQL's: type-safe like a domain, transactional like every other piece of DDL, and with one detail that trips almost everyone at first — it's **case-sensitive**. If you come from MySQL it's uncomfortable; if you've always worked in PostgreSQL it feels natural.
 
 Worth digging into properly, because PostgreSQL ENUM isn't "MySQL ENUM with different syntax". It's a different beast. Best understood on its own terms.
 
@@ -48,7 +48,7 @@ CREATE TABLE subscriptions (
 );
 ```
 
-Standard SQL approach. More verbose, in exchange more flexible (the `CHECK` expression can be arbitrarily complex). In PostgreSQL `CHECK` constraints have always been fully enforced — none of the "silently ignored" behavior that haunted MySQL until 8.0.16.
+Standard SQL approach. More verbose, in exchange more flexible (the `CHECK` expression can be arbitrarily complex). In PostgreSQL `CHECK` constraints have always been fully enforced [3] — none of the "silently ignored" behavior that haunted MySQL until 8.0.16.
 
 **Lookup table with FK**:
 
@@ -67,7 +67,7 @@ CREATE TABLE subscriptions (
 );
 ```
 
-The "pure-database" road. More tables, more JOINs, and in exchange more flexibility: extra attributes, localized labels, display ordering, runtime activation/deactivation.
+The "pure-database" road. More tables, more JOINs, and in exchange more flexibility: extra attributes, localized labels, display ordering, runtime activation/deactivation [4].
 
 ---
 
@@ -79,7 +79,7 @@ If you come from MySQL, three details deserve a pre-flight check before you writ
 
 **Real type safety, not simulated**. ENUM is a type, not a constraint on a `VARCHAR`. You can write a function that takes `subscription_status` as a parameter, and the engine will reject at parse-time any call with a free-form string. The same holds for procedures, views, partial indexes. In MySQL this kind of safety doesn't exist — `ENUM` is a decorated `VARCHAR` column.
 
-**ALTER TYPE is nearly free (and transactional)**. Adding a value at the end of a PostgreSQL ENUM is a metadata operation. No table rebuild, no prolonged write lock. And like every other PostgreSQL DDL, it's inside the transaction: if the commit fails, the ENUM stays as it was. This is the most tangible difference compared to MySQL, where `MODIFY COLUMN ENUM(...)` on a large table can keep you awake for an entire night.
+**ALTER TYPE is nearly free (and transactional)**. Adding a value at the end of a PostgreSQL ENUM is a metadata operation [5]. No table rebuild, no prolonged write lock. And like every other PostgreSQL DDL, it's inside the transaction: if the commit fails, the ENUM stays as it was. This is the most tangible difference compared to MySQL, where `MODIFY COLUMN ENUM(...)` on a large table can keep you awake for an entire night.
 
 ---
 
@@ -276,6 +276,16 @@ Upcoming installments:
 - **Oracle, vertical deep-dive** — how enumerations were modeled in 19c, what changed in 21c, 23ai and 26ai, all the way to the new Assertions
 
 > 📖 **If you landed here first**: I'd recommend reading [the MySQL piece](/en/posts/mysql/enum-mysql-semplifica-o-complica/) too. Many of the patterns we walk through here — the three roads, the lookup table done well, the ENUM-inside-the-lookup — are introduced there. The comparison makes everything clearer.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. PostgreSQL Documentation — [Enumerated Types](https://www.postgresql.org/docs/current/datatype-enum.html)
+2. PostgreSQL Documentation — [`CREATE TYPE`](https://www.postgresql.org/docs/current/sql-createtype.html)
+3. PostgreSQL Documentation — [Constraints (CHECK)](https://www.postgresql.org/docs/current/ddl-constraints.html)
+4. PostgreSQL Documentation — [`CREATE TABLE` (FOREIGN KEY)](https://www.postgresql.org/docs/current/sql-createtable.html)
+5. PostgreSQL Documentation — [`ALTER TYPE` (ADD VALUE)](https://www.postgresql.org/docs/current/sql-altertype.html)
 
 ------------------------------------------------------------------------
 

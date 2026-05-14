@@ -43,7 +43,7 @@ The distance wasn't random. Far enough to survive a localized event (fire, flood
 
 ### Preparing the primary
 
-The first step was verifying that the primary was in `ARCHIVELOG` mode with `FORCE LOGGING` enabled. Without these two prerequisites, Data Guard has nothing to replicate.
+The first step was verifying that the primary was in `ARCHIVELOG` mode with `FORCE LOGGING` enabled [1]. Without these two prerequisites, Data Guard has nothing to replicate.
 
 ```sql
 -- Check archivelog mode
@@ -63,7 +63,7 @@ ALTER DATABASE FORCE LOGGING;
 
 ### Standby redo logs
 
-On the primary, I created standby redo logs — dedicated groups that will be used when (and if) this server becomes the standby after a switchover.
+On the primary, I created standby redo logs — dedicated groups that will be used when (and if) this server becomes the standby after a switchover [2].
 
 ```sql
 -- Standby redo logs: n+1 relative to online redo logs
@@ -117,7 +117,7 @@ The `_DGMGRL` suffix is used by the Data Guard Broker to identify the instance. 
 
 ### Creating the standby
 
-For the initial database copy, I used an {{< glossary term="rman" >}}RMAN{{< /glossary >}} `DUPLICATE` over the network. No tape backup, no manual file transfers. Direct, from primary to standby:
+For the initial database copy, I used an {{< glossary term="rman" >}}RMAN{{< /glossary >}} `DUPLICATE ... FROM ACTIVE DATABASE` over the network [3]. No tape backup, no manual file transfers. Direct, from primary to standby:
 
 ```
 -- On the standby server, start the instance in NOMOUNT
@@ -143,7 +143,7 @@ The copy took about three hours for 400 GB over a dedicated 1 Gbps line. Not the
 
 ### Data Guard Broker
 
-The Broker is the component that manages the Data Guard configuration centrally and allows switchover with a single command. Without the Broker you can do everything manually, but you don't want to do it manually when the primary just went down and the CEO is calling every five minutes.
+The Broker is the component that manages the Data Guard configuration centrally and allows switchover with a single command [4]. Without the Broker you can do everything manually, but you don't want to do it manually when the primary just went down and the CEO is calling every five minutes.
 
 ```sql
 -- On the primary
@@ -219,9 +219,9 @@ I didn't give him the answer. We both knew it.
 
 ## What they don't tell you
 
-The configuration I've described works. But there are things that Oracle's documentation doesn't emphasize enough.
+The configuration I've described works. And there are things that Oracle's documentation doesn't emphasize enough.
 
-**The network gap.** Synchronous replication (`SYNC`) guarantees zero data loss but introduces latency on every commit. With 12 km and a good fiber link, the added latency was 1-2 milliseconds — acceptable. But at 100 km it would have been 5-8 ms, and on an application with thousands of commits per second, the slowdown would be noticeable. That's why I chose `MaxPerformance` mode (asynchronous) as the default, accepting the theoretical possibility of losing a few seconds of transactions in case of a total disaster. For that client, losing five seconds of data was infinitely better than losing ten hours.
+**The network gap.** Synchronous replication (`SYNC`) guarantees zero data loss but introduces latency on every commit. With 12 km and a good fiber link, the added latency was 1-2 milliseconds — acceptable. But at 100 km it would have been 5-8 ms, and on an application with thousands of commits per second, the slowdown would be noticeable. That's why I chose `MaxPerformance` mode (asynchronous) as the default [5], accepting the theoretical possibility of losing a few seconds of transactions in case of a total disaster. For that client, losing five seconds of data was infinitely better than losing ten hours.
 
 **The password file.** The `SYS` user's password file must be identical on both primary and standby. If you change it on one and not the other, redo transport stops silently. No obvious error, just a growing gap. I discovered this after an hour of debugging on a Sunday evening.
 
@@ -250,13 +250,23 @@ The total project cost — server, licenses, dedicated line, implementation — 
 
 ## What I learned
 
-Disaster recovery isn't a technical problem. It's a risk perception problem. As long as the database is running, DR is an expense. When the database stops, DR is an investment that should have been made six months earlier.
+Disaster recovery isn't a technical matter. It's a matter of risk perception. As long as the database is running, DR is an expense. When the database stops, DR is an investment that should have been made six months earlier.
 
 You can't convince a CEO with an architectural diagram. You can only wait for the disaster to happen and then be ready with the solution. It's cynical, but that's how it works in ninety percent of cases.
 
 The only thing you can do beforehand is document the risk, put it in writing that you flagged it, and keep the project ready in the drawer. I had proposed that project eighteen months earlier. It had been shelved with a "let's revisit it next year."
 
 Next year arrived on a Wednesday morning in November, at 8:47 AM.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. Oracle Database SQL Language Reference 19c — [`ALTER DATABASE` (ARCHIVELOG, FORCE LOGGING)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ALTER-DATABASE.html)
+2. Oracle Data Guard Concepts and Administration 19c — [Creating a Physical Standby Database](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/creating-oracle-data-guard-physical-standby.html)
+3. Oracle Database Backup and Recovery User's Guide 19c — [RMAN — Duplicating Databases](https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/rman-duplicating-databases.html)
+4. Oracle Data Guard Broker 19c — [Oracle Data Guard Broker Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/dgbkr/oracle-data-guard-broker-concepts.html)
+5. Oracle Data Guard Concepts and Administration 19c — [Oracle Data Guard Protection Modes](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html)
 
 ------------------------------------------------------------------------
 

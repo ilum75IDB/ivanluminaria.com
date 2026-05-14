@@ -29,7 +29,7 @@ CREATE TABLE pedidos (
 );
 ```
 
-El tipo `ENUM` es una cadena con restricción: admite solo los valores declarados. Internamente MySQL almacena un entero (1 o 2 bytes, según cuántos valores) que actúa como índice en la lista. Resultado: almacenamiento compacto, lectura legible.
+El tipo `ENUM` es una cadena con restricción: admite solo los valores declarados [1]. Internamente MySQL almacena un entero (1 o 2 bytes, según cuántos valores) que actúa como índice en la lista. Resultado: almacenamiento compacto, lectura legible.
 
 **CHECK constraint**:
 
@@ -41,7 +41,7 @@ CREATE TABLE pedidos (
 );
 ```
 
-Enfoque SQL estándar. Más verboso, a cambio más flexible (las condiciones de CHECK pueden ser arbitrariamente complejas). Ojo: antes de MySQL 8.0.16 los CHECK se parseaban y se ignoraban silenciosamente. Solo desde la 8.0.16 se aplican de verdad.
+Enfoque SQL estándar. Más verboso, a cambio más flexible (las condiciones de CHECK pueden ser arbitrariamente complejas). Ojo: antes de MySQL 8.0.16 los CHECK se parseaban y se ignoraban silenciosamente. Solo desde la 8.0.16 se aplican de verdad [2].
 
 **Tabla de lookup con FK**:
 
@@ -59,7 +59,7 @@ CREATE TABLE pedidos (
 );
 ```
 
-La vía "puramente base de datos". Más tablas, más JOIN, y a cambio más flexibilidad: puedes añadir atributos (etiquetas localizadas, orden de visualización, flags activo/inactivo), modificar los valores sin tocar el schema de las tablas hijas, y gestionar todo en runtime.
+La vía "puramente base de datos". Más tablas, más JOIN, y a cambio más flexibilidad: puedes añadir atributos (etiquetas localizadas, orden de visualización, flags activo/inactivo), modificar los valores sin tocar el schema de las tablas hijas, y gestionar todo en runtime [3].
 
 ---
 
@@ -113,7 +113,7 @@ ALTER TABLE envios
   NOT NULL DEFAULT 'RECIBIDO';
 ```
 
-Parece una sola línea. En realidad, si quieres añadir `RESERVADO` **antes** de `RECIBIDO` (por coherencia semántica en la secuencia), MySQL tiene que reescribir la tabla. Toda ella. Sobre `envios` con ciento cincuenta millones de filas, en producción, incluso con `Online DDL` bien configurado, son bastantes horas de carga extra sobre el storage y sobre el replication lag. Añadirlo simplemente al final con `MODIFY COLUMN status ENUM(...,'RESERVADO')` habría sido más ligero — solo que habría creado un conjunto de valores con un ordenamiento posicional absurdo: ¿`ENTREGADO` viene "antes" que `RESERVADO` en el sort? Técnicamente sí.
+Parece una sola línea. En realidad, si quieres añadir `RESERVADO` **antes** de `RECIBIDO` (por coherencia semántica en la secuencia), MySQL tiene que reescribir la tabla. Toda ella [4]. Sobre `envios` con ciento cincuenta millones de filas, en producción, incluso con `Online DDL` bien configurado [5], son bastantes horas de carga extra sobre el storage y sobre el replication lag. Añadirlo simplemente al final con `MODIFY COLUMN status ENUM(...,'RESERVADO')` habría sido más ligero — solo que habría creado un conjunto de valores con un ordenamiento posicional absurdo: ¿`ENTREGADO` viene "antes" que `RESERVADO` en el sort? Técnicamente sí.
 
 Aquí están, los límites de ENUM, contados sin compasión:
 
@@ -249,6 +249,16 @@ Próximas entregas:
 - **Oracle, deep-dive vertical** — cómo se modelaban las enumeraciones en 19c, qué cambia en 21c, 23ai y 26ai, hasta las nuevas Assertions
 
 Misma pregunta, tres filosofías. Lo bueno está justamente en la comparación.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. MySQL 8.0 Reference Manual — [The ENUM Type](https://dev.mysql.com/doc/refman/8.0/en/enum.html)
+2. MySQL 8.0 Reference Manual — [CHECK Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-check-constraints.html)
+3. MySQL 8.0 Reference Manual — [FOREIGN KEY Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+4. MySQL 8.0 Reference Manual — [`ALTER TABLE` Statement](https://dev.mysql.com/doc/refman/8.0/en/alter-table.html)
+5. MySQL 8.0 Reference Manual — [Online DDL Operations (INSTANT / INPLACE / COPY)](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-operations.html)
 
 ------------------------------------------------------------------------
 

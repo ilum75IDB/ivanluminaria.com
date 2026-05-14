@@ -137,6 +137,8 @@ ON reporting.payment_report
 USING {{< glossary term="gin-index" >}}gin{{< /glossary >}} (reference_code gin_trgm_ops);
 ```
 
+The `pg_trgm` extension enables trigram-based search [1], used together with a `GIN` index [2]; the `CONCURRENTLY` mode lets you add the index without blocking INSERT/UPDATE/DELETE on the table [3].
+
 Precautions:
 
 -   Create during an off-peak window
@@ -220,6 +222,14 @@ With data in hand, the decision becomes technical, not emotional.
 Optimization is not magic.\
 It is measurement, plan analysis, and understanding real system
 behavior.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. PostgreSQL Documentation — [`pg_trgm` extension](https://www.postgresql.org/docs/current/pgtrgm.html)
+2. PostgreSQL Documentation — [GIN Indexes](https://www.postgresql.org/docs/current/gin.html)
+3. PostgreSQL Documentation — [`CREATE INDEX` (incl. CONCURRENTLY)](https://www.postgresql.org/docs/current/sql-createindex.html)
 
 ------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 ---
-title: "Galera Cluster con 3 nodos: cómo resolví un problema de disponibilidad en MySQL"
+title: "Galera Cluster con 3 nodos: cómo resolví un incidente de disponibilidad en MySQL"
 seoTitle: "MySQL Galera Cluster 3 nodos: replicación síncrona y quórum"
 description: "MySQL Galera Cluster de 3 nodos para alta disponibilidad: replicación síncrona, quórum, SST/IST. Configuración contra el single point of failure."
 date: "2026-02-17T08:03:00+01:00"
@@ -10,11 +10,11 @@ categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---
 
-El ticket era lacónico, como suele pasar cuando el problema es grave: "La base de datos se cayó otra vez. La aplicación está parada. Tercera vez en dos meses."
+El ticket era lacónico, como suele pasar cuando la situación es grave: "La base de datos se cayó otra vez. La aplicación está parada. Tercera vez en dos meses."
 
-El cliente tenía un MariaDB en un único servidor Linux — una aplicación de gestión empresarial usada por unos doscientos usuarios internos, con picos de carga durante los cierres contables de fin de mes. Cada vez que el servidor tenía un problema — un disco que se ralentizaba, una actualización del sistema que requería reinicio, un proceso que consumía toda la RAM — la base de datos caía y con ella toda la operatividad empresarial.
+El cliente tenía un MariaDB en un único servidor Linux — una aplicación de gestión empresarial usada por unos doscientos usuarios internos, con picos de carga durante los cierres contables de fin de mes. Cada vez que el servidor tenía un incidente — un disco que se ralentizaba, una actualización del sistema que requería reinicio, un proceso que consumía toda la RAM — la base de datos caía y con ella toda la operatividad empresarial.
 
-La pregunta no era "cómo reparamos el servidor". La pregunta era: **¿cómo hacemos para que la próxima vez que un servidor tenga un problema, la aplicación siga funcionando?**
+La pregunta no era "cómo reparamos el servidor". La pregunta era: **¿cómo hacemos para que la próxima vez que un servidor tenga una anomalía, la aplicación siga funcionando?**
 
 La respuesta, tras veinte años de experiencia con este tipo de escenarios, era una: **Galera Cluster**.
 
@@ -140,13 +140,15 @@ Galera requiere el formato ROW para el binary log. Ni STATEMENT, ni MIXED. **ROW
 
 Este parámetro configura el modo de bloqueo para auto-increment en "interleaved". En un cluster multi-master, dos nodos pueden generar INSERT simultáneamente en la misma tabla. Con el lock mode 1 (el predeterminado) se crearían deadlocks. Con el valor 2, InnoDB genera los auto-increment sin lock global, permitiendo inserciones concurrentes desde nodos diferentes.
 
-La consecuencia: los IDs auto-increment **no serán secuenciales** entre nodos. Si tu aplicación depende de la secuencialidad de los IDs, tienes un problema arquitectónico que resolver antes.
+La consecuencia: los IDs auto-increment **no serán secuenciales** entre nodos. Si tu aplicación depende de la secuencialidad de los IDs, tienes un incidente arquitectónico que resolver antes.
 
 ### `innodb_flush_log_at_trx_commit=2`
 
-Aquí se hace un compromiso consciente. El valor 1 (predeterminado) garantiza durabilidad total — cada commit se escribe y se hace fsync al disco. Pero en un cluster Galera, la durabilidad ya está garantizada por la replicación síncrona en tres nodos. El valor 2 escribe en el buffer del sistema operativo en cada commit y hace fsync solo cada segundo, mejorando el rendimiento de escritura en un 30-40% en nuestras pruebas.
+Aquí se hace un compromiso consciente. El valor `1` (predeterminado) garantiza durabilidad total incluso ante un crash del SO o un power loss en el nodo individual — cada commit se escribe y se hace fsync al disco antes de considerarse cerrado [1]. El valor `2` escribe en el buffer del sistema operativo en cada commit y hace fsync solo cada segundo, mejorando el rendimiento de escritura en un 30-40% en nuestras pruebas.
 
-Si pierdes un nodo, los datos están en los otros dos. Si pierdes el datacenter entero... bueno, esa es otra conversación.
+En un cluster Galera, la replicación síncrona en tres nodos **mitiga** el riesgo: incluso si un nodo pierde el último segundo de transacciones en un crash, las otras dos copias ya tienen los datos certificados antes del commit [2]. El valor `2` es por tanto un compromiso **razonable en este contexto**, no un equivalente de `1` — el margen de riesgo se queda en los crashes simultáneos (power loss de todo el datacenter, mantenimiento coordinado mal planificado).
+
+Si pierdes un nodo, los datos están en los otros dos. Si pierdes el datacenter entero, incluso con `flush=1` en todos los nodos las transacciones del último segundo estarían en riesgo: ahí ya no es una decisión de flush, es una decisión de disaster recovery con replicación geográfica.
 
 ### `wsrep_sst_method=mariabackup`
 
@@ -301,7 +303,7 @@ SHOW STATUS WHERE Variable_name IN (
 
 **`wsrep_flow_control_paused > 0.0`**: flow control activado. Significa que un nodo es demasiado lento aplicando transacciones y está pidiendo a los demás que frenen. Un valor cercano a 1.0 significa que el cluster está esencialmente detenido, esperando al nodo más lento.
 
-**`wsrep_local_recv_queue_avg > 1.0`**: las transacciones entrantes se acumulan. Podría ser un problema de I/O de disco, CPU, o un nodo subdimensionado.
+**`wsrep_local_recv_queue_avg > 1.0`**: las transacciones entrantes se acumulan. Podría ser un incidente de I/O de disco, CPU, o un nodo subdimensionado.
 
 ### Script de monitorización
 
@@ -396,6 +398,16 @@ Lo que más me impactó fue su frase: "Antes vivíamos con la ansiedad de que la
 Ese es el verdadero valor de un cluster Galera bien configurado. No es la tecnología en sí — es la tranquilidad que trae. La certeza de que un único fallo ya no para la empresa.
 
 La parte técnica es la más sencilla. Lo que marca la diferencia es entender **por qué** cada parámetro está configurado de cierta manera, qué pasa cuando las cosas van mal, y cómo diagnosticar los problemas antes de que se conviertan en emergencias. Un cluster que funciona en demo y uno que aguanta en producción: la distancia entre los dos está toda en los detalles que he contado aquí.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. MySQL 8.0 Reference Manual — [`innodb_flush_log_at_trx_commit`](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit)
+2. MariaDB Documentation — [Configuring MariaDB Galera Cluster](https://mariadb.com/docs/galera-cluster/galera-management/configuration/configuring-mariadb-galera-cluster)
+3. MariaDB Documentation — [MariaDB Galera Cluster Replication Guide](https://mariadb.com/docs/galera-cluster/galera-cluster-quickstart-guides/mariadb-galera-cluster-replication-guide)
+4. MariaDB Documentation — [Using MariaDB Replication with Galera Cluster](https://mariadb.com/docs/galera-cluster/high-availability/using-mariadb-replication-with-mariadb-galera-cluster/using-mariadb-replication-with-mariadb-galera-cluster-using-mariadb-replica)
+5. MariaDB Documentation — [Galera Cluster Thread States](https://mariadb.com/docs/server/ha-and-performance/optimization-and-tuning/buffers-caches-and-threads/thread-states/galera-cluster-thread-states)
 
 ------------------------------------------------------------------------
 

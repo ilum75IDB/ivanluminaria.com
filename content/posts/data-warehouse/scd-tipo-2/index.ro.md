@@ -14,7 +14,7 @@ Directorul comercial apare la ședința de luni dimineața cu o întrebare simpl
 
 Răspunsul DWH-ului: liniște.
 
-Nu pentru că sistemul era căzut, sau pentru că lipsea tabela. Datele erau acolo, tehnic vorbind. Dar erau greșite. DWH-ul returna clienții care *astăzi* sunt în regiunea Nord — nu pe cei care erau acolo în iunie. Pentru că în fiecare noapte, procesul de încărcare suprascria datele master ale clienților cu valorile curente, ștergând orice urmă a ceea ce fusese înainte.
+Nu pentru că sistemul era căzut, sau pentru că lipsea tabela. Datele erau acolo, tehnic vorbind. Doar că erau eronate. DWH-ul returna clienții care *astăzi* sunt în regiunea Nord — nu pe cei care erau acolo în iunie. Pentru că în fiecare noapte, procesul de încărcare suprascria datele master ale clienților cu valorile curente, ștergând orice urmă a ceea ce fusese înainte.
 
 Un client care în iunie era în regiunea Nord și în septembrie s-a mutat în regiunea Centru? Pentru DWH, acel client fusese întotdeauna în regiunea Centru. Istoria nu exista.
 
@@ -56,9 +56,9 @@ WHEN NOT MATCHED THEN INSERT (
 );
 ```
 
-Simplu, curat, rapid. Și complet greșit pentru un data warehouse.
+Simplu, curat, rapid. Și complet eronat pentru un data warehouse.
 
-Aceasta este ceea ce {{< glossary term="kimball" >}}Kimball{{< /glossary >}} numește **SCD Tip 1** — Slowly Changing Dimension de Tip 1. Suprascrii valoarea veche cu cea nouă. Fără istorie, fără versionare. Valoarea actuală șterge valoarea anterioară.
+Aceasta este ceea ce {{< glossary term="kimball" >}}Kimball{{< /glossary >}} numește **SCD Tip 1** — Slowly Changing Dimension de Tip 1 [1]. Suprascrii valoarea veche cu cea nouă. Fără istorie, fără versionare. Valoarea actuală șterge valoarea anterioară.
 
 Pentru un sistem OLTP este perfect: vrei întotdeauna adresa curentă a clientului, telefonul actualizat, email-ul valid. Dar un data warehouse nu este un sistem tranzacțional. Un data warehouse este o mașină a timpului. Și o mașină a timpului care suprascrie trecutul este inutilă.
 
@@ -82,13 +82,13 @@ Acela a fost momentul care a declanșat proiectul de restructurare.
 
 ## SCD Tip 2: principiul
 
-Tipul 2 nu suprascrie. Versionează.
+Tipul 2 nu suprascrie. Versionează [2].
 
 Când un atribut se schimbă, înregistrarea curentă este închisă — i se atribuie o dată de sfârșit de valabilitate — și se inserează o nouă înregistrare cu valorile actualizate și o nouă dată de început de valabilitate. Înregistrarea veche rămâne în baza de date, intactă, cu toate valorile pe care le avea când era curentă.
 
 Pentru ca acest lucru să funcționeze sunt necesare trei elemente suplimentare în tabela dimensională:
 
-1. **O {{< glossary term="chiave-surrogata" >}}cheie surogat{{< /glossary >}}** — un identificator generat de DWH, distinct de cheia naturală a sistemului sursă. Este necesar deoarece același client va avea mai multe înregistrări (câte una pentru fiecare versiune), deci cheia naturală nu mai este unică.
+1. **O {{< glossary term="chiave-surrogata" >}}cheie surogat{{< /glossary >}}** — un identificator generat de DWH, distinct de cheia naturală a sistemului sursă [3]. Este necesar deoarece același client va avea mai multe înregistrări (câte una pentru fiecare versiune), deci cheia naturală nu mai este unică.
 2. **Date de valabilitate** — `valid_from` și `valid_to` — care definesc intervalul temporal în care fiecare versiune a înregistrării era curentă.
 3. **Un flag de versiune curentă** — `is_current` — care permite recuperarea rapidă a versiunii active fără a filtra pe date.
 
@@ -334,7 +334,7 @@ Costul Tipului 2 este creșterea tabelei dimensionale. Cu Tipul 1, fiecare clien
 
 De la 120K la 220K în cinci ani. O creștere de 83% — care pare mult în procente dar este neglijabilă în termeni absoluți. 220K linii sunt nimic pentru Oracle. Interogarea cu index pe cheia surogat rămâne în ordinul milisecundelor.
 
-Problema apare când ai milioane de clienți cu rate mari de schimbare. În acel caz monitorizezi creșterea, consideri partiționarea dimensiunii, și mai ales alegi cu grijă *care* atribute să le urmărești. Nu toate atributele merită Tip 2. Telefonul clientului? Tip 1, suprascriere. Regiunea comercială? Tip 2, pentru că impactează analiza cifrei de afaceri.
+Situația apare când ai milioane de clienți cu rate mari de schimbare. În acel caz monitorizezi creșterea, consideri partiționarea dimensiunii, și mai ales alegi cu grijă *care* atribute să le urmărești. Nu toate atributele merită Tip 2. Telefonul clientului? Tip 1, suprascriere. Regiunea comercială? Tip 2, pentru că impactează analiza cifrei de afaceri.
 
 Alegerea atributelor de urmărit cu Tip 2 este o decizie de business, nu tehnică. Întreabă business-ul: "Dacă acest câmp se schimbă, aveți nevoie să știți care era valoarea anterioară?" Dacă răspunsul este da, este Tip 2. Dacă este nu, este Tip 1.
 
@@ -361,6 +361,14 @@ Directorul comercial nu știa că are nevoie de istorie până când a avut nevo
 Acesta este punctul. Nu implementezi Tipul 2 pentru că "e best practice" sau pentru că "Kimball spune așa în capitolul 5". Îl implementezi pentru că un data warehouse fără istorie este o bază de date operațională cu o {{< glossary term="star-schema" >}}star schema{{< /glossary >}} lipită deasupra. Funcționează pentru rapoartele lunii curente, dar nu răspunde la întrebarea pe care mai devreme sau mai târziu cineva o va pune: "Cum era înainte?"
 
 Întrebarea vine întotdeauna. Singura întrebare este dacă DWH-ul tău este pregătit să răspundă.
+
+---
+
+## Surse oficiale
+
+1. Kimball Group — [Type 1: Overwrite (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-1/)
+2. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
+3. Kimball Group — [Surrogate Key](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/surrogate-key/)
 
 ---
 

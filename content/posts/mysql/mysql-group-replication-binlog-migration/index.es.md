@@ -12,19 +12,19 @@ image: "mysql-group-replication-binlog-migration.cover.jpg"
 
 La alerta llegó un lunes por la mañana, entre tres reuniones y un café todavía caliente. "Filesystem /mysql al 85% en el nodo primario." En otro nodo estaba al 66%, en el tercero al 25%. En un cluster, cuando los números no cuadran entre los nodos, siempre hay algo debajo.
 
-La primera pregunta que te viene a la cabeza es "¿cuánto espacio necesitamos?". Pero es la pregunta equivocada. La correcta es: "¿por qué se está llenando?"
+La primera pregunta que te viene a la cabeza es "¿cuánto espacio necesitamos?". Solo que es la pregunta equivocada. La correcta es: "¿por qué se está llenando?"
 
 ---
 
 ## La causa: binary logs en el volumen equivocado
 
-Verificar fue rápido:
+Verificar fue rápido [1]:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin';
 ```
 
-Resultado: `ON`. Los binary logs estaban activos — como se espera en un cluster. Pero el path era el problema:
+Resultado: `ON`. Los binary logs estaban activos — como se espera en un cluster. Solo que el path era la situación:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin_basename';
@@ -46,15 +46,15 @@ SHOW VARIABLES LIKE 'binlog_expire_logs_seconds';
 2592000
 ```
 
-Treinta días. Después quise entender cuánto pesaba realmente esta configuración. Comprobé el tamaño de los archivos binlog individuales y el ritmo de escritura: cada archivo pesaba aproximadamente 1 GB, y el servidor generaba uno cada dos horas. Doce archivos al día, por treinta días de retención: unos 360 GB de binary logs en el volumen principal. En un volumen de 3 TB compartido con los datos, los binlogs por sí solos ocupaban más del 10% del espacio. Y esos archivos no están solo en el primary — en Group Replication cada nodo escribe sus propios binlogs locales para la sincronización, así que el problema se multiplicaba en los tres nodos.
+Treinta días. Después quise entender cuánto pesaba realmente esta configuración. Comprobé el tamaño de los archivos binlog individuales y el ritmo de escritura: cada archivo pesaba aproximadamente 1 GB, y el servidor generaba uno cada dos horas. Doce archivos al día, por treinta días de retención: unos 360 GB de binary logs en el volumen principal. En un volumen de 3 TB compartido con los datos, los binlogs por sí solos ocupaban más del 10% del espacio. Y esos archivos no están solo en el primary — en Group Replication cada nodo escribe sus propios binlogs locales para la sincronización, así que la situación se multiplicaba en los tres nodos.
 
-El cuadro era claro: los binary logs estaban devorando el filesystem principal. No un bug, no una tabla descontrolada. Solo una elección arquitectónica hecha en la instalación y nunca revisada.
+La causa era clara: los binary logs estaban devorando el filesystem principal. No un bug, no una tabla descontrolada. Solo una elección arquitectónica hecha en la instalación y nunca revisada.
 
 ---
 
 ## ¿Qué tipo de cluster es exactamente?
 
-Antes de tocar cualquier cosa en un servidor MySQL — antes siquiera de pensar en mover un archivo — necesitas saber qué tienes delante. "Es un cluster" no basta. MySQL tiene al menos cuatro formas distintas de hacer alta disponibilidad, y cada una tiene sus propias reglas.
+Antes de tocar cualquier cosa en un servidor MySQL — antes siquiera de pensar en mover un archivo — te conviene saber qué tienes delante. "Es un cluster" no basta. MySQL tiene al menos cuatro formas distintas de hacer alta disponibilidad, y cada una tiene sus propias reglas.
 
 Empecé con la replicación clásica:
 
@@ -64,9 +64,9 @@ SHOW SLAVE STATUS\G
 
 Empty set en los dos nodos que comprobé. Ninguna replicación tradicional activa.
 
-Después probé con `SHOW REPLICA STATUS` — pero en MySQL 8.0.20 ese comando todavía no existe. Se introdujo en la 8.0.22. Un detalle que la documentación online suele olvidar mencionar, dejándote persiguiendo un error de sintaxis que no es tal.
+Después probé con `SHOW REPLICA STATUS` — pero en MySQL 8.0.20 ese comando todavía no existe. Se introdujo en la 8.0.22 [2]. Un detalle que la documentación online suele olvidar mencionar, dejándote persiguiendo un error de sintaxis que no es tal.
 
-Siguiente paso — Group Replication:
+Siguiente paso — Group Replication [3] [4]:
 
 ```sql
 SELECT MEMBER_HOST, MEMBER_STATE, MEMBER_ROLE
@@ -99,7 +99,7 @@ SHOW VARIABLES LIKE 'group_replication_single_primary_mode';
 ON
 ```
 
-Ahora sabía exactamente lo que tenía delante. No una réplica clásica, no un Galera, no un NDB Cluster. Un MySQL Group Replication single-primary con tres nodos, GTID habilitados, formato de binlog ROW. El panorama completo.
+Ahora sabía exactamente lo que tenía delante. No una réplica clásica, no un Galera, no un NDB Cluster. Un MySQL Group Replication single-primary con tres nodos [5], GTID habilitados, formato de binlog ROW. El panorama completo.
 
 La tentación siempre es saltarse esta fase. "Ya sé que es un cluster, vamos." Pero saltarse el diagnóstico en un cluster es como operar sin un TAC: puede que tengas suerte, o puede que provoques un desastre.
 
@@ -264,13 +264,23 @@ Desde mi experiencia, estas son las trampas más comunes en este tipo de interve
 
 ## Lo que esta operación enseña
 
-Un filesystem al 92% no es una emergencia — es una señal. El problema real no era el espacio en disco, sino una elección arquitectónica hecha en el momento de la instalación y nunca revisada: binlogs y datos en el mismo volumen.
+Un filesystem al 92% no es una emergencia — es una señal. La causa real no era el espacio en disco, sino una elección arquitectónica hecha en el momento de la instalación y nunca revisada: binlogs y datos en el mismo volumen.
 
 Separar los binary logs en un volumen dedicado no es solo un fix. Es endurecimiento de la infraestructura. Es la diferencia entre un sistema que "funciona" y uno que está diseñado para seguir funcionando cuando las cosas crecen.
 
 Y la parte más importante de toda la intervención no fue el cambio en el `my.cnf` — eso es una línea. La parte importante fue el diagnóstico: entender qué tipo de cluster tenía delante, verificar el estado de cada nodo, preparar el storage, probar los permisos, planificar el orden de ejecución. Todo antes de tocar un solo parámetro.
 
 Un DBA senior y un DBA junior conocen ambos el comando `systemctl stop mysqld`. La diferencia está en todo lo que sucede antes.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. MySQL 8.0 Reference Manual — [Binary Logging Options and Variables (`log_bin`, `log_bin_basename`)](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html)
+2. MySQL 8.0 Reference Manual — [`SHOW REPLICA STATUS` / `SHOW SLAVE STATUS`](https://dev.mysql.com/doc/refman/8.0/en/show-replica-status.html)
+3. MySQL 8.0 Reference Manual — [The `replication_group_members` Table](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-replication-group-members-table.html)
+4. MySQL 8.0 Reference Manual — [Group Replication](https://dev.mysql.com/doc/refman/8.0/en/group-replication.html)
+5. MySQL 8.0 Reference Manual — [Group Replication — Single-Primary Mode](https://dev.mysql.com/doc/refman/8.0/en/group-replication-single-primary-mode.html)
 
 ------------------------------------------------------------------------
 

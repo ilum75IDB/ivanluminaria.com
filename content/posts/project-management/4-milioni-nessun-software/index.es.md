@@ -35,7 +35,7 @@ El proyecto arranca. Se definen los requisitos. Se estima el presupuesto. Se fir
 
 Pasan los meses. Luego los años.
 
-Los entregables llegan — sobre el papel. Pero el software no funciona como debería. Las especificaciones cambian. Los costes se disparan. Los consultores rotan: el que había entendido el dominio se va, llega otro que empieza de cero. El clásico esquema de consultoría a cuerpo que se convierte, en la práctica, en una consultoría a tiempo indefinido.
+Los entregables llegan — sobre el papel. El software, sin embargo, no funciona como debería. Las especificaciones cambian. Los costes se disparan. Los consultores rotan: el que había entendido el dominio se va, llega otro que empieza de cero. El clásico esquema de consultoría a cuerpo que se convierte, en la práctica, en una consultoría a tiempo indefinido.
 
 **De 2013 a 2018: más de 2,5 millones de euros gastados.**\
 Resultado: un software incompleto, inestable, que nadie internamente sabía mantener.

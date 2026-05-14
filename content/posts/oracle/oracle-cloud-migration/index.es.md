@@ -12,9 +12,9 @@ image: "oracle-cloud-migration.cover.jpg"
 
 La semana pasada un colega me escribió: "Tengo que llevar Oracle a la nube, ¿cuánto se tarda?" Le respondí con una pregunta: "¿Sabes cuántas features de la Enterprise Edition estás usando?" Silencio.
 
-Es la misma escena cada vez. Alguien arriba decide que hay que ir a la nube — porque el contrato del hosting vence, porque el CFO leyó un informe de Gartner, porque el CTO nuevo quiere modernizar. Y lo primero que sale es: hagamos un lift-and-shift, cogemos lo que hay y lo movemos. Tres meses, presupuesto aprobado, adelante.
+Es la misma escena cada vez. Alguien arriba decide ir a la nube — porque el contrato del hosting vence, porque el CFO leyó un informe de Gartner, porque el CTO nuevo quiere modernizar. Y lo primero que sale es: hagamos un lift-and-shift, cogemos lo que hay y lo movemos. Tres meses, presupuesto aprobado, adelante.
 
-El problema es que Oracle no es una aplicación que empaquetas en un container y envías. Es un ecosistema de licencias, dependencias, configuraciones de kernel, conexiones de red que atraviesan firewalls y VPNs. Moverlo sin entenderlo antes significa acabar en la nube con los mismos problemas de siempre — más algunos nuevos.
+El punto es que Oracle no es una aplicación que empaquetas en un container y envías. Es un ecosistema de licencias, dependencias, configuraciones de kernel, conexiones de red que atraviesan firewalls y VPNs. Moverlo sin entenderlo antes significa acabar en la nube con las mismas criticidades de siempre — más algunas nuevas.
 
 ## El cliente y el contexto
 
@@ -62,7 +62,7 @@ La estrategia fue: configurar Data Guard entre el RAC on-premises y una instanci
 
 La parte complicada no fue el Data Guard en sí — eso lo configuramos cada semana. La parte complicada fue hacerlo funcionar a través de la red. Data Guard necesita un canal de redo transport entre primary y standby, y ese canal tiene que ser fiable y con latencia predecible.
 
-Configuré un túnel VPN site-to-site entre el data center y OCI, con un ancho de banda dedicado de 500 Mbps. El redo generate rate medio era de 15 MB por minuto — ampliamente dentro del presupuesto de banda. Pero quise probar el peor caso: durante el batch nocturno el redo llegaba a 180 MB por minuto. También pasaba, pero con un transport lag que subía a 45 segundos. Aceptable para un Data Guard en modo Maximum Performance.
+Configuré un túnel VPN site-to-site entre el data center y OCI, con un ancho de banda dedicado de 500 Mbps. El redo generate rate medio era de 15 MB por minuto — ampliamente dentro del presupuesto de banda. Y quise probar el peor caso: durante el batch nocturno el redo llegaba a 180 MB por minuto. También pasaba, pero con un transport lag que subía a 45 segundos. Aceptable para un Data Guard en modo Maximum Performance.
 
 La configuración del broker fue estándar:
 
@@ -130,7 +130,7 @@ Y luego estaba el coste oculto: mi tiempo. Dos meses de consultoría para el ass
 
 Cada migración enseña algo, incluso cuando crees que lo has visto todo.
 
-El licenciamiento Oracle en la nube es un campo de minas. No basta con leer la documentación: hay que hablar con Oracle, obtener confirmaciones por escrito, y llevar un registro de todo. Una auditoría post-migración puede convertir un ahorro en una catástrofe.
+El licenciamiento Oracle en la nube es un campo de minas. No basta con leer la documentación: es necesario hablar con Oracle, obtener confirmaciones por escrito, y llevar un registro de todo. Una auditoría post-migración puede convertir un ahorro en una catástrofe.
 
 El assessment no es opcional. Esas dos semanas iniciales evitaron al menos tres problemas que habrían requerido semanas de arreglos una vez completada la migración. El informe de features en uso, el mapa de dependencias externas, los tests de latencia — son trabajos aburridos, pero son la diferencia entre un cutover de 42 minutos y uno de 42 horas.
 

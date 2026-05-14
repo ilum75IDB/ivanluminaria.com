@@ -14,7 +14,7 @@ Last week a colleague told me about a project where data warehouse queries had s
 
 I didn't need to ask anything else. I already knew the script.
 
-A {{< glossary term="fact-table" >}}fact table{{< /glossary >}} that starts small, grows every day, and nobody worries about the physical structure until one day queries stop coming back. It's not a bug, not a code error. It's the weight of data finally making itself felt.
+A {{< glossary term="fact-table" >}}fact table{{< /glossary >}} that starts small, grows every day, and nobody worries about the physical structure until one day queries stop coming back. It's not a bug, not a code slip. It's the weight of data finally making itself felt.
 
 ---
 
@@ -63,7 +63,7 @@ GROUP BY pv.regione, cat.famiglia
 ORDER BY fatturato DESC;
 ```
 
-The predicate on `data_vendita` should have used the index. And it did — a year earlier, when the table had 500 million rows. But with 800 million, the optimizer had decided the index was no longer worth it. The math was straightforward: one quarter = roughly 8% of total rows. With an index range scan, Oracle would have needed 64 million random block accesses. A sequential {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} cost less.
+The predicate on `data_vendita` should have used the index. And it did — a year earlier, when the table had 500 million rows. Only with 800 million, the optimizer had decided the index was no longer worth it. The math was straightforward: one quarter = roughly 8% of total rows. With an index range scan, Oracle would have needed 64 million random block accesses. A sequential {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} cost less.
 
 And so it did: it read 800 million rows to return 64 million.
 
@@ -83,7 +83,7 @@ And so it did: it read 800 million rows to return 64 million.
 
 Forty gigabytes of I/O for a quarterly query. In an environment where the buffer pool was sized at 16 GB, that meant reading more than twice the entire cache from disk. Twelve minutes.
 
-## 🏗️ The solution: monthly range partitioning
+## 🏗️ The solution: monthly range partitioning [1]
 
 Range partitioning by date is the natural choice for a fact table in a data warehouse. Data enters in chronological order, queries filter by time period, old data goes cold and new data stays hot. The date is the perfect partition key.
 
@@ -111,7 +111,7 @@ PARTITION BY RANGE (data_vendita) (
 );
 ```
 
-With a {{< glossary term="local-index" >}}local index{{< /glossary >}} on the date:
+With a {{< glossary term="local-index" >}}local index{{< /glossary >}} on the date [2]:
 
 ```sql
 CREATE INDEX idx_vendite_data_local ON fact_vendite_part (data_vendita) LOCAL;
@@ -161,7 +161,7 @@ ALTER TABLE fact_vendite_part RENAME TO fact_vendite;
 
 I kept the original table for a week as a safety net, then dropped it.
 
-## ⚡ {{< glossary term="partition-pruning" >}}Partition pruning{{< /glossary >}} in action
+## ⚡ {{< glossary term="partition-pruning" >}}Partition pruning{{< /glossary >}} in action [3]
 
 With partitioning in place, the same quarterly query had a completely different execution plan:
 
@@ -200,9 +200,9 @@ The result? From 12 minutes to 40 seconds.
 
 Not because the hardware was faster, not because I rewrote the queries. Only because the database now knew where *not* to look.
 
-## 🔄 Exchange partition: the zero-cost load
+## 🔄 Exchange partition: the zero-cost load [4]
 
-In a data warehouse, data arrives on a regular cadence — in our case, a nightly {{< glossary term="etl" >}}ETL{{< /glossary >}} that loaded each day's sales. The classic partitioning challenge is: how do you load new data into the correct partition without impacting queries?
+In a data warehouse, data arrives on a regular cadence — in our case, a nightly {{< glossary term="etl" >}}ETL{{< /glossary >}} that loaded each day's sales. The classic partitioning point is: how do you load new data into the correct partition without impacting queries?
 
 The answer is {{< glossary term="exchange-partition" >}}exchange partition{{< /glossary >}}.
 
@@ -259,6 +259,15 @@ Partitioning is not a magic wand. It doesn't replace indexes — if the query do
 But for a fact table in a data warehouse — where data is chronological, queries filter by time period, and volumes grow every day — range partitioning by date is not optional. It's an architectural requirement.
 
 The colleague with the 12-minute report didn't have a hardware problem or badly written queries. He had a table that had grown past the point where the lack of physical structure becomes a bottleneck. Partitioning put things back in their place: 40 seconds, and not a single row read needlessly.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-concepts.html)
+2. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning of Tables and Indexes](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-create-tables-indexes.html)
+3. Oracle Database VLDB and Partitioning Guide 19c — [Partition Pruning](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-pruning.html)
+4. Oracle Database VLDB and Partitioning Guide 19c — [Partition Maintenance Operations (Exchange Partition)](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/maintenance-partition-tables-indexes.html)
 
 ------------------------------------------------------------------------
 

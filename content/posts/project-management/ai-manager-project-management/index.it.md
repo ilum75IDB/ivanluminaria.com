@@ -116,7 +116,7 @@ L'AI non è magia. È architettura applicata all'intelligenza.
 
 Un modello è un componente. Come un database, come un message broker, come un load balancer. Ha bisogno di input puliti, di monitoring, di manutenzione, di governance. Ha bisogno di qualcuno che capisca cosa fa, cosa può fare, e soprattutto cosa non può fare.
 
-Il Project Manager che ignora questi aspetti e delega tutto al team tecnico sta commettendo lo stesso errore di chi delegava la sicurezza al sistemista e poi si stupiva del data breach.
+Il Project Manager che ignora questi aspetti e delega tutto al team tecnico sta commettendo la stessa svista di chi delegava la sicurezza al sistemista e poi si stupiva del data breach.
 
 L'AI è una responsabilità architetturale. E come tutte le responsabilità architetturali, va governata dall'alto. Non dal basso.
 

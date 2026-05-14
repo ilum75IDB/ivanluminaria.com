@@ -24,7 +24,7 @@ cat /sys/kernel/mm/transparent_hugepage/enabled
 
 Risultato: zero Huge Pages configurate, Transparent Huge Pages attive, parametri kernel tutti ai valori di default. L'installazione di Oracle era stata fatta col wizard, il sistema operativo non era stato toccato.
 
-Ecco il problema. Non era Oracle. Era Linux che non era stato preparato per Oracle.
+Ecco il punto. Non era Oracle. Era Linux che non era stato preparato per Oracle.
 
 ------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ Ecco cosa ho trovato:
 | oracle nproc | 4096 | 16384 |
 | oracle memlock | 65536 KB | unlimited |
 
-Quasi tutto era sbagliato. Non per errore — per omissione. Nessuno si era preso la briga di configurare il sistema operativo dopo l'installazione.
+Quasi tutto era da rivedere. Non per errore — per omissione. Nessuno si era preso la briga di configurare il sistema operativo dopo l'installazione.
 
 ------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ Le Huge Pages sono pagine da 2 MB. La stessa SGA da 64 GB diventa 32.768 pagine.
 
 ### Come configurarle
 
-Ho calcolato il numero di Huge Pages necessarie:
+Ho calcolato il numero di Huge Pages necessarie [1]:
 
 ``` bash
 # SGA = 64 GB = 65536 MB
@@ -126,7 +126,7 @@ La differenza è misurabile: le `latch free` wait e i `library cache` contention
 
 ## 🧱 Shared memory e semafori
 
-Oracle usa la shared memory del kernel per la SGA. Se i limiti sono troppo bassi, l'istanza non riesce ad allocare la memoria richiesta — o peggio, frammenta l'allocazione.
+Oracle usa la shared memory del kernel per la SGA. Se i limiti sono troppo bassi, l'istanza non riesce ad allocare la memoria richiesta — o peggio, frammenta l'allocazione [2].
 
 ``` bash
 cat >> /etc/sysctl.d/99-oracle.conf << 'SYSCTL'
@@ -180,7 +180,7 @@ Questo è il parametro più insidioso. Le Transparent Huge Pages (THP) sono una 
 
 Per Oracle è un disastro. Il processo `khugepaged` lavora in background per compattare le pagine, causando latenze imprevedibili — quei "blocchi di qualche secondo" che il cliente lamentava.
 
-Oracle lo dice esplicitamente nella documentazione: **disabilitare THP**.
+Oracle lo dice esplicitamente nella documentazione: **disabilitare THP** [3].
 
 ``` bash
 # Verifica stato corrente
@@ -208,7 +208,7 @@ La differenza è netta: i micro-freeze random scompaiono.
 
 ## 🔒 Security limits
 
-L'utente `oracle` ha bisogno di limiti elevati su file descriptor aperti, processi e memoria bloccabile. I default di Linux sono pensati per utenti interattivi, non per un software che gestisce centinaia di connessioni simultanee.
+L'utente `oracle` ha bisogno di limiti elevati su file descriptor aperti, processi e memoria bloccabile [4]. I default di Linux sono pensati per utenti interattivi, non per un software che gestisce centinaia di connessioni simultanee.
 
 ``` bash
 cat >> /etc/security/limits.d/99-oracle.conf << 'LIMITS'
@@ -236,7 +236,7 @@ Il `memlock unlimited` è fondamentale: senza di esso, Oracle non può bloccare 
 
 ## ⚡ Swappiness
 
-Il valore di default di `vm.swappiness` è 60. Significa che Linux inizia a swappare quando la pressione sulla memoria è ancora bassa. Per un server database dedicato, questo è inaccettabile: vuoi che la SGA resti in RAM, sempre.
+Il valore di default di `vm.swappiness` è 60 [5]. Significa che Linux inizia a swappare quando la pressione sulla memoria è ancora bassa. Per un server database dedicato, questo è inaccettabile: vuoi che la SGA resti in RAM, sempre.
 
 ``` bash
 echo "vm.swappiness = 1" >> /etc/sysctl.d/99-oracle.conf
@@ -299,9 +299,19 @@ grubby --update-kernel=ALL --args="transparent_hugepage=never elevator=deadline"
 
 Dieci minuti di configurazione. Nessun costo hardware. Nessuna licenza aggiuntiva.
 
-Ma nessuno lo fa, perché il wizard non lo chiede, la documentazione è sepolta in una nota MOS, e il sistema "funziona anche senza." Funziona. Male. E la colpa ricade sempre su Oracle, mai sul fatto che nessuno ha preparato il terreno.
+Solo che nessuno lo fa, perché il wizard non lo chiede, la documentazione è sepolta in una nota MOS, e il sistema "funziona anche senza." Funziona. Male. E la colpa ricade sempre su Oracle, mai sul fatto che nessuno ha preparato il terreno.
 
 Un database è buono quanto il sistema operativo su cui gira. E un sistema operativo lasciato ai default è un sistema operativo che lavora contro di te.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. The Linux Kernel Documentation — [HugeTLB Pages](https://www.kernel.org/doc/html/latest/admin-guide/mm/hugetlbpage.html)
+2. Oracle Database Installation Guide for Linux 19c — [Configuring Kernel Parameters for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-kernel-parameters-for-linux.html)
+3. The Linux Kernel Documentation — [Transparent Hugepage Support](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html)
+4. Oracle Database Installation Guide for Linux 19c — [Configuring Users, Groups and Environments](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-users-groups-and-environments-for-oracle-grid-infrastructure-and-oracle-database.html)
+5. The Linux Kernel Documentation — [Documentation for /proc/sys/vm/ (`vm.swappiness`)](https://docs.kernel.org/admin-guide/sysctl/vm.html)
 
 ------------------------------------------------------------------------
 

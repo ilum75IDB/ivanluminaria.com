@@ -29,7 +29,7 @@ CREATE TABLE ordini (
 );
 ```
 
-Il tipo `ENUM` è una stringa con vincolo: ammette solo i valori dichiarati. Internamente MySQL memorizza un intero (1 o 2 byte, a seconda di quanti valori) che funge da indice nella lista. Risultato: storage compatto, lettura leggibile.
+Il tipo `ENUM` è una stringa con vincolo: ammette solo i valori dichiarati [1]. Internamente MySQL memorizza un intero (1 o 2 byte, a seconda di quanti valori) che funge da indice nella lista. Risultato: storage compatto, lettura leggibile.
 
 **CHECK constraint**:
 
@@ -41,7 +41,7 @@ CREATE TABLE ordini (
 );
 ```
 
-Approccio SQL standard. Più verboso, in cambio più flessibile (le condizioni di CHECK possono essere arbitrariamente complesse). Attenzione: prima di MySQL 8.0.16 i CHECK venivano parsati e silenziosamente ignorati. Solo dalla 8.0.16 sono davvero applicati.
+Approccio SQL standard. Più verboso, in cambio più flessibile (le condizioni di CHECK possono essere arbitrariamente complesse). Attenzione: prima di MySQL 8.0.16 i CHECK venivano parsati e silenziosamente ignorati. Solo dalla 8.0.16 sono davvero applicati [2].
 
 **Tabella di lookup con FK**:
 
@@ -59,7 +59,7 @@ CREATE TABLE ordini (
 );
 ```
 
-La via "database-puro". Più tabelle, più JOIN, e in cambio più flessibilità: puoi aggiungere attributi (etichette localizzate, ordine di display, flag attivo/disattivo), modificare i valori senza toccare lo schema delle tabelle figlie, e gestire tutto a runtime.
+La via "database-puro". Più tabelle, più JOIN, e in cambio più flessibilità: puoi aggiungere attributi (etichette localizzate, ordine di display, flag attivo/disattivo), modificare i valori senza toccare lo schema delle tabelle figlie, e gestire tutto a runtime [3].
 
 ---
 
@@ -113,7 +113,7 @@ ALTER TABLE spedizioni
   NOT NULL DEFAULT 'RICEVUTO';
 ```
 
-Sembra una riga sola. In realtà, se vuoi aggiungere `PRENOTATO` **prima** di `RICEVUTO` (per coerenza semantica nella sequenza), MySQL deve riscrivere la tabella. Tutta. Su `spedizioni` da centocinquanta milioni di righe, in produzione, con `Online DDL` configurato bene, sono comunque parecchie ore di carico extra sullo storage e sul replication lag. Aggiungere semplicemente in fondo `MODIFY COLUMN status ENUM(...,'PRENOTATO')` sarebbe stato più leggero — solo che avrebbe creato un set di valori con un ordinamento posizionale assurdo: `CONSEGNATO` viene "prima" di `PRENOTATO` nel sort? Tecnicamente sì.
+Sembra una riga sola. In realtà, se vuoi aggiungere `PRENOTATO` **prima** di `RICEVUTO` (per coerenza semantica nella sequenza), MySQL deve riscrivere la tabella. Tutta [4]. Su `spedizioni` da centocinquanta milioni di righe, in produzione, con `Online DDL` configurato bene [5], sono comunque parecchie ore di carico extra sullo storage e sul replication lag. Aggiungere semplicemente in fondo `MODIFY COLUMN status ENUM(...,'PRENOTATO')` sarebbe stato più leggero — solo che avrebbe creato un set di valori con un ordinamento posizionale assurdo: `CONSEGNATO` viene "prima" di `PRENOTATO` nel sort? Tecnicamente sì.
 
 Eccoli, i limiti di ENUM, uno per uno:
 
@@ -249,6 +249,16 @@ I prossimi appuntamenti:
 - **Oracle, deep-dive verticale** — come si modellavano le enumerazioni in 19c, cosa è cambiato in 21c, 23ai e 26ai, fino alle nuove Assertions
 
 Stessa domanda, tre filosofie. Il bello è proprio nel confronto.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. MySQL 8.0 Reference Manual — [The ENUM Type](https://dev.mysql.com/doc/refman/8.0/en/enum.html)
+2. MySQL 8.0 Reference Manual — [CHECK Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-check-constraints.html)
+3. MySQL 8.0 Reference Manual — [FOREIGN KEY Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+4. MySQL 8.0 Reference Manual — [`ALTER TABLE` Statement](https://dev.mysql.com/doc/refman/8.0/en/alter-table.html)
+5. MySQL 8.0 Reference Manual — [Online DDL Operations (INSTANT / INPLACE / COPY)](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-operations.html)
 
 ------------------------------------------------------------------------
 

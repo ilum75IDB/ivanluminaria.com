@@ -107,7 +107,7 @@ PostgreSQL mantiene estadisticas sobre las tablas en `pg_statistic` (legibles a 
 
 El optimizer usa esta informacion para estimar la selectividad de cada condicion WHERE y la cardinalidad de cada join.
 
-El problema? Las estadisticas se actualizan con {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — que puede ser manual o gestionado por autovacuum. Pero el autovacuum lanza ANALYZE solo cuando el numero de filas modificadas supera un umbral:
+El punto crítico? Las estadisticas se actualizan con {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — que puede ser manual o gestionado por autovacuum. Pero el autovacuum lanza ANALYZE solo cuando el numero de filas modificadas supera un umbral:
 
 ``` text
 threshold = autovacuum_analyze_threshold + autovacuum_analyze_scale_factor × n_live_tuples
@@ -139,17 +139,24 @@ Despues del ANALYZE, volvi a lanzar la query con EXPLAIN (ANALYZE, BUFFERS):
 
 De 45 segundos a menos de 3 segundos. El optimizer habia elegido un hash join, la estimacion de filas era correcta, y el plan era completamente distinto.
 
-Pero no me quede ahi. Si el problema se presento una vez, se va a presentar de nuevo.
+Y no me quede ahi. Si la criticidad se presento una vez, se va a presentar de nuevo.
 
 ------------------------------------------------------------------------
 
 ## 📊 default_statistics_target: cuando 100 no alcanza
 
-PostgreSQL recopila 100 valores de muestra por columna por defecto. Para tablas pequenas o con distribucion uniforme, es suficiente. Para tablas grandes con distribucion no uniforme, 100 muestras pueden dar una representacion distorsionada.
+`default_statistics_target` controla la **granularidad de las estadísticas** que ANALYZE construye para cada columna, no el número de filas muestreadas. El default es 100 [1], y significa dos cosas:
 
-En el caso de la tabla `orders`, la columna `customer_id` tenia una distribucion muy sesgada: el 5% de los clientes generaba el 60% de los pedidos. Con 100 muestras, el optimizer no captaba esta asimetria.
+- la **lista MCV** (Most Common Values) registra hasta 100 valores más frecuentes
+- el **histograma** de la distribución tiene hasta 100 buckets
 
-La solucion:
+El número de filas efectivamente muestreadas es en cambio **300 × target** (con el default, ~30.000 filas). Cuanto más alto el target, más detallada la representación de la distribución — y más alto el costo de ANALYZE.
+
+Para tablas pequeñas o con distribución uniforme, 100 basta. Para tablas grandes con distribución **sesgada**, 100 valores MCV pueden no bastar para capturar la asimetría.
+
+En el caso de la tabla `orders`, la columna `customer_id` tenía una distribución muy sesgada: el 5% de los clientes generaba el 60% de los pedidos. Con un target de 100, el optimizer tenía en los MCV solo los top 100 customer_id — el "long tail" caía en el histograma con estimaciones imprecisas.
+
+La solución:
 
 ``` sql
 ALTER TABLE orders
@@ -158,9 +165,9 @@ ALTER COLUMN customer_id SET STATISTICS 500;
 ANALYZE orders;
 ```
 
-Despues de subir el {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}} a 500, las estimaciones de cardinalidad del optimizer para los joins con `customers` se volvieron mucho mas precisas.
+Después de subir el {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}} a 500 (MCV hasta 500 valores, histograma hasta 500 buckets, ~150.000 filas muestreadas), las estimaciones de cardinalidad del optimizer para los joins con `customers` se volvieron mucho más precisas.
 
-Regla: si una columna se usa frecuentemente en WHERE o JOIN y tiene distribucion no uniforme, sube el target. 500 es un buen punto de partida. Puedes llegar a 1000, pero mas alla raramente ayuda y ralentiza el ANALYZE mismo.
+Regla: si una columna se usa frecuentemente en `WHERE` o `JOIN` y tiene distribución no uniforme, sube el target con `ALTER TABLE ... ALTER COLUMN ... SET STATISTICS` [2]. 500 es un buen punto de partida. Puedes llegar a 1000, más allá raramente ayuda y ralentiza el ANALYZE mismo.
 
 ------------------------------------------------------------------------
 
@@ -174,7 +181,7 @@ PostgreSQL ofrece parametros para deshabilitar estrategias especificas:
 SET enable_nestloop = off;
 ```
 
-Esto fuerza al optimizer a no usar nested loop. No es una solucion, es un parche diagnostico. Si deshabilitas el nested loop y la query pasa de 45 segundos a 3 segundos, confirmaste que el problema era la eleccion del join. Pero no puedes dejar `enable_nestloop = off` en produccion porque hay mil queries donde el nested loop es la eleccion correcta.
+Esto fuerza al optimizer a no usar nested loop. No es una solucion, es un parche diagnostico. Si deshabilitas el nested loop y la query pasa de 45 segundos a 3 segundos, confirmaste que la criticidad era la eleccion del join. Pero no puedes dejar `enable_nestloop = off` en produccion porque hay mil queries donde el nested loop es la eleccion correcta.
 
 Uso estos parametros solo en dos escenarios:
 
@@ -195,7 +202,7 @@ Despues de treinta anos haciendo este trabajo, mi proceso se ha vuelto casi meca
 
 **3. Reviso las estadisticas** — miro `pg_stats` para las columnas involucradas. Verifico `last_autoanalyze` y `last_analyze` en `pg_stat_user_tables`. Si el ultimo ANALYZE es viejo, lo lanzo y reevaluo.
 
-**4. Evaluo BUFFERS** — si `shared read` es muy alto respecto a `shared hit`, el problema podria ser I/O, no el plan. En ese caso el fix es `shared_buffers` o el working set simplemente no cabe en RAM.
+**4. Evaluo BUFFERS** — si `shared read` es muy alto respecto a `shared hit`, el cuello de botella podria ser I/O, no el plan. En ese caso el fix es `shared_buffers` o el working set simplemente no cabe en RAM.
 
 **5. Pruebo alternativas** — si las estadisticas estan actualizadas pero el plan sigue mal, uso `enable_nestloop`, `enable_hashjoin`, `enable_mergejoin` para entender cual estrategia funciona mejor. Luego intento guiar al optimizer hacia esa estrategia con indices o reescritura.
 
@@ -213,7 +220,16 @@ He visto DBA con anos de experiencia lanzar EXPLAIN ANALYZE, mirar el tiempo tot
 
 El plan de ejecucion te dice de que. Cada nodo es un organo. Las filas estimadas contra las reales son los valores de laboratorio. Los buffers son las radiografias. Y el ANALYZE es el antibiotico que resuelve el 70% de los casos.
 
-Pero para ese 30% restante, hay que leer. Linea por linea. Nodo por nodo. No hay atajo.
+Y para ese 30% restante, hay que leer. Linea por linea. Nodo por nodo. No hay atajo.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. PostgreSQL Documentation — [`default_statistics_target`](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-DEFAULT-STATISTICS-TARGET) y [Statistics Used by the Planner](https://www.postgresql.org/docs/current/planner-stats.html)
+2. PostgreSQL Documentation — [`ALTER TABLE ... ALTER COLUMN ... SET STATISTICS`](https://www.postgresql.org/docs/current/sql-altertable.html)
+3. PostgreSQL Documentation — [`EXPLAIN`](https://www.postgresql.org/docs/current/sql-explain.html) y [Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
+4. PostgreSQL Documentation — [`pg_stats` view](https://www.postgresql.org/docs/current/view-pg-stats.html)
 
 ------------------------------------------------------------------------
 

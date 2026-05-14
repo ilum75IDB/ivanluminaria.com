@@ -10,11 +10,11 @@ categories: ["data-warehouse"]
 image: "ragged-hierarchies.cover.jpg"
 ---
 
-Tres niveles. Top Group, Group, Client. Parece una estructura trivial — el tipo de jerarquía que dibujas en una pizarra en cinco minutos y que cualquier herramienta de BI debería manejar sin problemas.
+Tres niveles. Top Group, Group, Client. Parece una estructura trivial — el tipo de jerarquía que dibujas en una pizarra en cinco minutos y que cualquier herramienta de BI debería manejar sin tropiezos.
 
-Luego descubres que no todos los clientes pertenecen a un grupo. Y que no todos los grupos pertenecen a un top group. Y que los reportes de agregación que el negocio pide — facturación por top group, número de clientes por grupo, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} desde la cima hasta la hoja — producen resultados erróneos o incompletos porque la jerarquía tiene huecos.
+Luego descubres que no todos los clientes pertenecen a un grupo. Y que no todos los grupos pertenecen a un top group. Y que los reportes de agregación que el negocio pide — facturación por top group, número de clientes por grupo, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} desde la cima hasta la hoja — producen resultados errados o incompletos porque la jerarquía tiene huecos.
 
-En jerga técnica se llama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una jerarquía en la que no todas las ramas alcanzan la misma profundidad. En el mundo real se llama "el problema que nadie ve hasta que abre el reporte y los números no cuadran."
+En jerga técnica se llama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una jerarquía en la que no todas las ramas alcanzan la misma profundidad [1]. En el mundo real se llama "la cosa que nadie nota hasta que abre el reporte y los números no cuadran."
 
 ---
 
@@ -62,7 +62,7 @@ Esto es una ragged hierarchy. Tres niveles sobre el papel, pero en la realidad l
 
 ---
 
-## El problema: los reportes no cuadran
+## La situación: los reportes no cuadran
 
 El negocio pedía un reporte sencillo: facturación agregada por Top Group, con posibilidad de drill-down por Group y luego por Client. Una petición razonable — el tipo de cosa que esperas de cualquier DWH.
 
@@ -90,13 +90,13 @@ Holding Nazionale   Gruppo Centro                1          67000.00
 (null)              (null)                       2          90000.00
 ```
 
-Cinco filas. Y al menos tres problemas.
+Cinco filas. Y al menos tres incidentes.
 
 Gruppo Centro aparece dos veces: una bajo "Holding Nazionale" (el cliente 1003 que tiene top group) y una bajo NULL (el cliente 1004 cuyo top group es NULL). El mismo grupo, partido en dos filas, con totales separados. Cualquiera que mire este reporte pensará que Gruppo Centro tiene 67K de facturación bajo la holding y 45K en algún otro sitio. En realidad es un único grupo con 112K totales.
 
 Los clientes directos (Gialli Utilities y Blu Energia) terminan en una fila con dos NULL. La dirección no sabe qué hacer con una fila sin nombre.
 
-El total por Top Group está mal porque faltan las filas con NULL. Si sumas solo las filas con top group, pierdes 239K de facturación — el 30% del total.
+El total por Top Group está errado porque faltan las filas con NULL. Si sumas solo las filas con top group, pierdes 239K de facturación — el 30% del total.
 
 ---
 
@@ -112,19 +112,19 @@ SELECT COALESCE(top_group_name, group_name, client_name) AS top_group_name,
 FROM   stg_clienti;
 ```
 
-¿Funciona? En cierto sentido sí — rellena los huecos. Pero introduce problemas nuevos.
+¿Funciona? En cierto sentido sí — rellena los huecos. Solo que introduce incidentes nuevos.
 
 El cliente "Gialli Utilities" ahora aparece como Top Group, Group y Client simultáneamente. Si el negocio quiere contar cuántos Top Groups hay, el número está inflado. Si quiere filtrar por "verdaderos" top groups, no hay forma de distinguirlos de los clientes promovidos por la COALESCE.
 
 Y este es el caso sencillo, con tres niveles. He visto jerarquías de cinco niveles gestionadas con cadenas de COALESCE anidados, múltiples CASE WHEN, y una lógica de reportes tan enrevesada que nadie se atrevía a tocarla. Cada nueva petición del negocio requería un cambio en cascada en todas las consultas.
 
-El problema de fondo es que la COALESCE es un parche aplicado en la capa de presentación. No resuelve el problema estructural: la jerarquía está incompleta y el modelo dimensional no lo sabe.
+El problema de fondo es que la COALESCE es un parche aplicado en la capa de presentación. No resuelve la cuestión estructural: la jerarquía está incompleta y el modelo dimensional no lo sabe.
 
 ---
 
 ## La solución: self-parenting
 
-El principio es simple: **quien no tiene padre se convierte en padre de sí mismo**. Esta técnica se llama {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}.
+El principio es simple: **quien no tiene padre se convierte en padre de sí mismo**. Esta técnica se llama {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}, y es una de las formas estándar de tratar una ragged hierarchy como una **fixed-depth hierarchy** [2].
 
 ¿Un Client sin Group? Ese cliente se convierte en su propio Group. ¿Un Group sin Top Group? Ese grupo se convierte en su propio Top Group. De esta forma la jerarquía siempre está completa a tres niveles, sin huecos, sin NULL.
 
@@ -366,13 +366,20 @@ El self-parenting resuelve un problema específico — jerarquías de niveles fi
 
 He diseñado decenas de dimensiones jerárquicas en veinte años de data warehousing. La regla que llevo conmigo es siempre la misma:
 
-**Si el reporte necesita lógica condicional para gestionar la jerarquía, el problema está en el modelo, no en el reporte.**
+**Si el reporte necesita lógica condicional para gestionar la jerarquía, el punto está en el modelo, no en el reporte.**
 
-Un reporte debería hacer GROUP BY y JOIN. Si además tiene que decidir cómo gestionar los niveles faltantes, está haciendo el trabajo del ETL. Y un reporte que hace el trabajo del ETL es un reporte que tarde o temprano se rompe.
+Un reporte debería hacer GROUP BY y JOIN. Si además tiene que decidir cómo gestionar los niveles faltantes, está haciendo el trabajo del ETL. Y un reporte que hace el trabajo del ETL es un reporte que, antes o después, se rompe.
 
-El self-parenting no es elegante. No es sofisticado. Es una solución que un informático recién graduado podría encontrar fea. Pero funciona, es mantenible, y transforma un problema que infesta cada reporte individual en un problema que se resuelve una vez, en un solo punto, y no vuelve más.
+El self-parenting no es elegante. No es sofisticado. Es una solución que un informático recién graduado podría encontrar fea. Pero funciona, es mantenible, y transforma un incidente que infesta cada reporte individual en un incidente que se resuelve una vez, en un solo punto, y no vuelve más.
 
 A veces la mejor solución es la más simple. Esta es una de esas veces.
+
+---
+
+## Fuentes oficiales
+
+1. Kimball Group — [Ragged/Variable Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/ragged-variable-depth-hierarchy/)
+2. Kimball Group — [Fixed Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/fixed-depth-hierarchy/)
 
 ---
 

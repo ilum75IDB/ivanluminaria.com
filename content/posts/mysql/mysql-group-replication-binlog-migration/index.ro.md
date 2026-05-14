@@ -12,19 +12,19 @@ image: "mysql-group-replication-binlog-migration.cover.jpg"
 
 Alerta a venit într-o dimineață de luni, între trei ședințe și o cafea încă fierbinte. "Filesystem /mysql la 85% pe nodul primar." Pe un alt nod era la 66%, pe al treilea la 25%. Într-un cluster, când cifrele nu se potrivesc între noduri, întotdeauna e ceva dedesubt.
 
-Prima întrebare care îți vine în minte este "cât spațiu mai trebuie?". Dar e întrebarea greșită. Cea corectă este: "de ce se umple?"
+Prima întrebare care îți vine în minte este "cât spațiu mai trebuie?". Doar că e întrebarea greșită. Cea corectă este: "de ce se umple?"
 
 ---
 
 ## Cauza: binary logs pe volumul greșit
 
-Verificarea a fost rapidă:
+Verificarea a fost rapidă [1]:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin';
 ```
 
-Rezultat: `ON`. Binary logs erau active — cum e de așteptat într-un cluster. Dar calea era problema:
+Rezultat: `ON`. Binary logs erau active — cum e de așteptat într-un cluster. Doar că ce nu mergea era calea:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin_basename';
@@ -46,15 +46,15 @@ SHOW VARIABLES LIKE 'binlog_expire_logs_seconds';
 2592000
 ```
 
-Treizeci de zile. Apoi am vrut să înțeleg cât cântărește de fapt această configurație. Am verificat dimensiunea fișierelor binlog individuale și ritmul de scriere: fiecare fișier avea aproximativ 1 GB, iar serverul genera unul la fiecare două ore. Douăsprezece fișiere pe zi, înmulțite cu treizeci de zile de retenție: aproximativ 360 GB de binary logs pe volumul principal. Pe un volum de 3 TB partajat cu datele, binlog-urile singure ocupau peste 10% din spațiu. Și acele fișiere nu stau doar pe primary — în Group Replication fiecare nod scrie propriile binlog-uri locale pentru sincronizare, deci problema se multiplica pe toate cele trei noduri.
+Treizeci de zile. Apoi am vrut să înțeleg cât cântărește de fapt această configurație. Am verificat dimensiunea fișierelor binlog individuale și ritmul de scriere: fiecare fișier avea aproximativ 1 GB, iar serverul genera unul la fiecare două ore. Douăsprezece fișiere pe zi, înmulțite cu treizeci de zile de retenție: aproximativ 360 GB de binary logs pe volumul principal. Pe un volum de 3 TB partajat cu datele, binlog-urile singure ocupau peste 10% din spațiu. Și acele fișiere nu stau doar pe primary — în Group Replication fiecare nod scrie propriile binlog-uri locale pentru sincronizare, deci criticitatea se multiplica pe toate cele trei noduri.
 
-Imaginea era clară: binary logs mâncau spațiul filesystem-ului principal. Nu un bug, nu o tabelă scăpată de sub control. Doar o alegere arhitecturală făcută la instalare și niciodată revizuită.
+Cauza era clară: binary logs mâncau spațiul filesystem-ului principal. Nu un bug, nu o tabelă scăpată de sub control. Doar o alegere arhitecturală făcută la instalare și niciodată revizuită.
 
 ---
 
 ## Ce tip de cluster este, mai exact?
 
-Înainte de a atinge orice pe un server MySQL — înainte chiar de a te gândi să muți un fișier — trebuie să știi ce ai în față. "E un cluster" nu e suficient. MySQL are cel puțin patru moduri diferite de a face high availability, și fiecare are regulile sale.
+Înainte de a atinge orice pe un server MySQL — înainte chiar de a te gândi să muți un fișier — îți convine să știi ce ai în față. "E un cluster" nu e suficient. MySQL are cel puțin patru moduri diferite de a face high availability, și fiecare are regulile sale.
 
 Am început cu replicarea clasică:
 
@@ -64,9 +64,9 @@ SHOW SLAVE STATUS\G
 
 Empty set pe ambele noduri verificate. Nicio replicare tradițională activă.
 
-Apoi am încercat `SHOW REPLICA STATUS` — dar pe MySQL 8.0.20 acea comandă nu există încă. A fost introdusă în 8.0.22. Un detaliu pe care documentația online adesea uită să-l menționeze, lăsându-te să urmărești o eroare de sintaxă care nu e una.
+Apoi am încercat `SHOW REPLICA STATUS` — dar pe MySQL 8.0.20 acea comandă nu există încă. A fost introdusă în 8.0.22 [2]. Un detaliu pe care documentația online adesea uită să-l menționeze, lăsându-te să urmărești o eroare de sintaxă care nu e una.
 
-Pasul următor — Group Replication:
+Pasul următor — Group Replication [3] [4]:
 
 ```sql
 SELECT MEMBER_HOST, MEMBER_STATE, MEMBER_ROLE
@@ -99,7 +99,7 @@ SHOW VARIABLES LIKE 'group_replication_single_primary_mode';
 ON
 ```
 
-Acum știam exact ce aveam în față. Nu replicare clasică, nu Galera, nu NDB Cluster. Un MySQL Group Replication single-primary cu trei noduri, GTID activat, format binlog ROW. Tabloul complet.
+Acum știam exact ce aveam în față. Nu replicare clasică, nu Galera, nu NDB Cluster. Un MySQL Group Replication single-primary cu trei noduri [5], GTID activat, format binlog ROW. Tabloul complet.
 
 Tentația este întotdeauna să sari peste această fază. "Știu că e un cluster, hai să mergem." Dar a sări peste diagnostic pe un cluster e ca și cum ai opera fără un CT: poți avea noroc, sau poți provoca un dezastru.
 
@@ -264,13 +264,23 @@ Din experiența mea, acestea sunt cele mai comune capcane în acest tip de inter
 
 ## Ce învață această operație
 
-Un filesystem la 92% nu e o urgență — e un semnal. Problema reală nu era spațiul pe disc, ci o alegere arhitecturală făcută la momentul instalării și niciodată revizuită: binlog-uri și date pe același volum.
+Un filesystem la 92% nu e o urgență — e un semnal. Cauza reală nu era spațiul pe disc, ci o alegere arhitecturală făcută la momentul instalării și niciodată revizuită: binlog-uri și date pe același volum.
 
 Separarea binary logs pe un volum dedicat nu e doar un fix. E întărirea infrastructurii. E diferența dintre un sistem care "merge" și unul care e proiectat să meargă și când lucrurile cresc.
 
 Și partea cea mai importantă a întregii intervenții nu a fost modificarea din `my.cnf` — aia e o linie. Partea importantă a fost diagnosticul: înțelegerea tipului de cluster, verificarea stării fiecărui nod, pregătirea storage-ului, testarea permisiunilor, planificarea ordinii de execuție. Totul înainte de a atinge un singur parametru.
 
 Un DBA senior și un DBA junior cunosc amândoi comanda `systemctl stop mysqld`. Diferența e în tot ce se întâmplă înainte.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. MySQL 8.0 Reference Manual — [Binary Logging Options and Variables (`log_bin`, `log_bin_basename`)](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html)
+2. MySQL 8.0 Reference Manual — [`SHOW REPLICA STATUS` / `SHOW SLAVE STATUS`](https://dev.mysql.com/doc/refman/8.0/en/show-replica-status.html)
+3. MySQL 8.0 Reference Manual — [The `replication_group_members` Table](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-replication-group-members-table.html)
+4. MySQL 8.0 Reference Manual — [Group Replication](https://dev.mysql.com/doc/refman/8.0/en/group-replication.html)
+5. MySQL 8.0 Reference Manual — [Group Replication — Single-Primary Mode](https://dev.mysql.com/doc/refman/8.0/en/group-replication-single-primary-mode.html)
 
 ------------------------------------------------------------------------
 

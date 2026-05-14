@@ -26,7 +26,7 @@ De cealaltă parte, lead developer-ul. Tânăr, strălucitor, cu idei clare. Voi
 
 Două poziții legitime. Două perspective reale. Doi oameni inteligenți.
 
-Dar conversația luase o turnură familiară — și periculoasă.
+Conversația, însă, luase o turnură familiară — și periculoasă.
 
 "Nu, n-are sens să mutăm totul în cloud fără să regândim arhitectura."\
 "Nu, să rescriem totul e un risc enorm și nu avem buget."

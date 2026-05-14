@@ -18,7 +18,7 @@ Lo primero que le pregunté al DBA fue: "Enséñame la salida de pg_stat_stateme
 
 Silencio. Luego: "No lo tenemos activado."
 
-Dos años de producción. Cuatrocientos usuarios. Ninguna herramienta de diagnóstica de queries instalada. Es como conducir de noche sin faros — mientras la carretera es recta no te das cuenta de nada, pero en la primera curva terminas en la cuneta.
+Dos años de producción. Cuatrocientos usuarios. Ninguna herramienta de diagnóstica de queries instalada. Es como conducir de noche sin faros — mientras la carretera es recta no te das cuenta de nada, pero en la primera curva terminas en la cuneta. Con alguna excepción de nicho — un PgBouncer en modo multi-tenant agresivo, una réplica lógica downstream que recibe solo tráfico filtrado — es lo primero que instalar.
 
 ---
 
@@ -40,7 +40,7 @@ Las queries se normalizan: los valores literales se reemplazan con `$1`, `$2`, e
 
 ## Instalación: cinco minutos que lo cambian todo
 
-La instalación requiere una modificación en `postgresql.conf` y un reinicio del servicio. No hay forma de evitar el reinicio — la extensión debe cargarse como shared library al arranque del proceso.
+La instalación requiere una modificación en `postgresql.conf` y un reinicio del servicio [1]. No hay forma de evitar el reinicio — la extensión debe cargarse como shared library al arranque del proceso.
 
 ```ini
 # postgresql.conf
@@ -49,9 +49,9 @@ pg_stat_statements.max = 10000
 pg_stat_statements.track = all
 ```
 
-El parámetro `pg_stat_statements.max` define cuántas queries distintas se rastrean. El valor por defecto es 5000, pero en bases de datos con muchas queries diferentes conviene subirlo. `pg_stat_statements.track` establecido a `all` rastrea también las queries ejecutadas dentro de funciones PL/pgSQL — sin este parámetro, las queries en stored procedures no se registran.
+El parámetro `pg_stat_statements.max` define cuántas queries distintas se rastrean. El valor por defecto es 5000, pero en bases de datos con muchas queries diferentes conviene subirlo. `pg_stat_statements.track` establecido a `all` rastrea también las queries ejecutadas dentro de funciones PL/pgSQL — sin este parámetro, las queries en stored procedures no se registran [2].
 
-Después del reinicio:
+Después del reinicio, la extensión se activa como cualquier otra extensión PostgreSQL [3]:
 
 ```sql
 CREATE EXTENSION pg_stat_statements;
@@ -59,7 +59,7 @@ CREATE EXTENSION pg_stat_statements;
 
 A partir de ese momento, cada query que pasa por el servidor queda registrada. No hace falta tocar la aplicación, no hace falta modificar queries, nada. Es completamente transparente.
 
-¿El overhead? Despreciable. He hecho benchmarks en varios entornos y el impacto está en el rango del 1-2% de CPU adicional. En cualquier base de datos de producción, es un coste que se recupera en el primer problema diagnosticado.
+¿El overhead? Despreciable. He hecho benchmarks en varios entornos y el impacto está en el rango del 1-2% de CPU adicional. En cualquier base de datos de producción, es un coste que se recupera en la primera criticidad diagnosticada.
 
 ---
 
@@ -126,7 +126,7 @@ ORDER BY mean_exec_time DESC
 LIMIT 20;
 ```
 
-Esta es complementaria a la primera. Encuentra las queries individualmente lentas — las que quizás se ejecutan pocas veces pero cada una tarda segundos. El filtro `calls > 100` evita pescar queries puntuales que no son representativas.
+Esta es complementaria a la primera. Encuentra las queries individualmente lentas — las que se ejecutan pocas veces pero cada una tarda segundos. El filtro `calls > 100` evita pescar queries puntuales que no son representativas.
 
 ### Queries con más I/O a disco
 
@@ -169,7 +169,7 @@ Esta encuentra las queries que leen muchísimos bloques para devolver pocas fila
 
 ## Reset de las estadísticas: cuándo y por qué
 
-Las estadísticas de pg_stat_statements son acumulativas desde el último reset. Si el servidor lleva seis meses encendido, estás viendo la media de seis meses — que podría ocultar un problema reciente.
+Las estadísticas de pg_stat_statements son acumulativas desde el último reset. Si el servidor lleva seis meses encendido, estás viendo la media de seis meses — que podría ocultar una criticidad reciente.
 
 ```sql
 SELECT pg_stat_statements_reset();
@@ -197,13 +197,13 @@ Así tienes el histórico y las estadísticas frescas.
 
 ## pg_stat_statements + EXPLAIN: el workflow completo
 
-pg_stat_statements te dice *cuál* query es el problema. EXPLAIN te dice *por qué* es un problema. Usarlos juntos es el workflow diagnóstico más potente que ofrece PostgreSQL.
+pg_stat_statements te dice *cuál* query es la criticidad. EXPLAIN te dice *por qué* es una criticidad. Usarlos juntos es el workflow diagnóstico más potente que ofrece PostgreSQL.
 
 El proceso que sigo es siempre el mismo:
 
 1. **Identifico las top queries** con pg_stat_statements (por tiempo total, por tiempo medio, o por I/O)
 2. **Copio la query normalizada** y reemplazo los `$1`, `$2` con valores reales
-3. **Lanzo EXPLAIN (ANALYZE, BUFFERS)** para ver el plan de ejecución
+3. **Lanzo `EXPLAIN (ANALYZE, BUFFERS)`** para ver el plan de ejecución [4]
 4. **Busco las señales de alarma**: sequential scan en tablas grandes, nested loop con muchas filas, sort en disco
 5. **Intervengo**: creo un índice, reescribo la query, actualizo las estadísticas con ANALYZE
 
@@ -240,6 +240,15 @@ El DBA me preguntó: "¿Pero por qué nadie nos había dicho que instaláramos e
 La respuesta es que pg_stat_statements no es un secreto. Está en la documentación oficial, está en cada tutorial de performance tuning, la recomienda cada DBA PostgreSQL que conozco. Pero si no la instalas, no sabes lo que no sabes. Y si no sabes lo que no sabes, todo parece funcionar — hasta que deja de funcionar.
 
 Cinco minutos de instalación. Veinte minutos de análisis. Tres índices. Una base de datos que pasó de "lenta desde hace unos días" a "la más rápida que hemos tenido" — que en realidad simplemente significa "tan rápida como debería haber sido desde el principio."
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. PostgreSQL Documentation — [`pg_stat_statements` extension](https://www.postgresql.org/docs/current/pgstatstatements.html)
+2. PostgreSQL Documentation — [Client Connection Defaults (`shared_preload_libraries`)](https://www.postgresql.org/docs/current/runtime-config-client.html)
+3. PostgreSQL Documentation — [`CREATE EXTENSION`](https://www.postgresql.org/docs/current/sql-createextension.html)
+4. PostgreSQL Documentation — [`EXPLAIN` (ANALYZE, BUFFERS)](https://www.postgresql.org/docs/current/sql-explain.html)
 
 ------------------------------------------------------------------------
 
