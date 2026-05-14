@@ -16,7 +16,7 @@ When you ask why, the answer is always some variation of: "This way everything w
 
 Sure. Everything works. Until the day a developer runs a `DROP TABLE` on the wrong table. Or a batch import does a `TRUNCATE` on a production table thinking it is in the test environment. Or someone runs a `DELETE FROM customers` without a `WHERE` clause.
 
-That day the problem is no longer about permissions. It is that you have no idea who did what, and no tool to prevent it from happening again.
+That day the criticality is no longer about permissions. It is that you have no idea who did what, and no tool to prevent it from happening again.
 
 ---
 
@@ -24,7 +24,7 @@ That day the problem is no longer about permissions. It is that you have no idea
 
 The client was a mid-sized company with an ERP application running on Oracle 19c. About twenty users — a mix of developers, application accounts and operators. The application schema — let us call it `APP_OWNER` — held roughly 300 tables, about sixty views and a few dozen PL/SQL procedures.
 
-The problem was easy to describe:
+The situation was easy to describe:
 
 - Everyone connected as `APP_OWNER`
 - `APP_OWNER` had the `DBA` role
@@ -66,7 +66,7 @@ The `DBA` role includes over 200 system privileges. Granting it to an applicatio
 
 ### Roles: predefined and custom
 
-Oracle offers predefined roles (`CONNECT`, `RESOURCE`, `DBA`) and allows custom ones. The predefined roles carry a historical problem: `CONNECT` and `RESOURCE` used to include excessive privileges in older versions. From Oracle 12c onward they were trimmed, but the habit of granting them without a second thought dies hard.
+Oracle offers predefined roles (`CONNECT`, `RESOURCE`, `DBA`) and allows custom ones. The predefined roles carry a historical pain point: `CONNECT` and `RESOURCE` used to include excessive privileges in older versions. From Oracle 12c onward they were trimmed, but the habit of granting them without a second thought dies hard.
 
 The right path is building custom roles calibrated to actual needs.
 
@@ -277,7 +277,7 @@ The principle remains the same everywhere: **give each user only what they need,
 
 ## What changed afterwards
 
-The transition was gradual — two weeks for the full rollout, with testing on every application and procedure. A few scripts stopped working because they took for granted privileges they were never entitled to. Every error was actually a hidden problem that had been invisible before.
+The transition was gradual — two weeks for the full rollout, with testing on every application and procedure. A few scripts stopped working because they took for granted privileges they were never entitled to. Every failure was actually a hidden criticality that had been invisible before.
 
 The result:
 
