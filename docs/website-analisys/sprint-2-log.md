@@ -22,11 +22,11 @@ Per ciascuno dei 29 articoli:
 | # | Articolo | Mod IT | Stato | Commit |
 |---|----------|-------:|-------|--------|
 | 1 | oracle-awr-ash | 4 | ✅ tutto done | (questo commit) |
-| 2 | oracle-cloud-migration | 5 | da fare | — |
-| 3 | oracle-data-guard | 3 | da fare | — |
-| 4 | oracle-linux-kernel | 3 | da fare | — |
-| 5 | oracle-partitioning | 6 | da fare | — |
-| 6 | oracle-roles-privileges | 4 | da fare | — |
+| 2 | oracle-cloud-migration | 5 | ✅ tutto done | cc28468 (batch Oracle) |
+| 3 | oracle-data-guard | 3 | ✅ tutto done | cc28468 (batch Oracle) |
+| 4 | oracle-linux-kernel | 3 | ✅ tutto done | cc28468 (batch Oracle) |
+| 5 | oracle-partitioning | 6 | ✅ tutto done | cc28468 (batch Oracle) |
+| 6 | oracle-roles-privileges | 4 | ✅ tutto done | cc28468 (batch Oracle) |
 
 ### MySQL (6 articoli, 38 modifiche annotate)
 
@@ -52,11 +52,11 @@ Per ciascuno dei 29 articoli:
 
 | # | Articolo | Mod IT | Stato | Commit |
 |---|----------|-------:|-------|--------|
-| 17 | bus-matrix-terreno-comune | 7 | da fare | — |
-| 18 | fatto-grana-sbagliata | 6 | da fare | — |
-| 19 | partitioning-dwh | 3 | da fare | — |
-| 20 | ragged-hierarchies | 10 | da fare | — |
-| 21 | scd-tipo-2 | 3 | da fare | — |
+| 17 | bus-matrix-terreno-comune | 7 | ✅ tutto done | a01ee7d (batch DW) |
+| 18 | fatto-grana-sbagliata | 7 | ✅ tutto done | a01ee7d (batch DW) |
+| 19 | partitioning-dwh | 3 | ✅ tutto done | a01ee7d (batch DW) |
+| 20 | ragged-hierarchies | 11 | ✅ tutto done | a01ee7d (batch DW) |
+| 21 | scd-tipo-2 | 3 | ✅ tutto done | a01ee7d (batch DW) |
 
 ### Project Management (8 articoli, 16-17 modifiche annotate)
 
