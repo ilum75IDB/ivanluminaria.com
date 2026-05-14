@@ -29,7 +29,7 @@ CREATE TABLE comenzi (
 );
 ```
 
-Tipul `ENUM` este un șir cu constrângere: admite doar valorile declarate. Intern MySQL stochează un întreg (1 sau 2 octeți, în funcție de câte valori) care servește ca index în listă. Rezultat: stocare compactă, citire lizibilă.
+Tipul `ENUM` este un șir cu constrângere: admite doar valorile declarate [1]. Intern MySQL stochează un întreg (1 sau 2 octeți, în funcție de câte valori) care servește ca index în listă. Rezultat: stocare compactă, citire lizibilă.
 
 **CHECK constraint**:
 
@@ -41,7 +41,7 @@ CREATE TABLE comenzi (
 );
 ```
 
-Abordarea SQL standard. Mai verboasă, în schimb mai flexibilă (condițiile CHECK pot fi arbitrare ca și complexitate). Atenție: înainte de MySQL 8.0.16, constrângerile CHECK erau parsate și ignorate în tăcere. Doar de la 8.0.16 sunt aplicate cu adevărat.
+Abordarea SQL standard. Mai verboasă, în schimb mai flexibilă (condițiile CHECK pot fi arbitrare ca și complexitate). Atenție: înainte de MySQL 8.0.16, constrângerile CHECK erau parsate și ignorate în tăcere. Doar de la 8.0.16 sunt aplicate cu adevărat [2].
 
 **Tabelă de lookup cu FK**:
 
@@ -59,7 +59,7 @@ CREATE TABLE comenzi (
 );
 ```
 
-Calea "pur-bază-de-date". Mai multe tabele, mai multe JOIN-uri, și în schimb mai multă flexibilitate: poți adăuga atribute (etichete localizate, ordine de afișare, flag-uri activ/inactiv), modifica valorile fără a atinge schema tabelelor copii, și gestiona totul în runtime.
+Calea "pur-bază-de-date". Mai multe tabele, mai multe JOIN-uri, și în schimb mai multă flexibilitate: poți adăuga atribute (etichete localizate, ordine de afișare, flag-uri activ/inactiv), modifica valorile fără a atinge schema tabelelor copii, și gestiona totul în runtime [3].
 
 ---
 
@@ -113,7 +113,7 @@ ALTER TABLE expedieri
   NOT NULL DEFAULT 'PRIMIT';
 ```
 
-Pare un singur rând. În realitate, dacă vrei să adaugi `REZERVAT` **înainte** de `PRIMIT` (pentru coerență semantică în secvență), MySQL trebuie să rescrie tabela. Toată. Pe `expedieri` cu o sută cincizeci de milioane de rânduri, în producție, cu `Online DDL` configurat bine, sunt totuși câteva ore de încărcare suplimentară pe storage și pe replication lag. A adăuga pur și simplu la final cu `MODIFY COLUMN status ENUM(...,'REZERVAT')` ar fi fost mai ușor — numai că ar fi creat un set de valori cu o ordonare pozițională absurdă: `LIVRAT` vine "înaintea" lui `REZERVAT` în sort? Tehnic da.
+Pare un singur rând. În realitate, dacă vrei să adaugi `REZERVAT` **înainte** de `PRIMIT` (pentru coerență semantică în secvență), MySQL trebuie să rescrie tabela. Toată [4]. Pe `expedieri` cu o sută cincizeci de milioane de rânduri, în producție, cu `Online DDL` configurat bine [5], sunt totuși câteva ore de încărcare suplimentară pe storage și pe replication lag. A adăuga pur și simplu la final cu `MODIFY COLUMN status ENUM(...,'REZERVAT')` ar fi fost mai ușor — numai că ar fi creat un set de valori cu o ordonare pozițională absurdă: `LIVRAT` vine "înaintea" lui `REZERVAT` în sort? Tehnic da.
 
 Iată-le, limitele lui ENUM, povestite fără milă:
 
@@ -249,6 +249,16 @@ Următoarele apariții:
 - **Oracle, deep-dive vertical** — cum se modelau enumerările în 19c, ce se schimbă în 21c, 23ai și 26ai, până la noile Assertions
 
 Aceeași întrebare, trei filosofii. Frumusețea este chiar în comparație.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. MySQL 8.0 Reference Manual — [The ENUM Type](https://dev.mysql.com/doc/refman/8.0/en/enum.html)
+2. MySQL 8.0 Reference Manual — [CHECK Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-check-constraints.html)
+3. MySQL 8.0 Reference Manual — [FOREIGN KEY Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+4. MySQL 8.0 Reference Manual — [`ALTER TABLE` Statement](https://dev.mysql.com/doc/refman/8.0/en/alter-table.html)
+5. MySQL 8.0 Reference Manual — [Online DDL Operations (INSTANT / INPLACE / COPY)](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-operations.html)
 
 ------------------------------------------------------------------------
 
