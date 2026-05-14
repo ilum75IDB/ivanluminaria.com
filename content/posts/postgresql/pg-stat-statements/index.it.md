@@ -18,7 +18,7 @@ La prima cosa che ho chiesto al DBA è stata: "Fammi vedere l'output di pg_stat_
 
 Silenzio. Poi: "Non ce l'abbiamo attivo."
 
-Due anni di produzione. Quattrocento utenti. Nessuno strumento di diagnostica delle query installato. È come guidare di notte senza fari — finché la strada è dritta non ti accorgi di nulla, ma alla prima curva finisci nel fosso.
+Due anni di produzione. Quattrocento utenti. Nessuno strumento di diagnostica delle query installato. È come guidare di notte senza fari — finché la strada è dritta non ti accorgi di nulla, ma alla prima curva finisci nel fosso. Con qualche eccezione di nicchia — un PgBouncer in modalità multi-tenant aggressiva, una replica logica downstream che riceve solo traffico filtrato — è la prima cosa da installare.
 
 ---
 
@@ -59,7 +59,7 @@ CREATE EXTENSION pg_stat_statements;
 
 Da questo momento, ogni query che passa dal server viene tracciata. Non serve toccare l'applicazione, non serve modificare le query, non serve nulla. È completamente trasparente.
 
-L'overhead? Trascurabile. Ho fatto benchmark su diversi ambienti e l'impatto è nell'ordine dell'1-2% di CPU in più. Su qualsiasi database di produzione è un costo che si ripaga al primo problema diagnosticato.
+L'overhead? Trascurabile. Ho fatto benchmark su diversi ambienti e l'impatto è nell'ordine dell'1-2% di CPU in più. Su qualsiasi database di produzione è un costo che si ripaga alla prima criticità diagnosticata.
 
 ---
 
@@ -126,7 +126,7 @@ ORDER BY mean_exec_time DESC
 LIMIT 20;
 ```
 
-Questa è complementare alla prima. Trova le query singolarmente lente — quelle che magari vengono eseguite poche volte ma ciascuna impiega secondi. Il filtro `calls > 100` evita di pescare query una tantum che non sono rappresentative.
+Questa è complementare alla prima. Trova le query singolarmente lente — quelle che vengono eseguite poche volte ma ciascuna impiega secondi. Il filtro `calls > 100` evita di pescare query una tantum che non sono rappresentative.
 
 ### Query con più I/O su disco
 
@@ -169,7 +169,7 @@ Questa trova le query che leggono moltissimi blocchi per restituire poche righe 
 
 ## Reset delle statistiche: quando e perché
 
-Le statistiche di pg_stat_statements sono cumulative dall'ultimo reset. Se il server è in piedi da sei mesi, stai guardando la media di sei mesi — che potrebbe nascondere un problema recente.
+Le statistiche di pg_stat_statements sono cumulative dall'ultimo reset. Se il server è in piedi da sei mesi, stai guardando la media di sei mesi — che potrebbe nascondere una criticità recente.
 
 ```sql
 SELECT pg_stat_statements_reset();
@@ -197,7 +197,7 @@ Così hai lo storico e le statistiche fresche.
 
 ## pg_stat_statements + EXPLAIN: il workflow completo
 
-pg_stat_statements ti dice *quale* query è il problema. EXPLAIN ti dice *perché* è un problema. Usarli insieme è il workflow diagnostico più potente che PostgreSQL offre.
+pg_stat_statements ti dice *quale* query è la criticità. EXPLAIN ti dice *perché* è una criticità. Usarli insieme è il workflow diagnostico più potente che PostgreSQL offre.
 
 Il processo che seguo è sempre lo stesso:
 

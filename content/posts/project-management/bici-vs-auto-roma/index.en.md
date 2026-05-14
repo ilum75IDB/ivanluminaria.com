@@ -106,7 +106,7 @@ And those €5,450 saved? That's a holiday. A pension contribution. The cost of 
 
 ## 💪 The benefits you can't measure in euros
 
-But the financial numbers are only part of the story. The ones that truly matter are the others.
+The financial numbers, however, are only part of the story. The ones that truly matter are the others.
 
 ### Cardiovascular health
 
@@ -157,7 +157,7 @@ With pedal assist you don't sweat. And even if you did slightly, 18 minutes of o
 This is true, and I don't minimise it. Rome needs more cycling infrastructure. But my route — Appio Latino, Celio, Lungotevere — is reasonably safe, especially during rush hour when traffic is so slow that cars move slower than bikes.
 
 **"I can't bring a bike into the office."**\
-The Brompton folds in 20 seconds and becomes luggage you can slide under your desk. That's its superpower: it completely eliminates the parking problem.
+The Brompton folds in 20 seconds and becomes luggage you can slide under your desk. That's its superpower: it completely eliminates the parking issue.
 
 ------------------------------------------------------------------------
 
@@ -195,7 +195,7 @@ I know what you're thinking. "Yes, but those are flat cities. Rome has seven hil
 
 It's true. Rome has climbs. The Celio, the Aventine, the Janiculum — they're not exactly the Po Valley.
 
-But that objection made sense ten years ago. Today, with an electric bike, **the seven hills no longer exist**. The motor assists you uphill, you reach the top without gasping, without sweating, without missing the car.
+That objection, however, made sense ten years ago. Today, with an electric bike, **the seven hills no longer exist**. The motor assists you uphill, you reach the top without gasping, without sweating, without missing the car.
 
 My electric Brompton tackles the Celio climb as if it were a gentle bump. The Lungotevere is flat. And the final stretch to Prati is downhill.
 
@@ -222,7 +222,7 @@ From 13 hours to 1 hour and 12 minutes. From €110 to zero.
 It's not utopia. It's organisation.\
 It's not laziness. It's intelligence.
 
-If companies combined smart working with sustainable mobility incentives, the result would be threefold: **healthier employees, higher productivity, and more liveable cities**. But to get there, we need to stop thinking that "working" means "sitting in an office from 9 to 6 after an hour in the car."
+If companies combined smart working with sustainable mobility incentives, the result would be threefold: **healthier employees, higher productivity, and more liveable cities**. To get there, however, we need to stop thinking that "working" means "sitting in an office from 9 to 6 after an hour in the car."
 
 ------------------------------------------------------------------------
 

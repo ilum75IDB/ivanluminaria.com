@@ -14,7 +14,7 @@ Due miliardi di righe. Non è un numero che si raggiunge in un giorno. Ci voglio
 
 Quattro ore. Per un report che sei mesi prima ne impiegava venti minuti.
 
-Non è un bug. Non è un problema di rete o di storage lento. È la fisica dei dati: quando una tabella cresce oltre una certa soglia, gli approcci che funzionavano smettono di funzionare. E se non hai progettato la struttura per gestire quella crescita, il database fa l'unica cosa che può fare: leggere tutto.
+Non è un bug. Non è una questione di rete o di storage lento. È la fisica dei dati: quando una tabella cresce oltre una certa soglia, gli approcci che funzionavano smettono di funzionare. E se non hai progettato la struttura per gestire quella crescita, il database fa l'unica cosa che può fare: leggere tutto.
 
 ---
 
@@ -22,7 +22,7 @@ Non è un bug. Non è un problema di rete o di storage lento. È la fisica dei d
 
 Il cliente era un operatore telecom. Niente di esotico — un classico ambiente Oracle 19c Enterprise Edition su Linux, storage SAN, una trentina di istanze tra produzione, staging e sviluppo. L'istanza critica era quella del billing: fatturazione, CDR (Call Detail Records), movimenti contabili.
 
-La tabella al centro del problema si chiamava `TXN_MOVIMENTI`. Raccoglieva ogni singola transazione del sistema di billing dal 2016. La struttura era più o meno questa:
+La tabella al centro della situazione si chiamava `TXN_MOVIMENTI`. Raccoglieva ogni singola transazione del sistema di billing dal 2016. La struttura era più o meno questa:
 
 ``` sql
 CREATE TABLE txn_movimenti (
@@ -255,7 +255,7 @@ Il costo è passato da 890K a 12K. Non è un miglioramento percentuale — è un
 
 Il meccanismo che rende tutto questo possibile si chiama {{< glossary term="partition-pruning" >}}**partition pruning**{{< /glossary >}}. Non è qualcosa che devi configurare — Oracle lo fa automaticamente quando il predicato della query corrisponde alla chiave di partizione.
 
-Ma devi sapere quando funziona e quando no.
+E devi sapere quando funziona e quando no.
 
 **Funziona** con predicati diretti sulla colonna di partizione:
 
@@ -313,7 +313,7 @@ Dopo quindici anni di partitioning Oracle, ho una lista di cose che vorrei aver 
 
 **La chiave di partizione deve corrispondere al pattern di accesso.** Sembra ovvio, ma ho visto tabelle partizionate per `cod_cliente` quando il 95% delle query filtra per data. Il partitioning funziona solo se le query possono fare pruning.
 
-**Interval partitioning è quasi sempre meglio di range statico.** Con il range classico devi creare manualmente le partizioni future, il che significa un job schedulato o un DBA che se lo ricorda. Con interval Oracle le crea da solo. Un problema in meno.
+**Interval partitioning è quasi sempre meglio di range statico.** Con il range classico devi creare manualmente le partizioni future, il che significa un job schedulato o un DBA che se lo ricorda. Con interval Oracle le crea da solo. Una preoccupazione in meno.
 
 **Gli indici globali sono una trappola.** Funzionano bene per le query, ma qualsiasi operazione DDL sulla partizione li invalida. E ricostruire un indice globale su 2 miliardi di righe richiede ore. Usa indici locali dove possibile e accetta il compromesso.
 
@@ -321,7 +321,7 @@ Dopo quindici anni di partitioning Oracle, ho una lista di cose che vorrei aver 
 
 **Testa il pruning prima di andare in produzione.** Non fidarti: verifica con `EXPLAIN PLAN` che ogni query critica faccia effettivamente pruning. Una singola `TRUNC()` nel predicato sbagliato e hai 380 GB di full table scan.
 
-**Il partitioning non sostituisce gli indici.** Riduce il volume di dati da esaminare, ma dentro la partizione hai ancora bisogno degli indici giusti. Una partizione mensile da 28 milioni di righe senza indice è comunque un problema.
+**Il partitioning non sostituisce gli indici.** Riduce il volume di dati da esaminare, ma dentro la partizione hai ancora bisogno degli indici giusti. Una partizione mensile da 28 milioni di righe senza indice è comunque una criticità.
 
 ---
 
@@ -336,7 +336,7 @@ Non tutte le tabelle hanno bisogno di partitioning. La mia regola empirica:
 
 Ma il momento giusto per implementarlo è prima che diventi urgente. Quando la tabella ha già 2 miliardi di righe, la migrazione è un progetto a sé. Quando ne ha 50 milioni e sta crescendo, è un'operazione da un pomeriggio.
 
-Il mio errore più grande con il partitioning? Non averlo proposto sei mesi prima, quando i segnali c'erano già tutti.
+La mia svista più grande con il partitioning? Non averlo proposto sei mesi prima, quando i segnali c'erano già tutti.
 
 ------------------------------------------------------------------------
 

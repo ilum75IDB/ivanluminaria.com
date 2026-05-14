@@ -75,7 +75,7 @@ He trabajado con equipos distribuidos en tres husos horarios. He gestionado base
 
 ## 📊 Los números para la empresa: lo que los CFO no quieren ver
 
-Las empresas de consultoría IT en Roma tienen un problema estructural que fingen no tener.
+Las empresas de consultoría IT en Roma tienen una cuestión estructural que fingen no tener.
 
 Tomemos una empresa con 50 consultores. Hagamos las cuentas:
 
@@ -105,7 +105,7 @@ Un millón setecientos mil euros. Cada año. Para tener a cincuenta personas sen
 **Ahorro anual: más de 1.400.000€.**\
 Y estoy haciendo estimaciones conservadoras.
 
-Pero el número más importante no es el económico.\
+El número más importante, sin embargo, no es el económico.\
 El número más importante son esas **26.400 horas** devueltas a la productividad.\
 Horas en las que las personas trabajan lúcidas, descansadas, concentradas.\
 No horas mirando un parachoques en la Cristoforo Colombo.
@@ -126,7 +126,7 @@ El consultor informático no trabaja en una cadena de montaje. No necesita estar
 
 Todo esto se hace mejor desde casa que en un open space ruidoso donde el teléfono suena cada cinco minutos y alguien te interrumpe para preguntarte "¿tienes un momento?" (que nunca es solo un momento).
 
-El verdadero problema es el **control**. Algunas empresas no saben gestionar el trabajo por objetivos. Solo saben gestionar la presencia. Y confunden las dos cosas.
+La verdadera cuestión es el **control**. Algunas empresas no saben gestionar el trabajo por objetivos. Solo saben gestionar la presencia. Y confunden las dos cosas.
 
 Si un consultor cierra 20 tickets en una semana trabajando desde casa en pantalones cortos, es más productivo que uno que cierra 8 en traje y corbata en la oficina de 9 a 18.
 

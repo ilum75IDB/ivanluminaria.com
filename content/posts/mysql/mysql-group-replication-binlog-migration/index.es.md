@@ -12,7 +12,7 @@ image: "mysql-group-replication-binlog-migration.cover.jpg"
 
 La alerta llegó un lunes por la mañana, entre tres reuniones y un café todavía caliente. "Filesystem /mysql al 85% en el nodo primario." En otro nodo estaba al 66%, en el tercero al 25%. En un cluster, cuando los números no cuadran entre los nodos, siempre hay algo debajo.
 
-La primera pregunta que te viene a la cabeza es "¿cuánto espacio necesitamos?". Pero es la pregunta equivocada. La correcta es: "¿por qué se está llenando?"
+La primera pregunta que te viene a la cabeza es "¿cuánto espacio necesitamos?". Solo que es la pregunta equivocada. La correcta es: "¿por qué se está llenando?"
 
 ---
 
@@ -24,7 +24,7 @@ Verificar fue rápido:
 SHOW VARIABLES LIKE 'log_bin';
 ```
 
-Resultado: `ON`. Los binary logs estaban activos — como se espera en un cluster. Pero el path era el problema:
+Resultado: `ON`. Los binary logs estaban activos — como se espera en un cluster. Solo que el path era la situación:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin_basename';
@@ -46,15 +46,15 @@ SHOW VARIABLES LIKE 'binlog_expire_logs_seconds';
 2592000
 ```
 
-Treinta días. Después quise entender cuánto pesaba realmente esta configuración. Comprobé el tamaño de los archivos binlog individuales y el ritmo de escritura: cada archivo pesaba aproximadamente 1 GB, y el servidor generaba uno cada dos horas. Doce archivos al día, por treinta días de retención: unos 360 GB de binary logs en el volumen principal. En un volumen de 3 TB compartido con los datos, los binlogs por sí solos ocupaban más del 10% del espacio. Y esos archivos no están solo en el primary — en Group Replication cada nodo escribe sus propios binlogs locales para la sincronización, así que el problema se multiplicaba en los tres nodos.
+Treinta días. Después quise entender cuánto pesaba realmente esta configuración. Comprobé el tamaño de los archivos binlog individuales y el ritmo de escritura: cada archivo pesaba aproximadamente 1 GB, y el servidor generaba uno cada dos horas. Doce archivos al día, por treinta días de retención: unos 360 GB de binary logs en el volumen principal. En un volumen de 3 TB compartido con los datos, los binlogs por sí solos ocupaban más del 10% del espacio. Y esos archivos no están solo en el primary — en Group Replication cada nodo escribe sus propios binlogs locales para la sincronización, así que la situación se multiplicaba en los tres nodos.
 
-El cuadro era claro: los binary logs estaban devorando el filesystem principal. No un bug, no una tabla descontrolada. Solo una elección arquitectónica hecha en la instalación y nunca revisada.
+La causa era clara: los binary logs estaban devorando el filesystem principal. No un bug, no una tabla descontrolada. Solo una elección arquitectónica hecha en la instalación y nunca revisada.
 
 ---
 
 ## ¿Qué tipo de cluster es exactamente?
 
-Antes de tocar cualquier cosa en un servidor MySQL — antes siquiera de pensar en mover un archivo — necesitas saber qué tienes delante. "Es un cluster" no basta. MySQL tiene al menos cuatro formas distintas de hacer alta disponibilidad, y cada una tiene sus propias reglas.
+Antes de tocar cualquier cosa en un servidor MySQL — antes siquiera de pensar en mover un archivo — te conviene saber qué tienes delante. "Es un cluster" no basta. MySQL tiene al menos cuatro formas distintas de hacer alta disponibilidad, y cada una tiene sus propias reglas.
 
 Empecé con la replicación clásica:
 
@@ -264,7 +264,7 @@ Desde mi experiencia, estas son las trampas más comunes en este tipo de interve
 
 ## Lo que esta operación enseña
 
-Un filesystem al 92% no es una emergencia — es una señal. El problema real no era el espacio en disco, sino una elección arquitectónica hecha en el momento de la instalación y nunca revisada: binlogs y datos en el mismo volumen.
+Un filesystem al 92% no es una emergencia — es una señal. La causa real no era el espacio en disco, sino una elección arquitectónica hecha en el momento de la instalación y nunca revisada: binlogs y datos en el mismo volumen.
 
 Separar los binary logs en un volumen dedicado no es solo un fix. Es endurecimiento de la infraestructura. Es la diferencia entre un sistema que "funciona" y uno que está diseñado para seguir funcionando cuando las cosas crecen.
 

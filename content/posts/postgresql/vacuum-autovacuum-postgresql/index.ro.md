@@ -13,7 +13,7 @@ image: "vacuum-autovacuum-postgresql.cover.jpg"
 
 Acum câțiva ani mi s-a cerut să verific un PostgreSQL în producție care
 "se încetinește în fiecare săptămână". Mereu același tipar: luni merge
-bine, vineri e dezastru. În weekend cineva repornește serviciul și se
+bine, vineri situația se degradase puternic. În weekend cineva repornește serviciul și se
 începe de la capăt.
 
 Baza de date de aproximativ 200 GB. Tabelele principale ocupau aproape
@@ -28,7 +28,7 @@ configurase.
 
 ## 🧠 MVCC: de ce PostgreSQL generează "gunoi"
 
-Ca să înțelegi problema, trebuie un pas înapoi. PostgreSQL folosește
+Ca să înțelegi dinamica, trebuie un pas înapoi. PostgreSQL folosește
 MVCC — Multi-Version Concurrency Control. De fiecare dată când faci un
 UPDATE, baza de date nu suprascrie rândul original. Creează o versiune
 nouă și marchează pe cea veche ca "moartă".
@@ -100,16 +100,16 @@ dead tuples depășesc **2.000.050**. Două milioane de rânduri moarte
 înainte ca cineva să facă curățenie.
 
 Pentru o tabelă cu 500.000 de update-uri pe zi, asta înseamnă că
-autovacuum se activează poate la fiecare 4 zile. Între timp bloat-ul
+autovacuum se activează aproximativ la fiecare 4 zile. Între timp bloat-ul
 crește, scanările se încetinesc, indecșii se umflă.
 
-De aceea luni totul mergea bine și vineri era dezastru.
+De aceea luni totul mergea bine și vineri sistemul era la limită.
 
 ------------------------------------------------------------------------
 
 ## 📊 Diagnostic: citirea pg_stat_user_tables
 
-Primul lucru de făcut când suspectezi o problemă de vacuum este să
+Primul lucru de făcut când suspectezi o criticitate de vacuum este să
 interoghezi `pg_stat_user_tables`:
 
 ``` sql

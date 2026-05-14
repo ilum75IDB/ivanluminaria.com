@@ -22,7 +22,7 @@ It is not a bug. It is not a network issue or slow storage. It is the physics of
 
 The client was a telecom operator. Nothing exotic — a classic Oracle 19c Enterprise Edition environment on Linux, SAN storage, about thirty instances across production, staging and development. The critical instance was billing: invoicing, CDR (Call Detail Records), accounting movements.
 
-The table at the centre of the problem was called `TXN_MOVIMENTI`. It collected every single transaction from the billing system since 2016. The structure was roughly this:
+The table at the centre of the situation was called `TXN_MOVIMENTI`. It collected every single transaction from the billing system since 2016. The structure was roughly this:
 
 ``` sql
 CREATE TABLE txn_movimenti (
@@ -255,7 +255,7 @@ The cost went from 890K to 12K. That is not a percentage improvement — it is a
 
 The mechanism that makes all this possible is called {{< glossary term="partition-pruning" >}}**partition pruning**{{< /glossary >}}. It is not something you configure — Oracle does it automatically when the query predicate matches the partition key.
 
-But you need to know when it works and when it does not.
+And you need to know when it works and when it does not.
 
 **It works** with direct predicates on the partition column:
 
@@ -313,7 +313,7 @@ After fifteen years of Oracle partitioning, I have a list of things I wish I had
 
 **The partition key must match the access pattern.** It sounds obvious, but I have seen tables partitioned by `cod_cliente` when 95% of queries filter by date. Partitioning only works if queries can prune.
 
-**Interval partitioning is almost always better than static range.** With classic range you have to manually create future partitions, which means a scheduled job or a DBA who remembers. With interval Oracle creates them on its own. One less problem.
+**Interval partitioning is almost always better than static range.** With classic range you have to manually create future partitions, which means a scheduled job or a DBA who remembers. With interval Oracle creates them on its own. One less worry.
 
 **Global indexes are a trap.** They work well for queries, but any DDL operation on the partition invalidates them. And rebuilding a global index on 2 billion rows takes hours. Use local indexes where possible and accept the trade-off.
 
@@ -321,7 +321,7 @@ After fifteen years of Oracle partitioning, I have a list of things I wish I had
 
 **Test pruning before going to production.** Do not trust: verify with `EXPLAIN PLAN` that every critical query actually prunes. A single `TRUNC()` in the wrong predicate and you have a 380 GB full table scan.
 
-**Partitioning does not replace indexes.** It reduces the volume of data to examine, but inside the partition you still need the right indexes. A monthly partition of 28 million rows without an index is still a problem.
+**Partitioning does not replace indexes.** It reduces the volume of data to examine, but inside the partition you still need the right indexes. A monthly partition of 28 million rows without an index is still a criticality.
 
 ---
 
@@ -336,7 +336,7 @@ Not every table needs partitioning. My rule of thumb:
 
 But the right time to implement it is before it becomes urgent. When the table already has 2 billion rows, the migration is a project in itself. When it has 50 million and is growing, it is an afternoon's work.
 
-My biggest mistake with partitioning? Not proposing it six months earlier, when all the signals were already there.
+My biggest oversight with partitioning? Not proposing it six months earlier, when all the signals were already there.
 
 ------------------------------------------------------------------------
 

@@ -24,7 +24,7 @@ cat /sys/kernel/mm/transparent_hugepage/enabled
 
 Resultado: cero Huge Pages configuradas, Transparent Huge Pages activas, parámetros del kernel en sus valores por defecto. La instalación de Oracle se había hecho con el asistente, el sistema operativo no se había tocado.
 
-Ahí estaba el problema. No era Oracle. Era Linux que no había sido preparado para Oracle.
+Ahí estaba el punto. No era Oracle. Era Linux que no había sido preparado para Oracle.
 
 ------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ Esto fue lo que encontré:
 | oracle nproc | 4096 | 16384 |
 | oracle memlock | 65536 KB | unlimited |
 
-Casi todo estaba mal. No por error — por omisión. Nadie se había molestado en configurar el sistema operativo después de la instalación.
+Casi todo estaba a revisar. No por error — por omisión. Nadie se había molestado en configurar el sistema operativo después de la instalación.
 
 ------------------------------------------------------------------------
 
@@ -299,7 +299,7 @@ grubby --update-kernel=ALL --args="transparent_hugepage=never elevator=deadline"
 
 Diez minutos de configuración. Sin coste de hardware. Sin licencias adicionales.
 
-Pero nadie lo hace, porque el asistente no lo pide, la documentación está enterrada en una nota MOS, y el sistema "funciona sin ello." Funciona. Mal. Y la culpa siempre recae en Oracle, nunca en que nadie preparó el terreno.
+Solo que nadie lo hace, porque el asistente no lo pide, la documentación está enterrada en una nota MOS, y el sistema "funciona sin ello." Funciona. Mal. Y la culpa siempre recae en Oracle, nunca en que nadie preparó el terreno.
 
 Una base de datos es tan buena como el sistema operativo sobre el que corre. Y un sistema operativo dejado en sus valores por defecto es un sistema operativo que trabaja en tu contra.
 

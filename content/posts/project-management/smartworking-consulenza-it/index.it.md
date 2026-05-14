@@ -75,7 +75,7 @@ Ho lavorato con team distribuiti su tre fusi orari. Ho gestito database critici 
 
 ## 📊 I numeri per l'azienda: quello che i CFO non vogliono vedere
 
-Le aziende di consulenza IT a Roma hanno un problema strutturale che fingono di non avere.
+Le aziende di consulenza IT a Roma hanno una criticità strutturale che fingono di non avere.
 
 Prendiamo un'azienda con 50 consulenti. Facciamo i conti:
 
@@ -105,7 +105,7 @@ Un milione e settecentomila euro. Ogni anno. Per tenere cinquanta persone sedute
 **Risparmio annuo: oltre 1.400.000€.**\
 E sto facendo stime conservative.
 
-Ma il numero più importante non è quello economico.\
+Il numero più importante, però, non è quello economico.\
 Il numero più importante sono quelle **26.400 ore** restituite alla produttività.\
 Ore in cui le persone lavorano lucide, riposate, concentrate.\
 Non ore in cui fissano un paraurti sulla Cristoforo Colombo.
@@ -126,7 +126,7 @@ Il consulente informatico non lavora in catena di montaggio. Non ha bisogno di e
 
 Tutto questo si fa meglio da casa che in un open space rumoroso dove il telefono squilla ogni cinque minuti e qualcuno ti interrompe per chiederti "hai un minuto?" (che non è mai un minuto).
 
-Il vero problema è il **controllo**. Alcune aziende non sanno gestire il lavoro per obiettivi. Sanno solo gestire la presenza. E confondono le due cose.
+La vera questione è il **controllo**. Alcune aziende non sanno gestire il lavoro per obiettivi. Sanno solo gestire la presenza. E confondono le due cose.
 
 Se un consulente chiude 20 ticket in una settimana lavorando da casa in pantaloncini, è più produttivo di uno che ne chiude 8 standosene in giacca e cravatta in ufficio dalle 9 alle 18.
 

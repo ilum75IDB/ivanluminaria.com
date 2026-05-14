@@ -116,7 +116,7 @@ AI-ul nu este magie. Este arhitectură aplicată inteligenței.
 
 Un model este o componentă. Ca o bază de date, ca un message broker, ca un load balancer. Are nevoie de inputuri curate, de monitoring, de mentenanță, de guvernanță. Are nevoie de cineva care înțelege ce face, ce poate face și mai ales ce nu poate face.
 
-Project Managerul care ignoră aceste aspecte și deleagă totul echipei tehnice comite aceeași greșeală ca cel care delega securitatea administratorului de sistem și apoi se mira de breșa de date.
+Project Managerul care ignoră aceste aspecte și deleagă totul echipei tehnice comite aceeași omisiune ca cel care delega securitatea administratorului de sistem și apoi se mira de breșa de date.
 
 AI-ul este o responsabilitate arhitecturală. Și ca toate responsabilitățile arhitecturale, se guvernează de sus. Nu de jos.
 

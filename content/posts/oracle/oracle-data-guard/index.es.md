@@ -183,7 +183,7 @@ Configuration Status:
 SUCCESS
 ```
 
-La palabra que quieres ver es `SUCCESS`. Cualquier otra cosa significa que hay un problema de red, configuración o permisos que resolver antes de continuar.
+La palabra que quieres ver es `SUCCESS`. Cualquier otra cosa significa que hay una criticidad de red, configuración o permisos que resolver antes de continuar.
 
 ## El primer switchover
 
@@ -219,7 +219,7 @@ No le di la respuesta. La sabíamos los dos.
 
 ## Lo que no te cuentan
 
-La configuración que he descrito funciona. Pero hay cosas que la documentación de Oracle no enfatiza lo suficiente.
+La configuración que he descrito funciona. Y hay cosas que la documentación de Oracle no enfatiza lo suficiente.
 
 **El gap de red.** La réplica síncrona (`SYNC`) garantiza cero pérdida de datos pero introduce latencia en cada commit. Con 12 km y una buena fibra, la latencia añadida era de 1-2 milisegundos — aceptable. Pero a 100 km habría sido 5-8 ms, y en una aplicación con miles de commits por segundo, la ralentización se habría notado. Por eso elegí el modo `MaxPerformance` (asíncrono) como predeterminado, aceptando la posibilidad teórica de perder unos segundos de transacciones en caso de desastre total. Para ese cliente, perder cinco segundos de datos era infinitamente mejor que perder diez horas.
 
@@ -250,7 +250,7 @@ El coste total del proyecto — servidor, licencias, línea dedicada, implementa
 
 ## Lo que aprendí
 
-El disaster recovery no es un problema técnico. Es un problema de percepción del riesgo. Mientras la base de datos funciona, el DR es un gasto. Cuando la base de datos se para, el DR es una inversión que se debería haber hecho seis meses antes.
+El disaster recovery no es una cuestión técnica. Es una cuestión de percepción del riesgo. Mientras la base de datos funciona, el DR es un gasto. Cuando la base de datos se para, el DR es una inversión que se debería haber hecho seis meses antes.
 
 No puedes convencer a un CEO con un diagrama arquitectónico. Solo puedes esperar a que ocurra el desastre y estar preparado con la solución. Es cínico, pero así funciona en el noventa por ciento de los casos.
 

@@ -10,11 +10,11 @@ categories: ["data-warehouse"]
 image: "ragged-hierarchies.cover.jpg"
 ---
 
-Three levels. Top Group, Group, Client. It looks like a trivial structure — the kind of hierarchy you draw on a whiteboard in five minutes and that any BI tool should handle without issues.
+Three levels. Top Group, Group, Client. It looks like a trivial structure — the kind of hierarchy you draw on a whiteboard in five minutes and that any BI tool should handle without snags.
 
-Then you discover that not all clients belong to a group. And that not all groups belong to a top group. And that the aggregation reports the business asks for — revenue by top group, client count by group, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} from the top to the leaf — produce wrong or incomplete results because the hierarchy has holes.
+Then you discover that not all clients belong to a group. And that not all groups belong to a top group. And that the aggregation reports the business asks for — revenue by top group, client count by group, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} from the top to the leaf — produce incorrect or incomplete results because the hierarchy has holes.
 
-In technical jargon it is called a **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: a hierarchy where not all branches reach the same depth. In the real world it is called "the problem nobody sees until they open the report and the numbers do not add up."
+In technical jargon it is called a **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: a hierarchy where not all branches reach the same depth. In the real world it is called "the thing nobody notices until they open the report and the numbers do not add up."
 
 ---
 
@@ -62,7 +62,7 @@ This is a ragged hierarchy. Three levels on paper, but in reality the branches h
 
 ---
 
-## The problem: the reports do not add up
+## The situation: the reports do not add up
 
 The business asked for a simple report: revenue aggregated by Top Group, with drill-down capability by Group and then by Client. A reasonable request — the kind of thing you expect from any DWH.
 
@@ -90,13 +90,13 @@ Holding Nazionale   Gruppo Centro               1       67000.00
 (null)              (null)                      2       90000.00
 ```
 
-Five rows. And at least three problems.
+Five rows. And at least three issues.
 
 Gruppo Centro appears twice: once under "Holding Nazionale" (client 1003 which has a top group) and once under NULL (client 1004 whose top group is NULL). The same group, split across two rows, with separate totals. Anyone looking at this report will think Gruppo Centro has 67K revenue under the holding and 45K somewhere else. In reality it is a single group with 112K total.
 
 The direct clients (Gialli Utilities and Blu Energia) end up in a row with two NULLs. Management does not know what to do with a nameless row.
 
-The Top Group total is wrong because the NULL rows are missing. If you sum only the rows with a top group, you lose 239K in revenue — 30% of the total.
+The Top Group total is incorrect because the NULL rows are missing. If you sum only the rows with a top group, you lose 239K in revenue — 30% of the total.
 
 ---
 
@@ -112,13 +112,13 @@ SELECT COALESCE(top_group_name, group_name, client_name) AS top_group_name,
 FROM   stg_clienti;
 ```
 
-Does it work? In a sense yes — it fills the holes. But it introduces new problems.
+Does it work? In a sense yes — it fills the holes. Only it introduces new issues.
 
 Client "Gialli Utilities" now appears as Top Group, Group and Client simultaneously. If the business wants to count how many Top Groups there are, the number is inflated. If they want to filter for "real" top groups, there is no way to distinguish them from clients promoted to top group by the COALESCE.
 
 And this is the simple case, with three levels. I have seen five-level hierarchies managed with chains of nested COALESCE, multiple CASE WHEN expressions, and report logic so convoluted that nobody dared touch it anymore. Every new business request required cascading changes across all queries.
 
-The root problem is that COALESCE is a patch applied at the presentation layer. It does not fix the structural issue: the hierarchy is incomplete and the dimensional model does not know it.
+The root issue is that COALESCE is a patch applied at the presentation layer. It does not fix the structural matter: the hierarchy is incomplete and the dimensional model does not know it.
 
 ---
 
@@ -366,11 +366,11 @@ Self-parenting solves a specific problem — fixed-level hierarchies with incomp
 
 I have designed dozens of hierarchical dimensions in twenty years of data warehousing. The rule I carry with me is always the same:
 
-**If the report needs conditional logic to handle the hierarchy, the problem is in the model, not in the report.**
+**If the report needs conditional logic to handle the hierarchy, the point is in the model, not in the report.**
 
-A report should do GROUP BY and JOIN. If it also has to decide how to handle missing levels, it is doing the ETL's job. And a report that does the ETL's job is a report that will break sooner or later.
+A report should do GROUP BY and JOIN. If it also has to decide how to handle missing levels, it is doing the ETL's job. And a report that does the ETL's job is a report that will, before long, break.
 
-Self-parenting is not elegant. It is not sophisticated. It is a solution that a freshly graduated computer scientist might find ugly. But it works, it is maintainable, and it transforms a problem that infests every single report into a problem that is solved once, in one place, and never comes back.
+Self-parenting is not elegant. It is not sophisticated. It is a solution that a freshly graduated computer scientist might find ugly. But it works, it is maintainable, and it transforms an issue that infests every single report into an issue that is solved once, in one place, and never comes back.
 
 Sometimes the best solution is the simplest one. This is one of those times.
 

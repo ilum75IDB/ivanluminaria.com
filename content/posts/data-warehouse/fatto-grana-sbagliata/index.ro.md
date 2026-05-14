@@ -12,7 +12,7 @@ image: "fatto-grana-sbagliata.cover.jpg"
 
 Ședința începuse bine. Directorul comercial al unei companii de distribuție industrială — vreo șaizeci de milioane cifră de afaceri, trei mii de clienți activi, catalog cu douăsprezece mii de referințe — deschisese prezentarea noului data warehouse cu un zâmbet. Cifrele se potriveau, dashboard-urile arătau bine, totalurile lunare pe agent și pe zonă băteau cu contabilitatea.
 
-Apoi cineva a pus întrebarea greșită. Sau mai bine zis, pe cea corectă.
+Apoi cineva a pus întrebarea mai puțin plăcută. Sau mai bine zis, pe cea corectă.
 
 *"Pot să văd cât a cumpărat clientul Bianchi în luna martie, linie cu linie, produs cu produs?"*
 
@@ -30,11 +30,11 @@ Grain-ul răspunde la întrebarea: *ce reprezintă un singur rând din fact tabl
 
 În proiectul pe care l-am descris, cel care proiectase modelul alesese un grain lunar-client: un rând = un client într-o lună. Motivele păreau rezonabile: sistemul sursă exporta un sumar lunar, încărcarea era rapidă, tabelele erau mici, interogările simple.
 
-Dar grain-ul determină întrebările la care data warehouse-ul poate răspunde. Dacă granularitatea este sumarul lunar per client, nu poți coborî sub acel nivel. Nu poți face {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} pe produs. Nu poți ști dacă clientul Bianchi a cumpărat de zece ori același articol sau zece articole diferite. Nu poți compara marjele pe familie de produse.
+Și grain-ul determină întrebările la care data warehouse-ul poate răspunde. Dacă granularitatea este sumarul lunar per client, nu poți coborî sub acel nivel. Nu poți face {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} pe produs. Nu poți ști dacă clientul Bianchi a cumpărat de zece ori același articol sau zece articole diferite. Nu poți compara marjele pe familie de produse.
 
 Ai un total. Punct.
 
-## 📊 Cifrele problemei
+## 📊 Cifrele situației
 
 Fact table-ul original avea această structură:
 
@@ -55,7 +55,7 @@ CREATE TABLE fact_facturare_lunara (
 
 Rânduri pe an: aproximativ 180.000 (3.000 clienți × 12 luni × puțină variație). Mic, rapid, ușor de încărcat. {{< glossary term="etl" >}}ETL-ul{{< /glossary >}} rula în mai puțin de cinci minute.
 
-Problema? {{< glossary term="additive-measure" >}}Măsurile aditive{{< /glossary >}} erau deja agregate. `suma_totala` era suma tuturor liniilor de factură ale lunii. Imposibil de reconstituit compoziția. Ca și cum ai avea totalul unui bon fără să știi ce ai cumpărat.
+Punctul? {{< glossary term="additive-measure" >}}Măsurile aditive{{< /glossary >}} erau deja agregate. `suma_totala` era suma tuturor liniilor de factură ale lunii. Imposibil de reconstituit compoziția. Ca și cum ai avea totalul unui bon fără să știi ce ai cumpărat.
 
 ## 🏗️ Restructurarea: coborârea la linia de factură
 
@@ -171,7 +171,7 @@ GROUP BY a.nume_agent
 ORDER BY facturat_total DESC;
 ```
 
-Niciuna dintre aceste interogări nu era posibilă cu grain-ul lunar-client. Niciuna. Nu era o problemă de tuning sau de indexare — era o problemă structurală, scrisă în ADN-ul modelului.
+Niciuna dintre aceste interogări nu era posibilă cu grain-ul lunar-client. Niciuna. Nu era o criticitate de tuning sau de indexare — era o criticitate structurală, scrisă în ADN-ul modelului.
 
 ## 📋 Regula Kimball pe care o ignoraserăm
 
@@ -193,7 +193,7 @@ Granularitatea fină nu e întotdeauna singura răspuns. Există cazuri legitime
 - **Snapshot-uri periodice** unde business-ul gândește efectiv pe perioade (sold lunar al unui cont, stoc la sfârșit de săptămână)
 - **Restricții de sursă** când sistemul upstream nu expune detaliul și nu există modalitate de a-l obține
 
-Dar regula este: pornește de la detaliu, apoi agregă. Niciodată invers. Aggregate fact table-urile sunt o optimizare, nu un substitut pentru granularitatea fină.
+Doar că regula este: pornește de la detaliu, apoi agregă. Niciodată invers. Aggregate fact table-urile sunt o optimizare, nu un substitut pentru granularitatea fină.
 
 În cazul nostru, după restructurare, am creat și o vedere materializată cu sumarul lunar per client — aceeași structură ca înainte — pentru dashboard-urile executive care nu aveau nevoie de detaliu. Ce-i mai bun din ambele lumi, fără a sacrifica nimic.
 
@@ -201,7 +201,7 @@ Dar regula este: pornește de la detaliu, apoi agregă. Niciodată invers. Aggre
 
 Acel proiect m-a învățat ceva ce duc cu mine în fiecare angajament ulterior: prima jumătate de oră de proiectare a unui data warehouse, aceea în care se decide grain-ul, valorează mai mult decât toate optimizările care vor urma. Un ETL perfect, indexuri calibrate, hardware puternic — nimic din toate acestea nu compensează un grain greșit.
 
-Dacă fact table-ul tău nu răspunde la întrebările business-ului, nu e vina interogărilor. E vina modelului. Și modelul se decide la grain.
+Dacă fact table-ul tău nu răspunde la întrebările business-ului, nu sunt interogările. E modelul. Și modelul se decide la grain.
 
 ------------------------------------------------------------------------
 

@@ -12,7 +12,7 @@ image: "mysql-group-replication-binlog-migration.cover.jpg"
 
 Alerta a venit într-o dimineață de luni, între trei ședințe și o cafea încă fierbinte. "Filesystem /mysql la 85% pe nodul primar." Pe un alt nod era la 66%, pe al treilea la 25%. Într-un cluster, când cifrele nu se potrivesc între noduri, întotdeauna e ceva dedesubt.
 
-Prima întrebare care îți vine în minte este "cât spațiu mai trebuie?". Dar e întrebarea greșită. Cea corectă este: "de ce se umple?"
+Prima întrebare care îți vine în minte este "cât spațiu mai trebuie?". Doar că e întrebarea greșită. Cea corectă este: "de ce se umple?"
 
 ---
 
@@ -24,7 +24,7 @@ Verificarea a fost rapidă:
 SHOW VARIABLES LIKE 'log_bin';
 ```
 
-Rezultat: `ON`. Binary logs erau active — cum e de așteptat într-un cluster. Dar calea era problema:
+Rezultat: `ON`. Binary logs erau active — cum e de așteptat într-un cluster. Doar că ce nu mergea era calea:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin_basename';
@@ -46,15 +46,15 @@ SHOW VARIABLES LIKE 'binlog_expire_logs_seconds';
 2592000
 ```
 
-Treizeci de zile. Apoi am vrut să înțeleg cât cântărește de fapt această configurație. Am verificat dimensiunea fișierelor binlog individuale și ritmul de scriere: fiecare fișier avea aproximativ 1 GB, iar serverul genera unul la fiecare două ore. Douăsprezece fișiere pe zi, înmulțite cu treizeci de zile de retenție: aproximativ 360 GB de binary logs pe volumul principal. Pe un volum de 3 TB partajat cu datele, binlog-urile singure ocupau peste 10% din spațiu. Și acele fișiere nu stau doar pe primary — în Group Replication fiecare nod scrie propriile binlog-uri locale pentru sincronizare, deci problema se multiplica pe toate cele trei noduri.
+Treizeci de zile. Apoi am vrut să înțeleg cât cântărește de fapt această configurație. Am verificat dimensiunea fișierelor binlog individuale și ritmul de scriere: fiecare fișier avea aproximativ 1 GB, iar serverul genera unul la fiecare două ore. Douăsprezece fișiere pe zi, înmulțite cu treizeci de zile de retenție: aproximativ 360 GB de binary logs pe volumul principal. Pe un volum de 3 TB partajat cu datele, binlog-urile singure ocupau peste 10% din spațiu. Și acele fișiere nu stau doar pe primary — în Group Replication fiecare nod scrie propriile binlog-uri locale pentru sincronizare, deci criticitatea se multiplica pe toate cele trei noduri.
 
-Imaginea era clară: binary logs mâncau spațiul filesystem-ului principal. Nu un bug, nu o tabelă scăpată de sub control. Doar o alegere arhitecturală făcută la instalare și niciodată revizuită.
+Cauza era clară: binary logs mâncau spațiul filesystem-ului principal. Nu un bug, nu o tabelă scăpată de sub control. Doar o alegere arhitecturală făcută la instalare și niciodată revizuită.
 
 ---
 
 ## Ce tip de cluster este, mai exact?
 
-Înainte de a atinge orice pe un server MySQL — înainte chiar de a te gândi să muți un fișier — trebuie să știi ce ai în față. "E un cluster" nu e suficient. MySQL are cel puțin patru moduri diferite de a face high availability, și fiecare are regulile sale.
+Înainte de a atinge orice pe un server MySQL — înainte chiar de a te gândi să muți un fișier — îți convine să știi ce ai în față. "E un cluster" nu e suficient. MySQL are cel puțin patru moduri diferite de a face high availability, și fiecare are regulile sale.
 
 Am început cu replicarea clasică:
 
@@ -264,7 +264,7 @@ Din experiența mea, acestea sunt cele mai comune capcane în acest tip de inter
 
 ## Ce învață această operație
 
-Un filesystem la 92% nu e o urgență — e un semnal. Problema reală nu era spațiul pe disc, ci o alegere arhitecturală făcută la momentul instalării și niciodată revizuită: binlog-uri și date pe același volum.
+Un filesystem la 92% nu e o urgență — e un semnal. Cauza reală nu era spațiul pe disc, ci o alegere arhitecturală făcută la momentul instalării și niciodată revizuită: binlog-uri și date pe același volum.
 
 Separarea binary logs pe un volum dedicat nu e doar un fix. E întărirea infrastructurii. E diferența dintre un sistem care "merge" și unul care e proiectat să meargă și când lucrurile cresc.
 
