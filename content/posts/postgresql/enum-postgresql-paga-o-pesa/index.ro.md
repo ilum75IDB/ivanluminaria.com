@@ -12,7 +12,7 @@ image: "enum-postgresql-paga-o-pesa.cover.jpg"
 
 Întrebarea este aceeași pe care ne-am pus-o [pentru MySQL](/ro/posts/mysql/enum-mysql-semplifica-o-complica/): o coloană `status` sau `type` cu un set închis de valori, și trei drumuri în față — tip enumerativ nativ, CHECK constraint, tabel de lookup. Se schimbă baza de date, se schimbă filozofia, și se schimbă și locul unde cade prețul.
 
-PostgreSQL are propriul său ENUM, declarat ca tip de sine stătător cu `CREATE TYPE ... AS ENUM`. Este gândit diferit față de cel al MySQL: type-safe ca un domain, tranzacțional ca tot restul DDL-ului, și cu un detaliu care îi pune piedică aproape tuturor la primul pas — este **case-sensitive**. Pentru cine vine de la MySQL este incomod, pentru cine a lucrat mereu cu PostgreSQL este firesc.
+PostgreSQL are propriul său ENUM, declarat ca tip de sine stătător cu `CREATE TYPE ... AS ENUM` [1] [2]. Este gândit diferit față de cel al MySQL: type-safe ca un domain, tranzacțional ca tot restul DDL-ului, și cu un detaliu care îi pune piedică aproape tuturor la primul pas — este **case-sensitive**. Pentru cine vine de la MySQL este incomod, pentru cine a lucrat mereu cu PostgreSQL este firesc.
 
 Merită să intrăm în detaliu, pentru că PostgreSQL ENUM nu este "MySQL ENUM cu altă sintaxă". Este altceva. Trebuie înțeles pentru ceea ce este.
 
@@ -48,7 +48,7 @@ CREATE TABLE abonamente (
 );
 ```
 
-Abordare SQL standard. Mai verbos, în schimb mai flexibil (condițiile de `CHECK` pot fi arbitrar de complexe). În PostgreSQL `CHECK` constraint-urile sunt pe deplin aplicate dintotdeauna — fără "ignorate în tăcere" cum se întâmpla în MySQL înainte de 8.0.16.
+Abordare SQL standard. Mai verbos, în schimb mai flexibil (condițiile de `CHECK` pot fi arbitrar de complexe). În PostgreSQL `CHECK` constraint-urile sunt pe deplin aplicate dintotdeauna [3] — fără "ignorate în tăcere" cum se întâmpla în MySQL înainte de 8.0.16.
 
 **Tabel de lookup cu FK**:
 
@@ -67,7 +67,7 @@ CREATE TABLE abonamente (
 );
 ```
 
-Calea "bază-de-date-pură". Mai multe tabele, mai multe JOIN, și în schimb mai multă flexibilitate: atribute suplimentare, etichete localizate, ordine de afișare, activare/dezactivare în timpul rulării.
+Calea "bază-de-date-pură". Mai multe tabele, mai multe JOIN, și în schimb mai multă flexibilitate: atribute suplimentare, etichete localizate, ordine de afișare, activare/dezactivare în timpul rulării [4].
 
 ---
 
@@ -79,7 +79,7 @@ Dacă vii de la MySQL, sunt trei detalii pe care merită să le ai în buzunar �
 
 **Type safety reală, nu simulată**. ENUM este un tip, nu o restricție pe un `VARCHAR`. Poți crea o funcție care acceptă `stare_abonament` ca parametru, și motorul va respinge la parse-time orice apel cu un șir liber. La fel pentru proceduri, view-uri, indecși parțiali. În MySQL această siguranță nu există — `ENUM` este o coloană `VARCHAR` decorată.
 
-**ALTER TYPE este aproape gratis (și tranzacțional)**. Adăugarea unei valori la coada unui ENUM PostgreSQL este o operație de metadata. Nici rebuild al tabelului, nici lock de scriere prelungit. Și ca tot DDL-ul PostgreSQL, este în interiorul tranzacției: dacă commit-ul eșuează, ENUM rămâne așa cum era. Aceasta este diferența cea mai tangibilă față de MySQL, unde `MODIFY COLUMN ENUM(...)` pe un tabel mare te poate ține treaz o noapte întreagă.
+**ALTER TYPE este aproape gratis (și tranzacțional)**. Adăugarea unei valori la coada unui ENUM PostgreSQL este o operație de metadata [5]. Nici rebuild al tabelului, nici lock de scriere prelungit. Și ca tot DDL-ul PostgreSQL, este în interiorul tranzacției: dacă commit-ul eșuează, ENUM rămâne așa cum era. Aceasta este diferența cea mai tangibilă față de MySQL, unde `MODIFY COLUMN ENUM(...)` pe un tabel mare te poate ține treaz o noapte întreagă.
 
 ---
 
@@ -276,6 +276,16 @@ Următoarele întâlniri:
 - **Oracle, deep-dive vertical** — cum se modelau enumerările în 19c, ce s-a schimbat în 21c, 23ai și 26ai, până la noile Assertions
 
 > 📖 **Dacă ai ajuns aici primul**: îți recomand să citești și [primul articol al miniserialului, cel despre MySQL](/ro/posts/mysql/enum-mysql-semplifica-o-complica/). Multe dintre tiparele despre care vorbim aici — cele trei drumuri, tabelul lookup făcut bine, ENUM-ul în interiorul lookup-ului — sunt introduse acolo. Comparația face totul mai clar.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. PostgreSQL Documentation — [Enumerated Types](https://www.postgresql.org/docs/current/datatype-enum.html)
+2. PostgreSQL Documentation — [`CREATE TYPE`](https://www.postgresql.org/docs/current/sql-createtype.html)
+3. PostgreSQL Documentation — [Constraints (CHECK)](https://www.postgresql.org/docs/current/ddl-constraints.html)
+4. PostgreSQL Documentation — [`CREATE TABLE` (FOREIGN KEY)](https://www.postgresql.org/docs/current/sql-createtable.html)
+5. PostgreSQL Documentation — [`ALTER TYPE` (ADD VALUE)](https://www.postgresql.org/docs/current/sql-altertype.html)
 
 ------------------------------------------------------------------------
 
