@@ -10,7 +10,7 @@ categories: ["postgresql"]
 image: "postgresql-indici-quando-fanno-male.cover.jpg"
 ---
 
-The other day a colleague pinged me: "I've got a table with twelve indexes, it's painfully slow. I don't get it." I sent him a couple of lines back, but while rereading what I'd written, Marco came to mind. It was a few years ago. I was working on the central database of a Ministry — doesn't matter which one, the pattern shows up everywhere. And Marco was the junior they'd assigned to me.
+The other day a colleague pinged me: "I've got a table with twelve indexes, it's painfully slow. I don't get it." I sent him a couple of lines back, and while rereading what I'd written, Marco came to mind. It was a few years ago. I was working on the central database of a Ministry — doesn't matter which one, the pattern shows up everywhere. And Marco was the junior they'd assigned to me.
 
 He had two and a half years of PostgreSQL behind him, he could write decent queries, he knew `EXPLAIN`. But more importantly he had the one quality that, in this job, takes you far: he asked. Not out of laziness — out of wanting to know. He'd rephrase concepts out loud to make them stick, took notes, anticipated the next question with things like "wait, so if I do X I should expect Y, right?". The kind of junior every senior wishes they had next to them when a scary table opens on screen.
 
@@ -131,13 +131,13 @@ Marco fist-pumped quietly. Then: "But if it's that powerful, why not use it alwa
 
 "Because on writes it costs you. Every `INSERT` or `UPDATE` on that column has to update every posting where that value appears. It's the price of finding things fast — and high-churn tables pay that price dearly."
 
-"So GIN yes, but only on tables that are mostly read."
+"So GIN yes, only on tables that are mostly read."
 
 "Exactly. Our `cittadini_servizi` got nightly loads and then read-only traffic all day. Ideal case."
 
 ## GiST: for when data has a shape
 
-The other critical query was on the geometries. The Ministry ran territorial analyses: "find me all citizens with a residence within 5 km of point X, in the province of Y, active". A query like that, with a fake spatial B-tree (because someone had put one there, but it wasn't usable on that column), ran as a nested loop and took half a minute.
+The other critical query was on the geometries. The Ministry ran territorial analyses: "find me all citizens with a residence within 5 km of point X, in the province of Y, active". A query like that, with a fake spatial B-tree (because someone had put one there that wasn't usable on that column), ran as a nested loop and took half a minute.
 
 GiST — *Generalized Search Tree* — is the index family that handles data with geometry, ranges, similarity. It doesn't sort values linearly, because some data isn't linearly sortable (a point on a plane doesn't come "before" or "after" another). It indexes by hierarchical *bounding boxes* instead.
 
@@ -145,7 +145,7 @@ GiST — *Generalized Search Tree* — is the index family that handles data wit
 
 Good question. Marco had hit on the right point.
 
-"Because the composite B-tree sorts first by latitude and then by longitude. If you need to find points inside a box `(lat1, lon1, lat2, lon2)`, the index can use the latitude constraint — but then for every row that passes the lat filter it also has to check lon. On 80 million rows that becomes a half-scan."
+"Because the composite B-tree sorts first by latitude and then by longitude. If you need to find points inside a box `(lat1, lon1, lat2, lon2)`, the index can use the latitude constraint — then, for every row that passes the lat filter, it also has to check lon. On 80 million rows that becomes a half-scan."
 
 "And GiST?"
 
@@ -160,7 +160,7 @@ Same query "find everyone within 5 km of X", from 28 seconds to 380 ms.
 
 Marco was taking quick notes. "So: B-tree for sorting and equality, GIN for array and JSONB containment, GiST for geometry and ranges. Anything else?"
 
-"For now that's enough. There's BRIN, SP-GiST, hash too, but those are more niche. When you'll need them, you'll remember."
+"For now that's enough. There's BRIN, SP-GiST, hash too, even if those are more niche. When you'll need them, you'll remember."
 
 ## Bonus: partial indexes
 
@@ -180,7 +180,7 @@ That `WHERE` changes everything. The index only contains active rows. On the rea
 
 "And the queries with `attivo = false`?"
 
-"They go to seq scan, but that happens once a week for the archive reports. There the seq scan does just fine."
+"They go to seq scan, and that happens once a week for the archive reports. There the seq scan does just fine."
 
 ## The cleanup
 

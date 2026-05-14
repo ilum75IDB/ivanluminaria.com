@@ -139,10 +139,13 @@ When writing a new blog article, **always** follow these steps:
    - `docs/AI_CONTENT_GUIDELINES_IT.md` (Italian version)
    - `docs/prompt-master.md` (master prompt with tone & style rules)
    - `docs/DESCRIZIONE_PROGETTO_DATABASE_STRATEGY_BLOG.md` and `docs/database_strategy_blog_project_description_FULL.md` (project context)
+   - `docs/STILE_LINGUISTICO.md` (vocabolario di termini da evitare e relative sostituzioni — consultare in scrittura e in revisione)
 2. **Write like a human** — the text **must not** sound AI-generated. Avoid generic filler, motivational closings, bullet-point-heavy structures, and overly polished phrasing. Use Ivan's voice: direct, experienced, occasionally ironic, grounded in real-world project stories. Vary sentence length, use colloquial turns where appropriate, and let opinions show.
 3. **No AI tells** — never use patterns like "In conclusion…", "It's worth noting that…", "Let's dive in…", "In today's fast-paced world…", or similar clichés typical of LLM output.
 4. **Riferimenti temporali vicini** — evitare riferimenti troppo indietro nel tempo (es. "due anni fa", "tre mesi fa") a meno che non sia richiesto esplicitamente dal contesto dell'articolo. Preferire sempre espressioni vicine: "l'altro giorno", "qualche giorno fa", "ieri", "la settimana scorsa", "la scorsa settimana". Se il racconto richiede un arco temporale più lungo (mese precedente, un paio di mesi fa), giustificarlo nel testo con frasi tipo: "È un po' che volevo scrivere su questo argomento e non ho trovato il tempo… finalmente eccomi" o simili.
 5. **No generalizzazioni da clickbait** — evitare frasi come "quello che nessuno ti dice", "che nessuno sa", "che non tutti sanno", "il segreto che…". Queste generalizzazioni svalorizzano il lavoro e suonano come marketing. Il valore dell'articolo deve emergere dal contenuto, non da promesse sensazionalistiche nel titolo o nel testo.
+
+   **Evitare anche le auto-affermazioni di onestà** — formule come "raccontati onestamente", "senza giri di parole", "senza pietà", "diciamoci la verità", "ad essere sinceri" implicano che altrove non si sia onesti, e suonano come un tic da blogger. Se il racconto è onesto, lo si vede dai dettagli concreti; non serve dichiararlo. Preferire titoli di sezione descrittivi come "I limiti, racconti dall'esperienza", "Il caso concreto", "Cosa è andato storto".
 6. **Niente tono "eroe salvatore dell'universo"** — evitare di costruire ogni racconto come la storia in cui Ivan, da solo, salva il progetto/cliente/azienda da un disastro epocale. Smussare il protagonismo: riconoscere il contributo del team, del DBA del cliente, di un collega che ha avuto l'intuizione, del vendor, di una vecchia nota di Tom Kyte o di un blog post letto al momento giusto. Preferire forme collettive ("abbiamo capito che…", "il team ha proposto…", "ci siamo accorti che…") alle forme egocentriche ("ho risolto da solo…", "nessuno aveva visto che…", "sono stato l'unico a capire…"). Anche i risultati vanno raccontati con misura: invece di "ho salvato un sistema critico", "il caricamento è passato da 4 ore a 25 minuti — non magia, una settimana di profiling e una conversazione fortunata col DBA del cliente". Il valore tecnico dell'articolo deve emergere dall'analisi e dal dettaglio, non dall'enfasi sul protagonismo. Vale anche per i titoli: niente "come ho salvato…", "il segreto che ho scoperto…", "quello che nessuno ha capito tranne me…".
 7. **Variare i settori di business dei clienti — usando solo settori reali** — nei racconti e negli aneddoti, alternare i mercati e i settori dei clienti per cui Ivan ha lavorato davvero (vedi i CV in `content/resumes/`). **Non inventare settori in cui non ha mai lavorato** (es. retail di articoli sportivi, e-commerce moda, gaming, food delivery, ecc.). Questo rende i racconti credibili e non smentibili. Lista di consultazione rapida dei settori reali:
 
@@ -158,8 +161,23 @@ When writing a new blog article, **always** follow these steps:
    | Automotive (storico, anni '90)         | Rover Italia (via S.EL.DAT.)                                            |
 
    Quando il racconto richiede un settore generico, scegliere uno tra quelli sopra senza nominare il cliente specifico (es. "un grande gruppo assicurativo italiano", "un operatore telco mobile", "una banca commerciale", "un'azienda della Pubblica Amministrazione"). Alternare i settori tra articoli successivi per non concentrarsi su uno solo.
-8. **Generare la descrizione della scena per l'immagine di copertina** — dopo aver completato la scrittura dell'articolo in tutte le lingue, fornire **solo la descrizione della scena** da rappresentare (non ripetere il prompt master — il prompt base è già in mano a chi genera le immagini). La scena va scritta in modo specifico e coerente con il tema dell'articolo, tramite una metafora visiva che rispecchi il tono dell'articolo (es. se l'articolo ha tono no-eroe, la scena non deve mettere il personaggio principale al centro). Fornire anche il **nome del file** che l'utente dovrà usare per salvare l'immagine, seguendo la convenzione `<slug>.cover.jpg` da posizionare nella cartella dell'articolo (`content/posts/<sezione>/<slug>/`). **Non creare file placeholder** per la cover image — sarà l'utente a generare l'immagine e inserirla.
-9. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **5 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. **Riuso di termini esistenti**: è ammesso riprendere termini già presenti nel glossario, ma **al massimo 2 per articolo**. Gli altri 3 (almeno) devono essere nuovi, in modo che ogni articolo porti valore aggiunto al glossario complessivo del blog. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `docs/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
+8. **SEO frontmatter: `seoTitle` + `description` ottimizzate fin dalla prima stesura** — ogni articolo, in **tutte e 4 le lingue**, deve avere nel frontmatter:
+
+   - **`title`**: titolo narrativo/empatico per l'H1 e l'apertura dell'articolo (es. "Cuando un LIKE '%valor%' ralentiza todo: un caso real de optimización PostgreSQL"). Può essere lungo e d'impatto, **non deve essere keyword-driven**.
+   - **`seoTitle`**: titolo keyword-driven per il `<title>` HTML e SERP Google. **Lunghezza target: 50–60 caratteri** (massimo 65). Deve contenere le keyword principali per cui vogliamo posizionarci (es. "PostgreSQL LIKE con %valor%: índice GIN y pg_trgm"). Si applica via override in `layouts/_partials/head.html`.
+   - **`description`**: meta description per SERP e social preview. **Lunghezza target: 140–160 caratteri** (massimo 160). Deve riassumere il contenuto in modo informativo, contenendo 2–3 keyword secondarie. Niente clickbait, niente promesse vuote.
+
+   **Regole di compilazione**:
+   - Scrivere `seoTitle` e `description` **contestualmente** alla stesura dell'articolo (non come correzione retroattiva)
+   - Tradurre/adattare entrambi i campi per ciascuna lingua (non lasciare seoTitle in italiano nelle versioni EN/ES/RO)
+   - **Verifica della lunghezza prima di committare**: contare i caratteri di `seoTitle` (≤65) e `description` (≤160) per ogni lingua
+   - Le keyword da inserire vanno scelte pensando a "cosa cercherebbe su Google chi ha questo problema" (es. nome tecnologia + funzione + sintomo: "PostgreSQL LIKE wildcard slow"), non a "come voglio che l'articolo si chiami"
+   - Per gli **articoli già esistenti senza `seoTitle`**, Hugo fa fallback automatico su `.Title` (vedi `layouts/_partials/head.html`) — quindi non sono "rotti", ma vanno aggiornati progressivamente in audit SEO retroattivi
+
+9. **Generare la descrizione della scena per l'immagine di copertina** — dopo aver completato la scrittura dell'articolo in tutte le lingue, fornire **solo la descrizione della scena** da rappresentare (non ripetere il prompt master — il prompt base è già in mano a chi genera le immagini). La scena va scritta in modo specifico e coerente con il tema dell'articolo, tramite una metafora visiva che rispecchi il tono dell'articolo (es. se l'articolo ha tono no-eroe, la scena non deve mettere il personaggio principale al centro). Fornire anche il **nome del file** che l'utente dovrà usare per salvare l'immagine, seguendo la convenzione `<slug>.cover.jpg` da posizionare nella cartella dell'articolo (`content/posts/<sezione>/<slug>/`). **Non creare file placeholder** per la cover image — sarà l'utente a generare l'immagine e inserirla.
+
+   **Archiviare il prompt come file Markdown** in `docs/cover-image-prompts/<slug>.cover.md` (stesso nome dell'immagine ma estensione `.md`), con questa struttura: `# Cover image prompt — <filename>` / `## Articolo di riferimento` (slug, sezione, titolo IT) / `## Descrizione della scena` (5-10 righe, specifica e visiva) / `## Metafora visiva` (2-3 frasi che legano scena e tema) / `## File output` (nome file, path destinazione, formato). Questo permette in futuro di rigenerare un'immagine coerente o variarne lo stile mantenendo il concetto.
+10. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **5 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. **Riuso di termini esistenti**: è ammesso riprendere termini già presenti nel glossario, ma **al massimo 2 per articolo**. Gli altri 3 (almeno) devono essere nuovi, in modo che ogni articolo porti valore aggiunto al glossario complessivo del blog. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `docs/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
 
 ### Procedura a step con commit intermedi (anti-timeout)
 
@@ -169,18 +187,18 @@ La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è trop
 |------|-----------|----------------|
 | **0** | Leggere issue, `docs/AI_CONTENT_GUIDELINES.md`, `docs/database_strategy_blog_project_description_FULL.md` | *(nessun commit, solo lettura)* |
 | **0b** | Proporre **3 titoli** all'utente tra cui scegliere (l'utente può anche suggerirne uno proprio) | *(nessun commit, solo output testuale)* |
-| **1** | Creare la directory dell'articolo e scrivere la versione **IT** | `Articolo #XX: <slug> - versione italiana (IT)` |
-| **2** | Scrivere la versione **EN** | `Articolo #XX: <slug> - traduzione inglese (EN)` |
-| **3** | Scrivere la versione **ES** | `Articolo #XX: <slug> - traduzione spagnola (ES)` |
-| **4** | Scrivere la versione **RO** | `Articolo #XX: <slug> - traduzione rumena (RO)` |
+| **1** | Creare la directory dell'articolo e scrivere la versione **IT** (con `seoTitle` ≤65ch e `description` ≤160ch nel frontmatter) | `Articolo #XX: <slug> - versione italiana (IT)` |
+| **2** | Scrivere la versione **EN** (con `seoTitle` e `description` tradotti/adattati) | `Articolo #XX: <slug> - traduzione inglese (EN)` |
+| **3** | Scrivere la versione **ES** (con `seoTitle` e `description` tradotti/adattati) | `Articolo #XX: <slug> - traduzione spagnola (ES)` |
+| **4** | Scrivere la versione **RO** (con `seoTitle` e `description` tradotti/adattati) | `Articolo #XX: <slug> - traduzione rumena (RO)` |
 | **5** | Glossario: creare mini-pagine nuove (4 lingue ciascuna) + aggiungere sezione glossario alle 4 versioni dell'articolo | `Glossario: mini-pagine e sezione glossario per <slug>` |
 | **6** | Aggiornare `docs/HUGO_PUBLICATIONS_TABLE.md`, `docs/GITHUB_ISSUES.md`, `docs/GLOSSARIO_TERMINI.md` | `Aggiornamento docs: pubblicazione e issue per <slug>` |
-| **7** | Generare prompt cover image + fornire comando `gh issue close` | *(nessun commit, solo output testuale)* |
+| **7** | Generare prompt cover image, **salvarlo come file Markdown in `docs/cover-image-prompts/<slug>.cover.md`** (convenzione: stesso nome dell'immagine ma estensione `.md`), e fornire comando `gh issue close` | `Cover prompt: <slug>` |
 
 **Regole:**
 - **Commit + push dopo ogni step** — non accumulare mai più di uno step senza committare
 - **Se la sessione riparte**, leggere lo stato del repo (ultimo commit, file esistenti) per capire da quale step riprendere
-- **Lo step 0 (lettura)** legge solo `docs/AI_CONTENT_GUIDELINES.md` e `docs/database_strategy_blog_project_description_FULL.md` (non leggere i duplicati in italiano né articoli esistenti)
+- **Lo step 0 (lettura)** legge solo `docs/AI_CONTENT_GUIDELINES.md`, `docs/database_strategy_blog_project_description_FULL.md` e `docs/STILE_LINGUISTICO.md` (non leggere i duplicati in italiano né articoli esistenti)
 - **Lo step 0b (proposta titoli)** è obbligatorio: proporre 3 titoli all'utente e permettergli di sceglierne uno o suggerirne un altro
 - **Gli step 1-4 (scrittura lingue)** sono sequenziali: IT è il master, le altre sono traduzioni adattate (non letterali)
 - **Lo step 5 (glossario)** può essere fatto tutto insieme perché le mini-pagine sono brevi
@@ -279,6 +297,8 @@ Articles are published **one per week, every Tuesday at 08:03 CET**, starting fr
    - **Previous available slot**: the first Tuesday before the oldest article's date. Used when inserting backdated articles
    - **Next available slot**: the first Tuesday after the most recent article's date. Used for new articles
    - Both must be updated after every schedule change
+11. **Martedì festivo (festività italiane)**: se uno slot martedì coincide con una **festività italiana** (vedi `docs/HOLIDAYS_CALENDAR.md`), spostare la pubblicazione al **mercoledì successivo** alle 08:03 CET. Il post LinkedIn principale segue lo slot (anche al mercoledì). Per le festività degli altri paesi (UK/ES/RO) **non si fa alcuno shift** — l'articolo è online in tutte le lingue ma non c'è una "pubblicazione" locale. Casi noti 2026: martedì 06/01 (Epifania) → mercoledì 07/01; martedì 02/06 (Festa della Repubblica) → mercoledì 03/06; martedì 08/12 (Immacolata) → mercoledì 09/12.
+12. **Calendario festività**: consultare `docs/HOLIDAYS_CALENDAR.md` per le festività ufficiali IT/UK/ES/RO. **Il 15 dicembre di ogni anno** preparare il calendario dell'anno successivo aggiungendo una nuova sezione al file.
 
 ### Current Schedule
 
@@ -446,7 +466,23 @@ Quando l'utente chiede di creare un post LinkedIn per promuovere un nuovo artico
 Due post a settimana:
 
 1. **Martedì** — post principale con link all'articolo appena pubblicato (l'articolo è online dalle 08:10 CET, il post va schedulato su Buffer per le ~10:05–10:15 CET)
-2. **Venerdì ~15:00** — post teaser che anticipa l'articolo del martedì successivo, creando curiosità senza spoilerare il contenuto. **Se il venerdì cade su una festività** (es. 1 maggio, 25 aprile, 15 agosto, 1 novembre, 8 dicembre, 25-26 dicembre, Pasquetta, 2 giugno, 1 gennaio, 6 gennaio), **anticipare il teaser al giovedì stesso orario** — l'engagement in giornata festiva è quasi zero e il post va sprecato
+2. **Venerdì ~15:00** — post teaser che anticipa l'articolo del martedì successivo, creando curiosità senza spoilerare il contenuto. **Se il venerdì cade su una festività italiana** (vedi `docs/HOLIDAYS_CALENDAR.md`), **anticipare il teaser al giovedì stesso orario** — l'engagement in giornata festiva è quasi zero e il post va sprecato
+
+### Slot Buffer principali
+
+Gli slot fissi configurati su Buffer per la pubblicazione automatica dei post LinkedIn sono:
+
+| Slot                         | Quando si usa                                             | Orario CET |
+|------------------------------|-----------------------------------------------------------|------------|
+| **Martedì 10:15**            | Post principale (settimana standard)                      | 10:15      |
+| **Mercoledì 16:20**          | Post principale (quando il martedì è festività italiana)  | 16:20      |
+| **Giovedì 17:10**            | Teaser (quando il venerdì è festività italiana)           | 17:10      |
+| **Venerdì 15:20**            | Teaser (settimana standard)                               | 15:20      |
+
+**Importante — non confondere gli orari**:
+- L'**articolo Hugo** va online sul sito alle **08:03 CET** (cron GitHub Actions). Questo orario riguarda solo il sito, non il post LinkedIn
+- Il **post LinkedIn** segue invece gli slot Buffer sopra
+- Nei testi dei post LinkedIn **non specificare orari** — usare solo il giorno della settimana (es. "Next Wednesday on the blog", "Mercoledì prossimo sul blog"). Questo evita disallineamenti tra orario articolo (08:03 CET) e orario post Buffer
 
 Quando l'utente chiede "fammi i post della settimana" o simili, generare **entrambi** i post: quello del martedì per l'articolo in uscita e quello del venerdì per l'articolo della settimana successiva.
 
