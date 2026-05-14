@@ -24,7 +24,7 @@ That fact table answered one question only: *how much did each customer invoice 
 
 ## 🔍 The grain: the decision that determines everything
 
-In {{< glossary term="star-schema" >}}dimensional modeling{{< /glossary >}}, the **{{< glossary term="grain" >}}grain{{< /glossary >}}** of the fact table is the first decision you make. Not the second, not one among many: the first. Kimball repeats it in every chapter, and he's right.
+In {{< glossary term="star-schema" >}}dimensional modeling{{< /glossary >}}, the **{{< glossary term="grain" >}}grain{{< /glossary >}}** of the fact table is the first decision you make [1]. Not the second, not one among many: the first. Kimball repeats it in every chapter, and he's right.
 
 The grain answers the question: *what does a single row in the fact table represent?*
 
@@ -59,7 +59,7 @@ The point? The {{< glossary term="additive-measure" >}}additive measures{{< /glo
 
 ## 🏗️ The restructuring: going down to the invoice line
 
-There was only one solution: change the grain. Bring the fact table down to the lowest level available in the source system — the individual invoice line.
+There was only one solution: change the grain. Bring the fact table down to the lowest level available in the source system — the individual invoice line [2].
 
 ```sql
 CREATE TABLE fact_revenue_line (
@@ -190,7 +190,7 @@ The result? A data warehouse that had to be rebuilt from scratch six months afte
 A fine grain isn't always the only answer. There are legitimate cases for aggregated fact tables:
 
 - **Aggregate fact tables** alongside the detail table, to speed up the most frequent queries
-- **Periodic snapshots** where the business genuinely thinks in periods (monthly account balance, end-of-week inventory)
+- **Periodic snapshots** where the business genuinely thinks in periods (monthly account balance, end-of-week inventory) [3]
 - **Source constraints** when the upstream system doesn't expose detail and there's no way to get it
 
 Yet the rule is: start from detail, then aggregate. Never the other way around. Aggregate fact tables are an optimization, not a substitute for fine grain.
@@ -202,6 +202,14 @@ In our case, after the restructuring, we also created a materialized view with t
 That project taught me something I carry into every engagement since: the first half-hour of data warehouse design, the one where you decide the grain, is worth more than all the optimizations that come later. A flawless ETL, perfectly tuned indexes, powerful hardware — none of it compensates for the wrong grain.
 
 If your fact table can't answer the business's questions, it's not the queries. It's the model. And the model is decided at the grain.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. Kimball Group — [Grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)
+2. Kimball Group — [Transaction Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/transaction-fact-table/)
+3. Kimball Group — [Periodic Snapshot Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/periodic-snapshot-fact-table/)
 
 ------------------------------------------------------------------------
 
