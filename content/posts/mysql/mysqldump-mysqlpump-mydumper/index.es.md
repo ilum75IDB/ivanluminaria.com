@@ -22,7 +22,7 @@ Tres horas de mysqldump significan tres horas de `--lock-all-tables` — o en el
 
 ## El punto real: mysqldump es single-threaded
 
-Lo primero que hay que entender sobre {{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}} es que hace una sola cosa a la vez. Una tabla tras otra, una fila tras otra, un archivo SQL de salida. Punto.
+Lo primero que hay que entender sobre {{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}} es que hace una sola cosa a la vez [1]. Una tabla tras otra, una fila tras otra, un archivo SQL de salida. Punto.
 
 No hay paralelismo. No hay compresión nativa. No hay forma de decir "usa 4 threads y termina antes". Es un programa nacido en el año 2000 — literalmente — y su diseño refleja una época en la que 60 GB eran una cantidad impensable para una base de datos MySQL.
 
@@ -63,13 +63,13 @@ Relean esa frase. Si usas el paralelismo — que es la única razón para usar m
 
 Para un entorno de desarrollo o test, puede servir. ¿Para un backup de producción del que podrías tener que hacer restore en caso de desastre? No. Absolutamente no.
 
-Otra nota: Oracle declaró mysqlpump **deprecado en MySQL 8.0.34** y lo eliminó en MySQL 8.4. Eso dice mucho sobre la confianza que Oracle misma tenía en esta herramienta.
+Otra nota: Oracle declaró mysqlpump **deprecado en MySQL 8.0.34** y lo eliminó en MySQL 8.4 [2]. Eso dice mucho sobre la confianza que Oracle misma tenía en esta herramienta.
 
 ---
 
 ## mydumper: la herramienta que cumple lo que promete
 
-{{< glossary term="mydumper" >}}mydumper{{< /glossary >}} es un proyecto open source nacido en 2009 de la comunidad MySQL — en particular del trabajo de Domas Mituzas, Andrew Hutchings y luego mantenido por Max Bubenick. No es una herramienta de Oracle. No viene incluido en la distribución de MySQL. Hay que instalarlo por separado. Pero hace algo que ni mysqldump ni mysqlpump hacen: paralelismo real, a nivel de chunk dentro de la misma tabla.
+{{< glossary term="mydumper" >}}mydumper{{< /glossary >}} es un proyecto open source nacido en 2009 de la comunidad MySQL [3] — en particular del trabajo de Domas Mituzas, Andrew Hutchings y luego mantenido por Max Bubenick. No es una herramienta de Oracle. No viene incluido en la distribución de MySQL. Hay que instalarlo por separado. Pero hace algo que ni mysqldump ni mysqlpump hacen: paralelismo real, a nivel de chunk dentro de la misma tabla.
 
 ```bash
 # Instalación en Rocky Linux / CentOS
@@ -126,7 +126,7 @@ Sea cual sea la herramienta que elijas, hay opciones que debes incluir siempre. 
 
 ### --single-transaction
 
-Obligatorio en InnoDB. Sin esta opción, el dump adquiere locks que bloquean las escrituras. Con `--single-transaction`, el dump usa una transacción con isolation level REPEATABLE READ para obtener un snapshot consistente sin bloquear a nadie.
+Obligatorio en InnoDB. Sin esta opción, el dump adquiere locks que bloquean las escrituras. Con `--single-transaction`, el dump usa una transacción con isolation level REPEATABLE READ para obtener un snapshot consistente sin bloquear a nadie [4].
 
 Atención: solo funciona en tablas InnoDB. Si tienes tablas MyISAM (y sí, en 2026 todavía las encuentro), esas se bloquearán de todos modos.
 
@@ -136,7 +136,7 @@ Los stored procedures, triggers y scheduled events no se incluyen en el dump por
 
 ### --set-gtid-purged (MySQL) o --gtid (mydumper)
 
-Si usas replicación basada en GTID — y deberías — el dump tiene que gestionar los GTID correctamente. Si no lo hace, el restore en una réplica genera conflictos de replicación que te volverán loco.
+Si usas replicación basada en GTID — y deberías — el dump tiene que gestionar los GTID correctamente [5]. Si no lo hace, el restore en una réplica genera conflictos de replicación que te volverán loco.
 
 ### Verificación del restore
 
@@ -185,6 +185,16 @@ El backup lógico es cómodo porque es portable — puedes hacer restore en cual
 El viernes siguiente, el DBA del cliente me escribió otra vez por Teams. Pero esta vez el mensaje era diferente: "Backup terminado en 23 minutos. Sin impacto en los usuarios. Gracias."
 
 De nada. Aunque la próxima vez, no esperes a que el backup tarde tres horas para pedirme ayuda.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. MySQL 8.0 Reference Manual — [`mysqldump` — A Database Backup Program](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html)
+2. MySQL 8.0 Reference Manual — [`mysqlpump` — A Database Backup Program (deprecated in 8.0.34)](https://dev.mysql.com/doc/refman/8.0/en/mysqlpump.html)
+3. mydumper — [mydumper / myloader on GitHub](https://github.com/mydumper/mydumper)
+4. MySQL 8.0 Reference Manual — [Consistent Nonlocking Reads (InnoDB MVCC, REPEATABLE READ)](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
+5. MySQL 8.0 Reference Manual — [Replication with Global Transaction Identifiers (GTIDs)](https://dev.mysql.com/doc/refman/8.0/en/replication-gtids.html)
 
 ------------------------------------------------------------------------
 
