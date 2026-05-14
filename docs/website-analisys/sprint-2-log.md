@@ -62,14 +62,14 @@ Per ciascuno dei 29 articoli:
 
 | # | Articolo | Mod IT | Stato | Commit |
 |---|----------|-------:|-------|--------|
-| 22 | 4-milioni-nessun-software | 1 | da fare | — |
-| 23 | ai-github-project-management | 4 | da fare | — |
-| 24 | ai-manager-project-management | 1 | da fare | — |
-| 25 | bici-vs-auto-roma | 4 | da fare | — |
+| 22 | 4-milioni-nessun-software | 1 | ✅ tutto done | 196d1e8 (batch PM) |
+| 23 | ai-github-project-management | 4 | ✅ tutto done | 196d1e8 (batch PM) |
+| 24 | ai-manager-project-management | 1 | ✅ tutto done | 196d1e8 (batch PM) |
+| 25 | bici-vs-auto-roma | 4 | ✅ tutto done | 196d1e8 (batch PM) |
 | 26 | pagamenti-60-90-120-giorni | 0 (già pulito) | skip | — |
-| 27 | smartworking-consulenza-it | 3 | da fare | — |
-| 28 | standup-meeting-15-minuti | 2 | da fare | — |
-| 29 | tecnica-si-e-yes-and | 1 | da fare | — |
+| 27 | smartworking-consulenza-it | 3 | ✅ tutto done | 196d1e8 (batch PM) |
+| 28 | standup-meeting-15-minuti | 2 | ✅ tutto done | 196d1e8 (batch PM) |
+| 29 | tecnica-si-e-yes-and | 1 | ✅ tutto done | 196d1e8 (batch PM) |
 
 ## Note per ripresa post-timeout
 
