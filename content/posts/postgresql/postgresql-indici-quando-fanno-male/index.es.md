@@ -10,7 +10,7 @@ categories: ["postgresql"]
 image: "postgresql-indici-quando-fanno-male.cover.jpg"
 ---
 
-El otro día un compañero me escribió: "Tengo una tabla con doce índices, va lentísima. No lo entiendo." Le contesté con dos líneas, pero mientras releía me vino a la cabeza Marco. Hace ya unos años, trabajaba en la base de datos central de un Ministerio — no importa cuál, el patrón se ve en todas partes. Y Marco era el junior que me habían asignado.
+El otro día un compañero me escribió: "Tengo una tabla con doce índices, va lentísima. No lo entiendo." Le contesté con dos líneas, y mientras releía me vino a la cabeza Marco. Hace ya unos años, trabajaba en la base de datos central de un Ministerio — no importa cuál, el patrón se ve en todas partes. Y Marco era el junior que me habían asignado.
 
 Tenía dos años y medio de PostgreSQL a sus espaldas, sabía escribir consultas decentes, conocía `EXPLAIN`. Pero sobre todo tenía esa cualidad que en este oficio te lleva lejos: preguntaba. No por pereza — por querer saber. Reformulaba los conceptos en voz alta para fijarlos, tomaba apuntes, anticipaba la siguiente pregunta con cosas como "espera, entonces si hago X debería esperarme Y, ¿no?". El junior que cualquier senior querría tener al lado cuando se abre una tabla que da miedo.
 
@@ -131,13 +131,13 @@ Marco celebró por lo bajini. Luego: "Si es tan potente, ¿por qué no usarlo si
 
 "Porque en escritura te sale caro. Cada `INSERT` o `UPDATE` sobre esa columna tiene que actualizar todos los postings donde aparece ese valor. Es el precio de encontrar las cosas rápido — y las tablas con mucho churn lo pagan caro."
 
-"Entonces GIN sí, pero solo si la tabla es predominantemente de lectura."
+"Entonces GIN sí, solo si la tabla es predominantemente de lectura."
 
 "Exacto. Nuestra `cittadini_servizi` recibía cargas nocturnas y luego durante todo el día solo lecturas. Caso ideal."
 
 ## GiST: para cuando los datos tienen forma
 
-La otra consulta crítica era sobre las geometrías. El Ministerio hacía análisis territoriales: "encuéntrame todos los ciudadanos con residencia a 5 km del punto X, en la provincia de Y, activos". Una consulta así, con un B-tree espacial falso (porque alguien había puesto uno, pero sobre esa columna no se podía usar), iba en nested loop y tardaba medio minuto.
+La otra consulta crítica era sobre las geometrías. El Ministerio hacía análisis territoriales: "encuéntrame todos los ciudadanos con residencia a 5 km del punto X, en la provincia de Y, activos". Una consulta así, con un B-tree espacial falso (porque alguien había puesto uno que sobre esa columna no se podía usar), iba en nested loop y tardaba medio minuto.
 
 GiST — *Generalized Search Tree* — es la familia de índices que gestiona datos con geometría, rangos, similitud. No ordena los valores de forma lineal, porque hay datos que no son ordenables linealmente (un punto en el plano no está "antes" o "después" de otro). En su lugar, indexa por *bounding boxes* jerárquicos.
 
@@ -145,7 +145,7 @@ GiST — *Generalized Search Tree* — es la familia de índices que gestiona da
 
 Buena pregunta. Marco había dado en el punto correcto.
 
-"Porque el B-tree compuesto ordena primero por latitud y luego por longitud. Si necesitas encontrar puntos dentro de un rectángulo `(lat1, lon1, lat2, lon2)`, el índice consigue usar la restricción de latitud — pero después, en cada fila que pasa el filtro lat, tiene que verificar también lon. Sobre 80 millones de filas se convierte en media exploración."
+"Porque el B-tree compuesto ordena primero por latitud y luego por longitud. Si necesitas encontrar puntos dentro de un rectángulo `(lat1, lon1, lat2, lon2)`, el índice consigue usar la restricción de latitud — después, en cada fila que pasa el filtro lat, tiene que verificar también lon. Sobre 80 millones de filas se convierte en media exploración."
 
 "¿Y GiST?"
 
@@ -160,7 +160,7 @@ Misma consulta "encuentra todos a 5 km de X", de 28 segundos a 380 ms.
 
 Marco tomaba apuntes rápidos. "Entonces: B-tree para ordenación e igualdad, GIN para containment de array y JSONB, GiST para geometría y rangos. ¿Algo más?"
 
-"De momento basta. Existen BRIN, SP-GiST, hash, pero son casos más nicho. Cuando los necesites, te acordarás."
+"De momento basta. Existen BRIN, SP-GiST, hash, aunque son casos más nicho. Cuando los necesites, te acordarás."
 
 ## Bonus: los índices parciales
 
@@ -180,7 +180,7 @@ Ese `WHERE` lo cambia todo. El índice solo contiene las filas activas. Sobre lo
 
 "¿Y las consultas con `attivo = false`?"
 
-"Van en seq scan, pero pasa una vez por semana para los informes del archivo. Allí el seq scan va perfectamente bien."
+"Van en seq scan, y pasa una vez por semana para los informes del archivo. Allí el seq scan va perfectamente bien."
 
 ## La limpieza
 
