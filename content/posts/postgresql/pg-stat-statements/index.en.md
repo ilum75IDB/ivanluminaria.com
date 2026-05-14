@@ -40,7 +40,7 @@ Queries are normalized: literal values are replaced with `$1`, `$2`, etc. This m
 
 ## Installation: five minutes that change everything
 
-Installation requires a modification to `postgresql.conf` and a service restart. There's no way around the restart — the extension must be loaded as a shared library at process startup.
+Installation requires a modification to `postgresql.conf` and a service restart [1]. There's no way around the restart — the extension must be loaded as a shared library at process startup.
 
 ```ini
 # postgresql.conf
@@ -49,9 +49,9 @@ pg_stat_statements.max = 10000
 pg_stat_statements.track = all
 ```
 
-The `pg_stat_statements.max` parameter defines how many distinct queries are tracked. The default is 5000, but on databases with many different queries it's worth raising it. `pg_stat_statements.track` set to `all` also tracks queries executed inside PL/pgSQL functions — without this parameter, queries in stored procedures aren't recorded.
+The `pg_stat_statements.max` parameter defines how many distinct queries are tracked. The default is 5000, but on databases with many different queries it's worth raising it. `pg_stat_statements.track` set to `all` also tracks queries executed inside PL/pgSQL functions — without this parameter, queries in stored procedures aren't recorded [2].
 
-After the restart:
+After the restart, the extension is enabled like any other PostgreSQL extension [3]:
 
 ```sql
 CREATE EXTENSION pg_stat_statements;
@@ -203,7 +203,7 @@ The process I follow is always the same:
 
 1. **Identify the top queries** with pg_stat_statements (by total time, average time, or I/O)
 2. **Copy the normalized query** and replace `$1`, `$2` with real values
-3. **Run EXPLAIN (ANALYZE, BUFFERS)** to see the execution plan
+3. **Run `EXPLAIN (ANALYZE, BUFFERS)`** to see the execution plan [4]
 4. **Look for red flags**: sequential scans on large tables, nested loops with many rows, on-disk sorts
 5. **Intervene**: create an index, rewrite the query, update statistics with ANALYZE
 
@@ -240,6 +240,15 @@ The DBA asked me: "But why didn't anyone tell us to install this extension?"
 The answer is that pg_stat_statements isn't a secret. It's in the official documentation, it's in every performance tuning tutorial, it's recommended by every PostgreSQL DBA I know. But if you don't install it, you don't know what you don't know. And if you don't know what you don't know, everything seems to work — until it doesn't.
 
 Five minutes of installation. Twenty minutes of analysis. Three indexes. A database that went from "slow for a few days" to "the fastest we've ever had" — which really just means "as fast as it should have been from the start."
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. PostgreSQL Documentation — [`pg_stat_statements` extension](https://www.postgresql.org/docs/current/pgstatstatements.html)
+2. PostgreSQL Documentation — [Client Connection Defaults (`shared_preload_libraries`)](https://www.postgresql.org/docs/current/runtime-config-client.html)
+3. PostgreSQL Documentation — [`CREATE EXTENSION`](https://www.postgresql.org/docs/current/sql-createextension.html)
+4. PostgreSQL Documentation — [`EXPLAIN` (ANALYZE, BUFFERS)](https://www.postgresql.org/docs/current/sql-explain.html)
 
 ------------------------------------------------------------------------
 
