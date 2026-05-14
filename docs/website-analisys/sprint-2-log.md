@@ -21,7 +21,7 @@ Per ciascuno dei 29 articoli:
 
 | # | Articolo | Mod IT | Stato | Commit |
 |---|----------|-------:|-------|--------|
-| 1 | oracle-awr-ash | 4 | da fare | — |
+| 1 | oracle-awr-ash | 4 | ✅ tutto done | (questo commit) |
 | 2 | oracle-cloud-migration | 5 | da fare | — |
 | 3 | oracle-data-guard | 3 | da fare | — |
 | 4 | oracle-linux-kernel | 3 | da fare | — |

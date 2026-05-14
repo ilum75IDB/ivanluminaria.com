@@ -14,7 +14,7 @@ Viernes, 18:40. Ya tenía la chaqueta puesta, listo para salir. El teléfono vib
 
 "Ivan, tenemos un problema. El sistema va lentísimo. Mañana por la mañana es el go-live."
 
-No es la primera vez que recibo una llamada así. Pero el tono era diferente. No era la queja genérica sobre la lentitud. Era pánico.
+No es la primera vez que recibo una llamada así. Solo que el tono era diferente. No era la queja genérica sobre la lentitud. Era pánico.
 
 Me reconecto por VPN, abro una sesión en la base de datos Oracle 19c del cliente. Lo primero que hago es una comprobación rápida:
 
@@ -44,7 +44,7 @@ Algo estaba leyendo cantidades enormes de datos del disco. Algo que antes no est
 
 ------------------------------------------------------------------------
 
-## 📊 AWR: la fotografía del problema
+## 📊 AWR: la fotografía de la situación
 
 {{< glossary term="awr" >}}AWR{{< /glossary >}} — Automatic Workload Repository — es la herramienta de diagnóstico más potente que Oracle pone a disposición. Cada hora, Oracle toma una instantánea ({{< glossary term="snapshot-oracle" >}}snapshot{{< /glossary >}}) de las estadísticas de rendimiento y la conserva en el repositorio interno. Comparando dos snapshots, obtienes un informe que te dice exactamente qué ocurrió en ese período.
 
@@ -63,7 +63,7 @@ WHERE  begin_interval_time > SYSDATE - 1/6
 ORDER BY snap_id DESC;
 ```
 
-Tenía un snapshot de las 18:00 (antes del problema visible) y el que acababa de crear a las 18:45. Generé el informe AWR:
+Tenía un snapshot de las 18:00 (antes del incidente visible) y el que acababa de crear a las 18:45. Generé el informe AWR:
 
 ``` sql
 SELECT output
@@ -139,7 +139,7 @@ FROM   TABLE(DBMS_XPLAN.display_awr(
        ));
 ```
 
-El resultado me hizo entender el problema de inmediato:
+El resultado me hizo entender el incidente de inmediato:
 
 ```
 ---------------------------------------------------------------------------
