@@ -3621,7 +3621,7 @@ footer {
   word-break: break-word;
 }
 .kh-header-eyebrow {
-  font-size: 0.75rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--ivan-red);
   text-transform: uppercase;
