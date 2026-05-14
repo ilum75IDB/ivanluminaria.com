@@ -12,7 +12,7 @@ image: "binary-log-mysql.cover.jpg"
 
 El mensaje en el canal de Slack del equipo de infraestructura era de esos que te hacen levantar la cabeza de la pantalla: "Disco al 95% en el db de producción. ¿Alguien puede mirar?"
 
-El servidor era un MySQL 8.0 sobre Rocky Linux, un sistema de gestión usado por un centenar de usuarios. La base de datos en sí ocupaba unos 40 GB — nada extraordinario. Pero en el directorio de datos había 180 GB de binary logs. Seis meses de binlog que nadie había pensado en gestionar.
+El servidor era un MySQL 8.0 sobre Rocky Linux, un sistema de gestión usado por un centenar de usuarios. La base de datos en sí ocupaba unos 40 GB — nada extraordinario. Solo que en el directorio de datos había 180 GB de binary logs. Seis meses de binlog que nadie había pensado en gestionar.
 
 No es la primera vez que veo este escenario. De hecho, diría que es uno de los patrones más recurrentes en los tickets que me llegan. El binary log es una de esas funcionalidades de MySQL que trabajan en silencio, sin pedir nada — hasta que el disco se llena.
 
@@ -115,7 +115,7 @@ En la práctica, los binlog son tu póliza de seguros. El backup es la base, los
 
 ## PURGE BINARY LOGS: la forma correcta de limpiar
 
-Volvamos a nuestro servidor con el disco al 95%. La tentación de hacer un `rm -f mysql-bin.*` es fuerte. Pero es equivocada, por dos razones:
+Volvamos a nuestro servidor con el disco al 95%. La tentación de hacer un `rm -f mysql-bin.*` es fuerte. Solo que es una elección a evitar, por dos razones:
 
 1. MySQL no sabe que has borrado los archivos — el archivo índice sigue apuntando a binlogs que ya no existen
 2. Si hay una réplica activa, arriesgas romper la sincronización
@@ -188,7 +188,7 @@ Misma lógica, pero con granularidad al segundo. Desde MySQL 8.0, este parámetr
 
 La pregunta que siempre me hacen es: "¿Cuántos días de retención?"
 
-Depende. Pero aquí van mis reglas prácticas:
+Depende. Aquí van de todas formas mis reglas prácticas:
 
 | Escenario | Retención recomendada |
 |----------|----------------------|
@@ -274,21 +274,21 @@ Con formato ROW, sin `--verbose` solo ves blobs binarios. Con `--verbose` obtien
 
 ## El principio: gestionar los binlog, no desactivarlos
 
-De vez en cuando alguien sugiere resolver el problema "de raíz" desactivando los binlog:
+De vez en cuando alguien sugiere resolver la situación "de raíz" desactivando los binlog:
 
 ```ini
 # NO HAGAS ESTO en producción
 skip-log-bin
 ```
 
-Sí, resuelve el problema de disco. Pero elimina:
+Sí, resuelve la situación del disco. Solo que elimina:
 
 - La posibilidad de configurar una réplica en el futuro
 - El point-in-time recovery
 - La capacidad de analizar qué pasó en la base de datos después de un incidente
 - La compatibilidad con herramientas de {{< glossary term="cdc" >}}CDC (Change Data Capture){{< /glossary >}} como Debezium
 
-Los binlog no son un problema. Los binlog **no gestionados** son un problema. La diferencia es un parámetro de configuración y un chequeo semanal. En el servidor que arreglé, la configuración final fue:
+Los binlog no son una incidencia. Los binlog **no gestionados** son una incidencia. La diferencia es un parámetro de configuración y un chequeo semanal. En el servidor que arreglé, la configuración final fue:
 
 ```ini
 [mysqld]

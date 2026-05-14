@@ -107,7 +107,7 @@ PostgreSQL maintains table statistics in `pg_statistic` (readable through `pg_st
 
 The optimizer uses this information to estimate the selectivity of every WHERE condition and the cardinality of every join.
 
-The problem? Statistics are updated by {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — which can be manual or handled by autovacuum. But autovacuum triggers ANALYZE only when the number of modified rows exceeds a threshold:
+The critical point? Statistics are updated by {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — which can be manual or handled by autovacuum. But autovacuum triggers ANALYZE only when the number of modified rows exceeds a threshold:
 
 ``` text
 threshold = autovacuum_analyze_threshold + autovacuum_analyze_scale_factor × n_live_tuples
@@ -139,7 +139,7 @@ After the ANALYZE, I re-ran the query with EXPLAIN (ANALYZE, BUFFERS):
 
 From 45 seconds to under 3 seconds. The optimizer had chosen a hash join, the row estimate was accurate, and the plan was completely different.
 
-But I didn't stop there. If the problem happened once, it will happen again.
+And I didn't stop there. If the issue happened once, it will happen again.
 
 ------------------------------------------------------------------------
 
@@ -181,7 +181,7 @@ PostgreSQL offers parameters to disable specific strategies:
 SET enable_nestloop = off;
 ```
 
-This forces the optimizer not to use nested loops. It's not a solution, it's a diagnostic band-aid. If you disable nested loops and the query drops from 45 seconds to 3 seconds, you've confirmed the join strategy was the problem. But you can't leave `enable_nestloop = off` in production because there are a thousand queries where nested loops are the right choice.
+This forces the optimizer not to use nested loops. It's not a solution, it's a diagnostic band-aid. If you disable nested loops and the query drops from 45 seconds to 3 seconds, you've confirmed the join strategy was the issue. But you can't leave `enable_nestloop = off` in production because there are a thousand queries where nested loops are the right choice.
 
 I use these parameters in only two scenarios:
 
@@ -202,7 +202,7 @@ After thirty years doing this job, my process has become almost mechanical:
 
 **3. Check the statistics** — I look at `pg_stats` for the involved columns. I verify `last_autoanalyze` and `last_analyze` in `pg_stat_user_tables`. If the last ANALYZE is old, I run it and re-evaluate.
 
-**4. Evaluate BUFFERS** — if `shared read` is very high compared to `shared hit`, the problem might be I/O, not the plan. In that case the fix is `shared_buffers` or the working set simply doesn't fit in RAM.
+**4. Evaluate BUFFERS** — if `shared read` is very high compared to `shared hit`, the bottleneck might be I/O, not the plan. In that case the fix is `shared_buffers` or the working set simply doesn't fit in RAM.
 
 **5. Test alternatives** — if statistics are fresh but the plan is still wrong, I use `enable_nestloop`, `enable_hashjoin`, `enable_mergejoin` to understand which strategy works best. Then I try to guide the optimizer toward that strategy with indexes or query rewriting.
 
@@ -220,7 +220,7 @@ I've seen DBAs with years of experience run EXPLAIN ANALYZE, look at the total t
 
 The execution plan tells you what's causing it. Each node is an organ. Estimated rows versus actual rows are the lab results. Buffers are the X-rays. And ANALYZE is the antibiotic that solves 70% of cases.
 
-But for that remaining 30%, you need to read. Line by line. Node by node. There's no shortcut.
+And for that remaining 30%, you need to read. Line by line. Node by node. There's no shortcut.
 
 ------------------------------------------------------------------------
 

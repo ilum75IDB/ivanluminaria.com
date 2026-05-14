@@ -183,7 +183,7 @@ Configuration Status:
 SUCCESS
 ```
 
-La parola che vuoi vedere è `SUCCESS`. Qualsiasi altra cosa significa che c'è un problema di rete, di configurazione o di permessi da risolvere prima di andare avanti.
+La parola che vuoi vedere è `SUCCESS`. Qualsiasi altra cosa significa che c'è una criticità di rete, di configurazione o di permessi da risolvere prima di andare avanti.
 
 ## Il primo switchover
 

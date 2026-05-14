@@ -35,7 +35,7 @@ The project kicks off. Requirements are defined. The budget is estimated. Contra
 
 Months pass. Then years.
 
-Deliverables arrive — on paper. But the software doesn't work as expected. Specifications change. Costs balloon. Consultants rotate: the one who understood the domain leaves, a new one arrives and starts from scratch. The classic pattern of fixed-scope consulting that becomes, in practice, open-ended engagement.
+Deliverables arrive — on paper. The software, however, doesn't work as expected. Specifications change. Costs balloon. Consultants rotate: the one who understood the domain leaves, a new one arrives and starts from scratch. The classic pattern of fixed-scope consulting that becomes, in practice, open-ended engagement.
 
 **From 2013 to 2018: over 2.5 million euros spent.**\
 Result: incomplete, unstable software that no one internally knew how to maintain.

@@ -35,7 +35,7 @@ Proiectul pornește. Se definesc cerințele. Se estimează bugetul. Se semnează
 
 Trec lunile. Apoi anii.
 
-Livrabilele sosesc — pe hârtie. Dar software-ul nu funcționează cum ar trebui. Specificațiile se schimbă. Costurile explodează. Consultanții se rotesc: cel care înțelesese domeniul pleacă, vine altul care o ia de la zero. Schema clasică a consultanței la pachet care devine, în practică, o consultanță pe termen nedeterminat.
+Livrabilele sosesc — pe hârtie. Software-ul, însă, nu funcționează cum ar trebui. Specificațiile se schimbă. Costurile explodează. Consultanții se rotesc: cel care înțelesese domeniul pleacă, vine altul care o ia de la zero. Schema clasică a consultanței la pachet care devine, în practică, o consultanță pe termen nedeterminat.
 
 **Din 2013 până în 2018: peste 2,5 milioane de euro cheltuiți.**\
 Rezultatul: un software incomplet, instabil, pe care nimeni din interior nu știa să-l întrețină.
