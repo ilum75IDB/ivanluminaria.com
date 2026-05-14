@@ -108,7 +108,7 @@ Se salti un pezzo, prima o poi paghi il conto.
 
 Supponiamo di voler creare un utente di sola lettura su due schemi.
 
-Prima creo il ruolo con login:
+Prima creo il ruolo con login [1]:
 
 ``` sql
 CREATE ROLE srv_monitoraggio 
@@ -116,14 +116,14 @@ WITH LOGIN
 PASSWORD 'PasswordSicura123#';
 ```
 
-Lo metto in sicurezza:
+Lo metto in sicurezza [2]:
 
 ``` sql
 ALTER ROLE srv_monitoraggio 
 NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT;
 ```
 
-Permetto la connessione al database:
+Permetto la connessione al database [3]:
 
 ``` sql
 GRANT CONNECT ON DATABASE mydb TO srv_monitoraggio;
@@ -146,7 +146,7 @@ GRANT SELECT ON ALL SEQUENCES IN SCHEMA schema1 TO srv_monitoraggio;
 GRANT SELECT ON ALL SEQUENCES IN SCHEMA schema2 TO srv_monitoraggio;
 ```
 
-E ora la parte che molti dimenticano:
+E ora la parte che molti dimenticano [4]:
 
 ``` sql
 ALTER DEFAULT PRIVILEGES IN SCHEMA schema1
@@ -166,7 +166,7 @@ configurazione va replicata per ciascuno.
 
 ## Perché questo modello è potente
 
-Il fatto che tutto sia un ROLE permette di costruire gerarchie pulite.
+Il fatto che tutto sia un ROLE permette di costruire gerarchie pulite [5].
 
 Esempio evoluto:
 
@@ -196,6 +196,16 @@ per progettare sicurezza pulita, scalabile e manutenibile.
 
 La differenza non sta nei comandi.\
 Sta nel modello mentale con cui li usi.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. PostgreSQL Documentation — [`CREATE ROLE`](https://www.postgresql.org/docs/current/sql-createrole.html)
+2. PostgreSQL Documentation — [`ALTER ROLE`](https://www.postgresql.org/docs/current/sql-alterrole.html)
+3. PostgreSQL Documentation — [`GRANT`](https://www.postgresql.org/docs/current/sql-grant.html)
+4. PostgreSQL Documentation — [`ALTER DEFAULT PRIVILEGES`](https://www.postgresql.org/docs/current/sql-alterdefaultprivileges.html)
+5. PostgreSQL Documentation — [Role Membership](https://www.postgresql.org/docs/current/role-membership.html)
 
 ------------------------------------------------------------------------
 
