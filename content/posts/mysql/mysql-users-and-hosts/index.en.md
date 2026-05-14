@@ -77,7 +77,7 @@ Does it work? Yes. Is it correct? No.
 
 The point with `'%'` is that it accepts connections from **any IP**. If someone finds the password tomorrow, they can connect from anywhere in the network. Or the world, if the database is exposed.
 
-The correct solution is to create **specific users for each source**:
+The correct solution is to create **specific users for each source** [1] [2]:
 
 ``` sql
 -- Access from the primary application server
@@ -109,7 +109,7 @@ If both `'mario'@'%'` and `'mario'@'localhost'` exist, and Mario connects from l
 
 Answer: **`'mario'@'localhost'`**.
 
-MySQL sorts the rows in the `mysql.user` table from most specific to least specific:
+MySQL sorts the rows in the `mysql.user` table from most specific to least specific [3]:
 
 1. Exact literal host (`192.168.1.20`)
 2. Pattern with wildcard (`192.168.1.%`)
@@ -143,7 +143,7 @@ The `user@host` model is identical between MySQL and MariaDB. But there are impl
 | MySQL 8.0+ | `caching_sha2_password` |
 | MariaDB 10.x | `mysql_native_password` |
 
-If you migrate from MariaDB to MySQL 8 (or vice versa), clients might fail to connect because the authentication plugin is different. It's not a bug. It's a default change.
+If you migrate from MariaDB to MySQL 8 (or vice versa), clients might fail to connect because the authentication plugin is different. It's not a bug. It's a default change [4].
 
 **User creation:**
 
@@ -162,7 +162,7 @@ If you are writing provisioning scripts, this detail can break an entire CI/CD p
 
 **Roles:**
 
-MySQL 8.0 introduced roles. MariaDB supports them since 10.0.5, but with slightly different syntax.
+MySQL 8.0 introduced roles [5]. MariaDB supports them since 10.0.5, but with slightly different syntax.
 
 ``` sql
 -- MySQL 8.0
@@ -230,6 +230,16 @@ This model is powerful because it allows you to segment access without additiona
 The next time someone asks you to "create a user on MySQL", before writing the first `CREATE USER`, ask yourself: **where will they connect from?**
 
 The answer to that question changes everything.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. MySQL 8.0 Reference Manual — [`CREATE USER` Statement](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
+2. MySQL 8.0 Reference Manual — [`GRANT` Statement](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+3. MySQL 8.0 Reference Manual — [Grant Tables (`mysql.user`)](https://dev.mysql.com/doc/refman/8.0/en/grant-tables.html)
+4. MySQL 8.0 Reference Manual — [Pluggable Authentication](https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html)
+5. MySQL 8.0 Reference Manual — [Using Roles](https://dev.mysql.com/doc/refman/8.0/en/roles.html)
 
 ------------------------------------------------------------------------
 

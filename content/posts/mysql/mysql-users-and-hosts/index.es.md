@@ -77,7 +77,7 @@ GRANT SELECT, INSERT, UPDATE ON ventas_db.* TO 'app_ventas'@'%';
 
 El punto del `'%'` es que acepta conexiones desde **cualquier IP**. Si mañana alguien encuentra la contraseña, puede conectarse desde cualquier punto de la red. O del mundo, si la base de datos está expuesta.
 
-La solución correcta es crear **usuarios específicos para cada origen**:
+La solución correcta es crear **usuarios específicos para cada origen** [1] [2]:
 
 ``` sql
 -- Acceso desde el application server primario
@@ -109,7 +109,7 @@ Si existen tanto `'mario'@'%'` como `'mario'@'localhost'`, y Mario se conecta de
 
 Respuesta: **`'mario'@'localhost'`**.
 
-MySQL ordena las filas en la tabla `mysql.user` de la más específica a la menos específica:
+MySQL ordena las filas en la tabla `mysql.user` de la más específica a la menos específica [3]:
 
 1. Host literal exacto (`192.168.1.20`)
 2. Patrón con comodín (`192.168.1.%`)
@@ -143,7 +143,7 @@ El modelo `usuario@host` es idéntico entre MySQL y MariaDB. Pero hay diferencia
 | MySQL 8.0+ | `caching_sha2_password` |
 | MariaDB 10.x | `mysql_native_password` |
 
-Si migras de MariaDB a MySQL 8 (o viceversa), los clientes podrían no conectarse porque el plugin de autenticación es diferente. No es un bug. Es un cambio de configuración por defecto.
+Si migras de MariaDB a MySQL 8 (o viceversa), los clientes podrían no conectarse porque el plugin de autenticación es diferente. No es un bug. Es un cambio de configuración por defecto [4].
 
 **Creación de usuarios:**
 
@@ -162,7 +162,7 @@ Si estás escribiendo scripts de provisioning, este detalle puede romper una pip
 
 **Roles:**
 
-MySQL 8.0 introdujo los roles. MariaDB los soporta desde la 10.0.5, pero con sintaxis ligeramente diferente.
+MySQL 8.0 introdujo los roles [5]. MariaDB los soporta desde la 10.0.5, pero con sintaxis ligeramente diferente.
 
 ``` sql
 -- MySQL 8.0
@@ -230,6 +230,16 @@ Este modelo es potente porque permite segmentar los accesos sin infraestructura 
 La próxima vez que alguien te pida "crear un usuario en MySQL", antes de escribir el primer `CREATE USER`, pregúntate: **¿desde dónde se conectará?**
 
 La respuesta a esa pregunta lo cambia todo.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. MySQL 8.0 Reference Manual — [`CREATE USER` Statement](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
+2. MySQL 8.0 Reference Manual — [`GRANT` Statement](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+3. MySQL 8.0 Reference Manual — [Grant Tables (`mysql.user`)](https://dev.mysql.com/doc/refman/8.0/en/grant-tables.html)
+4. MySQL 8.0 Reference Manual — [Pluggable Authentication](https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html)
+5. MySQL 8.0 Reference Manual — [Using Roles](https://dev.mysql.com/doc/refman/8.0/en/roles.html)
 
 ------------------------------------------------------------------------
 
