@@ -16,7 +16,7 @@ Cuando preguntas por qué, la respuesta siempre es alguna variante de: "Así tod
 
 Claro. Todo funciona. Hasta el día en que un desarrollador ejecuta un `DROP TABLE` sobre la tabla equivocada. O un batch de importación hace un `TRUNCATE` sobre una tabla de producción pensando que está en el entorno de pruebas. O alguien ejecuta un `DELETE FROM clientes` sin la cláusula `WHERE`.
 
-Ese día el problema ya no son los permisos. Es que no tienes idea de quién hizo qué, y no tienes ninguna herramienta para impedir que vuelva a ocurrir.
+Ese día la criticidad ya no son los permisos. Es que no tienes idea de quién hizo qué, y no tienes ninguna herramienta para impedir que vuelva a ocurrir.
 
 ---
 
@@ -24,7 +24,7 @@ Ese día el problema ya no son los permisos. Es que no tienes idea de quién hiz
 
 El cliente era una empresa mediana con una aplicación de gestión sobre Oracle 19c. Unos veinte usuarios entre desarrolladores, cuentas aplicativas y operadores. El schema aplicativo — llamémoslo `APP_OWNER` — contenía unas 300 tablas, unas sesenta vistas y unas cuantas docenas de procedimientos PL/SQL.
 
-El problema era fácil de describir:
+La situación era fácil de describir:
 
 - Todos se conectaban como `APP_OWNER`
 - `APP_OWNER` tenía el rol `DBA`
@@ -66,7 +66,7 @@ El rol `DBA` incluye más de 200 system privileges. Asignarlo a un usuario aplic
 
 ### Los roles: predefinidos y personalizados
 
-Oracle ofrece roles predefinidos (`CONNECT`, `RESOURCE`, `DBA`) y permite crear roles personalizados. Los roles predefinidos tienen un problema histórico: `CONNECT` y `RESOURCE` incluían privilegios excesivos en versiones anteriores. Desde Oracle 12c se han reducido, pero la costumbre de asignarlos sin pensarlo es difícil de erradicar.
+Oracle ofrece roles predefinidos (`CONNECT`, `RESOURCE`, `DBA`) y permite crear roles personalizados. Los roles predefinidos tienen un punto crítico histórico: `CONNECT` y `RESOURCE` incluían privilegios excesivos en versiones anteriores. Desde Oracle 12c se han reducido, pero la costumbre de asignarlos sin pensarlo es difícil de erradicar.
 
 El camino correcto es crear roles personalizados calibrados a las necesidades reales.
 
@@ -277,7 +277,7 @@ El principio sigue siendo el mismo en todas partes: **dale a cada uno solo lo qu
 
 ## Qué cambió después
 
-La transición fue gradual — dos semanas para el despliegue completo, con pruebas en cada aplicación y procedimiento. Algunos scripts dejaron de funcionar porque daban por sentados privilegios que no les correspondían. Cada error era en realidad un problema oculto que antes era invisible.
+La transición fue gradual — dos semanas para el despliegue completo, con pruebas en cada aplicación y procedimiento. Algunos scripts dejaron de funcionar porque daban por sentados privilegios que no les correspondían. Cada fallo era en realidad una criticidad oculta que antes era invisible.
 
 El resultado:
 
