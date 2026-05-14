@@ -43,7 +43,7 @@ Distanța nu era întâmplătoare. Suficient de departe pentru a supraviețui un
 
 ### Pregătirea primarului
 
-Primul pas a fost verificarea că primarul era în mod `ARCHIVELOG` cu `FORCE LOGGING` activ. Fără aceste două precondiții, Data Guard nu are ce replica.
+Primul pas a fost verificarea că primarul era în mod `ARCHIVELOG` cu `FORCE LOGGING` activ [1]. Fără aceste două precondiții, Data Guard nu are ce replica.
 
 ```sql
 -- Verificare mod archivelog
@@ -63,7 +63,7 @@ ALTER DATABASE FORCE LOGGING;
 
 ### Standby redo log-uri
 
-Pe primar am creat standby redo log-urile — grupuri dedicate care vor fi folosite când (și dacă) acest server devine standby după un switchover.
+Pe primar am creat standby redo log-urile — grupuri dedicate care vor fi folosite când (și dacă) acest server devine standby după un switchover [2].
 
 ```sql
 -- Standby redo log-uri: n+1 față de redo log-urile online
@@ -117,7 +117,7 @@ Sufixul `_DGMGRL` este folosit de Data Guard Broker pentru a identifica instanț
 
 ### Crearea standby-ului
 
-Pentru copia inițială a bazei de date am folosit un `DUPLICATE` prin {{< glossary term="rman" >}}RMAN{{< /glossary >}} prin rețea. Fără backup pe bandă, fără transfer manual de fișiere. Direct, de la primar la standby:
+Pentru copia inițială a bazei de date am folosit un `DUPLICATE ... FROM ACTIVE DATABASE` prin {{< glossary term="rman" >}}RMAN{{< /glossary >}} prin rețea [3]. Fără backup pe bandă, fără transfer manual de fișiere. Direct, de la primar la standby:
 
 ```
 -- Pe serverul standby, pornirea instanței în NOMOUNT
@@ -143,7 +143,7 @@ Copia a durat aproximativ trei ore pentru 400 GB printr-o linie dedicată de 1 G
 
 ### Data Guard Broker
 
-Broker-ul este componenta care gestionează configurația Data Guard centralizat și permite switchover-ul cu o singură comandă. Fără Broker poți face totul manual, dar nu vrei să faci asta manual când primarul tocmai a căzut și CEO-ul te sună la fiecare cinci minute.
+Broker-ul este componenta care gestionează configurația Data Guard centralizat și permite switchover-ul cu o singură comandă [4]. Fără Broker poți face totul manual, dar nu vrei să faci asta manual când primarul tocmai a căzut și CEO-ul te sună la fiecare cinci minute.
 
 ```sql
 -- Pe primar
@@ -221,7 +221,7 @@ Nu i-am dat răspunsul. Îl știam amândoi.
 
 Configurarea pe care am descris-o funcționează. Și sunt lucruri pe care documentația Oracle nu le subliniază suficient.
 
-**Gap-ul de rețea.** Replicarea sincronă (`SYNC`) garantează zero pierderi de date dar introduce latență la fiecare commit. Cu 12 km și o fibră bună, latența adăugată era de 1-2 milisecunde — acceptabilă. Dar la 100 km ar fi fost 5-8 ms, și pe o aplicație cu mii de commit-uri pe secundă, încetinirea s-ar fi simțit. De aceea am ales modul `MaxPerformance` (asincron) ca implicit, acceptând posibilitatea teoretică de a pierde câteva secunde de tranzacții în caz de dezastru total. Pentru acel client, pierderea a cinci secunde de date era infinit mai bună decât pierderea a zece ore.
+**Gap-ul de rețea.** Replicarea sincronă (`SYNC`) garantează zero pierderi de date dar introduce latență la fiecare commit. Cu 12 km și o fibră bună, latența adăugată era de 1-2 milisecunde — acceptabilă. Dar la 100 km ar fi fost 5-8 ms, și pe o aplicație cu mii de commit-uri pe secundă, încetinirea s-ar fi simțit. De aceea am ales modul `MaxPerformance` (asincron) ca implicit [5], acceptând posibilitatea teoretică de a pierde câteva secunde de tranzacții în caz de dezastru total. Pentru acel client, pierderea a cinci secunde de date era infinit mai bună decât pierderea a zece ore.
 
 **Fișierul de parole.** Fișierul de parole al utilizatorului `SYS` trebuie să fie identic pe primar și standby. Dacă îl schimbi pe unul și nu pe celălalt, redo transport-ul se oprește silențios. Nicio eroare evidentă, doar un gap care crește. Am descoperit asta după o oră de debugging într-o duminică seara.
 
@@ -257,6 +257,16 @@ Nu poți convinge un CEO cu o diagramă arhitecturală. Poți doar să aștepți
 Singurul lucru pe care îl poți face dinainte este să documentezi riscul, să pui în scris că l-ai semnalat, și să ții proiectul pregătit în sertar. Eu propusesem acel proiect cu optsprezece luni înainte. Fusese pus deoparte cu un "revenim anul viitor."
 
 Anul viitor a sosit într-o dimineață de miercuri din noiembrie, la 8:47.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. Oracle Database SQL Language Reference 19c — [`ALTER DATABASE` (ARCHIVELOG, FORCE LOGGING)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ALTER-DATABASE.html)
+2. Oracle Data Guard Concepts and Administration 19c — [Creating a Physical Standby Database](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/creating-oracle-data-guard-physical-standby.html)
+3. Oracle Database Backup and Recovery User's Guide 19c — [RMAN — Duplicating Databases](https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/rman-duplicating-databases.html)
+4. Oracle Data Guard Broker 19c — [Oracle Data Guard Broker Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/dgbkr/oracle-data-guard-broker-concepts.html)
+5. Oracle Data Guard Concepts and Administration 19c — [Oracle Data Guard Protection Modes](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html)
 
 ------------------------------------------------------------------------
 
