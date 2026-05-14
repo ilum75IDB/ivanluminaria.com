@@ -34,7 +34,7 @@
 | 13 | Verifica Media tech: anonymous user MySQL | ✅ VERO, P1 | audit-verify: 2.8 |
 | 14 | Verifica Media tech: default_statistics_target | ✅ VERO, P0 | audit-verify: 2.9 |
 | 15 | Verifica Media tech: CREATE INDEX CONCURRENTLY | ✅ basso impatto, P2 | audit-verify: 2.10 |
-| 16 | Lista affermazioni assolute | da fare | — |
+| 16 | Lista affermazioni assolute | ✅ parziale, P2 (mitigare solo titolo pg_stat_statements) | audit-verify: 3 |
 | 17 | Revisione stilistica: section Oracle (annotazioni) | da fare | — |
 | 18 | Revisione stilistica: section MySQL (annotazioni) | da fare | — |
 | 19 | Revisione stilistica: section PostgreSQL (annotazioni) | da fare | — |
@@ -524,7 +524,39 @@ E aggiunge precauzioni: off-peak, modalità CONCURRENTLY, monitoraggio I/O.
 
 **Claim Analista B**: contare le occorrenze di `sempre`, `mai`, `qualsiasi`, `non c'è scelta`, ecc. negli articoli per mitigarle.
 
-**STATO**: da fare
+**Verifica empirica (2026-05-14)**:
+
+**Grep di superficie** sui pattern `sempre|mai|qualsiasi|nessun[oa]|tutti|sicuramente`:
+- Numero totale di occorrenze nei 35 articoli IT: alto (>300 totali)
+- Top 5 articoli per occorrenze: galera-cluster-3-nodi (22), binary-log-mysql (17), ai-github-project-management (14), pg-stat-statements (14), mysql-multi-istanza-secure-file-priv (14)
+
+**Analisi qualitativa del campione**:
+La maggior parte delle occorrenze NON sono assolutismi tecnici problematici. Sono:
+- **Descrizioni di situazioni reali**: *"tutti gli utenti applicativi connessi come schema owner"* — descrive un caso visto, non un'affermazione universale
+- **Uso retorico-narrativo**: *"la risposta è sempre una variante di..."* (drammatizzazione di un cliché)
+- **Negazioni in contesto specifico**: *"non hai nessuno strumento per impedire"* (in un caso specifico)
+- **Definizioni di glossario**: *"indipendenti da qualsiasi oggetto specifico"* (corretto descrittivamente)
+
+**Vero claim assoluto problematico identificato**: il **titolo dell'articolo pg_stat_statements**:
+- IT: *"pg_stat_statements: la prima cosa da installare su **qualsiasi** PostgreSQL"*
+- EN: *"...the first thing to install on **any** PostgreSQL"*
+- ES: *"...lo primero que instalar en **cualquier** PostgreSQL"*
+- RO: *"...primul lucru de instalat pe **orice** PostgreSQL"*
+
+Questo è esattamente l'esempio che l'Analista B cita: forte come titolo SEO ma tecnicamente troppo assoluto (ci sono scenari dove pg_stat_statements non è la prima priorità: PostgreSQL dietro PgBouncer multi-tenant, replica logica downstream, ecc.).
+
+**Verdetto**: claim **parzialmente VERO**. L'audit B aveva ragione nel principio (mitigare gli assolutismi) ma la realtà operativa è che:
+1. La **maggioranza** degli "assolutismi" rilevati dal grep sono usi retorici legittimi
+2. **Il titolo `qualsiasi PostgreSQL` è l'unico caso veramente da rivedere** (lo segnala B esplicitamente)
+3. Una rinominazione del titolo SEO comporta perdita di click + riscrittura della meta description
+
+**Proposta intervento**: **P2** — non aggressivo, casi specifici:
+- Lasciare i titoli SEO come sono (il valore di click vale lo "scivolone")
+- All'interno del corpo dell'articolo `pg-stat-statements`, **mitigare nelle prime righe** con una frase tipo *"Con qualche eccezione (PgBouncer multi-tenant, replica logica downstream), è la prima cosa da installare"*
+- Non fare grep+sostituzione di massa: rischia di togliere il sapore narrativo
+- Effort: XS (10 minuti, 4 traduzioni di una frase)
+
+**STATO**: ✅ completato
 
 ---
 
