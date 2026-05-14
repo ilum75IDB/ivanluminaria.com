@@ -19,11 +19,11 @@
 | # | Attività | Stato | Commit |
 |---|---------|-------|--------|
 | 0 | Setup framework | ✅ completato | (questo commit) |
-| 1 | Verifica infra: tag bloat | da fare | — |
-| 2 | Verifica infra: carrello/shop orfano | da fare | — |
-| 3 | Verifica infra: structured data | da fare | — |
-| 4 | Verifica infra: hreflang + canonical | da fare | — |
-| 5 | Verifica infra: sitemap + robots.txt | da fare | — |
+| 1 | Verifica infra: tag bloat | ✅ completato (126 tag/35 art, 89 thin) | audit-verify: 1.1 |
+| 2 | Verifica infra: carrello/shop orfano | ✅ completato (claim FALSO) | audit-verify: 1.2 |
+| 3 | Verifica infra: structured data | ✅ completato (bug double-quoting) | audit-verify: 1.3 |
+| 4 | Verifica infra: hreflang + canonical | ✅ completato (tutto OK) | audit-verify: 1.4 |
+| 5 | Verifica infra: sitemap + robots.txt | ✅ completato (tutto OK) | audit-verify: 1.5 |
 | 6 | Verifica P0 tech: Oracle Unified Audit | da fare | — |
 | 7 | Verifica P0 tech: Galera durabilità | da fare | — |
 | 8 | Verifica P0 tech: CSV con sed | da fare | — |
@@ -54,35 +54,134 @@
 ### 1.1 Tag bloat
 **Claim Analista B**: "112 tag per 31 articoli" → rapporto 3.6 tag/articolo, troppi pagine sottili.
 
-**STATO**: da fare
+**Verifica empirica (2026-05-14)**:
+- **126 tag unici** per **35 articoli IT** → rapporto 3.6 tag/articolo (confermato, peggiorato in valore assoluto perché il sito è cresciuto)
+- **89 tag (71%)** hanno **un solo articolo** → ognuno produce una pagina `/tags/<slug>/` con 1 link → thin content perfetto
+- **26 tag (21%)** hanno 2 articoli
+- Solo **11 tag (8%)** hanno 3+ articoli (`performance` 9, `tuning` 5, `data-warehouse` 5, `oracle` 4, `mariadb` 4, `dimensional-modeling` 4, `security` 3, `query-tuning` 3, `privileges` 3, `kimball` 3, `consulting` 3)
+
+**Verdetto**: claim **VERIFICATO** e peggiore del segnalato. Le 89 tag-page con 1 solo articolo sono:
+- SEO penalty (thin content)
+- Diluiscono il PageRank interno
+- Confondono l'utente nella navigazione `/tags/`
+
+**Proposta intervento**:
+- **P1**: ridurre a un set di ~25-30 tag strategici (gli 11 "forti" + 15-20 selezionati con cura)
+- Tag con 1 articolo: o assorbire in tag esistente, o noindex (più conservativo)
+- Mantenere le categorie come navigazione principale SEO (già fanno il lavoro)
+- Issue da aprire: "Tag governance: consolidare i tag da 126 a ~30, applicare noindex ai residui"
+
+**Effort**: M (3-4 ore — rivedere 35 articoli, scegliere tag canonici, aggiornare frontmatter)
+**Rischio**: Basso (refactoring di metadati, non cambia contenuto)
+
+**STATO**: ✅ completato
 
 ---
 
 ### 1.2 Carrello / Shop orfano
 **Claim Analista A**: "presenza di un'icona del carrello o riferimenti a uno 'Shop' senza prodotti".
 
-**STATO**: da fare
+**Verifica empirica (2026-05-14)**:
+- Grep su tutti i template `layouts/`, asset `assets/`, configurazione `config/`: nessun riferimento a `cart`, `shop`, `carrello`, `basket`, `checkout`, `shoppingcart`, `fa-shopping`, `bi-cart`.
+- Curl sulla home live: nessun risultato per pattern shop/cart.
+
+**Verdetto**: claim **FALSO**. Probabilmente l'Analista A ha confuso con un altro sito, o ha letto un'esempio del tema Congo (che è e-commerce-ready ma noi non l'abbiamo attivato).
+
+**Proposta intervento**: **NESSUNO**. Skip.
+
+**STATO**: ✅ completato
 
 ---
 
 ### 1.3 Structured data (JSON-LD)
 **Claim Analista B**: implementare/validare `BlogPosting`, `Person`, `ProfilePage`, `BreadcrumbList`, `Organization`, `WebSite`, `ImageObject`.
 
-**STATO**: da fare
+**Verifica empirica (2026-05-14)** su `https://ivanluminaria.com/it/posts/postgresql/pg-stat-statements/`:
+
+**Presenti**:
+- ✅ `Article` (con `headline`, `description`, `datePublished`, `dateModified`, `inLanguage`)
+- ✅ `ImageObject` (annidata in `image`, con `url`, `width`, `height`)
+- ✅ `Person` (annidata in `author`, con `name`, `url`, `jobTitle`)
+- ✅ `Organization` (annidata in `publisher`, con `name`, `url`)
+- ✅ `WebPage` (annidata in `mainEntityOfPage` con `@id`)
+- ✅ `BreadcrumbList` (separato, con 5 ListItem)
+
+**🚨 BUG IMPORTANTE — Double-quoting nel JSON-LD**:
+I valori sono wrappati con **doppi apici di troppo**:
+```json
+"headline":"\"pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL\""
+                ↑                                                                          ↑
+                doppio quoting non corretto
+```
+Stesso problema per: `description`, `datePublished`, `dateModified`, `inLanguage`, `image.url`, `mainEntityOfPage.@id`, e tutti gli `ListItem.name/item` del BreadcrumbList.
+
+**Conseguenze**:
+- Il JSON è formalmente valido (le doppie virgolette sono escapate)
+- MA Google Rich Results Test e Schema.org validator probabilmente registrano valori come stringhe con virgolette letterali — i metadati funzionano in modo degradato
+- Non bloccante per l'indicizzazione, ma rich results potrebbero non apparire o apparire male
+
+**Proposta intervento**: **P1** — fix dei template Hugo che generano JSON-LD (probabilmente `layouts/_partials/head.html` o un override Congo).
+
+**Effort**: S (1 ora — trovare il template, togliere il quoting `printf "%q"` o `jsonify` ridondante, testare)
+**Rischio**: Basso
+
+**STATO**: ✅ completato
 
 ---
 
 ### 1.4 Hreflang reciproci e canonical
 **Claim Analista B**: verificare che ogni pagina abbia hreflang reciproci self-referencing.
 
-**STATO**: da fare
+**Verifica empirica (2026-05-14)** su `https://ivanluminaria.com/it/posts/postgresql/pg-stat-statements/`:
+
+**Hreflang trovati nella `<head>`**:
+```html
+<link rel=alternate hreflang=it href=https://ivanluminaria.com/it/posts/postgresql/pg-stat-statements/>
+<link rel=alternate hreflang=en href=https://ivanluminaria.com/en/posts/postgresql/pg-stat-statements/>
+<link rel=alternate hreflang=es href=https://ivanluminaria.com/es/posts/postgresql/pg-stat-statements/>
+<link rel=alternate hreflang=ro href=https://ivanluminaria.com/ro/posts/postgresql/pg-stat-statements/>
+<link rel=alternate hreflang=x-default href=https://ivanluminaria.com/en/posts/postgresql/pg-stat-statements/>
+```
+
+✅ Tutti i 4 hreflang presenti + `x-default` → EN
+✅ La pagina IT include il **self-referencing** (`hreflang=it` punta a sé)
+
+**Canonical trovato**:
+```html
+<link rel=canonical href=https://ivanluminaria.com/it/posts/postgresql/pg-stat-statements/>
+```
+
+✅ Canonical self-referencing per la versione IT (non punta erroneamente alla EN come temeva l'Analista B)
+
+**Verdetto**: claim **NON CONFERMATO** (era una preoccupazione preventiva, in realtà tutto è già corretto). Skip.
+
+**STATO**: ✅ completato
 
 ---
 
 ### 1.5 Sitemap + robots.txt
 **Claim Analista B**: verificare che sitemap esista, sia raggiungibile, contenga tutte le lingue, sia citata in robots.txt.
 
-**STATO**: da fare
+**Verifica empirica (2026-05-14)**:
+
+**robots.txt** (`https://ivanluminaria.com/robots.txt`):
+```
+User-agent: *
+Allow: /
+Sitemap: https://ivanluminaria.com/sitemap.xml
+```
+✅ Esiste, raggiungibile, contiene il riferimento al sitemap
+
+**sitemap.xml root** (`https://ivanluminaria.com/sitemap.xml`):
+- ✅ HTTP 200 + `content-type: application/xml`
+- ✅ È un **sitemap index** con 4 sub-sitemap (uno per lingua: IT, EN, ES, RO), ciascuno con `<lastmod>` aggiornato
+
+**sub-sitemap** (`https://ivanluminaria.com/it/sitemap.xml`):
+- ✅ Ogni URL ha i 4 `xhtml:link rel="alternate" hreflang="..."` per le altre lingue + self-referencing
+
+**Verdetto**: claim **NON CONFERMATO** (preoccupazione preventiva). Tutto già configurato correttamente da Hugo+Congo. Skip.
+
+**STATO**: ✅ completato
 
 ---
 
