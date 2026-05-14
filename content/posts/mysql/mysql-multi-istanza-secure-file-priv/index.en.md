@@ -211,7 +211,7 @@ ORDER BY o.data_ordine
 
 The `-B` option produces tab-separated output without the ASCII table borders. The result is a clean TSV file that opens without issues in any spreadsheet application.
 
-If you need an actual CSV with commas as separators, just pipe through `sed`:
+If you need commas as separators, a quick pipe through `sed`:
 
 ```bash
 mysql --socket=/var/run/mysqld/mysqld-app2.sock \
@@ -226,6 +226,22 @@ ORDER BY o.data_ordine
 ```
 
 The `-N` option removes the header row with column names. If you want it, drop the flag.
+
+**Caveat**: this `sed` pattern is **not RFC 4180 compliant** [1]. It only works if you're sure no field contains commas, newlines or quotes. On an `ordini` table with a `ragione_sociale` like this one — company names such as "Bianchi, Rossi & Co." break the row. If you have any doubt about the data, use a proper CSV writer. Example in Python (a few lines, zero external dependencies):
+
+```bash
+mysql --socket=/var/run/mysqld/mysqld-app2.sock \
+      -u root -p \
+      -B -e "SELECT ... FROM ordini ... ;" gestionale_prod \
+| python3 -c "
+import sys, csv
+w = csv.writer(sys.stdout, quoting=csv.QUOTE_MINIMAL)
+for line in sys.stdin:
+    w.writerow(line.rstrip('\n').split('\t'))
+" > /tmp/export_ordini.csv
+```
+
+Python's stdlib `csv` module [2] applies proper escaping (double quotes around fields containing commas, doubling of inner quotes, newline handling). For critical exports it's the difference between a file that opens cleanly in Excel/LibreOffice and a file with broken rows discovered at the first analysis.
 
 The file was ready in under a minute. 12,400 rows, 1.2 MB. I copied it to my machine with `scp`, checked it opened correctly in LibreOffice Calc and sent it to the requester. It was 11:45. The ticket that was supposed to take five minutes had taken forty-five — but at least I had not restarted any instances.
 
@@ -257,6 +273,15 @@ The second: **secure-file-priv is not an obstacle, it is a safeguard**. When it 
 The third: **the mysql command-line client is more powerful than most DBAs give it credit for**. With `-B`, `-N`, `-e` and a pipe to `sed` or `awk`, you can do exports, transformations and automations without ever touching `INTO OUTFILE`. Less elegant, maybe. But it always works, requires no special permissions and does not need someone to have created the right directory six months earlier.
 
 The CSV arrived at 11:45. The requester never knew that behind five columns and 12,400 rows there were forty-five minutes of system archaeology. But that is how tickets work: the person who opens them sees the result, the person who resolves them sees the journey.
+
+------------------------------------------------------------------------
+
+## Official sources
+
+1. IETF — [RFC 4180 — Common Format and MIME Type for Comma-Separated Values (CSV) Files](https://www.rfc-editor.org/rfc/rfc4180)
+2. Python Documentation — [`csv` — CSV File Reading and Writing](https://docs.python.org/3/library/csv.html)
+3. MySQL 8.0 Reference Manual — [`secure_file_priv`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_secure_file_priv)
+4. MySQL 8.0 Reference Manual — [`SELECT ... INTO OUTFILE`](https://dev.mysql.com/doc/refman/8.0/en/select-into.html)
 
 ------------------------------------------------------------------------
 

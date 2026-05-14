@@ -211,7 +211,7 @@ ORDER BY o.data_ordine
 
 La opción `-B` produce una salida separada por tabulaciones sin los bordes ASCII de las tablas. El resultado es un archivo TSV limpio que se abre sin problemas en cualquier hoja de cálculo.
 
-Si necesitas un verdadero CSV con comas como separador, basta un paso con `sed`:
+Si necesitas comas como separador, un paso rápido con `sed`:
 
 ```bash
 mysql --socket=/var/run/mysqld/mysqld-app2.sock \
@@ -226,6 +226,22 @@ ORDER BY o.data_ordine
 ```
 
 La opción `-N` elimina la fila de encabezado con los nombres de las columnas. Si la quieres, quita el flag.
+
+**Aviso**: este patrón con `sed` **no es CSV RFC 4180 compliant** [1]. Funciona solo si estás seguro de que ningún campo contiene comas, saltos de línea o comillas. En una tabla `ordini` con `ragione_sociale` como esta — razones sociales del tipo "Bianchi, Rossi & Co." rompen la fila. Si tienes dudas sobre los datos, usa un writer CSV real. Ejemplo en Python (pocas líneas, cero dependencias externas):
+
+```bash
+mysql --socket=/var/run/mysqld/mysqld-app2.sock \
+      -u root -p \
+      -B -e "SELECT ... FROM ordini ... ;" gestionale_prod \
+| python3 -c "
+import sys, csv
+w = csv.writer(sys.stdout, quoting=csv.QUOTE_MINIMAL)
+for line in sys.stdin:
+    w.writerow(line.rstrip('\n').split('\t'))
+" > /tmp/export_ordini.csv
+```
+
+El módulo `csv` de la stdlib de Python [2] aplica el escaping correcto (comillas dobles alrededor de los campos que contienen comas, duplicación de las comillas internas, gestión de saltos de línea). Para exportaciones críticas es la diferencia entre un archivo que abre bien en Excel/LibreOffice y un archivo con filas corruptas que descubres en el primer análisis.
 
 El archivo estaba listo en menos de un minuto. 12.400 filas, 1,2 MB. Lo copié a mi máquina con `scp`, verifiqué que abriera bien en LibreOffice Calc y lo envié al solicitante. Eran las 11:45. El ticket que debía durar cinco minutos había requerido cuarenta y cinco — pero al menos no había reiniciado ninguna instancia.
 
@@ -257,6 +273,15 @@ La segunda: **secure-file-priv no es un obstáculo, es una protección**. Cuando
 La tercera: **el cliente mysql desde línea de comandos es más poderoso de lo que la mayoría de los DBA le reconocen**. Con `-B`, `-N`, `-e` y un pipe hacia `sed` o `awk`, puedes hacer exports, transformaciones y automatizaciones sin tocar jamás `INTO OUTFILE`. Es menos elegante, quizás. Pero funciona siempre, no requiere permisos especiales y no necesita que alguien haya creado el directorio correcto seis meses antes.
 
 El CSV llegó a las 11:45. El solicitante nunca supo que detrás de cinco columnas y 12.400 filas había cuarenta y cinco minutos de arqueología de sistemas. Pero así funcionan los tickets: quien los abre ve el resultado, quien los resuelve ve el camino.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. IETF — [RFC 4180 — Common Format and MIME Type for Comma-Separated Values (CSV) Files](https://www.rfc-editor.org/rfc/rfc4180)
+2. Python Documentation — [`csv` — CSV File Reading and Writing](https://docs.python.org/3/library/csv.html)
+3. MySQL 8.0 Reference Manual — [`secure_file_priv`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_secure_file_priv)
+4. MySQL 8.0 Reference Manual — [`SELECT ... INTO OUTFILE`](https://dev.mysql.com/doc/refman/8.0/en/select-into.html)
 
 ------------------------------------------------------------------------
 
