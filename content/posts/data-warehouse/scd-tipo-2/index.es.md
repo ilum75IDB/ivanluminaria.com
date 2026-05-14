@@ -58,7 +58,7 @@ WHEN NOT MATCHED THEN INSERT (
 
 Simple, limpio, rápido. Y completamente errado para un data warehouse.
 
-Esto es lo que {{< glossary term="kimball" >}}Kimball{{< /glossary >}} llama **SCD Tipo 1** — Slowly Changing Dimension de Tipo 1. Sobrescribes el valor antiguo con el nuevo. Sin historia, sin versionado. El valor actual borra el anterior.
+Esto es lo que {{< glossary term="kimball" >}}Kimball{{< /glossary >}} llama **SCD Tipo 1** — Slowly Changing Dimension de Tipo 1 [1]. Sobrescribes el valor antiguo con el nuevo. Sin historia, sin versionado. El valor actual borra el anterior.
 
 Para un sistema OLTP es perfecto: siempre quieres la dirección actual del cliente, el teléfono actualizado, el email válido. Pero un data warehouse no es un sistema transaccional. Un data warehouse es una máquina del tiempo. Y una máquina del tiempo que sobrescribe el pasado es inútil.
 
@@ -82,13 +82,13 @@ Ese fue el momento que desencadenó el proyecto de reestructuración.
 
 ## SCD Tipo 2: el principio
 
-El Tipo 2 no sobrescribe. Versiona.
+El Tipo 2 no sobrescribe. Versiona [2].
 
 Cuando un atributo cambia, el registro actual se cierra — se le asigna una fecha de fin de validez — y se inserta un nuevo registro con los valores actualizados y una nueva fecha de inicio de validez. El registro antiguo permanece en la base de datos, intacto, con todos los valores que tenía cuando era el registro vigente.
 
 Para que esto funcione se necesitan tres elementos adicionales en la tabla dimensional:
 
-1. **Una {{< glossary term="chiave-surrogata" >}}clave subrogada{{< /glossary >}}** — un identificador generado por el DWH, distinto de la clave natural del sistema fuente. Es necesaria porque el mismo cliente tendrá múltiples registros (uno por cada versión), así que la clave natural ya no es única.
+1. **Una {{< glossary term="chiave-surrogata" >}}clave subrogada{{< /glossary >}}** — un identificador generado por el DWH, distinto de la clave natural del sistema fuente [3]. Es necesaria porque el mismo cliente tendrá múltiples registros (uno por cada versión), así que la clave natural ya no es única.
 2. **Fechas de validez** — `valid_from` y `valid_to` — que definen el intervalo temporal en que cada versión del registro era la vigente.
 3. **Un flag de versión actual** — `is_current` — que permite recuperar rápidamente la versión activa sin filtrar por fechas.
 
@@ -361,6 +361,14 @@ El director comercial no sabía que necesitaba la historia hasta que la necesit�
 Ese es el punto. No se implementa el Tipo 2 porque "es best practice" o porque "Kimball lo dice en el capítulo 5". Se implementa porque un data warehouse sin historia es una base de datos operativa con un {{< glossary term="star-schema" >}}star schema{{< /glossary >}} pegado encima. Funciona para los informes del mes actual, pero no responde a la pregunta que tarde o temprano alguien hará: "¿Cómo era antes?"
 
 La pregunta siempre llega. La cuestión es si tu DWH está preparado para responder.
+
+---
+
+## Fuentes oficiales
+
+1. Kimball Group — [Type 1: Overwrite (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-1/)
+2. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
+3. Kimball Group — [Surrogate Key](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/surrogate-key/)
 
 ---
 
