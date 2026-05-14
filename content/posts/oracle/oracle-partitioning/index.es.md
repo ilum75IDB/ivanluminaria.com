@@ -14,7 +14,7 @@ Dos mil millones de filas. No es un número que se alcance en un día. Se necesi
 
 Cuatro horas. Para un reporte que seis meses antes tardaba veinte minutos.
 
-No es un bug. No es un problema de red o de almacenamiento lento. Es la física de los datos: cuando una tabla crece más allá de cierto umbral, los enfoques que funcionaban dejan de funcionar. Y si no diseñaste la estructura para manejar ese crecimiento, la base de datos hace lo único que puede: leerlo todo.
+No es un bug. No es una cuestión de red o de almacenamiento lento. Es la física de los datos: cuando una tabla crece más allá de cierto umbral, los enfoques que funcionaban dejan de funcionar. Y si no diseñaste la estructura para manejar ese crecimiento, la base de datos hace lo único que puede: leerlo todo.
 
 ---
 
@@ -22,7 +22,7 @@ No es un bug. No es un problema de red o de almacenamiento lento. Es la física 
 
 El cliente era un operador de telecomunicaciones. Nada exótico — un clásico entorno Oracle 19c Enterprise Edition sobre Linux, almacenamiento SAN, unas treinta instancias entre producción, staging y desarrollo. La instancia crítica era la de facturación: facturación, CDR (Call Detail Records), movimientos contables.
 
-La tabla en el centro del problema se llamaba `TXN_MOVIMENTI`. Recopilaba cada transacción individual del sistema de facturación desde 2016. La estructura era más o menos esta:
+La tabla en el centro de la situación se llamaba `TXN_MOVIMENTI`. Recopilaba cada transacción individual del sistema de facturación desde 2016. La estructura era más o menos esta:
 
 ``` sql
 CREATE TABLE txn_movimenti (
@@ -98,9 +98,18 @@ La elección recayó en un **interval partitioning mensual** sobre la columna `d
 
 ## La implementación: CTAS, índices locales y cero downtime (casi)
 
-No se puede hacer `ALTER TABLE ... PARTITION BY` sobre una tabla existente con 2 mil millones de filas. No en Oracle 19c, al menos no sin Online Table Redefinition. Y esa opción, sobre una tabla de estas dimensiones, tiene sus propios riesgos.
+No se puede hacer `ALTER TABLE ... PARTITION BY` sobre una tabla existente con 2 mil millones de filas. No en Oracle 19c, al menos no sin Online Table Redefinition [1]. Y esa opción, sobre una tabla de estas dimensiones, tiene sus propios riesgos.
 
 Elegí el enfoque {{< glossary term="ctas" >}}CTAS{{< /glossary >}} — Create Table As Select — con paralelismo. Crear la nueva tabla particionada, copiar los datos, renombrar.
+
+> ⚠️ **Prerrequisito operativo crítico**: el enfoque CTAS + rename descrito abajo asume que la tabla origen está en estado **read-only** durante la copia. Si la origen sigue recibiendo `INSERT`/`UPDATE`/`DELETE` mientras el CTAS corre, **la nueva tabla tendrá un snapshot de T0** (inicio del CTAS), pero el rename ocurre a T1: todas las DML intermedias se pierden o quedan inconsistentes. En el caso real de este artículo había una ventana de mantenimiento de fin de semana con la aplicación apagada. Si no puedes detener las escrituras, las alternativas son:
+>
+> - **`DBMS_REDEFINITION`** [2] — el framework oficial de Oracle para redefinition online; gestiona automáticamente el delta mediante un Materialized View Log
+> - **Materialized View Log + delta sync** custom antes del cutover
+> - **Exchange Partition** si la origen ya está parcialmente particionada
+> - **Replicación lógica** (GoldenGate o similar) con cutover sobre el nuevo esquema
+>
+> Cada alternativa tiene costos y riesgos distintos: elige en función de los vínculos de downtime, licensing y complejidad operativa.
 
 ### Paso 1: crear la tabla particionada
 
@@ -246,7 +255,7 @@ El coste pasó de 890K a 12K. No es una mejora porcentual — es un orden de mag
 
 El mecanismo que hace todo esto posible se llama {{< glossary term="partition-pruning" >}}**partition pruning**{{< /glossary >}}. No es algo que se configure — Oracle lo hace automáticamente cuando el predicado de la consulta coincide con la clave de partición.
 
-Pero hay que saber cuándo funciona y cuándo no.
+Y hay que saber cuándo funciona y cuándo no.
 
 **Funciona** con predicados directos sobre la columna de partición:
 
@@ -304,7 +313,7 @@ Después de quince años de partitioning Oracle, tengo una lista de cosas que me
 
 **La clave de partición debe coincidir con el patrón de acceso.** Parece obvio, pero he visto tablas particionadas por `cod_cliente` cuando el 95% de las consultas filtra por fecha. El partitioning solo funciona si las consultas pueden hacer pruning.
 
-**Interval partitioning es casi siempre mejor que range estático.** Con range clásico hay que crear manualmente las particiones futuras, lo que significa un job programado o un DBA que se acuerde. Con interval Oracle las crea solo. Un problema menos.
+**Interval partitioning es casi siempre mejor que range estático.** Con range clásico hay que crear manualmente las particiones futuras, lo que significa un job programado o un DBA que se acuerde. Con interval Oracle las crea solo. Una preocupación menos.
 
 **Los índices globales son una trampa.** Funcionan bien para las consultas, pero cualquier operación DDL sobre la partición los invalida. Y reconstruir un índice global sobre 2 mil millones de filas tarda horas. Usa índices locales donde sea posible y acepta el compromiso.
 
@@ -312,7 +321,7 @@ Después de quince años de partitioning Oracle, tengo una lista de cosas que me
 
 **Prueba el pruning antes de ir a producción.** No te fíes: verifica con `EXPLAIN PLAN` que cada consulta crítica haga efectivamente pruning. Un solo `TRUNC()` en el predicado equivocado y tienes un full table scan de 380 GB.
 
-**El partitioning no sustituye los índices.** Reduce el volumen de datos a examinar, pero dentro de la partición sigues necesitando los índices correctos. Una partición mensual de 28 millones de filas sin índice sigue siendo un problema.
+**El partitioning no sustituye los índices.** Reduce el volumen de datos a examinar, pero dentro de la partición sigues necesitando los índices correctos. Una partición mensual de 28 millones de filas sin índice sigue siendo una criticidad.
 
 ---
 
@@ -327,7 +336,16 @@ No todas las tablas necesitan partitioning. Mi regla empírica:
 
 Pero el momento correcto para implementarlo es antes de que se vuelva urgente. Cuando la tabla ya tiene 2 mil millones de filas, la migración es un proyecto en sí mismo. Cuando tiene 50 millones y está creciendo, es trabajo de una tarde.
 
-Mi mayor error con el partitioning? No haberlo propuesto seis meses antes, cuando todas las señales ya estaban ahí.
+¿Mi mayor descuido con el partitioning? No haberlo propuesto seis meses antes, cuando todas las señales ya estaban ahí.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. Oracle Database Administrator's Guide 19c — [Redefining Tables Online (DBMS_REDEFINITION)](https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html#GUID-DABDCED5-1DDD-4054-A09C-AF8BCDC9B8DB)
+2. Oracle Database PL/SQL Packages and Types Reference 19c — [DBMS_REDEFINITION package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_REDEFINITION.html)
+3. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-concepts.html)
+4. Oracle Database SQL Language Reference 19c — [CREATE TABLE ... PARTITION BY](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-TABLE.html)
 
 ------------------------------------------------------------------------
 

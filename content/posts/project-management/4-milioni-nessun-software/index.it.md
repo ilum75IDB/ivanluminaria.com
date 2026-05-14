@@ -35,7 +35,7 @@ Il progetto parte. Si definiscono i requisiti. Si stima il budget. Si firmano i 
 
 Passano i mesi. Poi gli anni.
 
-I deliverable arrivano — sulla carta. Ma il software non funziona come dovrebbe. Le specifiche cambiano. I costi lievitano. I consulenti ruotano: quello che aveva capito il dominio se ne va, arriva un altro che ricomincia da zero. Il classico schema della consulenza a corpo che diventa, nei fatti, una consulenza a tempo indeterminato.
+I deliverable arrivano — sulla carta. Il software, però, non funziona come dovrebbe. Le specifiche cambiano. I costi lievitano. I consulenti ruotano: quello che aveva capito il dominio se ne va, arriva un altro che ricomincia da zero. Il classico schema della consulenza a corpo che diventa, nei fatti, una consulenza a tempo indeterminato.
 
 **Dal 2013 al 2018: oltre 2,5 milioni di euro spesi.**\
 Risultato: un software incompleto, instabile, che nessuno internamente sapeva manutenere.

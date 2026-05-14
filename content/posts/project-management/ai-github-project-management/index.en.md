@@ -18,7 +18,7 @@ I know that tone. It's the tone of someone who has already tried to fix things i
 
 The problem is a management software — not a website, not an app — a critical system running important business processes. It's a few years old. It grew fast, as always happens when business runs faster than architecture. And now everything has piled up: open bugs that nobody closes, change requests that nobody plans, developers working on different versions of the code without knowing what the others are doing.
 
-The classic scenario that, on paper, "works." But inside, it's a minefield.
+The classic scenario that, on paper, "works." Inside, however, it's a minefield.
 
 ------------------------------------------------------------------------
 
@@ -36,9 +36,9 @@ But they worked like this:
 -   nobody knew for certain which was the "good" version of the software
 
 And you know what happens in these situations?\
-Everyone is right from their own point of view. But the project, as a whole, is out of control.
+Everyone is right from their own point of view. The project, however, as a whole is out of control.
 
-The problem isn't technical. It's organizational.\
+The issue isn't technical. It's organizational.\
 And that changes everything.
 
 ------------------------------------------------------------------------
@@ -148,7 +148,7 @@ Complete traceability. From problem to solution, everything documented.
 The first days were the hardest. Always are.\
 New tools, new habits, the temptation to go back to "how we used to do things."
 
-But after three weeks, something happened.
+And after three weeks, something happened.
 
 The senior developer — the one who had looked at me with skepticism — wrote to me:
 

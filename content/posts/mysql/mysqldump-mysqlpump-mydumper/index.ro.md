@@ -14,15 +14,15 @@ Apelul a venit într-o vineri după-amiază — pentru că aceste lucruri se în
 
 Puteam discuta, da. De fapt, ar fi trebuit să discutăm demult.
 
-Setup-ul era un clasic: MySQL 8.0 pe Rocky Linux, bază de date de aproximativ 60 GB, un gestional cu vreo treizeci de tabele InnoDB din care patru sau cinci erau cu adevărat mari — tabela comenzilor, cea a mișcărilor de depozit, istoricul de tracking. Backup-ul se făcea în fiecare noapte cu un mysqldump lansat de cron la 2:00. Funcționase ani de zile. Problema era că baza de date între timp crescuse.
+Setup-ul era un clasic: MySQL 8.0 pe Rocky Linux, bază de date de aproximativ 60 GB, un gestional cu vreo treizeci de tabele InnoDB din care patru sau cinci erau cu adevărat mari — tabela comenzilor, cea a mișcărilor de depozit, istoricul de tracking. Backup-ul se făcea în fiecare noapte cu un mysqldump lansat de cron la 2:00. Funcționase ani de zile. Chestiunea era că baza de date între timp crescuse.
 
 Trei ore de mysqldump înseamnă trei ore de `--lock-all-tables` — sau în cel mai bun caz trei ore de tranzacție consistentă cu `--single-transaction` care oricum ține un snapshot InnoDB deschis tot timpul. Și când dump-ul se termină la 5:00 și un restore de test (pe care nimeni nu-l făcea) ar fi durat încă patru ore, fereastra de backup pur și simplu nu mai există.
 
 ---
 
-## Problema reală: mysqldump este single-threaded
+## Punctul real: mysqldump este single-threaded
 
-Primul lucru de înțeles despre {{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}} este că face un singur lucru la un moment dat. O tabelă după alta, un rând după altul, un fișier SQL la ieșire. Atât.
+Primul lucru de înțeles despre {{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}} este că face un singur lucru la un moment dat [1]. O tabelă după alta, un rând după altul, un fișier SQL la ieșire. Atât.
 
 Nu există paralelism. Nu există compresie nativă. Nu există nicio modalitate de a spune "folosește 4 thread-uri și termină mai repede". Este un program născut în anul 2000 — literal — și designul său reflectă o epocă în care 60 GB erau o cantitate de neconceput pentru o bază de date MySQL.
 
@@ -34,7 +34,7 @@ mysqldump --single-transaction --routines --triggers --events \
   --all-databases > /backup/full_backup.sql
 ```
 
-Paradoxal, mysqldump are un avantaj enorm: este peste tot. Este inclus în fiecare instalare MySQL, nu necesită nimic suplimentar, produce SQL lizibil. Dacă trebuie să muți o tabelă de 500 de rânduri între două medii, este perfect. Dacă trebuie să faci backup la o bază de date de 60 GB în producție — nu.
+Paradoxal, mysqldump are un avantaj enorm: este peste tot. Este inclus în fiecare instalare MySQL, nu necesită nimic suplimentar, produce SQL lizibil. Dacă îți trebuie să muți o tabelă de 500 de rânduri între două medii, este perfect. Dacă îți trebuie să faci backup la o bază de date de 60 GB în producție — nu.
 
 I-am explicat clientului că aveam două alternative: mysqlpump și mydumper. Două instrumente cu filozofii diferite, limitări diferite și performanțe care pe hârtie promit mult dar în realitate trebuie testate.
 
@@ -51,11 +51,11 @@ mysqlpump --single-transaction --default-parallelism=4 \
   --compress-output=zlib --all-databases > /backup/full_backup.sql.zlib
 ```
 
-Rezultatul? 48 de minute pentru dump, față de trei ore și jumătate cu mysqldump. O îmbunătățire importantă. Dar apoi am privit mai atent.
+Rezultatul? 48 de minute pentru dump, față de trei ore și jumătate cu mysqldump. O îmbunătățire importantă. Doar că apoi am privit mai atent.
 
-Paralelismul lui mysqlpump funcționează la nivel de tabelă: dacă ai 4 thread-uri, face dump la 4 tabele simultan. Problema este că atunci când ai o tabelă de 30 GB și trei tabele de 50 MB, trei thread-uri termină în treizeci de secunde și apoi un singur thread se târăște patruzeci de minute pe tabela mare. Paralelismul este la fel de eficient pe cât de echilibrată este baza ta de date — și bazele de date de producție nu sunt niciodată echilibrate.
+Paralelismul lui mysqlpump funcționează la nivel de tabelă: dacă ai 4 thread-uri, face dump la 4 tabele simultan. Chestiunea este că atunci când ai o tabelă de 30 GB și trei tabele de 50 MB, trei thread-uri termină în treizeci de secunde și apoi un singur thread se târăște patruzeci de minute pe tabela mare. Paralelismul este la fel de eficient pe cât de echilibrată este baza ta de date — și bazele de date de producție nu sunt niciodată echilibrate.
 
-Dar problema mai gravă este alta. mysqlpump cu `--single-transaction` nu garantează un backup consistent între tabele diferite. O spune documentația însăși, într-o notă pe care majoritatea oamenilor nu o citesc:
+Doar că chestiunea mai gravă este alta. mysqlpump cu `--single-transaction` nu garantează un backup consistent între tabele diferite. O spune documentația însăși, într-o notă pe care majoritatea oamenilor nu o citesc:
 
 > *mysqlpump does not guarantee consistency of the dumped data across tables when using parallelism. Tables dumped in different threads may be at different points in time.*
 
@@ -63,13 +63,13 @@ Recitiți acea frază. Dacă folosești paralelismul — care este singurul moti
 
 Pentru un mediu de dezvoltare sau test, poate fi acceptabil. Pentru un backup de producție din care ar putea trebui să faci restore în caz de dezastru? Nu. Absolut nu.
 
-Încă o notă: Oracle a declarat mysqlpump **depreciat în MySQL 8.0.34** și l-a eliminat în MySQL 8.4. Ceea ce spune totul despre încrederea pe care Oracle însăși o avea în acest instrument.
+Încă o notă: Oracle a declarat mysqlpump **depreciat în MySQL 8.0.34** și l-a eliminat în MySQL 8.4 [2]. Ceea ce spune totul despre încrederea pe care Oracle însăși o avea în acest instrument.
 
 ---
 
 ## mydumper: instrumentul care face ce promite
 
-{{< glossary term="mydumper" >}}mydumper{{< /glossary >}} este un proiect open source născut în 2009 din comunitatea MySQL — în special din munca lui Domas Mituzas, Andrew Hutchings și apoi întreținut de Max Bubenick. Nu este un instrument Oracle. Nu este inclus în distribuția MySQL. Trebuie instalat separat. Dar face ceva ce nici mysqldump nici mysqlpump nu fac: paralelism adevărat, la nivel de chunk în interiorul aceleiași tabele.
+{{< glossary term="mydumper" >}}mydumper{{< /glossary >}} este un proiect open source născut în 2009 din comunitatea MySQL [3] — în special din munca lui Domas Mituzas, Andrew Hutchings și apoi întreținut de Max Bubenick. Nu este un instrument Oracle. Nu este inclus în distribuția MySQL. Trebuie instalat separat. Dar face ceva ce nici mysqldump nici mysqlpump nu fac: paralelism adevărat, la nivel de chunk în interiorul aceleiași tabele.
 
 ```bash
 # Instalare pe Rocky Linux / CentOS
@@ -120,13 +120,13 @@ Câteva note despre numere:
 
 ---
 
-## Opțiunile critice pe care nu trebuie să le uiți
+## Opțiunile critice de neuitat
 
 Oricare instrument ai alege, există opțiuni pe care trebuie să le incluzi întotdeauna. Le-am văzut uitate de prea multe ori, cu consecințe care variază de la neplăceri la dezastre.
 
 ### --single-transaction
 
-Obligatoriu pe InnoDB. Fără această opțiune, dump-ul achiziționează lock-uri care blochează scrierile. Cu `--single-transaction`, dump-ul folosește o tranzacție cu isolation level REPEATABLE READ pentru a obține un snapshot consistent fără a bloca pe nimeni.
+Obligatoriu pe InnoDB. Fără această opțiune, dump-ul achiziționează lock-uri care blochează scrierile. Cu `--single-transaction`, dump-ul folosește o tranzacție cu isolation level REPEATABLE READ pentru a obține un snapshot consistent fără a bloca pe nimeni [4].
 
 Atenție: funcționează doar pe tabele InnoDB. Dacă ai tabele MyISAM (și da, în 2026 încă le găsesc), acelea vor fi blocate oricum.
 
@@ -136,7 +136,7 @@ Procedurile stocate, trigger-ele și evenimentele programate nu sunt incluse în
 
 ### --set-gtid-purged (MySQL) sau --gtid (mydumper)
 
-Dacă folosești replicare bazată pe GTID — și ar trebui — dump-ul trebuie să gestioneze corect GTID-urile. Dacă nu o face, restore-ul pe o replică generează conflicte de replicare care te vor înnebuni.
+Dacă folosești replicare bazată pe GTID — și ar trebui — dump-ul trebuie să gestioneze corect GTID-urile [5]. Dacă nu o face, restore-ul pe o replică generează conflicte de replicare care te vor înnebuni.
 
 ### Verificarea restore-ului
 
@@ -184,7 +184,17 @@ Backup-ul logic este comod pentru că este portabil — poți face restore pe or
 
 Vinerea următoare, DBA-ul clientului mi-a scris din nou pe Teams. Dar de data aceasta mesajul era diferit: "Backup terminat în 23 de minute. Niciun impact asupra utilizatorilor. Mulțumesc."
 
-Cu plăcere. Dar data viitoare, nu aștepta ca backup-ul să dureze trei ore ca să-mi ceri ajutorul.
+Cu plăcere. Însă data viitoare, nu aștepta ca backup-ul să dureze trei ore ca să-mi ceri ajutorul.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. MySQL 8.0 Reference Manual — [`mysqldump` — A Database Backup Program](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html)
+2. MySQL 8.0 Reference Manual — [`mysqlpump` — A Database Backup Program (deprecated in 8.0.34)](https://dev.mysql.com/doc/refman/8.0/en/mysqlpump.html)
+3. mydumper — [mydumper / myloader on GitHub](https://github.com/mydumper/mydumper)
+4. MySQL 8.0 Reference Manual — [Consistent Nonlocking Reads (InnoDB MVCC, REPEATABLE READ)](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
+5. MySQL 8.0 Reference Manual — [Replication with Global Transaction Identifiers (GTIDs)](https://dev.mysql.com/doc/refman/8.0/en/replication-gtids.html)
 
 ------------------------------------------------------------------------
 

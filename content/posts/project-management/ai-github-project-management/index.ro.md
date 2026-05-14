@@ -18,7 +18,7 @@ Cunosc tonul ăsta. E tonul celui care a încercat deja să rezolve lucrurile in
 
 Problema este un software de gestiune — nu un site web, nu o aplicație — un sistem critic pe care rulează procese de business importante. Are câțiva ani. A crescut repede, cum se întâmplă întotdeauna când business-ul aleargă mai repede decât arhitectura. Și acum s-a acumulat totul: bug-uri deschise pe care nimeni nu le închide, cereri de evoluție pe care nimeni nu le planifică, dezvoltatori care lucrează pe versiuni diferite ale codului fără să știe ce face celălalt.
 
-Scenariul clasic care, în cuvinte, "funcționează". Dar pe dinăuntru e un câmp minat.
+Scenariul clasic care, în cuvinte, "funcționează". Pe dinăuntru, însă, e un câmp minat.
 
 ------------------------------------------------------------------------
 
@@ -36,9 +36,9 @@ Dar lucrau așa:
 -   nimeni nu știa cu certitudine care era versiunea "bună" a software-ului
 
 Și știi ce se întâmplă în situațiile astea?\
-Fiecare are dreptate din punctul lui de vedere. Dar proiectul, în ansamblu, e scăpat de sub control.
+Fiecare are dreptate din punctul lui de vedere. Proiectul, însă, în ansamblu e scăpat de sub control.
 
-Problema nu e tehnică. E organizatorică.\
+Chestiunea nu e tehnică. E organizatorică.\
 Și aici se schimbă totul.
 
 ------------------------------------------------------------------------
@@ -148,7 +148,7 @@ Trasabilitate completă. De la problemă la soluție, totul documentat.
 Primele zile au fost cele mai grele. Mereu așa e.\
 Instrumente noi, obiceiuri noi, tentația de a reveni la "cum se făcea înainte".
 
-Dar după trei săptămâni s-a întâmplat ceva.
+Și după trei săptămâni s-a întâmplat ceva.
 
 Dezvoltatorul senior — cel care se uitase la mine cu neîncredere — mi-a scris:
 

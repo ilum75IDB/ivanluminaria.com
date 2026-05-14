@@ -12,7 +12,7 @@ image: "fatto-grana-sbagliata.cover.jpg"
 
 La reunión había empezado bien. El director comercial de una empresa de distribución industrial — unos sesenta millones de facturación, tres mil clientes activos, un catálogo con doce mil referencias — había abierto la presentación del nuevo data warehouse con una sonrisa. Los números cuadraban, los dashboards lucían bien, los totales mensuales por agente y por zona coincidían con contabilidad.
 
-Luego alguien hizo la pregunta equivocada. O mejor dicho, la correcta.
+Luego alguien hizo la pregunta menos grata. O mejor dicho, la correcta.
 
 *"¿Puedo ver cuánto compró el cliente Bianchi en marzo, línea por línea, producto por producto?"*
 
@@ -24,17 +24,17 @@ Esa fact table respondía a una sola pregunta: *¿cuánto facturó cada cliente 
 
 ## 🔍 El grain: la decisión que determina todo
 
-En el {{< glossary term="star-schema" >}}modelado dimensional{{< /glossary >}}, el **{{< glossary term="grain" >}}grain{{< /glossary >}}** (la granularidad) de la fact table es la primera decisión que se toma. No la segunda, no una entre tantas: la primera. Kimball lo repite en cada capítulo, y tiene razón.
+En el {{< glossary term="star-schema" >}}modelado dimensional{{< /glossary >}}, el **{{< glossary term="grain" >}}grain{{< /glossary >}}** (la granularidad) de la fact table es la primera decisión que se toma [1]. No la segunda, no una entre tantas: la primera. Kimball lo repite en cada capítulo, y tiene razón.
 
 El grain responde a la pregunta: *¿qué representa una fila individual de la fact table?*
 
 En el proyecto que describí, quien diseñó el modelo había elegido un grain mensual-cliente: una fila = un cliente en un mes. Las razones parecían razonables: el sistema fuente exportaba un resumen mensual, la carga era rápida, las tablas eran pequeñas, las consultas simples.
 
-Pero el grain determina las preguntas que el data warehouse puede responder. Si la granularidad es el resumen mensual por cliente, no puedes bajar de ese nivel. No puedes hacer {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} por producto. No puedes saber si el cliente Bianchi compró diez veces el mismo artículo o diez artículos diferentes. No puedes comparar márgenes por familia de productos.
+Y el grain determina las preguntas que el data warehouse puede responder. Si la granularidad es el resumen mensual por cliente, no puedes bajar de ese nivel. No puedes hacer {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} por producto. No puedes saber si el cliente Bianchi compró diez veces el mismo artículo o diez artículos diferentes. No puedes comparar márgenes por familia de productos.
 
 Tienes un total. Punto.
 
-## 📊 Los números del problema
+## 📊 Los números de la situación
 
 La fact table original tenía esta estructura:
 
@@ -55,11 +55,11 @@ CREATE TABLE fact_facturacion_mensual (
 
 Filas por año: unas 180.000 (3.000 clientes × 12 meses × alguna variación). Pequeña, rápida, fácil de cargar. El {{< glossary term="etl" >}}ETL{{< /glossary >}} corría en menos de cinco minutos.
 
-¿El problema? Las {{< glossary term="additive-measure" >}}medidas aditivas{{< /glossary >}} ya estaban agregadas. `importe_total` era la suma de todas las líneas de factura del mes. Imposible rastrear la composición. Como tener el total de un ticket sin saber qué compraste.
+¿El punto? Las {{< glossary term="additive-measure" >}}medidas aditivas{{< /glossary >}} ya estaban agregadas. `importe_total` era la suma de todas las líneas de factura del mes. Imposible rastrear la composición. Como tener el total de un ticket sin saber qué compraste.
 
 ## 🏗️ La reestructuración: bajar a la línea de factura
 
-La solución era una sola: cambiar el grain. Llevar la fact table al nivel más bajo disponible en el sistema fuente — la línea individual de factura.
+La solución era una sola: cambiar el grain. Llevar la fact table al nivel más bajo disponible en el sistema fuente — la línea individual de factura [2].
 
 ```sql
 CREATE TABLE fact_facturacion_linea (
@@ -171,7 +171,7 @@ GROUP BY a.nombre_agente
 ORDER BY facturado_total DESC;
 ```
 
-Ninguna de estas consultas era posible con el grain mensual-cliente. Ninguna. No era un problema de tuning o de índices — era un problema estructural, escrito en el ADN del modelo.
+Ninguna de estas consultas era posible con el grain mensual-cliente. Ninguna. No era una cuestión de tuning o de índices — era una cuestión estructural, escrita en el ADN del modelo.
 
 ## 📋 La regla de Kimball que habíamos ignorado
 
@@ -190,10 +190,10 @@ En nuestro proyecto, la elección del grain agregado fue dictada por pereza de d
 La granularidad fina no siempre es la única respuesta. Hay casos legítimos para fact tables agregadas:
 
 - **Tablas de agregación** (aggregate fact table) junto a la tabla de detalle, para acelerar las consultas más frecuentes
-- **Snapshots periódicos** donde el negocio razona por período (saldo mensual de una cuenta, inventario a fin de semana)
+- **Snapshots periódicos** donde el negocio razona por período (saldo mensual de una cuenta, inventario a fin de semana) [3]
 - **Restricciones de origen** cuando el sistema fuente no expone el detalle y no hay forma de obtenerlo
 
-Pero la regla es: parte del detalle, luego agrega. Nunca al revés. Las aggregate fact tables son una optimización, no un sustituto de la granularidad fina.
+Sin embargo la regla es: parte del detalle, luego agrega. Nunca al revés. Las aggregate fact tables son una optimización, no un sustituto de la granularidad fina.
 
 En nuestro caso, después de la reestructuración, también creamos una vista materializada con el resumen mensual por cliente — la misma estructura de antes — para los dashboards ejecutivos que no necesitaban el detalle. Lo mejor de ambos mundos, sin sacrificar nada.
 
@@ -201,7 +201,15 @@ En nuestro caso, después de la reestructuración, también creamos una vista ma
 
 Ese proyecto me enseñó algo que llevo conmigo en cada encargo posterior: la primera media hora de diseño de un data warehouse, aquella en la que se decide el grain, vale más que todas las optimizaciones que vendrán después. Un ETL perfecto, índices calibrados, hardware potente — nada de esto compensa un grain equivocado.
 
-Si tu fact table no responde las preguntas del negocio, no es culpa de las consultas. Es culpa del modelo. Y el modelo se decide en el grain.
+Si tu fact table no responde las preguntas del negocio, no son las consultas. Es el modelo. Y el modelo se decide en el grain.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. Kimball Group — [Grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)
+2. Kimball Group — [Transaction Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/transaction-fact-table/)
+3. Kimball Group — [Periodic Snapshot Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/periodic-snapshot-fact-table/)
 
 ------------------------------------------------------------------------
 

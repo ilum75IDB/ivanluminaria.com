@@ -59,7 +59,7 @@ El standup clásico se basa en tres preguntas:
 2. **¿Qué haré hoy?**
 3. **¿Hay algo que me bloquea?**
 
-Simple. Pero la simplicidad es traidora, porque la tentación de expandir es constante.
+Simple. La simplicidad, sin embargo, es traidora, porque la tentación de expandir es constante.
 
 "Qué hice ayer" no significa contar tu jornada. Significa decir: "Cerré la migración de las tablas lookup" o "Trabajé en el bug #247, aún no lo resolví." Diez segundos, no tres minutos.
 
@@ -153,7 +153,7 @@ Y eso sin contar el efecto indirecto: un standup de 45 minutos no roba solo 45 m
 
 ## 🔄 Standup remoto vs presencial
 
-Desde 2020 los standups son frecuentemente remotos. Cambia el medio, pero los principios siguen siendo idénticos. Con algunas precauciones adicionales.
+Desde 2020 los standups son frecuentemente remotos. Cambia el medio, y al mismo tiempo los principios siguen siendo idénticos. Con algunas precauciones adicionales.
 
 ### En remoto es peor (si no tienes cuidado)
 

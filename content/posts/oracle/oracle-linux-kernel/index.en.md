@@ -24,7 +24,7 @@ cat /sys/kernel/mm/transparent_hugepage/enabled
 
 Result: zero Huge Pages configured, Transparent Huge Pages active, kernel parameters all at default values. The Oracle installation had been done with the wizard, the operating system had never been touched.
 
-There was the problem. It wasn't Oracle. It was Linux that hadn't been prepared for Oracle.
+There was the point. It wasn't Oracle. It was Linux that hadn't been prepared for Oracle.
 
 ------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ Here is what I found:
 | oracle nproc | 4096 | 16384 |
 | oracle memlock | 65536 KB | unlimited |
 
-Nearly everything was wrong. Not by mistake — by omission. Nobody had bothered to configure the operating system after installation.
+Nearly everything was to be reviewed. Not by mistake — by omission. Nobody had bothered to configure the operating system after installation.
 
 ------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ Huge Pages are 2 MB pages. The same 64 GB SGA becomes 32,768 pages. The TLB cope
 
 ### How to configure them
 
-I calculated the number of Huge Pages needed:
+I calculated the number of Huge Pages needed [1]:
 
 ``` bash
 # SGA = 64 GB = 65536 MB
@@ -126,7 +126,7 @@ The difference is measurable: `latch free` waits and `library cache` contention 
 
 ## 🧱 Shared memory and semaphores
 
-Oracle uses kernel shared memory for the SGA. If the limits are too low, the instance cannot allocate the requested memory — or worse, fragments the allocation.
+Oracle uses kernel shared memory for the SGA. If the limits are too low, the instance cannot allocate the requested memory — or worse, fragments the allocation [2].
 
 ``` bash
 cat >> /etc/sysctl.d/99-oracle.conf << 'SYSCTL'
@@ -180,7 +180,7 @@ This is the most insidious parameter. Transparent Huge Pages (THP) is a kernel f
 
 For Oracle it is a disaster. The `khugepaged` process works in the background to compact pages, causing unpredictable latency spikes — those "freezes for a few seconds" the client had been complaining about.
 
-Oracle says it explicitly in the documentation: **disable THP**.
+Oracle says it explicitly in the documentation: **disable THP** [3].
 
 ``` bash
 # Check current state
@@ -208,7 +208,7 @@ The difference is stark: random micro-freezes disappear.
 
 ## 🔒 Security limits
 
-The `oracle` user needs elevated limits on open file descriptors, processes and lockable memory. Linux defaults are designed for interactive users, not for software that manages hundreds of simultaneous connections.
+The `oracle` user needs elevated limits on open file descriptors, processes and lockable memory [4]. Linux defaults are designed for interactive users, not for software that manages hundreds of simultaneous connections.
 
 ``` bash
 cat >> /etc/security/limits.d/99-oracle.conf << 'LIMITS'
@@ -236,7 +236,7 @@ The `memlock unlimited` setting is critical: without it, Oracle cannot lock the 
 
 ## ⚡ Swappiness
 
-The default value of `vm.swappiness` is 60. That means Linux starts swapping when memory pressure is still low. For a dedicated database server, this is unacceptable: you want the SGA to stay in RAM, always.
+The default value of `vm.swappiness` is 60 [5]. That means Linux starts swapping when memory pressure is still low. For a dedicated database server, this is unacceptable: you want the SGA to stay in RAM, always.
 
 ``` bash
 echo "vm.swappiness = 1" >> /etc/sysctl.d/99-oracle.conf
@@ -299,9 +299,19 @@ grubby --update-kernel=ALL --args="transparent_hugepage=never elevator=deadline"
 
 Ten minutes of configuration. No hardware cost. No additional licences.
 
-But nobody does it, because the wizard doesn't ask, the documentation is buried in an MOS note, and the system "works without it." It works. Poorly. And the blame always falls on Oracle, never on the fact that nobody prepared the ground.
+Only nobody does it, because the wizard doesn't ask, the documentation is buried in an MOS note, and the system "works without it." It works. Poorly. And the blame always falls on Oracle, never on the fact that nobody prepared the ground.
 
 A database is only as good as the operating system it runs on. And an operating system left at defaults is an operating system working against you.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. The Linux Kernel Documentation — [HugeTLB Pages](https://www.kernel.org/doc/html/latest/admin-guide/mm/hugetlbpage.html)
+2. Oracle Database Installation Guide for Linux 19c — [Configuring Kernel Parameters for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-kernel-parameters-for-linux.html)
+3. The Linux Kernel Documentation — [Transparent Hugepage Support](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html)
+4. Oracle Database Installation Guide for Linux 19c — [Configuring Users, Groups and Environments](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-users-groups-and-environments-for-oracle-grid-infrastructure-and-oracle-database.html)
+5. The Linux Kernel Documentation — [Documentation for /proc/sys/vm/ (`vm.swappiness`)](https://docs.kernel.org/admin-guide/sysctl/vm.html)
 
 ------------------------------------------------------------------------
 

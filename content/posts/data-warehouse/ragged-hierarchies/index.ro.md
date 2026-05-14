@@ -10,11 +10,11 @@ categories: ["data-warehouse"]
 image: "ragged-hierarchies.cover.jpg"
 ---
 
-Trei niveluri. Top Group, Group, Client. Pare o structură banală — tipul de ierarhie pe care o desenezi pe o tablă în cinci minute și pe care orice instrument de BI ar trebui să o gestioneze fără probleme.
+Trei niveluri. Top Group, Group, Client. Pare o structură banală — tipul de ierarhie pe care o desenezi pe o tablă în cinci minute și pe care orice instrument de BI ar trebui să o gestioneze fără bătăi de cap.
 
-Apoi descoperi că nu toți clienții aparțin unui grup. Și că nu toate grupurile aparțin unui top group. Și că rapoartele de agregare pe care business-ul le solicită — cifra de afaceri per top group, număr de clienți per grup, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} de la vârf la frunză — produc rezultate greșite sau incomplete pentru că ierarhia are goluri.
+Apoi descoperi că nu toți clienții aparțin unui grup. Și că nu toate grupurile aparțin unui top group. Și că rapoartele de agregare pe care business-ul le solicită — cifra de afaceri per top group, număr de clienți per grup, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} de la vârf la frunză — produc rezultate eronate sau incomplete pentru că ierarhia are goluri.
 
-În jargon tehnic se numește **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: o ierarhie în care nu toate ramurile ajung la aceeași adâncime. În lumea reală se numește „problema pe care nimeni nu o vede până nu deschide raportul și numerele nu se potrivesc."
+În jargon tehnic se numește **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: o ierarhie în care nu toate ramurile ajung la aceeași adâncime [1]. În lumea reală se numește „lucrul pe care nimeni nu îl observă până nu deschide raportul și numerele nu se potrivesc."
 
 ---
 
@@ -62,7 +62,7 @@ Aceasta este o ragged hierarchy. Trei niveluri pe hârtie, dar în realitate ram
 
 ---
 
-## Problema: rapoartele nu se potrivesc
+## Situația: rapoartele nu se potrivesc
 
 Business-ul cerea un raport simplu: cifra de afaceri agregată per Top Group, cu posibilitate de drill-down per Group și apoi per Client. O cerere rezonabilă — tipul de lucru pe care îl aștepți de la orice DWH.
 
@@ -90,13 +90,13 @@ Holding Nazionale   Gruppo Centro               1             67000.00
 (null)              (null)                      2             90000.00
 ```
 
-Cinci rânduri. Și cel puțin trei probleme.
+Cinci rânduri. Și cel puțin trei criticități.
 
 Gruppo Centro apare de două ori: o dată sub „Holding Nazionale" (clientul 1003 care are top group) și o dată sub NULL (clientul 1004 al cărui top group este NULL). Același grup, despicat pe două rânduri, cu totaluri separate. Oricine se uită la acest raport va crede că Gruppo Centro are 67K cifră de afaceri sub holding și 45K undeva în altă parte. În realitate este un singur grup cu 112K total.
 
 Clienții direcți (Gialli Utilities și Blu Energia) ajung într-un rând cu două NULL-uri. Managementul nu știe ce să facă cu un rând fără nume.
 
-Totalul per Top Group este greșit pentru că lipsesc rândurile cu NULL. Dacă aduni doar rândurile cu top group, pierzi 239K din cifra de afaceri — 30% din total.
+Totalul per Top Group este eronat pentru că lipsesc rândurile cu NULL. Dacă aduni doar rândurile cu top group, pierzi 239K din cifra de afaceri — 30% din total.
 
 ---
 
@@ -112,19 +112,19 @@ SELECT COALESCE(top_group_name, group_name, client_name) AS top_group_name,
 FROM   stg_clienti;
 ```
 
-Funcționează? Într-un fel da — umple golurile. Dar introduce probleme noi.
+Funcționează? Într-un fel da — umple golurile. Doar că introduce criticități noi.
 
 Clientul „Gialli Utilities" acum apare ca Top Group, Group și Client simultan. Dacă business-ul vrea să numere câte Top Group-uri sunt, numărul este umflat. Dacă vrea să filtreze pentru „adevăratele" top group-uri, nu are cum să le distingă de clienții promovați de COALESCE.
 
 Și acesta este cazul simplu, cu trei niveluri. Am văzut ierarhii pe cinci niveluri gestionate cu lanțuri de COALESCE îmbricate, multiple CASE WHEN, și o logică de raportare atât de încâlcită încât nimeni nu mai îndrăznea să o atingă. Fiecare nouă cerere de business necesita modificări în cascadă în toate interogările.
 
-Problema de fond este că COALESCE este un plasture aplicat la nivelul de prezentare. Nu rezolvă problema structurală: ierarhia este incompletă și modelul dimensional nu știe acest lucru.
+Problema de fond este că COALESCE este un plasture aplicat la nivelul de prezentare. Nu rezolvă criticitatea structurală: ierarhia este incompletă și modelul dimensional nu știe acest lucru.
 
 ---
 
 ## Soluția: self-parenting
 
-Principiul este simplu: **cine nu are părinte devine propriul părinte**. Această tehnică se numește {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}.
+Principiul este simplu: **cine nu are părinte devine propriul părinte**. Această tehnică se numește {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}, și este una dintre modalitățile standard de a trata o ragged hierarchy ca pe o **fixed-depth hierarchy** [2].
 
 Un Client fără Group? Acel client devine propriul Group. Un Group fără Top Group? Acel grup devine propriul Top Group. În acest mod ierarhia este întotdeauna completă pe trei niveluri, fără goluri, fără NULL.
 
@@ -366,13 +366,20 @@ Self-parenting-ul rezolvă o problemă specifică — ierarhii cu niveluri fixe 
 
 Am proiectat zeci de dimensiuni ierarhice în douăzeci de ani de data warehousing. Regula pe care o port cu mine este întotdeauna aceeași:
 
-**Dacă raportul are nevoie de logică condițională pentru a gestiona ierarhia, problema este în model, nu în raport.**
+**Dacă raportul are nevoie de logică condițională pentru a gestiona ierarhia, punctul este în model, nu în raport.**
 
-Un raport ar trebui să facă GROUP BY și JOIN. Dacă trebuie și să decidă cum să gestioneze nivelurile lipsă, face munca ETL-ului. Și un raport care face munca ETL-ului este un raport care mai devreme sau mai târziu se strică.
+Un raport ar trebui să facă GROUP BY și JOIN. Dacă trebuie și să decidă cum să gestioneze nivelurile lipsă, face munca ETL-ului. Și un raport care face munca ETL-ului este un raport care, devreme sau târziu, se strică.
 
-Self-parenting-ul nu este elegant. Nu este sofisticat. Este o soluție pe care un informatician proaspăt absolvent ar putea-o găsi urâtă. Dar funcționează, este mentenabil, și transformă o problemă care infestează fiecare raport individual într-o problemă care se rezolvă o dată, într-un singur loc, și nu mai revine.
+Self-parenting-ul nu este elegant. Nu este sofisticat. Este o soluție pe care un informatician proaspăt absolvent ar putea-o găsi urâtă. Dar funcționează, este mentenabil, și transformă o criticitate care infestează fiecare raport individual într-o criticitate care se rezolvă o dată, într-un singur loc, și nu mai revine.
 
 Uneori cea mai bună soluție este cea mai simplă. Aceasta este una dintre acele dăți.
+
+---
+
+## Surse oficiale
+
+1. Kimball Group — [Ragged/Variable Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/ragged-variable-depth-hierarchy/)
+2. Kimball Group — [Fixed Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/fixed-depth-hierarchy/)
 
 ---
 

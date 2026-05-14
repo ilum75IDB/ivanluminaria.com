@@ -59,7 +59,7 @@ Standup-ul clasic se bazează pe trei întrebări:
 2. **Ce voi face azi?**
 3. **Mă blochează ceva?**
 
-Simplu. Dar simplitatea e trădătoare, pentru că tentația de a extinde e constantă.
+Simplu. Simplitatea, însă, e trădătoare, pentru că tentația de a extinde e constantă.
 
 "Ce am făcut ieri" nu înseamnă să-ți povestești ziua. Înseamnă să spui: "Am terminat migrarea tabelelor lookup" sau "Am lucrat la bug-ul #247, nu l-am rezolvat încă." Zece secunde, nu trei minute.
 
@@ -153,7 +153,7 @@ Diferența dintre un standup bine gestionat și unul scăpat de sub control este
 
 ## 🔄 Standup remote vs în persoană
 
-Din 2020 standup-urile sunt adesea remote. Se schimbă mijlocul, dar principiile rămân identice. Cu câteva precauții suplimentare.
+Din 2020 standup-urile sunt adesea remote. Se schimbă mijlocul, și în același timp principiile rămân identice. Cu câteva precauții suplimentare.
 
 ### Remote e mai rău (dacă nu ești atent)
 

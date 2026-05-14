@@ -14,7 +14,7 @@ La primera reunión fue extraña. En la sala había tres personas — el respons
 
 *"Siempre lo hacemos así,"* dijo el controller. *"Cada uno tiene el suyo. Luego, cuando el board pide la recaudación de primas, pasamos el mío porque es el que cuadra con el cierre contable."*
 
-Ese fue el punto de partida del proyecto. No un desastre que descubrí yo, no un sistema que hubiera que salvar. Una situación que los tres conocían perfectamente y que se había vuelto inmanejable cuando el nuevo CFO, llegado hacía pocas semanas, empezó a hacer preguntas incómodas. Cosas como: *¿por qué la recaudación de primas por ramo es distinta entre comercial y finance?* O: *¿cuántos asegurados activos tenemos en realidad en Italia, 420 mil o 510 mil?*
+Ese fue el punto de partida del proyecto. No un caos que descubrí yo, no un sistema que hubiera que salvar. Una situación que los tres conocían perfectamente y que se había vuelto inmanejable cuando el nuevo CFO, llegado hacía pocas semanas, empezó a hacer preguntas incómodas. Cosas como: *¿por qué la recaudación de primas por ramo es distinta entre comercial y finance?* O: *¿cuántos asegurados activos tenemos en realidad en Italia, 420 mil o 510 mil?*
 
 No teníamos una respuesta. Teníamos tres.
 
@@ -32,11 +32,11 @@ El resultado, años después, era este:
 
 Tres {{< glossary term="star-schema" >}}star schemas{{< /glossary >}}, tres definiciones de "cliente" (el asegurado privado, la empresa contratante, el contratante con titularidad conjunta), tres calendarios distintos (marketing en mes solar, finance en mes contable con cierre a día 25, comercial con la fecha de efecto de la póliza, que puede ir meses por detrás de la fecha de emisión). Y sobre todo, tres conceptos de "producto": el policy management identificaba la póliza con el código de tarifa interno, el CRM con el macroproducto comercial (Auto, Hogar, Vida, Salud), finance la agrupaba por ramo a efectos IVASS.
 
-Cada uno de los tres números era *correcto* en su contexto. El problema era que no se hablaban entre sí.
+Cada uno de los tres números era *correcto* en su contexto. El punto era que no se hablaban entre sí.
 
-## 🔍 El CFO había visto el problema antes que nosotros
+## 🔍 El CFO había visto el punto antes que nosotros
 
-Lo honesto que hay que decir es que el problema lo puso en agenda el CFO, no el equipo IT y no yo. Él no quería un data warehouse nuevo. Quería algo más prosaico: una sola línea de números que fuera la misma en todos los cuadros de mando. *"No me importa quién de vosotros tiene razón. Me importa que la recaudación de febrero sea un único número."*
+Lo que hay que decir es que el punto lo puso en agenda el CFO, no el equipo IT y no yo. Él no quería un data warehouse nuevo. Quería algo más prosaico: una sola línea de números que fuera la misma en todos los cuadros de mando. *"No me importa quién de vosotros tiene razón. Me importa que la recaudación de febrero sea un único número."*
 
 Dicho así parece obvio. En la práctica, cuando le pides a tres departamentos que alineen sus definiciones, descubres que cada uno lleva años razonando sobre su propio mapa del territorio y no tiene ninguna gana de redibujarlo. Comercial cuenta primas brutas a fecha de emisión, finance las cuenta netas de comisiones a fecha de devengo. Marketing considera "cliente activo" a cualquiera con al menos una póliza en vigor en los últimos 12 meses, finance a cualquiera con una posición de primas abierta en el ejercicio. Nadie se equivoca. Simplemente responden a preguntas distintas.
 
@@ -44,7 +44,7 @@ Lo primero útil que hicimos, antes de tocar una línea de código, fue una seri
 
 ## 🚌 El bus matrix, sin mitología
 
-Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} describe el bus matrix como una matriz bidimensional: en las filas los **procesos de negocio** (en nuestro caso emisión de pólizas, renovaciones, siniestros, recaudación de primas, campañas de marketing, suscripciones online…), en las columnas las **dimensiones conformadas** (cliente, póliza, intermediario, fecha, campaña, canal…). En las celdas, una X si ese proceso de negocio usa esa dimensión.
+Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} describe el bus matrix como una matriz bidimensional: en las filas los **procesos de negocio** (en nuestro caso emisión de pólizas, renovaciones, siniestros, recaudación de primas, campañas de marketing, suscripciones online…), en las columnas las **dimensiones conformadas** (cliente, póliza, intermediario, fecha, campaña, canal…). En las celdas, una X si ese proceso de negocio usa esa dimensión [1].
 
 La matriz por sí sola no hace nada. No genera código, no crea tablas, no resuelve conflictos. Sirve para una cosa: forzar a todos a mirar la misma hoja.
 
@@ -59,11 +59,11 @@ Lo que terminamos dibujando, tras los talleres, era algo así (simplificado):
 | Cobro de primas                 |    X    |   X    |      X        |   X   |         |       |   X    |
 | Suscripciones online            |    X    |   X    |               |   X   |    X    |   X   |        |
 
-Seis filas, siete columnas. Leído así, la hoja dice algo simple e incómodo a la vez: **la dimensión Cliente aparece en cinco procesos de seis, Póliza en cinco, Fecha en todos e Intermediario en cuatro**. Si la definición de Cliente es distinta entre comercial y marketing, cinco procesos de seis devolverán números incoherentes. No es un problema de BI, es un problema de maestro de datos.
+Seis filas, siete columnas. Leído así, la hoja dice algo simple e incómodo a la vez: **la dimensión Cliente aparece en cinco procesos de seis, Póliza en cinco, Fecha en todos e Intermediario en cuatro**. Si la definición de Cliente es distinta entre comercial y marketing, cinco procesos de seis devolverán números incoherentes. No es una cuestión de BI, es una cuestión de maestro de datos.
 
 ## 🔗 Qué es una dimensión conformada
 
-Una {{< glossary term="conformed-dimension" >}}dimensión conformada{{< /glossary >}} es una dimensión con la misma estructura, la misma semántica y la misma clave a través de varios data marts. No quiere decir "una única tabla física compartida" — puede estar replicada, puede vivir en esquemas distintos — pero sí quiere decir que si el cliente `IT_C00217654` aparece en el data mart comercial y en el de marketing, **es el mismo cliente, con los mismos atributos de clasificación, y los números relativos a él se pueden sumar sin reservas**.
+Una {{< glossary term="conformed-dimension" >}}dimensión conformada{{< /glossary >}} es una dimensión con la misma estructura, la misma semántica y la misma clave a través de varios data marts [2]. No quiere decir "una única tabla física compartida" — puede estar replicada, puede vivir en esquemas distintos — pero sí quiere decir que si el cliente `IT_C00217654` aparece en el data mart comercial y en el de marketing, **es el mismo cliente, con los mismos atributos de clasificación, y los números relativos a él se pueden sumar sin reservas**.
 
 Conformar una dimensión significa acordar tres cosas:
 
@@ -113,7 +113,7 @@ CREATE INDEX ix_dim_customer_natural ON dim_conformed.dim_customer(customer_code
 CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code, tax_id) WHERE tax_id IS NOT NULL;
 ```
 
-Unas 3,1 millones de filas para 1,8 millones de contratantes distintos en los cuatro países principales (la diferencia es el histórico de versiones en {{< glossary term="scd" >}}SCD Tipo 2{{< /glossary >}}).
+Unas 3,1 millones de filas para 1,8 millones de contratantes distintos en los cuatro países principales (la diferencia es el histórico de versiones en {{< glossary term="scd" >}}SCD Tipo 2{{< /glossary >}}) [3].
 
 **Capa 2 — Bridge entre claves antiguas y claves nuevas.** Los tres data marts existentes seguían funcionando con sus claves locales. Creamos una tabla de mapeo para cada uno:
 
@@ -163,7 +163,7 @@ JOIN dim_conformed.dim_date xd
 
 Ningún departamento tuvo que dejar de usar su data mart. Quien quería análisis mono-departamento, los seguía haciendo en el suyo. Quien necesitaba cross-departamento, usaba las vistas conformadas.
 
-## 📊 La pregunta que antes era imposible
+## 📊 La pregunta que antes era irresoluble
 
 La primera consulta realmente cross-mart que lanzamos — la que antes del trabajo sobre las dimensiones conformadas habría salido con tres respuestas distintas — parecía trivial:
 
@@ -213,9 +213,17 @@ Kimball escribió el bus matrix en los noventa con esta intención exacta: dar a
 
 ## Lo que aprendí
 
-El trabajo técnico — la `dim_customer`, las xref, las vistas — fue la parte fácil. La parte difícil fue llevar a tres departamentos a ponerse de acuerdo sobre qué significa "cliente". Y esa parte no la resolví yo: la resolvió el CFO con su peso político, el comité de gobierno con seis semanas de paciencia, y el DBA del cliente que tenía una memoria histórica impresionante de cada decisión tomada en años anteriores y por qué.
+El trabajo técnico — la `dim_customer`, las xref, las vistas — fue la parte fácil. La parte exigente fue llevar a tres departamentos a ponerse de acuerdo sobre qué significa "cliente". Y esa parte no la resolví yo: la resolvió el CFO con su peso político, el comité de gobierno con seis semanas de paciencia, y el DBA del cliente que tenía una memoria histórica impresionante de cada decisión tomada en años anteriores y por qué.
 
 Cuando hoy veo un proyecto de DWH que arranca sin un bus matrix dibujado y compartido, levanto la mano antes de empezar. No por hacer el listo — para recordarme que esa fase, la de alinear las definiciones, no se puede saltar. Si la saltas, la pagas después con intereses. Si la haces, el resto del proyecto se vuelve casi aburrido. Y es exactamente como debería ser.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. Kimball Group — [Enterprise Data Warehouse Bus Matrix](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/enterprise-data-warehouse-bus-matrix/)
+2. Kimball Group — [Conformed Dimension](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/conformed-dimension/)
+3. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
 
 ------------------------------------------------------------------------
 

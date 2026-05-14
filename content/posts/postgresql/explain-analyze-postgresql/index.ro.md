@@ -107,7 +107,7 @@ PostgreSQL mentine statistici despre tabele in `pg_statistic` (citibile prin `pg
 
 Optimizatorul foloseste aceste informatii pentru a estima selectivitatea fiecarei conditii WHERE si cardinalitatea fiecarui join.
 
-Problema? Statisticile se actualizeaza cu {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — care poate fi manual sau gestionat de autovacuum. Dar autovacuum-ul lanseaza ANALYZE doar cand numarul de randuri modificate depaseste un prag:
+Punctul critic? Statisticile se actualizeaza cu {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — care poate fi manual sau gestionat de autovacuum. Dar autovacuum-ul lanseaza ANALYZE doar cand numarul de randuri modificate depaseste un prag:
 
 ``` text
 threshold = autovacuum_analyze_threshold + autovacuum_analyze_scale_factor × n_live_tuples
@@ -139,15 +139,22 @@ Dupa ANALYZE, am relansat query-ul cu EXPLAIN (ANALYZE, BUFFERS):
 
 De la 45 de secunde la sub 3 secunde. Optimizatorul alesese un hash join, estimarea randurilor era corecta, si planul era complet diferit.
 
-Dar nu m-am oprit aici. Daca problema a aparut o data, va aparea din nou.
+Si nu m-am oprit aici. Daca aceasta criticitate a aparut o data, va aparea din nou.
 
 ------------------------------------------------------------------------
 
 ## 📊 default_statistics_target: cand 100 nu e suficient
 
-PostgreSQL colecteaza 100 de valori de esantion pe coloana implicit. Pentru tabele mici sau cu distributie uniforma, e suficient. Pentru tabele mari cu distributie neuniforma, 100 de esantioane pot da o reprezentare distorsionata.
+`default_statistics_target` controleaza **granularitatea statisticilor** pe care ANALYZE le construieste pentru fiecare coloana, nu numarul de randuri esantionate. Default-ul este 100 [1], si inseamna doua lucruri:
 
-In cazul tabelei `orders`, coloana `customer_id` avea o distributie foarte asimetrica: 5% din clienti generau 60% din comenzi. Cu 100 de esantioane, optimizatorul nu capta aceasta asimetrie.
+- **lista MCV** (Most Common Values) urmareste pana la 100 dintre cele mai frecvente valori
+- **histograma** distributiei are pana la 100 de bucket-uri
+
+Numarul de randuri efectiv esantionate este in schimb **300 × target** (cu default-ul, ~30.000 de randuri). Cu cat target-ul e mai mare, cu atat e mai detaliata reprezentarea distributiei — si cu atat mai mare costul ANALYZE.
+
+Pentru tabele mici sau cu distributie uniforma, 100 e suficient. Pentru tabele mari cu distributie **asimetrica**, 100 de valori MCV pot sa nu fie suficiente pentru a capta asimetria.
+
+In cazul tabelei `orders`, coloana `customer_id` avea o distributie foarte asimetrica: 5% din clienti generau 60% din comenzi. Cu un target de 100, optimizatorul avea in MCV doar primii 100 customer_id — "long tail"-ul cadea in histograma cu estimari imprecise.
 
 Solutia:
 
@@ -158,9 +165,9 @@ ALTER COLUMN customer_id SET STATISTICS 500;
 ANALYZE orders;
 ```
 
-Dupa ce am crescut {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}}-ul la 500, estimarile de cardinalitate ale optimizatorului pentru join-urile cu `customers` au devenit mult mai precise.
+Dupa ce am crescut {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}}-ul la 500 (MCV pana la 500 valori, histograma pana la 500 bucket-uri, ~150.000 de randuri esantionate), estimarile de cardinalitate ale optimizatorului pentru join-urile cu `customers` au devenit mult mai precise.
 
-Regula: daca o coloana e folosita frecvent in WHERE sau JOIN si are distributie neuniforma, creste target-ul. 500 e un bun punct de plecare. Poti ajunge la 1000, dar peste aceasta valoare rareori ajuta si incetineste ANALYZE-ul insusi.
+Regula: daca o coloana e folosita frecvent in `WHERE` sau `JOIN` si are distributie neuniforma, creste target-ul cu `ALTER TABLE ... ALTER COLUMN ... SET STATISTICS` [2]. 500 e un bun punct de plecare. Poti ajunge la 1000, peste aceasta valoare rareori ajuta si incetineste ANALYZE-ul insusi.
 
 ------------------------------------------------------------------------
 
@@ -174,7 +181,7 @@ PostgreSQL ofera parametri pentru a dezactiva strategii specifice:
 SET enable_nestloop = off;
 ```
 
-Asta forteaza optimizatorul sa nu foloseasca nested loop. Nu e o solutie, e un plasture de diagnostic. Daca dezactivezi nested loop-ul si query-ul trece de la 45 de secunde la 3 secunde, ai confirmat ca problema era alegerea join-ului. Dar nu poti lasa `enable_nestloop = off` in productie pentru ca exista o mie de query-uri unde nested loop-ul e alegerea corecta.
+Asta forteaza optimizatorul sa nu foloseasca nested loop. Nu e o solutie, e un plasture de diagnostic. Daca dezactivezi nested loop-ul si query-ul trece de la 45 de secunde la 3 secunde, ai confirmat ca criticitatea era alegerea join-ului. Dar nu poti lasa `enable_nestloop = off` in productie pentru ca exista o mie de query-uri unde nested loop-ul e alegerea corecta.
 
 Folosesc acesti parametri doar in doua scenarii:
 
@@ -195,7 +202,7 @@ Dupa treizeci de ani facand aceasta meserie, procesul meu a devenit aproape meca
 
 **3. Verific statisticile** — ma uit la `pg_stats` pentru coloanele implicate. Verific `last_autoanalyze` si `last_analyze` in `pg_stat_user_tables`. Daca ultimul ANALYZE e vechi, il lansez si reevaluez.
 
-**4. Evaluez BUFFERS** — daca `shared read` e foarte mare fata de `shared hit`, problema ar putea fi I/O, nu planul. In acel caz fix-ul e `shared_buffers` sau working set-ul pur si simplu nu incape in RAM.
+**4. Evaluez BUFFERS** — daca `shared read` e foarte mare fata de `shared hit`, gatul de butelie ar putea fi I/O, nu planul. In acel caz fix-ul e `shared_buffers` sau working set-ul pur si simplu nu incape in RAM.
 
 **5. Testez alternative** — daca statisticile sunt actualizate dar planul e inca gresit, folosesc `enable_nestloop`, `enable_hashjoin`, `enable_mergejoin` pentru a intelege care strategie functioneaza mai bine. Apoi incerc sa ghidez optimizatorul spre acea strategie cu indecsi sau rescriere.
 
@@ -213,7 +220,16 @@ Am vazut DBA cu ani de experienta lansand EXPLAIN ANALYZE, uitandu-se la timpul 
 
 Planul de executie iti spune de la ce. Fiecare nod e un organ. Randurile estimate fata de cele reale sunt valorile de laborator. Buffer-urile sunt radiografiile. Si ANALYZE-ul e antibioticul care rezolva 70% din cazuri.
 
-Dar pentru acel 30% ramas, trebuie sa citesti. Rand cu rand. Nod cu nod. Nu exista scurtatura.
+Si pentru acel 30% ramas, trebuie sa citesti. Rand cu rand. Nod cu nod. Nu exista scurtatura.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. PostgreSQL Documentation — [`default_statistics_target`](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-DEFAULT-STATISTICS-TARGET) si [Statistics Used by the Planner](https://www.postgresql.org/docs/current/planner-stats.html)
+2. PostgreSQL Documentation — [`ALTER TABLE ... ALTER COLUMN ... SET STATISTICS`](https://www.postgresql.org/docs/current/sql-altertable.html)
+3. PostgreSQL Documentation — [`EXPLAIN`](https://www.postgresql.org/docs/current/sql-explain.html) si [Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
+4. PostgreSQL Documentation — [`pg_stats` view](https://www.postgresql.org/docs/current/view-pg-stats.html)
 
 ------------------------------------------------------------------------
 

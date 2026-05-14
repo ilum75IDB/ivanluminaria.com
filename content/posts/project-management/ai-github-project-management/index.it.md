@@ -18,7 +18,7 @@ Conosco quel tono. È il tono di chi ha già provato a risolvere le cose interna
 
 Il problema è un software gestionale — non un sito web, non un'app — un sistema critico su cui girano processi aziendali importanti. Ha qualche anno di vita. È cresciuto in fretta, come succede sempre quando il business corre più veloce dell'architettura. E adesso si è accumulato tutto: bug aperti che nessuno chiude, richieste evolutive che nessuno pianifica, sviluppatori che lavorano su versioni diverse del codice senza sapere cosa fa l'altro.
 
-Il classico scenario che, a parole, "funziona". Ma che dentro è un campo minato.
+Il classico scenario che, a parole, "funziona". Dentro, però, è un campo minato.
 
 ------------------------------------------------------------------------
 
@@ -36,9 +36,9 @@ Ma lavoravano così:
 -   nessuno sapeva con certezza quale fosse la versione "buona" del software
 
 E sai cosa succede in queste situazioni?\
-Succede che ognuno ha ragione dal suo punto di vista. Ma il progetto, nel suo insieme, è fuori controllo.
+Succede che ognuno ha ragione dal suo punto di vista. Il progetto, però, nel suo insieme è fuori controllo.
 
-Il problema non è tecnico. È organizzativo.\
+La criticità non è tecnica. È organizzativa.\
 E qui cambia tutto.
 
 ------------------------------------------------------------------------
@@ -148,7 +148,7 @@ Tracciabilità completa. Dal problema alla soluzione, tutto documentato.
 I primi giorni sono stati i più duri. Sempre così.\
 Nuovi strumenti, nuove abitudini, la tentazione di tornare al "come si faceva prima".
 
-Ma dopo tre settimane è successo qualcosa.
+E dopo tre settimane è successo qualcosa.
 
 Lo sviluppatore senior — quello che mi aveva guardato con diffidenza — mi ha scritto:
 

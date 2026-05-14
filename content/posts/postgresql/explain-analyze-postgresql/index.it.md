@@ -107,7 +107,7 @@ PostgreSQL mantiene statistiche sulle tabelle in `pg_statistic` (leggibili trami
 
 L'optimizer usa queste informazioni per stimare la selettività di ogni condizione WHERE e la cardinalità di ogni join.
 
-Il problema? Le statistiche si aggiornano con {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — che può essere manuale o gestito dall'autovacuum. Ma l'autovacuum lancia ANALYZE solo quando il numero di righe modificate supera una soglia:
+Il punto critico? Le statistiche si aggiornano con {{< glossary term="postgresql-analyze" >}}`ANALYZE`{{< /glossary >}} — che può essere manuale o gestito dall'autovacuum. Ma l'autovacuum lancia ANALYZE solo quando il numero di righe modificate supera una soglia:
 
 ``` text
 threshold = autovacuum_analyze_threshold + autovacuum_analyze_scale_factor × n_live_tuples
@@ -139,15 +139,22 @@ Dopo l'ANALYZE, ho rilanciato la query con EXPLAIN (ANALYZE, BUFFERS):
 
 Da 45 secondi a meno di 3 secondi. L'optimizer aveva scelto un hash join, la stima delle righe era corretta, e il piano era completamente diverso.
 
-Ma non mi sono fermato qui. Se il problema si è presentato una volta, si ripresenterà.
+E non mi sono fermato qui. Se la criticità si è presentata una volta, si ripresenterà.
 
 ------------------------------------------------------------------------
 
 ## 📊 default_statistics_target: quando 100 non basta
 
-PostgreSQL raccoglie 100 valori di campione per colonna come default. Per tabelle piccole o con distribuzione uniforme, è sufficiente. Per tabelle grandi con distribuzione non uniforme, 100 campioni possono dare una rappresentazione distorta.
+`default_statistics_target` controlla la **granularità delle statistiche** che ANALYZE costruisce per ogni colonna, non il numero di righe campionate. Il default è 100 [1], e significa due cose:
 
-Nel caso della tabella `orders`, la colonna `customer_id` aveva una distribuzione molto skewed: il 5% dei clienti generava il 60% degli ordini. Con 100 campioni, l'optimizer non coglieva questa asimmetria.
+- la **lista MCV** (Most Common Values) traccia fino a 100 valori più frequenti
+- l'**istogramma** della distribuzione ha fino a 100 bucket
+
+Il numero di righe effettivamente campionate è invece **300 × target** (con il default, ~30.000 righe). Più alto è il target, più dettagliata è la rappresentazione della distribuzione — e più alto è il costo di ANALYZE.
+
+Per tabelle piccole o con distribuzione uniforme, 100 basta. Per tabelle grandi con distribuzione **skewed**, 100 valori MCV possono non bastare a catturare l'asimmetria.
+
+Nel caso della tabella `orders`, la colonna `customer_id` aveva una distribuzione molto skewed: il 5% dei clienti generava il 60% degli ordini. Con un target di 100, l'optimizer aveva nei MCV solo i top 100 customer_id — il "long tail" finiva nell'istogramma con stime imprecise.
 
 La soluzione:
 
@@ -158,9 +165,9 @@ ALTER COLUMN customer_id SET STATISTICS 500;
 ANALYZE orders;
 ```
 
-Dopo aver aumentato il {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}} a 500, le stime dell'optimizer sulla cardinalità dei join con `customers` sono diventate molto più accurate.
+Dopo aver aumentato il {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}} a 500 (MCV fino a 500 valori, istogramma fino a 500 bucket, ~150.000 righe campionate), le stime dell'optimizer sulla cardinalità dei join con `customers` sono diventate molto più accurate.
 
-Regola: se una colonna è usata frequentemente in WHERE o JOIN e ha distribuzione non uniforme, alza il target. 500 è un buon punto di partenza. Puoi arrivare a 1000, ma oltre raramente porta benefici e rallenta l'ANALYZE stesso.
+Regola: se una colonna è usata frequentemente in `WHERE` o `JOIN` e ha distribuzione non uniforme, alza il target con `ALTER TABLE ... ALTER COLUMN ... SET STATISTICS` [2]. 500 è un buon punto di partenza. Puoi arrivare a 1000, oltre raramente porta benefici e rallenta l'ANALYZE stesso.
 
 ------------------------------------------------------------------------
 
@@ -174,7 +181,7 @@ PostgreSQL offre dei parametri per disabilitare specifiche strategie:
 SET enable_nestloop = off;
 ```
 
-Questo forza l'optimizer a non usare nested loop. Non è una soluzione, è un cerotto diagnostico. Se disabiliti il nested loop e la query passa da 45 secondi a 3 secondi, hai confermato che il problema era la scelta del join. Ma non puoi lasciare `enable_nestloop = off` in produzione perché ci sono mille query dove il nested loop è la scelta giusta.
+Questo forza l'optimizer a non usare nested loop. Non è una soluzione, è un cerotto diagnostico. Se disabiliti il nested loop e la query passa da 45 secondi a 3 secondi, hai confermato che la criticità era la scelta del join. Ma non puoi lasciare `enable_nestloop = off` in produzione perché ci sono mille query dove il nested loop è la scelta giusta.
 
 Uso questi parametri solo in due scenari:
 
@@ -195,7 +202,7 @@ Dopo trent'anni a fare questo mestiere, il mio processo è diventato quasi mecca
 
 **3. Controllo le statistiche** — guardo `pg_stats` per le colonne coinvolte. Verifico `last_autoanalyze` e `last_analyze` in `pg_stat_user_tables`. Se l'ultimo ANALYZE è vecchio, lo lancio e rivaluto.
 
-**4. Valuto BUFFERS** — se `shared read` è molto alto rispetto a `shared hit`, il problema potrebbe essere I/O, non il piano. In quel caso il fix è `shared_buffers` o il working set semplicemente non sta in RAM.
+**4. Valuto BUFFERS** — se `shared read` è molto alto rispetto a `shared hit`, il collo di bottiglia potrebbe essere I/O, non il piano. In quel caso il fix è `shared_buffers` o il working set semplicemente non sta in RAM.
 
 **5. Testo alternative** — se le statistiche sono aggiornate ma il piano è ancora sbagliato, uso `enable_nestloop`, `enable_hashjoin`, `enable_mergejoin` per capire quale strategia funziona meglio. Poi cerco di guidare l'optimizer verso quella strategia con indici o riscrittura.
 
@@ -213,7 +220,16 @@ Ho visto DBA con anni di esperienza lanciare EXPLAIN ANALYZE, guardare il tempo 
 
 Il piano di esecuzione ti dice da cosa dipende. Ogni nodo è un organo. Le righe stimate contro quelle reali sono i valori di laboratorio. I buffer sono le lastre. E l'ANALYZE è l'antibiotico che risolve il 70% dei casi.
 
-Ma per quel restante 30%, devi leggere. Riga per riga. Nodo per nodo. Non c'è scorciatoia.
+E per quel restante 30%, devi leggere. Riga per riga. Nodo per nodo. Non c'è scorciatoia.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. PostgreSQL Documentation — [`default_statistics_target`](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-DEFAULT-STATISTICS-TARGET) e [Statistics Used by the Planner](https://www.postgresql.org/docs/current/planner-stats.html)
+2. PostgreSQL Documentation — [`ALTER TABLE ... ALTER COLUMN ... SET STATISTICS`](https://www.postgresql.org/docs/current/sql-altertable.html)
+3. PostgreSQL Documentation — [`EXPLAIN`](https://www.postgresql.org/docs/current/sql-explain.html) e [Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
+4. PostgreSQL Documentation — [`pg_stats` view](https://www.postgresql.org/docs/current/view-pg-stats.html)
 
 ------------------------------------------------------------------------
 

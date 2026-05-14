@@ -14,7 +14,7 @@ Două miliarde de rânduri. Nu este un număr la care ajungi într-o zi. Dureaz�
 
 Patru ore. Pentru un raport care cu șase luni înainte dura douăzeci de minute.
 
-Nu este un bug. Nu este o problemă de rețea sau de stocare lentă. Este fizica datelor: când o tabelă crește peste un anumit prag, abordările care funcționau nu mai funcționează. Și dacă nu ai proiectat structura să gestioneze acea creștere, baza de date face singurul lucru pe care îl poate face: citește totul.
+Nu este un bug. Nu este o chestiune de rețea sau de stocare lentă. Este fizica datelor: când o tabelă crește peste un anumit prag, abordările care funcționau nu mai funcționează. Și dacă nu ai proiectat structura să gestioneze acea creștere, baza de date face singurul lucru pe care îl poate face: citește totul.
 
 ---
 
@@ -22,7 +22,7 @@ Nu este un bug. Nu este o problemă de rețea sau de stocare lentă. Este fizica
 
 Clientul era un operator de telecomunicații. Nimic exotic — un clasic mediu Oracle 19c Enterprise Edition pe Linux, stocare SAN, vreo treizeci de instanțe între producție, staging și dezvoltare. Instanța critică era cea de facturare: facturare, CDR (Call Detail Records), mișcări contabile.
 
-Tabela din centrul problemei se numea `TXN_MOVIMENTI`. Colecta fiecare tranzacție individuală din sistemul de facturare din 2016. Structura era aproximativ aceasta:
+Tabela din centrul situației se numea `TXN_MOVIMENTI`. Colecta fiecare tranzacție individuală din sistemul de facturare din 2016. Structura era aproximativ aceasta:
 
 ``` sql
 CREATE TABLE txn_movimenti (
@@ -98,9 +98,18 @@ Alegerea a căzut pe un **interval partitioning lunar** pe coloana `data_movimen
 
 ## Implementarea: CTAS, indecși locali și zero downtime (aproape)
 
-Nu poți face `ALTER TABLE ... PARTITION BY` pe o tabelă existentă cu 2 miliarde de rânduri. Nu în Oracle 19c, cel puțin nu fără Online Table Redefinition. Și acea opțiune, pe o tabelă de aceste dimensiuni, are propriile riscuri.
+Nu poți face `ALTER TABLE ... PARTITION BY` pe o tabelă existentă cu 2 miliarde de rânduri. Nu în Oracle 19c, cel puțin nu fără Online Table Redefinition [1]. Și acea opțiune, pe o tabelă de aceste dimensiuni, are propriile riscuri.
 
 Am ales abordarea {{< glossary term="ctas" >}}CTAS{{< /glossary >}} — Create Table As Select — cu paralelism. Creezi noua tabelă partițională, copiezi datele, redenumești.
+
+> ⚠️ **Precondiție operațională critică**: abordarea CTAS + rename descrisă mai jos presupune că tabela sursă este în stare **read-only** în timpul copierii. Dacă sursa continuă să primească `INSERT`/`UPDATE`/`DELETE` în timp ce CTAS rulează, **noua tabelă va avea un snapshot de la T0** (începutul CTAS), dar redenumirea are loc la T1: toate DML-urile intermediare se pierd sau rămân inconsistente. În cazul real al acestui articol exista o fereastră de mentenanță de weekend cu aplicația oprită. Dacă nu poți opri scrierile, alternativele sunt:
+>
+> - **`DBMS_REDEFINITION`** [2] — framework-ul oficial Oracle pentru redefinition online; gestionează automat delta prin Materialized View Log
+> - **Materialized View Log + delta sync** custom înainte de cutover
+> - **Exchange Partition** dacă sursa este deja parțial partițională
+> - **Replicare logică** (GoldenGate sau similar) cu cutover pe noua schemă
+>
+> Fiecare alternativă are costuri și riscuri diferite: alege în funcție de constrângerile de downtime, licensing și complexitate operațională.
 
 ### Pasul 1: crearea tabelei partiționate
 
@@ -246,7 +255,7 @@ Costul a trecut de la 890K la 12K. Nu este o îmbunătățire procentuală — e
 
 Mecanismul care face toate acestea posibile se numește {{< glossary term="partition-pruning" >}}**partition pruning**{{< /glossary >}}. Nu este ceva ce trebuie configurat — Oracle o face automat când predicatul interogării corespunde cheii de partiție.
 
-Dar trebuie să știi când funcționează și când nu.
+Și trebuie să știi când funcționează și când nu.
 
 **Funcționează** cu predicate directe pe coloana de partiție:
 
@@ -304,7 +313,7 @@ După cincisprezece ani de partitioning Oracle, am o listă de lucruri pe care m
 
 **Cheia de partiție trebuie să corespundă pattern-ului de acces.** Pare evident, dar am văzut tabele partiționate pe `cod_cliente` când 95% din interogări filtrează pe dată. Partitioning-ul funcționează doar dacă interogările pot face pruning.
 
-**Interval partitioning este aproape întotdeauna mai bun decât range static.** Cu range clasic trebuie să creezi manual partițiile viitoare, ceea ce înseamnă un job programat sau un DBA care și-l amintește. Cu interval Oracle le creează singur. O problemă mai puțin.
+**Interval partitioning este aproape întotdeauna mai bun decât range static.** Cu range clasic trebuie să creezi manual partițiile viitoare, ceea ce înseamnă un job programat sau un DBA care și-l amintește. Cu interval Oracle le creează singur. O grijă mai puțin.
 
 **Indecșii globali sunt o capcană.** Funcționează bine pentru interogări, dar orice operație DDL pe partiție îi invalidează. Și reconstruirea unui index global pe 2 miliarde de rânduri durează ore. Folosește indecși locali unde este posibil și acceptă compromisul.
 
@@ -312,7 +321,7 @@ După cincisprezece ani de partitioning Oracle, am o listă de lucruri pe care m
 
 **Testează pruning-ul înainte de a merge în producție.** Nu te încrede: verifică cu `EXPLAIN PLAN` că fiecare interogare critică face efectiv pruning. Un singur `TRUNC()` în predicatul greșit și ai un full table scan de 380 GB.
 
-**Partitioning-ul nu înlocuiește indecșii.** Reduce volumul de date de examinat, dar în interiorul partiției ai nevoie în continuare de indecșii potriviți. O partiție lunară de 28 de milioane de rânduri fără index este tot o problemă.
+**Partitioning-ul nu înlocuiește indecșii.** Reduce volumul de date de examinat, dar în interiorul partiției ai nevoie în continuare de indecșii potriviți. O partiție lunară de 28 de milioane de rânduri fără index este tot o criticitate.
 
 ---
 
@@ -327,7 +336,16 @@ Nu toate tabelele au nevoie de partitioning. Regula mea empirică:
 
 Dar momentul potrivit pentru a-l implementa este înainte să devină urgent. Când tabela are deja 2 miliarde de rânduri, migrarea este un proiect în sine. Când are 50 de milioane și crește, este treabă de o după-amiază.
 
-Cea mai mare eroare a mea cu partitioning-ul? Că nu l-am propus cu șase luni mai devreme, când toate semnalele erau deja acolo.
+Cea mai mare scăpare a mea cu partitioning-ul? Că nu l-am propus cu șase luni mai devreme, când toate semnalele erau deja acolo.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. Oracle Database Administrator's Guide 19c — [Redefining Tables Online (DBMS_REDEFINITION)](https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html#GUID-DABDCED5-1DDD-4054-A09C-AF8BCDC9B8DB)
+2. Oracle Database PL/SQL Packages and Types Reference 19c — [DBMS_REDEFINITION package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_REDEFINITION.html)
+3. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-concepts.html)
+4. Oracle Database SQL Language Reference 19c — [CREATE TABLE ... PARTITION BY](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-TABLE.html)
 
 ------------------------------------------------------------------------
 

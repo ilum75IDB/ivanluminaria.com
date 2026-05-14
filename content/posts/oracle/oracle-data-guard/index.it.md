@@ -43,7 +43,7 @@ La scelta della distanza non era casuale. Abbastanza lontano da sopravvivere a u
 
 ### Preparazione del primario
 
-Il primo passo è stato verificare che il primario fosse in `ARCHIVELOG` mode e con `FORCE LOGGING` attivo. Senza questi due prerequisiti, Data Guard non ha niente da replicare.
+Il primo passo è stato verificare che il primario fosse in `ARCHIVELOG` mode e con `FORCE LOGGING` attivo [1]. Senza questi due prerequisiti, Data Guard non ha niente da replicare.
 
 ```sql
 -- Verifica archivelog mode
@@ -63,7 +63,7 @@ Il `FORCE LOGGING` è fondamentale. Senza di esso, qualsiasi operazione con clau
 
 ### Standby redo log
 
-Sul primario ho creato gli standby redo log — gruppi dedicati che verranno usati quando (e se) questo server diventerà standby a seguito di uno switchover.
+Sul primario ho creato gli standby redo log — gruppi dedicati che verranno usati quando (e se) questo server diventerà standby a seguito di uno switchover [2].
 
 ```sql
 -- Standby redo log: n+1 rispetto ai redo log online
@@ -117,7 +117,7 @@ Il suffisso `_DGMGRL` serve al Data Guard Broker per identificare l'istanza. Sen
 
 ### Creazione dello standby
 
-Per la copia iniziale del database ho usato un `DUPLICATE` via {{< glossary term="rman" >}}RMAN{{< /glossary >}} attraverso la rete. Nessun backup su nastro, nessun trasferimento manuale di file. Diretto, dal primario allo standby:
+Per la copia iniziale del database ho usato un `DUPLICATE ... FROM ACTIVE DATABASE` via {{< glossary term="rman" >}}RMAN{{< /glossary >}} attraverso la rete [3]. Nessun backup su nastro, nessun trasferimento manuale di file. Diretto, dal primario allo standby:
 
 ```
 -- Sul server standby, avviare l'istanza in NOMOUNT
@@ -143,7 +143,7 @@ La copia ha richiesto circa tre ore per 400 GB attraverso una linea dedicata a 1
 
 ### Data Guard Broker
 
-Il Broker è il componente che gestisce la configurazione Data Guard in modo centralizzato e consente lo switchover con un singolo comando. Senza il Broker puoi fare tutto a mano, ma non vuoi farlo a mano quando il primario è appena caduto e il CEO ti sta chiamando ogni cinque minuti.
+Il Broker è il componente che gestisce la configurazione Data Guard in modo centralizzato e consente lo switchover con un singolo comando [4]. Senza il Broker puoi fare tutto a mano, ma non vuoi farlo a mano quando il primario è appena caduto e il CEO ti sta chiamando ogni cinque minuti.
 
 ```sql
 -- Sul primario
@@ -183,7 +183,7 @@ Configuration Status:
 SUCCESS
 ```
 
-La parola che vuoi vedere è `SUCCESS`. Qualsiasi altra cosa significa che c'è un problema di rete, di configurazione o di permessi da risolvere prima di andare avanti.
+La parola che vuoi vedere è `SUCCESS`. Qualsiasi altra cosa significa che c'è una criticità di rete, di configurazione o di permessi da risolvere prima di andare avanti.
 
 ## Il primo switchover
 
@@ -219,9 +219,9 @@ La risposta non gliel'ho data. La sapevamo entrambi.
 
 ## Quello che non ti dicono
 
-La configurazione che ho descritto funziona. Ma ci sono cose che la documentazione Oracle non enfatizza abbastanza.
+La configurazione che ho descritto funziona. E ci sono cose che la documentazione Oracle non enfatizza abbastanza.
 
-**Il gap di rete.** La replica sincrona (`SYNC`) garantisce zero data loss ma introduce latenza su ogni commit. Con 12 km e una buona fibra, la latenza aggiunta era di 1-2 millisecondi — accettabile. Ma a 100 km sarebbe stata 5-8 ms, e su un'applicazione con migliaia di commit al secondo il rallentamento si sarebbe sentito. Per questo ho scelto la modalità `MaxPerformance` (asincrona) come default, accettando la possibilità teorica di perdere qualche secondo di transazioni in caso di disastro totale. Per quel cliente, perdere cinque secondi di dati era infinitamente meglio di perderne dieci ore.
+**Il gap di rete.** La replica sincrona (`SYNC`) garantisce zero data loss ma introduce latenza su ogni commit. Con 12 km e una buona fibra, la latenza aggiunta era di 1-2 millisecondi — accettabile. Ma a 100 km sarebbe stata 5-8 ms, e su un'applicazione con migliaia di commit al secondo il rallentamento si sarebbe sentito. Per questo ho scelto la modalità `MaxPerformance` (asincrona) come default [5], accettando la possibilità teorica di perdere qualche secondo di transazioni in caso di disastro totale. Per quel cliente, perdere cinque secondi di dati era infinitamente meglio di perderne dieci ore.
 
 **Il password file.** Il password file dell'utente `SYS` deve essere identico su primario e standby. Se lo cambi su uno e non sull'altro, il redo transport si blocca silenziosamente. Nessun errore evidente, solo un gap che cresce. L'ho scoperto dopo un'ora di debugging una domenica sera.
 
@@ -250,13 +250,23 @@ Il costo totale del progetto — server, licenze, linea dedicata, implementazion
 
 ## Quello che ho imparato
 
-Il disaster recovery non è un problema tecnico. È un problema di percezione del rischio. Finché il database funziona, il DR è una spesa. Quando il database si ferma, il DR è un investimento che si doveva fare sei mesi prima.
+Il disaster recovery non è una questione tecnica. È una questione di percezione del rischio. Finché il database funziona, il DR è una spesa. Quando il database si ferma, il DR è un investimento che si doveva fare sei mesi prima.
 
 Non puoi convincere un CEO con un disegno architetturale. Puoi solo aspettare che il disastro succeda e poi essere pronto con la soluzione. È cinico, ma è così che funziona nel novanta per cento dei casi.
 
 L'unica cosa che puoi fare prima è documentare il rischio, mettere per iscritto che l'hai segnalato, e tenere pronto il progetto nel cassetto. Io quel progetto l'avevo proposto diciotto mesi prima. Era stato accantonato con un "ne riparliamo l'anno prossimo."
 
 L'anno prossimo è arrivato un mercoledì mattina di novembre, alle 8:47.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. Oracle Database SQL Language Reference 19c — [`ALTER DATABASE` (ARCHIVELOG, FORCE LOGGING)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ALTER-DATABASE.html)
+2. Oracle Data Guard Concepts and Administration 19c — [Creating a Physical Standby Database](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/creating-oracle-data-guard-physical-standby.html)
+3. Oracle Database Backup and Recovery User's Guide 19c — [RMAN — Duplicating Databases](https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/rman-duplicating-databases.html)
+4. Oracle Data Guard Broker 19c — [Oracle Data Guard Broker Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/dgbkr/oracle-data-guard-broker-concepts.html)
+5. Oracle Data Guard Concepts and Administration 19c — [Oracle Data Guard Protection Modes](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/oracle-data-guard-protection-modes.html)
 
 ------------------------------------------------------------------------
 

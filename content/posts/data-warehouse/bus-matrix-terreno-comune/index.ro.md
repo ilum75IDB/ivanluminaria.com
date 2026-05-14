@@ -14,7 +14,7 @@ Prima ședință a fost ciudată. În sală erau trei persoane — responsabilul
 
 *"Așa facem dintotdeauna,"* a spus controllerul. *"Fiecare cu al lui. Apoi, când board-ul cere încasarea de prime, dăm numărul meu pentru că e cel care cadrează cu închiderea contabilă."*
 
-Ăsta era punctul de plecare al proiectului. Nu un dezastru descoperit de mine, nu un sistem de salvat. O situație pe care cei trei o cunoșteau foarte bine și care devenise de negestionat când noul CFO, ajuns de câteva săptămâni, începuse să pună întrebări incomode. De genul: *de ce primele subscrise pe ramură sunt diferite între comercial și finance?* Sau: *câți asigurați activi avem de fapt în Italia, 420 de mii sau 510 mii?*
+Ăsta era punctul de plecare al proiectului. Nu un haos descoperit de mine, nu un sistem de salvat. O situație pe care cei trei o cunoșteau foarte bine și care devenise de negestionat când noul CFO, ajuns de câteva săptămâni, începuse să pună întrebări incomode. De genul: *de ce primele subscrise pe ramură sunt diferite între comercial și finance?* Sau: *câți asigurați activi avem de fapt în Italia, 420 de mii sau 510 mii?*
 
 Nu aveam un răspuns. Aveam trei.
 
@@ -32,11 +32,11 @@ Rezultatul, după ani, era acesta:
 
 Trei {{< glossary term="star-schema" >}}star schema{{< /glossary >}}, trei definiții de "client" (asiguratul persoană fizică, compania contractantă, contractantul cu titularitate comună), trei calendare diferite (marketing pe luna solară, finance pe luna contabilă cu închidere pe 25, comercial cu data de efect a poliței care poate fi cu luni în urmă față de data emiterii). Și mai ales trei concepte de "produs": policy management identifica polița cu codul de tarif intern, CRM cu macroprodusul comercial (Auto, Casă, Viață, Sănătate), finance o grupa după ramură pentru IVASS.
 
-Fiecare dintre cele trei numere era *corect* în contextul lui. Problema era că nu își vorbeau între ele.
+Fiecare dintre cele trei numere era *corect* în contextul lui. Punctul era că nu își vorbeau între ele.
 
-## 🔍 CFO-ul văzuse problema înaintea noastră
+## 🔍 CFO-ul văzuse punctul înaintea noastră
 
-Onest este să spun că problema a fost pusă pe agendă de CFO, nu de echipa IT și nici de mine. El nu voia un data warehouse nou. Voia ceva mai simplu: o linie de numere care să fie aceeași pe toate dashboard-urile. *"Nu mă interesează cine dintre voi are dreptate. Mă interesează ca primele subscrise din februarie să fie un singur număr."*
+De spus este că punctul a fost pus pe agendă de CFO, nu de echipa IT și nici de mine. El nu voia un data warehouse nou. Voia ceva mai simplu: o linie de numere care să fie aceeași pe toate dashboard-urile. *"Nu mă interesează cine dintre voi are dreptate. Mă interesează ca primele subscrise din februarie să fie un singur număr."*
 
 Spus așa pare evident. În practică, când ceri la trei departamente să alinieze definițiile, descoperi că fiecare a raționat ani de zile pe propria hartă a teritoriului și nu are chef să o redeseneze. Comercialul numără primele brute la data emiterii, finance-ul le numără nete de comisioane la data devansării. Marketingul consideră "client activ" pe oricine cu cel puțin o poliță în vigoare în ultimele 12 luni, finance pe oricine cu o poziție de prime deschisă în exercițiul fiscal. Nimeni nu greșește. Pur și simplu răspund la întrebări diferite.
 
@@ -44,7 +44,7 @@ Primul lucru util pe care l-am făcut, înainte de a atinge o linie de cod, a fo
 
 ## 🚌 Bus matrix, fără mitologie
 
-Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} descrie bus matrix ca o matrice bidimensională: pe rânduri **procesele de business** (în cazul nostru emitere polițe, reînnoiri, daune, încasări de prime, campanii de marketing, subscrieri online…), pe coloane **dimensiunile conforme** (client, poliță, intermediar, data, campanie, canal…). În celule, un X dacă acel proces de business folosește acea dimensiune.
+Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} descrie bus matrix ca o matrice bidimensională: pe rânduri **procesele de business** (în cazul nostru emitere polițe, reînnoiri, daune, încasări de prime, campanii de marketing, subscrieri online…), pe coloane **dimensiunile conforme** (client, poliță, intermediar, data, campanie, canal…). În celule, un X dacă acel proces de business folosește acea dimensiune [1].
 
 Matricea, în sine, nu face nimic. Nu generează cod, nu creează tabele, nu rezolvă conflicte. Servește la un singur lucru: să oblige pe toți să privească aceeași foaie.
 
@@ -59,11 +59,11 @@ Ceea ce am ajuns să desenăm, după ateliere, arăta cam așa (simplificat):
 | Încasări prime                  |   X    |   X    |      X      |  X   |          |       |  X   |
 | Subscrieri online               |   X    |   X    |             |  X   |    X     |   X   |      |
 
-Șase rânduri, șapte coloane. Citită așa, foaia spune ceva simplu și incomod în același timp: **dimensiunea Client apare în cinci procese din șase, Polița în cinci, Data în toate și Intermediarul în patru**. Dacă definiția de Client este diferită între comercial și marketing, cinci procese din șase vor returna numere incoerente. Nu este o problemă de BI, este o problemă de master data.
+Șase rânduri, șapte coloane. Citită așa, foaia spune ceva simplu și incomod în același timp: **dimensiunea Client apare în cinci procese din șase, Polița în cinci, Data în toate și Intermediarul în patru**. Dacă definiția de Client este diferită între comercial și marketing, cinci procese din șase vor returna numere incoerente. Nu este o chestiune de BI, este o chestiune de master data.
 
 ## 🔗 Ce este o dimensiune conformă
 
-O {{< glossary term="conformed-dimension" >}}dimensiune conformă{{< /glossary >}} este o dimensiune care are aceeași structură, aceeași semantică și aceeași cheie prin mai multe data marts. Nu înseamnă "un singur tabel fizic partajat" — poate fi replicată, poate trăi în scheme diferite — dar înseamnă că dacă clientul `IT_C00217654` apare în data mart-ul comercial și în cel de marketing, **este același client, cu aceleași atribute de clasificare, iar numerele referitoare la el se pot însuma fără rezerve**.
+O {{< glossary term="conformed-dimension" >}}dimensiune conformă{{< /glossary >}} este o dimensiune care are aceeași structură, aceeași semantică și aceeași cheie prin mai multe data marts [2]. Nu înseamnă "un singur tabel fizic partajat" — poate fi replicată, poate trăi în scheme diferite — dar înseamnă că dacă clientul `IT_C00217654` apare în data mart-ul comercial și în cel de marketing, **este același client, cu aceleași atribute de clasificare, iar numerele referitoare la el se pot însuma fără rezerve**.
 
 A conforma o dimensiune înseamnă a te pune de acord pe trei lucruri:
 
@@ -113,7 +113,7 @@ CREATE INDEX ix_dim_customer_natural ON dim_conformed.dim_customer(customer_code
 CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code, tax_id) WHERE tax_id IS NOT NULL;
 ```
 
-Circa 3,1 milioane de rânduri pentru 1,8 milioane de contractanți distincți în cele patru țări principale (diferența este istoricul versiunilor în {{< glossary term="scd" >}}SCD Tip 2{{< /glossary >}}).
+Circa 3,1 milioane de rânduri pentru 1,8 milioane de contractanți distincți în cele patru țări principale (diferența este istoricul versiunilor în {{< glossary term="scd" >}}SCD Tip 2{{< /glossary >}}) [3].
 
 **Stratul 2 — Bridge între chei vechi și chei noi.** Cele trei data marts existente continuau să funcționeze cu cheile lor locale. Am creat un tabel de mapare pentru fiecare:
 
@@ -163,7 +163,7 @@ JOIN dim_conformed.dim_date xd
 
 Niciun departament nu a fost nevoit să renunțe la propriul data mart. Cine voia analize mono-departament continua să le facă pe al lui. Cine avea nevoie de analize cross-departament folosea vistele conforme.
 
-## 📊 Întrebarea care înainte era imposibilă
+## 📊 Întrebarea care înainte era irezolvabilă
 
 Prima interogare cu adevărat cross-mart pe care am lansat-o — cea care înainte de munca pe dimensiunile conforme ar fi ieșit cu trei răspunsuri diferite — părea banală:
 
@@ -213,9 +213,17 @@ Kimball a scris despre bus matrix în anii '90 cu exact această intenție: să 
 
 ## Ce am învățat
 
-Munca tehnică — `dim_customer`, xref-urile, vistele — a fost partea ușoară. Partea dificilă a fost să aduci trei departamente la un acord pe ceea ce înseamnă "client". Și acea parte nu am rezolvat-o eu: a rezolvat-o CFO-ul cu greutatea sa politică, comitetul de guvernanță cu șase săptămâni de răbdare și DBA-ul clientului care avea o memorie istorică impresionantă a fiecărei decizii luate în anii anteriori și de ce.
+Munca tehnică — `dim_customer`, xref-urile, vistele — a fost partea ușoară. Partea solicitantă a fost să aduci trei departamente la un acord pe ceea ce înseamnă "client". Și acea parte nu am rezolvat-o eu: a rezolvat-o CFO-ul cu greutatea sa politică, comitetul de guvernanță cu șase săptămâni de răbdare și DBA-ul clientului care avea o memorie istorică impresionantă a fiecărei decizii luate în anii anteriori și de ce.
 
 Când văd astăzi un proiect de DWH care pornește fără un bus matrix desenat și împărtășit, ridic mâna înainte de a începe. Nu ca să mă dau înțelept — ca să îmi amintesc că acea fază, cea de aliniere a definițiilor, nu poate fi sărită. Dacă o sari, o plătești după cu dobândă. Dacă o faci, restul proiectului devine aproape plictisitor. Și este exact cum ar trebui să fie.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. Kimball Group — [Enterprise Data Warehouse Bus Matrix](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/enterprise-data-warehouse-bus-matrix/)
+2. Kimball Group — [Conformed Dimension](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/conformed-dimension/)
+3. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
 
 ------------------------------------------------------------------------
 

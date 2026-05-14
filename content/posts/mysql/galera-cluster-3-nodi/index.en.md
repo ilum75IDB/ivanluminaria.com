@@ -1,5 +1,5 @@
 ---
-title: "Galera Cluster with 3 nodes: how I solved a MySQL availability problem"
+title: "Galera Cluster with 3 nodes: how I solved a MySQL availability issue"
 seoTitle: "MySQL Galera Cluster 3-node: sync replication and quorum"
 description: "3-node MySQL Galera Cluster for high availability: synchronous replication, quorum, SST/IST. Full configuration against single point of failure."
 date: "2026-02-17T08:03:00+01:00"
@@ -10,11 +10,11 @@ categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---
 
-The ticket was laconic, as it often is when the problem is serious: "The database went down again. The application is stopped. Third time in two months."
+The ticket was laconic, as it often is when the situation is serious: "The database went down again. The application is stopped. Third time in two months."
 
-The client had a MariaDB on a single Linux server — a business management application used by about two hundred internal users, with load spikes during end-of-month accounting closures. Every time the server had a problem — a disk slowing down, a system update requiring a reboot, a process consuming all the RAM — the database crashed and with it the entire business operations.
+The client had a MariaDB on a single Linux server — a business management application used by about two hundred internal users, with load spikes during end-of-month accounting closures. Every time the server had an issue — a disk slowing down, a system update requiring a reboot, a process consuming all the RAM — the database crashed and with it the entire business operations.
 
-The question wasn't "how do we fix the server". The question was: **how do we make sure that the next time a server has a problem, the application keeps running?**
+The question wasn't "how do we fix the server". The question was: **how do we make sure that the next time a server has an anomaly, the application keeps running?**
 
 The answer, after twenty years of experience with this type of scenario, was one: **Galera Cluster**.
 
@@ -140,13 +140,15 @@ Galera requires ROW format for the binary log. Not STATEMENT, not MIXED. **ROW**
 
 This sets the lock mode for auto-increment to "interleaved". In a multi-master cluster, two nodes can generate INSERTs simultaneously on the same table. With lock mode 1 (the default) this would create deadlocks. With value 2, InnoDB generates auto-increments without a global lock, allowing concurrent inserts from different nodes.
 
-The consequence: auto-increment IDs **won't be sequential** across nodes. If your application depends on sequential IDs, you have an architectural problem to solve upstream.
+The consequence: auto-increment IDs **won't be sequential** across nodes. If your application depends on sequential IDs, you have an architectural issue to solve upstream.
 
 ### `innodb_flush_log_at_trx_commit=2`
 
-Here we make a conscious trade-off. Value 1 (default) guarantees total durability — every commit is written and fsynced to disk. But in a Galera cluster, durability is already guaranteed by synchronous replication across three nodes. Value 2 writes to the OS buffer on each commit and fsyncs only every second, improving write performance by 30-40% in our tests.
+Here we make a conscious trade-off. Value `1` (default) guarantees total durability even against OS crashes or power loss on a single node — every commit is written and fsynced to disk before being considered closed [1]. Value `2` writes to the OS buffer on each commit and fsyncs only every second, improving write performance by 30-40% in our tests.
 
-If you lose one node, the data is on the other two. If you lose the entire datacenter... well, that's another conversation.
+In a Galera cluster, synchronous replication across three nodes **mitigates** the risk: even if one node loses the last second of transactions in a crash, the other two copies already hold the data certified before commit [2]. Value `2` is therefore a **reasonable trade-off in this context**, not an equivalent of `1` — the residual risk is on simultaneous crashes (full datacenter power loss, badly-planned coordinated maintenance).
+
+If you lose one node, the data is on the other two. If you lose the entire datacenter, even with `flush=1` on every node the last-second transactions would still be at risk: at that point it's no longer a flush decision, it's a disaster recovery decision with geographic replication.
 
 ### `wsrep_sst_method=mariabackup`
 
@@ -301,7 +303,7 @@ SHOW STATUS WHERE Variable_name IN (
 
 **`wsrep_flow_control_paused > 0.0`**: flow control activated. It means a node is too slow applying transactions and is asking the others to slow down. A value close to 1.0 means the cluster is essentially stalled, waiting for the slowest node.
 
-**`wsrep_local_recv_queue_avg > 1.0`**: incoming transactions are piling up. Could be a disk I/O problem, CPU, or an undersized node.
+**`wsrep_local_recv_queue_avg > 1.0`**: incoming transactions are piling up. Could be a disk I/O issue, CPU, or an undersized node.
 
 ### Monitoring script
 
@@ -396,6 +398,16 @@ What struck me most was his comment: "We used to live with the anxiety of the da
 That's the real value of a well-configured Galera cluster. It's not the technology itself — it's the peace of mind it brings. The certainty that a single failure no longer stops the business.
 
 The technical part is the easiest. What makes the difference is understanding **why** each parameter is set a certain way, what happens when things go wrong, and how to diagnose problems before they become emergencies. A cluster that works in a demo and one that holds in production: the distance between the two is all in the details I've described here.
+
+------------------------------------------------------------------------
+
+## Official sources
+
+1. MySQL 8.0 Reference Manual — [`innodb_flush_log_at_trx_commit`](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit)
+2. MariaDB Documentation — [Configuring MariaDB Galera Cluster](https://mariadb.com/docs/galera-cluster/galera-management/configuration/configuring-mariadb-galera-cluster)
+3. MariaDB Documentation — [MariaDB Galera Cluster Replication Guide](https://mariadb.com/docs/galera-cluster/galera-cluster-quickstart-guides/mariadb-galera-cluster-replication-guide)
+4. MariaDB Documentation — [Using MariaDB Replication with Galera Cluster](https://mariadb.com/docs/galera-cluster/high-availability/using-mariadb-replication-with-mariadb-galera-cluster/using-mariadb-replication-with-mariadb-galera-cluster-using-mariadb-replica)
+5. MariaDB Documentation — [Galera Cluster Thread States](https://mariadb.com/docs/server/ha-and-performance/optimization-and-tuning/buffers-caches-and-threads/thread-states/galera-cluster-thread-states)
 
 ------------------------------------------------------------------------
 

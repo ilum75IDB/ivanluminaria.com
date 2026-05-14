@@ -12,7 +12,7 @@ image: "binary-log-mysql.cover.jpg"
 
 The message in the infrastructure team's Slack channel was the kind that makes you look up from your screen: "Disk at 95% on the production db. Anyone able to look?"
 
-The server was a MySQL 8.0 on Rocky Linux, a business management system used by about a hundred users. The database itself was around 40 GB — nothing extraordinary. But in the data directory there were 180 GB of binary logs. Six months' worth of binlogs that nobody had ever thought to manage.
+The server was a MySQL 8.0 on Rocky Linux, a business management system used by about a hundred users. The database itself was around 40 GB — nothing extraordinary. Only in the data directory there were 180 GB of binary logs. Six months' worth of binlogs that nobody had ever thought to manage.
 
 It's not the first time I've seen this scenario. In fact, I'd say it's one of the most recurring patterns in the tickets I receive. The binary log is one of those MySQL features that works silently, asking nothing — until the disk fills up.
 
@@ -33,7 +33,7 @@ Without the binary log, you can't do either. That's why the first instinct — "
 
 ## How MySQL generates binlogs
 
-Binary logging is enabled through the `log_bin` parameter. From MySQL 8.0 it's enabled by default — an important change from previous versions where you had to activate it explicitly.
+Binary logging is enabled through the `log_bin` parameter [1]. From MySQL 8.0 it's enabled by default — an important change from previous versions where you had to activate it explicitly.
 
 ```ini
 [mysqld]
@@ -49,6 +49,8 @@ MySQL creates a new binlog file under several circumstances:
 - When a manual rotation occurs
 
 Each binlog file has an associated index file (`mysql-bin.index`) that tracks all active binlog files. This file is critical: if you corrupt it or edit it by hand, MySQL no longer knows which binlogs exist.
+
+The list of active binlogs is returned by `SHOW BINARY LOGS` [2]:
 
 ```sql
 SHOW BINARY LOGS;
@@ -115,12 +117,12 @@ In practice, binlogs are your insurance policy. The backup is the foundation, bi
 
 ## PURGE BINARY LOGS: the right way to clean up
 
-Back to our server with disk at 95%. The temptation to just do `rm -f mysql-bin.*` is strong. But it's wrong, for two reasons:
+Back to our server with disk at 95%. The temptation to just do `rm -f mysql-bin.*` is strong. Only it's a choice to avoid, for two reasons:
 
 1. MySQL doesn't know you deleted the files — the index file still points to binlogs that no longer exist
 2. If there's active replication, you risk breaking synchronisation
 
-The correct way is the `PURGE` command:
+The correct way is the `PURGE` command [4]:
 
 ```sql
 -- Remove all binlogs before a specific file
@@ -188,7 +190,7 @@ Same logic, but with per-second granularity. From MySQL 8.0, this parameter take
 
 The question I always get asked is: "How many days of retention?"
 
-It depends. But here are my practical rules:
+It depends. Here are my practical rules anyway:
 
 | Scenario | Recommended retention |
 |----------|----------------------|
@@ -205,7 +207,7 @@ In our server's case, no retention had been set. The MySQL 8.0 default is 30 day
 
 ## The three binlog formats: STATEMENT, ROW, MIXED
 
-Not all binlogs are created equal. MySQL supports three recording formats, and the choice has real implications.
+Not all binlogs are created equal. MySQL supports three recording formats, and the choice has real implications [5].
 
 ### STATEMENT
 
@@ -250,7 +252,7 @@ LIMIT 10000;
 
 ## `mysqlbinlog`: reading binlogs when you need to
 
-The {{< glossary term="mysqlbinlog" >}}`mysqlbinlog`{{< /glossary >}} command-line tool is the only way to inspect the contents of binlog files. It's used in two scenarios: debugging replication problems and point-in-time recovery.
+The {{< glossary term="mysqlbinlog" >}}`mysqlbinlog`{{< /glossary >}} command-line tool is the only way to inspect the contents of binlog files [3]. It's used in two scenarios: debugging replication problems and point-in-time recovery.
 
 ```bash
 # Read a binlog in human-readable format
@@ -274,21 +276,21 @@ With ROW format, without `--verbose` you'll only see binary blobs. With `--verbo
 
 ## The principle: manage binlogs, don't disable them
 
-Every now and then someone suggests solving the problem "at the root" by disabling binlogs:
+Every now and then someone suggests solving the issue "at the root" by disabling binlogs:
 
 ```ini
 # DO NOT DO THIS in production
 skip-log-bin
 ```
 
-Yes, it solves the disk problem. But it eliminates:
+Yes, it solves the disk issue. Only it eliminates:
 
 - The ability to set up replication in the future
 - Point-in-time recovery
 - The ability to analyse what happened in the database after an incident
 - Compatibility with {{< glossary term="cdc" >}}CDC (Change Data Capture){{< /glossary >}} tools like Debezium
 
-Binlogs are not a problem. **Unmanaged** binlogs are a problem. The difference is a configuration parameter and a weekly check. On the server I fixed, the final configuration was:
+Binlogs are not an issue. **Unmanaged** binlogs are an issue. The difference is a configuration parameter and a weekly check. On the server I fixed, the final configuration was:
 
 ```ini
 [mysqld]
@@ -339,6 +341,16 @@ fi
 Three weeks after the intervention, the binlogs were using 8 GB — exactly within the predicted window. The disk never went above 45%.
 
 The binlog is like engine oil: you never think about it until the warning light comes on. The difference is that the engine warns you. MySQL doesn't — it keeps writing binlogs as long as the filesystem responds. When it stops responding, it's too late to wonder why you hadn't set up retention.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. MySQL 8.0 Reference Manual — [Binary Logging Options and Variables (`log_bin`, `max_binlog_size`, `binlog_expire_logs_seconds`)](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html)
+2. MySQL 8.0 Reference Manual — [`SHOW BINARY LOGS`](https://dev.mysql.com/doc/refman/8.0/en/show-binary-logs.html)
+3. MySQL 8.0 Reference Manual — [`mysqlbinlog` — Utility for Processing Binary Log Files](https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html)
+4. MySQL 8.0 Reference Manual — [`PURGE BINARY LOGS`](https://dev.mysql.com/doc/refman/8.0/en/purge-binary-logs.html)
+5. MySQL 8.0 Reference Manual — [Binary Logging Formats (STATEMENT, ROW, MIXED)](https://dev.mysql.com/doc/refman/8.0/en/binary-log-formats.html)
 
 ------------------------------------------------------------------------
 

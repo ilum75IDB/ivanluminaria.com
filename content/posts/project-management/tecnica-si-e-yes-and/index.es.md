@@ -26,7 +26,7 @@ Por el otro, el lead developer. Joven, brillante, con las ideas claras. Quería 
 
 Dos posiciones legítimas. Dos perspectivas reales. Dos personas inteligentes.
 
-Pero la conversación había tomado un rumbo familiar — y peligroso.
+La conversación, sin embargo, había tomado un rumbo familiar — y peligroso.
 
 "No, no tiene sentido llevar todo a cloud sin repensar la arquitectura."\
 "No, reescribir todo es un riesgo enorme y no tenemos presupuesto."

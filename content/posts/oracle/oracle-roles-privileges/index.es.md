@@ -16,7 +16,7 @@ Cuando preguntas por qué, la respuesta siempre es alguna variante de: "Así tod
 
 Claro. Todo funciona. Hasta el día en que un desarrollador ejecuta un `DROP TABLE` sobre la tabla equivocada. O un batch de importación hace un `TRUNCATE` sobre una tabla de producción pensando que está en el entorno de pruebas. O alguien ejecuta un `DELETE FROM clientes` sin la cláusula `WHERE`.
 
-Ese día el problema ya no son los permisos. Es que no tienes idea de quién hizo qué, y no tienes ninguna herramienta para impedir que vuelva a ocurrir.
+Ese día la criticidad ya no son los permisos. Es que no tienes idea de quién hizo qué, y no tienes ninguna herramienta para impedir que vuelva a ocurrir.
 
 ---
 
@@ -24,7 +24,7 @@ Ese día el problema ya no son los permisos. Es que no tienes idea de quién hiz
 
 El cliente era una empresa mediana con una aplicación de gestión sobre Oracle 19c. Unos veinte usuarios entre desarrolladores, cuentas aplicativas y operadores. El schema aplicativo — llamémoslo `APP_OWNER` — contenía unas 300 tablas, unas sesenta vistas y unas cuantas docenas de procedimientos PL/SQL.
 
-El problema era fácil de describir:
+La situación era fácil de describir:
 
 - Todos se conectaban como `APP_OWNER`
 - `APP_OWNER` tenía el rol `DBA`
@@ -66,7 +66,7 @@ El rol `DBA` incluye más de 200 system privileges. Asignarlo a un usuario aplic
 
 ### Los roles: predefinidos y personalizados
 
-Oracle ofrece roles predefinidos (`CONNECT`, `RESOURCE`, `DBA`) y permite crear roles personalizados. Los roles predefinidos tienen un problema histórico: `CONNECT` y `RESOURCE` incluían privilegios excesivos en versiones anteriores. Desde Oracle 12c se han reducido, pero la costumbre de asignarlos sin pensarlo es difícil de erradicar.
+Oracle ofrece roles predefinidos (`CONNECT`, `RESOURCE`, `DBA`) y permite crear roles personalizados. Los roles predefinidos tienen un punto crítico histórico: `CONNECT` y `RESOURCE` incluían privilegios excesivos en versiones anteriores. Desde Oracle 12c se han reducido, pero la costumbre de asignarlos sin pensarlo es difícil de erradicar.
 
 El camino correcto es crear roles personalizados calibrados a las necesidades reales.
 
@@ -215,6 +215,8 @@ Tener los roles correctos no basta. Hay que saber quién hizo qué, especialment
 
 Oracle desde la versión 12c ofrece **Unified Audit**, que sustituye el viejo audit tradicional con un sistema centralizado.
 
+La sintaxis exige dos statements distintos: `CREATE AUDIT POLICY` para declarar la policy, y `AUDIT POLICY` para activarla [1]. Un error común es usar `ALTER AUDIT POLICY ... ENABLE`: `ALTER AUDIT POLICY` existe, pero sirve para **modificar** una policy ya definida (añadir o quitar acciones), no para habilitarla.
+
 ``` sql
 -- Audit sobre operaciones DDL críticas
 CREATE AUDIT POLICY pol_ddl_critico
@@ -222,7 +224,7 @@ ACTIONS CREATE TABLE, DROP TABLE, ALTER TABLE,
         TRUNCATE TABLE, CREATE USER, DROP USER,
         ALTER USER, GRANT, REVOKE;
 
-ALTER AUDIT POLICY pol_ddl_critico ENABLE;
+AUDIT POLICY pol_ddl_critico;
 
 -- Audit sobre accesos a datos sensibles
 CREATE AUDIT POLICY pol_acceso_datos
@@ -230,16 +232,17 @@ ACTIONS SELECT ON app_owner.clientes,
         DELETE ON app_owner.facturas,
         UPDATE ON app_owner.facturas;
 
-ALTER AUDIT POLICY pol_acceso_datos ENABLE;
+AUDIT POLICY pol_acceso_datos;
 
 -- Audit sobre logins fallidos
 CREATE AUDIT POLICY pol_login_fallidos
 ACTIONS LOGON;
-ALTER AUDIT POLICY pol_login_fallidos
-ENABLE WHENEVER NOT SUCCESSFUL;
+AUDIT POLICY pol_login_fallidos WHENEVER NOT SUCCESSFUL;
 ```
 
-Para verificar qué se está registrando:
+Para deshabilitar una policy se usa `NOAUDIT POLICY nombre_policy`.
+
+Para verificar qué se está registrando, se consulta la vista `UNIFIED_AUDIT_TRAIL` [2]:
 
 ``` sql
 SELECT * FROM unified_audit_trail
@@ -274,7 +277,7 @@ El principio sigue siendo el mismo en todas partes: **dale a cada uno solo lo qu
 
 ## Qué cambió después
 
-La transición fue gradual — dos semanas para el despliegue completo, con pruebas en cada aplicación y procedimiento. Algunos scripts dejaron de funcionar porque daban por sentados privilegios que no les correspondían. Cada error era en realidad un problema oculto que antes era invisible.
+La transición fue gradual — dos semanas para el despliegue completo, con pruebas en cada aplicación y procedimiento. Algunos scripts dejaron de funcionar porque daban por sentados privilegios que no les correspondían. Cada fallo era en realidad una criticidad oculta que antes era invisible.
 
 El resultado:
 
@@ -294,6 +297,13 @@ El cliente no notó mejoras de rendimiento. No era ese el objetivo. Lo que notó
 La seguridad en Oracle no es un problema de herramientas — las herramientas están ahí, y son potentes. Es un problema de diseño: decidir quién puede hacer qué, documentarlo, implementarlo y luego verificar que funciona.
 
 No es el trabajo más glamuroso del mundo. Pero es el que marca la diferencia entre una base de datos que simplemente sobrevive y una que está verdaderamente bajo control.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. Oracle Database SQL Language Reference 19c — [AUDIT (Unified Auditing)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/AUDIT-Unified-Auditing.html) y [CREATE AUDIT POLICY](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-AUDIT-POLICY-Unified-Auditing.html)
+2. Oracle Database Reference 19c — [UNIFIED_AUDIT_TRAIL](https://docs.oracle.com/en/database/oracle/oracle-database/19/refrn/UNIFIED_AUDIT_TRAIL.html)
 
 ------------------------------------------------------------------------
 
