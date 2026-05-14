@@ -603,6 +603,7 @@ Questo è esattamente l'esempio che l'Analista B cita: forte come titolo SEO ma 
 | 9 | MySQL anonymous user: mitigare "viene installato" | B | ✅ VERO | **P1** | S | basso | mysql-users-and-hosts + glossario × 4 lingue |
 | 10 | MySQL `expire_logs_days`: aggiornare in pre-upgrade | B | ✅ parziale | **P1** | XS | basso | mysql-pre-upgrade-assessment × 4 lingue |
 | 11 | Revisione stilistica articoli IT (~125 modifiche su 29 articoli) | B+STILE | ✅ annotato | **P1** | L | basso | sezione 4 + 4 traduzioni propagate |
+| 11-bis | **Fonti ufficiali con note `[n]` in articoli tecnici** | B + utente | ✅ verificato | **P1** | M+ | basso | ~25 articoli tecnici, 3-6 note ciascuno, sezione "Fonti ufficiali" prima del Glossario × 4 lingue |
 | **P2** | Caveat operativi / miglioramenti | | | | | | |
 | 12 | Oracle grants via role in stored proc definer-rights | B | ✅ omissione | **P2** | M | basso | oracle-roles-privileges, paragrafo nuovo |
 | 13 | CREATE INDEX CONCURRENTLY: nota su migration tool | B | ✅ basso impatto | **P2** | XS | basso | like-optimization-postgresql |
@@ -628,17 +629,21 @@ Questo è esattamente l'esempio che l'Analista B cita: forte come titolo SEO ma 
 
 ### Sequenza consigliata di esecuzione
 
-**Sprint 1 (questa settimana, ~4 ore)** — fix tecnici per credibilità:
+**Sprint 1 (questa settimana, ~5 ore)** — fix tecnici per credibilità + esordio "Fonti ufficiali":
 1. P0-1 Oracle Unified Audit
 2. P0-2 Galera durabilità
 3. P0-5 default_statistics_target
 4. P0-3 CSV con sed
 5. P0-4 Oracle partitioning CTAS warning
+6. **Mentre correggiamo, introdurre la sezione `## Fonti ufficiali`** sui 5 articoli toccati (effort marginale: ~30 min). Pattern di riferimento per gli sprint successivi.
 
 Tutti questi sono articoli pubblicati con errori tecnici verificabili. Target senior → priorità massima.
 
 **Sprint 2 (settimana prossima, ~6-8 ore)** — revisione stilistica massiva:
 6. Revisione stilistica di tutti i 29 articoli secondo annotazioni in `stylistic-annotations/*.md` (4 lingue → 116 file modificati totali, ma con find/sed e propagazione automatica si fa)
+
+**Sprint 2-bis (in parallelo o subito dopo, ~6 ore)** — Fonti ufficiali sugli articoli rimanenti:
+7. Aggiungere sezione `## Fonti ufficiali` agli articoli tecnici non ancora toccati nello Sprint 1 (~20 articoli rimanenti × 4 lingue, con tabella di mapping comando → fonte ufficiale)
 
 **Sprint 3 (settimana 3, ~3 ore)** — fix infrastrutturali:
 7. Tag governance (consolidare 126→~30)

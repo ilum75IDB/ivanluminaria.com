@@ -179,6 +179,28 @@ When writing a new blog article, **always** follow these steps:
    **Archiviare il prompt come file Markdown** in `docs/cover-image-prompts/<slug>.cover.md` (stesso nome dell'immagine ma estensione `.md`), con questa struttura: `# Cover image prompt — <filename>` / `## Articolo di riferimento` (slug, sezione, titolo IT) / `## Descrizione della scena` (5-10 righe, specifica e visiva) / `## Metafora visiva` (2-3 frasi che legano scena e tema) / `## File output` (nome file, path destinazione, formato). Questo permette in futuro di rigenerare un'immagine coerente o variarne lo stile mantenendo il concetto.
 10. **Sezione Glossario a fine articolo** — ogni articolo deve terminare con una sezione `## Glossario` che elenca **5 termini tecnici o acronimi** tra i più importanti contenuti nell'articolo. Ogni voce del glossario deve avere il formato: **Termine** — descrizione breve e chiara (1-2 frasi). I termini vanno scelti privilegiando: acronimi (es. AWR, SCD, ETL), concetti tecnici specifici (es. buffer pool, execution plan), e tecnologie/strumenti menzionati nell'articolo. Evitare termini troppo generici (es. "database", "SQL") a meno che non siano centrali per l'articolo. **Riuso di termini esistenti**: è ammesso riprendere termini già presenti nel glossario, ma **al massimo 2 per articolo**. Gli altri 3 (almeno) devono essere nuovi, in modo che ogni articolo porti valore aggiunto al glossario complessivo del blog. Il glossario deve essere presente in **tutte e 4 le versioni linguistiche** dell'articolo, con le descrizioni tradotte. Dopo aver scritto il glossario, **aggiornare sempre** il file `docs/GLOSSARIO_TERMINI.md` aggiungendo i nuovi termini o aggiornando la colonna "Contenuto in" per i termini già presenti.
 
+11. **Sezione `## Fonti ufficiali` prima del Glossario** — per ogni articolo che riporta **comandi, sintassi, parametri o flag** che il lettore potrebbe copiare in produzione, aggiungere una sezione `## Fonti ufficiali` (prima del Glossario, dopo l'ultima sezione di contenuto) con i link alla **documentazione ufficiale** del vendor/progetto.
+
+   **Convenzione di notazione**:
+   - Nel corpo dell'articolo, mettere una nota numerica `[1]`, `[2]`... dopo l'affermazione tecnica o il comando citato. Esempio: *"La sintassi corretta per abilitare una policy Unified Audit è `AUDIT POLICY nome_policy` [1]."*
+   - In fondo all'articolo, sezione `## Fonti ufficiali` con elenco numerato:
+     ```markdown
+     ## Fonti ufficiali
+
+     1. Oracle Database SQL Language Reference 19c — [AUDIT (Unified Auditing)](https://docs.oracle.com/...)
+     2. PostgreSQL Documentation — [pg_stat_statements](https://www.postgresql.org/...)
+     ```
+
+   **Quando aggiungere una nota**:
+   - ✅ **Comandi/sintassi/parametri/flag** che il lettore potrebbe copiare in produzione (es. `AUDIT POLICY`, `CREATE INDEX CONCURRENTLY`, `binlog_expire_logs_seconds`). **Anche se il termine è già linkato al glossario interno**: glossario e fonte ufficiale sono complementari, non alternativi (il glossario chiarisce *cosa significa*, la fonte conferma *come si scrive*)
+   - ✅ Affermazioni tecniche controverse (licensing, comportamenti version-specific)
+   - ✅ Parametri/comportamenti che cambiano tra versioni del prodotto
+   - ❌ Costatazioni narrative o opinioni personali
+   - ❌ Casi reali di consulenza Ivan
+   - ❌ Termini concettuali del glossario senza comando associato (es. "buffer pool", "MVCC")
+
+   **Target**: 3-6 note per articolo tecnico, non 50. Devono pesare. La sezione `## Fonti ufficiali` va presente in **tutte e 4 le versioni linguistiche** con gli stessi link (la documentazione ufficiale è in inglese in tutti i casi).
+
 ### Procedura a step con commit intermedi (anti-timeout)
 
 La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è troppo pesante per una singola sessione. Per evitare timeout e perdita di lavoro, **ogni step deve concludersi con commit + push**. Se la sessione scade, la successiva riprende dallo step non completato.
@@ -187,7 +209,7 @@ La scrittura di un articolo in 4 lingue + glossario + aggiornamento docs è trop
 |------|-----------|----------------|
 | **0** | Leggere issue, `docs/AI_CONTENT_GUIDELINES.md`, `docs/database_strategy_blog_project_description_FULL.md` | *(nessun commit, solo lettura)* |
 | **0b** | Proporre **3 titoli** all'utente tra cui scegliere (l'utente può anche suggerirne uno proprio) | *(nessun commit, solo output testuale)* |
-| **1** | Creare la directory dell'articolo e scrivere la versione **IT** (con `seoTitle` ≤65ch e `description` ≤160ch nel frontmatter) | `Articolo #XX: <slug> - versione italiana (IT)` |
+| **1** | Creare la directory dell'articolo e scrivere la versione **IT** (con `seoTitle` ≤65ch e `description` ≤160ch nel frontmatter, e se l'articolo riporta comandi/sintassi/parametri, includere note `[n]` nel testo e la sezione `## Fonti ufficiali` prima del Glossario — vedi punto 11) | `Articolo #XX: <slug> - versione italiana (IT)` |
 | **2** | Scrivere la versione **EN** (con `seoTitle` e `description` tradotti/adattati) | `Articolo #XX: <slug> - traduzione inglese (EN)` |
 | **3** | Scrivere la versione **ES** (con `seoTitle` e `description` tradotti/adattati) | `Articolo #XX: <slug> - traduzione spagnola (ES)` |
 | **4** | Scrivere la versione **RO** (con `seoTitle` e `description` tradotti/adattati) | `Articolo #XX: <slug> - traduzione rumena (RO)` |
