@@ -211,7 +211,7 @@ ORDER BY o.data_ordine
 
 Opțiunea `-B` produce un output tab-separated fără chenarele ASCII ale tabelelor. Rezultatul e un fișier TSV curat care se deschide fără probleme în orice foaie de calcul.
 
-Dacă e nevoie de un CSV real cu virgule ca separator, e suficient un pas cu `sed`:
+Dacă e nevoie de virgule ca separator, un pas rapid cu `sed`:
 
 ```bash
 mysql --socket=/var/run/mysqld/mysqld-app2.sock \
@@ -226,6 +226,22 @@ ORDER BY o.data_ordine
 ```
 
 Opțiunea `-N` elimină rândul de antet cu numele coloanelor. Dacă vrei antetul, scoate flag-ul.
+
+**Atenție**: acest pattern cu `sed` **nu este CSV RFC 4180 compliant** [1]. Funcționează doar dacă ești sigur că niciun câmp nu conține virgule, newline sau ghilimele. Pe un tabel `ordini` cu `ragione_sociale` ca acesta — denumiri de firmă de tipul "Bianchi, Rossi & Co." rup rândul. Dacă ai dubii asupra datelor, folosește un writer CSV adevărat. Exemplu în Python (câteva rânduri, zero dependențe externe):
+
+```bash
+mysql --socket=/var/run/mysqld/mysqld-app2.sock \
+      -u root -p \
+      -B -e "SELECT ... FROM ordini ... ;" gestionale_prod \
+| python3 -c "
+import sys, csv
+w = csv.writer(sys.stdout, quoting=csv.QUOTE_MINIMAL)
+for line in sys.stdin:
+    w.writerow(line.rstrip('\n').split('\t'))
+" > /tmp/export_ordini.csv
+```
+
+Modulul `csv` din stdlib Python [2] aplică escaping-ul corect (ghilimele duble în jurul câmpurilor care conțin virgule, dublarea ghilimelelor interne, gestionarea newline). Pentru export-uri critice, asta e diferența dintre un fișier care se deschide curat în Excel/LibreOffice și un fișier cu rânduri rupte descoperite la prima analiză.
 
 Fișierul a fost gata în mai puțin de un minut. 12.400 de rânduri, 1,2 MB. L-am copiat pe mașina mea cu `scp`, am verificat deschiderea în LibreOffice Calc și l-am trimis solicitantului. Era 11:45. Ticket-ul care trebuia să dureze cinci minute consumase patruzeci și cinci — dar cel puțin nu repornisem nicio instanță.
 
@@ -257,6 +273,15 @@ Al doilea: **secure-file-priv nu e un obstacol, e o protecție**. Când te bloch
 Al treilea: **clientul mysql din linia de comandă e mai puternic decât îi recunosc majoritatea DBA-ilor**. Cu `-B`, `-N`, `-e` și o pipe spre `sed` sau `awk`, poți face exporturi, transformări și automatizări fără să atingi vreodată `INTO OUTFILE`. E mai puțin elegant, poate. Dar funcționează mereu, nu necesită permisiuni speciale și nu depinde de faptul că cineva a creat directorul potrivit cu șase luni înainte.
 
 CSV-ul a ajuns la 11:45. Solicitantul n-a aflat niciodată că în spatele a cinci coloane și 12.400 de rânduri se ascundeau patruzeci și cinci de minute de arheologie de sistem. Dar așa funcționează ticket-urile: cine le deschide vede rezultatul, cine le rezolvă vede drumul.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. IETF — [RFC 4180 — Common Format and MIME Type for Comma-Separated Values (CSV) Files](https://www.rfc-editor.org/rfc/rfc4180)
+2. Python Documentation — [`csv` — CSV File Reading and Writing](https://docs.python.org/3/library/csv.html)
+3. MySQL 8.0 Reference Manual — [`secure_file_priv`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_secure_file_priv)
+4. MySQL 8.0 Reference Manual — [`SELECT ... INTO OUTFILE`](https://dev.mysql.com/doc/refman/8.0/en/select-into.html)
 
 ------------------------------------------------------------------------
 

@@ -211,7 +211,7 @@ ORDER BY o.data_ordine
 
 L'opzione `-B` produce un output tab-separated senza i bordi ASCII delle tabelle. Il risultato è un file TSV pulito che si apre senza problemi in qualsiasi foglio di calcolo.
 
-Se serve un vero CSV con le virgole come separatore, basta un passaggio con `sed`:
+Se servono le virgole come separatore, un passaggio rapido con `sed`:
 
 ```bash
 mysql --socket=/var/run/mysqld/mysqld-app2.sock \
@@ -226,6 +226,22 @@ ORDER BY o.data_ordine
 ```
 
 L'opzione `-N` rimuove la riga di intestazione con i nomi delle colonne. Se la vuoi, togli il flag.
+
+**Attenzione**: questo pattern con `sed` **non è CSV RFC 4180 compliant** [1]. Funziona solo se sei certo che nessun campo contenga virgole, newline o virgolette. Su una tabella `ordini` con `ragione_sociale` come questa — ragioni sociali del tipo "Bianchi, Rossi & Co." spezzano la riga. Se hai dubbi sui dati, usa un writer CSV vero. Esempio in Python (poche righe, zero dipendenze esterne):
+
+```bash
+mysql --socket=/var/run/mysqld/mysqld-app2.sock \
+      -u root -p \
+      -B -e "SELECT ... FROM ordini ... ;" gestionale_prod \
+| python3 -c "
+import sys, csv
+w = csv.writer(sys.stdout, quoting=csv.QUOTE_MINIMAL)
+for line in sys.stdin:
+    w.writerow(line.rstrip('\n').split('\t'))
+" > /tmp/export_ordini.csv
+```
+
+Il modulo `csv` della stdlib Python [2] applica l'escaping corretto (virgolette doppie attorno ai campi che contengono virgole, raddoppio delle virgolette interne, gestione newline). Per export critici è la differenza tra un file che apre bene in Excel/LibreOffice e un file con righe corrotte da scoprire alla prima analisi.
 
 Il file era pronto in meno di un minuto. 12.400 righe, 1,2 MB. L'ho copiato sulla mia macchina con `scp`, verificato l'apertura in LibreOffice Calc, e inviato al richiedente. Erano le 11:45. Il ticket che doveva durare cinque minuti ne aveva richiesti quarantacinque — ma almeno non avevo riavviato nessuna istanza.
 
@@ -257,6 +273,15 @@ La seconda: **secure-file-priv non è un ostacolo, è una protezione**. Quando t
 La terza: **il client mysql da riga di comando è più potente di quanto la maggior parte dei DBA gli riconosca**. Con `-B`, `-N`, `-e` e una pipe verso `sed` o `awk`, puoi fare export, trasformazioni e automazioni senza mai toccare `INTO OUTFILE`. È meno elegante, forse. Ma funziona sempre, non richiede permessi speciali e non ha bisogno che qualcuno abbia creato la directory giusta sei mesi prima.
 
 Il CSV è arrivato alle 11:45. Il richiedente non ha mai saputo che dietro cinque colonne e 12.400 righe c'erano quarantacinque minuti di archeologia sistemistica. Ma è così che funzionano i ticket: chi li apre vede il risultato, chi li risolve vede il percorso.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. IETF — [RFC 4180 — Common Format and MIME Type for Comma-Separated Values (CSV) Files](https://www.rfc-editor.org/rfc/rfc4180)
+2. Python Documentation — [`csv` — CSV File Reading and Writing](https://docs.python.org/3/library/csv.html)
+3. MySQL 8.0 Reference Manual — [`secure_file_priv`](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_secure_file_priv)
+4. MySQL 8.0 Reference Manual — [`SELECT ... INTO OUTFILE`](https://dev.mysql.com/doc/refman/8.0/en/select-into.html)
 
 ------------------------------------------------------------------------
 
