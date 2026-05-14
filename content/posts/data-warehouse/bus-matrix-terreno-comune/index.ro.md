@@ -44,7 +44,7 @@ Primul lucru util pe care l-am făcut, înainte de a atinge o linie de cod, a fo
 
 ## 🚌 Bus matrix, fără mitologie
 
-Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} descrie bus matrix ca o matrice bidimensională: pe rânduri **procesele de business** (în cazul nostru emitere polițe, reînnoiri, daune, încasări de prime, campanii de marketing, subscrieri online…), pe coloane **dimensiunile conforme** (client, poliță, intermediar, data, campanie, canal…). În celule, un X dacă acel proces de business folosește acea dimensiune.
+Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} descrie bus matrix ca o matrice bidimensională: pe rânduri **procesele de business** (în cazul nostru emitere polițe, reînnoiri, daune, încasări de prime, campanii de marketing, subscrieri online…), pe coloane **dimensiunile conforme** (client, poliță, intermediar, data, campanie, canal…). În celule, un X dacă acel proces de business folosește acea dimensiune [1].
 
 Matricea, în sine, nu face nimic. Nu generează cod, nu creează tabele, nu rezolvă conflicte. Servește la un singur lucru: să oblige pe toți să privească aceeași foaie.
 
@@ -63,7 +63,7 @@ Ceea ce am ajuns să desenăm, după ateliere, arăta cam așa (simplificat):
 
 ## 🔗 Ce este o dimensiune conformă
 
-O {{< glossary term="conformed-dimension" >}}dimensiune conformă{{< /glossary >}} este o dimensiune care are aceeași structură, aceeași semantică și aceeași cheie prin mai multe data marts. Nu înseamnă "un singur tabel fizic partajat" — poate fi replicată, poate trăi în scheme diferite — dar înseamnă că dacă clientul `IT_C00217654` apare în data mart-ul comercial și în cel de marketing, **este același client, cu aceleași atribute de clasificare, iar numerele referitoare la el se pot însuma fără rezerve**.
+O {{< glossary term="conformed-dimension" >}}dimensiune conformă{{< /glossary >}} este o dimensiune care are aceeași structură, aceeași semantică și aceeași cheie prin mai multe data marts [2]. Nu înseamnă "un singur tabel fizic partajat" — poate fi replicată, poate trăi în scheme diferite — dar înseamnă că dacă clientul `IT_C00217654` apare în data mart-ul comercial și în cel de marketing, **este același client, cu aceleași atribute de clasificare, iar numerele referitoare la el se pot însuma fără rezerve**.
 
 A conforma o dimensiune înseamnă a te pune de acord pe trei lucruri:
 
@@ -113,7 +113,7 @@ CREATE INDEX ix_dim_customer_natural ON dim_conformed.dim_customer(customer_code
 CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code, tax_id) WHERE tax_id IS NOT NULL;
 ```
 
-Circa 3,1 milioane de rânduri pentru 1,8 milioane de contractanți distincți în cele patru țări principale (diferența este istoricul versiunilor în {{< glossary term="scd" >}}SCD Tip 2{{< /glossary >}}).
+Circa 3,1 milioane de rânduri pentru 1,8 milioane de contractanți distincți în cele patru țări principale (diferența este istoricul versiunilor în {{< glossary term="scd" >}}SCD Tip 2{{< /glossary >}}) [3].
 
 **Stratul 2 — Bridge între chei vechi și chei noi.** Cele trei data marts existente continuau să funcționeze cu cheile lor locale. Am creat un tabel de mapare pentru fiecare:
 
@@ -216,6 +216,14 @@ Kimball a scris despre bus matrix în anii '90 cu exact această intenție: să 
 Munca tehnică — `dim_customer`, xref-urile, vistele — a fost partea ușoară. Partea solicitantă a fost să aduci trei departamente la un acord pe ceea ce înseamnă "client". Și acea parte nu am rezolvat-o eu: a rezolvat-o CFO-ul cu greutatea sa politică, comitetul de guvernanță cu șase săptămâni de răbdare și DBA-ul clientului care avea o memorie istorică impresionantă a fiecărei decizii luate în anii anteriori și de ce.
 
 Când văd astăzi un proiect de DWH care pornește fără un bus matrix desenat și împărtășit, ridic mâna înainte de a începe. Nu ca să mă dau înțelept — ca să îmi amintesc că acea fază, cea de aliniere a definițiilor, nu poate fi sărită. Dacă o sari, o plătești după cu dobândă. Dacă o faci, restul proiectului devine aproape plictisitor. Și este exact cum ar trebui să fie.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. Kimball Group — [Enterprise Data Warehouse Bus Matrix](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/enterprise-data-warehouse-bus-matrix/)
+2. Kimball Group — [Conformed Dimension](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/conformed-dimension/)
+3. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
 
 ------------------------------------------------------------------------
 

@@ -63,7 +63,7 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 
 | # | Articolo | Stato | Commit |
 |---|----------|-------|--------|
-| 16 | bus-matrix-terreno-comune | da fare | — |
+| 16 | bus-matrix-terreno-comune | ✅ done (3 note) | (commit corrente) |
 | 17 | fatto-grana-sbagliata | da fare | — |
 | 18 | partitioning-dwh | da fare | — |
 | 19 | ragged-hierarchies | da fare | — |

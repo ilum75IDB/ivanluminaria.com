@@ -44,7 +44,7 @@ The first useful thing we did, before touching a line of code, was a series of t
 
 ## 🚌 The bus matrix, without the mythology
 
-Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} describes the bus matrix as a two-dimensional grid: rows are **business processes** (in our case policy issuance, renewals, claims, premium collection, marketing campaigns, online subscriptions…), columns are the **conformed dimensions** (customer, policy, intermediary, date, campaign, channel…). In each cell, an X if that business process uses that dimension.
+Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} describes the bus matrix as a two-dimensional grid: rows are **business processes** (in our case policy issuance, renewals, claims, premium collection, marketing campaigns, online subscriptions…), columns are the **conformed dimensions** (customer, policy, intermediary, date, campaign, channel…). In each cell, an X if that business process uses that dimension [1].
 
 The matrix on its own does nothing. It doesn't generate code, doesn't create tables, doesn't resolve conflicts. It's for one thing only: forcing everyone to look at the same sheet of paper.
 
@@ -63,7 +63,7 @@ Six rows, seven columns. Read that way, the sheet says something simple and unco
 
 ## 🔗 What a conformed dimension is
 
-A {{< glossary term="conformed-dimension" >}}conformed dimension{{< /glossary >}} is a dimension with the same structure, the same semantics and the same key across multiple data marts. It doesn't mean "one single shared physical table" — it can be replicated, it can live in different schemas — but it does mean that if customer `IT_C00217654` appears in both the commercial and the marketing data mart, **it is the same customer, with the same classification attributes, and the numbers about them can be summed without reservations**.
+A {{< glossary term="conformed-dimension" >}}conformed dimension{{< /glossary >}} is a dimension with the same structure, the same semantics and the same key across multiple data marts [2]. It doesn't mean "one single shared physical table" — it can be replicated, it can live in different schemas — but it does mean that if customer `IT_C00217654` appears in both the commercial and the marketing data mart, **it is the same customer, with the same classification attributes, and the numbers about them can be summed without reservations**.
 
 Conforming a dimension means agreeing on three things:
 
@@ -113,7 +113,7 @@ CREATE INDEX ix_dim_customer_natural ON dim_conformed.dim_customer(customer_code
 CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code, tax_id) WHERE tax_id IS NOT NULL;
 ```
 
-Around 3.1 million rows for 1.8 million distinct contract holders across the four main countries (the difference is the version history in {{< glossary term="scd" >}}SCD Type 2{{< /glossary >}}).
+Around 3.1 million rows for 1.8 million distinct contract holders across the four main countries (the difference is the version history in {{< glossary term="scd" >}}SCD Type 2{{< /glossary >}}) [3].
 
 **Layer 2 — Bridge between old and new keys.** The three existing data marts kept running with their own local keys. We created a mapping table for each:
 
@@ -216,6 +216,14 @@ Kimball wrote about the bus matrix in the '90s for exactly this reason: to give 
 The technical work — `dim_customer`, the xrefs, the views — was the easy part. The demanding part was getting three departments to agree on what "customer" means. And that part wasn't solved by me: it was solved by the CFO with his political weight, by the governance committee with six weeks of patience, and by the customer's DBA who had an impressive long memory of every choice made over the previous years and why.
 
 When I see a DWH project starting today without a bus matrix drawn and shared, I raise my hand before we begin. Not to play the wise one — to remind myself that that phase, the one of aligning definitions, can't be skipped. If you skip it, you pay for it later with interest. If you do it, the rest of the project becomes almost boring. Which is exactly how it should be.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. Kimball Group — [Enterprise Data Warehouse Bus Matrix](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/enterprise-data-warehouse-bus-matrix/)
+2. Kimball Group — [Conformed Dimension](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/conformed-dimension/)
+3. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
 
 ------------------------------------------------------------------------
 
