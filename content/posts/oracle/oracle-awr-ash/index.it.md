@@ -48,7 +48,7 @@ Qualcosa stava leggendo enormi quantità di dati dal disco. Qualcosa che prima n
 
 {{< glossary term="awr" >}}AWR{{< /glossary >}} — Automatic Workload Repository — è lo strumento diagnostico più potente che Oracle mette a disposizione. Ogni ora, Oracle scatta un'istantanea ({{< glossary term="snapshot-oracle" >}}snapshot{{< /glossary >}}) delle statistiche di performance e la conserva nel repository interno. Confrontando due snapshot, ottieni un report che ti dice esattamente cosa è successo in quel periodo.
 
-Ho generato uno snapshot manuale per catturare la situazione attuale:
+Ho generato uno snapshot manuale per catturare la situazione attuale [1]:
 
 ``` sql
 EXEC DBMS_WORKLOAD_REPOSITORY.create_snapshot;
@@ -99,7 +99,7 @@ Ora sapevo cosa cercare.
 
 AWR mi aveva dato la fotografia d'insieme. Ma avevo bisogno di capire **quando** quel SQL era iniziato, **chi** lo eseguiva, e **quale programma** lo aveva lanciato.
 
-{{< glossary term="ash" >}}ASH{{< /glossary >}} — Active Session History — registra lo stato di ogni sessione attiva una volta al secondo. È il microscopio del DBA: dove AWR ti mostra le medie su un'ora, ASH ti mostra cosa succedeva secondo per secondo.
+{{< glossary term="ash" >}}ASH{{< /glossary >}} — Active Session History — registra lo stato di ogni sessione attiva una volta al secondo. È il microscopio del DBA: dove AWR ti mostra le medie su un'ora, ASH ti mostra cosa succedeva secondo per secondo. La vista in memoria è `V$ACTIVE_SESSION_HISTORY`, quella storica `DBA_HIST_ACTIVE_SESS_HISTORY` [2].
 
 ``` sql
 SELECT sample_time,
@@ -129,7 +129,7 @@ Il {{< glossary term="execution-plan" >}}piano di esecuzione{{< /glossary >}} er
 
 ## 🧩 Il piano di esecuzione
 
-Ho recuperato il piano corrente:
+Ho recuperato il piano corrente con `DBMS_XPLAN.display_awr` [3]:
 
 ``` sql
 SELECT *
@@ -179,7 +179,7 @@ ON movimenti_temp (id_cliente, data_movimento)
 TABLESPACE idx_data;
 ```
 
-Dopo la creazione dell'indice, ho forzato un re-parse della query:
+Dopo la creazione dell'indice, ho forzato un re-parse della query svuotando il cursore dalla shared pool [4]:
 
 ``` sql
 EXEC DBMS_SHARED_POOL.purge('g4f2h8k1nw3z9', 'C');
@@ -202,7 +202,7 @@ Dopo quell'episodio ho formalizzato una regola che uso sempre:
 | Caso d'uso principale | Trend analysis, confronto periodi | Diagnosi puntuale, isolamento SQL |
 | Vista principale | `DBA_HIST_*` | `V$ACTIVE_SESSION_HISTORY` |
 | Vista storica | — | `DBA_HIST_ACTIVE_SESS_HISTORY` |
-| Licenza richiesta | Diagnostic Pack | Diagnostic Pack |
+| Licenza richiesta | Diagnostic Pack [5] | Diagnostic Pack [5] |
 | Output tipico | Report HTML/text | Query ad hoc |
 
 La regola empirica: **AWR per capire cosa è cambiato, ASH per capire perché**.
@@ -274,6 +274,16 @@ Tre lezioni che porto con me.
 Quella sera sono uscito dall'ufficio alle 19:20. Quaranta minuti dopo la telefonata. Il giorno dopo il go-live è partito senza intoppi, e il lunedì il sistema girava regolarmente.
 
 Non sono un eroe. Ho solo usato gli strumenti giusti.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. Oracle Database PL/SQL Packages and Types Reference 19c — [`DBMS_WORKLOAD_REPOSITORY`](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_WORKLOAD_REPOSITORY.html)
+2. Oracle Database Reference 19c — [`V$ACTIVE_SESSION_HISTORY`](https://docs.oracle.com/en/database/oracle/oracle-database/19/refrn/V-ACTIVE_SESSION_HISTORY.html)
+3. Oracle Database PL/SQL Packages and Types Reference 19c — [`DBMS_XPLAN`](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_XPLAN.html)
+4. Oracle Database PL/SQL Packages and Types Reference 19c — [`DBMS_SHARED_POOL`](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_SHARED_POOL.html)
+5. Oracle Database Licensing Information User Manual 19c — [Licensing Information](https://docs.oracle.com/en/database/oracle/oracle-database/19/dblic/Licensing-Information.html)
 
 ------------------------------------------------------------------------
 
