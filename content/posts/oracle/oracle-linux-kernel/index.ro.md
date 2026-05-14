@@ -85,7 +85,7 @@ Huge Pages sunt pagini de 2 MB. Aceeași SGA de 64 GB devine 32.768 de pagini. T
 
 ### Cum se configurează
 
-Am calculat numărul de Huge Pages necesare:
+Am calculat numărul de Huge Pages necesare [1]:
 
 ``` bash
 # SGA = 64 GB = 65536 MB
@@ -126,7 +126,7 @@ Diferența e măsurabilă: `latch free` waits și `library cache` contention sca
 
 ## 🧱 Memorie partajată și semafoare
 
-Oracle folosește memoria partajată a kernel-ului pentru SGA. Dacă limitele sunt prea mici, instanța nu poate aloca memoria cerută — sau mai rău, fragmentează alocarea.
+Oracle folosește memoria partajată a kernel-ului pentru SGA. Dacă limitele sunt prea mici, instanța nu poate aloca memoria cerută — sau mai rău, fragmentează alocarea [2].
 
 ``` bash
 cat >> /etc/sysctl.d/99-oracle.conf << 'SYSCTL'
@@ -180,7 +180,7 @@ Acesta e parametrul cel mai insidios. Transparent Huge Pages (THP) e o funcție 
 
 Pentru Oracle e un dezastru. Procesul `khugepaged` lucrează în fundal pentru a compacta paginile, cauzând vârfuri de latență imprevizibile — acele "blocaje de câteva secunde" pe care clientul le raporta.
 
-Oracle spune explicit în documentație: **dezactivați THP**.
+Oracle spune explicit în documentație: **dezactivați THP** [3].
 
 ``` bash
 # Verificare stare curentă
@@ -208,7 +208,7 @@ Diferența e clară: micro-blocajele aleatorii dispar.
 
 ## 🔒 Limite de securitate
 
-Utilizatorul `oracle` are nevoie de limite ridicate pentru descriptori de fișiere deschise, procese și memorie blocabilă. Default-urile Linux sunt gândite pentru utilizatori interactivi, nu pentru software care gestionează sute de conexiuni simultane.
+Utilizatorul `oracle` are nevoie de limite ridicate pentru descriptori de fișiere deschise, procese și memorie blocabilă [4]. Default-urile Linux sunt gândite pentru utilizatori interactivi, nu pentru software care gestionează sute de conexiuni simultane.
 
 ``` bash
 cat >> /etc/security/limits.d/99-oracle.conf << 'LIMITS'
@@ -236,7 +236,7 @@ Setarea `memlock unlimited` e critică: fără ea, Oracle nu poate bloca SGA-ul 
 
 ## ⚡ Swappiness
 
-Valoarea implicită a `vm.swappiness` este 60. Asta înseamnă că Linux începe să facă swap când presiunea pe memorie e încă scăzută. Pentru un server de baze de date dedicat, asta e inacceptabil: vrei ca SGA-ul să rămână în RAM, mereu.
+Valoarea implicită a `vm.swappiness` este 60 [5]. Asta înseamnă că Linux începe să facă swap când presiunea pe memorie e încă scăzută. Pentru un server de baze de date dedicat, asta e inacceptabil: vrei ca SGA-ul să rămână în RAM, mereu.
 
 ``` bash
 echo "vm.swappiness = 1" >> /etc/sysctl.d/99-oracle.conf
@@ -302,6 +302,16 @@ Zece minute de configurare. Fără cost hardware. Fără licențe suplimentare.
 Doar că nimeni nu face asta, pentru că asistentul nu întreabă, documentația e îngropată într-o notă MOS, iar sistemul "funcționează și fără." Funcționează. Prost. Iar vina cade mereu pe Oracle, niciodată pe faptul că nimeni nu a pregătit terenul.
 
 O bază de date e la fel de bună ca sistemul de operare pe care rulează. Iar un sistem de operare lăsat la valorile implicite e un sistem de operare care lucrează împotriva ta.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. The Linux Kernel Documentation — [HugeTLB Pages](https://www.kernel.org/doc/html/latest/admin-guide/mm/hugetlbpage.html)
+2. Oracle Database Installation Guide for Linux 19c — [Configuring Kernel Parameters for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-kernel-parameters-for-linux.html)
+3. The Linux Kernel Documentation — [Transparent Hugepage Support](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html)
+4. Oracle Database Installation Guide for Linux 19c — [Configuring Users, Groups and Environments](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-users-groups-and-environments-for-oracle-grid-infrastructure-and-oracle-database.html)
+5. The Linux Kernel Documentation — [Documentation for /proc/sys/vm/ (`vm.swappiness`)](https://docs.kernel.org/admin-guide/sysctl/vm.html)
 
 ------------------------------------------------------------------------
 

@@ -85,7 +85,7 @@ Las Huge Pages son páginas de 2 MB. La misma SGA de 64 GB se convierte en 32.76
 
 ### Cómo configurarlas
 
-Calculé el número de Huge Pages necesarias:
+Calculé el número de Huge Pages necesarias [1]:
 
 ``` bash
 # SGA = 64 GB = 65536 MB
@@ -126,7 +126,7 @@ La diferencia es medible: los `latch free` waits y la `library cache` contention
 
 ## 🧱 Memoria compartida y semáforos
 
-Oracle usa la memoria compartida del kernel para la SGA. Si los límites son demasiado bajos, la instancia no puede asignar la memoria solicitada — o peor, fragmenta la asignación.
+Oracle usa la memoria compartida del kernel para la SGA. Si los límites son demasiado bajos, la instancia no puede asignar la memoria solicitada — o peor, fragmenta la asignación [2].
 
 ``` bash
 cat >> /etc/sysctl.d/99-oracle.conf << 'SYSCTL'
@@ -180,7 +180,7 @@ Este es el parámetro más insidioso. Las Transparent Huge Pages (THP) son una f
 
 Para Oracle es un desastre. El proceso `khugepaged` trabaja en segundo plano para compactar páginas, causando picos de latencia impredecibles — esos "bloqueos de unos segundos" que el cliente reportaba.
 
-Oracle lo dice explícitamente en la documentación: **deshabilitar THP**.
+Oracle lo dice explícitamente en la documentación: **deshabilitar THP** [3].
 
 ``` bash
 # Verificar estado actual
@@ -208,7 +208,7 @@ La diferencia es nítida: los micro-bloqueos aleatorios desaparecen.
 
 ## 🔒 Límites de seguridad
 
-El usuario `oracle` necesita límites elevados en descriptores de archivo abiertos, procesos y memoria bloqueable. Los defaults de Linux están pensados para usuarios interactivos, no para software que gestiona cientos de conexiones simultáneas.
+El usuario `oracle` necesita límites elevados en descriptores de archivo abiertos, procesos y memoria bloqueable [4]. Los defaults de Linux están pensados para usuarios interactivos, no para software que gestiona cientos de conexiones simultáneas.
 
 ``` bash
 cat >> /etc/security/limits.d/99-oracle.conf << 'LIMITS'
@@ -236,7 +236,7 @@ El `memlock unlimited` es fundamental: sin él, Oracle no puede bloquear la SGA 
 
 ## ⚡ Swappiness
 
-El valor por defecto de `vm.swappiness` es 60. Significa que Linux empieza a hacer swap cuando la presión sobre la memoria es aún baja. Para un servidor de base de datos dedicado, esto es inaceptable: quieres que la SGA permanezca en RAM, siempre.
+El valor por defecto de `vm.swappiness` es 60 [5]. Significa que Linux empieza a hacer swap cuando la presión sobre la memoria es aún baja. Para un servidor de base de datos dedicado, esto es inaceptable: quieres que la SGA permanezca en RAM, siempre.
 
 ``` bash
 echo "vm.swappiness = 1" >> /etc/sysctl.d/99-oracle.conf
@@ -302,6 +302,16 @@ Diez minutos de configuración. Sin coste de hardware. Sin licencias adicionales
 Solo que nadie lo hace, porque el asistente no lo pide, la documentación está enterrada en una nota MOS, y el sistema "funciona sin ello." Funciona. Mal. Y la culpa siempre recae en Oracle, nunca en que nadie preparó el terreno.
 
 Una base de datos es tan buena como el sistema operativo sobre el que corre. Y un sistema operativo dejado en sus valores por defecto es un sistema operativo que trabaja en tu contra.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. The Linux Kernel Documentation — [HugeTLB Pages](https://www.kernel.org/doc/html/latest/admin-guide/mm/hugetlbpage.html)
+2. Oracle Database Installation Guide for Linux 19c — [Configuring Kernel Parameters for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-kernel-parameters-for-linux.html)
+3. The Linux Kernel Documentation — [Transparent Hugepage Support](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html)
+4. Oracle Database Installation Guide for Linux 19c — [Configuring Users, Groups and Environments](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/configuring-users-groups-and-environments-for-oracle-grid-infrastructure-and-oracle-database.html)
+5. The Linux Kernel Documentation — [Documentation for /proc/sys/vm/ (`vm.swappiness`)](https://docs.kernel.org/admin-guide/sysctl/vm.html)
 
 ------------------------------------------------------------------------
 
