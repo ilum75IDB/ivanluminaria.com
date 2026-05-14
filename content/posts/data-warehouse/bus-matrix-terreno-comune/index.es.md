@@ -44,7 +44,7 @@ Lo primero útil que hicimos, antes de tocar una línea de código, fue una seri
 
 ## 🚌 El bus matrix, sin mitología
 
-Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} describe el bus matrix como una matriz bidimensional: en las filas los **procesos de negocio** (en nuestro caso emisión de pólizas, renovaciones, siniestros, recaudación de primas, campañas de marketing, suscripciones online…), en las columnas las **dimensiones conformadas** (cliente, póliza, intermediario, fecha, campaña, canal…). En las celdas, una X si ese proceso de negocio usa esa dimensión.
+Ralph {{< glossary term="kimball" >}}Kimball{{< /glossary >}} describe el bus matrix como una matriz bidimensional: en las filas los **procesos de negocio** (en nuestro caso emisión de pólizas, renovaciones, siniestros, recaudación de primas, campañas de marketing, suscripciones online…), en las columnas las **dimensiones conformadas** (cliente, póliza, intermediario, fecha, campaña, canal…). En las celdas, una X si ese proceso de negocio usa esa dimensión [1].
 
 La matriz por sí sola no hace nada. No genera código, no crea tablas, no resuelve conflictos. Sirve para una cosa: forzar a todos a mirar la misma hoja.
 
@@ -63,7 +63,7 @@ Seis filas, siete columnas. Leído así, la hoja dice algo simple e incómodo a 
 
 ## 🔗 Qué es una dimensión conformada
 
-Una {{< glossary term="conformed-dimension" >}}dimensión conformada{{< /glossary >}} es una dimensión con la misma estructura, la misma semántica y la misma clave a través de varios data marts. No quiere decir "una única tabla física compartida" — puede estar replicada, puede vivir en esquemas distintos — pero sí quiere decir que si el cliente `IT_C00217654` aparece en el data mart comercial y en el de marketing, **es el mismo cliente, con los mismos atributos de clasificación, y los números relativos a él se pueden sumar sin reservas**.
+Una {{< glossary term="conformed-dimension" >}}dimensión conformada{{< /glossary >}} es una dimensión con la misma estructura, la misma semántica y la misma clave a través de varios data marts [2]. No quiere decir "una única tabla física compartida" — puede estar replicada, puede vivir en esquemas distintos — pero sí quiere decir que si el cliente `IT_C00217654` aparece en el data mart comercial y en el de marketing, **es el mismo cliente, con los mismos atributos de clasificación, y los números relativos a él se pueden sumar sin reservas**.
 
 Conformar una dimensión significa acordar tres cosas:
 
@@ -113,7 +113,7 @@ CREATE INDEX ix_dim_customer_natural ON dim_conformed.dim_customer(customer_code
 CREATE INDEX ix_dim_customer_tax_id  ON dim_conformed.dim_customer(country_code, tax_id) WHERE tax_id IS NOT NULL;
 ```
 
-Unas 3,1 millones de filas para 1,8 millones de contratantes distintos en los cuatro países principales (la diferencia es el histórico de versiones en {{< glossary term="scd" >}}SCD Tipo 2{{< /glossary >}}).
+Unas 3,1 millones de filas para 1,8 millones de contratantes distintos en los cuatro países principales (la diferencia es el histórico de versiones en {{< glossary term="scd" >}}SCD Tipo 2{{< /glossary >}}) [3].
 
 **Capa 2 — Bridge entre claves antiguas y claves nuevas.** Los tres data marts existentes seguían funcionando con sus claves locales. Creamos una tabla de mapeo para cada uno:
 
@@ -216,6 +216,14 @@ Kimball escribió el bus matrix en los noventa con esta intención exacta: dar a
 El trabajo técnico — la `dim_customer`, las xref, las vistas — fue la parte fácil. La parte exigente fue llevar a tres departamentos a ponerse de acuerdo sobre qué significa "cliente". Y esa parte no la resolví yo: la resolvió el CFO con su peso político, el comité de gobierno con seis semanas de paciencia, y el DBA del cliente que tenía una memoria histórica impresionante de cada decisión tomada en años anteriores y por qué.
 
 Cuando hoy veo un proyecto de DWH que arranca sin un bus matrix dibujado y compartido, levanto la mano antes de empezar. No por hacer el listo — para recordarme que esa fase, la de alinear las definiciones, no se puede saltar. Si la saltas, la pagas después con intereses. Si la haces, el resto del proyecto se vuelve casi aburrido. Y es exactamente como debería ser.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. Kimball Group — [Enterprise Data Warehouse Bus Matrix](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/enterprise-data-warehouse-bus-matrix/)
+2. Kimball Group — [Conformed Dimension](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/conformed-dimension/)
+3. Kimball Group — [Type 2: Add New Row (Slowly Changing Dimensions)](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/type-2/)
 
 ------------------------------------------------------------------------
 
