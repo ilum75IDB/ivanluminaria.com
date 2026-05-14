@@ -98,9 +98,18 @@ The choice fell on **monthly interval partitioning** on the `data_movimento` col
 
 ## The implementation: CTAS, local indexes and zero downtime (almost)
 
-You cannot do `ALTER TABLE ... PARTITION BY` on an existing table with 2 billion rows. Not in Oracle 19c, at least not without Online Table Redefinition. And that option, on a table this size, has its own risks.
+You cannot do `ALTER TABLE ... PARTITION BY` on an existing table with 2 billion rows. Not in Oracle 19c, at least not without Online Table Redefinition [1]. And that option, on a table this size, has its own risks.
 
 I chose the {{< glossary term="ctas" >}}CTAS{{< /glossary >}} approach — Create Table As Select — with parallelism. Create the new partitioned table, copy the data, rename.
+
+> ⚠️ **Critical operational prerequisite**: the CTAS + rename approach described below assumes the source table is in **read-only** state during the copy. If the source keeps receiving `INSERT`/`UPDATE`/`DELETE` while the CTAS runs, **the new table will hold a T0 snapshot** (CTAS start), but the rename happens at T1: all DML in between is lost or left inconsistent. In the real case of this article there was a weekend maintenance window with the application off. If you can't stop writes, the alternatives are:
+>
+> - **`DBMS_REDEFINITION`** [2] — Oracle's official online redefinition framework; it handles delta automatically through a Materialized View Log
+> - **Materialized View Log + custom delta sync** before cutover
+> - **Exchange Partition** if the source is already partly partitioned
+> - **Logical replication** (GoldenGate or similar) with cutover onto the new schema
+>
+> Each alternative has different costs and risks: choose based on downtime constraints, licensing, and operational complexity.
 
 ### Step 1: create the partitioned table
 
@@ -328,6 +337,15 @@ Not every table needs partitioning. My rule of thumb:
 But the right time to implement it is before it becomes urgent. When the table already has 2 billion rows, the migration is a project in itself. When it has 50 million and is growing, it is an afternoon's work.
 
 My biggest mistake with partitioning? Not proposing it six months earlier, when all the signals were already there.
+
+------------------------------------------------------------------------
+
+## Official sources
+
+1. Oracle Database Administrator's Guide 19c — [Redefining Tables Online (DBMS_REDEFINITION)](https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-tables.html#GUID-DABDCED5-1DDD-4054-A09C-AF8BCDC9B8DB)
+2. Oracle Database PL/SQL Packages and Types Reference 19c — [DBMS_REDEFINITION package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_REDEFINITION.html)
+3. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-concepts.html)
+4. Oracle Database SQL Language Reference 19c — [CREATE TABLE ... PARTITION BY](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-TABLE.html)
 
 ------------------------------------------------------------------------
 
