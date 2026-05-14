@@ -34,7 +34,7 @@ Y ahí empezó.
 
 ## El diagnóstico en cinco minutos
 
-PostgreSQL lleva la cuenta de cuántas veces se ha usado cada índice. La vista se llama `pg_stat_user_indexes`. Marco no la había abierto nunca.
+PostgreSQL lleva la cuenta de cuántas veces se ha usado cada índice. La vista se llama `pg_stat_user_indexes` [1]. Marco no la había abierto nunca.
 
 ```sql
 SELECT
@@ -108,7 +108,7 @@ Para eso hacen falta otros tipos.
 
 ## GIN: el inverso del B-tree
 
-GIN viene de *Generalized Inverted Index*. Inverso, porque en lugar de indexar las filas por el valor de la columna, indexa cada elemento dentro de la columna y mantiene una lista de filas que lo contienen.
+GIN viene de *Generalized Inverted Index* [2]. Inverso, porque en lugar de indexar las filas por el valor de la columna, indexa cada elemento dentro de la columna y mantiene una lista de filas que lo contienen.
 
 ```sql
 CREATE INDEX idx_cittadini_servizi_attivi_gin
@@ -139,7 +139,7 @@ Marco celebró por lo bajini. Luego: "Si es tan potente, ¿por qué no usarlo si
 
 La otra consulta crítica era sobre las geometrías. El Ministerio hacía análisis territoriales: "encuéntrame todos los ciudadanos con residencia a 5 km del punto X, en la provincia de Y, activos". Una consulta así, con un B-tree espacial falso (porque alguien había puesto uno que sobre esa columna no se podía usar), iba en nested loop y tardaba medio minuto.
 
-GiST — *Generalized Search Tree* — es la familia de índices que gestiona datos con geometría, rangos, similitud. No ordena los valores de forma lineal, porque hay datos que no son ordenables linealmente (un punto en el plano no está "antes" o "después" de otro). En su lugar, indexa por *bounding boxes* jerárquicos.
+GiST — *Generalized Search Tree* — es la familia de índices que gestiona datos con geometría, rangos, similitud [3]. No ordena los valores de forma lineal, porque hay datos que no son ordenables linealmente (un punto en el plano no está "antes" o "después" de otro). En su lugar, indexa por *bounding boxes* jerárquicos.
 
 "Pero, ¿por qué no un B-tree compuesto sobre `(latitud, longitud)`?"
 
@@ -168,7 +168,7 @@ Quedaba una última cosa antes de volver a la pregunta inicial (qué índices ti
 
 "Entonces cada índice contiene un 65% de filas que no se buscan nunca."
 
-"Exacto. Espacio desperdiciado y trabajo de VACUUM también. Solución: índice parcial."
+"Exacto. Espacio desperdiciado y trabajo de VACUUM también. Solución: índice parcial [4]."
 
 ```sql
 CREATE INDEX idx_cittadini_servizi_attivi_gin
@@ -201,7 +201,7 @@ Resultado neto:
 
 Marco miró la tabla, después a mí. "O sea, hemos mejorado tanto la lectura como la escritura, simplemente quitando cosas."
 
-"Y poniendo las tres correctas en el sitio correcto. Pero sí, sobre todo quitando. Cada índice es un coste. En cada DML. Para siempre."
+"Y poniendo las tres correctas en el sitio correcto. Pero sí, sobre todo quitando. Cada índice es un coste. En cada DML. Para siempre" [5].
 
 ## La frase que le repetí tres veces
 
@@ -212,6 +212,16 @@ Aquel día le dije lo mismo de tres formas distintas, porque quería que se la l
 Marco lo escribió en su cuaderno. Años después se convirtió en el senior de otro proyecto. Me llegó un mensaje un día: *"Me ha tocado una tabla con veintidós índices. Ocho a cero. Hice la limpieza. Pensé en ti."*
 
 Esa es la mejor cosa que un junior te puede decir.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. PostgreSQL Documentation — [Monitoring Database Activity (`pg_stat_user_indexes`)](https://www.postgresql.org/docs/current/monitoring-stats.html)
+2. PostgreSQL Documentation — [GIN Indexes](https://www.postgresql.org/docs/current/gin.html)
+3. PostgreSQL Documentation — [GiST Indexes](https://www.postgresql.org/docs/current/gist.html)
+4. PostgreSQL Documentation — [Partial Indexes](https://www.postgresql.org/docs/current/indexes-partial.html)
+5. PostgreSQL Documentation — [`CREATE INDEX`](https://www.postgresql.org/docs/current/sql-createindex.html)
 
 ------------------------------------------------------------------------
 

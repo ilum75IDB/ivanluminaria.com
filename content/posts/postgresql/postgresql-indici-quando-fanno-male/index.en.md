@@ -34,7 +34,7 @@ And that's where it began.
 
 ## The five-minute diagnosis
 
-PostgreSQL keeps track of how many times each index has actually been used. The view is called `pg_stat_user_indexes`. Marco had never opened it.
+PostgreSQL keeps track of how many times each index has actually been used. The view is called `pg_stat_user_indexes` [1]. Marco had never opened it.
 
 ```sql
 SELECT
@@ -108,7 +108,7 @@ For those you need other types.
 
 ## GIN: the inverse of B-tree
 
-GIN stands for *Generalized Inverted Index*. Inverse, because instead of indexing rows by the column's value, it indexes every element inside the column and keeps a list of rows that contain it.
+GIN stands for *Generalized Inverted Index* [2]. Inverse, because instead of indexing rows by the column's value, it indexes every element inside the column and keeps a list of rows that contain it.
 
 ```sql
 CREATE INDEX idx_cittadini_servizi_attivi_gin
@@ -139,7 +139,7 @@ Marco fist-pumped quietly. Then: "But if it's that powerful, why not use it alwa
 
 The other critical query was on the geometries. The Ministry ran territorial analyses: "find me all citizens with a residence within 5 km of point X, in the province of Y, active". A query like that, with a fake spatial B-tree (because someone had put one there that wasn't usable on that column), ran as a nested loop and took half a minute.
 
-GiST — *Generalized Search Tree* — is the index family that handles data with geometry, ranges, similarity. It doesn't sort values linearly, because some data isn't linearly sortable (a point on a plane doesn't come "before" or "after" another). It indexes by hierarchical *bounding boxes* instead.
+GiST — *Generalized Search Tree* — is the index family that handles data with geometry, ranges, similarity [3]. It doesn't sort values linearly, because some data isn't linearly sortable (a point on a plane doesn't come "before" or "after" another). It indexes by hierarchical *bounding boxes* instead.
 
 "But wait, why not a composite B-tree on `(latitude, longitude)`?"
 
@@ -168,7 +168,7 @@ There was one last thing before getting back to the original question (which ind
 
 "So every index contains 65% of rows that are never searched."
 
-"Exactly. Wasted space, wasted VACUUM work. Solution: partial index."
+"Exactly. Wasted space, wasted VACUUM work. Solution: partial index [4]."
 
 ```sql
 CREATE INDEX idx_cittadini_servizi_attivi_gin
@@ -201,7 +201,7 @@ Net result:
 
 Marco looked at the table, then at me. "So we improved both reads and writes, simply by removing things."
 
-"And by putting the right three in the right place. But yes, mostly removing. Every index is a cost. On every DML. Forever."
+"And by putting the right three in the right place. But yes, mostly removing. Every index is a cost. On every DML. Forever" [5].
 
 ## The line I told him three times
 
@@ -212,6 +212,16 @@ That day I told him the same thing in three different ways, because I wanted him
 Marco wrote it in his notebook. Years later he became the senior on another project. A message reached me one day: *"I've got a table with twenty-two indexes here. Eight at zero. Did the cleanup. Thought of you."*
 
 That's the best thing a junior can ever say to you.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. PostgreSQL Documentation — [Monitoring Database Activity (`pg_stat_user_indexes`)](https://www.postgresql.org/docs/current/monitoring-stats.html)
+2. PostgreSQL Documentation — [GIN Indexes](https://www.postgresql.org/docs/current/gin.html)
+3. PostgreSQL Documentation — [GiST Indexes](https://www.postgresql.org/docs/current/gist.html)
+4. PostgreSQL Documentation — [Partial Indexes](https://www.postgresql.org/docs/current/indexes-partial.html)
+5. PostgreSQL Documentation — [`CREATE INDEX`](https://www.postgresql.org/docs/current/sql-createindex.html)
 
 ------------------------------------------------------------------------
 

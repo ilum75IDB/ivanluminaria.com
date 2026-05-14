@@ -55,7 +55,7 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 | 10 | enum-postgresql-paga-o-pesa | ✅ done (5 note) | (commit corrente) |
 | 11 | like-optimization-postgresql | ✅ done (3 note) | bbe7808 |
 | 12 | pg-stat-statements | ✅ done (4 note) | 84bce01 |
-| 13 | postgresql-indici-quando-fanno-male | da fare | — |
+| 13 | postgresql-indici-quando-fanno-male | ✅ done (5 note) | (commit corrente) |
 | 14 | postgresql_roles_and_users | da fare | — |
 | 15 | vacuum-autovacuum-postgresql | ✅ done (6 note) | 5b8fb68 |
 
