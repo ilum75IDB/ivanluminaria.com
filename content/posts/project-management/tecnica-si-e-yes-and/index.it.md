@@ -26,7 +26,7 @@ Dall'altra, il lead developer. Giovane, brillante, con le idee chiare. Voleva ri
 
 Due posizioni legittime. Due prospettive reali. Due persone intelligenti.
 
-Ma la conversazione aveva preso una piega familiare — e pericolosa.
+La conversazione, però, aveva preso una piega familiare — e pericolosa.
 
 "No, non ha senso portare tutto su cloud senza ripensare l'architettura."\
 "No, riscrivere tutto è un rischio enorme e non abbiamo il budget."

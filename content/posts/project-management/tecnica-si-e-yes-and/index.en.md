@@ -26,7 +26,7 @@ On the other, the lead developer. Young, sharp, with clear ideas. He wanted to r
 
 Two legitimate positions. Two real perspectives. Two smart people.
 
-But the conversation had taken a familiar — and dangerous — turn.
+The conversation, however, had taken a familiar — and dangerous — turn.
 
 "No, it makes no sense to move everything to cloud without rethinking the architecture."\
 "No, rewriting everything is a huge risk and we don't have the budget."
