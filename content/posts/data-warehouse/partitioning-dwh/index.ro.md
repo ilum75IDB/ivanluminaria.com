@@ -83,7 +83,7 @@ Predicatul pe `data_vendita` ar fi trebuit să folosească indexul. Și chiar o 
 
 Patruzeci de gigabytes de I/O pentru un query trimestrial. Într-un mediu unde buffer pool-ul era dimensionat la 16 GB, asta însemna citirea de mai mult de două ori a întregului cache de pe disc. Douăsprezece minute.
 
-## 🏗️ Soluția: range partitioning lunar
+## 🏗️ Soluția: range partitioning lunar [1]
 
 Partiționalismul range pe dată este alegerea naturală pentru o fact table într-un data warehouse. Datele intră în ordine cronologică, query-urile filtrează pe perioadă, datele vechi devin reci și cele noi sunt fierbinți. Data este cheia de partiționare perfectă.
 
@@ -111,7 +111,7 @@ PARTITION BY RANGE (data_vendita) (
 );
 ```
 
-Cu un {{< glossary term="local-index" >}}index local{{< /glossary >}} pe dată:
+Cu un {{< glossary term="local-index" >}}index local{{< /glossary >}} pe dată [2]:
 
 ```sql
 CREATE INDEX idx_vendite_data_local ON fact_vendite_part (data_vendita) LOCAL;
@@ -161,7 +161,7 @@ ALTER TABLE fact_vendite_part RENAME TO fact_vendite;
 
 Tabela originală am păstrat-o o săptămână ca plasă de siguranță, apoi am șters-o.
 
-## ⚡ {{< glossary term="partition-pruning" >}}Partition pruning{{< /glossary >}} în acțiune
+## ⚡ {{< glossary term="partition-pruning" >}}Partition pruning{{< /glossary >}} în acțiune [3]
 
 Cu partiționarea implementată, aceeași query trimestrială avea un plan de execuție complet diferit:
 
@@ -200,7 +200,7 @@ Rezultatul? De la 12 minute la 40 de secunde.
 
 Nu pentru că hardware-ul era mai rapid, nu pentru că rescrisesem query-urile. Doar pentru că baza de date știa acum unde *nu* trebuie să caute.
 
-## 🔄 Exchange partition: încărcarea care nu costă nimic
+## 🔄 Exchange partition: încărcarea care nu costă nimic [4]
 
 Într-un data warehouse, datele sosesc cu o cadență regulată — în cazul nostru, un {{< glossary term="etl" >}}ETL{{< /glossary >}} nocturn care încărca vânzările zilei. Provocarea clasică a partiționării este: cum încarci datele noi în partiția corectă fără să impactezi query-urile?
 
@@ -259,6 +259,15 @@ Partiționarea nu este o baghetă magică. Nu înlocuiește indexurile — dacă
 Dar pentru o fact table într-un data warehouse — unde datele sunt cronologice, query-urile filtrează pe perioadă, și volumele cresc în fiecare zi — partiționarea range pe dată nu este o opțiune. Este o cerință arhitecturală.
 
 Colegul cu raportul de 12 minute nu avea o problemă de hardware sau de query-uri prost scrise. Avea o tabelă care crescuse dincolo de punctul unde lipsa structurii fizice devine un blocaj. Partiționarea a pus lucrurile la locul lor: 40 de secunde, și niciun rând citit inutil.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-concepts.html)
+2. Oracle Database VLDB and Partitioning Guide 19c — [Partitioning of Tables and Indexes](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-create-tables-indexes.html)
+3. Oracle Database VLDB and Partitioning Guide 19c — [Partition Pruning](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/partition-pruning.html)
+4. Oracle Database VLDB and Partitioning Guide 19c — [Partition Maintenance Operations (Exchange Partition)](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/maintenance-partition-tables-indexes.html)
 
 ------------------------------------------------------------------------
 
