@@ -14,7 +14,7 @@ Three levels. Top Group, Group, Client. It looks like a trivial structure — th
 
 Then you discover that not all clients belong to a group. And that not all groups belong to a top group. And that the aggregation reports the business asks for — revenue by top group, client count by group, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} from the top to the leaf — produce incorrect or incomplete results because the hierarchy has holes.
 
-In technical jargon it is called a **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: a hierarchy where not all branches reach the same depth. In the real world it is called "the thing nobody notices until they open the report and the numbers do not add up."
+In technical jargon it is called a **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: a hierarchy where not all branches reach the same depth [1]. In the real world it is called "the thing nobody notices until they open the report and the numbers do not add up."
 
 ---
 
@@ -124,7 +124,7 @@ The root issue is that COALESCE is a patch applied at the presentation layer. It
 
 ## The solution: self-parenting
 
-The principle is simple: **whoever has no parent becomes their own parent**. This technique is called {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}.
+The principle is simple: **whoever has no parent becomes their own parent**. This technique is called {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}, and it is one of the standard ways to treat a ragged hierarchy as a **fixed-depth hierarchy** [2].
 
 A Client without a Group? That client becomes its own Group. A Group without a Top Group? That group becomes its own Top Group. This way the hierarchy is always complete at three levels, with no holes, no NULLs.
 
@@ -373,6 +373,13 @@ A report should do GROUP BY and JOIN. If it also has to decide how to handle mis
 Self-parenting is not elegant. It is not sophisticated. It is a solution that a freshly graduated computer scientist might find ugly. But it works, it is maintainable, and it transforms an issue that infests every single report into an issue that is solved once, in one place, and never comes back.
 
 Sometimes the best solution is the simplest one. This is one of those times.
+
+---
+
+## Official Sources
+
+1. Kimball Group — [Ragged/Variable Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/ragged-variable-depth-hierarchy/)
+2. Kimball Group — [Fixed Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/fixed-depth-hierarchy/)
 
 ---
 

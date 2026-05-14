@@ -14,7 +14,7 @@ Tres niveles. Top Group, Group, Client. Parece una estructura trivial — el tip
 
 Luego descubres que no todos los clientes pertenecen a un grupo. Y que no todos los grupos pertenecen a un top group. Y que los reportes de agregación que el negocio pide — facturación por top group, número de clientes por grupo, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} desde la cima hasta la hoja — producen resultados errados o incompletos porque la jerarquía tiene huecos.
 
-En jerga técnica se llama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una jerarquía en la que no todas las ramas alcanzan la misma profundidad. En el mundo real se llama "la cosa que nadie nota hasta que abre el reporte y los números no cuadran."
+En jerga técnica se llama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una jerarquía en la que no todas las ramas alcanzan la misma profundidad [1]. En el mundo real se llama "la cosa que nadie nota hasta que abre el reporte y los números no cuadran."
 
 ---
 
@@ -124,7 +124,7 @@ El problema de fondo es que la COALESCE es un parche aplicado en la capa de pres
 
 ## La solución: self-parenting
 
-El principio es simple: **quien no tiene padre se convierte en padre de sí mismo**. Esta técnica se llama {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}.
+El principio es simple: **quien no tiene padre se convierte en padre de sí mismo**. Esta técnica se llama {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}, y es una de las formas estándar de tratar una ragged hierarchy como una **fixed-depth hierarchy** [2].
 
 ¿Un Client sin Group? Ese cliente se convierte en su propio Group. ¿Un Group sin Top Group? Ese grupo se convierte en su propio Top Group. De esta forma la jerarquía siempre está completa a tres niveles, sin huecos, sin NULL.
 
@@ -373,6 +373,13 @@ Un reporte debería hacer GROUP BY y JOIN. Si además tiene que decidir cómo ge
 El self-parenting no es elegante. No es sofisticado. Es una solución que un informático recién graduado podría encontrar fea. Pero funciona, es mantenible, y transforma un incidente que infesta cada reporte individual en un incidente que se resuelve una vez, en un solo punto, y no vuelve más.
 
 A veces la mejor solución es la más simple. Esta es una de esas veces.
+
+---
+
+## Fuentes oficiales
+
+1. Kimball Group — [Ragged/Variable Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/ragged-variable-depth-hierarchy/)
+2. Kimball Group — [Fixed Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/fixed-depth-hierarchy/)
 
 ---
 

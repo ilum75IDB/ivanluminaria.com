@@ -14,7 +14,7 @@ Tre livelli. Top Group, Group, Client. Sembra una struttura banale — il tipo d
 
 Poi scopri che non tutti i clienti hanno un gruppo. E che non tutti i gruppi hanno un top group. E che i report di aggregazione che il business ti chiede — fatturato per top group, numero clienti per gruppo, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} dal vertice alla foglia — producono risultati errati o incompleti perché la gerarchia ha dei buchi.
 
-In gergo tecnico si chiama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una gerarchia in cui non tutti i rami raggiungono la stessa profondità. Nel mondo reale si chiama "la cosa che nessuno nota finché non apre il report e i numeri non tornano."
+In gergo tecnico si chiama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una gerarchia in cui non tutti i rami raggiungono la stessa profondità [1]. Nel mondo reale si chiama "la cosa che nessuno nota finché non apre il report e i numeri non tornano."
 
 ---
 
@@ -124,7 +124,7 @@ Il problema di fondo è che la COALESCE è un cerotto applicato nel layer di pre
 
 ## La soluzione: self-parenting
 
-Il principio è semplice: **chi non ha un padre diventa padre di sé stesso**. Questa tecnica si chiama {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}.
+Il principio è semplice: **chi non ha un padre diventa padre di sé stesso**. Questa tecnica si chiama {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}, ed è uno dei modi standard di trattare una ragged hierarchy come una **fixed-depth hierarchy** [2].
 
 Un Client senza Group? Quel client diventa il proprio Group. Un Group senza Top Group? Quel group diventa il proprio Top Group. In questo modo la gerarchia è sempre completa a tre livelli, senza buchi, senza NULL.
 
@@ -373,6 +373,13 @@ Un report dovrebbe fare GROUP BY e JOIN. Se deve anche decidere come gestire i l
 Il self-parenting non è elegante. Non è sofisticato. È una soluzione che un informatico appena laureato potrebbe trovare brutta. Ma funziona, è manutenibile, e trasforma una criticità che infesta ogni singolo report in una criticità che si risolve una volta sola, in un punto solo, e non torna più.
 
 A volte la soluzione migliore è la più semplice. Questa è una di quelle volte.
+
+---
+
+## Fonti ufficiali
+
+1. Kimball Group — [Ragged/Variable Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/ragged-variable-depth-hierarchy/)
+2. Kimball Group — [Fixed Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/fixed-depth-hierarchy/)
 
 ---
 
