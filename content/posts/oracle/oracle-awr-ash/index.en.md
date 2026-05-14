@@ -14,7 +14,7 @@ Friday, 6:40 PM. I already had my jacket on, ready to leave. The phone buzzes. I
 
 "Ivan, we have a problem. The system is crawling. The go-live is tomorrow morning."
 
-It's not the first time I've received a call like that. But the tone was different. This wasn't the usual vague complaint about slowness. This was panic.
+It's not the first time I've received a call like that. Only this time the tone was different. This wasn't the usual vague complaint about slowness. This was panic.
 
 I reconnect to the VPN, open a session on the client's Oracle 19c database. First thing I do is a quick check:
 
@@ -63,7 +63,7 @@ WHERE  begin_interval_time > SYSDATE - 1/6
 ORDER BY snap_id DESC;
 ```
 
-I had a snapshot from 6:00 PM (before the visible problem) and the one I had just created at 6:45 PM. I generated the AWR report:
+I had a snapshot from 6:00 PM (before the visible issue) and the one I had just created at 6:45 PM. I generated the AWR report:
 
 ``` sql
 SELECT output
@@ -139,7 +139,7 @@ FROM   TABLE(DBMS_XPLAN.display_awr(
        ));
 ```
 
-The result made the problem immediately obvious:
+The result made the issue immediately obvious:
 
 ```
 ---------------------------------------------------------------------------
