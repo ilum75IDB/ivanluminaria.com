@@ -10,7 +10,7 @@ categories: ["postgresql"]
 image: "postgresql-indici-quando-fanno-male.cover.jpg"
 ---
 
-L'altro giorno un collega mi scrive: "Ho una tabella con dodici indici, è lentissima. Non capisco." Gli ho risposto due righe, ma mentre rileggevo mi è venuto in mente Marco. Era un po' di anni fa, lavoravo nella banca dati centrale di un Ministero — non importa quale, il pattern lo trovi ovunque. E Marco era il junior che mi avevano assegnato.
+L'altro giorno un collega mi scrive: "Ho una tabella con dodici indici, è lentissima. Non capisco." Gli ho risposto due righe, e mentre rileggevo mi è venuto in mente Marco. Era un po' di anni fa, lavoravo nella banca dati centrale di un Ministero — non importa quale, il pattern lo trovi ovunque. E Marco era il junior che mi avevano assegnato.
 
 Aveva due anni e mezzo di PostgreSQL alle spalle, sapeva scrivere query decenti, conosceva `EXPLAIN`. Ma soprattutto aveva una qualità che in quel mestiere ti porta lontano: chiedeva. Non per pigrizia — per sapere. Riformulava i concetti a voce per fissarli, prendeva appunti, anticipava la domanda successiva con cose tipo "aspetta, allora se faccio X mi aspetto Y, giusto?". Il junior che ogni senior vorrebbe avere accanto quando si apre una tabella che fa paura.
 
@@ -131,13 +131,13 @@ Marco ha esultato sottovoce. Poi: "Ma se è così potente, perché non lo si usa
 
 "Perché su una scrittura ti costa caro. Ogni `INSERT` o `UPDATE` su quella colonna deve aggiornare tutti i posting in cui quel valore compare. È il prezzo del trovare velocemente — e le tabelle ad alto churn lo pagano caro."
 
-"Quindi GIN sì, ma se la tabella è prevalentemente in lettura."
+"Quindi GIN sì, solo se la tabella è prevalentemente in lettura."
 
 "Esatto. La nostra `cittadini_servizi` riceveva caricamenti notturni e poi tutto il giorno solo letture. Caso ideale."
 
 ## GiST: per quando i dati hanno una forma
 
-L'altra query critica era sulle geometrie. Il Ministero faceva analisi territoriali: "trovami tutti i cittadini con residenza entro 5 km dal punto X, in provincia di Y, attivi". Una query del genere, con un B-tree spaziale finto (perché ne avevano messo uno, ma su quella colonna non era utilizzabile), girava in nested loop e ci metteva mezzo minuto.
+L'altra query critica era sulle geometrie. Il Ministero faceva analisi territoriali: "trovami tutti i cittadini con residenza entro 5 km dal punto X, in provincia di Y, attivi". Una query del genere, con un B-tree spaziale finto (perché ne avevano messo uno che su quella colonna non era utilizzabile), girava in nested loop e ci metteva mezzo minuto.
 
 GiST — *Generalized Search Tree* — è la famiglia di indici che gestisce dati con geometria, range, similarità. Non ordina i valori in modo lineare, perché alcuni dati non sono ordinabili linearmente (un punto sul piano non sta "prima" o "dopo" un altro). Indicizza invece per *bounding box* gerarchici.
 
@@ -145,7 +145,7 @@ GiST — *Generalized Search Tree* — è la famiglia di indici che gestisce dat
 
 Bella domanda. Marco aveva colto il punto giusto.
 
-"Perché il B-tree composito ordina prima per latitudine e poi per longitudine. Se ti serve trovare punti dentro un riquadro `(lat1, lon1, lat2, lon2)`, l'indice riesce a usare il vincolo sulla latitudine — ma poi su ogni riga che passa il filtro lat deve verificare anche lon. Su 80 milioni di righe diventa una mezza scansione."
+"Perché il B-tree composito ordina prima per latitudine e poi per longitudine. Se ti serve trovare punti dentro un riquadro `(lat1, lon1, lat2, lon2)`, l'indice riesce a usare il vincolo sulla latitudine — poi, su ogni riga che passa il filtro lat, deve verificare anche lon. Su 80 milioni di righe diventa una mezza scansione."
 
 "Mentre GiST?"
 
@@ -160,7 +160,7 @@ Stessa query "trova tutti entro 5 km da X", da 28 secondi a 380 ms.
 
 Marco prendeva appunti veloci. "Quindi: B-tree per ordinamento ed equivalenza, GIN per containment di array e jsonb, GiST per geometria e range. C'è altro?"
 
-"Per il momento basta. Esistono BRIN, SP-GiST, hash, ma sono casi più di nicchia. Quando ti serviranno te li ricorderai."
+"Per il momento basta. Esistono BRIN, SP-GiST, hash, anche se sono casi più di nicchia. Quando ti serviranno te li ricorderai."
 
 ## Bonus: gli indici parziali
 
@@ -180,7 +180,7 @@ Quel `WHERE` lì cambia tutto. L'indice contiene solo le righe attive. Sui dati 
 
 "E le query con `attivo = false`?"
 
-"Vanno in seq scan, ma succede una volta a settimana per i report dell'archivio. Lì il seq scan va benissimo."
+"Vanno in seq scan, e succede una volta a settimana per i report dell'archivio. Lì il seq scan va benissimo."
 
 ## La pulizia
 
