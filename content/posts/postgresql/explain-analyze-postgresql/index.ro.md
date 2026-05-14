@@ -145,9 +145,16 @@ Dar nu m-am oprit aici. Daca problema a aparut o data, va aparea din nou.
 
 ## 📊 default_statistics_target: cand 100 nu e suficient
 
-PostgreSQL colecteaza 100 de valori de esantion pe coloana implicit. Pentru tabele mici sau cu distributie uniforma, e suficient. Pentru tabele mari cu distributie neuniforma, 100 de esantioane pot da o reprezentare distorsionata.
+`default_statistics_target` controleaza **granularitatea statisticilor** pe care ANALYZE le construieste pentru fiecare coloana, nu numarul de randuri esantionate. Default-ul este 100 [1], si inseamna doua lucruri:
 
-In cazul tabelei `orders`, coloana `customer_id` avea o distributie foarte asimetrica: 5% din clienti generau 60% din comenzi. Cu 100 de esantioane, optimizatorul nu capta aceasta asimetrie.
+- **lista MCV** (Most Common Values) urmareste pana la 100 dintre cele mai frecvente valori
+- **histograma** distributiei are pana la 100 de bucket-uri
+
+Numarul de randuri efectiv esantionate este in schimb **300 × target** (cu default-ul, ~30.000 de randuri). Cu cat target-ul e mai mare, cu atat e mai detaliata reprezentarea distributiei — si cu atat mai mare costul ANALYZE.
+
+Pentru tabele mici sau cu distributie uniforma, 100 e suficient. Pentru tabele mari cu distributie **asimetrica**, 100 de valori MCV pot sa nu fie suficiente pentru a capta asimetria.
+
+In cazul tabelei `orders`, coloana `customer_id` avea o distributie foarte asimetrica: 5% din clienti generau 60% din comenzi. Cu un target de 100, optimizatorul avea in MCV doar primii 100 customer_id — "long tail"-ul cadea in histograma cu estimari imprecise.
 
 Solutia:
 
@@ -158,9 +165,9 @@ ALTER COLUMN customer_id SET STATISTICS 500;
 ANALYZE orders;
 ```
 
-Dupa ce am crescut {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}}-ul la 500, estimarile de cardinalitate ale optimizatorului pentru join-urile cu `customers` au devenit mult mai precise.
+Dupa ce am crescut {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}}-ul la 500 (MCV pana la 500 valori, histograma pana la 500 bucket-uri, ~150.000 de randuri esantionate), estimarile de cardinalitate ale optimizatorului pentru join-urile cu `customers` au devenit mult mai precise.
 
-Regula: daca o coloana e folosita frecvent in WHERE sau JOIN si are distributie neuniforma, creste target-ul. 500 e un bun punct de plecare. Poti ajunge la 1000, dar peste aceasta valoare rareori ajuta si incetineste ANALYZE-ul insusi.
+Regula: daca o coloana e folosita frecvent in `WHERE` sau `JOIN` si are distributie neuniforma, creste target-ul cu `ALTER TABLE ... ALTER COLUMN ... SET STATISTICS` [2]. 500 e un bun punct de plecare. Poti ajunge la 1000, peste aceasta valoare rareori ajuta si incetineste ANALYZE-ul insusi.
 
 ------------------------------------------------------------------------
 
@@ -214,6 +221,15 @@ Am vazut DBA cu ani de experienta lansand EXPLAIN ANALYZE, uitandu-se la timpul 
 Planul de executie iti spune de la ce. Fiecare nod e un organ. Randurile estimate fata de cele reale sunt valorile de laborator. Buffer-urile sunt radiografiile. Si ANALYZE-ul e antibioticul care rezolva 70% din cazuri.
 
 Dar pentru acel 30% ramas, trebuie sa citesti. Rand cu rand. Nod cu nod. Nu exista scurtatura.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. PostgreSQL Documentation — [`default_statistics_target`](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-DEFAULT-STATISTICS-TARGET) si [Statistics Used by the Planner](https://www.postgresql.org/docs/current/planner-stats.html)
+2. PostgreSQL Documentation — [`ALTER TABLE ... ALTER COLUMN ... SET STATISTICS`](https://www.postgresql.org/docs/current/sql-altertable.html)
+3. PostgreSQL Documentation — [`EXPLAIN`](https://www.postgresql.org/docs/current/sql-explain.html) si [Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
+4. PostgreSQL Documentation — [`pg_stats` view](https://www.postgresql.org/docs/current/view-pg-stats.html)
 
 ------------------------------------------------------------------------
 
