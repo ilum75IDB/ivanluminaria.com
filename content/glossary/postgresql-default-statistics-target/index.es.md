@@ -1,22 +1,24 @@
 ---
 title: "default_statistics_target"
-description: "El parametro PostgreSQL que controla cuantas muestras recopila ANALYZE para estimar la distribucion de datos en cada columna."
+description: "El parametro PostgreSQL que controla la granularidad de las estadisticas recogidas por ANALYZE (tamano de MCV e histograma)."
 translationKey: "glossary_postgresql_default_statistics_target"
 aka: "default_statistics_target (PostgreSQL)"
 articles:
   - "/posts/postgresql/explain-analyze-postgresql"
 ---
 
-**default_statistics_target** es el parametro PostgreSQL que define el numero de muestras recopiladas por el comando `ANALYZE` para construir las estadisticas de cada columna. El valor por defecto es 100.
+**default_statistics_target** es el parametro PostgreSQL que controla la **granularidad de las estadisticas** que `ANALYZE` construye para cada columna. El valor por defecto es 100.
 
 ## Como funciona
 
-PostgreSQL muestrea un cierto numero de valores por cada columna y los usa para construir dos estructuras:
+ANALYZE construye para cada columna dos estructuras estadisticas usadas por el optimizer:
 
 - **Most common values (MCV)**: la lista de los valores mas frecuentes, con sus respectivas frecuencias
 - **Histograma**: la distribucion de los valores restantes, dividida en buckets de igual poblacion
 
-El parametro `default_statistics_target` determina cuantos elementos tendran estas estructuras. Con el valor 100 (por defecto), el histograma tendra 100 buckets y la lista MCV contendra hasta 100 valores.
+`default_statistics_target` determina cuantos elementos pueden tener estas estructuras. Con valor `100`: hasta 100 valores en la lista MCV y hasta 100 buckets en el histograma.
+
+**El numero de filas muestreadas es algo separado y depende del target**: vale aproximadamente `300 × default_statistics_target`. Con el default de 100, ANALYZE lee ~30.000 filas por columna; con un target de 500, ~150.000. Asi que subir el target aumenta tanto la granularidad de las estadisticas **como** el costo de ANALYZE.
 
 ## Cuando aumentarlo
 

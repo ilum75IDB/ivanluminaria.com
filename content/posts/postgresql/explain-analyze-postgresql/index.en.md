@@ -145,9 +145,16 @@ But I didn't stop there. If the problem happened once, it will happen again.
 
 ## 📊 default_statistics_target: when 100 is not enough
 
-PostgreSQL collects 100 sample values per column by default. For small tables or uniform distributions, that's fine. For large tables with skewed distributions, 100 samples can give a distorted picture.
+`default_statistics_target` controls the **granularity of the statistics** that ANALYZE builds for each column — not the number of sampled rows. The default is 100 [1], and it means two things:
 
-In the `orders` table case, the `customer_id` column had a very skewed distribution: 5% of customers generated 60% of orders. With 100 samples, the optimizer couldn't capture this asymmetry.
+- the **MCV list** (Most Common Values) tracks up to 100 most frequent values
+- the **histogram** of the distribution has up to 100 buckets
+
+The number of rows actually sampled is instead **300 × target** (with the default, ~30,000 rows). The higher the target, the finer-grained the distribution representation — and the higher the cost of ANALYZE.
+
+For small tables or uniform distributions, 100 is enough. For large tables with **skewed** distributions, 100 MCV values may not be enough to capture the asymmetry.
+
+In the `orders` table case, the `customer_id` column had a very skewed distribution: 5% of customers generated 60% of orders. With a target of 100, the optimizer had only the top 100 customer_ids in the MCV list — the "long tail" fell into the histogram with imprecise estimates.
 
 The solution:
 
@@ -158,9 +165,9 @@ ALTER COLUMN customer_id SET STATISTICS 500;
 ANALYZE orders;
 ```
 
-After raising the {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}} to 500, the optimizer's cardinality estimates for joins with `customers` became much more accurate.
+After raising the {{< glossary term="postgresql-default-statistics-target" >}}target{{< /glossary >}} to 500 (MCV up to 500 values, histogram up to 500 buckets, ~150,000 rows sampled), the optimizer's cardinality estimates for joins with `customers` became much more accurate.
 
-Rule: if a column is frequently used in WHERE or JOIN clauses and has non-uniform distribution, raise the target. 500 is a good starting point. You can go up to 1000, but beyond that it rarely helps and slows down ANALYZE itself.
+Rule: if a column is frequently used in `WHERE` or `JOIN` clauses and has non-uniform distribution, raise the target with `ALTER TABLE ... ALTER COLUMN ... SET STATISTICS` [2]. 500 is a good starting point. You can go up to 1000, beyond that it rarely helps and slows down ANALYZE itself.
 
 ------------------------------------------------------------------------
 
@@ -214,6 +221,15 @@ I've seen DBAs with years of experience run EXPLAIN ANALYZE, look at the total t
 The execution plan tells you what's causing it. Each node is an organ. Estimated rows versus actual rows are the lab results. Buffers are the X-rays. And ANALYZE is the antibiotic that solves 70% of cases.
 
 But for that remaining 30%, you need to read. Line by line. Node by node. There's no shortcut.
+
+------------------------------------------------------------------------
+
+## Official sources
+
+1. PostgreSQL Documentation — [`default_statistics_target`](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-DEFAULT-STATISTICS-TARGET) and [Statistics Used by the Planner](https://www.postgresql.org/docs/current/planner-stats.html)
+2. PostgreSQL Documentation — [`ALTER TABLE ... ALTER COLUMN ... SET STATISTICS`](https://www.postgresql.org/docs/current/sql-altertable.html)
+3. PostgreSQL Documentation — [`EXPLAIN`](https://www.postgresql.org/docs/current/sql-explain.html) and [Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
+4. PostgreSQL Documentation — [`pg_stats` view](https://www.postgresql.org/docs/current/view-pg-stats.html)
 
 ------------------------------------------------------------------------
 
