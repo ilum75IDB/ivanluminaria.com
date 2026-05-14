@@ -12,9 +12,9 @@ image: "oracle-cloud-migration.cover.jpg"
 
 Last week a colleague wrote to me: "I need to move Oracle to the cloud, how long will it take?" I answered with a question: "Do you know how many Enterprise Edition features you're actually using?" Silence.
 
-It's the same scene every time. Someone up the chain decides it's time to go to the cloud — because the hosting contract is expiring, because the CFO read a Gartner report, because the new CTO wants to modernize. And the first thing that comes up is: let's do a lift-and-shift, take what we have and move it. Three months, budget approved, go.
+It's the same scene every time. Someone up the chain decides to go to the cloud — because the hosting contract is expiring, because the CFO read a Gartner report, because the new CTO wants to modernize. And the first thing that comes up is: let's do a lift-and-shift, take what we have and move it. Three months, budget approved, go.
 
-The problem is that Oracle is not an application you pack into a container and ship. It's an ecosystem of licenses, dependencies, kernel configurations, network connections running through firewalls and VPNs. Moving it without understanding it first means ending up in the cloud with the same old problems — plus a few new ones.
+The point is that Oracle is not an application you pack into a container and ship. It's an ecosystem of licenses, dependencies, kernel configurations, network connections running through firewalls and VPNs. Moving it without understanding it first means ending up in the cloud with the same old issues — plus a few new ones.
 
 ## The client and the context
 
@@ -62,7 +62,7 @@ The strategy was: set up Data Guard between the on-premises RAC and a standby in
 
 The tricky part wasn't Data Guard itself — we configure that every week. The tricky part was making it work across the network. Data Guard needs a redo transport channel between primary and standby, and that channel must be reliable with predictable latency.
 
-I configured a site-to-site VPN tunnel between the data center and OCI, with a dedicated bandwidth of 500 Mbps. The average redo generate rate was 15 MB per minute — well within the bandwidth budget. But I wanted to test the worst case: during the nightly batch, redo reached 180 MB per minute. That also got through, but with a transport lag climbing to 45 seconds. Acceptable for Data Guard in Maximum Performance mode.
+I configured a site-to-site VPN tunnel between the data center and OCI, with a dedicated bandwidth of 500 Mbps. The average redo generate rate was 15 MB per minute — well within the bandwidth budget. I also wanted to test the worst case: during the nightly batch, redo reached 180 MB per minute. That also got through, but with a transport lag climbing to 45 seconds. Acceptable for Data Guard in Maximum Performance mode.
 
 The broker configuration was standard:
 
@@ -130,7 +130,7 @@ And then there was the hidden cost: my time. Two months of consulting for the as
 
 Every migration teaches you something, even when you think you've seen it all.
 
-Oracle licensing in the cloud is a minefield. Reading the documentation isn't enough: you need to talk to Oracle, get written confirmations, and keep track of everything. A post-migration audit can turn savings into a catastrophe.
+Oracle licensing in the cloud is a minefield. Reading the documentation isn't enough: it's necessary to talk to Oracle, get written confirmations, and keep track of everything. A post-migration audit can turn savings into a catastrophe.
 
 The assessment is not optional. Those initial two weeks prevented at least three problems that would have required weeks of fixing after the migration. The feature usage report, the external dependency map, the latency tests — they're boring work, but they're the difference between a 42-minute cutover and a 42-hour one.
 

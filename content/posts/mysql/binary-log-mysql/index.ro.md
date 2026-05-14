@@ -12,7 +12,7 @@ image: "binary-log-mysql.cover.jpg"
 
 Mesajul pe canalul Slack al echipei de infrastructură era din acelea care te fac să ridici capul de la ecran: "Disc la 95% pe db-ul de producție. Cine poate să se uite?"
 
-Serverul era un MySQL 8.0 pe Rocky Linux, un sistem de gestiune folosit de aproximativ o sută de utilizatori. Baza de date în sine ocupa circa 40 GB — nimic extraordinar. Dar în directorul de date se aflau 180 GB de binary log. Șase luni de binlog pe care nimeni nu se gândise să le gestioneze.
+Serverul era un MySQL 8.0 pe Rocky Linux, un sistem de gestiune folosit de aproximativ o sută de utilizatori. Baza de date în sine ocupa circa 40 GB — nimic extraordinar. Doar că în directorul de date se aflau 180 GB de binary log. Șase luni de binlog pe care nimeni nu se gândise să le gestioneze.
 
 Nu e prima dată când văd acest scenariu. De fapt, aș spune că este unul dintre cele mai recurente pattern-uri din tichetele care îmi ajung pe masă. Binary log-ul este una din acele funcționalități MySQL care lucrează în tăcere, fără să ceară nimic — până când discul se umple.
 
@@ -115,7 +115,7 @@ mysqlbinlog --stop-datetime="2026-03-30 14:29:00" \
 
 ## PURGE BINARY LOGS: modul corect de a face curățenie
 
-Ne întoarcem la serverul nostru cu discul la 95%. Tentația de a face un `rm -f mysql-bin.*` e puternică. Dar e greșită, din două motive:
+Ne întoarcem la serverul nostru cu discul la 95%. Tentația de a face un `rm -f mysql-bin.*` e puternică. Doar că este o alegere de evitat, din două motive:
 
 1. MySQL nu știe că ai șters fișierele — fișierul index încă arată spre binlog-uri care nu mai există
 2. Dacă există o replică activă, riști să rupi sincronizarea
@@ -188,7 +188,7 @@ Aceeași logică, dar cu granularitate la secundă. De la MySQL 8.0, acest param
 
 Întrebarea pe care mi-o pun mereu este: "Câte zile de retenție?"
 
-Depinde. Dar iată regulile mele practice:
+Depinde. Iată oricum regulile mele practice:
 
 | Scenariu | Retenție recomandată |
 |----------|----------------------|
@@ -274,21 +274,21 @@ Cu format ROW, fără `--verbose` vezi doar blob-uri binare. Cu `--verbose` obț
 
 ## Principiul: gestionează binlog-urile, nu le dezactiva
 
-Din când în când cineva sugerează să rezolvi problema "din rădăcină" dezactivând binlog-urile:
+Din când în când cineva sugerează să rezolvi criticitatea "din rădăcină" dezactivând binlog-urile:
 
 ```ini
 # NU FACE ASTA în producție
 skip-log-bin
 ```
 
-Da, rezolvă problema discului. Dar elimină:
+Da, rezolvă criticitatea discului. Doar că elimină:
 
 - Posibilitatea de a configura o replică în viitor
 - Point-in-time recovery
 - Capacitatea de a analiza ce s-a întâmplat în baza de date după un incident
 - Compatibilitatea cu instrumente de {{< glossary term="cdc" >}}CDC (Change Data Capture){{< /glossary >}} precum Debezium
 
-Binlog-urile nu sunt o problemă. Binlog-urile **negestionate** sunt o problemă. Diferența este un parametru de configurare și o verificare săptămânală. Pe serverul pe care l-am reparat, configurația finală a fost:
+Binlog-urile nu sunt o criticitate. Binlog-urile **negestionate** sunt o criticitate. Diferența este un parametru de configurare și o verificare săptămânală. Pe serverul pe care l-am reparat, configurația finală a fost:
 
 ```ini
 [mysqld]

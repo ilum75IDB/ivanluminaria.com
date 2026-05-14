@@ -14,7 +14,7 @@ The first meeting was awkward. Three people in the room — the head of commerci
 
 *"We've always done it this way,"* said the controller. *"Each of us has our own. Then when the board asks for written premium, we hand over mine because it's the one that ties with the accounting close."*
 
-That was the starting point of the project. Not a disaster I discovered, not a system I had to save. A situation all three of them knew perfectly well, and that had become unmanageable when the new CFO — just a few weeks in — started asking uncomfortable questions. Things like: *why is premium written by line of business different between commercial and finance?* Or: *how many active policyholders do we actually have in Italy, 420 thousand or 510 thousand?*
+That was the starting point of the project. Not a mess I discovered, not a system I had to save. A situation all three of them knew perfectly well, and that had become unmanageable when the new CFO — just a few weeks in — started asking uncomfortable questions. Things like: *why is premium written by line of business different between commercial and finance?* Or: *how many active policyholders do we actually have in Italy, 420 thousand or 510 thousand?*
 
 We didn't have an answer. We had three.
 
@@ -32,11 +32,11 @@ Years later, the picture looked like this:
 
 Three {{< glossary term="star-schema" >}}star schemas{{< /glossary >}}, three definitions of "customer" (the individual policyholder, the corporate contract holder, the jointly-named contract holder), three different calendars (marketing on the solar month, finance on the accounting month with closes on the 25th, commercial on the policy effective date which can lag months behind the issue date). And above all, three different notions of "product": policy management identified the policy by its internal tariff code, the CRM by the commercial macro-product (Auto, Home, Life, Health), and finance grouped it by line of business for IVASS reporting.
 
-Each of the three numbers was *correct* in its own context. The problem was that they didn't talk to each other.
+Each of the three numbers was *correct* in its own context. The point was that they didn't talk to each other.
 
-## 🔍 The CFO had seen the problem before we did
+## 🔍 The CFO had seen the point before we did
 
-The honest thing to say is that the problem was put on the agenda by the CFO, not by the IT team and not by me. He didn't want a new data warehouse. He wanted something much more mundane: one line of numbers that read the same on every dashboard. *"I don't care which of you is right. I care that February's written premium is a single number."*
+The thing to say is that the point was put on the agenda by the CFO, not by the IT team and not by me. He didn't want a new data warehouse. He wanted something much more mundane: one line of numbers that read the same on every dashboard. *"I don't care which of you is right. I care that February's written premium is a single number."*
 
 Said like that it sounds obvious. In practice, when you ask three departments to align definitions, you discover that each of them has spent years reasoning on their own map of the territory and has no interest in redrawing it. Commercial counts gross premium at issue date; finance counts net of commissions at accounting date. Marketing considers an "active customer" anyone with at least one in-force policy in the last 12 months; finance counts anyone with an open premium position within the fiscal year. No one is wrong. They're simply answering different questions.
 
@@ -59,7 +59,7 @@ What we ended up drawing, after the workshops, looked like this (simplified):
 | Premium collection          |    X     |   X    |      X       |  X   |          |         |    X    |
 | Online subscriptions        |    X     |   X    |              |  X   |    X     |    X    |         |
 
-Six rows, seven columns. Read that way, the sheet says something simple and uncomfortable at the same time: **the Customer dimension shows up in five out of six processes, Policy in five, Date in all of them, and Intermediary in four**. If the definition of Customer differs between commercial and marketing, five out of six processes will return inconsistent numbers. That's not a BI problem, it's a master-data problem.
+Six rows, seven columns. Read that way, the sheet says something simple and uncomfortable at the same time: **the Customer dimension shows up in five out of six processes, Policy in five, Date in all of them, and Intermediary in four**. If the definition of Customer differs between commercial and marketing, five out of six processes will return inconsistent numbers. That's not a BI issue, it's a master-data issue.
 
 ## 🔗 What a conformed dimension is
 
@@ -163,7 +163,7 @@ JOIN dim_conformed.dim_date xd
 
 No department had to stop using its own data mart. Whoever wanted single-department analytics kept doing them on their own. Whoever needed cross-department analytics used the conformed views.
 
-## 📊 The question that used to be impossible
+## 📊 The question that used to be unworkable
 
 The first truly cross-mart query we ran — the kind that, before the conformed-dimension work, would have come back with three different answers — looked trivial:
 
@@ -213,7 +213,7 @@ Kimball wrote about the bus matrix in the '90s for exactly this reason: to give 
 
 ## What I learned
 
-The technical work — `dim_customer`, the xrefs, the views — was the easy part. The hard part was getting three departments to agree on what "customer" means. And that part wasn't solved by me: it was solved by the CFO with his political weight, by the governance committee with six weeks of patience, and by the customer's DBA who had an impressive long memory of every choice made over the previous years and why.
+The technical work — `dim_customer`, the xrefs, the views — was the easy part. The demanding part was getting three departments to agree on what "customer" means. And that part wasn't solved by me: it was solved by the CFO with his political weight, by the governance committee with six weeks of patience, and by the customer's DBA who had an impressive long memory of every choice made over the previous years and why.
 
 When I see a DWH project starting today without a bus matrix drawn and shared, I raise my hand before we begin. Not to play the wise one — to remind myself that that phase, the one of aligning definitions, can't be skipped. If you skip it, you pay for it later with interest. If you do it, the rest of the project becomes almost boring. Which is exactly how it should be.
 

@@ -12,9 +12,9 @@ image: "oracle-cloud-migration.cover.jpg"
 
 Săptămâna trecută, un coleg mi-a scris: „Trebuie să mut Oracle în cloud — cât durează?” I-am răspuns cu o întrebare: „Știi exact câte funcționalități Enterprise Edition folosești cu adevărat?” Liniște.
 
-Se repetă de fiecare dată același scenariu. Cineva din management decide că a venit momentul pentru cloud — pentru că expiră contractul de hosting, pentru că CFO-ul a citit un raport Gartner, pentru că noul CTO vrea modernizare. Și prima idee care apare este: lift-and-shift. Luăm ce avem și mutăm. Trei luni, buget aprobat, să-i dăm drumul.
+Se repetă de fiecare dată același scenariu. Cineva din management decide să meargă în cloud — pentru că expiră contractul de hosting, pentru că CFO-ul a citit un raport Gartner, pentru că noul CTO vrea modernizare. Și prima idee care apare este: lift-and-shift. Luăm ce avem și mutăm. Trei luni, buget aprobat, să-i dăm drumul.
 
-Problema este că Oracle nu e o aplicație pe care o pui într-un container și o muți. Este un ecosistem: licențe, dependențe, configurații de kernel, conexiuni de rețea prin firewall-uri și VPN-uri. Dacă îl muți fără să-l înțelegi, ajungi în cloud cu aceleași probleme — și, de obicei, cu unele noi.
+Punctul este că Oracle nu e o aplicație pe care o pui într-un container și o muți. Este un ecosistem: licențe, dependențe, configurații de kernel, conexiuni de rețea prin firewall-uri și VPN-uri. Dacă îl muți fără să-l înțelegi, ajungi în cloud cu aceleași criticități — și, de obicei, cu unele noi.
 
 ## Clientul și contextul
 
@@ -64,7 +64,7 @@ Strategia a fost: configurarea Data Guard între RAC-ul on-premises și o instan
 
 Partea complicată nu a fost Data Guard în sine — ăsta îl configurăm în fiecare săptămână. Partea complicată a fost să-l facă să funcționeze prin rețea. Data Guard are nevoie de un canal de redo transport între primary și standby, iar acel canal trebuie să fie fiabil și cu latență previzibilă.
 
-Am configurat un tunel VPN site-to-site între data center și OCI, cu o bandă dedicată de 500 Mbps. Rata medie de generare a redo-ului era de 15 MB pe minut — confortabil în bugetul de bandă. Dar am vrut să testez cel mai rău caz: în timpul batch-ului nocturn, redo-ul ajungea la 180 MB pe minut. Și ăsta trecea, dar cu un transport lag care urca la 45 de secunde. Acceptabil pentru un Data Guard în modul Maximum Performance.
+Am configurat un tunel VPN site-to-site între data center și OCI, cu o bandă dedicată de 500 Mbps. Rata medie de generare a redo-ului era de 15 MB pe minut — confortabil în bugetul de bandă. Și am vrut să testez cel mai rău caz: în timpul batch-ului nocturn, redo-ul ajungea la 180 MB pe minut. Și ăsta trecea, dar cu un transport lag care urca la 45 de secunde. Acceptabil pentru un Data Guard în modul Maximum Performance.
 
 Configurația broker-ului a fost standard:
 
@@ -132,7 +132,7 @@ Economia era acolo, și era semnificativă. Dar cifra care l-a impresionat cel m
 
 Fiecare migrare te învață ceva, chiar și când crezi că le-ai văzut pe toate.
 
-Licențierea Oracle în cloud e un câmp minat. Nu e suficient să citești documentația: trebuie să vorbești cu Oracle, să obții confirmări scrise și să ții evidența la tot. Un audit post-migrare poate transforma o economie într-o catastrofă.
+Licențierea Oracle în cloud e un câmp minat. Nu e suficient să citești documentația: este necesar să vorbești cu Oracle, să obții confirmări scrise și să ții evidența la tot. Un audit post-migrare poate transforma o economie într-o catastrofă.
 
 Assessment-ul nu e opțional. Cele două săptămâni de la început au prevenit cel puțin trei probleme care ar fi necesitat săptămâni de remediere după migrare. Raportul de funcționalități utilizate, harta dependențelor externe, testele de latență — sunt lucruri plicticoase, dar sunt diferența între un cutover de 42 de minute și unul de 42 de ore.
 
