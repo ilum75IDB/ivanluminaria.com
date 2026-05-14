@@ -33,9 +33,9 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 
 | # | Articolo | Stato | Commit |
 |---|----------|-------|--------|
-| 1 | oracle-awr-ash | da fare | — |
-| 2 | oracle-data-guard | da fare | — |
-| 3 | oracle-linux-kernel | da fare | — |
+| 1 | oracle-awr-ash | ✅ done (5 note) | bb410f0 |
+| 2 | oracle-data-guard | ✅ done (5 note) | 5d722eb |
+| 3 | oracle-linux-kernel | ✅ done (5 note) | 318f98a |
 
 ### MySQL (6 articoli)
 
@@ -53,11 +53,11 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 | # | Articolo | Stato | Commit |
 |---|----------|-------|--------|
 | 10 | enum-postgresql-paga-o-pesa | da fare | — |
-| 11 | like-optimization-postgresql | da fare | — |
-| 12 | pg-stat-statements | da fare | — |
+| 11 | like-optimization-postgresql | ✅ done (3 note) | bbe7808 |
+| 12 | pg-stat-statements | ✅ done (4 note) | 84bce01 |
 | 13 | postgresql-indici-quando-fanno-male | da fare | — |
 | 14 | postgresql_roles_and_users | da fare | — |
-| 15 | vacuum-autovacuum-postgresql | da fare | — |
+| 15 | vacuum-autovacuum-postgresql | ✅ done (6 note) | 5b8fb68 |
 
 ### Data Warehouse (5 articoli)
 
