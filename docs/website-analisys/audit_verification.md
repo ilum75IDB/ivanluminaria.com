@@ -39,8 +39,8 @@
 | 18 | Revisione stilistica: section MySQL (annotazioni) | ✅ 38 modifiche su 6 articoli | stylistic-annotations/mysql.md |
 | 19 | Revisione stilistica: section PostgreSQL (annotazioni) | ✅ 16 modifiche su 4 articoli (+1 mitig.assolutismo) | stylistic-annotations/postgresql.md |
 | 20 | Revisione stilistica: section Data Warehouse (annotazioni) | ✅ 29 modifiche su 5 articoli | stylistic-annotations/data-warehouse.md |
-| 21 | Revisione stilistica: section Project Management (annotazioni) | in corso (agente) | stylistic-annotations/project-management.md |
-| 22 | Tabella consolidata finale + roadmap | da fare | — |
+| 21 | Revisione stilistica: section Project Management (annotazioni) | ✅ 16-17 modifiche su 8 articoli | stylistic-annotations/project-management.md |
+| 22 | Tabella consolidata finale + roadmap | ✅ completata | audit-verify: roadmap finale |
 
 **Convenzione stato**:
 - `da fare` → non ancora iniziato
@@ -583,7 +583,104 @@ Questo è esattamente l'esempio che l'Analista B cita: forte come titolo SEO ma 
 
 ## 5. Roadmap consolidata finale
 
-**STATO**: da fare (richiede tutte le sezioni precedenti)
+**Data**: 2026-05-14
+**Sintesi**: dopo verifica empirica dei due audit, ecco la roadmap filtrata. Skippiamo i suggerimenti generici/non verificati; promuoviamo quelli con problema reale identificato.
+
+### Tabella complessiva delle azioni
+
+| # | Tema | Da | Verificato | Priorità | Effort | Rischio | Note |
+|---|------|----|-----------|---------:|-------:|---------|------|
+| **P0** | Errori tecnici nei comandi/sintassi | | | | | | |
+| 1 | Oracle Unified Audit: `AUDIT POLICY` non `ALTER AUDIT POLICY ENABLE` | B | ✅ VERO | **P0** | S | basso | oracle-roles-privileges, 6 occorrenze × 4 lingue |
+| 2 | Galera durabilità: riformulare come trade-off, non equivalenza | B | ✅ VERO | **P0** | S | basso | galera-cluster-3-nodi riga 147 × 4 lingue |
+| 3 | MySQL CSV con sed: aggiungere esempio Python robusto | B | ✅ VERO | **P0** | M | basso | mysql-multi-istanza-secure-file-priv × 4 lingue |
+| 4 | Oracle partitioning CTAS: avvertenza DML concorrente | B | ✅ VERO | **P0** | M | basso | oracle-partitioning, box "⚠️" × 4 lingue |
+| 5 | PostgreSQL `default_statistics_target`: spiegazione MCV/histogram | B | ✅ VERO | **P0** | S | basso | explain-analyze-postgresql + glossario × 4 lingue |
+| **P1** | Mitigazioni / fix non critici | | | | | | |
+| 6 | Tag governance: consolidare 126→~30, noindex per residui | B | ✅ VERO+peggio | **P1** | M | basso | 35 articoli, frontmatter update |
+| 7 | Structured data: fix double-quoting in JSON-LD | B | ✅ VERO | **P1** | S | basso | `layouts/_partials/head.html` |
+| 8 | Data Guard / Active DG: box licensing in apertura | B | ✅ parziale | **P1** | S | basso | oracle-data-guard × 4 lingue |
+| 9 | MySQL anonymous user: mitigare "viene installato" | B | ✅ VERO | **P1** | S | basso | mysql-users-and-hosts + glossario × 4 lingue |
+| 10 | MySQL `expire_logs_days`: aggiornare in pre-upgrade | B | ✅ parziale | **P1** | XS | basso | mysql-pre-upgrade-assessment × 4 lingue |
+| 11 | Revisione stilistica articoli IT (~125 modifiche su 29 articoli) | B+STILE | ✅ annotato | **P1** | L | basso | sezione 4 + 4 traduzioni propagate |
+| **P2** | Caveat operativi / miglioramenti | | | | | | |
+| 12 | Oracle grants via role in stored proc definer-rights | B | ✅ omissione | **P2** | M | basso | oracle-roles-privileges, paragrafo nuovo |
+| 13 | CREATE INDEX CONCURRENTLY: nota su migration tool | B | ✅ basso impatto | **P2** | XS | basso | like-optimization-postgresql |
+| 14 | Mitigare titolo `pg_stat_statements` con caveat nel corpo | B | ✅ VERO | **P2** | XS | basso | pg-stat-statements prime righe × 4 lingue |
+| 15 | Pagina Servizi strutturata (4-6 offerte concrete) | A+B | strategic | **P2** | XL | medio | richiede decisione su offerta commerciale |
+| 16 | CTA contestuali per tipologia articolo | A+B | strategic | **P2** | M | medio | dipende dalla pagina servizi (15) |
+| **Skip** | Suggerimenti boccati | | | | | | |
+| 17 | Rimuovere icona carrello/shop | A | ❌ FALSO | Skip | — | — | non esiste nel sito |
+| 18 | Hreflang reciproci self-referencing | B | ❌ NON CONFERMATO | Skip | — | — | già OK |
+| 19 | Sitemap multilingua + robots.txt | B | ❌ NON CONFERMATO | Skip | — | — | già OK |
+| 20 | Canonical self-referencing | B | ❌ NON CONFERMATO | Skip | — | — | già OK |
+| 21 | Direzione artistica per target enterprise | A | parziale | Skip | — | — | già risolto con cover fotorealistica /resumes/ + LinkedIn |
+| 22 | FAQ in fondo agli articoli | B | best-practice | Skip | — | — | Analista B stesso dice "non come artificio SEO" |
+| 23 | Testimonianze dirette dei clienti | A | infattibile | Skip | — | — | clienti enterprise raramente autorizzano |
+| 24 | Chatbot / pop-up lead magnet | (impl.) | va contro tono | Skip | — | — | violerebbe il "no-eroe" |
+
+### Sintesi numerica
+
+- **P0 critici** (errori tecnici reali in articoli pubblicati): **5 interventi**, effort totale ~3-4 ore (con traduzioni)
+- **P1 mitigazioni** (correttezza+SEO+stile): **6 interventi**, effort totale ~10-15 ore (la revisione stilistica è il blocco principale: 6-8 ore)
+- **P2 nice-to-have**: **5 interventi**, effort variabile (pagina Servizi è XL)
+- **Skip**: 8 suggerimenti boccati dopo verifica
+
+### Sequenza consigliata di esecuzione
+
+**Sprint 1 (questa settimana, ~4 ore)** — fix tecnici per credibilità:
+1. P0-1 Oracle Unified Audit
+2. P0-2 Galera durabilità
+3. P0-5 default_statistics_target
+4. P0-3 CSV con sed
+5. P0-4 Oracle partitioning CTAS warning
+
+Tutti questi sono articoli pubblicati con errori tecnici verificabili. Target senior → priorità massima.
+
+**Sprint 2 (settimana prossima, ~6-8 ore)** — revisione stilistica massiva:
+6. Revisione stilistica di tutti i 29 articoli secondo annotazioni in `stylistic-annotations/*.md` (4 lingue → 116 file modificati totali, ma con find/sed e propagazione automatica si fa)
+
+**Sprint 3 (settimana 3, ~3 ore)** — fix infrastrutturali:
+7. Tag governance (consolidare 126→~30)
+8. Fix double-quoting JSON-LD (bug Hugo template)
+9. Mitigazioni P1: Data Guard box, anonymous user, expire_logs_days, pg_stat_statements caveat
+
+**Sprint 4 (più avanti)** — strategia commerciale:
+10. P2-15 Pagina Servizi (richiede decisione commerciale prima)
+11. P2-16 CTA contestuali (dipende da 10)
+12. P2-12 grants in stored proc
+13. P2-13 CONCURRENTLY note
+
+### File di riferimento creati
+
+- `docs/website-analisys/audit_verification.md` (questo file): verifica empirica completa
+- `docs/website-analisys/stylistic-annotations/oracle.md`: 25 modifiche annotate su 6 articoli
+- `docs/website-analisys/stylistic-annotations/mysql.md`: 38 modifiche annotate su 6 articoli
+- `docs/website-analisys/stylistic-annotations/postgresql.md`: 16 modifiche annotate su 4 articoli
+- `docs/website-analisys/stylistic-annotations/data-warehouse.md`: 29 modifiche annotate su 5 articoli
+- `docs/website-analisys/stylistic-annotations/project-management.md`: 16-17 modifiche annotate su 8 articoli
+- **Totale annotato: ~124-125 modifiche stilistiche su 29 articoli IT**
+
+### Issue GitHub da aprire (proposte)
+
+Una issue per cluster di intervento:
+
+1. **`tech-fix: errori tecnici P0 articoli pubblicati (5 articoli)`** — racchiude P0-1 a P0-5
+2. **`stile: revisione stilistica STILE_LINGUISTICO su 29 articoli pubblicati`** — racchiude tutte le 125 modifiche annotate
+3. **`seo: tag governance — consolidare da 126 a ~30 tag`**
+4. **`seo: fix bug double-quoting JSON-LD nel template head.html`**
+5. **`tech-fix: P1 mitigazioni (Data Guard, anonymous user, expire_logs_days, pg_stat_statements caveat)`**
+6. **`commerciale: pagina Servizi con 4-6 offerte concrete`** — strategica, richiede decisione preventiva
+7. **`commerciale: CTA contestuali agli articoli`** — dipende da #6
+
+### Cosa NON faremo (e perché)
+
+- **Cambiare il tono no-eroe** del sito: gli analisti hanno apprezzato esplicitamente questo tono, non è qualcosa da diluire con "best practice corporate"
+- **Aggiungere CTA aggressive / pop-up / chatbot**: violerebbe l'identità editoriale; il valore lo creiamo con il contenuto, non con il marketing-funnel
+- **Spendere su "rich snippets" o featured snippets**: il sito è già SEO-pulito; piuttosto fix del double-quoting + tag governance dà più ritorno
+- **Cambiare i titoli SEO assolutistici**: il loro valore di click vale di più del "scivolone" tecnico; mitigare nel corpo basta
+
+**STATO**: ✅ completato
 
 ---
 
