@@ -24,7 +24,7 @@ Acea fact table răspundea la o singură întrebare: *cât a facturat fiecare cl
 
 ## 🔍 Grain-ul: decizia care determină totul
 
-În {{< glossary term="star-schema" >}}modelarea dimensională{{< /glossary >}}, **{{< glossary term="grain" >}}grain-ul{{< /glossary >}}** (granularitatea) fact table-ului este prima decizie pe care o iei. Nu a doua, nu una dintre multe: prima. Kimball repetă asta în fiecare capitol, și are dreptate.
+În {{< glossary term="star-schema" >}}modelarea dimensională{{< /glossary >}}, **{{< glossary term="grain" >}}grain-ul{{< /glossary >}}** (granularitatea) fact table-ului este prima decizie pe care o iei [1]. Nu a doua, nu una dintre multe: prima. Kimball repetă asta în fiecare capitol, și are dreptate.
 
 Grain-ul răspunde la întrebarea: *ce reprezintă un singur rând din fact table?*
 
@@ -59,7 +59,7 @@ Punctul? {{< glossary term="additive-measure" >}}Măsurile aditive{{< /glossary 
 
 ## 🏗️ Restructurarea: coborârea la linia de factură
 
-Soluția era una singură: schimbarea grain-ului. Aducerea fact table-ului la cel mai jos nivel disponibil în sistemul sursă — linia individuală de factură.
+Soluția era una singură: schimbarea grain-ului. Aducerea fact table-ului la cel mai jos nivel disponibil în sistemul sursă — linia individuală de factură [2].
 
 ```sql
 CREATE TABLE fact_facturare_linie (
@@ -190,7 +190,7 @@ Rezultatul? Un data warehouse care a trebuit reconstruit de la zero la șase lun
 Granularitatea fină nu e întotdeauna singura răspuns. Există cazuri legitime pentru fact table-uri agregate:
 
 - **Tabele de agregare** (aggregate fact table) alături de tabela de detaliu, pentru a accelera interogările cele mai frecvente
-- **Snapshot-uri periodice** unde business-ul gândește efectiv pe perioade (sold lunar al unui cont, stoc la sfârșit de săptămână)
+- **Snapshot-uri periodice** unde business-ul gândește efectiv pe perioade (sold lunar al unui cont, stoc la sfârșit de săptămână) [3]
 - **Restricții de sursă** când sistemul upstream nu expune detaliul și nu există modalitate de a-l obține
 
 Doar că regula este: pornește de la detaliu, apoi agregă. Niciodată invers. Aggregate fact table-urile sunt o optimizare, nu un substitut pentru granularitatea fină.
@@ -202,6 +202,14 @@ Doar că regula este: pornește de la detaliu, apoi agregă. Niciodată invers. 
 Acel proiect m-a învățat ceva ce duc cu mine în fiecare angajament ulterior: prima jumătate de oră de proiectare a unui data warehouse, aceea în care se decide grain-ul, valorează mai mult decât toate optimizările care vor urma. Un ETL perfect, indexuri calibrate, hardware puternic — nimic din toate acestea nu compensează un grain greșit.
 
 Dacă fact table-ul tău nu răspunde la întrebările business-ului, nu sunt interogările. E modelul. Și modelul se decide la grain.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. Kimball Group — [Grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)
+2. Kimball Group — [Transaction Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/transaction-fact-table/)
+3. Kimball Group — [Periodic Snapshot Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/periodic-snapshot-fact-table/)
 
 ------------------------------------------------------------------------
 

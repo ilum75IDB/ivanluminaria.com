@@ -24,7 +24,7 @@ Esa fact table respondía a una sola pregunta: *¿cuánto facturó cada cliente 
 
 ## 🔍 El grain: la decisión que determina todo
 
-En el {{< glossary term="star-schema" >}}modelado dimensional{{< /glossary >}}, el **{{< glossary term="grain" >}}grain{{< /glossary >}}** (la granularidad) de la fact table es la primera decisión que se toma. No la segunda, no una entre tantas: la primera. Kimball lo repite en cada capítulo, y tiene razón.
+En el {{< glossary term="star-schema" >}}modelado dimensional{{< /glossary >}}, el **{{< glossary term="grain" >}}grain{{< /glossary >}}** (la granularidad) de la fact table es la primera decisión que se toma [1]. No la segunda, no una entre tantas: la primera. Kimball lo repite en cada capítulo, y tiene razón.
 
 El grain responde a la pregunta: *¿qué representa una fila individual de la fact table?*
 
@@ -59,7 +59,7 @@ Filas por año: unas 180.000 (3.000 clientes × 12 meses × alguna variación). 
 
 ## 🏗️ La reestructuración: bajar a la línea de factura
 
-La solución era una sola: cambiar el grain. Llevar la fact table al nivel más bajo disponible en el sistema fuente — la línea individual de factura.
+La solución era una sola: cambiar el grain. Llevar la fact table al nivel más bajo disponible en el sistema fuente — la línea individual de factura [2].
 
 ```sql
 CREATE TABLE fact_facturacion_linea (
@@ -190,7 +190,7 @@ En nuestro proyecto, la elección del grain agregado fue dictada por pereza de d
 La granularidad fina no siempre es la única respuesta. Hay casos legítimos para fact tables agregadas:
 
 - **Tablas de agregación** (aggregate fact table) junto a la tabla de detalle, para acelerar las consultas más frecuentes
-- **Snapshots periódicos** donde el negocio razona por período (saldo mensual de una cuenta, inventario a fin de semana)
+- **Snapshots periódicos** donde el negocio razona por período (saldo mensual de una cuenta, inventario a fin de semana) [3]
 - **Restricciones de origen** cuando el sistema fuente no expone el detalle y no hay forma de obtenerlo
 
 Sin embargo la regla es: parte del detalle, luego agrega. Nunca al revés. Las aggregate fact tables son una optimización, no un sustituto de la granularidad fina.
@@ -202,6 +202,14 @@ En nuestro caso, después de la reestructuración, también creamos una vista ma
 Ese proyecto me enseñó algo que llevo conmigo en cada encargo posterior: la primera media hora de diseño de un data warehouse, aquella en la que se decide el grain, vale más que todas las optimizaciones que vendrán después. Un ETL perfecto, índices calibrados, hardware potente — nada de esto compensa un grain equivocado.
 
 Si tu fact table no responde las preguntas del negocio, no son las consultas. Es el modelo. Y el modelo se decide en el grain.
+
+------------------------------------------------------------------------
+
+## Fuentes oficiales
+
+1. Kimball Group — [Grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)
+2. Kimball Group — [Transaction Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/transaction-fact-table/)
+3. Kimball Group — [Periodic Snapshot Fact Table](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/periodic-snapshot-fact-table/)
 
 ------------------------------------------------------------------------
 
