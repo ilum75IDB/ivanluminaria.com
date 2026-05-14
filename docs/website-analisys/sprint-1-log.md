@@ -25,7 +25,7 @@ Per ciascuno dei 5 articoli:
 | # | Articolo | Sezione | Errore tecnico | Stato | Commit |
 |---|----------|---------|----------------|-------|--------|
 | 1 | oracle-roles-privileges | Oracle | Unified Audit: `AUDIT POLICY` non `ALTER AUDIT POLICY ENABLE` | ✅ tutto done (IT/EN/ES/RO) | (questo commit) |
-| 2 | galera-cluster-3-nodi | MySQL | Durabilità con `flush_log_at_trx_commit=2`: riformulare come trade-off | da fare | — |
+| 2 | galera-cluster-3-nodi | MySQL | Durabilità con `flush_log_at_trx_commit=2`: riformulare come trade-off | ✅ tutto done (IT/EN/ES/RO) | (questo commit) |
 | 3 | mysql-multi-istanza-secure-file-priv | MySQL | CSV con sed: aggiungere caveat + esempio Python | da fare | — |
 | 4 | oracle-partitioning | Oracle | CTAS + rename con DML concorrente: avvertenza | da fare | — |
 | 5 | explain-analyze-postgresql | PostgreSQL | `default_statistics_target`: MCV/histogram, non "100 righe campione" | da fare | — |
