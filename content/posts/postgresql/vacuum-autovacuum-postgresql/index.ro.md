@@ -48,7 +48,7 @@ cu condiția ca cineva să facă curățenie.
 ## 🔧 VACUUM: ce face de fapt
 
 Comanda `VACUUM` face un lucru simplu: recuperează spațiul ocupat de
-dead tuples și îl face reutilizabil pentru inserări noi.
+dead tuples și îl face reutilizabil pentru inserări noi [1].
 
 Nu returnează spațiu sistemului de operare. Nu reorganizează tabela. Nu
 compactează nimic. Marchează paginile ca rescriptibile.
@@ -110,7 +110,7 @@ De aceea luni totul mergea bine și vineri sistemul era la limită.
 ## 📊 Diagnostic: citirea pg_stat_user_tables
 
 Primul lucru de făcut când suspectezi o criticitate de vacuum este să
-interoghezi `pg_stat_user_tables`:
+interoghezi `pg_stat_user_tables` [2]:
 
 ``` sql
 SELECT
@@ -149,7 +149,7 @@ Trucul nu e să dezactivezi autovacuum. Niciodată. Trucul e să-l
 configurezi pentru tabelele care au nevoie.
 
 PostgreSQL permite setarea parametrilor de autovacuum **per tabelă
-individuală**:
+individuală** [3]:
 
 ``` sql
 ALTER TABLE reporting.transactions SET (
@@ -164,7 +164,7 @@ dead tuples în loc de 2 milioane.
 
 ### cost_delay: nu sugruma vacuum-ul
 
-Alt parametru critic este `autovacuum_vacuum_cost_delay`. Controlează
+Alt parametru critic este `autovacuum_vacuum_cost_delay` [4]. Controlează
 cât de mult vacuum-ul "se frânează singur" pentru a nu suprasolicita
 I/O-ul.
 
@@ -195,7 +195,7 @@ autovacuum_max_workers = 5
 
 Cum știi cât spațiu irosesc tabelele tale?
 
-Query-ul clasic folosește `pgstattuple`:
+Query-ul clasic folosește `pgstattuple` [5]:
 
 ``` sql
 CREATE EXTENSION IF NOT EXISTS pgstattuple;
@@ -226,7 +226,7 @@ spațiul fragmentat rămâne.
 
 `VACUUM FULL` funcționează, dar blochează totul.
 
-Alternativa în producție este **pg_repack**: reconstruiește tabela
+Alternativa în producție este **pg_repack**: reconstruiește tabela [6]
 online, fără lock-uri exclusive prelungite.
 
 ``` bash
@@ -263,6 +263,17 @@ Trei lucruri de reținut:
 
 Bazele de date nu se întrețin singure. Nici cele care au un daemon care
 încearcă.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. PostgreSQL Documentation — [`VACUUM`](https://www.postgresql.org/docs/current/sql-vacuum.html)
+2. PostgreSQL Documentation — [Monitoring Database Activity (`pg_stat_user_tables`)](https://www.postgresql.org/docs/current/monitoring-stats.html)
+3. PostgreSQL Documentation — [Routine Vacuuming](https://www.postgresql.org/docs/current/routine-vacuuming.html)
+4. PostgreSQL Documentation — [Automatic Vacuuming (autovacuum parameters)](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html)
+5. PostgreSQL Documentation — [`pgstattuple`](https://www.postgresql.org/docs/current/pgstattuple.html)
+6. pg_repack — [Reorganize tables in PostgreSQL databases with minimal locks](https://reorg.github.io/pg_repack/)
 
 ------------------------------------------------------------------------
 
