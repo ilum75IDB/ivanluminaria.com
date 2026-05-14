@@ -20,7 +20,7 @@ I took half a day. Here's the method I used.
 
 ## 📏 1. How big they really are — `information_schema`
 
-The first number is the simplest to find and the trickiest to interpret. In MySQL 8.0 the {{< glossary term="information-schema" >}}`information_schema`{{< /glossary >}} exposes everything you need, but you have to know what to ask.
+The first number is the simplest to find and the trickiest to interpret. In MySQL 8.0 the {{< glossary term="information-schema" >}}`information_schema`{{< /glossary >}} exposes everything you need, but you have to know what to ask [1].
 
 ```sql
 -- Total size per schema (data + indexes)
@@ -62,7 +62,7 @@ Running the query across the four servers, the total sizing I took to the PM was
 | mysql-04  | 8.0.34 |       4 |            46.1 GB |             49 GB  |
 | **Total** |        |      25 |         **531.5 GB** |       **557 GB** |
 
-The gap between "data + index" and "physical files" is the cost of fragmentation and the `ibtmp1` tablespace. It's worth highlighting to the PM because on the new environment you can plan a post-migration `OPTIMIZE TABLE` that reclaims that 5-6% of space.
+The gap between "data + index" and "physical files" is the cost of fragmentation and the `ibtmp1` tablespace. It's worth highlighting to the PM because on the new environment you can plan a post-migration `OPTIMIZE TABLE` that reclaims that 5-6% of space [5].
 
 ## 📈 2. How fast they grow — periodic snapshots and binary log reads
 
@@ -124,7 +124,7 @@ Here the PM expects a single number. The honest answer: it depends on which tool
 
 On the same server (`mysql-03`, 218 GB of data + indexes, InnoDB tables with some leftover MyISAM that nobody has touched since 2014), I empirically measured four strategies.
 
-**`{{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}}` (logical, single-threaded):**
+**`{{< glossary term="mysqldump" >}}mysqldump{{< /glossary >}}` (logical, single-threaded) [2]:**
 
 ```bash
 time mysqldump --single-transaction --quick --routines --triggers --events \
@@ -144,7 +144,7 @@ time mysqldump --single-transaction --quick --routines --triggers --events \
 
 Result: 2 hours 58 minutes, compressed file 42 GB. Slightly larger than gzip but **roughly twice as fast** to decompress during restore — which is the moment speed actually matters.
 
-**`{{< glossary term="mydumper" >}}mydumper{{< /glossary >}}` (logical, parallel):**
+**`{{< glossary term="mydumper" >}}mydumper{{< /glossary >}}` (logical, parallel) [3]:**
 
 ```bash
 time mydumper --host=localhost --user=backup --socket=/var/lib/mysql/mysql.sock \
@@ -155,7 +155,7 @@ time mydumper --host=localhost --user=backup --socket=/var/lib/mysql/mysql.sock 
 
 Result: 47 minutes. Output: directory with 312 compressed files, total 41 GB. Nearly 4x faster than `mysqldump` thanks to chunk-level table parallelism.
 
-**`xtrabackup` (physical, hot backup):**
+**`xtrabackup` (physical, hot backup) [4]:**
 
 ```bash
 time xtrabackup --backup --target-dir=/backup/mysql-03-xtra \
@@ -251,6 +251,16 @@ A pre-upgrade assessment isn't a technical document, it's a risk-governance tool
 The technical part — the queries, the tools, the measurements — is the easy part. The hard part is making sure the measured numbers end up in the cutover plan, that the PM reads them, that the ops team uses them to calibrate the window. In our case the PM wanted to add one more slide to the meeting with the new storage vendor: *"look, these are the reference numbers; if your array can't sustain these restore throughputs, the plan doesn't work"*. Which is exactly what a good PM should do.
 
 In the end the upgrade went through in four hours, not six. No rollback. The customer thanked us not for the short window, but for the fact that they had **always known what would happen if something went wrong**. Which is the real goal of a well-done pre-upgrade assessment.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. MySQL 8.0 Reference Manual — [The `INFORMATION_SCHEMA TABLES` Table](https://dev.mysql.com/doc/refman/8.0/en/information-schema-tables-table.html)
+2. MySQL 8.0 Reference Manual — [`mysqldump` — A Database Backup Program](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html)
+3. mydumper — [mydumper / myloader on GitHub](https://github.com/mydumper/mydumper)
+4. Percona — [Percona XtraBackup 8.0 Documentation](https://docs.percona.com/percona-xtrabackup/8.0/)
+5. MySQL 8.0 Reference Manual — [`OPTIMIZE TABLE` Statement](https://dev.mysql.com/doc/refman/8.0/en/optimize-table.html)
 
 ------------------------------------------------------------------------
 
