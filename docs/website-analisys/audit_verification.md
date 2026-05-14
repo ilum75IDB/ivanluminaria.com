@@ -38,7 +38,7 @@
 | 17 | Revisione stilistica: section Oracle (annotazioni) | ✅ 25 modifiche su 6 articoli | stylistic-annotations/oracle.md |
 | 18 | Revisione stilistica: section MySQL (annotazioni) | ✅ 38 modifiche su 6 articoli | stylistic-annotations/mysql.md |
 | 19 | Revisione stilistica: section PostgreSQL (annotazioni) | ✅ 16 modifiche su 4 articoli (+1 mitig.assolutismo) | stylistic-annotations/postgresql.md |
-| 20 | Revisione stilistica: section Data Warehouse (annotazioni) | in corso (agente) | stylistic-annotations/data-warehouse.md |
+| 20 | Revisione stilistica: section Data Warehouse (annotazioni) | ✅ 29 modifiche su 5 articoli | stylistic-annotations/data-warehouse.md |
 | 21 | Revisione stilistica: section Project Management (annotazioni) | in corso (agente) | stylistic-annotations/project-management.md |
 | 22 | Tabella consolidata finale + roadmap | da fare | — |
 
