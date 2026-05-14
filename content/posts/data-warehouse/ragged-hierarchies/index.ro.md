@@ -14,7 +14,7 @@ Trei niveluri. Top Group, Group, Client. Pare o structură banală — tipul de 
 
 Apoi descoperi că nu toți clienții aparțin unui grup. Și că nu toate grupurile aparțin unui top group. Și că rapoartele de agregare pe care business-ul le solicită — cifra de afaceri per top group, număr de clienți per grup, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} de la vârf la frunză — produc rezultate eronate sau incomplete pentru că ierarhia are goluri.
 
-În jargon tehnic se numește **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: o ierarhie în care nu toate ramurile ajung la aceeași adâncime. În lumea reală se numește „lucrul pe care nimeni nu îl observă până nu deschide raportul și numerele nu se potrivesc."
+În jargon tehnic se numește **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: o ierarhie în care nu toate ramurile ajung la aceeași adâncime [1]. În lumea reală se numește „lucrul pe care nimeni nu îl observă până nu deschide raportul și numerele nu se potrivesc."
 
 ---
 
@@ -124,7 +124,7 @@ Problema de fond este că COALESCE este un plasture aplicat la nivelul de prezen
 
 ## Soluția: self-parenting
 
-Principiul este simplu: **cine nu are părinte devine propriul părinte**. Această tehnică se numește {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}.
+Principiul este simplu: **cine nu are părinte devine propriul părinte**. Această tehnică se numește {{< glossary term="self-parenting" >}}self-parenting{{< /glossary >}}, și este una dintre modalitățile standard de a trata o ragged hierarchy ca pe o **fixed-depth hierarchy** [2].
 
 Un Client fără Group? Acel client devine propriul Group. Un Group fără Top Group? Acel grup devine propriul Top Group. În acest mod ierarhia este întotdeauna completă pe trei niveluri, fără goluri, fără NULL.
 
@@ -373,6 +373,13 @@ Un raport ar trebui să facă GROUP BY și JOIN. Dacă trebuie și să decidă c
 Self-parenting-ul nu este elegant. Nu este sofisticat. Este o soluție pe care un informatician proaspăt absolvent ar putea-o găsi urâtă. Dar funcționează, este mentenabil, și transformă o criticitate care infestează fiecare raport individual într-o criticitate care se rezolvă o dată, într-un singur loc, și nu mai revine.
 
 Uneori cea mai bună soluție este cea mai simplă. Aceasta este una dintre acele dăți.
+
+---
+
+## Surse oficiale
+
+1. Kimball Group — [Ragged/Variable Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/ragged-variable-depth-hierarchy/)
+2. Kimball Group — [Fixed Depth Hierarchy](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/fixed-depth-hierarchy/)
 
 ---
 

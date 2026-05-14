@@ -66,7 +66,7 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 | 16 | bus-matrix-terreno-comune | ✅ done (3 note) | (commit corrente) |
 | 17 | fatto-grana-sbagliata | ✅ done (3 note) | (commit corrente) |
 | 18 | partitioning-dwh | ✅ done (4 note) | (commit corrente) |
-| 19 | ragged-hierarchies | da fare | — |
+| 19 | ragged-hierarchies | ✅ done (2 note) | (commit corrente) |
 | 20 | scd-tipo-2 | da fare | — |
 
 ## Articoli ESCLUSI (10 — niente comandi tecnici, no Fonti ufficiali)
