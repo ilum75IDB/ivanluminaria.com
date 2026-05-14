@@ -34,7 +34,6 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
-| 87 | https://github.com/ilum75IDB/ivanluminaria.com/issues/87 | Articolo PostgreSQL: enumerazioni - CREATE TYPE ENUM, CHECK constraint, tabelle lookup | aperta |
 
 ## Issue Aperte — Sezione Project Management
 
@@ -68,6 +67,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 87 | https://github.com/ilum75IDB/ivanluminaria.com/issues/87 | Articolo PostgreSQL: enumerazioni - CREATE TYPE ENUM, CHECK constraint, tabelle lookup | 2026-05-13 |
 | 94 | https://github.com/ilum75IDB/ivanluminaria.com/issues/94 | Bug: like-optimization-postgresql versione ES ha titolo e corpo in inglese | 2026-05-12 |
 | 89 | https://github.com/ilum75IDB/ivanluminaria.com/issues/89 | SEO: audit e fix delle meta descriptions mancanti su pagine non-articolo | 2026-05-12 |
 | 92 | https://github.com/ilum75IDB/ivanluminaria.com/issues/92 | UX: aggiungere reading progress bar in cima agli articoli lunghi | 2026-05-12 |

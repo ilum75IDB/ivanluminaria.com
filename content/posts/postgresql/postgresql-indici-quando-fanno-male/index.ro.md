@@ -10,7 +10,7 @@ categories: ["postgresql"]
 image: "postgresql-indici-quando-fanno-male.cover.jpg"
 ---
 
-Zilele trecute un coleg mi-a scris: "Am un tabel cu douăsprezece indexuri, e foarte lent. Nu înțeleg." I-am răspuns două rânduri, dar în timp ce reciteam mi-a venit în minte Marco. Era acum câțiva ani, lucram la baza de date centrală a unui Minister — nu contează care, modelul îl găsești peste tot. Iar Marco era junior-ul pe care mi-l alocaseră.
+Zilele trecute un coleg mi-a scris: "Am un tabel cu douăsprezece indexuri, e foarte lent. Nu înțeleg." I-am răspuns două rânduri, și în timp ce reciteam mi-a venit în minte Marco. Era acum câțiva ani, lucram la baza de date centrală a unui Minister — nu contează care, modelul îl găsești peste tot. Iar Marco era junior-ul pe care mi-l alocaseră.
 
 Avea doi ani și jumătate de PostgreSQL în spate, știa să scrie interogări decente, cunoștea `EXPLAIN`. Dar mai presus de toate avea acea calitate care în meseria asta te duce departe: întreba. Nu din lene — din dorința de a ști. Reformula conceptele cu voce tare ca să le fixeze, lua notițe, anticipa următoarea întrebare cu chestii de genul "stai, deci dacă fac X mă aștept la Y, corect?". Junior-ul pe care orice senior și-l dorește alături când se deschide pe ecran un tabel care sperie.
 
@@ -131,13 +131,13 @@ Marco a sărbătorit pe șoptite. Apoi: "Dacă e atât de puternic, de ce nu se 
 
 "Pentru că la scriere te costă scump. Fiecare `INSERT` sau `UPDATE` pe acea coloană trebuie să actualizeze toate posting-urile unde apare valoarea respectivă. E prețul găsirii rapide — iar tabelele cu mult churn îl plătesc scump."
 
-"Deci GIN da, dar doar dacă tabelul e predominant de citire."
+"Deci GIN da, doar dacă tabelul e predominant de citire."
 
 "Exact. `cittadini_servizi` al nostru primea încărcări nocturne și apoi toată ziua doar citiri. Caz ideal."
 
 ## GiST: pentru când datele au o formă
 
-Cealaltă interogare critică era pe geometrii. Ministerul făcea analize teritoriale: "găsește-mi toți cetățenii cu rezidența la 5 km de punctul X, în județul Y, activi". O interogare de genul ăsta, cu un B-tree spațial fals (pentru că cineva pusese unul, dar pe acea coloană nu era utilizabil), mergea în nested loop și dura jumătate de minut.
+Cealaltă interogare critică era pe geometrii. Ministerul făcea analize teritoriale: "găsește-mi toți cetățenii cu rezidența la 5 km de punctul X, în județul Y, activi". O interogare de genul ăsta, cu un B-tree spațial fals (pentru că cineva pusese unul care pe acea coloană nu era utilizabil), mergea în nested loop și dura jumătate de minut.
 
 GiST — *Generalized Search Tree* — este familia de indexuri care gestionează date cu geometrie, intervale, similaritate. Nu ordonează valorile liniar, pentru că unele date nu sunt sortabile liniar (un punct pe plan nu vine "înaintea" sau "după" altul). Indexează în schimb prin *bounding box-uri* ierarhice.
 
@@ -145,7 +145,7 @@ GiST — *Generalized Search Tree* — este familia de indexuri care gestioneaz�
 
 Întrebare bună. Marco prinsese punctul cheie.
 
-"Pentru că B-tree-ul compus ordonează întâi după latitudine și apoi după longitudine. Dacă trebuie să găsești puncte într-un dreptunghi `(lat1, lon1, lat2, lon2)`, indexul reușește să folosească restricția pe latitudine — dar apoi pe fiecare rând care trece de filtrul lat trebuie să verifice și lon. Pe 80 de milioane de rânduri devine o jumătate de scanare."
+"Pentru că B-tree-ul compus ordonează întâi după latitudine și apoi după longitudine. Dacă trebuie să găsești puncte într-un dreptunghi `(lat1, lon1, lat2, lon2)`, indexul reușește să folosească restricția pe latitudine — apoi, pe fiecare rând care trece de filtrul lat, trebuie să verifice și lon. Pe 80 de milioane de rânduri devine o jumătate de scanare."
 
 "Și GiST?"
 
@@ -160,7 +160,7 @@ Aceeași interogare "găsește toți la 5 km de X", de la 28 de secunde la 380 m
 
 Marco lua notițe rapid. "Deci: B-tree pentru sortare și egalitate, GIN pentru containment de array și JSONB, GiST pentru geometrie și intervale. Mai e ceva?"
 
-"Pentru moment ajunge. Există BRIN, SP-GiST, hash, dar sunt cazuri mai de nișă. Când o să ai nevoie de ele, o să-ți amintești."
+"Pentru moment ajunge. Există BRIN, SP-GiST, hash, chiar dacă sunt cazuri mai de nișă. Când o să ai nevoie de ele, o să-ți amintești."
 
 ## Bonus: indexurile parțiale
 
@@ -180,7 +180,7 @@ Acel `WHERE` schimbă tot. Indexul conține doar rândurile active. Pe datele re
 
 "Și interogările cu `attivo = false`?"
 
-"Merg în seq scan, dar se întâmplă o dată pe săptămână pentru rapoartele din arhivă. Acolo seq scan-ul merge perfect."
+"Merg în seq scan, și se întâmplă o dată pe săptămână pentru rapoartele din arhivă. Acolo seq scan-ul merge perfect."
 
 ## Curățarea
 
