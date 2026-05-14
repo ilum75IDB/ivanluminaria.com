@@ -35,11 +35,11 @@
 | 14 | Verifica Media tech: default_statistics_target | ✅ VERO, P0 | audit-verify: 2.9 |
 | 15 | Verifica Media tech: CREATE INDEX CONCURRENTLY | ✅ basso impatto, P2 | audit-verify: 2.10 |
 | 16 | Lista affermazioni assolute | ✅ parziale, P2 (mitigare solo titolo pg_stat_statements) | audit-verify: 3 |
-| 17 | Revisione stilistica: section Oracle (annotazioni) | da fare | — |
-| 18 | Revisione stilistica: section MySQL (annotazioni) | da fare | — |
-| 19 | Revisione stilistica: section PostgreSQL (annotazioni) | da fare | — |
-| 20 | Revisione stilistica: section Data Warehouse (annotazioni) | da fare | — |
-| 21 | Revisione stilistica: section Project Management (annotazioni) | da fare | — |
+| 17 | Revisione stilistica: section Oracle (annotazioni) | ✅ 25 modifiche su 6 articoli | stylistic-annotations/oracle.md |
+| 18 | Revisione stilistica: section MySQL (annotazioni) | ✅ 38 modifiche su 6 articoli | stylistic-annotations/mysql.md |
+| 19 | Revisione stilistica: section PostgreSQL (annotazioni) | ✅ 16 modifiche su 4 articoli (+1 mitig.assolutismo) | stylistic-annotations/postgresql.md |
+| 20 | Revisione stilistica: section Data Warehouse (annotazioni) | in corso (agente) | stylistic-annotations/data-warehouse.md |
+| 21 | Revisione stilistica: section Project Management (annotazioni) | in corso (agente) | stylistic-annotations/project-management.md |
 | 22 | Tabella consolidata finale + roadmap | da fare | — |
 
 **Convenzione stato**:
