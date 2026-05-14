@@ -44,15 +44,15 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 | 4 | binary-log-mysql | ✅ done (5 note) | 02b77a1 |
 | 5 | enum-mysql-semplifica-o-complica | ✅ done (5 note) | 1bba2b6 |
 | 6 | mysql-group-replication-binlog-migration | ✅ done (5 note) | f747337 |
-| 7 | mysql-pre-upgrade-assessment | da fare | — |
-| 8 | mysql-users-and-hosts | da fare | — |
-| 9 | mysqldump-mysqlpump-mydumper | da fare | — |
+| 7 | mysql-pre-upgrade-assessment | ✅ done (5 note) | 0171552 |
+| 8 | mysql-users-and-hosts | ✅ done (5 note) | 6333869 |
+| 9 | mysqldump-mysqlpump-mydumper | ✅ done (5 note) | 9696e9c |
 
 ### PostgreSQL (6 articoli)
 
 | # | Articolo | Stato | Commit |
 |---|----------|-------|--------|
-| 10 | enum-postgresql-paga-o-pesa | da fare | — |
+| 10 | enum-postgresql-paga-o-pesa | ✅ done (5 note) | (commit corrente) |
 | 11 | like-optimization-postgresql | ✅ done (3 note) | bbe7808 |
 | 12 | pg-stat-statements | ✅ done (4 note) | 84bce01 |
 | 13 | postgresql-indici-quando-fanno-male | da fare | — |
