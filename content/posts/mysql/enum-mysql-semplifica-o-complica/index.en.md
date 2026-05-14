@@ -29,7 +29,7 @@ CREATE TABLE orders (
 );
 ```
 
-The `ENUM` type is a string with a constraint: only the declared values are allowed. Internally MySQL stores an integer (1 or 2 bytes, depending on how many values) acting as an index into the list. Result: compact storage, readable queries.
+The `ENUM` type is a string with a constraint: only the declared values are allowed [1]. Internally MySQL stores an integer (1 or 2 bytes, depending on how many values) acting as an index into the list. Result: compact storage, readable queries.
 
 **CHECK constraint**:
 
@@ -41,7 +41,7 @@ CREATE TABLE orders (
 );
 ```
 
-The SQL-standard approach. More verbose, in exchange more flexible (CHECK conditions can be arbitrarily complex). Heads up: before MySQL 8.0.16, CHECK constraints were parsed and silently ignored. They've only been actually enforced since 8.0.16.
+The SQL-standard approach. More verbose, in exchange more flexible (CHECK conditions can be arbitrarily complex). Heads up: before MySQL 8.0.16, CHECK constraints were parsed and silently ignored. They've only been actually enforced since 8.0.16 [2].
 
 **Lookup table with FK**:
 
@@ -59,7 +59,7 @@ CREATE TABLE orders (
 );
 ```
 
-The "pure-database" way. More tables, more JOINs, and in exchange more flexibility: you can add attributes (localised labels, display order, active/inactive flags), modify values without touching child schemas, and manage everything at runtime.
+The "pure-database" way. More tables, more JOINs, and in exchange more flexibility: you can add attributes (localised labels, display order, active/inactive flags), modify values without touching child schemas, and manage everything at runtime [3].
 
 ---
 
@@ -113,7 +113,7 @@ ALTER TABLE shipments
   NOT NULL DEFAULT 'RECEIVED';
 ```
 
-Looks like one line. In reality, if you want to add `BOOKED` **before** `RECEIVED` (for semantic coherence in the sequence), MySQL has to rewrite the whole table. All of it. On `shipments` at one hundred fifty million rows, in production, with Online DDL configured properly, you still get hours of extra load on storage and replication lag. Simply tacking it on at the end with `MODIFY COLUMN status ENUM(...,'BOOKED')` would have been lighter — except it would have produced a value set with an absurd positional ordering: `DELIVERED` "comes before" `BOOKED` in the sort? Technically yes.
+Looks like one line. In reality, if you want to add `BOOKED` **before** `RECEIVED` (for semantic coherence in the sequence), MySQL has to rewrite the whole table. All of it [4]. On `shipments` at one hundred fifty million rows, in production, with Online DDL configured properly [5], you still get hours of extra load on storage and replication lag. Simply tacking it on at the end with `MODIFY COLUMN status ENUM(...,'BOOKED')` would have been lighter — except it would have produced a value set with an absurd positional ordering: `DELIVERED` "comes before" `BOOKED` in the sort? Technically yes.
 
 There they are, the limits of ENUM, told without pity:
 
@@ -249,6 +249,16 @@ Up next:
 - **Oracle, vertical deep-dive** — how enumerations were modelled in 19c, what changed in 21c, 23ai, and 26ai, all the way to the new Assertions
 
 Same question, three philosophies. The best part is in the comparison.
+
+------------------------------------------------------------------------
+
+## Official Sources
+
+1. MySQL 8.0 Reference Manual — [The ENUM Type](https://dev.mysql.com/doc/refman/8.0/en/enum.html)
+2. MySQL 8.0 Reference Manual — [CHECK Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-check-constraints.html)
+3. MySQL 8.0 Reference Manual — [FOREIGN KEY Constraints](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+4. MySQL 8.0 Reference Manual — [`ALTER TABLE` Statement](https://dev.mysql.com/doc/refman/8.0/en/alter-table.html)
+5. MySQL 8.0 Reference Manual — [Online DDL Operations (INSTANT / INPLACE / COPY)](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-operations.html)
 
 ------------------------------------------------------------------------
 
