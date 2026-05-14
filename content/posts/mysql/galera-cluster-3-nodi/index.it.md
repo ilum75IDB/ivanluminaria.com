@@ -404,8 +404,8 @@ La parte tecnica è la più semplice. Quello che fa la differenza è capire **pe
 ## Fonti ufficiali
 
 1. MySQL 8.0 Reference Manual — [`innodb_flush_log_at_trx_commit`](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit)
-2. MariaDB Documentation — [Galera Cluster — Certification Based Replication](https://mariadb.com/docs/server/architecture/galera-cluster/replication-and-state-transfers)
-3. MariaDB Documentation — [Configuring MariaDB Galera Cluster](https://mariadb.com/docs/server/architecture/galera-cluster/configuring-mariadb-galera-cluster)
+2. MariaDB Knowledge Base — [Galera State Transfer (SST/IST)](https://mariadb.com/kb/en/galera-state-transfer/)
+3. MariaDB Knowledge Base — [Configuring MariaDB Galera Cluster](https://mariadb.com/kb/en/configuring-mariadb-galera-cluster/)
 
 ------------------------------------------------------------------------
 
