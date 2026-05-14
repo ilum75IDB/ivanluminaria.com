@@ -75,7 +75,7 @@ GRANT SELECT, INSERT, UPDATE ON ventas_db.* TO 'app_ventas'@'%';
 
 ¿Funciona? Sí. ¿Es correcto? No.
 
-El problema del `'%'` es que acepta conexiones desde **cualquier IP**. Si mañana alguien encuentra la contraseña, puede conectarse desde cualquier punto de la red. O del mundo, si la base de datos está expuesta.
+El punto del `'%'` es que acepta conexiones desde **cualquier IP**. Si mañana alguien encuentra la contraseña, puede conectarse desde cualquier punto de la red. O del mundo, si la base de datos está expuesta.
 
 La solución correcta es crear **usuarios específicos para cada origen**:
 
@@ -117,7 +117,7 @@ MySQL ordena las filas en la tabla `mysql.user` de la más específica a la meno
 
 Y usa la **primera coincidencia** en orden de especificidad.
 
-El problema clásico es este: creas `'mario'@'%'` con todos los privilegios. Después alguien crea `'mario'@'localhost'` sin privilegios (o con una contraseña diferente). Desde ese momento, Mario ya no puede entrar desde local y nadie entiende por qué.
+La situación clásica es esta: creas `'mario'@'%'` con todos los privilegios. Después alguien crea `'mario'@'localhost'` sin privilegios (o con una contraseña diferente). Desde ese momento, Mario ya no puede entrar desde local y nadie entiende por qué.
 
 He visto este escenario al menos una docena de veces en producción. La solución es siempre la misma: **verifica qué existe antes de crear**.
 
