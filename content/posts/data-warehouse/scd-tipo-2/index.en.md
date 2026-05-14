@@ -14,7 +14,7 @@ The sales director shows up at the Monday morning meeting with a simple question
 
 The DWH's answer: silence.
 
-Not because the system was down, or the table was missing. The data was there, technically. But it was wrong. The DWH returned the customers currently in the North region — not the ones that were there in June. Because every night, the loading process overwrote the customer master data with current values, erasing any trace of what came before.
+Not because the system was down, or the table was missing. The data was there, technically. Only it was incorrect. The DWH returned the customers currently in the North region — not the ones that were there in June. Because every night, the loading process overwrote the customer master data with current values, erasing any trace of what came before.
 
 A customer who was in the North region in June and moved to the Central region in September? As far as the DWH was concerned, that customer had always been in the Central region. History didn't exist.
 
@@ -56,7 +56,7 @@ WHEN NOT MATCHED THEN INSERT (
 );
 ```
 
-Simple, clean, fast. And completely wrong for a data warehouse.
+Simple, clean, fast. And completely incorrect for a data warehouse.
 
 This is what {{< glossary term="kimball" >}}Kimball{{< /glossary >}} calls **SCD Type 1** — Slowly Changing Dimension Type 1. Overwrite the old value with the new one. No history, no versioning. The current value erases the previous one.
 
@@ -334,7 +334,7 @@ In the insurance project the numbers looked like this:
 
 From 120K to 220K in five years. An 83% increase — which sounds like a lot in percentage terms but is negligible in absolute terms. 220K rows are nothing for Oracle. The query with an index on the surrogate key stays in the millisecond range.
 
-The issue arises when you have millions of customers with high change rates. In that case you monitor growth, consider partitioning the dimension, and most importantly choose carefully *which* attributes to track. Not every attribute deserves Type 2. The customer's phone number? Type 1, overwrite. The sales region? Type 2, because it affects revenue analysis.
+The situation arises when you have millions of customers with high change rates. In that case you monitor growth, consider partitioning the dimension, and most importantly choose carefully *which* attributes to track. Not every attribute deserves Type 2. The customer's phone number? Type 1, overwrite. The sales region? Type 2, because it affects revenue analysis.
 
 The choice of which attributes to track with Type 2 is a business decision, not a technical one. Ask the business: "If this field changes, do you need to know what the previous value was?" If the answer is yes, it's Type 2. If it's no, it's Type 1.
 
