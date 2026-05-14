@@ -59,7 +59,7 @@ The classic standup is built on three questions:
 2. **What will I do today?**
 3. **Is anything blocking me?**
 
-Simple. But simplicity is treacherous, because the temptation to expand is constant.
+Simple. Simplicity, however, is treacherous, because the temptation to expand is constant.
 
 "What I did yesterday" doesn't mean retelling your day. It means saying: "I finished the lookup table migration" or "I worked on bug #247, haven't resolved it yet." Ten seconds, not three minutes.
 
@@ -153,7 +153,7 @@ And that's without counting the indirect effect: a 45-minute standup doesn't jus
 
 ## 🔄 Remote standups vs in-person
 
-Since 2020 standups are often remote. The medium changes, but the principles stay the same. With a few extra precautions.
+Since 2020 standups are often remote. The medium changes, and at the same time the principles stay the same. With a few extra precautions.
 
 ### Remote is worse (if you're not careful)
 

@@ -106,7 +106,7 @@ Hagamos las cuentas en serio. Sobre 220 días laborables:
 
 ## 💪 Los beneficios que no se miden en euros
 
-Pero los números económicos son solo una parte de la historia. Los que realmente importan son los otros.
+Los números económicos, sin embargo, son solo una parte de la historia. Los que realmente importan son los otros.
 
 ### Salud cardiovascular
 
@@ -157,7 +157,7 @@ Con la asistencia eléctrica no sudas. Y aunque sudaras un poco, mejor 18 minuto
 Esto es cierto, y no lo minimizo. Roma necesita más infraestructura ciclista. Pero mi recorrido — Appio Latino, Celio, Lungotevere — es razonablemente seguro, especialmente en hora punta cuando el tráfico es tan lento que los coches van más despacio que la bici.
 
 **"No puedo llevar la bici a la oficina."**\
-La Brompton se pliega en 20 segundos y se convierte en un bulto que cabe bajo el escritorio. Ese es su superpoder: elimina completamente el problema del aparcamiento.
+La Brompton se pliega en 20 segundos y se convierte en un bulto que cabe bajo el escritorio. Ese es su superpoder: elimina completamente la cuestión del aparcamiento.
 
 ------------------------------------------------------------------------
 
@@ -195,7 +195,7 @@ Sé lo que estáis pensando. "Sí, pero esas son ciudades llanas. Roma tiene sie
 
 Es verdad. Roma tiene cuestas. El Celio, el Aventino, el Janículo — no son exactamente la llanura padana.
 
-Pero esa objeción tenía sentido hace diez años. Hoy, con una bici eléctrica, **las siete colinas ya no existen**. El motor te asiste en la subida, llegas arriba sin jadear, sin sudar, sin echar de menos el coche.
+Esa objeción, sin embargo, tenía sentido hace diez años. Hoy, con una bici eléctrica, **las siete colinas ya no existen**. El motor te asiste en la subida, llegas arriba sin jadear, sin sudar, sin echar de menos el coche.
 
 Mi Brompton eléctrica afronta la subida del Celio como si fuera un ligero badén. El Lungotevere es llano. Y el tramo final hacia Prati es en bajada.
 
@@ -222,7 +222,7 @@ De 13 horas a 1 hora y 12 minutos. De 110 euros a cero.
 No es utopía. Es organización.\
 No es pereza. Es inteligencia.
 
-Si las empresas combinaran smart working con incentivos a la movilidad sostenible, el resultado sería triple: **empleados más sanos, más productivos y ciudades más habitables**. Pero para llegar ahí, hay que dejar de pensar que "trabajar" significa "estar sentado en una oficina de 9 a 18 después de una hora en el coche."
+Si las empresas combinaran smart working con incentivos a la movilidad sostenible, el resultado sería triple: **empleados más sanos, más productivos y ciudades más habitables**. Para llegar ahí, sin embargo, hay que dejar de pensar que "trabajar" significa "estar sentado en una oficina de 9 a 18 después de una hora en el coche."
 
 ------------------------------------------------------------------------
 

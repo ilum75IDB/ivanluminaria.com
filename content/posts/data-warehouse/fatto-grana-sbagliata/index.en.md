@@ -12,7 +12,7 @@ image: "fatto-grana-sbagliata.cover.jpg"
 
 The meeting had started well. The sales director of an industrial distribution company — around sixty million in revenue, three thousand active customers, a catalog of twelve thousand SKUs — had opened the new data warehouse presentation with a smile. The numbers matched, the dashboards were polished, the monthly totals by agent and territory reconciled with accounting.
 
-Then someone asked the wrong question. Or rather, the right one.
+Then someone asked the least welcome question. Or rather, the right one.
 
 *"Can I see what customer Bianchi purchased in March, line by line, product by product?"*
 
@@ -30,11 +30,11 @@ The grain answers the question: *what does a single row in the fact table repres
 
 In the project I described, the original designer had chosen a monthly-customer grain: one row = one customer in one month. The reasons seemed sound: the source system exported a monthly summary, loading was fast, tables were small, queries were simple.
 
-But the grain determines which questions the data warehouse can answer. If the grain is a monthly summary per customer, you can't go below that level. You can't {{< glossary term="drill-down" >}}drill down{{< /glossary >}} by product. You can't tell whether customer Bianchi bought the same item ten times or ten different items. You can't compare margins by product family.
+And the grain determines which questions the data warehouse can answer. If the grain is a monthly summary per customer, you can't go below that level. You can't {{< glossary term="drill-down" >}}drill down{{< /glossary >}} by product. You can't tell whether customer Bianchi bought the same item ten times or ten different items. You can't compare margins by product family.
 
 You have a total. Period.
 
-## 📊 The problem in numbers
+## 📊 The situation in numbers
 
 The original fact table had this structure:
 
@@ -55,7 +55,7 @@ CREATE TABLE fact_monthly_revenue (
 
 Rows per year: about 180,000 (3,000 customers × 12 months × some variation). Small, fast, easy to load. The {{< glossary term="etl" >}}ETL{{< /glossary >}} ran in under five minutes.
 
-The problem? The {{< glossary term="additive-measure" >}}additive measures{{< /glossary >}} were already aggregated. `total_amount` was the sum of all invoice lines for the month. No way to trace back to the composition. Like having a receipt total without knowing what you bought.
+The point? The {{< glossary term="additive-measure" >}}additive measures{{< /glossary >}} were already aggregated. `total_amount` was the sum of all invoice lines for the month. No way to trace back to the composition. Like having a receipt total without knowing what you bought.
 
 ## 🏗️ The restructuring: going down to the invoice line
 
@@ -171,7 +171,7 @@ GROUP BY a.agent_name
 ORDER BY total_revenue DESC;
 ```
 
-None of these queries was possible with the monthly-customer grain. None. It wasn't a matter of tuning or indexing — it was a structural problem, written in the model's DNA.
+None of these queries was possible with the monthly-customer grain. None. It wasn't a matter of tuning or indexing — it was a structural issue, written in the model's DNA.
 
 ## 📋 The Kimball rule we had ignored
 
@@ -193,7 +193,7 @@ A fine grain isn't always the only answer. There are legitimate cases for aggreg
 - **Periodic snapshots** where the business genuinely thinks in periods (monthly account balance, end-of-week inventory)
 - **Source constraints** when the upstream system doesn't expose detail and there's no way to get it
 
-But the rule is: start from detail, then aggregate. Never the other way around. Aggregate fact tables are an optimization, not a substitute for fine grain.
+Yet the rule is: start from detail, then aggregate. Never the other way around. Aggregate fact tables are an optimization, not a substitute for fine grain.
 
 In our case, after the restructuring, we also created a materialized view with the monthly summary per customer — the same structure as before — for executive dashboards that didn't need the detail. The best of both worlds, without sacrificing anything.
 
@@ -201,7 +201,7 @@ In our case, after the restructuring, we also created a materialized view with t
 
 That project taught me something I carry into every engagement since: the first half-hour of data warehouse design, the one where you decide the grain, is worth more than all the optimizations that come later. A flawless ETL, perfectly tuned indexes, powerful hardware — none of it compensates for the wrong grain.
 
-If your fact table can't answer the business's questions, it's not the queries' fault. It's the model's fault. And the model is decided at the grain.
+If your fact table can't answer the business's questions, it's not the queries. It's the model. And the model is decided at the grain.
 
 ------------------------------------------------------------------------
 

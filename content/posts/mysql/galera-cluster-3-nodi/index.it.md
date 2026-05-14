@@ -10,11 +10,11 @@ categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---
 
-Il ticket era laconico, come spesso accade quando il problema è grave: "Il database è andato giù di nuovo. L'applicazione è ferma. Terza volta in due mesi."
+Il ticket era laconico, come spesso accade quando la situazione è grave: "Il database è andato giù di nuovo. L'applicazione è ferma. Terza volta in due mesi."
 
-Il cliente aveva un MariaDB su un singolo server Linux — un'applicazione gestionale usata da circa duecento utenti interni, con picchi di carico durante le chiusure contabili di fine mese. Ogni volta che il server aveva un problema — un disco che rallentava, un aggiornamento di sistema che richiedeva un riavvio, un processo che consumava tutta la RAM — il database cadeva e con lui l'intera operatività aziendale.
+Il cliente aveva un MariaDB su un singolo server Linux — un'applicazione gestionale usata da circa duecento utenti interni, con picchi di carico durante le chiusure contabili di fine mese. Ogni volta che il server aveva una criticità — un disco che rallentava, un aggiornamento di sistema che richiedeva un riavvio, un processo che consumava tutta la RAM — il database cadeva e con lui l'intera operatività aziendale.
 
-La domanda non era "come ripariamo il server". La domanda era: **come facciamo in modo che la prossima volta che un server ha un problema, l'applicazione continui a funzionare?**
+La domanda non era "come ripariamo il server". La domanda era: **come facciamo in modo che la prossima volta che un server ha un'anomalia, l'applicazione continui a funzionare?**
 
 La risposta, dopo vent'anni di esperienza con questo tipo di scenari, era una: **Galera Cluster**.
 
@@ -140,7 +140,7 @@ Galera richiede il formato ROW per il binary log. Non STATEMENT, non MIXED. **RO
 
 Questo parametro imposta il lock mode per gli auto-increment a "interleaved". In un cluster multi-master, due nodi possono generare INSERT contemporaneamente sulla stessa tabella. Con il lock mode 1 (il default) si creerebbero deadlock. Con il valore 2, InnoDB genera gli auto-increment senza lock globale, permettendo inserimenti concorrenti da nodi diversi.
 
-La conseguenza: gli ID auto-increment **non saranno sequenziali** tra i nodi. Se la tua applicazione dipende dalla sequenzialità degli ID, hai un problema architetturale da risolvere a monte.
+La conseguenza: gli ID auto-increment **non saranno sequenziali** tra i nodi. Se la tua applicazione dipende dalla sequenzialità degli ID, hai una criticità architetturale da risolvere a monte.
 
 ### `innodb_flush_log_at_trx_commit=2`
 
@@ -303,7 +303,7 @@ SHOW STATUS WHERE Variable_name IN (
 
 **`wsrep_flow_control_paused > 0.0`**: flow control attivato. Significa che un nodo è troppo lento nell'applicare le transazioni e sta chiedendo agli altri di rallentare. Un valore vicino a 1.0 significa che il cluster è sostanzialmente fermo, in attesa del nodo più lento.
 
-**`wsrep_local_recv_queue_avg > 1.0`**: le transazioni in arrivo si accumulano. Potrebbe essere un problema di I/O disco, CPU, o un nodo sottodimensionato.
+**`wsrep_local_recv_queue_avg > 1.0`**: le transazioni in arrivo si accumulano. Potrebbe essere una criticità di I/O disco, CPU, o un nodo sottodimensionato.
 
 ### Script di monitoraggio
 

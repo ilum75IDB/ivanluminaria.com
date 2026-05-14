@@ -14,7 +14,7 @@ Last week a colleague told me about a project where data warehouse queries had s
 
 I didn't need to ask anything else. I already knew the script.
 
-A {{< glossary term="fact-table" >}}fact table{{< /glossary >}} that starts small, grows every day, and nobody worries about the physical structure until one day queries stop coming back. It's not a bug, not a code error. It's the weight of data finally making itself felt.
+A {{< glossary term="fact-table" >}}fact table{{< /glossary >}} that starts small, grows every day, and nobody worries about the physical structure until one day queries stop coming back. It's not a bug, not a code slip. It's the weight of data finally making itself felt.
 
 ---
 
@@ -63,7 +63,7 @@ GROUP BY pv.regione, cat.famiglia
 ORDER BY fatturato DESC;
 ```
 
-The predicate on `data_vendita` should have used the index. And it did — a year earlier, when the table had 500 million rows. But with 800 million, the optimizer had decided the index was no longer worth it. The math was straightforward: one quarter = roughly 8% of total rows. With an index range scan, Oracle would have needed 64 million random block accesses. A sequential {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} cost less.
+The predicate on `data_vendita` should have used the index. And it did — a year earlier, when the table had 500 million rows. Only with 800 million, the optimizer had decided the index was no longer worth it. The math was straightforward: one quarter = roughly 8% of total rows. With an index range scan, Oracle would have needed 64 million random block accesses. A sequential {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} cost less.
 
 And so it did: it read 800 million rows to return 64 million.
 
@@ -202,7 +202,7 @@ Not because the hardware was faster, not because I rewrote the queries. Only bec
 
 ## 🔄 Exchange partition: the zero-cost load
 
-In a data warehouse, data arrives on a regular cadence — in our case, a nightly {{< glossary term="etl" >}}ETL{{< /glossary >}} that loaded each day's sales. The classic partitioning challenge is: how do you load new data into the correct partition without impacting queries?
+In a data warehouse, data arrives on a regular cadence — in our case, a nightly {{< glossary term="etl" >}}ETL{{< /glossary >}} that loaded each day's sales. The classic partitioning point is: how do you load new data into the correct partition without impacting queries?
 
 The answer is {{< glossary term="exchange-partition" >}}exchange partition{{< /glossary >}}.
 

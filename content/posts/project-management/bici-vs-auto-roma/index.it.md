@@ -106,7 +106,7 @@ E quei 5.450 euro risparmiati? Sono una vacanza. Sono un fondo pensione. Sono il
 
 ## 💪 I benefici che non si misurano in euro
 
-Ma i numeri economici sono solo una parte della storia. Quelli che contano davvero sono gli altri.
+I numeri economici, però, sono solo una parte della storia. Quelli che contano davvero sono gli altri.
 
 ### Salute cardiovascolare
 
@@ -157,7 +157,7 @@ Con la pedalata assistita non sudi. E anche se sudassi leggermente, meglio 18 mi
 Questo è vero, e non lo minimizzo. Roma ha bisogno di più infrastrutture ciclabili. Ma il mio percorso — Appio Latino, Celio, Lungotevere — è ragionevolmente sicuro, soprattutto nelle ore di punta quando il traffico è così lento che le auto vanno più piano della bici.
 
 **"Non posso portare la bici in ufficio."**\
-La Brompton si piega in 20 secondi e diventa un bagaglio da mettere sotto la scrivania. È questo il suo superpotere: elimina completamente il problema del parcheggio.
+La Brompton si piega in 20 secondi e diventa un bagaglio da mettere sotto la scrivania. È questo il suo superpotere: elimina completamente la criticità del parcheggio.
 
 ------------------------------------------------------------------------
 
@@ -195,7 +195,7 @@ Lo so cosa state pensando. "Sì, ma quelle sono città piatte. Roma ha i sette c
 
 È vero. Roma ha salite. Il Celio, l'Aventino, il Gianicolo — non sono esattamente pianura padana.
 
-Ma questa obiezione aveva senso dieci anni fa. Oggi, con una bici elettrica, **i sette colli non esistono più**. Il motore ti assiste in salita, arrivi in cima senza fiatone, senza sudore, senza rimpiangere la macchina.
+Questa obiezione, però, aveva senso dieci anni fa. Oggi, con una bici elettrica, **i sette colli non esistono più**. Il motore ti assiste in salita, arrivi in cima senza fiatone, senza sudore, senza rimpiangere la macchina.
 
 La mia Brompton elettrica affronta la salita del Celio come se fosse un leggero dosso. Il Lungotevere è pianeggiante. E il tratto finale verso Prati è in discesa.
 
@@ -222,7 +222,7 @@ Da 13 ore a 1 ora e 12 minuti. Da 110 euro a zero.
 Non è utopia. È organizzazione.\
 Non è pigrizia. È intelligenza.
 
-Se le aziende combinassero smart working e incentivi alla mobilità sostenibile, il risultato sarebbe triplo: **dipendenti più sani, più produttivi e città più vivibili**. Ma per arrivarci, serve smettere di pensare che "lavorare" significhi "stare seduti in un ufficio dalle 9 alle 18 dopo un'ora di macchina."
+Se le aziende combinassero smart working e incentivi alla mobilità sostenibile, il risultato sarebbe triplo: **dipendenti più sani, più produttivi e città più vivibili**. Per arrivarci, però, serve smettere di pensare che "lavorare" significhi "stare seduti in un ufficio dalle 9 alle 18 dopo un'ora di macchina."
 
 ------------------------------------------------------------------------
 

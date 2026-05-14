@@ -116,7 +116,7 @@ La IA no es magia. Es arquitectura aplicada a la inteligencia.
 
 Un modelo es un componente. Como una base de datos, como un message broker, como un balanceador de carga. Necesita inputs limpios, monitorización, mantenimiento, gobierno. Necesita a alguien que entienda lo que hace, lo que puede hacer, y sobre todo lo que no puede hacer.
 
-El Project Manager que ignora estos aspectos y lo delega todo al equipo técnico está cometiendo el mismo error de quien delegaba la seguridad al administrador de sistemas y después se sorprendía de la fuga de datos.
+El Project Manager que ignora estos aspectos y lo delega todo al equipo técnico está cometiendo el mismo descuido de quien delegaba la seguridad al administrador de sistemas y después se sorprendía de la fuga de datos.
 
 La IA es una responsabilidad arquitectónica. Y como todas las responsabilidades arquitectónicas, se gobierna desde arriba. No desde abajo.
 

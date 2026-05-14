@@ -12,7 +12,7 @@ image: "fatto-grana-sbagliata.cover.jpg"
 
 La riunione era cominciata bene. Il direttore commerciale di un'azienda di distribuzione industriale — una sessantina di milioni di fatturato, tremila clienti attivi, catalogo con dodicimila referenze — aveva aperto la presentazione del nuovo data warehouse con un sorriso. I numeri tornavano, i cruscotti erano belli, i totali mensili per agente e per zona battevano con la contabilità.
 
-Poi qualcuno ha fatto la domanda sbagliata. O meglio, quella giusta.
+Poi qualcuno ha fatto la domanda meno gradita. O meglio, quella giusta.
 
 *"Posso vedere quanto ha comprato il cliente Bianchi nel mese di marzo, riga per riga, prodotto per prodotto?"*
 
@@ -30,11 +30,11 @@ Il grain risponde alla domanda: *cosa rappresenta una singola riga della fact ta
 
 Nel progetto che ho descritto, chi aveva progettato il modello aveva scelto un grain mensile-cliente: una riga = un cliente in un mese. I motivi sembravano ragionevoli: il sistema sorgente esportava un riepilogo mensile, il caricamento era veloce, le tabelle erano piccole, le query semplici.
 
-Ma il grain determina le domande a cui il data warehouse può rispondere. Se la grana è il riepilogo mensile per cliente, non puoi scendere sotto quel livello. Non puoi fare {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} per prodotto. Non puoi sapere se il cliente Bianchi ha comprato dieci volte lo stesso articolo o dieci articoli diversi. Non puoi confrontare margini per famiglia merceologica.
+E il grain determina le domande a cui il data warehouse può rispondere. Se la grana è il riepilogo mensile per cliente, non puoi scendere sotto quel livello. Non puoi fare {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} per prodotto. Non puoi sapere se il cliente Bianchi ha comprato dieci volte lo stesso articolo o dieci articoli diversi. Non puoi confrontare margini per famiglia merceologica.
 
 Hai un totale. Punto.
 
-## 📊 I numeri del problema
+## 📊 I numeri della situazione
 
 La fact table originale aveva questa struttura:
 
@@ -55,7 +55,7 @@ CREATE TABLE fact_fatturato_mensile (
 
 Righe in tabella: circa 180.000 all'anno (3.000 clienti × 12 mesi × qualche variazione). Piccola, veloce, facile da caricare. L'{{< glossary term="etl" >}}ETL{{< /glossary >}} girava in meno di cinque minuti.
 
-Il problema? Le {{< glossary term="additive-measure" >}}misure additive{{< /glossary >}} erano già aggregate. `importo_totale` era la somma di tutte le righe di fattura del mese. Impossibile risalire alla composizione. Come avere il totale di uno scontrino senza sapere cosa hai comprato.
+Il punto? Le {{< glossary term="additive-measure" >}}misure additive{{< /glossary >}} erano già aggregate. `importo_totale` era la somma di tutte le righe di fattura del mese. Impossibile risalire alla composizione. Come avere il totale di uno scontrino senza sapere cosa hai comprato.
 
 ## 🏗️ La ristrutturazione: scendere alla riga di fattura
 
@@ -171,7 +171,7 @@ GROUP BY a.nome_agente
 ORDER BY fatturato_totale DESC;
 ```
 
-Nessuna di queste query era possibile con il grain mensile-cliente. Zero. Non era un problema di ottimizzazione o di indici — era un problema strutturale, scritto nel DNA del modello.
+Nessuna di queste query era possibile con il grain mensile-cliente. Zero. Non era una criticità di ottimizzazione o di indici — era una criticità strutturale, scritta nel DNA del modello.
 
 ## 📋 La regola di Kimball che avevamo ignorato
 
@@ -193,7 +193,7 @@ Non sempre la grana fine è l'unica risposta. Ci sono casi legittimi per le fact
 - **Snapshot periodici** dove il business ragiona effettivamente per periodo (saldo mensile di un conto corrente, giacenza di magazzino a fine settimana)
 - **Vincoli di sorgente** quando il sistema a monte non espone il dettaglio e non c'è modo di ottenerlo
 
-Ma la regola è: parti dal dettaglio, poi aggrega. Mai il contrario. Le aggregate fact table sono un'ottimizzazione, non un sostituto della grana fine.
+Però la regola è: parti dal dettaglio, poi aggrega. Mai il contrario. Le aggregate fact table sono un'ottimizzazione, non un sostituto della grana fine.
 
 Nel nostro caso, dopo la ristrutturazione, abbiamo creato anche una vista materializzata con il riepilogo mensile per cliente — la stessa struttura di prima — per i cruscotti direzionali che non avevano bisogno del dettaglio. Il meglio dei due mondi, senza sacrificare nulla.
 
@@ -201,7 +201,7 @@ Nel nostro caso, dopo la ristrutturazione, abbiamo creato anche una vista materi
 
 Quel progetto mi ha insegnato una cosa che porto con me in ogni incarico successivo: la prima mezz'ora di progettazione di un data warehouse, quella in cui si decide il grain, vale più di tutte le ottimizzazioni che verranno dopo. Un ETL perfetto, indici calibrati, hardware potente — niente di tutto questo compensa un grain sbagliato.
 
-Se la tua fact table non risponde alle domande del business, non è colpa delle query. È colpa del modello. E il modello si decide al grain.
+Se la tua fact table non risponde alle domande del business, non sono le query. È il modello. E il modello si decide al grain.
 
 ------------------------------------------------------------------------
 

@@ -12,7 +12,7 @@ image: "mysql-group-replication-binlog-migration.cover.jpg"
 
 La notifica è arrivata un lunedì mattina, in mezzo a tre riunioni e un caffè ancora caldo. "Filesystem /mysql all'85% sul nodo primario." Su un altro nodo era al 66%, sul terzo al 25%. In un cluster, quando i numeri non tornano tra i nodi, c'è sempre qualcosa sotto.
 
-La prima domanda che ti viene in mente è "quanto spazio serve?". Ma è la domanda sbagliata. Quella giusta è: "perché si sta riempiendo?"
+La prima domanda che ti viene in mente è "quanto spazio serve?". Solo che è la domanda sbagliata. Quella giusta è: "perché si sta riempiendo?"
 
 ---
 
@@ -24,7 +24,7 @@ Controllare è stato rapido:
 SHOW VARIABLES LIKE 'log_bin';
 ```
 
-Risultato: `ON`. I binary log erano attivi — come ci si aspetta in un cluster. Ma la cosa che non andava era il path:
+Risultato: `ON`. I binary log erano attivi — come ci si aspetta in un cluster. Solo che la cosa che non andava era il path:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin_basename';
@@ -46,15 +46,15 @@ SHOW VARIABLES LIKE 'binlog_expire_logs_seconds';
 2592000
 ```
 
-Trenta giorni. Poi ho voluto capire quanto pesava davvero questa configurazione. Ho controllato la dimensione dei singoli file binlog e il ritmo di scrittura: ogni file pesava circa 1 GB, e il server ne generava uno ogni due ore. Dodici file al giorno, per trenta giorni di retention: circa 360 GB di binary log sul volume principale. Su un volume da 3 TB condiviso con i dati, i binlog da soli occupavano più del 10% dello spazio. E quei file non stanno solo sul primary — in Group Replication ogni nodo scrive i propri binlog locali per la sincronizzazione, quindi il problema si moltiplicava su tutti e tre i nodi.
+Trenta giorni. Poi ho voluto capire quanto pesava davvero questa configurazione. Ho controllato la dimensione dei singoli file binlog e il ritmo di scrittura: ogni file pesava circa 1 GB, e il server ne generava uno ogni due ore. Dodici file al giorno, per trenta giorni di retention: circa 360 GB di binary log sul volume principale. Su un volume da 3 TB condiviso con i dati, i binlog da soli occupavano più del 10% dello spazio. E quei file non stanno solo sul primary — in Group Replication ogni nodo scrive i propri binlog locali per la sincronizzazione, quindi la criticità si moltiplicava su tutti e tre i nodi.
 
-Il problema era chiaro: i binary log stavano mangiando lo spazio del filesystem principale. Non un bug, non una tabella che cresce a dismisura. Solo una scelta architetturale iniziale mai rivista.
+La causa era chiara: i binary log stavano mangiando lo spazio del filesystem principale. Non un bug, non una tabella che cresce a dismisura. Solo una scelta architetturale iniziale mai rivista.
 
 ---
 
-## Ma che cluster è, esattamente?
+## E che cluster è, esattamente?
 
-Prima di toccare qualsiasi cosa su un server MySQL — prima ancora di pensare a spostare un file — devi sapere cosa hai davanti. "È un cluster" non basta. MySQL ha almeno quattro modi diversi di fare alta disponibilità, e ognuno ha le sue regole.
+Prima di toccare qualsiasi cosa su un server MySQL — prima ancora di pensare a spostare un file — ti conviene sapere cosa hai davanti. "È un cluster" non basta. MySQL ha almeno quattro modi diversi di fare alta disponibilità, e ognuno ha le sue regole.
 
 Ho iniziato con la replica classica:
 
@@ -264,7 +264,7 @@ Dalla mia esperienza, queste sono le trappole più comuni in questo tipo di inte
 
 ## Quello che questa operazione insegna
 
-Un filesystem al 92% non è un'emergenza — è un segnale. Il problema vero non era lo spazio disco, era una scelta architetturale fatta probabilmente al momento dell'installazione e mai più rivista: binlog e dati sullo stesso volume.
+Un filesystem al 92% non è un'emergenza — è un segnale. La causa vera non era lo spazio disco, era una scelta architetturale fatta probabilmente al momento dell'installazione e mai più rivista: binlog e dati sullo stesso volume.
 
 Separare i binary log su un volume dedicato non è solo un fix. È hardening dell'infrastruttura. È la differenza tra un sistema che "funziona" e un sistema che è progettato per funzionare anche quando le cose crescono.
 

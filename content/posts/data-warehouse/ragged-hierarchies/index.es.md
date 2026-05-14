@@ -10,7 +10,7 @@ categories: ["data-warehouse"]
 image: "ragged-hierarchies.cover.jpg"
 ---
 
-Tres niveles. Top Group, Group, Client. Parece una estructura trivial — el tipo de jerarquía que dibujas en una pizarra en cinco minutos y que cualquier herramienta de BI debería manejar sin problemas.
+Tres niveles. Top Group, Group, Client. Parece una estructura trivial — el tipo de jerarquía que dibujas en una pizarra en cinco minutos y que cualquier herramienta de BI debería manejar sin tropiezos.
 
 Luego descubres que no todos los clientes pertenecen a un grupo. Y que no todos los grupos pertenecen a un top group. Y que los reportes de agregación que el negocio pide — facturación por top group, número de clientes por grupo, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} desde la cima hasta la hoja — producen resultados erróneos o incompletos porque la jerarquía tiene huecos.
 

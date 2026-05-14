@@ -219,7 +219,7 @@ I didn't give him the answer. We both knew it.
 
 ## What they don't tell you
 
-The configuration I've described works. But there are things that Oracle's documentation doesn't emphasize enough.
+The configuration I've described works. And there are things that Oracle's documentation doesn't emphasize enough.
 
 **The network gap.** Synchronous replication (`SYNC`) guarantees zero data loss but introduces latency on every commit. With 12 km and a good fiber link, the added latency was 1-2 milliseconds — acceptable. But at 100 km it would have been 5-8 ms, and on an application with thousands of commits per second, the slowdown would be noticeable. That's why I chose `MaxPerformance` mode (asynchronous) as the default, accepting the theoretical possibility of losing a few seconds of transactions in case of a total disaster. For that client, losing five seconds of data was infinitely better than losing ten hours.
 
@@ -250,7 +250,7 @@ The total project cost — server, licenses, dedicated line, implementation — 
 
 ## What I learned
 
-Disaster recovery isn't a technical problem. It's a risk perception problem. As long as the database is running, DR is an expense. When the database stops, DR is an investment that should have been made six months earlier.
+Disaster recovery isn't a technical matter. It's a matter of risk perception. As long as the database is running, DR is an expense. When the database stops, DR is an investment that should have been made six months earlier.
 
 You can't convince a CEO with an architectural diagram. You can only wait for the disaster to happen and then be ready with the solution. It's cynical, but that's how it works in ninety percent of cases.
 

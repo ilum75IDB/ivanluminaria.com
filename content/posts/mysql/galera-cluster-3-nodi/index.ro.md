@@ -1,5 +1,5 @@
 ---
-title: "Galera Cluster cu 3 noduri: cum am rezolvat o problemă de disponibilitate pe MySQL"
+title: "Galera Cluster cu 3 noduri: cum am rezolvat o criticitate de disponibilitate pe MySQL"
 seoTitle: "MySQL Galera Cluster 3 noduri: replicare sincronă și quorum"
 description: "MySQL Galera Cluster cu 3 noduri pentru high availability: replicare sincronă, quorum, SST/IST. Configurare împotriva single point of failure."
 date: "2026-02-17T08:03:00+01:00"
@@ -10,11 +10,11 @@ categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---
 
-Tichetul era laconic, cum se întâmplă adesea când problema e gravă: "Baza de date a căzut din nou. Aplicația e oprită. A treia oară în două luni."
+Tichetul era laconic, cum se întâmplă adesea când situația e gravă: "Baza de date a căzut din nou. Aplicația e oprită. A treia oară în două luni."
 
-Clientul avea un MariaDB pe un singur server Linux — o aplicație de gestiune de afaceri folosită de aproximativ două sute de utilizatori interni, cu vârfuri de încărcare în timpul închiderilor contabile de sfârșit de lună. De fiecare dată când serverul avea o problemă — un disc care se încetinea, o actualizare de sistem care necesita restart, un proces care consuma toată memoria RAM — baza de date cădea și cu ea întreaga operativitate a companiei.
+Clientul avea un MariaDB pe un singur server Linux — o aplicație de gestiune de afaceri folosită de aproximativ două sute de utilizatori interni, cu vârfuri de încărcare în timpul închiderilor contabile de sfârșit de lună. De fiecare dată când serverul avea o criticitate — un disc care se încetinea, o actualizare de sistem care necesita restart, un proces care consuma toată memoria RAM — baza de date cădea și cu ea întreaga operativitate a companiei.
 
-Întrebarea nu era "cum reparăm serverul". Întrebarea era: **cum facem astfel încât data viitoare când un server are o problemă, aplicația să continue să funcționeze?**
+Întrebarea nu era "cum reparăm serverul". Întrebarea era: **cum facem astfel încât data viitoare când un server are o anomalie, aplicația să continue să funcționeze?**
 
 Răspunsul, după douăzeci de ani de experiență cu acest tip de scenarii, era unul singur: **Galera Cluster**.
 
@@ -140,7 +140,7 @@ Galera necesită formatul ROW pentru binary log. Nu STATEMENT, nu MIXED. **ROW**
 
 Acest parametru setează modul de blocare pentru auto-increment la "interleaved". Într-un cluster multi-master, două noduri pot genera INSERT simultan pe aceeași tabelă. Cu lock mode 1 (implicit) s-ar crea deadlock-uri. Cu valoarea 2, InnoDB generează auto-increment-urile fără lock global, permițând inserări concurente de pe noduri diferite.
 
-Consecința: ID-urile auto-increment **nu vor fi secvențiale** între noduri. Dacă aplicația ta depinde de secvențialitatea ID-urilor, ai o problemă arhitecturală de rezolvat în amonte.
+Consecința: ID-urile auto-increment **nu vor fi secvențiale** între noduri. Dacă aplicația ta depinde de secvențialitatea ID-urilor, ai o criticitate arhitecturală de rezolvat în amonte.
 
 ### `innodb_flush_log_at_trx_commit=2`
 
@@ -303,7 +303,7 @@ SHOW STATUS WHERE Variable_name IN (
 
 **`wsrep_flow_control_paused > 0.0`**: flow control activat. Înseamnă că un nod este prea lent în aplicarea tranzacțiilor și le cere celorlalte să încetinească. O valoare apropiată de 1.0 înseamnă că clusterul este în esență oprit, așteptând nodul cel mai lent.
 
-**`wsrep_local_recv_queue_avg > 1.0`**: tranzacțiile care sosesc se acumulează. Ar putea fi o problemă de I/O disc, CPU, sau un nod subdimensionat.
+**`wsrep_local_recv_queue_avg > 1.0`**: tranzacțiile care sosesc se acumulează. Ar putea fi o criticitate de I/O disc, CPU, sau un nod subdimensionat.
 
 ### Script de monitorizare
 

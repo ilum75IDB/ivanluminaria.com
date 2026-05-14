@@ -106,7 +106,7 @@ Iar acei 5.450 de euro economisiți? Sunt o vacanță. O contribuție la pensie.
 
 ## 💪 Beneficiile care nu se măsoară în euro
 
-Dar cifrele economice sunt doar o parte a poveștii. Cele care contează cu adevărat sunt celelalte.
+Cifrele economice, însă, sunt doar o parte a poveștii. Cele care contează cu adevărat sunt celelalte.
 
 ### Sănătatea cardiovasculară
 
@@ -157,7 +157,7 @@ Cu asistența la pedalare nu transpiri. Și chiar dacă ai transpira ușor, mai 
 Asta e adevărat și nu minimizez. Roma are nevoie de mai multă infrastructură pentru biciclete. Dar traseul meu — Appio Latino, Celio, Lungotevere — este rezonabil de sigur, mai ales în orele de vârf când traficul e atât de lent încât mașinile merg mai încet decât bicicleta.
 
 **"Nu pot duce bicicleta la birou."**\
-Brompton-ul se pliază în 20 de secunde și devine un bagaj care încape sub birou. Asta e superputerea lui: elimină complet problema parcării.
+Brompton-ul se pliază în 20 de secunde și devine un bagaj care încape sub birou. Asta e superputerea lui: elimină complet chestiunea parcării.
 
 ------------------------------------------------------------------------
 
@@ -195,7 +195,7 @@ Iar cu o pliabilă electrică, ultimele scuze cad una câte una.
 
 E adevărat. Roma are urcușuri. Celio, Aventino, Gianicolo — nu sunt exact Câmpia Padului.
 
-Dar această obiecție avea sens acum zece ani. Azi, cu o bicicletă electrică, **cele șapte coline nu mai există**. Motorul te asistă la urcare, ajungi sus fără să gâfâi, fără să transpiri, fără să regreți mașina.
+Această obiecție, însă, avea sens acum zece ani. Azi, cu o bicicletă electrică, **cele șapte coline nu mai există**. Motorul te asistă la urcare, ajungi sus fără să gâfâi, fără să transpiri, fără să regreți mașina.
 
 Brompton-ul meu electric abordează urcușul Celio ca și cum ar fi o ușoară denivelare. Lungotevere-ul e plat. Iar tronsonul final spre Prati e în coborâre.
 
@@ -222,7 +222,7 @@ De la 13 ore la 1 oră și 12 minute. De la 110 euro la zero.
 Nu e utopie. E organizare.\
 Nu e lene. E inteligență.
 
-Dacă companiile ar combina smart working-ul cu stimulente pentru mobilitate sustenabilă, rezultatul ar fi triplu: **angajați mai sănătoși, mai productivi și orașe mai locuibile**. Dar pentru a ajunge acolo, trebuie să renunțăm la ideea că "a munci" înseamnă "a sta într-un birou de la 9 la 18 după o oră de mașină."
+Dacă companiile ar combina smart working-ul cu stimulente pentru mobilitate sustenabilă, rezultatul ar fi triplu: **angajați mai sănătoși, mai productivi și orașe mai locuibile**. Pentru a ajunge acolo, însă, trebuie să renunțăm la ideea că "a munci" înseamnă "a sta într-un birou de la 9 la 18 după o oră de mașină."
 
 ------------------------------------------------------------------------
 

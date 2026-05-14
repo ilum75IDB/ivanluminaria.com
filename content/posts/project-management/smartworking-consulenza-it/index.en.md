@@ -75,7 +75,7 @@ I've worked with teams distributed across three time zones. I've managed critica
 
 ## 📊 The numbers for the company: what CFOs don't want to see
 
-IT consulting companies in Rome have a structural problem they pretend doesn't exist.
+IT consulting companies in Rome have a structural issue they pretend doesn't exist.
 
 Take a company with 50 consultants. Let's do the math:
 
@@ -105,7 +105,7 @@ One million seven hundred thousand euros. Every year. To keep fifty people sitti
 **Annual savings: over €1,400,000.**\
 And these are conservative estimates.
 
-But the most important number isn't the financial one.\
+The most important number, however, isn't the financial one.\
 The most important number is those **26,400 hours** returned to productivity.\
 Hours where people work clear-headed, rested, focused.\
 Not hours staring at a bumper on the Cristoforo Colombo highway.
@@ -126,7 +126,7 @@ An IT consultant doesn't work on an assembly line. They don't need to be physica
 
 All of this works better from home than in a noisy open space where the phone rings every five minutes and someone interrupts you to ask "got a minute?" (which is never actually a minute).
 
-The real problem is **control**. Some companies don't know how to manage work by objectives. They only know how to manage attendance. And they confuse the two.
+The real matter is **control**. Some companies don't know how to manage work by objectives. They only know how to manage attendance. And they confuse the two.
 
 If a consultant closes 20 tickets in a week working from home in shorts, they're more productive than one who closes 8 wearing a suit in the office from 9 to 6.
 

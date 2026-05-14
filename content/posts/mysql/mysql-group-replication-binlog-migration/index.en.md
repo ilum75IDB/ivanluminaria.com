@@ -12,7 +12,7 @@ image: "mysql-group-replication-binlog-migration.cover.jpg"
 
 The alert came on a Monday morning, wedged between three meetings and a coffee that was still hot. "Filesystem /mysql at 85% on the primary node." On another node it was 66%, on the third 25%. In a cluster, when the numbers don't match across nodes, there's always something going on underneath.
 
-The first question that comes to mind is "how much space do we need?" But that's the wrong question. The right one is: "why is it filling up?"
+The first question that comes to mind is "how much space do we need?" Only that's the wrong question. The right one is: "why is it filling up?"
 
 ---
 
@@ -24,7 +24,7 @@ Checking was quick:
 SHOW VARIABLES LIKE 'log_bin';
 ```
 
-Result: `ON`. Binary logs were active — as expected in a cluster. But the path was the issue:
+Result: `ON`. Binary logs were active — as expected in a cluster. Only the path was the issue:
 
 ```sql
 SHOW VARIABLES LIKE 'log_bin_basename';
@@ -46,15 +46,15 @@ SHOW VARIABLES LIKE 'binlog_expire_logs_seconds';
 2592000
 ```
 
-Thirty days. Then I wanted to understand how much this configuration actually weighed. I checked the size of individual binlog files and the write rate: each file was roughly 1 GB, and the server was generating one every two hours. Twelve files a day, times thirty days of retention: approximately 360 GB of binary logs on the main volume. On a 3 TB volume shared with the data, binlogs alone were eating over 10% of the space. And those files don't just sit on the primary — in Group Replication each node writes its own local binlogs for synchronization, so the problem was multiplied across all three nodes.
+Thirty days. Then I wanted to understand how much this configuration actually weighed. I checked the size of individual binlog files and the write rate: each file was roughly 1 GB, and the server was generating one every two hours. Twelve files a day, times thirty days of retention: approximately 360 GB of binary logs on the main volume. On a 3 TB volume shared with the data, binlogs alone were eating over 10% of the space. And those files don't just sit on the primary — in Group Replication each node writes its own local binlogs for synchronization, so the issue was multiplied across all three nodes.
 
-The picture was clear: binary logs were eating up the main filesystem. Not a bug, not a runaway table. Just an architectural choice made at installation time and never revisited.
+The cause was clear: binary logs were eating up the main filesystem. Not a bug, not a runaway table. Just an architectural choice made at installation time and never revisited.
 
 ---
 
 ## What kind of cluster is this, exactly?
 
-Before touching anything on a MySQL server — before even thinking about moving a file — you need to know what you're dealing with. "It's a cluster" isn't enough. MySQL has at least four different ways of doing high availability, and each one has its own rules.
+Before touching anything on a MySQL server — before even thinking about moving a file — it pays to know what you're dealing with. "It's a cluster" isn't enough. MySQL has at least four different ways of doing high availability, and each one has its own rules.
 
 I started with classic replication:
 
@@ -264,7 +264,7 @@ From my experience, these are the most common traps in this kind of intervention
 
 ## What this operation really teaches
 
-A filesystem at 92% isn't an emergency — it's a signal. The real problem wasn't disk space; it was an architectural choice made at installation time and never revisited: binlogs and data on the same volume.
+A filesystem at 92% isn't an emergency — it's a signal. The real cause wasn't disk space; it was an architectural choice made at installation time and never revisited: binlogs and data on the same volume.
 
 Separating binary logs onto a dedicated volume isn't just a fix. It's infrastructure hardening. It's the difference between a system that "works" and one that's designed to keep working as things grow.
 

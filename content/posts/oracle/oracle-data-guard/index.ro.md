@@ -183,7 +183,7 @@ Configuration Status:
 SUCCESS
 ```
 
-Cuvântul pe care vrei să-l vezi este `SUCCESS`. Orice altceva înseamnă că există o problemă de rețea, configurare sau permisiuni de rezolvat înainte de a merge mai departe.
+Cuvântul pe care vrei să-l vezi este `SUCCESS`. Orice altceva înseamnă că există o criticitate de rețea, configurare sau permisiuni de rezolvat înainte de a merge mai departe.
 
 ## Primul switchover
 
@@ -219,7 +219,7 @@ Nu i-am dat răspunsul. Îl știam amândoi.
 
 ## Ce nu-ți spun
 
-Configurarea pe care am descris-o funcționează. Dar sunt lucruri pe care documentația Oracle nu le subliniază suficient.
+Configurarea pe care am descris-o funcționează. Și sunt lucruri pe care documentația Oracle nu le subliniază suficient.
 
 **Gap-ul de rețea.** Replicarea sincronă (`SYNC`) garantează zero pierderi de date dar introduce latență la fiecare commit. Cu 12 km și o fibră bună, latența adăugată era de 1-2 milisecunde — acceptabilă. Dar la 100 km ar fi fost 5-8 ms, și pe o aplicație cu mii de commit-uri pe secundă, încetinirea s-ar fi simțit. De aceea am ales modul `MaxPerformance` (asincron) ca implicit, acceptând posibilitatea teoretică de a pierde câteva secunde de tranzacții în caz de dezastru total. Pentru acel client, pierderea a cinci secunde de date era infinit mai bună decât pierderea a zece ore.
 
@@ -250,7 +250,7 @@ Costul total al proiectului — server, licențe, linie dedicată, implementare 
 
 ## Ce am învățat
 
-Disaster recovery nu este o problemă tehnică. Este o problemă de percepție a riscului. Cât timp baza de date funcționează, DR-ul este o cheltuială. Când baza de date se oprește, DR-ul este o investiție care trebuia făcută cu șase luni înainte.
+Disaster recovery nu este o chestiune tehnică. Este o chestiune de percepție a riscului. Cât timp baza de date funcționează, DR-ul este o cheltuială. Când baza de date se oprește, DR-ul este o investiție care trebuia făcută cu șase luni înainte.
 
 Nu poți convinge un CEO cu o diagramă arhitecturală. Poți doar să aștepți ca dezastrul să se întâmple și apoi să fii pregătit cu soluția. E cinic, dar așa funcționează în nouăzeci la sută din cazuri.
 

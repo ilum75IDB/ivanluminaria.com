@@ -10,11 +10,11 @@ categories: ["data-warehouse"]
 image: "ragged-hierarchies.cover.jpg"
 ---
 
-Tre livelli. Top Group, Group, Client. Sembra una struttura banale — il tipo di gerarchia che disegni su una lavagna in cinque minuti e che qualsiasi tool di BI dovrebbe gestire senza problemi.
+Tre livelli. Top Group, Group, Client. Sembra una struttura banale — il tipo di gerarchia che disegni su una lavagna in cinque minuti e che qualsiasi tool di BI dovrebbe gestire senza criticità.
 
-Poi scopri che non tutti i clienti hanno un gruppo. E che non tutti i gruppi hanno un top group. E che i report di aggregazione che il business ti chiede — fatturato per top group, numero clienti per gruppo, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} dal vertice alla foglia — producono risultati sbagliati o incompleti perché la gerarchia ha dei buchi.
+Poi scopri che non tutti i clienti hanno un gruppo. E che non tutti i gruppi hanno un top group. E che i report di aggregazione che il business ti chiede — fatturato per top group, numero clienti per gruppo, {{< glossary term="drill-down" >}}drill-down{{< /glossary >}} dal vertice alla foglia — producono risultati errati o incompleti perché la gerarchia ha dei buchi.
 
-In gergo tecnico si chiama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una gerarchia in cui non tutti i rami raggiungono la stessa profondità. Nel mondo reale si chiama "il problema che nessuno vede finché non apre il report e i numeri non tornano."
+In gergo tecnico si chiama **{{< glossary term="ragged-hierarchy" >}}ragged hierarchy{{< /glossary >}}**: una gerarchia in cui non tutti i rami raggiungono la stessa profondità. Nel mondo reale si chiama "la cosa che nessuno nota finché non apre il report e i numeri non tornano."
 
 ---
 
@@ -62,7 +62,7 @@ Questa è una ragged hierarchy. Tre livelli sulla carta, ma nella realtà i rami
 
 ---
 
-## Il problema: i report non tornano
+## La situazione: i report non tornano
 
 Il business chiedeva un report semplice: fatturato aggregato per Top Group, con possibilità di drill-down per Group e poi per Client. Una richiesta ragionevole — il tipo di cosa che ti aspetti da qualsiasi DWH.
 
@@ -90,13 +90,13 @@ Holding Nazionale   Gruppo Centro               1         67000.00
 (null)              (null)                      2         90000.00
 ```
 
-Cinque righe. E almeno tre problemi.
+Cinque righe. E almeno tre criticità.
 
 Il Gruppo Centro appare due volte: una sotto "Holding Nazionale" (il client 1003 che ha il top group) e una sotto NULL (il client 1004 il cui top group è NULL). Lo stesso gruppo, spaccato su due righe, con totali separati. Chiunque guardi questo report penserà che Gruppo Centro abbia 67K di fatturato sotto la holding e 45K da qualche altra parte. In realtà è un unico gruppo con 112K totali.
 
 I clienti diretti (Gialli Utilities e Blu Energia) finiscono in una riga con due NULL. Il management non sa cosa farsene di una riga senza nome.
 
-Il totale per Top Group è sbagliato perché mancano le righe con NULL. Se sommi solo le righe con un top group, perdi 239K di fatturato — il 30% del totale.
+Il totale per Top Group è errato perché mancano le righe con NULL. Se sommi solo le righe con un top group, perdi 239K di fatturato — il 30% del totale.
 
 ---
 
@@ -112,13 +112,13 @@ SELECT COALESCE(top_group_name, group_name, client_name) AS top_group_name,
 FROM   stg_clienti;
 ```
 
-Funziona? In un certo senso sì — riempie i buchi. Ma introduce problemi nuovi.
+Funziona? In un certo senso sì — riempie i buchi. Solo che introduce criticità nuove.
 
 Il client "Gialli Utilities" ora appare come Top Group, Group e Client contemporaneamente. Se il business vuole contare quanti Top Group ci sono, il numero è gonfiato. Se vuole filtrare per "veri" top group, non ha modo di distinguerli dai clienti promossi a top group dalla COALESCE.
 
 E questo è il caso semplice, con tre livelli. Ho visto gerarchie a cinque livelli gestite con catene di COALESCE nidificati, CASE WHEN multipli, e una logica di report talmente contorta che nessuno osava più toccarla. Ogni nuova richiesta del business richiedeva una modifica a cascata su tutte le query.
 
-Il problema di fondo è che la COALESCE è un cerotto applicato nel layer di presentazione. Non risolve il problema strutturale: la gerarchia è incompleta e il modello dimensionale non lo sa.
+Il problema di fondo è che la COALESCE è un cerotto applicato nel layer di presentazione. Non risolve la criticità strutturale: la gerarchia è incompleta e il modello dimensionale non lo sa.
 
 ---
 
@@ -366,11 +366,11 @@ Il self-parenting risolve un problema specifico — gerarchie a livelli fissi co
 
 Ho progettato decine di dimensioni gerarchiche in vent'anni di data warehouse. La regola che mi porto dietro è sempre la stessa:
 
-**Se il report ha bisogno di logica condizionale per gestire la gerarchia, il problema è nel modello, non nel report.**
+**Se il report ha bisogno di logica condizionale per gestire la gerarchia, il punto è nel modello, non nel report.**
 
-Un report dovrebbe fare GROUP BY e JOIN. Se deve anche decidere come gestire i livelli mancanti, sta facendo il lavoro dell'ETL. E un report che fa il lavoro dell'ETL è un report che prima o poi si rompe.
+Un report dovrebbe fare GROUP BY e JOIN. Se deve anche decidere come gestire i livelli mancanti, sta facendo il lavoro dell'ETL. E un report che fa il lavoro dell'ETL è un report che, presto o tardi, si rompe.
 
-Il self-parenting non è elegante. Non è sofisticato. È una soluzione che un informatico appena laureato potrebbe trovare brutta. Ma funziona, è manutenibile, e trasforma un problema che infesta ogni singolo report in un problema che si risolve una volta sola, in un punto solo, e non torna più.
+Il self-parenting non è elegante. Non è sofisticato. È una soluzione che un informatico appena laureato potrebbe trovare brutta. Ma funziona, è manutenibile, e trasforma una criticità che infesta ogni singolo report in una criticità che si risolve una volta sola, in un punto solo, e non torna più.
 
 A volte la soluzione migliore è la più semplice. Questa è una di quelle volte.
 

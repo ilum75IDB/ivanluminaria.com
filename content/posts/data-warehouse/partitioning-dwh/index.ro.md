@@ -14,7 +14,7 @@ Săptămâna trecută un coleg mi-a povestit despre un proiect unde query-urile 
 
 Nu a trebuit să mai întreb nimic. Cunoșteam deja scenariul.
 
-O {{< glossary term="fact-table" >}}fact table{{< /glossary >}} care pornește mică, crește în fiecare zi, și nimeni nu se preocupă de structura fizică până într-o zi când query-urile nu mai revin. Nu e un bug, nu e o eroare de cod. E greutatea datelor care în final se face simțită.
+O {{< glossary term="fact-table" >}}fact table{{< /glossary >}} care pornește mică, crește în fiecare zi, și nimeni nu se preocupă de structura fizică până într-o zi când query-urile nu mai revin. Nu e un bug, nu e o scăpare de cod. E greutatea datelor care în final se face simțită.
 
 ---
 
@@ -63,7 +63,7 @@ GROUP BY pv.regione, cat.famiglia
 ORDER BY fatturato DESC;
 ```
 
-Predicatul pe `data_vendita` ar fi trebuit să folosească indexul. Și chiar o făcea — cu un an înainte, când tabela avea 500 de milioane de rânduri. Dar cu 800 de milioane, optimizer-ul decisese că indexul nu mai merita. Calculul era simplu: un trimestru = aproximativ 8% din totalul rândurilor. Cu un index range scan, Oracle ar fi avut nevoie de 64 de milioane de accesări aleatorii la blocuri. Un {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} secvențial costa mai puțin.
+Predicatul pe `data_vendita` ar fi trebuit să folosească indexul. Și chiar o făcea — cu un an înainte, când tabela avea 500 de milioane de rânduri. Doar că, cu 800 de milioane, optimizer-ul decisese că indexul nu mai merita. Calculul era simplu: un trimestru = aproximativ 8% din totalul rândurilor. Cu un index range scan, Oracle ar fi avut nevoie de 64 de milioane de accesări aleatorii la blocuri. Un {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} secvențial costa mai puțin.
 
 Și asta a făcut: a citit 800 de milioane de rânduri pentru a returna 64 de milioane.
 
@@ -202,7 +202,7 @@ Nu pentru că hardware-ul era mai rapid, nu pentru că rescrisesem query-urile. 
 
 ## 🔄 Exchange partition: încărcarea care nu costă nimic
 
-Într-un data warehouse, datele sosesc cu o cadență regulată — în cazul nostru, un {{< glossary term="etl" >}}ETL{{< /glossary >}} nocturn care încărca vânzările zilei. Problema clasică a partiționării este: cum încarci datele noi în partiția corectă fără să impactezi query-urile?
+Într-un data warehouse, datele sosesc cu o cadență regulată — în cazul nostru, un {{< glossary term="etl" >}}ETL{{< /glossary >}} nocturn care încărca vânzările zilei. Provocarea clasică a partiționării este: cum încarci datele noi în partiția corectă fără să impactezi query-urile?
 
 Răspunsul se numește {{< glossary term="exchange-partition" >}}exchange partition{{< /glossary >}}.
 

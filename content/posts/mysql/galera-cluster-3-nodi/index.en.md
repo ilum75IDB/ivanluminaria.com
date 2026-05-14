@@ -1,5 +1,5 @@
 ---
-title: "Galera Cluster with 3 nodes: how I solved a MySQL availability problem"
+title: "Galera Cluster with 3 nodes: how I solved a MySQL availability issue"
 seoTitle: "MySQL Galera Cluster 3-node: sync replication and quorum"
 description: "3-node MySQL Galera Cluster for high availability: synchronous replication, quorum, SST/IST. Full configuration against single point of failure."
 date: "2026-02-17T08:03:00+01:00"
@@ -10,11 +10,11 @@ categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---
 
-The ticket was laconic, as it often is when the problem is serious: "The database went down again. The application is stopped. Third time in two months."
+The ticket was laconic, as it often is when the situation is serious: "The database went down again. The application is stopped. Third time in two months."
 
-The client had a MariaDB on a single Linux server — a business management application used by about two hundred internal users, with load spikes during end-of-month accounting closures. Every time the server had a problem — a disk slowing down, a system update requiring a reboot, a process consuming all the RAM — the database crashed and with it the entire business operations.
+The client had a MariaDB on a single Linux server — a business management application used by about two hundred internal users, with load spikes during end-of-month accounting closures. Every time the server had an issue — a disk slowing down, a system update requiring a reboot, a process consuming all the RAM — the database crashed and with it the entire business operations.
 
-The question wasn't "how do we fix the server". The question was: **how do we make sure that the next time a server has a problem, the application keeps running?**
+The question wasn't "how do we fix the server". The question was: **how do we make sure that the next time a server has an anomaly, the application keeps running?**
 
 The answer, after twenty years of experience with this type of scenario, was one: **Galera Cluster**.
 
@@ -140,7 +140,7 @@ Galera requires ROW format for the binary log. Not STATEMENT, not MIXED. **ROW**
 
 This sets the lock mode for auto-increment to "interleaved". In a multi-master cluster, two nodes can generate INSERTs simultaneously on the same table. With lock mode 1 (the default) this would create deadlocks. With value 2, InnoDB generates auto-increments without a global lock, allowing concurrent inserts from different nodes.
 
-The consequence: auto-increment IDs **won't be sequential** across nodes. If your application depends on sequential IDs, you have an architectural problem to solve upstream.
+The consequence: auto-increment IDs **won't be sequential** across nodes. If your application depends on sequential IDs, you have an architectural issue to solve upstream.
 
 ### `innodb_flush_log_at_trx_commit=2`
 
@@ -303,7 +303,7 @@ SHOW STATUS WHERE Variable_name IN (
 
 **`wsrep_flow_control_paused > 0.0`**: flow control activated. It means a node is too slow applying transactions and is asking the others to slow down. A value close to 1.0 means the cluster is essentially stalled, waiting for the slowest node.
 
-**`wsrep_local_recv_queue_avg > 1.0`**: incoming transactions are piling up. Could be a disk I/O problem, CPU, or an undersized node.
+**`wsrep_local_recv_queue_avg > 1.0`**: incoming transactions are piling up. Could be a disk I/O issue, CPU, or an undersized node.
 
 ### Monitoring script
 

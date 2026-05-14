@@ -14,7 +14,7 @@ La semana pasada un colega me contó sobre un proyecto donde las queries del dat
 
 No tuve que preguntar más. Ya conocía el guion.
 
-Una {{< glossary term="fact-table" >}}fact table{{< /glossary >}} que empieza pequeña, crece cada día, y nadie se preocupa por la estructura física hasta que un día las queries dejan de volver. No es un bug, no es un error de código. Es el peso de los datos que al final se hace notar.
+Una {{< glossary term="fact-table" >}}fact table{{< /glossary >}} que empieza pequeña, crece cada día, y nadie se preocupa por la estructura física hasta que un día las queries dejan de volver. No es un bug, no es un descuido de código. Es el peso de los datos que al final se hace notar.
 
 ---
 
@@ -63,7 +63,7 @@ GROUP BY pv.regione, cat.famiglia
 ORDER BY fatturato DESC;
 ```
 
-El predicado sobre `data_vendita` debería haber usado el índice. Y lo hacía — un año antes, cuando la tabla tenía 500 millones de filas. Pero con 800 millones, el optimizer había decidido que el índice ya no convenía. El cálculo era sencillo: un trimestre = aproximadamente el 8% de las filas totales. Con un index range scan, Oracle habría necesitado 64 millones de accesos aleatorios a bloques. Un {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} secuencial costaba menos.
+El predicado sobre `data_vendita` debería haber usado el índice. Y lo hacía — un año antes, cuando la tabla tenía 500 millones de filas. Solo que con 800 millones, el optimizer había decidido que el índice ya no convenía. El cálculo era sencillo: un trimestre = aproximadamente el 8% de las filas totales. Con un index range scan, Oracle habría necesitado 64 millones de accesos aleatorios a bloques. Un {{< glossary term="full-table-scan" >}}full table scan{{< /glossary >}} secuencial costaba menos.
 
 Y eso hizo: leyó 800 millones de filas para devolver 64 millones.
 
@@ -202,7 +202,7 @@ No porque el hardware fuera más rápido, no porque hubiera reescrito las querie
 
 ## 🔄 Exchange partition: la carga que no cuesta nada
 
-En un data warehouse, los datos llegan con una cadencia regular — en nuestro caso, un {{< glossary term="etl" >}}ETL{{< /glossary >}} nocturno que cargaba las ventas del día. El problema clásico del particionamiento es: ¿cómo cargas los nuevos datos en la partición correcta sin impactar las queries?
+En un data warehouse, los datos llegan con una cadencia regular — en nuestro caso, un {{< glossary term="etl" >}}ETL{{< /glossary >}} nocturno que cargaba las ventas del día. El reto clásico del particionamiento es: ¿cómo cargas los nuevos datos en la partición correcta sin impactar las queries?
 
 La respuesta se llama {{< glossary term="exchange-partition" >}}exchange partition{{< /glossary >}}.
 

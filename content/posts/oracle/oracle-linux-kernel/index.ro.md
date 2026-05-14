@@ -24,7 +24,7 @@ cat /sys/kernel/mm/transparent_hugepage/enabled
 
 Rezultat: zero Huge Pages configurate, Transparent Huge Pages active, parametrii kernel la valorile implicite. Instalarea Oracle fusese făcută cu asistentul, sistemul de operare nu fusese atins.
 
-Asta era problema. Nu era Oracle. Era Linux care nu fusese pregătit pentru Oracle.
+Ăsta era punctul. Nu era Oracle. Era Linux care nu fusese pregătit pentru Oracle.
 
 ------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ Iată ce am găsit:
 | oracle nproc | 4096 | 16384 |
 | oracle memlock | 65536 KB | unlimited |
 
-Aproape totul era greșit. Nu din eroare — din omisiune. Nimeni nu se obosise să configureze sistemul de operare după instalare.
+Aproape totul era de revizuit. Nu din eroare — din omisiune. Nimeni nu se obosise să configureze sistemul de operare după instalare.
 
 ------------------------------------------------------------------------
 
@@ -299,7 +299,7 @@ grubby --update-kernel=ALL --args="transparent_hugepage=never elevator=deadline"
 
 Zece minute de configurare. Fără cost hardware. Fără licențe suplimentare.
 
-Dar nimeni nu face asta, pentru că asistentul nu întreabă, documentația e îngropată într-o notă MOS, iar sistemul "funcționează și fără." Funcționează. Prost. Iar vina cade mereu pe Oracle, niciodată pe faptul că nimeni nu a pregătit terenul.
+Doar că nimeni nu face asta, pentru că asistentul nu întreabă, documentația e îngropată într-o notă MOS, iar sistemul "funcționează și fără." Funcționează. Prost. Iar vina cade mereu pe Oracle, niciodată pe faptul că nimeni nu a pregătit terenul.
 
 O bază de date e la fel de bună ca sistemul de operare pe care rulează. Iar un sistem de operare lăsat la valorile implicite e un sistem de operare care lucrează împotriva ta.
 
