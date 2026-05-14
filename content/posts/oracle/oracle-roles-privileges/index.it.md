@@ -215,6 +215,8 @@ Avere i ruoli giusti non basta. Serve sapere chi fa cosa, soprattutto sulle oper
 
 Oracle dalla versione 12c offre **Unified Audit**, che sostituisce il vecchio audit tradizionale con un sistema centralizzato.
 
+La sintassi prevede due statement distinti: `CREATE AUDIT POLICY` per dichiarare la policy, e `AUDIT POLICY` per attivarla [1]. Un errore comune è usare `ALTER AUDIT POLICY ... ENABLE`: `ALTER AUDIT POLICY` esiste, ma serve per **modificare** una policy già definita (aggiungere o togliere azioni), non per abilitarla.
+
 ``` sql
 -- Audit su operazioni DDL critiche
 CREATE AUDIT POLICY pol_ddl_critico
@@ -222,7 +224,7 @@ ACTIONS CREATE TABLE, DROP TABLE, ALTER TABLE,
         TRUNCATE TABLE, CREATE USER, DROP USER,
         ALTER USER, GRANT, REVOKE;
 
-ALTER AUDIT POLICY pol_ddl_critico ENABLE;
+AUDIT POLICY pol_ddl_critico;
 
 -- Audit su accessi sensibili
 CREATE AUDIT POLICY pol_accesso_dati
@@ -230,16 +232,17 @@ ACTIONS SELECT ON app_owner.clienti,
         DELETE ON app_owner.fatture,
         UPDATE ON app_owner.fatture;
 
-ALTER AUDIT POLICY pol_accesso_dati ENABLE;
+AUDIT POLICY pol_accesso_dati;
 
 -- Audit sui login falliti
 CREATE AUDIT POLICY pol_login_falliti
 ACTIONS LOGON;
-ALTER AUDIT POLICY pol_login_falliti
-ENABLE WHENEVER NOT SUCCESSFUL;
+AUDIT POLICY pol_login_falliti WHENEVER NOT SUCCESSFUL;
 ```
 
-Per verificare cosa viene registrato:
+Per disabilitare una policy si usa `NOAUDIT POLICY nome_policy`.
+
+Per verificare cosa viene registrato, si interroga la view `UNIFIED_AUDIT_TRAIL` [2]:
 
 ``` sql
 SELECT * FROM unified_audit_trail
@@ -294,6 +297,13 @@ Il cliente non ha notato miglioramenti nelle performance. Non era quello l'obiet
 La sicurezza in Oracle non è questione di strumenti — gli strumenti ci sono, e sono potenti. È questione di progettazione: decidere chi può fare cosa, documentarlo, implementarlo e poi verificare che funzioni.
 
 Non è il lavoro più glamour del mondo. Ma è quello che fa la differenza tra un database che sopravvive e uno che è davvero sotto controllo.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. Oracle Database SQL Language Reference 19c — [AUDIT (Unified Auditing)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/AUDIT-Unified-Auditing.html) e [CREATE AUDIT POLICY](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-AUDIT-POLICY-Unified-Auditing.html)
+2. Oracle Database Reference 19c — [UNIFIED_AUDIT_TRAIL](https://docs.oracle.com/en/database/oracle/oracle-database/19/refrn/UNIFIED_AUDIT_TRAIL.html)
 
 ------------------------------------------------------------------------
 
