@@ -77,7 +77,7 @@ Funziona? Sì. È corretto? No.
 
 Il punto del `'%'` è che accetta connessioni da **qualsiasi IP**. Se domani qualcuno trova la password, può connettersi da qualunque punto della rete. O del mondo, se il database è esposto.
 
-La soluzione corretta è creare **utenti specifici per ogni sorgente**:
+La soluzione corretta è creare **utenti specifici per ogni sorgente** [1] [2]:
 
 ``` sql
 -- Accesso dall'application server primario
@@ -109,7 +109,7 @@ Se esistono sia `'mario'@'%'` che `'mario'@'localhost'`, e Mario si connette da 
 
 Risposta: **`'mario'@'localhost'`**.
 
-MySQL ordina le righe nella tabella `mysql.user` dalla più specifica alla meno specifica:
+MySQL ordina le righe nella tabella `mysql.user` dalla più specifica alla meno specifica [3]:
 
 1. Host letterale esatto (`192.168.1.20`)
 2. Pattern con wildcard (`192.168.1.%`)
@@ -143,7 +143,7 @@ Il modello `utente@host` è identico tra MySQL e MariaDB. Ma ci sono differenze 
 | MySQL 8.0+ | `caching_sha2_password` |
 | MariaDB 10.x | `mysql_native_password` |
 
-Se migri da MariaDB a MySQL 8 (o viceversa), i client potrebbero non connettersi perché il plugin di autenticazione è diverso. Non è un bug. È un cambio di default.
+Se migri da MariaDB a MySQL 8 (o viceversa), i client potrebbero non connettersi perché il plugin di autenticazione è diverso. Non è un bug. È un cambio di default [4].
 
 **Creazione utenti:**
 
@@ -162,7 +162,7 @@ Se stai scrivendo script di provisioning, questo dettaglio può rompere una pipe
 
 **Ruoli:**
 
-MySQL 8.0 ha introdotto i ruoli. MariaDB li supporta dalla 10.0.5, ma con sintassi leggermente diversa.
+MySQL 8.0 ha introdotto i ruoli [5]. MariaDB li supporta dalla 10.0.5, ma con sintassi leggermente diversa.
 
 ``` sql
 -- MySQL 8.0
@@ -230,6 +230,16 @@ Questo modello è potente perché permette di segmentare gli accessi senza infra
 La prossima volta che qualcuno ti chiede "crea un utente su MySQL", prima di scrivere il primo `CREATE USER`, chiediti: **da dove si connetterà?**
 
 La risposta a quella domanda cambia tutto.
+
+------------------------------------------------------------------------
+
+## Fonti ufficiali
+
+1. MySQL 8.0 Reference Manual — [`CREATE USER` Statement](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
+2. MySQL 8.0 Reference Manual — [`GRANT` Statement](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+3. MySQL 8.0 Reference Manual — [Grant Tables (`mysql.user`)](https://dev.mysql.com/doc/refman/8.0/en/grant-tables.html)
+4. MySQL 8.0 Reference Manual — [Pluggable Authentication](https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html)
+5. MySQL 8.0 Reference Manual — [Using Roles](https://dev.mysql.com/doc/refman/8.0/en/roles.html)
 
 ------------------------------------------------------------------------
 

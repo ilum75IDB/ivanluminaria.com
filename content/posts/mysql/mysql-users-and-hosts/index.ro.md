@@ -77,7 +77,7 @@ Funcționează? Da. Este corect? Nu.
 
 Punctul cu `'%'` este că acceptă conexiuni de la **orice IP**. Dacă mâine cineva găsește parola, se poate conecta din orice punct al rețelei. Sau al lumii, dacă baza de date este expusă.
 
-Soluția corectă este să creezi **utilizatori specifici pentru fiecare sursă**:
+Soluția corectă este să creezi **utilizatori specifici pentru fiecare sursă** [1] [2]:
 
 ``` sql
 -- Acces de pe application server-ul primar
@@ -109,7 +109,7 @@ Dacă există atât `'mario'@'%'` cât și `'mario'@'localhost'`, și Mario se c
 
 Răspuns: **`'mario'@'localhost'`**.
 
-MySQL sortează rândurile din tabelul `mysql.user` de la cel mai specific la cel mai puțin specific:
+MySQL sortează rândurile din tabelul `mysql.user` de la cel mai specific la cel mai puțin specific [3]:
 
 1. Host literal exact (`192.168.1.20`)
 2. Pattern cu wildcard (`192.168.1.%`)
@@ -143,7 +143,7 @@ Modelul `utilizator@host` este identic între MySQL și MariaDB. Dar există dif
 | MySQL 8.0+ | `caching_sha2_password` |
 | MariaDB 10.x | `mysql_native_password` |
 
-Dacă migrezi de la MariaDB la MySQL 8 (sau invers), clienții ar putea să nu se conecteze pentru că plugin-ul de autentificare este diferit. Nu e un bug. E o schimbare de configurație implicită.
+Dacă migrezi de la MariaDB la MySQL 8 (sau invers), clienții ar putea să nu se conecteze pentru că plugin-ul de autentificare este diferit. Nu e un bug. E o schimbare de configurație implicită [4].
 
 **Crearea utilizatorilor:**
 
@@ -162,7 +162,7 @@ Dacă scrii scripturi de provisioning, acest detaliu poate strica o pipeline CI/
 
 **Roluri:**
 
-MySQL 8.0 a introdus rolurile. MariaDB le suportă din versiunea 10.0.5, dar cu sintaxă ușor diferită.
+MySQL 8.0 a introdus rolurile [5]. MariaDB le suportă din versiunea 10.0.5, dar cu sintaxă ușor diferită.
 
 ``` sql
 -- MySQL 8.0
@@ -230,6 +230,16 @@ Acest model este puternic pentru că permite segmentarea accesului fără infras
 Data viitoare când cineva îți cere „creează un utilizator pe MySQL", înainte de a scrie primul `CREATE USER`, întreabă-te: **de unde se va conecta?**
 
 Răspunsul la această întrebare schimbă totul.
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. MySQL 8.0 Reference Manual — [`CREATE USER` Statement](https://dev.mysql.com/doc/refman/8.0/en/create-user.html)
+2. MySQL 8.0 Reference Manual — [`GRANT` Statement](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+3. MySQL 8.0 Reference Manual — [Grant Tables (`mysql.user`)](https://dev.mysql.com/doc/refman/8.0/en/grant-tables.html)
+4. MySQL 8.0 Reference Manual — [Pluggable Authentication](https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html)
+5. MySQL 8.0 Reference Manual — [Using Roles](https://dev.mysql.com/doc/refman/8.0/en/roles.html)
 
 ------------------------------------------------------------------------
 
