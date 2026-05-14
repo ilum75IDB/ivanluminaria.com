@@ -75,7 +75,7 @@ GRANT SELECT, INSERT, UPDATE ON vanzari_db.* TO 'app_vanzari'@'%';
 
 Funcționează? Da. Este corect? Nu.
 
-Problema cu `'%'` este că acceptă conexiuni de la **orice IP**. Dacă mâine cineva găsește parola, se poate conecta din orice punct al rețelei. Sau al lumii, dacă baza de date este expusă.
+Punctul cu `'%'` este că acceptă conexiuni de la **orice IP**. Dacă mâine cineva găsește parola, se poate conecta din orice punct al rețelei. Sau al lumii, dacă baza de date este expusă.
 
 Soluția corectă este să creezi **utilizatori specifici pentru fiecare sursă**:
 
@@ -117,7 +117,7 @@ MySQL sortează rândurile din tabelul `mysql.user` de la cel mai specific la ce
 
 Și folosește **prima potrivire** în ordinea specificității.
 
-Problema clasică este aceasta: creezi `'mario'@'%'` cu toate privilegiile. Apoi cineva creează `'mario'@'localhost'` fără privilegii (sau cu o parolă diferită). Din acel moment, Mario nu mai poate intra de pe local și nimeni nu înțelege de ce.
+Situația clasică este aceasta: creezi `'mario'@'%'` cu toate privilegiile. Apoi cineva creează `'mario'@'localhost'` fără privilegii (sau cu o parolă diferită). Din acel moment, Mario nu mai poate intra de pe local și nimeni nu înțelege de ce.
 
 Am văzut acest scenariu de cel puțin o duzină de ori în producție. Soluția este mereu aceeași: **verifică ce există înainte de a crea**.
 

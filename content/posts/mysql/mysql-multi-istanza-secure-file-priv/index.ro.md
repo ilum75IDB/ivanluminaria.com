@@ -16,7 +16,7 @@ Era 11 dimineața. Trei ore pentru un SELECT cu INTO OUTFILE — treabă de cinc
 
 Serverul era o mașină CentOS 7 cu patru instanțe MySQL. Patru. Pe același host, cu patru servicii {{< glossary term="systemd" >}}systemd{{< /glossary >}} diferite, patru porturi diferite, patru socket-uri Unix diferite, patru directoare de date diferite. Un setup pe care cineva îl pusese în picioare cu ani în urmă — probabil ca să economisească un al doilea server — și pe care de atunci nimeni nu-l mai atinsese și nici nu-l documentase.
 
-Prima problemă nu era query-ul. Prima problemă era: la care dintre cele patru instanțe trebuie să mă conectez?
+Primul punct nu era query-ul. Primul punct era: la care dintre cele patru instanțe trebuie să mă conectez?
 
 ---
 
@@ -24,7 +24,7 @@ Prima problemă nu era query-ul. Prima problemă era: la care dintre cele patru 
 
 Mediile multi-instanță pe MySQL nu sunt atât de rare pe cât s-ar crede. Le întâlnesc mai des decât mi-aș dori, mai ales în companiile mici și medii unde serverele sunt puține și aplicațiile sunt multe. Logica e simplă: în loc să cumperi patru servere, cumperi unul puternic și rulezi patru instanțe MySQL pe el, fiecare cu baza ei de date, portul ei, fișierul ei de configurare.
 
-Rezultatul funcționează, până când trebuie să faci mentenanță. Iar mentenanța pe un multi-instanță, fără documentație, e un exercițiu de arheologie informatică.
+Rezultatul funcționează, până când e nevoie să faci mentenanță. Iar mentenanța pe un multi-instanță, fără documentație, e un exercițiu de arheologie informatică.
 
 Pe acel server, situația era următoarea:
 
@@ -107,7 +107,7 @@ SHOW TABLES LIKE '%ordini%';
 
 Portul 3307, baza de date prezentă, tabelul ordini la locul lui. Conexiunea era cea corectă.
 
-Verificarea portului pare paranoia, dar nu este. Într-un mediu cu patru instanțe, a confunda care socket duce la care port e mai ușor decât crezi. Iar eroarea o descoperi doar când datele pe care le exporți nu sunt cele așteptate — sau mai rău, când faci o modificare crezând că ești pe baza de test și descoperi că erai în producție.
+Verificarea portului pare paranoia, dar nu este. Într-un mediu cu patru instanțe, a confunda care socket duce la care port e mai ușor decât crezi. Iar îți dai seama doar când datele pe care le exporți nu sunt cele așteptate — sau mai rău, când faci o modificare crezând că ești pe baza de test și descoperi că erai în producție.
 
 ---
 
@@ -185,9 +185,9 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 ```
 
-Dar era o altă problemă. Directorul `/var/lib/mysql-files/` era cel al instanței primare (portul 3306). Instanța de pe portul 3307 avea datadir-ul separat în `/data/mysql-app2/`, iar `secure_file_priv`-ul ei indica spre `/data/mysql-app2/files/` — un director care nu exista și pe care nimeni nu-l crease vreodată.
+Doar că era un alt punct. Directorul `/var/lib/mysql-files/` era cel al instanței primare (portul 3306). Instanța de pe portul 3307 avea datadir-ul separat în `/data/mysql-app2/`, iar `secure_file_priv`-ul ei indica spre `/data/mysql-app2/files/` — un director care nu exista și pe care nimeni nu-l crease vreodată.
 
-Aș fi putut crea directorul, să atribui permisiunile corecte utilizatorului `mysql` și să scriu acolo. Dar la acel punct deja pierdeam timp. Și există o metodă mai curată.
+Aș fi putut crea directorul, să atribui permisiunile corecte utilizatorului `mysql` și să scriu acolo. Doar că la acel punct deja pierdeam timp. Și există o metodă mai curată.
 
 ---
 
@@ -249,7 +249,7 @@ Fișierul a fost gata în mai puțin de un minut. 12.400 de rânduri, 1,2 MB. L-
 
 ## De ce să nu dezactivezi secure-file-priv
 
-Tentația de a seta `secure_file_priv = ""` e puternică, mai ales pe servere de dezvoltare sau pe mașini unde „oricum suntem doar noi". Problema e că acea protecție există dintr-un motiv precis.
+Tentația de a seta `secure_file_priv = ""` e puternică, mai ales pe servere de dezvoltare sau pe mașini unde „oricum suntem doar noi". Punctul e că acea protecție există dintr-un motiv precis.
 
 Fără `secure_file_priv`, un utilizator MySQL cu privilegiul `FILE` poate:
 
@@ -272,7 +272,7 @@ Al doilea: **secure-file-priv nu e un obstacol, e o protecție**. Când te bloch
 
 Al treilea: **clientul mysql din linia de comandă e mai puternic decât îi recunosc majoritatea DBA-ilor**. Cu `-B`, `-N`, `-e` și o pipe spre `sed` sau `awk`, poți face exporturi, transformări și automatizări fără să atingi vreodată `INTO OUTFILE`. E mai puțin elegant, poate. Dar funcționează mereu, nu necesită permisiuni speciale și nu depinde de faptul că cineva a creat directorul potrivit cu șase luni înainte.
 
-CSV-ul a ajuns la 11:45. Solicitantul n-a aflat niciodată că în spatele a cinci coloane și 12.400 de rânduri se ascundeau patruzeci și cinci de minute de arheologie de sistem. Dar așa funcționează ticket-urile: cine le deschide vede rezultatul, cine le rezolvă vede drumul.
+CSV-ul a ajuns la 11:45. Solicitantul n-a aflat niciodată că în spatele a cinci coloane și 12.400 de rânduri se ascundeau patruzeci și cinci de minute de arheologie de sistem. Însă așa funcționează ticket-urile: cine le deschide vede rezultatul, cine le rezolvă vede drumul.
 
 ------------------------------------------------------------------------
 

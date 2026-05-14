@@ -16,7 +16,7 @@ Eran las 11. Tres horas para un SELECT con INTO OUTFILE — cosa de cinco minuto
 
 El servidor era una máquina CentOS 7 con cuatro instancias MySQL. Cuatro. En el mismo host, con cuatro servicios {{< glossary term="systemd" >}}systemd{{< /glossary >}} distintos, cuatro puertos distintos, cuatro sockets Unix distintos, cuatro directorios de datos distintos. Un setup que alguien había montado años atrás — probablemente para ahorrarse un segundo servidor — y que desde entonces nadie había tocado ni documentado.
 
-El primer problema no era la query. El primer problema era: ¿a cuál de las cuatro instancias tengo que conectarme?
+El primer punto no era la query. El primer punto era: ¿a cuál de las cuatro instancias tengo que conectarme?
 
 ---
 
@@ -24,7 +24,7 @@ El primer problema no era la query. El primer problema era: ¿a cuál de las cua
 
 Los entornos multi-instancia en MySQL no son tan raros como se podría pensar. Los encuentro con más frecuencia de la que quisiera, sobre todo en empresas medianas y pequeñas donde los servidores son pocos y las aplicaciones son muchas. La lógica es simple: en vez de comprar cuatro servidores, compras uno potente y haces correr cuatro instancias MySQL, cada una con su base de datos, su puerto, su archivo de configuración.
 
-El resultado funciona, hasta que necesitas hacer mantenimiento. Y el mantenimiento en un multi-instancia, sin documentación, es un ejercicio de arqueología informática.
+El resultado funciona, hasta que hace falta hacer mantenimiento. Y el mantenimiento en un multi-instancia, sin documentación, es un ejercicio de arqueología informática.
 
 En ese servidor, la situación era esta:
 
@@ -107,7 +107,7 @@ SHOW TABLES LIKE '%ordini%';
 
 Puerto 3307, base de datos presente, tabla de pedidos en su lugar. La conexión era la correcta.
 
-El check del puerto parece paranoia, pero no lo es. En un entorno con cuatro instancias, confundir qué socket apunta a qué puerto es más fácil de lo que parece. Y el error lo descubres solo cuando los datos que exportas no son los que esperabas — o peor, cuando haces una modificación pensando que estás en la base de datos de pruebas y descubres que estabas en producción.
+El check del puerto parece paranoia, pero no lo es. En un entorno con cuatro instancias, confundir qué socket apunta a qué puerto es más fácil de lo que parece. Y te das cuenta solo cuando los datos que exportas no son los que esperabas — o peor, cuando haces una modificación pensando que estás en la base de datos de pruebas y descubres que estabas en producción.
 
 ---
 
@@ -185,9 +185,9 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
 ```
 
-Pero había otro problema. El directorio `/var/lib/mysql-files/` era el de la instancia primaria (puerto 3306). La instancia en el puerto 3307 tenía su datadir separado en `/data/mysql-app2/`, y su `secure_file_priv` apuntaba a `/data/mysql-app2/files/` — un directorio que no existía y que nadie había creado jamás.
+Solo que había otro punto. El directorio `/var/lib/mysql-files/` era el de la instancia primaria (puerto 3306). La instancia en el puerto 3307 tenía su datadir separado en `/data/mysql-app2/`, y su `secure_file_priv` apuntaba a `/data/mysql-app2/files/` — un directorio que no existía y que nadie había creado jamás.
 
-Podría haber creado el directorio, asignado los permisos correctos al usuario `mysql` y escrito ahí. Pero a esas alturas ya estaba perdiendo tiempo. Y hay una forma más limpia.
+Podría haber creado el directorio, asignado los permisos correctos al usuario `mysql` y escrito ahí. Solo que a esas alturas ya estaba perdiendo tiempo. Y hay una forma más limpia.
 
 ---
 
@@ -249,7 +249,7 @@ El archivo estaba listo en menos de un minuto. 12.400 filas, 1,2 MB. Lo copié a
 
 ## Por qué no deshabilitar secure-file-priv
 
-La tentación de configurar `secure_file_priv = ""` es fuerte, sobre todo en servidores de desarrollo o en máquinas donde "total, solo somos nosotros". El problema es que esa protección existe por una razón concreta.
+La tentación de configurar `secure_file_priv = ""` es fuerte, sobre todo en servidores de desarrollo o en máquinas donde "total, solo somos nosotros". El punto es que esa protección existe por una razón concreta.
 
 Sin `secure_file_priv`, un usuario MySQL con el privilegio `FILE` puede:
 
@@ -272,7 +272,7 @@ La segunda: **secure-file-priv no es un obstáculo, es una protección**. Cuando
 
 La tercera: **el cliente mysql desde línea de comandos es más poderoso de lo que la mayoría de los DBA le reconocen**. Con `-B`, `-N`, `-e` y un pipe hacia `sed` o `awk`, puedes hacer exports, transformaciones y automatizaciones sin tocar jamás `INTO OUTFILE`. Es menos elegante, quizás. Pero funciona siempre, no requiere permisos especiales y no necesita que alguien haya creado el directorio correcto seis meses antes.
 
-El CSV llegó a las 11:45. El solicitante nunca supo que detrás de cinco columnas y 12.400 filas había cuarenta y cinco minutos de arqueología de sistemas. Pero así funcionan los tickets: quien los abre ve el resultado, quien los resuelve ve el camino.
+El CSV llegó a las 11:45. El solicitante nunca supo que detrás de cinco columnas y 12.400 filas había cuarenta y cinco minutos de arqueología de sistemas. Aunque así funcionan los tickets: quien los abre ve el resultado, quien los resuelve ve el camino.
 
 ------------------------------------------------------------------------
 
