@@ -404,8 +404,10 @@ La parte técnica es la más sencilla. Lo que marca la diferencia es entender **
 ## Fuentes oficiales
 
 1. MySQL 8.0 Reference Manual — [`innodb_flush_log_at_trx_commit`](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit)
-2. MariaDB Knowledge Base — [Galera State Transfer (SST/IST)](https://mariadb.com/kb/en/galera-state-transfer/)
-3. MariaDB Knowledge Base — [Configuring MariaDB Galera Cluster](https://mariadb.com/kb/en/configuring-mariadb-galera-cluster/)
+2. MariaDB Documentation — [Configuring MariaDB Galera Cluster](https://mariadb.com/docs/galera-cluster/galera-management/configuration/configuring-mariadb-galera-cluster)
+3. MariaDB Documentation — [MariaDB Galera Cluster Replication Guide](https://mariadb.com/docs/galera-cluster/galera-cluster-quickstart-guides/mariadb-galera-cluster-replication-guide)
+4. MariaDB Documentation — [Using MariaDB Replication with Galera Cluster](https://mariadb.com/docs/galera-cluster/high-availability/using-mariadb-replication-with-mariadb-galera-cluster/using-mariadb-replication-with-mariadb-galera-cluster-using-mariadb-replica)
+5. MariaDB Documentation — [Galera Cluster Thread States](https://mariadb.com/docs/server/ha-and-performance/optimization-and-tuning/buffers-caches-and-threads/thread-states/galera-cluster-thread-states)
 
 ------------------------------------------------------------------------
 
