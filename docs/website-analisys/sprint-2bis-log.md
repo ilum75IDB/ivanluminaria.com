@@ -41,9 +41,9 @@ Verifica HTTP status su tutti i 20 URL nelle 5 sezioni "Fonti ufficiali" già es
 
 | # | Articolo | Stato | Commit |
 |---|----------|-------|--------|
-| 4 | binary-log-mysql | da fare | — |
-| 5 | enum-mysql-semplifica-o-complica | da fare | — |
-| 6 | mysql-group-replication-binlog-migration | da fare | — |
+| 4 | binary-log-mysql | ✅ done (5 note) | 02b77a1 |
+| 5 | enum-mysql-semplifica-o-complica | ✅ done (5 note) | 1bba2b6 |
+| 6 | mysql-group-replication-binlog-migration | ✅ done (5 note) | f747337 |
 | 7 | mysql-pre-upgrade-assessment | da fare | — |
 | 8 | mysql-users-and-hosts | da fare | — |
 | 9 | mysqldump-mysqlpump-mydumper | da fare | — |
