@@ -32,21 +32,21 @@ Per ciascuno dei 29 articoli:
 
 | # | Articolo | Mod IT | Stato | Commit |
 |---|----------|-------:|-------|--------|
-| 7 | binary-log-mysql | 7 | da fare | — |
-| 8 | galera-cluster-3-nodi | 6 | da fare | — |
-| 9 | mysql-group-replication-binlog-migration | 7 | da fare | — |
-| 10 | mysql-multi-istanza-secure-file-priv | 7 | da fare | — |
-| 11 | mysql-users-and-hosts | 2 | da fare | — |
-| 12 | mysqldump-mysqlpump-mydumper | 9 | da fare | — |
+| 7 | binary-log-mysql | 6 | ✅ tutto done | cf3f4b9 (batch MySQL) |
+| 8 | galera-cluster-3-nodi | 6 | ✅ tutto done | cf3f4b9 (batch MySQL) |
+| 9 | mysql-group-replication-binlog-migration | 7 IT / 6 EN-ES-RO | ✅ tutto done | cf3f4b9 (batch MySQL) |
+| 10 | mysql-multi-istanza-secure-file-priv | 7 | ✅ tutto done | cf3f4b9 (batch MySQL) |
+| 11 | mysql-users-and-hosts | 2 | ✅ tutto done | cf3f4b9 (batch MySQL) |
+| 12 | mysqldump-mysqlpump-mydumper | 9 | ✅ tutto done | cf3f4b9 (batch MySQL) |
 
 ### PostgreSQL (4 articoli, 16 modifiche annotate)
 
 | # | Articolo | Mod IT | Stato | Commit |
 |---|----------|-------:|-------|--------|
-| 13 | explain-analyze-postgresql | 5 | da fare | — |
-| 14 | pg-stat-statements | 6 (+1 mitig.assolutismo) | da fare | — |
+| 13 | explain-analyze-postgresql | 5 | ✅ tutto done | aee7c1b (batch PG via WIP-2) |
+| 14 | pg-stat-statements | 6 (+1 mitig.assolutismo) | ✅ tutto done | aee7c1b (batch PG via WIP-2) |
 | 15 | postgresql_roles_and_users | 0 (già pulito) | skip | — |
-| 16 | vacuum-autovacuum-postgresql | 5 | da fare | — |
+| 16 | vacuum-autovacuum-postgresql | 5 | ✅ tutto done | aee7c1b (batch PG via WIP-2) |
 
 ### Data Warehouse (5 articoli, 29 modifiche annotate)
 
@@ -87,3 +87,24 @@ Convenzione commit: `Sprint 2: <slug> — STILE_LINGUISTICO (N mod x 4 lingue)`
 - 27 articoli con modifiche (2 skip): pagamenti-60-90-120-giorni + postgresql_roles_and_users
 - ~125 modifiche IT × 4 lingue = ~500 modifiche totali nei file
 - Effort: 2-3 ore di applicazione meccanica
+
+## ✅ Sprint 2 COMPLETATO — 2026-05-14
+
+Tutte le 5 sezioni applicate con 5 batch commit principali (1 manuale + 4 da agenti paralleli):
+
+| Sezione | Commit | Articoli | Mod IT |
+|---------|--------|----------|--------|
+| Oracle (parte) | 5271019 | 1 (oracle-awr-ash) | 4 |
+| Oracle (resto) | cc28468 | 5 | 21 |
+| MySQL | cf3f4b9 | 6 | 37 |
+| PostgreSQL | aee7c1b (via WIP-2) | 3 | 16 |
+| Data Warehouse | a01ee7d | 5 | 31 |
+| Project Management | 196d1e8 | 7 | 16 |
+| **Totale** | — | **27** | **125** |
+
+Effort effettivo (sessione Claude):
+- Articolo manuale (oracle-awr-ash): ~10 min
+- 5 agenti paralleli + commit per sezione: ~25 min totali
+- Totale parallelizzato: ~35 min (vs ~3h sequenziali)
+
+Tutte le modifiche × 4 lingue = ~500 sostituzioni file applicate.
