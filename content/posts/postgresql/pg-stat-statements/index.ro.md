@@ -40,7 +40,7 @@ Query-urile sunt normalizate: valorile literale sunt înlocuite cu `$1`, `$2`, e
 
 ## Instalare: cinci minute care schimbă totul
 
-Instalarea necesită o modificare în `postgresql.conf` și un restart al serviciului. Nu există modalitate de a evita restart-ul — extensia trebuie încărcată ca shared library la pornirea procesului.
+Instalarea necesită o modificare în `postgresql.conf` și un restart al serviciului [1]. Nu există modalitate de a evita restart-ul — extensia trebuie încărcată ca shared library la pornirea procesului.
 
 ```ini
 # postgresql.conf
@@ -49,9 +49,9 @@ pg_stat_statements.max = 10000
 pg_stat_statements.track = all
 ```
 
-Parametrul `pg_stat_statements.max` definește câte query-uri distincte sunt urmărite. Valoarea implicită este 5000, dar pe baze de date cu multe query-uri diferite merită crescut. `pg_stat_statements.track` setat pe `all` urmărește și query-urile executate în funcții PL/pgSQL — fără acest parametru, query-urile din procedurile stocate nu sunt înregistrate.
+Parametrul `pg_stat_statements.max` definește câte query-uri distincte sunt urmărite. Valoarea implicită este 5000, dar pe baze de date cu multe query-uri diferite merită crescut. `pg_stat_statements.track` setat pe `all` urmărește și query-urile executate în funcții PL/pgSQL — fără acest parametru, query-urile din procedurile stocate nu sunt înregistrate [2].
 
-După restart:
+După restart, extensia se activează ca orice altă extensie PostgreSQL [3]:
 
 ```sql
 CREATE EXTENSION pg_stat_statements;
@@ -203,7 +203,7 @@ Procesul pe care îl urmez este mereu același:
 
 1. **Identific top query-urile** cu pg_stat_statements (după timp total, timp mediu sau I/O)
 2. **Copiez query-ul normalizat** și înlocuiesc `$1`, `$2` cu valori reale
-3. **Lansez EXPLAIN (ANALYZE, BUFFERS)** pentru a vedea planul de execuție
+3. **Lansez `EXPLAIN (ANALYZE, BUFFERS)`** pentru a vedea planul de execuție [4]
 4. **Caut semnalele de alarmă**: sequential scan pe tabele mari, nested loop cu multe rânduri, sort pe disc
 5. **Intervin**: creez un index, rescriu query-ul, actualizez statisticile cu ANALYZE
 
@@ -240,6 +240,15 @@ DBA-ul m-a întrebat: "Dar de ce nu ne-a spus nimeni să instalăm această exte
 Răspunsul este că pg_stat_statements nu e un secret. E în documentația oficială, e în fiecare tutorial de performance tuning, e recomandat de fiecare DBA PostgreSQL pe care îl cunosc. Dar dacă nu o instalezi, nu știi ce nu știi. Și dacă nu știi ce nu știi, totul pare să funcționeze — până când nu mai funcționează.
 
 Cinci minute de instalare. Douăzeci de minute de analiză. Trei indexuri. O bază de date care a trecut de la "lentă de câteva zile" la "cea mai rapidă pe care am avut-o vreodată" — ceea ce de fapt înseamnă pur și simplu "la fel de rapidă cum ar fi trebuit să fie de la început."
+
+------------------------------------------------------------------------
+
+## Surse oficiale
+
+1. PostgreSQL Documentation — [`pg_stat_statements` extension](https://www.postgresql.org/docs/current/pgstatstatements.html)
+2. PostgreSQL Documentation — [Client Connection Defaults (`shared_preload_libraries`)](https://www.postgresql.org/docs/current/runtime-config-client.html)
+3. PostgreSQL Documentation — [`CREATE EXTENSION`](https://www.postgresql.org/docs/current/sql-createextension.html)
+4. PostgreSQL Documentation — [`EXPLAIN` (ANALYZE, BUFFERS)](https://www.postgresql.org/docs/current/sql-explain.html)
 
 ------------------------------------------------------------------------
 
