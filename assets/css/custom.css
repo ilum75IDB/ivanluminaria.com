@@ -1203,13 +1203,15 @@ footer {
 @media (min-width: 768px) {
   .article-two-col {
     display: grid !important;
-    grid-template-columns: 160px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 200px 1fr;
+    gap: 1.75rem;
   }
 
   .article-sidebar {
     position: relative;
     min-width: 0;
+    width: 100%;
+    max-width: 200px;
   }
 
   /* Desktop: hide mobile-only elements, show desktop cover */
@@ -1223,11 +1225,23 @@ footer {
   }
 }
 
-.author-sidebar-card {
+.sidebar-stack {
   position: sticky;
   top: 3rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.author-sidebar-card {
   text-align: center;
   padding-top: 35px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .author-sidebar-card img,
@@ -4538,6 +4552,10 @@ footer {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   position: relative;
   text-align: left;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
 }
 .dark .article-toc-card {
   background: rgba(255, 255, 255, 0.04);
@@ -4566,11 +4584,15 @@ footer {
 .article-toc-list::before {
   content: '';
   position: absolute;
-  left: 16px;
+  left: 12px;
   top: 4px;
   bottom: 4px;
   width: 2px;
   background: #f3f4f6;
+}
+.article-toc-title {
+  margin-left: 12px !important;
+  margin-right: 12px !important;
 }
 .dark .article-toc-list::before {
   background: rgba(255, 255, 255, 0.08);
@@ -4581,13 +4603,15 @@ footer {
 }
 .article-toc-list a {
   display: block;
-  padding: 7px 16px 7px 26px;
+  padding: 6px 12px 6px 22px;
   color: #6b7280;
   text-decoration: none !important;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 12.5px;
+  line-height: 1.35;
   position: relative;
   transition: color 200ms, background 200ms;
+  word-break: break-word;
+  hyphens: auto;
 }
 .dark .article-toc-list a {
   color: rgba(255, 255, 255, 0.6);
@@ -4595,9 +4619,8 @@ footer {
 .article-toc-list a::before {
   content: '';
   position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 11px;
+  top: 13px;
   width: 4px;
   height: 4px;
   border-radius: 50%;
