@@ -8,8 +8,10 @@
 
 | # | Task | File | Effort | Stato | Commit |
 |---|------|------|--------|-------|--------|
-| 1 | Oracle role+privileges in stored proc definer-rights (P2-12, sezione 2.7 audit) | oracle-roles-privileges (4 lingue) | M | da fare | — |
-| 2 | CREATE INDEX CONCURRENTLY in migration tool (P2-13, sezione 2.10 audit) | like-optimization-postgresql (4 lingue) | XS | da fare | — |
+| 1 | Oracle role+privileges in stored proc definer-rights (P2-12, sezione 2.7 audit) | oracle-roles-privileges (4 lingue) | M | ✅ done | 10eaadd |
+| 2 | CREATE INDEX CONCURRENTLY in migration tool (P2-13, sezione 2.10 audit) | like-optimization-postgresql (4 lingue) | XS | ✅ done | 9c1c715 |
+
+## ✅ Sprint 4-tech COMPLETATO — 2026-05-15
 
 ## Note
 
