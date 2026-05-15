@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="utf-8">
+<title>CTA mockup Oracle DBA — 4 varianti a confronto</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.6; color: #1f2937; background: #f9fafb; padding: 30px; margin: 0; }
+  .wrapper { max-width: 800px; margin: 0 auto; }
+  .article { background: #fff; border-radius: 12px; padding: 40px 48px; }
+  h1 { font-size: 30px; color: #4a4a4a; margin: 0 0 16px; line-height: 1.25; }
+  h2 { font-size: 22px; color: #4a4a4a; margin: 32px 0 12px; line-height: 1.3; }
+  p { margin: 14px 0; }
+  hr { border: 0; border-top: 1px solid #e5e7eb; margin: 28px 0; }
+  .article-meta { font-size: 13px; color: #6b7280; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f3f4f6; }
+  .variant-label { background: #1f2937; color: #fff; padding: 6px 12px; font-size: 12px; font-weight: 700; letter-spacing: .1em; border-radius: 4px; display: inline-block; margin: 40px 0 14px; text-transform: uppercase; }
+  .variant-desc { font-size: 13px; color: #6b7280; margin-bottom: 14px; font-style: italic; }
+
+  /* ============ VARIANTE A — Card sobria con 2 bottoni affiancati ============ */
+  .cta-a { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px 26px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .cta-a-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 6px; line-height: 1.45; }
+  .cta-a-subtitle { font-size: 13.5px; color: #6b7280; margin: 0 0 14px; line-height: 1.55; }
+  .cta-a-bridge { font-size: 11.5px; color: #6b7280; font-style: italic; margin: 0 0 10px; letter-spacing: .02em; }
+  .cta-a-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta-a-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 150ms; }
+  .cta-a-btn-primary { background: #336791; color: #fff; }
+  .cta-a-btn-primary:hover { background: #2a5479; }
+  .cta-a-btn-secondary { background: #fff; color: #F80000; border: 1.5px solid #F80000; }
+  .cta-a-btn-secondary:hover { background: rgba(248,0,0,.06); }
+
+  /* ============ VARIANTE B — Card autore-style con avatar + bottoni a destra ============ */
+  .cta-b { background: #fafafa; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px 26px; display: grid; grid-template-columns: 64px 1fr auto; gap: 18px; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .cta-b-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #336791, #F80000); }
+  .cta-b-text { font-size: 14px; line-height: 1.45; }
+  .cta-b-name { font-weight: 700; color: #4a4a4a; font-size: 15px; }
+  .cta-b-role { color: #6b7280; font-size: 12.5px; margin-top: 3px; }
+  .cta-b-buttons { display: flex; flex-direction: column; gap: 6px; }
+  .cta-b-bridge { font-size: 10.5px; color: #6b7280; font-style: italic; margin-bottom: 4px; text-align: center; letter-spacing: .02em; }
+  .cta-b-btn { display: block; padding: 8px 14px; border-radius: 5px; text-decoration: none; font-size: 12.5px; font-weight: 600; text-align: center; white-space: nowrap; transition: all 150ms; }
+  .cta-b-btn-primary { background: #336791; color: #fff; }
+  .cta-b-btn-primary:hover { background: #2a5479; }
+  .cta-b-btn-secondary { color: #F80000; border: 1.5px solid #F80000; background: #fff; }
+  .cta-b-btn-secondary:hover { background: rgba(248,0,0,.06); }
+
+  /* ============ VARIANTE C — Dossier-letterhead editoriale ============ */
+  .cta-c { background: #fdfbf6; border: 1px solid #d4cfc2; border-radius: 8px; padding: 28px 32px 26px; position: relative; box-shadow: 0 2px 4px rgba(120,100,60,.06); }
+  .cta-c::before { content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 3px; background: #336791; border-radius: 0 0 2px 2px; }
+  .cta-c-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #336791; margin: 0 0 10px; }
+  .cta-c-headline { font-family: Georgia, 'Times New Roman', serif; font-size: 20px; font-weight: 400; color: #2c2419; margin: 0 0 8px; line-height: 1.4; }
+  .cta-c-sub { font-size: 14px; color: #6b5f47; font-style: italic; margin: 0 0 16px; line-height: 1.55; }
+  .cta-c-bridge { font-size: 11.5px; color: #6b5f47; font-style: italic; margin: 0 0 12px; letter-spacing: .02em; }
+  .cta-c-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta-c-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 150ms; }
+  .cta-c-btn-primary { background: #336791; color: #fff; }
+  .cta-c-btn-primary:hover { background: #2a5479; }
+  .cta-c-btn-secondary { background: transparent; color: #336791; border: 1.5px solid #336791; }
+  .cta-c-btn-secondary:hover { background: rgba(51,103,145,.06); }
+
+  /* ============ VARIANTE D — Box minimal editoriale (solo testo + link) ============ */
+  .cta-d { border-left: 3px solid #F80000; padding: 8px 0 8px 22px; margin: 18px 0; }
+  .cta-d-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 6px; line-height: 1.45; }
+  .cta-d-text { font-size: 14.5px; color: #4a4a4a; margin: 0; line-height: 1.6; }
+  .cta-d-text a { color: #336791; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+  .cta-d-text a:hover { color: #F80000; }
+  .cta-d-text a.dl { color: #F80000; }
+  .cta-d-text a.dl:hover { color: #336791; }
+
+</style>
+</head><body>
+<div class="wrapper">
+
+<div class="article">
+
+  <h1>pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL</h1>
+  <div class="article-meta">21 aprile 2026 · 9 minuti di lettura · PostgreSQL</div>
+
+  <p>Il ticket diceva: "Il database è lento da qualche giorno, ma non sappiamo quale query sia il problema."</p>
+
+  <p>PostgreSQL 15 in produzione, un gestionale per un'azienda manifatturiera con circa quattrocento utenti. Il server aveva 64 GB di RAM, 16 core, dischi NVMe — hardware più che adeguato per il carico. Eppure i tempi di risposta dell'applicazione erano saliti da 200 millisecondi a 2-3 secondi, e il trend era in peggioramento.</p>
+
+  <h2>Il giorno dopo</h2>
+
+  <p>Il giorno dopo aver creato i tre indici, ho controllato di nuovo pg_stat_statements. La distribuzione del carico era cambiata completamente. Le tre query che prima consumavano l'80% del tempo ora erano al 12% — e la query più costosa era diventata un report che girava una volta al giorno e che nessuno si era mai lamentato fosse lento.</p>
+
+  <p>Cinque minuti di installazione. Venti minuti di analisi. Tre indici. Un database che è passato da "lento da qualche giorno" a "il più veloce che abbiamo mai avuto" — che poi significa semplicemente "veloce come avrebbe dovuto essere dall'inizio".</p>
+
+  <!-- ================ VARIANTE A ================ -->
+  <div class="variant-label">Variante A — Card sobria, 2 bottoni affiancati</div>
+  <div class="variant-desc">Discreta, blog-friendly, equilibrata. Bottone blu (profilo) + bottone secondario rosso (PDF). Tono diretto, niente effetti.</div>
+
+  <div class="cta-a">
+    <div class="cta-a-title">Sui database della tua azienda ti farebbe comodo un parere esterno — architettura, performance, sicurezza, governance — prima di prendere la prossima decisione.</div>
+    <div class="cta-a-subtitle">Trent'anni dentro Oracle, PostgreSQL, MySQL. Banking, telco, assicurativo, PA italiana e altri mercati.</div>
+    <div class="cta-a-bridge">Per conoscermi meglio:</div>
+    <div class="cta-a-buttons">
+      <a class="cta-a-btn cta-a-btn-primary" href="#">Vai al mio profilo DBA →</a>
+      <a class="cta-a-btn cta-a-btn-secondary" href="#">Scarica il mio dossier (PDF, 4 pagine) ↓</a>
+    </div>
+  </div>
+
+  <!-- ================ VARIANTE B ================ -->
+  <div class="variant-label">Variante B — Card autore-style con avatar</div>
+  <div class="variant-desc">Biglietto da visita. Avatar a sinistra, identità centrale, bottoni a destra. Personale ma misurato.</div>
+
+  <div class="cta-b">
+    <div class="cta-b-avatar"></div>
+    <div class="cta-b-text">
+      <div class="cta-b-name">Ivan Luminaria</div>
+      <div class="cta-b-role">Oracle DBA · Oracle / PostgreSQL / MySQL · 30 anni di campo</div>
+    </div>
+    <div class="cta-b-buttons">
+      <div class="cta-b-bridge">Per conoscermi meglio:</div>
+      <a class="cta-b-btn cta-b-btn-primary" href="#">Vai al mio profilo DBA →</a>
+      <a class="cta-b-btn cta-b-btn-secondary" href="#">Il mio dossier (PDF) ↓</a>
+    </div>
+  </div>
+
+  <!-- ================ VARIANTE C ================ -->
+  <div class="variant-label">Variante C — Dossier-letterhead editoriale</div>
+  <div class="variant-desc">Stile carta intestata sobria. Sfondo avorio, accento blu PostgreSQL in alto, headline in serif (Georgia). Premium senza essere "marketing". Si appoggia bene al tono del blog.</div>
+
+  <div class="cta-c">
+    <div class="cta-c-eyebrow">Profilo professionale</div>
+    <div class="cta-c-headline">Sui database della tua azienda ti farebbe comodo un parere esterno — architettura, performance, sicurezza, governance — prima di prendere la prossima decisione.</div>
+    <div class="cta-c-sub">Trent'anni dentro Oracle, PostgreSQL, MySQL. Banking, telco, assicurativo, PA italiana e altri mercati.</div>
+    <div class="cta-c-bridge">Per conoscermi meglio:</div>
+    <div class="cta-c-buttons">
+      <a class="cta-c-btn cta-c-btn-primary" href="#">Vai al mio profilo DBA →</a>
+      <a class="cta-c-btn cta-c-btn-secondary" href="#">Scarica il mio dossier (PDF) ↓</a>
+    </div>
+  </div>
+
+  <!-- ================ VARIANTE D ================ -->
+  <div class="variant-label">Variante D — Box minimal editoriale</div>
+  <div class="variant-desc">La più sobria. Bordo rosso a sinistra come un blockquote, testo con link inline. Massimo integrazione editoriale, minimo banner.</div>
+
+  <div class="cta-d">
+    <div class="cta-d-title">Sui database della tua azienda ti farebbe comodo un parere esterno — architettura, performance, sicurezza, governance — prima di prendere la prossima decisione.</div>
+    <p class="cta-d-text">
+      Trent'anni dentro Oracle, PostgreSQL, MySQL — banking, telco, assicurativo, PA italiana e altri mercati. Per conoscermi meglio, <a href="#">vai al mio profilo DBA</a> oppure <a class="dl" href="#">scarica il mio dossier in PDF</a> (4 pagine).
+    </p>
+  </div>
+
+  <hr>
+
+  <h2 style="font-size: 18px; color: #6b7280;">Fonti ufficiali</h2>
+  <p style="font-size: 14px; color: #6b7280;">PostgreSQL Documentation — pg_stat_statements, EXPLAIN, CREATE EXTENSION...</p>
+
+  <hr>
+
+  <h2 style="font-size: 18px; color: #6b7280;">Glossario</h2>
+  <p style="font-size: 14px; color: #6b7280;"><strong>pg_stat_statements</strong> — Estensione PostgreSQL che raccoglie statistiche di esecuzione...</p>
+
+</div>
+
+</div>
+</body></html>

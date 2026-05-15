@@ -1,0 +1,39 @@
+{{- /* Article CTA — Variante D (minimal blockquote-style)
+       Renderizzata in coda agli articoli (Section "posts"), dopo .Content.
+       Profilo determinato da:
+         1. .Params.cta_profile  (override esplicito nel frontmatter)
+         2. fallback: mapping section -> profilo (vedi $sectionToProfile)
+       Copy editoriale per i 4 profili x 4 lingue in: data/cta_copy.yaml
+       Layout coerente con docs/mockups/article-cta/*.html variante D. */ -}}
+
+{{- if eq .Section "posts" -}}
+  {{- $profile := .Params.cta_profile -}}
+  {{- if not $profile -}}
+    {{- /* Mapping sub-section -> profilo. Le sub-section di posts/
+           sono al secondo livello del path: posts/<subsection>/<slug>/ */ -}}
+    {{- $sectionToProfile := dict
+      "oracle"             "oracle-dba"
+      "postgresql"         "oracle-dba"
+      "mysql"              "oracle-dba"
+      "data-warehouse"     "dwh-architect"
+      "project-management" "project-manager" -}}
+    {{- $pathParts := split .File.Dir "/" -}}
+    {{- $subsection := index $pathParts 1 -}}
+    {{- $profile = index $sectionToProfile $subsection -}}
+  {{- end -}}
+
+  {{- if $profile -}}
+    {{- $cta := index .Site.Data.cta_copy $profile -}}
+    {{- if $cta -}}
+      {{- $copy := index $cta .Lang -}}
+      {{- if $copy -}}
+        {{- $profileUrl := printf "/%s/resumes/%s/" .Lang $cta.profile_slug -}}
+        {{- $dossierUrl := printf "/downloads/%s" $cta.dossier_file -}}
+        <aside class="article-cta print:hidden" aria-label="{{ $copy.bridge }}">
+          <div class="article-cta-title">{{ $copy.title }}</div>
+          <p class="article-cta-text">{{ $copy.text_intro }} {{ $copy.bridge }} <a href="{{ relURL $profileUrl }}">{{ $copy.link_profile }}</a> {{ $copy.or_word }} <a class="article-cta-dl" href="{{ relURL $dossierUrl }}">{{ $copy.link_dossier }}</a>.</p>
+        </aside>
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
