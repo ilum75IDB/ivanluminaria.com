@@ -1201,18 +1201,28 @@ footer {
 
 /* ---- Two-column article layout ---- */
 @media (min-width: 768px) {
-  .article-two-col {
-    display: grid !important;
-    grid-template-columns: 200px minmax(0, 1fr) !important;
-    gap: 1.75rem;
+  /* Forziamo flexbox row con gap. Specificity alta per battere eventuali
+     utility Tailwind. */
+  div.article-two-col {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 1.75rem !important;
   }
 
-  .article-sidebar {
+  aside.article-sidebar {
     position: relative;
-    min-width: 0;
+    flex: 0 0 200px !important;
     width: 200px !important;
     max-width: 200px !important;
-    overflow: visible;
+    min-width: 200px !important;
+    overflow: visible !important;
+  }
+
+  div.article-two-col > article {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 
   /* Desktop: hide mobile-only elements, show desktop cover */
