@@ -9,7 +9,7 @@
 {{- if eq .Section "posts" -}}
   {{- $h2Matches := findRESubmatch `<h2[^>]*id="([^"]+)"[^>]*>(.*?)</h2>` .Content -}}
   {{- if gt (len $h2Matches) 0 -}}
-    <nav class="article-toc-card" aria-label="{{ i18n "article_toc_title" | default "Indice articolo" }}">
+    <div class="article-toc-card" role="navigation" aria-label="{{ i18n "article_toc_title" | default "Indice articolo" }}">
       <h3 class="article-toc-title">{{ i18n "article_toc_title" | default "Indice articolo" }}</h3>
       <ul class="article-toc-list">
         {{- range $h2Matches }}
@@ -35,6 +35,6 @@
           <li><a href="#{{ $id }}">{{ $title }}</a></li>
         {{- end }}
       </ul>
-    </nav>
+    </div>
   {{- end -}}
 {{- end -}}
