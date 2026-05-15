@@ -184,9 +184,11 @@ The difference looks cosmetic (quotes or not), but in automated scripts it can g
 
 ## The Anonymous User: The Ghost Nobody Invited
 
-MySQL ships with an {{< glossary term="anonymous-user" >}}anonymous user{{< /glossary >}}: `''@'localhost'`. No name, no password.
+In some installations MySQL creates an {{< glossary term="anonymous-user" >}}anonymous user{{< /glossary >}}: `''@'localhost'`. No name, no password.
 
-This user is a historical artifact from development installations. In production it is a pure security risk.
+It was standard practice in MySQL 5.7 and some legacy builds; with MySQL 8.0 and recent packaging (including `mysql_secure_installation` and most official Docker images) it's no longer created by default. MariaDB depends on the distribution. So: don't assume it's there, but don't assume it isn't either — always check.
+
+When it exists, in production it's a pure security risk.
 
 The anonymous user wins over `'mario'@'%'` when the connection comes from localhost, because `'localhost'` is more specific than `'%'`.
 
