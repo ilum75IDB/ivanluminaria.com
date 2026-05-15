@@ -43,20 +43,39 @@ Aprire ciascun file nel browser per vederlo (sono stand-alone, niente build Hugo
 - [ ] Includere anche H3 (sotto-titoli) o solo H2?
 - [ ] Label "Indice"/"In questo articolo"/"Indice articolo"?
 
-## Stato
+## Stato — ✅ COMPLETATO (2026-05-15)
 
-- [x] Mockup HTML generati (4 varianti) — commit `370300b`
-- [x] Mockup arricchiti con contenuto reale articolo + voci Fonti/Glossario nel TOC — commit `a114370`, `c948225`
-- [x] Scelta variante: **C (active scroll-spy)**
-- [x] Implementazione partial Hugo `layouts/_partials/article-toc.html`
-- [x] Integrazione in `author-sidebar.html` tra card autore e reading-progress
-- [x] CSS `assets/css/custom.css` (sezione "Article TOC sidebar")
-- [x] JS scroll-spy `static/js/article-toc-spy.js` (IntersectionObserver, vanilla)
-- [x] Include JS in `baseof.html`
-- [x] i18n labels in 4 lingue (`article_toc_title`)
-- [ ] Test post-deploy: pg-stat-statements (lungo) + smartworking-consulenza-it (corto, < 3 H2 → no TOC)
-- [ ] Mobile responsive check (display: none su <768px, ok)
-- [ ] Push + deploy
+Implementazione iniziale + 8 fix iterativi (cronologia debug live con Ivan):
+
+| # | Fix | Commit |
+|---|-----|--------|
+| 1 | Setup TOC sticky + scroll-spy opzione C | `76fae3c` |
+| 2 | Strip emoji, TOC sempre visibile (rimossa soglia `>= 3 H2`) | `1e916d2` |
+| 3 | `!important` per max-width 200px sidebar | `28b394e` |
+| 4 | Decode entità HTML (`&rsquo;` → `'`) | `e75eca6` |
+| 5 | Rimossa `display: flex` su `.sidebar-stack` (nascondeva badge) | `c42b494` |
+| 6 | **`<nav>` → `<div role="navigation">`** — fix decisivo, il `<nav>` ereditava regole Tailwind/Congo della nav principale del sito | `c3e0dd2` |
+| 7 | `align-items: stretch` per ripristinare lo sticky scroll-through | `8909a92` |
+| 8 | Scroll-spy con "linea di lettura" al 25% (sostituito IntersectionObserver, era off-by-one indietro) | `b8ae4cd` |
+| 9 | Voce attiva: sfondo blu PostgreSQL + testo bianco + pallino rosso | `dae2dc9` |
+
+## Comportamento finale
+
+- **Desktop ≥768px**: TOC nella sidebar sinistra (200px), sticky tra avatar autore e reading-progress
+- **Mobile <768px**: TOC nascosto (la sidebar è già nascosta su mobile)
+- **Scroll-spy**: l'H2 evidenziato è quello iniziato più di recente prima della linea al 25% dall'alto del viewport
+- **Voce attiva**: sfondo blu `#336791`, testo bianco, pallino rosso con alone bianco
+- **Emoji**: strippate automaticamente dai titoli del TOC
+- **Entità HTML**: `&rsquo;`, `&ldquo;`, `&hellip;` ecc. decodificate
+
+## File toccati
+
+- `layouts/_partials/article-toc.html` (nuovo, 28 righe)
+- `layouts/_partials/author-sidebar.html` (modificato, +wrapper `.sidebar-stack`)
+- `layouts/baseof.html` (+1 riga, include JS)
+- `assets/css/custom.css` (+~120 righe nella sezione "Article TOC sidebar")
+- `static/js/article-toc-spy.js` (nuovo, scroll-spy con rAF, ~80 righe)
+- `i18n/{it,en,es,ro}.yaml` (+1 chiave `article_toc_title` ciascuno)
 
 ## Logica di esposizione
 
