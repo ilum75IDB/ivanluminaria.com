@@ -5,7 +5,7 @@ description: "MySQL usuarios y hosts: 'mario' y 'mario'@'localhost' son entidade
 date: "2026-01-13T08:03:00+01:00"
 draft: false
 translationKey: "mysql_users_and_hosts"
-tags: ["mariadb", "security", "users", "privileges", "authentication"]
+tags: ["mariadb", "security", "privileges"]
 categories: ["mysql"]
 image: "mysql-users-and-hosts.cover.jpg"
 ---

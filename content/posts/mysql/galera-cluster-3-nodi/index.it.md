@@ -5,7 +5,7 @@ description: "MySQL Galera Cluster a 3 nodi per l'alta disponibilità: replica s
 date: "2026-02-17T08:03:00+01:00"
 draft: false
 translationKey: "galera_cluster_3_nodi"
-tags: ["mariadb", "galera", "cluster", "high-availability", "replication", "wsrep"]
+tags: ["mariadb", "replication", "high-availability"]
 categories: ["mysql"]
 image: "galera-cluster-3-nodi.cover.jpg"
 ---

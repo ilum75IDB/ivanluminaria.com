@@ -5,7 +5,7 @@ description: "Data warehouse: fact table grain determines which questions you ca
 date: "2025-10-21T08:03:00+01:00"
 draft: false
 translationKey: "fatto_grana_sbagliata"
-tags: ["data-warehouse", "fact-table", "granularity", "grain", "dimensional-modeling", "kimball"]
+tags: ["dimensional-modeling", "kimball"]
 categories: ["Data Warehouse"]
 image: "fatto-grana-sbagliata.cover.jpg"
 ---

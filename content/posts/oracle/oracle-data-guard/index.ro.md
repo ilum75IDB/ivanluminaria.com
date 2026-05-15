@@ -5,7 +5,7 @@ description: "Oracle Data Guard 19c: migrare de la single instance după 6 ore d
 date: "2025-12-16T08:03:00+01:00"
 draft: false
 translationKey: "oracle_data_guard"
-tags: ["data-guard", "disaster-recovery", "high-availability", "switchover", "architecture"]
+tags: ["high-availability", "replication", "architecture"]
 categories: ["oracle"]
 image: "oracle-data-guard.cover.jpg"
 ---

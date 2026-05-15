@@ -5,7 +5,7 @@ description: "Bus matrix di Kimball per allineare data mart isolati: dimensioni 
 date: "2026-05-12T08:03:00+01:00"
 draft: false
 translationKey: "bus_matrix_terreno_comune"
-tags: ["data-warehouse", "bus-matrix", "conformed-dimensions", "kimball", "dimensional-modeling", "data-mart"]
+tags: ["dimensional-modeling", "kimball"]
 categories: ["Data Warehouse"]
 image: "bus-matrix-terreno-comune.cover.jpg"
 ---

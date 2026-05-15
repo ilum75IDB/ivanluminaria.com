@@ -5,7 +5,7 @@ description: "Pagamenti a 60-90-120 giorni nella consulenza IT italiana: confron
 date: "2026-03-10T08:03:00+01:00"
 draft: false
 translationKey: "pagamenti_60_90_120_giorni"
-tags: ["consulting", "freelance", "payments", "italy", "european-union"]
+tags: ["consulting"]
 categories: ["Project Management"]
 image: "pagamenti-60-90-120-giorni.cover.jpg"
 ---

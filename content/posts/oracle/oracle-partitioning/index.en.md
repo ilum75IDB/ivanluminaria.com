@@ -5,7 +5,7 @@ description: "Oracle Partitioning on a 2-billion-row table: range, interval, par
 date: "2025-12-23T08:03:00+01:00"
 draft: false
 translationKey: "oracle_partitioning"
-tags: ["partitioning", "performance", "tuning", "execution-plan"]
+tags: ["partitioning", "performance", "tuning", "query-tuning"]
 categories: ["oracle"]
 image: "oracle-partitioning.cover.jpg"
 ---

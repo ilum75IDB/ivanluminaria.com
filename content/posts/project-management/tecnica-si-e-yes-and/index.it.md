@@ -5,7 +5,7 @@ description: "La tecnica Yes-And dal teatro di improvvisazione applicata alla ge
 date: "2026-01-13T08:03:00+01:00"
 draft: false
 translationKey: "tecnica_si_e_yes_and"
-tags: ["conflict-management", "team-leadership", "communication", "meeting"]
+tags: ["agile"]
 categories: ["Project Management"]
 image: "tecnica-si-e-yes-and.cover.jpg"
 ---

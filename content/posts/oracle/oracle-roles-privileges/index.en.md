@@ -5,7 +5,7 @@ description: "Oracle security: redesigning the GRANT model with custom roles and
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"
-tags: ["security", "roles", "privileges", "grant", "revoke", "audit"]
+tags: ["security", "privileges"]
 categories: ["oracle"]
 image: "oracle-roles-privileges.cover.jpg"
 ---
