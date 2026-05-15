@@ -209,6 +209,54 @@ GRANT UNLIMITED TABLESPACE TO app_owner;
 
 ---
 
+## ⚠️ Avertisment: privilegii prin role și stored procedure cu definer-rights
+
+Există o capcană care merită cunoscută înainte de a scrie cod PL/SQL împotriva acestui model de roluri. O regulă Oracle peste care se împiedică aproape orice DBA junior:
+
+> **Privilegiile acordate prin role NU sunt vizibile în stored procedures compilate cu definer-rights (default).**
+
+Exemplu concret. Acord `SELECT` pe tabelul `app_owner.facturi` rolului `app_read_role`, apoi acord rolul utilizatorului `app_user`:
+
+```sql
+GRANT SELECT ON app_owner.facturi TO app_read_role;
+GRANT app_read_role TO app_user;
+```
+
+În sesiune interactivă totul funcționează — `app_user` poate executa `SELECT * FROM app_owner.facturi`. Dar dacă `app_user` are o stored procedure care execută același SELECT, la runtime Oracle returnează `ORA-00942: table or view does not exist`. Același utilizator, aceeași query — un caz funcționează interactiv, celălalt nu.
+
+Motivul: implicit, stored procedures Oracle sunt compilate cu **definer-rights** (`AUTHID DEFINER`, comportament implicit). La runtime, motorul evaluează doar privilegiile **directe**, nu pe cele moștenite prin role. Este o decizie de design Oracle existentă de zeci de ani și care nu se schimbă pentru retrocompatibilitate.
+
+Cele două soluții:
+
+**Opțiunea 1 — Privilegiu direct către owner-ul procedurii**:
+
+```sql
+-- Fără role, GRANT direct utilizatorului individual
+GRANT SELECT ON app_owner.facturi TO app_user;
+```
+
+Funcționează, dar anulează avantajul modelului de roluri pentru acel privilegiu specific.
+
+**Opțiunea 2 — Stored procedure cu invoker-rights** (`AUTHID CURRENT_USER`):
+
+```sql
+CREATE OR REPLACE PROCEDURE citeste_facturi
+  AUTHID CURRENT_USER
+AS
+BEGIN
+  FOR r IN (SELECT * FROM app_owner.facturi) LOOP
+    -- ...
+  END LOOP;
+END;
+/
+```
+
+Cu `AUTHID CURRENT_USER`, la runtime procedura folosește privilegiile **apelantului** (inclusiv rolurile active în sesiune). Păstrează modelul de roluri intact. Dezavantajul: schimbă semantica accesului la obiecte (procedura rezolvă numele în contextul apelantului, nu al proprietarului), așa că evaluează caz cu caz.
+
+Regula practică: pentru **proceduri de citire/scriere aplicative** care lucrează pe datele unui proprietar centralizat, `AUTHID CURRENT_USER` este aproape întotdeauna alegerea corectă. Pentru **proceduri administrative** care trebuie să opereze cu privilegiile specifice ale owner-ului, lasă default-ul `AUTHID DEFINER` și acordă privilegiile direct.
+
+---
+
 ## Audit: a ști cine ce a făcut
 
 A avea rolurile corecte nu este suficient. Trebuie să știi cine ce a făcut, mai ales pentru operațiunile critice.

@@ -209,6 +209,54 @@ GRANT UNLIMITED TABLESPACE TO app_owner;
 
 ---
 
+## ⚠️ Heads up: role privileges and definer-rights stored procedures
+
+There's a trap worth knowing before writing PL/SQL code against this role model. An Oracle rule that trips up almost every junior DBA:
+
+> **Privileges granted through a role are NOT visible inside stored procedures compiled with definer-rights (the default).**
+
+Concrete example. I grant `SELECT` on `app_owner.invoices` to the role `app_read_role`, and then grant the role to user `app_user`:
+
+```sql
+GRANT SELECT ON app_owner.invoices TO app_read_role;
+GRANT app_read_role TO app_user;
+```
+
+In an interactive session everything works — `app_user` can run `SELECT * FROM app_owner.invoices`. But if `app_user` has a stored procedure that runs the same SELECT, at runtime Oracle returns `ORA-00942: table or view does not exist`. Same user, same query — one case works interactively, the other doesn't.
+
+The reason: by default, Oracle stored procedures are compiled with **definer-rights** (`AUTHID DEFINER`, implicit behaviour). At runtime, the engine evaluates only **direct** privileges, not those inherited via role. It's an Oracle design choice that has existed for decades and won't change for backward compatibility.
+
+The two solutions:
+
+**Option 1 — Direct privilege to the procedure owner**:
+
+```sql
+-- No more role, direct GRANT to the individual user
+GRANT SELECT ON app_owner.invoices TO app_user;
+```
+
+Works, but defeats the role-model benefit for that specific privilege.
+
+**Option 2 — Stored procedure with invoker-rights** (`AUTHID CURRENT_USER`):
+
+```sql
+CREATE OR REPLACE PROCEDURE read_invoices
+  AUTHID CURRENT_USER
+AS
+BEGIN
+  FOR r IN (SELECT * FROM app_owner.invoices) LOOP
+    -- ...
+  END LOOP;
+END;
+/
+```
+
+With `AUTHID CURRENT_USER`, at runtime the procedure uses the **caller's** privileges (including roles active in the session). It keeps the role model intact. The downside: it changes the semantics of object access (the procedure resolves names in the caller's context, not the owner's), so evaluate case by case.
+
+Rule of thumb: for **application read/write procedures** that operate on a centralised owner's data, `AUTHID CURRENT_USER` is almost always the right choice. For **administrative procedures** that need the specific privileges of the owner, leave the default `AUTHID DEFINER` and grant direct privileges.
+
+---
+
 ## Audit: knowing who did what
 
 Having the right roles is not enough. You need to know who did what, especially for critical operations.
