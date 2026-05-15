@@ -4793,3 +4793,56 @@ article ~ * .pt-8:has(> hr) {
 .footer-inner > .flex.items-center.justify-between {
   margin-top: 0 !important;
 }
+
+/* ===========================================================================
+   ARTICLE CTA — Variante D (minimal blockquote-style)
+   Renderizzata in coda agli articoli (Section "posts") dal partial
+   layouts/_partials/article-cta.html. Profilo per articolo via data/cta_copy.yaml.
+   Bordo rosso a sinistra, titolo bold, paragrafo con link inline.
+   Stile editoriale, non promozionale.
+   =========================================================================== */
+
+.article-cta {
+  border-left: 3px solid var(--ivan-red);
+  padding: 12px 0 12px 22px;
+  margin: 40px 0 24px;
+}
+
+.article-cta-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+.dark .article-cta-title {
+  color: #d4d4d4;
+}
+
+.article-cta-text {
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  margin: 0;
+  line-height: 1.65;
+}
+.dark .article-cta-text {
+  color: #b0b0b0;
+}
+
+.article-cta-text a {
+  color: var(--ivan-blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+  transition: color 150ms;
+}
+.article-cta-text a:hover {
+  color: var(--ivan-red);
+}
+.article-cta-text a.article-cta-dl {
+  color: var(--ivan-red);
+}
+.article-cta-text a.article-cta-dl:hover {
+  color: var(--ivan-blue);
+}
