@@ -17,8 +17,8 @@
 
   /* ============ VARIANTE A — Card sobria con 2 bottoni affiancati ============ */
   .cta-a { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px 26px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
-  .cta-a-title { font-size: 14px; font-weight: 600; color: #4a4a4a; margin: 0 0 6px; }
-  .cta-a-subtitle { font-size: 13px; color: #6b7280; margin: 0 0 16px; }
+  .cta-a-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 6px; line-height: 1.4; }
+  .cta-a-subtitle { font-size: 13.5px; color: #6b7280; margin: 0 0 16px; line-height: 1.55; }
   .cta-a-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
   .cta-a-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 150ms; }
   .cta-a-btn-primary { background: #336791; color: #fff; }
@@ -27,11 +27,12 @@
   .cta-a-btn-secondary:hover { background: rgba(248,0,0,.06); }
 
   /* ============ VARIANTE B — Card autore-style con avatar + bottoni a destra ============ */
-  .cta-b { background: linear-gradient(135deg, #f9fafb 0%, #fff 100%); border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px 24px; display: grid; grid-template-columns: 64px 1fr auto; gap: 18px; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .cta-b { background: #fafafa; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px 26px; display: grid; grid-template-columns: 64px 1fr auto; gap: 18px; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
   .cta-b-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #336791, #F80000); }
   .cta-b-text { font-size: 14px; line-height: 1.45; }
   .cta-b-name { font-weight: 700; color: #4a4a4a; font-size: 15px; }
   .cta-b-role { color: #6b7280; font-size: 12.5px; margin-top: 2px; }
+  .cta-b-tag { color: #336791; font-size: 12px; margin-top: 6px; font-style: italic; }
   .cta-b-buttons { display: flex; flex-direction: column; gap: 6px; }
   .cta-b-btn { display: block; padding: 8px 14px; border-radius: 5px; text-decoration: none; font-size: 12.5px; font-weight: 600; text-align: center; white-space: nowrap; transition: all 150ms; }
   .cta-b-btn-primary { background: #336791; color: #fff; }
@@ -39,21 +40,23 @@
   .cta-b-btn-secondary { color: #F80000; border: 1.5px solid #F80000; background: #fff; }
   .cta-b-btn-secondary:hover { background: rgba(248,0,0,.06); }
 
-  /* ============ VARIANTE C — Banner gradient brand colors ============ */
-  .cta-c { background: linear-gradient(135deg, #336791 0%, #4a8ab8 50%, #F80000 110%); border-radius: 12px; padding: 28px 32px; color: #fff; box-shadow: 0 4px 12px rgba(51,103,145,.15); }
-  .cta-c-title { font-size: 18px; font-weight: 700; margin: 0 0 6px; }
-  .cta-c-subtitle { font-size: 14px; opacity: .92; margin: 0 0 20px; line-height: 1.5; }
-  .cta-c-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
-  .cta-c-btn { display: inline-flex; align-items: center; gap: 6px; padding: 11px 20px; border-radius: 6px; text-decoration: none; font-size: 13.5px; font-weight: 600; transition: all 150ms; }
-  .cta-c-btn-primary { background: #fff; color: #336791; }
-  .cta-c-btn-primary:hover { background: #f3f4f6; transform: translateY(-1px); }
-  .cta-c-btn-secondary { background: rgba(255,255,255,.15); color: #fff; border: 1.5px solid rgba(255,255,255,.4); backdrop-filter: blur(4px); }
-  .cta-c-btn-secondary:hover { background: rgba(255,255,255,.22); }
+  /* ============ VARIANTE C — Dossier-letterhead editoriale ============ */
+  .cta-c { background: #fdfbf6; border: 1px solid #d4cfc2; border-radius: 8px; padding: 28px 32px 26px; position: relative; box-shadow: 0 2px 4px rgba(120,100,60,.06); }
+  .cta-c::before { content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 3px; background: #336791; border-radius: 0 0 2px 2px; }
+  .cta-c-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #336791; margin: 0 0 10px; }
+  .cta-c-headline { font-family: Georgia, 'Times New Roman', serif; font-size: 21px; font-weight: 400; color: #2c2419; margin: 0 0 8px; line-height: 1.35; }
+  .cta-c-sub { font-size: 14px; color: #6b5f47; font-style: italic; margin: 0 0 20px; line-height: 1.55; }
+  .cta-c-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta-c-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 150ms; }
+  .cta-c-btn-primary { background: #336791; color: #fff; }
+  .cta-c-btn-primary:hover { background: #2a5479; }
+  .cta-c-btn-secondary { background: transparent; color: #336791; border: 1.5px solid #336791; }
+  .cta-c-btn-secondary:hover { background: rgba(51,103,145,.06); }
 
   /* ============ VARIANTE D — Box minimal editoriale (solo testo + link) ============ */
   .cta-d { border-left: 3px solid #F80000; padding: 8px 0 8px 22px; margin: 18px 0; }
   .cta-d-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 4px; }
-  .cta-d-text { font-size: 14.5px; color: #6b7280; margin: 0; line-height: 1.55; }
+  .cta-d-text { font-size: 14.5px; color: #4a4a4a; margin: 0; line-height: 1.6; }
   .cta-d-text a { color: #336791; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
   .cta-d-text a:hover { color: #F80000; }
   .cta-d-text a.dl { color: #F80000; }
@@ -80,68 +83,68 @@
 
   <!-- ================ VARIANTE A ================ -->
   <div class="variant-label">Variante A — Card sobria, 2 bottoni affiancati</div>
-  <div class="variant-desc">Discreta, blog-friendly, equilibrata. Tono caldo ma non aggressivo. Bottone blu (azione principale = profilo) + bottone secondario rosso (download).</div>
+  <div class="variant-desc">Discreta, blog-friendly, equilibrata. Bottone blu (profilo) + bottone secondario rosso (PDF).</div>
 
   <div class="cta-a">
-    <div class="cta-a-title">Voglio sapere chi disegna data warehouse così</div>
-    <div class="cta-a-subtitle">L'architetto Kimball dietro questi progetti — vent'anni di star schema in produzione, settori assicurativo, telco, PA italiana.</div>
+    <div class="cta-a-title">Quando il CFO chiede dati che il tuo DWH non sa dare, sai che è il grain a non reggere più.</div>
+    <div class="cta-a-subtitle">Vent'anni a disegnare data warehouse Kimball che il business smette di temere. Assicurativo, telco, PA italiana. Lo stesso che ha scritto questa pagina.</div>
     <div class="cta-a-buttons">
-      <a class="cta-a-btn cta-a-btn-primary" href="#">Vai al profilo del DWH Architect →</a>
-      <a class="cta-a-btn cta-a-btn-secondary" href="#">Scarica il CV (PDF) ↓</a>
+      <a class="cta-a-btn cta-a-btn-primary" href="#">Conosci l'architetto →</a>
+      <a class="cta-a-btn cta-a-btn-secondary" href="#">Scarica il dossier (PDF, 4 pagine) ↓</a>
     </div>
   </div>
 
   <!-- ================ VARIANTE B ================ -->
   <div class="variant-label">Variante B — Card autore-style con avatar</div>
-  <div class="variant-desc">Più personale, evoca il "biglietto da visita". Tre colonne: avatar, nome+ruolo, bottoni a destra. Funziona se vogliamo associare un volto al contenuto.</div>
+  <div class="variant-desc">Biglietto da visita. Avatar a sinistra, identità centrale, bottoni a destra.</div>
 
   <div class="cta-b">
     <div class="cta-b-avatar"></div>
     <div class="cta-b-text">
       <div class="cta-b-name">Ivan Luminaria</div>
       <div class="cta-b-role">DWH Architect · Kimball · 20 anni di produzione</div>
+      <div class="cta-b-tag">Quello che ha scritto questa pagina.</div>
     </div>
     <div class="cta-b-buttons">
-      <a class="cta-b-btn cta-b-btn-primary" href="#">Vai al profilo →</a>
-      <a class="cta-b-btn cta-b-btn-secondary" href="#">CV completo (PDF)</a>
+      <a class="cta-b-btn cta-b-btn-primary" href="#">Conosci l'architetto →</a>
+      <a class="cta-b-btn cta-b-btn-secondary" href="#">Dossier PDF ↓</a>
     </div>
   </div>
 
   <!-- ================ VARIANTE C ================ -->
-  <div class="variant-label">Variante C — Banner gradient brand colors</div>
-  <div class="variant-desc">Più forte, più visibile. Gradient blu PostgreSQL → rosso Oracle (i colori brand). Ideale per articoli lunghi dove vuoi spiccare. Più "marketing" delle altre.</div>
+  <div class="variant-label">Variante C — Dossier-letterhead editoriale</div>
+  <div class="variant-desc">Stile carta intestata sobria. Sfondo avorio, accento blu PostgreSQL in alto, headline in serif (Georgia). Premium senza essere "marketing".</div>
 
   <div class="cta-c">
-    <div class="cta-c-title">Voglio sapere chi disegna data warehouse così</div>
-    <div class="cta-c-subtitle">L'architetto Kimball dietro questi progetti — vent'anni di star schema in produzione, settori assicurativo, telco, PA italiana. Vedi il profilo o scarica il CV completo per averlo sul tavolo.</div>
+    <div class="cta-c-eyebrow">Profilo professionale</div>
+    <div class="cta-c-headline">Quando il CFO chiede dati che il tuo DWH non sa dare, sai che è il grain a non reggere più.</div>
+    <div class="cta-c-sub">Vent'anni a disegnare data warehouse Kimball che il business smette di temere. Assicurativo, telco, PA italiana. Lo stesso che ha scritto questa pagina.</div>
     <div class="cta-c-buttons">
-      <a class="cta-c-btn cta-c-btn-primary" href="#">Vai al profilo del DWH Architect →</a>
-      <a class="cta-c-btn cta-c-btn-secondary" href="#">Scarica il CV (PDF) ↓</a>
+      <a class="cta-c-btn cta-c-btn-primary" href="#">Conosci l'architetto →</a>
+      <a class="cta-c-btn cta-c-btn-secondary" href="#">Scarica il dossier (PDF) ↓</a>
     </div>
   </div>
 
   <!-- ================ VARIANTE D ================ -->
   <div class="variant-label">Variante D — Box minimal editoriale</div>
-  <div class="variant-desc">La più sobria. Solo bordo rosso a sinistra + testo con link inline. Si integra come fosse un blockquote dell'articolo. Massimo no-eroe, minimo banner.</div>
+  <div class="variant-desc">La più sobria. Bordo rosso a sinistra come un blockquote, testo con link inline. Massimo integrazione editoriale.</div>
 
   <div class="cta-d">
-    <div class="cta-d-title">Vuoi sapere chi c'è dietro?</div>
+    <div class="cta-d-title">Quando il CFO chiede dati che il tuo DWH non sa dare, sai che è il grain a non reggere più.</div>
     <p class="cta-d-text">
-      L'architetto Kimball dietro questi progetti sono io.
-      <a href="#">Vai al profilo</a> per vedere i progetti consegnati, oppure
-      <a class="dl" href="#">scarica il CV completo in PDF</a> per averlo sul tavolo.
+      Lo stesso che ha scritto questa pagina. <a href="#">Vai al profilo dell'architetto</a> per vedere progetti consegnati e settori reali, oppure <a class="dl" href="#">scarica il dossier in PDF</a> — quattro pagine, da tenere sul tavolo.
     </p>
   </div>
 
   <hr>
 
   <h2 style="font-size: 18px; color: #6b7280;">Fonti ufficiali</h2>
-  <p style="font-size: 14px; color: #6b7280;">PostgreSQL Documentation — pg_stat_statements, EXPLAIN, CREATE EXTENSION...</p>
+  <p style="font-size: 14px; color: #6b7280;">Kimball Group — The Data Warehouse Toolkit, dimensional modeling techniques...</p>
 
   <hr>
 
   <h2 style="font-size: 18px; color: #6b7280;">Glossario</h2>
-  <p style="font-size: 14px; color: #6b7280;"><strong>pg_stat_statements</strong> — Estensione PostgreSQL che raccoglie statistiche di esecuzione...</p>
+  <p style="font-size: 14px; color: #6b7280;"><strong>Grain</strong> — Il livello di dettaglio di una fact table, la prima decisione di modeling in un DWH...</p>
 
 </div>
 
