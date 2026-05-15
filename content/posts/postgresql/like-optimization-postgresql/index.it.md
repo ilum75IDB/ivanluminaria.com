@@ -147,6 +147,8 @@ Precauzioni:
 -   Modalità CONCURRENTLY
 -   Monitoraggio I/O durante la build
 
+> ⚠️ **Nota su migration tool**: `CREATE INDEX CONCURRENTLY` **non può** essere eseguito dentro un blocco transazionale esplicito (`BEGIN; ... COMMIT;`). PostgreSQL restituisce `ERROR: CREATE INDEX CONCURRENTLY cannot run inside a transaction block`. Su `psql` interattivo non è un problema (no transazione implicita), ma su Flyway, Liquibase, alembic e simili — che wrappano ogni migration in una transazione — va gestito esplicitamente: Flyway con `-- no transaction` come prima riga dello script, Liquibase con `runInTransaction="false"`, alembic con `op.execute(..., autocommit=True)`. Se questo controllo manca, la migration fallisce all'esecuzione, non in dry-run.
+
 ------------------------------------------------------------------------
 
 ## 📈 Risultato: il piano di esecuzione prima e dopo
