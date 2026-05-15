@@ -4648,21 +4648,23 @@ footer {
   color: #6ea8d9;
 }
 .article-toc-list a.active {
-  color: #F80000;
+  color: #ffffff !important;
   font-weight: 600;
-  background: linear-gradient(90deg, rgba(248, 0, 0, 0.06) 0%, rgba(248, 0, 0, 0) 80%);
+  background: #336791;
+  border-radius: 4px;
+  margin-right: 6px;
 }
 .article-toc-list a.active::before {
   background: #F80000;
-  box-shadow: 0 0 0 3px rgba(248, 0, 0, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 .dark .article-toc-list a.active {
-  color: #ff4d4d;
-  background: linear-gradient(90deg, rgba(255, 77, 77, 0.10) 0%, rgba(255, 77, 77, 0) 80%);
+  color: #ffffff !important;
+  background: #4a8ab8;
 }
 .dark .article-toc-list a.active::before {
-  background: #ff4d4d;
-  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.20);
+  background: #F80000;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 /* Mobile: nascondi il TOC sidebar (la sidebar stessa è nascosta su mobile) */
