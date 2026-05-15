@@ -184,9 +184,11 @@ Diferența pare cosmetică (ghilimele sau nu), dar în scripturi automatizate po
 
 ## Utilizatorul anonim: fantoma pe care nimeni n-a invitat-o
 
-MySQL vine instalat cu un {{< glossary term="anonymous-user" >}}utilizator anonim{{< /glossary >}}: `''@'localhost'`. Fără nume, fără parolă.
+În unele instalări MySQL creează un {{< glossary term="anonymous-user" >}}utilizator anonim{{< /glossary >}}: `''@'localhost'`. Fără nume, fără parolă.
 
-Acest utilizator este un artefact istoric al instalărilor de dezvoltare. În producție este un risc de securitate pur.
+Era practică standard în MySQL 5.7 și în unele build-uri legacy; cu MySQL 8.0 și pachetele mai recente (incluzând `mysql_secure_installation` și majoritatea imaginilor Docker oficiale) nu mai este creat în mod implicit. MariaDB depinde de distribuție. Deci: nu presupune că există, dar nici că nu există — verifică întotdeauna.
+
+Când există, în producție este un risc de securitate pur.
 
 Utilizatorul anonim câștigă asupra `'mario'@'%'` când conexiunea vine de pe localhost, pentru că `'localhost'` este mai specific decât `'%'`.
 
