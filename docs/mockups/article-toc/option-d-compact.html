@@ -59,7 +59,7 @@
     </div>
 
 <details class="toc-card" open>
-      <summary class="toc-summary">Indice<span class="toc-count">8</span></summary>
+      <summary class="toc-summary">Indice<span class="toc-count">10</span></summary>
       <ul class="toc-list">
         <li><a href="#cosa-fa-pgstatstatements">Cosa fa pg_stat_statements</a></li>
         <li><a href="#installazione-cinque-minuti-che-cambiano-tutto">Installazione: cinque minuti che cambiano tutto</a></li>
@@ -69,6 +69,8 @@
         <li><a href="#pgstatstatements-explain-il-workflow-completo">pg_stat_statements + EXPLAIN: il workflow completo</a></li>
         <li><a href="#perch-non-attivo-di-default">Perché non è attivo di default</a></li>
         <li><a href="#il-giorno-dopo">Il giorno dopo</a></li>
+        <li><a href="#fonti-ufficiali">Fonti ufficiali</a></li>
+        <li><a href="#glossario">Glossario</a></li>
       </ul>
     </details>
 
@@ -284,6 +286,21 @@ WHERE o.created_at &gt; '2026-01-01';
 <p><strong><a href="/it/glossary/execution-plan/">Execution Plan</a></strong> — Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE.</p>
 <p><strong><a href="/it/glossary/sequential-scan/">Sequential Scan</a></strong> — Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella dall'inizio alla fine senza utilizzare indici. Efficiente su tabelle piccole, problematica su tabelle grandi quando serve solo un sottoinsieme delle righe.</p>
 <p><strong><a href="/it/glossary/postgresql-analyze/">ANALYZE</a></strong> — Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione.</p>
+<hr />
+<h2 id="fonti-ufficiali">Fonti ufficiali</h2>
+<ol>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/pgstatstatements.html"><code>pg_stat_statements</code> extension</a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/runtime-config-client.html">Client Connection Defaults (<code>shared_preload_libraries</code>)</a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/sql-createextension.html"><code>CREATE EXTENSION</code></a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/sql-explain.html"><code>EXPLAIN</code> (ANALYZE, BUFFERS)</a></li>
+</ol>
+<hr />
+<h2 id="glossario">Glossario</h2>
+<p><strong>pg_stat_statements</strong> — Estensione PostgreSQL che raccoglie statistiche di esecuzione per tutte le query SQL: tempi, conteggi, righe restituite e blocchi letti. Strumento fondamentale per la diagnostica delle performance.</p>
+<p><strong>shared_preload_libraries</strong> — Parametro PostgreSQL che elenca le librerie condivise da caricare all'avvio del server. Modifica richiede restart. È il meccanismo standard per attivare estensioni come pg_stat_statements, auto_explain, pg_audit.</p>
+<p><strong>EXPLAIN ANALYZE</strong> — Comando PostgreSQL che esegue una query e restituisce il piano di esecuzione effettivo con tempi reali, conteggi righe stimati vs reali, e (con BUFFERS) statistiche di I/O. Strumento principe per il tuning delle query.</p>
+<p><strong>Normalized query</strong> — Forma canonica di una query SQL dove i valori letterali sono sostituiti con segnaposto ($1, $2, ecc.). Permette a pg_stat_statements di aggregare statistiche per pattern di query invece che per singola esecuzione.</p>
+<p><strong>shared_blks_read / shared_blks_hit</strong> — Contatori PostgreSQL che misurano i blocchi letti rispettivamente dal disco (read) e dalla cache buffer (hit). Il rapporto hit/(hit+read) è il cache hit ratio, un indicatore chiave di efficienza.</p>
   </article>
 </div>
 </body></html>
