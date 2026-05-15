@@ -32,6 +32,8 @@ Răspunsul era simplu ca și concept, mai puțin simplu în realizare: aveau nev
 
 Oracle Active {{< glossary term="data-guard" >}}Data Guard{{< /glossary >}} face exact asta. O bază de date primară generează {{< glossary term="redo-log" >}}redo log{{< /glossary >}}-uri, iar un standby le primește și le aplică continuu. Dacă primarul moare, standby-ul devine primar. Dacă totul e în ordine, standby-ul poate fi folosit și în mod read-only — pentru rapoarte, pentru backup-uri, pentru a ușura încărcarea.
 
+> ℹ️ **Notă despre licensing**: *real-time query* — citirea din standby în timp ce aplică redo log-urile — necesită opțiunea separată **Active Data Guard**, plătită peste Enterprise Edition. **Data Guard "base"** inclus în EE permite standby-ul în MOUNT cu apply activ *sau* deschis în read-only dar cu apply oprit, nu ambele simultan. În proiectul descris aici folosim Active Data Guard; merită să știi asta înainte de a estima costurile.
+
 Am proiectat o arhitectură cu două noduri:
 
 - **Primar** (`oraprod1`): serverul existent, cu discuri noi, la sediul principal
