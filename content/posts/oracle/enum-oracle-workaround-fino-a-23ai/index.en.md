@@ -32,7 +32,7 @@ CREATE TABLE transactions (
 );
 ```
 
-Standard SQL approach. Oracle has enforced `CHECK` constraints for decades — no surprises about constraint validity like MySQL had before 8.0.16. Simple, readable, and for small projects it solves the problem immediately. The price, on a real system, you discover later: the same value list gets replicated on every table with the same `status` column, and every change becomes an `ALTER TABLE` per table. We'll see why this matters.
+Standard SQL approach. Oracle has enforced `CHECK` constraints for decades [2] — no surprises about constraint validity like MySQL had before 8.0.16. Simple, readable, and for small projects it solves the problem immediately. The price, on a real system, you discover later: the same value list gets replicated on every table with the same `status` column, and every change becomes an `ALTER TABLE` per table. We'll see why this matters.
 
 **Lookup table with foreign key**:
 
@@ -53,7 +53,7 @@ CREATE TABLE transactions (
 );
 ```
 
-The "pure database" road and — not by chance — the dominant cultural choice in Oracle enterprise projects. One extra table, one extra JOIN, and in exchange an enumeration that is **a database object with a life of its own**: you can attach localized labels to it, display ordering, active/inactive flag, audit trail on `MODIFY` of the taxonomy, and business rules richer than a simple "allowed/not allowed". On the systems I've seen in banking, telco and Italian public sector over the past twenty years, **eight times out of ten the choice was this** — and with good reason.
+The "pure database" road and — not by chance — the dominant cultural choice in Oracle enterprise projects. One extra table, one extra JOIN, and in exchange an enumeration that is **a database object with a life of its own**: you can attach localized labels to it, display ordering, active/inactive flag, audit trail on `MODIFY` of the taxonomy, and business rules richer than a simple "allowed/not allowed" [3]. On the systems I've seen in banking, telco and Italian public sector over the past twenty years, **eight times out of ten the choice was this** — and with good reason.
 
 **Pseudo-pattern (SUBTYPE, COLLECTION, type-object)**:
 
@@ -142,7 +142,7 @@ ALTER DOMAIN transaction_status
      'MANUAL_AUTHORIZATION'));
 ```
 
-That single statement updates the constraint **for all columns using `transaction_status`** — across 18 tables, 50, doesn't matter. Oracle takes care of propagating the check, and of validating existing rows (with `VALIDATE` or `NOVALIDATE`, depending on how you want to handle the transition) [2].
+That single statement updates the constraint **for all columns using `transaction_status`** — across 18 tables, 50, doesn't matter. Oracle takes care of propagating the check, and of validating existing rows (with `VALIDATE` or `NOVALIDATE`, depending on how you want to handle the transition) [4].
 
 It's what the lookup table already gave you at a logical level (a single place to change the allowed values), now brought to the **schema catalog** level, without requiring a JOIN, without requiring an extra table, and without the 4 bytes of OID of a numeric FK.
 
@@ -199,7 +199,9 @@ The rest is detail of syntax and engine. What matters — and what I've learned 
 ## Official sources
 
 1. Oracle Database 23ai SQL Language Reference — [CREATE DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/CREATE-DOMAIN.html)
-2. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
+2. Oracle Database 19c SQL Language Reference — [constraint_clause (CHECK and other constraints)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html)
+3. Oracle Database 19c Database Concepts — [Data Integrity (integrity constraints, foreign key, lookup pattern)](https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html)
+4. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
 
 ---
 

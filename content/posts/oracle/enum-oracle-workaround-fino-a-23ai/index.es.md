@@ -32,7 +32,7 @@ CREATE TABLE transacciones (
 );
 ```
 
-Enfoque SQL estándar. Oracle aplica los `CHECK` constraint desde hace décadas — ninguna sorpresa sobre la validez del vínculo como ocurría en MySQL antes de la 8.0.16. Simple, legible, y para proyectos pequeños lo resuelve enseguida. El precio, en un sistema real, se descubre después: la misma lista de valores se replica en cada tabla que tiene la misma columna `estado`, y cada modificación se convierte en un `ALTER TABLE` por cada tabla. Veremos por qué importa.
+Enfoque SQL estándar. Oracle aplica los `CHECK` constraint desde hace décadas [2] — ninguna sorpresa sobre la validez del vínculo como ocurría en MySQL antes de la 8.0.16. Simple, legible, y para proyectos pequeños lo resuelve enseguida. El precio, en un sistema real, se descubre después: la misma lista de valores se replica en cada tabla que tiene la misma columna `estado`, y cada modificación se convierte en un `ALTER TABLE` por cada tabla. Veremos por qué importa.
 
 **Tabla de lookup con foreign key**:
 
@@ -53,7 +53,7 @@ CREATE TABLE transacciones (
 );
 ```
 
-El camino "database puro" y — no es casualidad — la elección cultural dominante en los proyectos Oracle enterprise. Una tabla más, un JOIN más, y a cambio una enumeración que es **un objeto del database con vida propia**: le puedes adjuntar etiquetas localizadas, orden de display, flag activo/inactivo, audit trail sobre `MODIFY` de la taxonomía, y reglas de negocio más ricas que un simple "admitido/no admitido". En los sistemas que he visto en banking, telco y administración pública italiana en los últimos veinte años, **ocho veces de cada diez la elección fue esta** — y con buena razón.
+El camino "database puro" y — no es casualidad — la elección cultural dominante en los proyectos Oracle enterprise. Una tabla más, un JOIN más, y a cambio una enumeración que es **un objeto del database con vida propia**: le puedes adjuntar etiquetas localizadas, orden de display, flag activo/inactivo, audit trail sobre `MODIFY` de la taxonomía, y reglas de negocio más ricas que un simple "admitido/no admitido" [3]. En los sistemas que he visto en banking, telco y administración pública italiana en los últimos veinte años, **ocho veces de cada diez la elección fue esta** — y con buena razón.
 
 **Pseudo-pattern (SUBTYPE, COLLECTION, type-object)**:
 
@@ -142,7 +142,7 @@ ALTER DOMAIN estado_transaccion
      'AUTORIZACION_MANUAL'));
 ```
 
-Ese único statement actualiza el vínculo **para todas las columnas que usan `estado_transaccion`** — en 18 tablas, en 50, no importa. Oracle se hace cargo de propagar el check, y de validar las filas existentes (con `VALIDATE` o `NOVALIDATE`, según como prefieras gestionar la transición) [2].
+Ese único statement actualiza el vínculo **para todas las columnas que usan `estado_transaccion`** — en 18 tablas, en 50, no importa. Oracle se hace cargo de propagar el check, y de validar las filas existentes (con `VALIDATE` o `NOVALIDATE`, según como prefieras gestionar la transición) [4].
 
 Es lo que la lookup table ya daba a nivel lógico (un único lugar donde cambiar los valores admitidos), ahora llevado a nivel del **catálogo schema**, sin requerir un JOIN, sin requerir una tabla en más, y sin los 4 bytes de OID de una FK numérica.
 
@@ -199,7 +199,9 @@ El resto son detalles de sintaxis y de motor. Lo que cuenta — y lo que he apre
 ## Fuentes oficiales
 
 1. Oracle Database 23ai SQL Language Reference — [CREATE DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/CREATE-DOMAIN.html)
-2. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
+2. Oracle Database 19c SQL Language Reference — [constraint_clause (CHECK y otros vínculos)](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html)
+3. Oracle Database 19c Database Concepts — [Data Integrity (integrity constraints, foreign key, lookup pattern)](https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html)
+4. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
 
 ---
 
