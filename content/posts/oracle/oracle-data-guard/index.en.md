@@ -32,6 +32,8 @@ The answer was simple in concept, less so in execution: they needed a second dat
 
 Oracle Active {{< glossary term="data-guard" >}}Data Guard{{< /glossary >}} does exactly this. A primary database generates {{< glossary term="redo-log" >}}redo logs{{< /glossary >}}, and a standby receives and continuously applies them. If the primary dies, the standby becomes primary. If everything is fine, the standby can also be used in read-only mode — for reports, for backups, to offload the primary.
 
+> ℹ️ **Licensing note**: *real-time query* — reading from the standby while it's applying redo logs — requires the separate **Active Data Guard** option, paid on top of Enterprise Edition. The **base "Data Guard"** included in EE allows the standby to be in MOUNT with apply running *or* open in read-only with apply stopped, not both at the same time. The project described here uses Active Data Guard; it's worth knowing before you size the cost.
+
 I designed a two-node architecture:
 
 - **Primary** (`oraprod1`): the existing server, with new disks, at headquarters
