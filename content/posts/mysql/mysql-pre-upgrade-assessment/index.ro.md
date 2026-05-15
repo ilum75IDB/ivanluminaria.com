@@ -96,7 +96,7 @@ WHERE table_schema NOT IN ('mysql', 'sys', 'performance_schema', 'information_sc
 GROUP BY table_schema;
 ```
 
-**Abordarea 2 — estimare din {{< glossary term="binary-log" >}}binary log{{< /glossary >}}.** Acesta este trucul pe care mulți nu îl folosesc. Binlog-ul înregistrează fiecare scriere, iar dimensiunea sa zilnică este un proxy excelent pentru rata de creștere a datelor (scăzând update-urile și delete-urile, care generează trafic dar nu creștere netă). Cu `expire_logs_days=7` ai o săptămână de istoric gata de citit.
+**Abordarea 2 — estimare din {{< glossary term="binary-log" >}}binary log{{< /glossary >}}.** Acesta este trucul pe care mulți nu îl folosesc. Binlog-ul înregistrează fiecare scriere, iar dimensiunea sa zilnică este un proxy excelent pentru rata de creștere a datelor (scăzând update-urile și delete-urile, care generează trafic dar nu creștere netă). Cu `binlog_expire_logs_seconds=604800` (pe MySQL 8.0+; `expire_logs_days=7` pe 5.7 / MariaDB) ai o săptămână de istoric gata de citit.
 
 ```bash
 # Volum zilnic binlog (ultimele 7 zile)
