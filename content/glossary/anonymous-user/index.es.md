@@ -1,13 +1,13 @@
 ---
 title: "Anonymous User"
-description: "Usuario MySQL/MariaDB sin nombre creado automáticamente durante la instalación. Representa un riesgo de seguridad porque puede interferir con el matching de..."
+description: "Usuario MySQL/MariaDB sin nombre creado en algunas instalaciones legacy. Representa un riesgo de seguridad porque puede interferir con el matching de..."
 translationKey: "glossary_anonymous-user"
 aka: "Usuario anónimo"
 articles:
   - "/posts/mysql/mysql-users-and-hosts"
 ---
 
-El **Anonymous User** (usuario anónimo) es una cuenta MySQL/MariaDB con username vacío (`''@'localhost'`) que se crea automáticamente durante la instalación. No tiene nombre y frecuentemente no tiene contraseña.
+El **Anonymous User** (usuario anónimo) es una cuenta MySQL/MariaDB con username vacío (`''@'localhost'`) que algunas instalaciones crean automáticamente. Era práctica estándar en MySQL 5.7 y en algunas builds legacy; con MySQL 8.0 y los paquetes más recientes (incluido `mysql_secure_installation`) ya no se crea por defecto. No tiene nombre y frecuentemente no tiene contraseña.
 
 ## Cómo funciona
 

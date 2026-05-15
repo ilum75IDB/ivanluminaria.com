@@ -5,7 +5,7 @@ description: "Seguridad Oracle: rediseño del modelo GRANT con roles personaliza
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"
-tags: ["security", "roles", "privileges", "grant", "revoke", "audit"]
+tags: ["security", "privileges"]
 categories: ["oracle"]
 image: "oracle-roles-privileges.cover.jpg"
 ---
@@ -206,6 +206,54 @@ GRANT UNLIMITED TABLESPACE TO app_owner;
 ```
 
 `APP_OWNER` sigue siendo el propietario de los objetos pero ya no tiene el poder de hacer cualquier cosa en la base de datos. Es un propietario, no un dios.
+
+---
+
+## ⚠️ Advertencia: privilegios vía role y stored procedures definer-rights
+
+Hay una trampa que vale la pena conocer antes de escribir código PL/SQL contra este modelo de roles. Una regla Oracle con la que tropieza casi cualquier DBA junior:
+
+> **Los privilegios concedidos vía role NO son visibles dentro de stored procedures compiladas con definer-rights (default).**
+
+Ejemplo concreto. Concedo `SELECT` sobre la tabla `app_owner.facturas` al rol `app_read_role`, y después concedo el rol al usuario `app_user`:
+
+```sql
+GRANT SELECT ON app_owner.facturas TO app_read_role;
+GRANT app_read_role TO app_user;
+```
+
+En sesión interactiva todo funciona — `app_user` puede ejecutar `SELECT * FROM app_owner.facturas`. Pero si `app_user` tiene una stored procedure que ejecuta el mismo SELECT, en runtime Oracle devuelve `ORA-00942: table or view does not exist`. El mismo usuario, la misma query — un caso funciona interactivamente, el otro no.
+
+El motivo: por defecto las stored procedures Oracle se compilan con **definer-rights** (`AUTHID DEFINER`, comportamiento implícito). En runtime, el motor evalúa solo los privilegios **directos**, no los heredados vía role. Es una decisión de diseño Oracle que existe desde décadas y que no cambia por retrocompatibilidad.
+
+Las dos soluciones:
+
+**Opción 1 — Privilegio directo al owner de la procedure**:
+
+```sql
+-- Sin role, GRANT directo al usuario individual
+GRANT SELECT ON app_owner.facturas TO app_user;
+```
+
+Funciona, pero anula la ventaja del modelo a roles para ese privilegio específico.
+
+**Opción 2 — Stored procedure con invoker-rights** (`AUTHID CURRENT_USER`):
+
+```sql
+CREATE OR REPLACE PROCEDURE leer_facturas
+  AUTHID CURRENT_USER
+AS
+BEGIN
+  FOR r IN (SELECT * FROM app_owner.facturas) LOOP
+    -- ...
+  END LOOP;
+END;
+/
+```
+
+Con `AUTHID CURRENT_USER`, en runtime la procedure usa los privilegios del **llamante** (incluidos los roles activos en la sesión). Mantiene el modelo a roles intacto. La desventaja: cambia la semántica de acceso a objetos (la procedure resuelve los nombres en el contexto del llamante, no del propietario), así que evalúalo caso por caso.
+
+La regla práctica: para **procedures de lectura/escritura aplicativas** que trabajan sobre los datos de un propietario centralizado, `AUTHID CURRENT_USER` es casi siempre la elección correcta. Para **procedures administrativas** que deben operar con los privilegios específicos del owner, deja el default `AUTHID DEFINER` y concede los privilegios directos.
 
 ---
 

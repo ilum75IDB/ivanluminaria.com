@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="utf-8"><title>TOC mockup B — Lista numerata</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.6; color: #1f2937; background: #f9fafb; padding: 30px; margin: 0; }
+  .wrapper { display: grid; grid-template-columns: 240px 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
+  .sidebar { position: sticky; top: 30px; align-self: start; }
+  .sidebar-card { background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 12px; padding: 20px 18px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg,#336791,#F80000); margin: 0 auto 12px; }
+  .author-name { font-weight: 600; color: #1f2937; font-size: 15px; }
+  .author-roles { font-size: 12px; color: #6b7280; margin-top: 6px; line-height: 1.35; }
+
+  /* TOC option B — Numbered editorial */
+  .toc-card { margin-top: 16px; padding: 14px 16px 16px; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 8px; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .toc-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6b7280; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid #f3f4f6; }
+  .toc-list { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+  .toc-list li { counter-increment: toc; }
+  .toc-list a { display: grid; grid-template-columns: 22px 1fr; align-items: start; gap: 4px; padding: 7px 6px 7px 4px; color: #4a4a4a; text-decoration: none; font-size: 13px; line-height: 1.4; border-radius: 4px; transition: all 150ms; }
+  .toc-list a::before { content: counter(toc, decimal-leading-zero); color: #336791; font-weight: 700; font-size: 11px; font-variant-numeric: tabular-nums; padding-top: 1px; }
+  .toc-list a:hover { background: rgba(51,103,145,.06); color: #336791; }
+  .toc-list a:hover::before { color: #F80000; }
+
+  .reading-progress { margin-top: 14px; padding: 10px 12px; width: auto; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 8px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .reading-progress-label { font-size: 11px; color: #6b7280; }
+  .reading-progress-val { font-weight: 700; color: #336791; }
+  .reading-progress-mini { height: 4px; background: #f3f4f6; border-radius: 2px; margin-top: 6px; overflow: hidden; }
+  .reading-progress-mini-fill { display: block; height: 100%; width: 37%; background: linear-gradient(90deg,#336791,#F80000); }
+
+  .article { background: #fff; border-radius: 12px; padding: 40px 48px; min-height: 140vh; }
+  h1 { font-size: 32px; color: #4a4a4a; margin: 0 0 16px; line-height: 1.25; }
+  h2 { font-size: 22px; color: #4a4a4a; margin: 32px 0 12px; line-height: 1.3; }
+  p { margin: 14px 0; }
+  pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 12px 14px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+  code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  p code, li code { background: #f3f4f6; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; color: #b30000; }
+  pre code { color: #4a4a4a; background: transparent; padding: 0; }
+  blockquote { border-left: 3px solid #F80000; padding: 4px 16px; margin: 16px 0; color: #6b7280; font-style: italic; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+  th { background: #f9fafb; font-weight: 600; }
+  hr { border: 0; border-top: 1px solid #e5e7eb; margin: 24px 0; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+  h2 { scroll-margin-top: 30px; }
+  .article-meta { font-size: 13px; color: #6b7280; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f3f4f6; }
+  .article { min-height: auto !important; }
+</style>
+</head><body>
+<div class="wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="avatar"></div>
+      <div class="author-name">Ivan Luminaria</div>
+      <div class="author-roles">DWH Architect · Project Manager · Oracle DBA &amp; Performance Tuning · PL/SQL Senior &amp; Mentor</div>
+    </div>
+
+<div class="toc-card">
+      <h3 class="toc-title">In questo articolo</h3>
+      <ul class="toc-list">
+        <li><a href="#cosa-fa-pgstatstatements">Cosa fa pg_stat_statements</a></li>
+        <li><a href="#installazione-cinque-minuti-che-cambiano-tutto">Installazione: cinque minuti che cambiano tutto</a></li>
+        <li><a href="#le-tre-query-che-mangiavano-il-server">Le tre query che mangiavano il server</a></li>
+        <li><a href="#le-query-diagnostiche-che-uso-sempre">Le query diagnostiche che uso sempre</a></li>
+        <li><a href="#reset-delle-statistiche-quando-e-perch">Reset delle statistiche: quando e perché</a></li>
+        <li><a href="#pgstatstatements-explain-il-workflow-completo">pg_stat_statements + EXPLAIN: il workflow completo</a></li>
+        <li><a href="#perch-non-attivo-di-default">Perché non è attivo di default</a></li>
+        <li><a href="#il-giorno-dopo">Il giorno dopo</a></li>
+        <li><a href="#fonti-ufficiali">Fonti ufficiali</a></li>
+        <li><a href="#glossario">Glossario</a></li>
+      </ul>
+    </div>
+
+    <div class="reading-progress">
+      <span class="reading-progress-label">Letto:</span>
+      <span class="reading-progress-val">37%</span>
+      <div class="reading-progress-mini"><span class="reading-progress-mini-fill"></span></div>
+    </div>
+  </aside>
+
+  <article class="article">
+    <h1>pg_stat_statements: la prima cosa da installare su qualsiasi PostgreSQL</h1>
+    <div class="article-meta">21 aprile 2026 · 9 minuti di lettura · PostgreSQL</div>
+<p>Il ticket diceva: "Il database è lento da qualche giorno, ma non sappiamo quale query sia il problema."</p>
+<p>PostgreSQL 15 in produzione, un gestionale per un'azienda manifatturiera con circa quattrocento utenti. Il server aveva 64 GB di RAM, 16 core, dischi NVMe — hardware più che adeguato per il carico. Eppure i tempi di risposta dell'applicazione erano saliti da 200 millisecondi a 2-3 secondi, e il trend era in peggioramento.</p>
+<p>La prima cosa che ho chiesto al DBA è stata: "Fammi vedere l'output di pg_stat_statements."</p>
+<p>Silenzio. Poi: "Non ce l'abbiamo attivo."</p>
+<p>Due anni di produzione. Quattrocento utenti. Nessuno strumento di diagnostica delle query installato. È come guidare di notte senza fari — finché la strada è dritta non ti accorgi di nulla, ma alla prima curva finisci nel fosso. Con qualche eccezione di nicchia — un PgBouncer in modalità multi-tenant aggressiva, una replica logica downstream che riceve solo traffico filtrato — è la prima cosa da installare.</p>
+<hr />
+<h2 id="cosa-fa-pgstatstatements">Cosa fa pg_stat_statements</h2>
+<p>pg_stat_statements è un'estensione di PostgreSQL — inclusa nella distribuzione ufficiale ma non attiva di default — che tiene traccia delle statistiche di esecuzione di tutte le query SQL che passano dal server.</p>
+<p>Per ogni query, registra:</p>
+<ul>
+<li>Quante volte è stata eseguita (<code>calls</code>)</li>
+<li>Quanto tempo totale ha consumato (<code>total_exec_time</code>)</li>
+<li>Quanto tempo in media per esecuzione (<code>mean_exec_time</code>)</li>
+<li>Quante righe ha restituito (<code>rows</code>)</li>
+<li>Quanti blocchi ha letto da disco (<code>shared_blks_read</code>) e dalla cache (<code>shared_blks_hit</code>)</li>
+</ul>
+<p>Le query vengono normalizzate: i valori letterali vengono sostituiti con <code>$1</code>, <code>$2</code>, ecc. Questo significa che <code>SELECT * FROM users WHERE id = 42</code> e <code>SELECT * FROM users WHERE id = 99</code> sono la stessa query per pg_stat_statements. È esattamente quello che vuoi — ti interessa il pattern, non i singoli valori.</p>
+<hr />
+<h2 id="installazione-cinque-minuti-che-cambiano-tutto">Installazione: cinque minuti che cambiano tutto</h2>
+<p>L'installazione richiede una modifica al file <code>postgresql.conf</code> e un restart del servizio [1]. Non c'è modo di evitare il restart — l'estensione deve essere caricata come shared library all'avvio del processo.</p>
+<pre><code class="language-ini"># postgresql.conf
+shared_preload_libraries = 'pg_stat_statements'
+pg_stat_statements.max = 10000
+pg_stat_statements.track = all
+</code></pre>
+<p>Il parametro <code>pg_stat_statements.max</code> definisce quante query distinte vengono tracciate. Il default è 5000, ma su database con molte query diverse conviene alzarlo. <code>pg_stat_statements.track</code> impostato a <code>all</code> traccia anche le query eseguite dentro funzioni PL/pgSQL — senza questo parametro, le query nelle stored procedure non vengono registrate [2].</p>
+<p>Dopo il restart, l'estensione si attiva come qualsiasi altra extension PostgreSQL [3]:</p>
+<pre><code class="language-sql">CREATE EXTENSION pg_stat_statements;
+</code></pre>
+<p>Da questo momento, ogni query che passa dal server viene tracciata. Non serve toccare l'applicazione, non serve modificare le query, non serve nulla. È completamente trasparente.</p>
+<p>L'overhead? Trascurabile. Ho fatto benchmark su diversi ambienti e l'impatto è nell'ordine dell'1-2% di CPU in più. Su qualsiasi database di produzione è un costo che si ripaga alla prima criticità diagnosticata.</p>
+<hr />
+<h2 id="le-tre-query-che-mangiavano-il-server">Le tre query che mangiavano il server</h2>
+<p>Torniamo al cliente. Dopo il restart con l'estensione attiva, ho aspettato 24 ore per raccogliere un campione rappresentativo del carico. Poi ho lanciato la query che lancio sempre per prima:</p>
+<pre><code class="language-sql">SELECT
+    substring(query, 1, 80) AS query_troncata,
+    calls,
+    round(total_exec_time::numeric, 2) AS total_time_ms,
+    round(mean_exec_time::numeric, 2) AS mean_time_ms,
+    rows,
+    round((100 * total_exec_time / sum(total_exec_time) OVER ())::numeric, 2) AS percentuale
+FROM pg_stat_statements
+WHERE userid != (SELECT usesysid FROM pg_user WHERE usename = 'postgres')
+ORDER BY total_exec_time DESC
+LIMIT 20;
+</code></pre>
+<p>Questa query ordina tutte le query tracciate per tempo totale consumato e mostra la percentuale sul totale. È il punto di partenza — ti dice subito dove va il tempo del database.</p>
+<p>Il risultato era impressionante:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Query (troncata)</th>
+<th>Calls</th>
+<th>Total time</th>
+<th>Mean time</th>
+<th>%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>SELECT o.*, c.name FROM orders o JOIN customers c ON...</code></td>
+<td>847.000</td>
+<td>1.240.000 ms</td>
+<td>1,46 ms</td>
+<td>42%</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>SELECT p.*, s.qty FROM products p LEFT JOIN stock s...</code></td>
+<td>312.000</td>
+<td>680.000 ms</td>
+<td>2,18 ms</td>
+<td>23%</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>SELECT * FROM audit_log WHERE created_at &gt; $1 AND...</code></td>
+<td>28.000</td>
+<td>440.000 ms</td>
+<td>15,71 ms</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table>
+<p>Tre query. L'80% del tempo totale del database.</p>
+<p>La prima veniva eseguita 847.000 volte in 24 ore — circa dieci volte al secondo. Il tempo medio era basso (1,46 ms) ma il volume la rendeva la più costosa in assoluto. Mancava un indice sul campo di join della tabella <code>customers</code>.</p>
+<p>La seconda aveva un LEFT JOIN che faceva un sequential scan sulla tabella <code>stock</code> — 2 milioni di righe, ogni volta. Un indice sulla colonna di join ha portato il mean_time da 2,18 ms a 0,12 ms.</p>
+<p>La terza era quella che mi preoccupava di più. 15 millisecondi di media su una tabella di audit con 50 milioni di righe. La query filtrava per <code>created_at</code> e <code>action_type</code>, ma l'indice esistente era solo su <code>created_at</code>. Un indice composto <code>(created_at, action_type)</code> ha risolto il problema.</p>
+<p>Tre indici. Venti minuti di lavoro. Il tempo medio di risposta dell'applicazione è sceso da 2,3 secondi a 180 millisecondi.</p>
+<hr />
+<h2 id="le-query-diagnostiche-che-uso-sempre">Le query diagnostiche che uso sempre</h2>
+<p>Dopo anni di utilizzo, ho un set di query che lancio regolarmente. Le condivido perché sono quelle che avrei voluto avere quando ho iniziato con PostgreSQL.</p>
+<h3>Top query per tempo totale</h3>
+<p>È la query che ho mostrato sopra. Ti dice dove va il tempo del database. La uso come primo passo in qualsiasi sessione diagnostica.</p>
+<h3>Top query per tempo medio</h3>
+<pre><code class="language-sql">SELECT
+    substring(query, 1, 80) AS query_troncata,
+    calls,
+    round(mean_exec_time::numeric, 2) AS mean_time_ms,
+    round(total_exec_time::numeric, 2) AS total_time_ms,
+    rows
+FROM pg_stat_statements
+WHERE calls &gt; 100
+ORDER BY mean_exec_time DESC
+LIMIT 20;
+</code></pre>
+<p>Questa è complementare alla prima. Trova le query singolarmente lente — quelle che vengono eseguite poche volte ma ciascuna impiega secondi. Il filtro <code>calls &gt; 100</code> evita di pescare query una tantum che non sono rappresentative.</p>
+<h3>Query con più I/O su disco</h3>
+<pre><code class="language-sql">SELECT
+    substring(query, 1, 80) AS query_troncata,
+    calls,
+    shared_blks_read AS blocchi_disco,
+    shared_blks_hit AS blocchi_cache,
+    round(
+        100.0 * shared_blks_hit / nullif(shared_blks_hit + shared_blks_read, 0), 2
+    ) AS cache_hit_ratio
+FROM pg_stat_statements
+WHERE shared_blks_read &gt; 1000
+ORDER BY shared_blks_read DESC
+LIMIT 20;
+</code></pre>
+<p>Questa è fondamentale per capire quali query stanno martellando il disco. Un <code>cache_hit_ratio</code> sotto il 90% su una query frequente è un segnale d'allarme — significa che i dati non stanno in <code>shared_buffers</code> e ogni esecuzione va a leggere dal filesystem.</p>
+<h3>Query con il peggior rapporto righe restituite / righe lette</h3>
+<pre><code class="language-sql">SELECT
+    substring(query, 1, 80) AS query_troncata,
+    calls,
+    rows AS righe_restituite,
+    shared_blks_hit + shared_blks_read AS blocchi_totali,
+    round(rows::numeric / nullif(shared_blks_hit + shared_blks_read, 0), 4) AS efficienza
+FROM pg_stat_statements
+WHERE calls &gt; 50
+  AND (shared_blks_hit + shared_blks_read) &gt; 0
+ORDER BY efficienza ASC
+LIMIT 20;
+</code></pre>
+<p>Questa trova le query che leggono moltissimi blocchi per restituire poche righe — il segnale classico di un sequential scan dove servirebbe un index scan. Un'efficienza vicina a zero su una query frequente è quasi sempre un indice mancante.</p>
+<hr />
+<h2 id="reset-delle-statistiche-quando-e-perch">Reset delle statistiche: quando e perché</h2>
+<p>Le statistiche di pg_stat_statements sono cumulative dall'ultimo reset. Se il server è in piedi da sei mesi, stai guardando la media di sei mesi — che potrebbe nascondere una criticità recente.</p>
+<pre><code class="language-sql">SELECT pg_stat_statements_reset();
+</code></pre>
+<p>Quando fare il reset? Dipende dalla situazione:</p>
+<ul>
+<li><strong>Dopo un deploy applicativo</strong>: le query cambiano, i vecchi dati non servono più</li>
+<li><strong>Dopo un intervento di tuning</strong>: vuoi vedere l'effetto degli indici creati, non la media con il "prima"</li>
+<li><strong>Periodicamente</strong>: alcuni team fanno un reset settimanale o mensile e salvano i dati in una tabella storica prima del reset</li>
+</ul>
+<p>Un approccio che uso spesso è salvare uno snapshot prima del reset:</p>
+<pre><code class="language-sql">CREATE TABLE pgss_snapshot AS
+SELECT now() AS snapshot_time, *
+FROM pg_stat_statements;
+
+SELECT pg_stat_statements_reset();
+</code></pre>
+<p>Così hai lo storico e le statistiche fresche.</p>
+<hr />
+<h2 id="pgstatstatements-explain-il-workflow-completo">pg_stat_statements + EXPLAIN: il workflow completo</h2>
+<p>pg_stat_statements ti dice <em>quale</em> query è la criticità. EXPLAIN ti dice <em>perché</em> è una criticità. Usarli insieme è il workflow diagnostico più potente che PostgreSQL offre.</p>
+<p>Il processo che seguo è sempre lo stesso:</p>
+<ol>
+<li><strong>Identifico le top query</strong> con pg_stat_statements (per tempo totale, per tempo medio, o per I/O)</li>
+<li><strong>Copio la query normalizzata</strong> e sostituisco i <code>$1</code>, <code>$2</code> con valori reali</li>
+<li><strong>Lancio <code>EXPLAIN (ANALYZE, BUFFERS)</code></strong> per vedere il piano di esecuzione [4]</li>
+<li><strong>Cerco i segnali d'allarme</strong>: sequential scan su tabelle grandi, nested loop con molte righe, sort su disco</li>
+<li><strong>Intervengo</strong>: creo un indice, riscrivo la query, aggiorno le statistiche con ANALYZE</li>
+</ol>
+<pre><code class="language-sql">EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT)
+SELECT o.*, c.name
+FROM orders o
+JOIN customers c ON c.id = o.customer_id
+WHERE o.created_at &gt; '2026-01-01';
+</code></pre>
+<p>La cosa importante è il ciclo: dopo l'intervento, fai un reset di pg_stat_statements, aspetti qualche ora, e verifichi che la query sia effettivamente migliorata nei numeri reali — non solo nell'EXPLAIN.</p>
+<hr />
+<h2 id="perch-non-attivo-di-default">Perché non è attivo di default</h2>
+<p>Una domanda che mi fanno spesso: se pg_stat_statements è così utile, perché PostgreSQL non lo attiva di default?</p>
+<p>La risposta è filosofica più che tecnica. PostgreSQL ha una cultura di minimalismo — il core fa il database, tutto il resto è estensione. L'overhead di pg_stat_statements è trascurabile, ma il progetto preferisce non imporre nulla. È lo stesso motivo per cui <code>shared_buffers</code> ha un default di 128 MB — un valore ridicolo per qualsiasi produzione, ma il progetto non vuole presumere quanto hardware hai.</p>
+<p>La conseguenza pratica è che ogni installazione PostgreSQL andrebbe configurata esplicitamente. E pg_stat_statements dovrebbe essere la prima riga della checklist post-installazione — prima di tuning di shared_buffers, prima di configurare l'autovacuum, prima di tutto il resto.</p>
+<p>Senza pg_stat_statements stai volando alla cieca. Puoi fare tuning quanto vuoi, ma stai indovinando dove intervenire.</p>
+<hr />
+<h2 id="il-giorno-dopo">Il giorno dopo</h2>
+<p>Il giorno dopo aver creato i tre indici, ho controllato di nuovo pg_stat_statements. La distribuzione del carico era cambiata completamente. Le tre query che prima consumavano l'80% del tempo ora erano al 12% — e la query più costosa era diventata un report che girava una volta al giorno e che nessuno si era mai lamentato fosse lento.</p>
+<p>Il DBA mi ha chiesto: "Ma perché nessuno ci aveva detto di installare questa estensione?"</p>
+<p>La risposta è che pg_stat_statements non è un segreto. È nella documentazione ufficiale, è in ogni tutorial di performance tuning, è raccomandata da ogni DBA PostgreSQL che conosco. Ma se non la installi, non sai cosa non sai. E se non sai cosa non sai, tutto sembra funzionare — finché non funziona più.</p>
+<p>Cinque minuti di installazione. Venti minuti di analisi. Tre indici. Un database che è passato da "lento da qualche giorno" a "il più veloce che abbiamo mai avuto" — che poi significa semplicemente "veloce come avrebbe dovuto essere dall'inizio".</p>
+<hr />
+<h2 id="fonti-ufficiali">Fonti ufficiali</h2>
+<ol>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/pgstatstatements.html"><code>pg_stat_statements</code> extension</a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/runtime-config-client.html">Client Connection Defaults (<code>shared_preload_libraries</code>)</a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/sql-createextension.html"><code>CREATE EXTENSION</code></a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/sql-explain.html"><code>EXPLAIN</code> (ANALYZE, BUFFERS)</a></li>
+</ol>
+<hr />
+<h2 id="glossario">Glossario</h2>
+<p><strong><a href="/it/glossary/pg-stat-statements/">pg_stat_statements</a></strong> — Estensione PostgreSQL che raccoglie statistiche di esecuzione per tutte le query SQL: tempi, conteggi, righe restituite e blocchi letti. Strumento fondamentale per la diagnostica delle performance.</p>
+<p><strong><a href="/it/glossary/shared-buffers/">shared_buffers</a></strong> — Area di memoria condivisa di PostgreSQL che funge da cache per i blocchi dati letti dal disco. Il parametro più importante per il tuning della memoria, con un default di 128 MB quasi sempre inadeguato per la produzione.</p>
+<p><strong><a href="/it/glossary/execution-plan/">Execution Plan</a></strong> — Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE.</p>
+<p><strong><a href="/it/glossary/sequential-scan/">Sequential Scan</a></strong> — Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella dall'inizio alla fine senza utilizzare indici. Efficiente su tabelle piccole, problematica su tabelle grandi quando serve solo un sottoinsieme delle righe.</p>
+<p><strong><a href="/it/glossary/postgresql-analyze/">ANALYZE</a></strong> — Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione.</p>
+<hr />
+<h2 id="fonti-ufficiali">Fonti ufficiali</h2>
+<ol>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/pgstatstatements.html"><code>pg_stat_statements</code> extension</a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/runtime-config-client.html">Client Connection Defaults (<code>shared_preload_libraries</code>)</a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/sql-createextension.html"><code>CREATE EXTENSION</code></a></li>
+<li>PostgreSQL Documentation — <a href="https://www.postgresql.org/docs/current/sql-explain.html"><code>EXPLAIN</code> (ANALYZE, BUFFERS)</a></li>
+</ol>
+<hr />
+<h2 id="glossario">Glossario</h2>
+<p><strong>pg_stat_statements</strong> — Estensione PostgreSQL che raccoglie statistiche di esecuzione per tutte le query SQL: tempi, conteggi, righe restituite e blocchi letti. Strumento fondamentale per la diagnostica delle performance.</p>
+<p><strong>shared_preload_libraries</strong> — Parametro PostgreSQL che elenca le librerie condivise da caricare all'avvio del server. Modifica richiede restart. È il meccanismo standard per attivare estensioni come pg_stat_statements, auto_explain, pg_audit.</p>
+<p><strong>EXPLAIN ANALYZE</strong> — Comando PostgreSQL che esegue una query e restituisce il piano di esecuzione effettivo con tempi reali, conteggi righe stimati vs reali, e (con BUFFERS) statistiche di I/O. Strumento principe per il tuning delle query.</p>
+<p><strong>Normalized query</strong> — Forma canonica di una query SQL dove i valori letterali sono sostituiti con segnaposto ($1, $2, ecc.). Permette a pg_stat_statements di aggregare statistiche per pattern di query invece che per singola esecuzione.</p>
+<p><strong>shared_blks_read / shared_blks_hit</strong> — Contatori PostgreSQL che misurano i blocchi letti rispettivamente dal disco (read) e dalla cache buffer (hit). Il rapporto hit/(hit+read) è il cache hit ratio, un indicatore chiave di efficienza.</p>
+  </article>
+</div>
+</body></html>

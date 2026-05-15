@@ -5,7 +5,7 @@ description: "Oracle Data Guard 19c: migration from single instance after a 6-ho
 date: "2025-12-16T08:03:00+01:00"
 draft: false
 translationKey: "oracle_data_guard"
-tags: ["data-guard", "disaster-recovery", "high-availability", "switchover", "architecture"]
+tags: ["high-availability", "replication", "architecture"]
 categories: ["oracle"]
 image: "oracle-data-guard.cover.jpg"
 ---
@@ -31,6 +31,8 @@ That evening the CEO sent an email to the entire company. The next day he called
 The answer was simple in concept, less so in execution: they needed a second database, synchronized in real time, ready to take over if the primary failed.
 
 Oracle Active {{< glossary term="data-guard" >}}Data Guard{{< /glossary >}} does exactly this. A primary database generates {{< glossary term="redo-log" >}}redo logs{{< /glossary >}}, and a standby receives and continuously applies them. If the primary dies, the standby becomes primary. If everything is fine, the standby can also be used in read-only mode — for reports, for backups, to offload the primary.
+
+> ℹ️ **Licensing note**: *real-time query* — reading from the standby while it's applying redo logs — requires the separate **Active Data Guard** option, paid on top of Enterprise Edition. The **base "Data Guard"** included in EE allows the standby to be in MOUNT with apply running *or* open in read-only with apply stopped, not both at the same time. The project described here uses Active Data Guard; it's worth knowing before you size the cost.
 
 I designed a two-node architecture:
 

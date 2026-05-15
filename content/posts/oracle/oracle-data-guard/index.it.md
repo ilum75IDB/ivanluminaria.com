@@ -5,7 +5,7 @@ description: "Oracle Data Guard 19c: migrazione da single instance dopo un crash
 date: "2025-12-16T08:03:00+01:00"
 draft: false
 translationKey: "oracle_data_guard"
-tags: ["data-guard", "disaster-recovery", "high-availability", "switchover", "architecture"]
+tags: ["high-availability", "replication", "architecture"]
 categories: ["oracle"]
 image: "oracle-data-guard.cover.jpg"
 ---
@@ -31,6 +31,8 @@ Il CEO quella sera ha mandato una mail a tutta l'azienda. Il giorno dopo mi ha c
 La risposta era semplice nel concetto, meno nella realizzazione: serviva un secondo database, sincronizzato in tempo reale, pronto a prendere il posto del primario in caso di guasto.
 
 Oracle Active {{< glossary term="data-guard" >}}Data Guard{{< /glossary >}} fa esattamente questo. Un database primario che genera {{< glossary term="redo-log" >}}redo log{{< /glossary >}}, e uno standby che li riceve e li applica continuamente. Se il primario muore, lo standby diventa primario. Se tutto va bene, lo standby si può anche usare in sola lettura — per report, per backup, per alleggerire il carico.
+
+> ℹ️ **Nota sul licensing**: il *real-time query* — leggere dallo standby mentre applica i redo log — richiede l'opzione separata **Active Data Guard**, a pagamento sopra l'Enterprise Edition. Il **Data Guard "base"** incluso in EE permette lo standby in MOUNT con apply attivo *oppure* aperto in read-only ma con apply fermo, non entrambi insieme. Nel progetto descritto qui usiamo Active Data Guard; vale la pena saperlo prima di stimare i costi.
 
 Ho disegnato un'architettura a due nodi:
 

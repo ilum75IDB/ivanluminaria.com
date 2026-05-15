@@ -5,7 +5,7 @@ description: "PostgreSQL: trovare e rimuovere indici inutilizzati con pg_stat_us
 date: "2026-05-26T08:03:00+01:00"
 draft: false
 translationKey: "postgresql_indici_quando_fanno_male"
-tags: ["indexes", "b-tree", "gin", "gist", "performance", "tuning", "query-tuning"]
+tags: ["indexes", "performance", "tuning", "query-tuning"]
 categories: ["postgresql"]
 image: "postgresql-indici-quando-fanno-male.cover.jpg"
 ---

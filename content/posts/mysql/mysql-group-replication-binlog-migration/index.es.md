@@ -5,7 +5,7 @@ description: "MySQL Group Replication de 3 nodos: migración de binary logs a un
 date: "2025-10-14T08:03:00+01:00"
 draft: false
 translationKey: "mysql_group_replication_binlog_migration"
-tags: ["group-replication", "binary-log", "disk-space", "cluster", "innodb-cluster"]
+tags: ["replication", "binary-log"]
 categories: ["mysql"]
 image: "mysql-group-replication-binlog-migration.cover.jpg"
 ---

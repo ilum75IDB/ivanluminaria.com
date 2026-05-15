@@ -5,7 +5,7 @@ description: "Oracle 19c performance tuning con AWR e ASH: trovare un full table
 date: "2026-02-10T08:03:00+01:00"
 draft: false
 translationKey: "oracle_awr_ash"
-tags: ["awr", "ash", "performance", "tuning", "go-live", "diagnostic"]
+tags: ["query-tuning", "performance", "tuning", "monitoring"]
 categories: ["oracle"]
 image: "oracle-awr-ash.cover.jpg"
 ---

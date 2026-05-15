@@ -5,7 +5,7 @@ description: "Ragged hierarchy in the data warehouse: balancing unbalanced trees
 date: "2026-01-20T08:03:00+01:00"
 draft: false
 translationKey: "ragged_hierarchies"
-tags: ["hierarchies", "dimensional-modeling", "etl", "oracle", "olap", "reporting"]
+tags: ["dimensional-modeling", "etl"]
 categories: ["data-warehouse"]
 image: "ragged-hierarchies.cover.jpg"
 ---

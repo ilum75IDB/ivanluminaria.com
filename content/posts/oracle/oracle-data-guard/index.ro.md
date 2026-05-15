@@ -5,7 +5,7 @@ description: "Oracle Data Guard 19c: migrare de la single instance după 6 ore d
 date: "2025-12-16T08:03:00+01:00"
 draft: false
 translationKey: "oracle_data_guard"
-tags: ["data-guard", "disaster-recovery", "high-availability", "switchover", "architecture"]
+tags: ["high-availability", "replication", "architecture"]
 categories: ["oracle"]
 image: "oracle-data-guard.cover.jpg"
 ---
@@ -31,6 +31,8 @@ CEO-ul a trimis în seara aceea un email întregii companii. A doua zi m-a sunat
 Răspunsul era simplu ca și concept, mai puțin simplu în realizare: aveau nevoie de o a doua bază de date, sincronizată în timp real, gata să preia rolul primarului în caz de defecțiune.
 
 Oracle Active {{< glossary term="data-guard" >}}Data Guard{{< /glossary >}} face exact asta. O bază de date primară generează {{< glossary term="redo-log" >}}redo log{{< /glossary >}}-uri, iar un standby le primește și le aplică continuu. Dacă primarul moare, standby-ul devine primar. Dacă totul e în ordine, standby-ul poate fi folosit și în mod read-only — pentru rapoarte, pentru backup-uri, pentru a ușura încărcarea.
+
+> ℹ️ **Notă despre licensing**: *real-time query* — citirea din standby în timp ce aplică redo log-urile — necesită opțiunea separată **Active Data Guard**, plătită peste Enterprise Edition. **Data Guard "base"** inclus în EE permite standby-ul în MOUNT cu apply activ *sau* deschis în read-only dar cu apply oprit, nu ambele simultan. În proiectul descris aici folosim Active Data Guard; merită să știi asta înainte de a estima costurile.
 
 Am proiectat o arhitectură cu două noduri:
 

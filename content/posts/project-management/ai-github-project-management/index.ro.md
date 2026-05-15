@@ -5,7 +5,7 @@ description: "Management proiect cu AI și GitHub: transformarea unui proiect ha
 date: "2026-02-03T08:03:00+01:00"
 draft: false
 translationKey: "ai_github_project_management"
-tags: ["ai", "github", "workflow", "bug-fixing", "software-evolution"]
+tags: ["ai"]
 categories: ["Project Management"]
 image: "ai-github-project-management.cover.jpg"
 ---

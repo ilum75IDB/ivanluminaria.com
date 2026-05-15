@@ -5,7 +5,7 @@ description: "MySQL usuarios y hosts: 'mario' y 'mario'@'localhost' son entidade
 date: "2026-01-13T08:03:00+01:00"
 draft: false
 translationKey: "mysql_users_and_hosts"
-tags: ["mariadb", "security", "users", "privileges", "authentication"]
+tags: ["mariadb", "security", "privileges"]
 categories: ["mysql"]
 image: "mysql-users-and-hosts.cover.jpg"
 ---
@@ -184,9 +184,11 @@ La diferencia parece cosmética (comillas o no), pero en scripts automatizados p
 
 ## El usuario anónimo: el fantasma que nadie invitó
 
-MySQL viene instalado con un {{< glossary term="anonymous-user" >}}usuario anónimo{{< /glossary >}}: `''@'localhost'`. Sin nombre, sin contraseña.
+En algunas instalaciones MySQL crea un {{< glossary term="anonymous-user" >}}usuario anónimo{{< /glossary >}}: `''@'localhost'`. Sin nombre, sin contraseña.
 
-Este usuario es un residuo histórico de las instalaciones de desarrollo. En producción es un riesgo de seguridad puro.
+Era práctica estándar en MySQL 5.7 y en algunas builds legacy; con MySQL 8.0 y los paquetes más recientes (incluido `mysql_secure_installation` y la mayoría de las imágenes Docker oficiales) ya no se crea por defecto. MariaDB depende de la distribución. Así que: no des por supuesto que está, pero tampoco que no está — verifica siempre.
+
+Cuando existe, en producción es un riesgo de seguridad puro.
 
 El usuario anónimo gana sobre `'mario'@'%'` cuando la conexión llega desde localhost, porque `'localhost'` es más específico que `'%'`.
 

@@ -5,7 +5,7 @@ description: "Range partitioning su fact table da 800 milioni di righe: da query
 date: "2026-04-07T08:03:00+01:00"
 draft: false
 translationKey: "partitioning_dwh"
-tags: ["partitioning", "performance", "oracle", "fact-table", "data-warehouse"]
+tags: ["partitioning", "performance", "dimensional-modeling"]
 categories: ["data-warehouse"]
 image: "partitioning-dwh.cover.jpg"
 ---

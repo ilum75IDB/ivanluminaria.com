@@ -6,7 +6,7 @@ date: "2026-03-24T08:03:00+01:00"
 lastmod: "2026-03-24T08:03:00+01:00"
 draft: false
 translationKey: "vacuum_autovacuum_postgresql"
-tags: ["vacuum", "autovacuum", "mvcc", "performance", "bloat"]
+tags: ["tuning", "performance"]
 categories: ["postgresql"]
 image: "vacuum-autovacuum-postgresql.cover.jpg"
 ---

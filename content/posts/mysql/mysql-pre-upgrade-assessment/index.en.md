@@ -5,7 +5,7 @@ description: "MySQL 8.0 pre-upgrade assessment: measuring sizes, growth, backup 
 date: "2026-05-05T08:03:00+01:00"
 draft: false
 translationKey: "mysql_pre_upgrade_assessment"
-tags: ["mysql", "upgrade", "backup", "restore", "assessment", "information-schema", "mysqldump", "mydumper", "xtrabackup"]
+tags: ["upgrade", "backup"]
 categories: ["MySQL"]
 image: "mysql-pre-upgrade-assessment.cover.jpg"
 ---
@@ -96,7 +96,7 @@ WHERE table_schema NOT IN ('mysql', 'sys', 'performance_schema', 'information_sc
 GROUP BY table_schema;
 ```
 
-**Approach 2 — estimate from the {{< glossary term="binary-log" >}}binary log{{< /glossary >}}.** This is the trick many people don't use. The binlog records every write, and its daily size is an excellent proxy for the data growth rate (net of updates and deletes, which generate traffic but not net growth). With `expire_logs_days=7` you have a week of history ready to read.
+**Approach 2 — estimate from the {{< glossary term="binary-log" >}}binary log{{< /glossary >}}.** This is the trick many people don't use. The binlog records every write, and its daily size is an excellent proxy for the data growth rate (net of updates and deletes, which generate traffic but not net growth). With `binlog_expire_logs_seconds=604800` (on MySQL 8.0+; `expire_logs_days=7` on 5.7 / MariaDB) you have a week of history ready to read.
 
 ```bash
 # Daily binlog volume (last 7 days)

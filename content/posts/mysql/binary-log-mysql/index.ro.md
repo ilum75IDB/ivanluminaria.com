@@ -5,7 +5,7 @@ description: "MySQL binary log: gestionare, retenție și point-in-time recovery
 date: "2026-03-31T08:03:00+01:00"
 draft: false
 translationKey: "binary_log_mysql"
-tags: ["binlog", "replication", "disk-space", "recovery", "mariadb"]
+tags: ["binary-log", "replication", "backup", "mariadb"]
 categories: ["mysql"]
 image: "binary-log-mysql.cover.jpg"
 ---
