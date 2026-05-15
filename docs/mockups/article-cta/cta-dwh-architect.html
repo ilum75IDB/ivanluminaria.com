@@ -17,8 +17,9 @@
 
   /* ============ VARIANTE A — Card sobria con 2 bottoni affiancati ============ */
   .cta-a { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px 26px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
-  .cta-a-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 6px; line-height: 1.4; }
-  .cta-a-subtitle { font-size: 13.5px; color: #6b7280; margin: 0 0 16px; line-height: 1.55; }
+  .cta-a-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 8px; line-height: 1.5; }
+  .cta-a-subtitle { font-size: 13.5px; color: #6b7280; margin: 0 0 14px; line-height: 1.55; }
+  .cta-a-bridge { font-size: 11.5px; color: #6b7280; font-style: italic; margin: 0 0 10px; letter-spacing: .02em; }
   .cta-a-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
   .cta-a-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 150ms; }
   .cta-a-btn-primary { background: #336791; color: #fff; }
@@ -31,9 +32,9 @@
   .cta-b-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #336791, #F80000); }
   .cta-b-text { font-size: 14px; line-height: 1.45; }
   .cta-b-name { font-weight: 700; color: #4a4a4a; font-size: 15px; }
-  .cta-b-role { color: #6b7280; font-size: 12.5px; margin-top: 2px; }
-  .cta-b-tag { color: #336791; font-size: 12px; margin-top: 6px; font-style: italic; }
+  .cta-b-role { color: #6b7280; font-size: 12.5px; margin-top: 3px; }
   .cta-b-buttons { display: flex; flex-direction: column; gap: 6px; }
+  .cta-b-bridge { font-size: 10.5px; color: #6b7280; font-style: italic; margin-bottom: 4px; text-align: center; letter-spacing: .02em; }
   .cta-b-btn { display: block; padding: 8px 14px; border-radius: 5px; text-decoration: none; font-size: 12.5px; font-weight: 600; text-align: center; white-space: nowrap; transition: all 150ms; }
   .cta-b-btn-primary { background: #336791; color: #fff; }
   .cta-b-btn-primary:hover { background: #2a5479; }
@@ -44,8 +45,9 @@
   .cta-c { background: #fdfbf6; border: 1px solid #d4cfc2; border-radius: 8px; padding: 28px 32px 26px; position: relative; box-shadow: 0 2px 4px rgba(120,100,60,.06); }
   .cta-c::before { content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 3px; background: #336791; border-radius: 0 0 2px 2px; }
   .cta-c-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #336791; margin: 0 0 10px; }
-  .cta-c-headline { font-family: Georgia, 'Times New Roman', serif; font-size: 21px; font-weight: 400; color: #2c2419; margin: 0 0 8px; line-height: 1.35; }
-  .cta-c-sub { font-size: 14px; color: #6b5f47; font-style: italic; margin: 0 0 20px; line-height: 1.55; }
+  .cta-c-headline { font-family: Georgia, 'Times New Roman', serif; font-size: 19px; font-weight: 400; color: #2c2419; margin: 0 0 10px; line-height: 1.45; }
+  .cta-c-sub { font-size: 14px; color: #6b5f47; font-style: italic; margin: 0 0 16px; line-height: 1.55; }
+  .cta-c-bridge { font-size: 11.5px; color: #6b5f47; font-style: italic; margin: 0 0 12px; letter-spacing: .02em; }
   .cta-c-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
   .cta-c-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 150ms; }
   .cta-c-btn-primary { background: #336791; color: #fff; }
@@ -55,7 +57,7 @@
 
   /* ============ VARIANTE D — Box minimal editoriale (solo testo + link) ============ */
   .cta-d { border-left: 3px solid #F80000; padding: 8px 0 8px 22px; margin: 18px 0; }
-  .cta-d-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 4px; }
+  .cta-d-title { font-size: 15px; font-weight: 600; color: #4a4a4a; margin: 0 0 6px; line-height: 1.5; }
   .cta-d-text { font-size: 14.5px; color: #4a4a4a; margin: 0; line-height: 1.6; }
   .cta-d-text a { color: #336791; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
   .cta-d-text a:hover { color: #F80000; }
@@ -83,56 +85,58 @@
 
   <!-- ================ VARIANTE A ================ -->
   <div class="variant-label">Variante A — Card sobria, 2 bottoni affiancati</div>
-  <div class="variant-desc">Discreta, blog-friendly, equilibrata. Bottone blu (profilo) + bottone secondario rosso (PDF).</div>
+  <div class="variant-desc">Discreta, blog-friendly, equilibrata. Bottone blu (profilo) + bottone secondario rosso (PDF). Tono diretto, niente effetti.</div>
 
   <div class="cta-a">
-    <div class="cta-a-title">Quando il CFO chiede dati che il tuo DWH non sa dare, sai che è il grain a non reggere più.</div>
-    <div class="cta-a-subtitle">Vent'anni a disegnare data warehouse Kimball che il business smette di temere. Assicurativo, telco, PA italiana. Lo stesso che ha scritto questa pagina.</div>
+    <div class="cta-a-title">Ci sono decisioni in azienda che aspettano dati e valori — numeri e tempi. E servono numeri veri nei tempi giusti. Report, modelli, ETL, BI, governance: sono elementi di un DWH che fornisce le risposte. Vuoi un parere? Parliamone.</div>
+    <div class="cta-a-subtitle">Vent'anni dentro star schema Kimball, ETL batch e near-real-time. Banking, telco, assicurativo, PA italiana e altri mercati.</div>
+    <div class="cta-a-bridge">Per conoscermi meglio:</div>
     <div class="cta-a-buttons">
-      <a class="cta-a-btn cta-a-btn-primary" href="#">Conosci l'architetto →</a>
-      <a class="cta-a-btn cta-a-btn-secondary" href="#">Scarica il dossier (PDF, 4 pagine) ↓</a>
+      <a class="cta-a-btn cta-a-btn-primary" href="#">Vai al mio profilo DWH Architect →</a>
+      <a class="cta-a-btn cta-a-btn-secondary" href="#">Scarica il mio dossier (PDF, 4 pagine) ↓</a>
     </div>
   </div>
 
   <!-- ================ VARIANTE B ================ -->
   <div class="variant-label">Variante B — Card autore-style con avatar</div>
-  <div class="variant-desc">Biglietto da visita. Avatar a sinistra, identità centrale, bottoni a destra.</div>
+  <div class="variant-desc">Biglietto da visita. Avatar a sinistra, identità centrale, bottoni a destra. Personale ma misurato.</div>
 
   <div class="cta-b">
     <div class="cta-b-avatar"></div>
     <div class="cta-b-text">
       <div class="cta-b-name">Ivan Luminaria</div>
-      <div class="cta-b-role">DWH Architect · Kimball · 20 anni di produzione</div>
-      <div class="cta-b-tag">Quello che ha scritto questa pagina.</div>
+      <div class="cta-b-role">DWH Architect · Kimball / ETL / BI · 20 anni di campo</div>
     </div>
     <div class="cta-b-buttons">
-      <a class="cta-b-btn cta-b-btn-primary" href="#">Conosci l'architetto →</a>
-      <a class="cta-b-btn cta-b-btn-secondary" href="#">Dossier PDF ↓</a>
+      <div class="cta-b-bridge">Per conoscermi meglio:</div>
+      <a class="cta-b-btn cta-b-btn-primary" href="#">Vai al mio profilo DWH →</a>
+      <a class="cta-b-btn cta-b-btn-secondary" href="#">Il mio dossier (PDF) ↓</a>
     </div>
   </div>
 
   <!-- ================ VARIANTE C ================ -->
   <div class="variant-label">Variante C — Dossier-letterhead editoriale</div>
-  <div class="variant-desc">Stile carta intestata sobria. Sfondo avorio, accento blu PostgreSQL in alto, headline in serif (Georgia). Premium senza essere "marketing".</div>
+  <div class="variant-desc">Stile carta intestata sobria. Sfondo avorio, accento blu PostgreSQL in alto, headline in serif (Georgia). Premium senza essere "marketing". Si appoggia bene al tono del blog.</div>
 
   <div class="cta-c">
     <div class="cta-c-eyebrow">Profilo professionale</div>
-    <div class="cta-c-headline">Quando il CFO chiede dati che il tuo DWH non sa dare, sai che è il grain a non reggere più.</div>
-    <div class="cta-c-sub">Vent'anni a disegnare data warehouse Kimball che il business smette di temere. Assicurativo, telco, PA italiana. Lo stesso che ha scritto questa pagina.</div>
+    <div class="cta-c-headline">Ci sono decisioni in azienda che aspettano dati e valori — numeri e tempi. E servono numeri veri nei tempi giusti. Report, modelli, ETL, BI, governance: sono elementi di un DWH che fornisce le risposte. Vuoi un parere? Parliamone.</div>
+    <div class="cta-c-sub">Vent'anni dentro star schema Kimball, ETL batch e near-real-time. Banking, telco, assicurativo, PA italiana e altri mercati.</div>
+    <div class="cta-c-bridge">Per conoscermi meglio:</div>
     <div class="cta-c-buttons">
-      <a class="cta-c-btn cta-c-btn-primary" href="#">Conosci l'architetto →</a>
-      <a class="cta-c-btn cta-c-btn-secondary" href="#">Scarica il dossier (PDF) ↓</a>
+      <a class="cta-c-btn cta-c-btn-primary" href="#">Vai al mio profilo DWH Architect →</a>
+      <a class="cta-c-btn cta-c-btn-secondary" href="#">Scarica il mio dossier (PDF) ↓</a>
     </div>
   </div>
 
   <!-- ================ VARIANTE D ================ -->
   <div class="variant-label">Variante D — Box minimal editoriale</div>
-  <div class="variant-desc">La più sobria. Bordo rosso a sinistra come un blockquote, testo con link inline. Massimo integrazione editoriale.</div>
+  <div class="variant-desc">La più sobria. Bordo rosso a sinistra come un blockquote, testo con link inline. Massimo integrazione editoriale, minimo banner.</div>
 
   <div class="cta-d">
-    <div class="cta-d-title">Quando il CFO chiede dati che il tuo DWH non sa dare, sai che è il grain a non reggere più.</div>
+    <div class="cta-d-title">Ci sono decisioni in azienda che aspettano dati e valori — numeri e tempi. E servono numeri veri nei tempi giusti. Report, modelli, ETL, BI, governance: sono elementi di un DWH che fornisce le risposte. Vuoi un parere? Parliamone.</div>
     <p class="cta-d-text">
-      Lo stesso che ha scritto questa pagina. <a href="#">Vai al profilo dell'architetto</a> per vedere progetti consegnati e settori reali, oppure <a class="dl" href="#">scarica il dossier in PDF</a> — quattro pagine, da tenere sul tavolo.
+      Vent'anni dentro star schema Kimball, ETL batch e near-real-time — banking, telco, assicurativo, PA italiana e altri mercati. Per conoscermi meglio, <a href="#">vai al mio profilo DWH Architect</a> oppure <a class="dl" href="#">scarica il mio dossier in PDF</a> (4 pagine).
     </p>
   </div>
 
