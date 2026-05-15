@@ -19,6 +19,18 @@
                  e l'eventuale "#" finale che Hugo aggiunge come ancor link. */ -}}
           {{- $title := replaceRE `[\x{1F000}-\x{1FFFF}\x{2600}-\x{27BF}\x{2B00}-\x{2BFF}\x{1F300}-\x{1F9FF}\x{1FA00}-\x{1FAFF}]+\s*` "" $rawTitle -}}
           {{- $title := replaceRE `\s*#\s*$` "" $title -}}
+          {{- /* Decodifica entita' HTML comuni introdotte da Goldmark
+                 (smart quotes, em/en dash, hellip, ampersand) */ -}}
+          {{- $title := replaceRE `&rsquo;` "’" $title -}}
+          {{- $title := replaceRE `&lsquo;` "‘" $title -}}
+          {{- $title := replaceRE `&rdquo;` "”" $title -}}
+          {{- $title := replaceRE `&ldquo;` "“" $title -}}
+          {{- $title := replaceRE `&hellip;` "…" $title -}}
+          {{- $title := replaceRE `&ndash;` "–" $title -}}
+          {{- $title := replaceRE `&mdash;` "—" $title -}}
+          {{- $title := replaceRE `&amp;` "&" $title -}}
+          {{- $title := replaceRE `&quot;` "\"" $title -}}
+          {{- $title := replaceRE `&#39;` "'" $title -}}
           {{- $title := trim $title " " -}}
           <li><a href="#{{ $id }}">{{ $title }}</a></li>
         {{- end }}
