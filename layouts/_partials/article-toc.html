@@ -1,0 +1,20 @@
+{{- /* Article TOC sidebar (option C: active scroll-spy)
+       Estrae gli <h2 id="..."> dal contenuto e li mostra come navigazione sticky
+       fra il badge autore e il badge progresso di lettura.
+       Mostra il TOC solo su pagine articolo (Section "posts") con >= 3 H2. */ -}}
+
+{{- if eq .Section "posts" -}}
+  {{- $h2Matches := findRESubmatch `<h2[^>]*id="([^"]+)"[^>]*>(.*?)</h2>` .Content -}}
+  {{- if ge (len $h2Matches) 3 -}}
+    <nav class="article-toc-card" aria-label="{{ i18n "article_toc_title" | default "Indice articolo" }}">
+      <h3 class="article-toc-title">{{ i18n "article_toc_title" | default "Indice articolo" }}</h3>
+      <ul class="article-toc-list">
+        {{- range $h2Matches }}
+          {{- $id := index . 1 -}}
+          {{- $title := index . 2 | plainify | safeHTML -}}
+          <li><a href="#{{ $id }}">{{ $title }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+  {{- end -}}
+{{- end -}}

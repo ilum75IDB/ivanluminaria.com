@@ -4528,6 +4528,118 @@ footer {
   height: 18px !important;
 }
 
+/* --- Article TOC sidebar (option C: active scroll-spy) --- */
+.article-toc-card {
+  margin: 16px 0 0;
+  padding: 14px 0;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  position: relative;
+  text-align: left;
+}
+.dark .article-toc-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.article-toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 16px 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.dark .article-toc-title {
+  color: rgba(255, 255, 255, 0.55);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.article-toc-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative;
+}
+.article-toc-list::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: #f3f4f6;
+}
+.dark .article-toc-list::before {
+  background: rgba(255, 255, 255, 0.08);
+}
+.article-toc-list li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.article-toc-list a {
+  display: block;
+  padding: 7px 16px 7px 26px;
+  color: #6b7280;
+  text-decoration: none !important;
+  font-size: 13px;
+  line-height: 1.4;
+  position: relative;
+  transition: color 200ms, background 200ms;
+}
+.dark .article-toc-list a {
+  color: rgba(255, 255, 255, 0.6);
+}
+.article-toc-list a::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 200ms;
+}
+.article-toc-list a:hover {
+  color: #336791;
+}
+.dark .article-toc-list a:hover {
+  color: #6ea8d9;
+}
+.article-toc-list a.active {
+  color: #F80000;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgba(248, 0, 0, 0.06) 0%, rgba(248, 0, 0, 0) 80%);
+}
+.article-toc-list a.active::before {
+  background: #F80000;
+  box-shadow: 0 0 0 3px rgba(248, 0, 0, 0.15);
+}
+.dark .article-toc-list a.active {
+  color: #ff4d4d;
+  background: linear-gradient(90deg, rgba(255, 77, 77, 0.10) 0%, rgba(255, 77, 77, 0) 80%);
+}
+.dark .article-toc-list a.active::before {
+  background: #ff4d4d;
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.20);
+}
+
+/* Mobile: nascondi il TOC sidebar (la sidebar stessa è nascosta su mobile) */
+@media (max-width: 768px) {
+  .article-toc-card {
+    display: none;
+  }
+}
+
+/* Anchor scroll-margin: quando si clicca un link TOC, l'H2 non finisce sotto la navbar */
+.prose h2[id] {
+  scroll-margin-top: 80px;
+}
+
 /* --- Mini-card nella sidebar autore --- */
 .reading-percent-sidebar {
   margin-top: 16px;

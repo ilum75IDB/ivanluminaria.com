@@ -45,10 +45,33 @@ Aprire ciascun file nel browser per vederlo (sono stand-alone, niente build Hugo
 
 ## Stato
 
-- [x] Mockup HTML generati (4 varianti) — commit `<prossimo>`
-- [ ] Scelta variante (in attesa Ivan)
-- [ ] Implementazione partial Hugo
-- [ ] CSS + i18n labels
-- [ ] Test su articoli lunghi (pg-stat-statements, vacuum-autovacuum) e corti (smartworking)
-- [ ] Mobile responsive check
+- [x] Mockup HTML generati (4 varianti) — commit `370300b`
+- [x] Mockup arricchiti con contenuto reale articolo + voci Fonti/Glossario nel TOC — commit `a114370`, `c948225`
+- [x] Scelta variante: **C (active scroll-spy)**
+- [x] Implementazione partial Hugo `layouts/_partials/article-toc.html`
+- [x] Integrazione in `author-sidebar.html` tra card autore e reading-progress
+- [x] CSS `assets/css/custom.css` (sezione "Article TOC sidebar")
+- [x] JS scroll-spy `static/js/article-toc-spy.js` (IntersectionObserver, vanilla)
+- [x] Include JS in `baseof.html`
+- [x] i18n labels in 4 lingue (`article_toc_title`)
+- [ ] Test post-deploy: pg-stat-statements (lungo) + smartworking-consulenza-it (corto, < 3 H2 → no TOC)
+- [ ] Mobile responsive check (display: none su <768px, ok)
 - [ ] Push + deploy
+
+## Logica di esposizione
+
+Il TOC si mostra **solo** se:
+- la pagina è in `Section: posts`
+- il contenuto ha **>= 3 H2** (articoli corti tipo `pagamenti-60-90-120-giorni` non lo mostrano)
+- viewport >= 768px (mobile lo nasconde, è già nascosta la sidebar autore stessa)
+
+## File toccati
+
+| File | Tipo | Linee |
+|------|------|------:|
+| `layouts/_partials/article-toc.html` | nuovo | 19 |
+| `layouts/_partials/author-sidebar.html` | edit | +6 |
+| `layouts/baseof.html` | edit | +1 |
+| `assets/css/custom.css` | edit | +95 (sezione TOC) |
+| `static/js/article-toc-spy.js` | nuovo | 90 |
+| `i18n/{it,en,es,ro}.yaml` | edit | +1 ciascuno |
