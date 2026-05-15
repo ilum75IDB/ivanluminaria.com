@@ -1,0 +1,143 @@
+# Article CTA — copy editoriale per i 4 profili professionali
+# Usato da: layouts/_partials/article-cta.html
+# Renderizzato in coda agli articoli (Section "posts").
+#
+# Struttura:
+#   <profilo>:
+#     profile_slug: <slug-URL-resumes>
+#     dossier_file: <nome-file-PDF-in-static/downloads/>
+#     <lang>:
+#       title: headline lunga
+#       text_intro: frase identitaria (anni dentro X — settori)
+#       bridge: frase ponte verso i link ("Per conoscermi meglio,")
+#       link_profile: testo del link al profilo
+#       or_word: "oppure" / "or" / "o" / "sau"
+#       link_dossier: testo del link al PDF
+
+oracle-dba:
+  profile_slug: "oracle-dba"
+  dossier_file: "CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf"
+  it:
+    title: "Sui database della tua azienda ti farebbe comodo un parere esterno — architettura, performance, sicurezza, governance — prima di prendere la prossima decisione."
+    text_intro: "Trent'anni dentro Oracle, PostgreSQL, MySQL — banking, telco, assicurativo, PA italiana e altri mercati."
+    bridge: "Per conoscermi meglio,"
+    link_profile: "vai al mio profilo DBA"
+    or_word: "oppure"
+    link_dossier: "scarica il mio dossier in PDF"
+  en:
+    title: "An outside opinion on your company's databases would come in handy — architecture, performance, security, governance — before the next decision."
+    text_intro: "Thirty years inside Oracle, PostgreSQL, MySQL — banking, telco, insurance, Italian public sector and other markets."
+    bridge: "To get to know me better,"
+    link_profile: "visit my DBA profile"
+    or_word: "or"
+    link_dossier: "download my dossier in PDF"
+  es:
+    title: "Sobre las bases de datos de tu empresa te vendría bien una opinión externa — arquitectura, rendimiento, seguridad, gobernanza — antes de tomar la próxima decisión."
+    text_intro: "Treinta años dentro de Oracle, PostgreSQL, MySQL — banca, telco, seguros, administración pública italiana y otros mercados."
+    bridge: "Para conocerme mejor,"
+    link_profile: "ve a mi perfil DBA"
+    or_word: "o"
+    link_dossier: "descarga mi dosier en PDF"
+  ro:
+    title: "Pe bazele de date ale companiei tale ți-ar prinde bine o opinie externă — arhitectură, performanță, securitate, guvernanță — înainte de a lua următoarea decizie."
+    text_intro: "Treizeci de ani în Oracle, PostgreSQL, MySQL — banking, telco, asigurări, administrația publică italiană și alte piețe."
+    bridge: "Pentru a mă cunoaște mai bine,"
+    link_profile: "vezi profilul meu DBA"
+    or_word: "sau"
+    link_dossier: "descarcă dosarul meu în PDF"
+
+oracle-plsql:
+  profile_slug: "oracle-plsql"
+  dossier_file: "CV_Oracle_PLSQL_Ivan_Luminaria_202603_EN.pdf"
+  it:
+    title: "Hai PL/SQL tra le mani — package, stored procedures, functions, refactor, performance, mentoring junior o training — e cerchi un confronto con chi ci ha investito anni."
+    text_intro: "Trent'anni dentro package, stored procedures e functions Oracle — banking, telco, assicurativo, PA italiana e altri mercati."
+    bridge: "Per conoscermi meglio,"
+    link_profile: "vai al mio profilo PL/SQL Senior"
+    or_word: "oppure"
+    link_dossier: "scarica il mio dossier in PDF"
+  en:
+    title: "You've got PL/SQL on your hands — packages, stored procedures, functions, refactoring, performance, junior mentoring or training — and you're looking for a conversation with someone who's spent years on it."
+    text_intro: "Thirty years inside Oracle packages, stored procedures and functions — banking, telco, insurance, Italian public sector and other markets."
+    bridge: "To get to know me better,"
+    link_profile: "visit my PL/SQL Senior profile"
+    or_word: "or"
+    link_dossier: "download my dossier in PDF"
+  es:
+    title: "Tienes PL/SQL entre manos — packages, stored procedures, functions, refactor, rendimiento, mentoring junior o training — y buscas un intercambio con quien le ha dedicado años."
+    text_intro: "Treinta años dentro de packages, stored procedures y functions Oracle — banca, telco, seguros, administración pública italiana y otros mercados."
+    bridge: "Para conocerme mejor,"
+    link_profile: "ve a mi perfil PL/SQL Senior"
+    or_word: "o"
+    link_dossier: "descarga mi dosier en PDF"
+  ro:
+    title: "Ai PL/SQL în mâini — packages, stored procedures, functions, refactor, performanță, mentoring junior sau training — și cauți o discuție cu cineva care a investit ani în asta."
+    text_intro: "Treizeci de ani în packages, stored procedures și functions Oracle — banking, telco, asigurări, administrația publică italiană și alte piețe."
+    bridge: "Pentru a mă cunoaște mai bine,"
+    link_profile: "vezi profilul meu PL/SQL Senior"
+    or_word: "sau"
+    link_dossier: "descarcă dosarul meu în PDF"
+
+dwh-architect:
+  profile_slug: "dwh-architect"
+  dossier_file: "CV_DWH_Architect_Ivan_Luminaria_202603_EN.pdf"
+  it:
+    title: "Ci sono decisioni in azienda che aspettano dati e valori — numeri e tempi. Servono numeri veri nei tempi giusti. Report, modelli, ETL, BI, governance: sono elementi di un DWH che fornisce le risposte. Vuoi un parere? Parliamone."
+    text_intro: "Vent'anni dentro star schema Kimball, ETL batch e near-real-time — banking, telco, assicurativo, PA italiana e altri mercati."
+    bridge: "Per conoscermi meglio,"
+    link_profile: "vai al mio profilo DWH Architect"
+    or_word: "oppure"
+    link_dossier: "scarica il mio dossier in PDF"
+  en:
+    title: "There are decisions in companies that wait on data and figures — numbers and timing. Real numbers in the right time are what's needed. Reports, models, ETL, BI, governance: these are the elements of a DWH that delivers the answers. Want an opinion? Let's talk."
+    text_intro: "Twenty years inside Kimball star schemas, batch ETL and near-real-time — banking, telco, insurance, Italian public sector and other markets."
+    bridge: "To get to know me better,"
+    link_profile: "visit my DWH Architect profile"
+    or_word: "or"
+    link_dossier: "download my dossier in PDF"
+  es:
+    title: "Hay decisiones en la empresa que esperan datos y valores — números y tiempos. Hacen falta números verdaderos en los tiempos correctos. Reports, modelos, ETL, BI, gobernanza: son elementos de un DWH que entrega las respuestas. ¿Quieres una opinión? Hablemos."
+    text_intro: "Veinte años dentro de star schemas Kimball, ETL batch y near-real-time — banca, telco, seguros, administración pública italiana y otros mercados."
+    bridge: "Para conocerme mejor,"
+    link_profile: "ve a mi perfil DWH Architect"
+    or_word: "o"
+    link_dossier: "descarga mi dosier en PDF"
+  ro:
+    title: "Sunt decizii în companie care așteaptă date și valori — numere și timpi. E nevoie de numere adevărate la momentul potrivit. Reports, modele, ETL, BI, guvernanță: sunt elemente ale unui DWH care livrează răspunsurile. Vrei o părere? Hai să vorbim."
+    text_intro: "Douăzeci de ani în star schema Kimball, ETL batch și near-real-time — banking, telco, asigurări, administrația publică italiană și alte piețe."
+    bridge: "Pentru a mă cunoaște mai bine,"
+    link_profile: "vezi profilul meu DWH Architect"
+    or_word: "sau"
+    link_dossier: "descarcă dosarul meu în PDF"
+
+project-manager:
+  profile_slug: "project-manager"
+  dossier_file: "CV_Project_Manager_Ivan_Luminaria_202603_EN.pdf"
+  it:
+    title: "Un progetto sul tavolo — pianificazione, team distribuiti, stakeholder, deadline — e cerchi un parere esterno prima di muoverti."
+    text_intro: "Quindici anni dentro progetti multi-paese in ambienti regolati — banking, telco, assicurativo, PA italiana e altri mercati."
+    bridge: "Per conoscermi meglio,"
+    link_profile: "vai al mio profilo PM"
+    or_word: "oppure"
+    link_dossier: "scarica il mio dossier in PDF"
+  en:
+    title: "A project on the table — planning, distributed teams, stakeholders, deadlines — and you're looking for an outside opinion before moving."
+    text_intro: "Fifteen years inside multi-country projects in regulated environments — banking, telco, insurance, Italian public sector and other markets."
+    bridge: "To get to know me better,"
+    link_profile: "visit my PM profile"
+    or_word: "or"
+    link_dossier: "download my dossier in PDF"
+  es:
+    title: "Un proyecto sobre la mesa — planificación, equipos distribuidos, stakeholders, deadlines — y buscas una opinión externa antes de moverte."
+    text_intro: "Quince años dentro de proyectos multi-país en entornos regulados — banca, telco, seguros, administración pública italiana y otros mercados."
+    bridge: "Para conocerme mejor,"
+    link_profile: "ve a mi perfil PM"
+    or_word: "o"
+    link_dossier: "descarga mi dosier en PDF"
+  ro:
+    title: "Un proiect pe masă — planificare, echipe distribuite, stakeholderi, deadline-uri — și cauți o opinie externă înainte de a face următorul pas."
+    text_intro: "Cincisprezece ani în proiecte multi-țară în medii reglementate — banking, telco, asigurări, administrația publică italiană și alte piețe."
+    bridge: "Pentru a mă cunoaște mai bine,"
+    link_profile: "vezi profilul meu PM"
+    or_word: "sau"
+    link_dossier: "descarcă dosarul meu în PDF"

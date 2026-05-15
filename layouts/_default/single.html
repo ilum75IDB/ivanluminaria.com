@@ -98,6 +98,9 @@
         </div>
       </section>
 
+      {{/* Article CTA (variant D minimal blockquote): solo articoli, profilo dal frontmatter o derivato dalla section */}}
+      {{ partial "article-cta.html" . }}
+
       <footer class="max-w-full pt-8 print:hidden">
         {{ partial "sharing-links.html" . }}
         {{ partial "article-pagination.html" . }}
