@@ -1203,15 +1203,16 @@ footer {
 @media (min-width: 768px) {
   .article-two-col {
     display: grid !important;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 200px minmax(0, 1fr) !important;
     gap: 1.75rem;
   }
 
   .article-sidebar {
     position: relative;
     min-width: 0;
-    width: 100%;
-    max-width: 200px;
+    width: 200px !important;
+    max-width: 200px !important;
+    overflow: visible;
   }
 
   /* Desktop: hide mobile-only elements, show desktop cover */
@@ -1228,8 +1229,8 @@ footer {
 .sidebar-stack {
   position: sticky;
   top: 3rem;
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 200px !important;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -4544,18 +4545,19 @@ footer {
 
 /* --- Article TOC sidebar (option C: active scroll-spy) --- */
 .article-toc-card {
-  margin: 16px 0 0;
-  padding: 14px 0;
+  margin: 16px 0 0 !important;
+  padding: 14px 0 !important;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   position: relative;
   text-align: left;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  flex: 0 0 auto;
 }
 .dark .article-toc-card {
   background: rgba(255, 255, 255, 0.04);
