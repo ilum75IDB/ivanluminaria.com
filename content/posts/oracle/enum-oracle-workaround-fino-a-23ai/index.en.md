@@ -75,7 +75,7 @@ If you come from the two previous parts of the miniseries, three things deserve 
 
 **No native ENUM type**. On MySQL you have `ENUM('A','B','C')` as a column type; on PostgreSQL you have `CREATE TYPE ... AS ENUM` as a standalone object. On Oracle, until 23ai, these two options simply didn't exist. Only `CHECK` and lookup tables remained.
 
-**`CHECK` is fully enforced, has been for a long time**. Unlike pre-8.0.16 MySQL (where `CHECK` constraints were parsed and silently ignored [2]), Oracle has validated `CHECK` constraints since before the millennium. A historical detail with real consequences: if you come from MySQL, here there's no doubt about their effectiveness.
+**`CHECK` is fully enforced, has been for a long time**. Unlike pre-8.0.16 MySQL (where `CHECK` constraints were parsed and silently ignored), Oracle has validated `CHECK` constraints since before the millennium. A historical detail with real consequences: if you come from MySQL, here there's no doubt about their effectiveness.
 
 **Deeply rooted lookup-table culture**. The Oracle community, given the type of customers it serves (banking, insurance, public sector, telco), has always preferred lookup tables to `CHECK`. Not out of dogma, but because in those contexts the evolution of the value set is frequent, audit is mandatory, label localization is a standard. The lookup table is a flexibility gym — `CHECK` is a promise of rigidity.
 
@@ -142,7 +142,7 @@ ALTER DOMAIN transaction_status
      'MANUAL_AUTHORIZATION'));
 ```
 
-That single statement updates the constraint **for all columns using `transaction_status`** — across 18 tables, 50, doesn't matter. Oracle takes care of propagating the check, and of validating existing rows (with `VALIDATE` or `NOVALIDATE`, depending on how you want to handle the transition).
+That single statement updates the constraint **for all columns using `transaction_status`** — across 18 tables, 50, doesn't matter. Oracle takes care of propagating the check, and of validating existing rows (with `VALIDATE` or `NOVALIDATE`, depending on how you want to handle the transition) [2].
 
 It's what the lookup table already gave you at a logical level (a single place to change the allowed values), now brought to the **schema catalog** level, without requiring a JOIN, without requiring an extra table, and without the 4 bytes of OID of a numeric FK.
 
@@ -168,7 +168,7 @@ The lookup table **is not dead** with SQL Domains. It remains the right choice w
 
 ## What's coming with 26ai: Assertions
 
-Oracle 26ai (announced as the next major release) brings — among other things — formal support for **`ASSERTION`s** [3]: an SQL standard construct, on paper for decades and never truly implemented by any mainstream DBMS, that lets you express **cross-table** constraints. Constraints that today you have to code as triggers or application-level checks, with all the risks involved (forgotten triggers, transactions that bypass the constraint, race conditions with relaxed isolation levels).
+Oracle 26ai (announced as the next major release) brings — among other things — formal support for **`ASSERTION`s**: an SQL standard construct, on paper for decades and never truly implemented by any mainstream DBMS, that lets you express **cross-table** constraints. Constraints that today you have to code as triggers or application-level checks, with all the risks involved (forgotten triggers, transactions that bypass the constraint, race conditions with relaxed isolation levels).
 
 A possible example:
 
@@ -199,8 +199,7 @@ The rest is detail of syntax and engine. What matters — and what I've learned 
 ## Official sources
 
 1. Oracle Database 23ai SQL Language Reference — [CREATE DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/CREATE-DOMAIN.html)
-2. MySQL 8.0 Reference Manual — [CHECK Constraints (8.0.16+)](https://dev.mysql.com/doc/refman/8.0/en/create-table-check-constraints.html)
-3. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
+2. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
 
 ---
 
