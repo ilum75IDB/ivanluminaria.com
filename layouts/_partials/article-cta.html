@@ -31,7 +31,7 @@
         {{- $dossierUrl := printf "/downloads/%s" $cta.dossier_file -}}
         <aside class="article-cta print:hidden" aria-label="{{ $copy.bridge }}">
           <div class="article-cta-title">{{ $copy.title }}</div>
-          <p class="article-cta-text">{{ $copy.text_intro }} {{ $copy.bridge }} <a href="{{ relURL $profileUrl }}">{{ $copy.link_profile }}</a> {{ $copy.or_word }} <a class="article-cta-dl" href="{{ relURL $dossierUrl }}">{{ $copy.link_dossier }}</a> {{ $copy.pages_note }}.</p>
+          <p class="article-cta-text">{{ $copy.text_intro }} {{ $copy.bridge }} <a href="{{ relURL $profileUrl }}">{{ $copy.link_profile }}</a> {{ $copy.or_word }} <a class="article-cta-dl" href="{{ relURL $dossierUrl }}">{{ $copy.link_dossier }}</a>.</p>
         </aside>
       {{- end -}}
     {{- end -}}
