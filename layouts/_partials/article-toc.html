@@ -1,17 +1,25 @@
 {{- /* Article TOC sidebar (option C: active scroll-spy)
        Estrae gli <h2 id="..."> dal contenuto e li mostra come navigazione sticky
        fra il badge autore e il badge progresso di lettura.
-       Mostra il TOC solo su pagine articolo (Section "posts") con >= 3 H2. */ -}}
+       Si mostra su tutti gli articoli (Section "posts") qualunque sia il
+       numero di H2.
+       I titoli vengono ripuliti da emoji/simboli iniziali per leggibilita'
+       nel TOC compatto in sidebar. */ -}}
 
 {{- if eq .Section "posts" -}}
   {{- $h2Matches := findRESubmatch `<h2[^>]*id="([^"]+)"[^>]*>(.*?)</h2>` .Content -}}
-  {{- if ge (len $h2Matches) 3 -}}
+  {{- if gt (len $h2Matches) 0 -}}
     <nav class="article-toc-card" aria-label="{{ i18n "article_toc_title" | default "Indice articolo" }}">
       <h3 class="article-toc-title">{{ i18n "article_toc_title" | default "Indice articolo" }}</h3>
       <ul class="article-toc-list">
         {{- range $h2Matches }}
           {{- $id := index . 1 -}}
-          {{- $title := index . 2 | plainify | safeHTML -}}
+          {{- $rawTitle := index . 2 | plainify -}}
+          {{- /* Strip emoji + simboli iniziali (Unicode ranges per simboli ed emoji)
+                 e l'eventuale "#" finale che Hugo aggiunge come ancor link. */ -}}
+          {{- $title := replaceRE `[\x{1F000}-\x{1FFFF}\x{2600}-\x{27BF}\x{2B00}-\x{2BFF}\x{1F300}-\x{1F9FF}\x{1FA00}-\x{1FAFF}]+\s*` "" $rawTitle -}}
+          {{- $title := replaceRE `\s*#\s*$` "" $title -}}
+          {{- $title := trim $title " " -}}
           <li><a href="#{{ $id }}">{{ $title }}</a></li>
         {{- end }}
       </ul>
