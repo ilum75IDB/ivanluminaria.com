@@ -1202,11 +1202,13 @@ footer {
 /* ---- Two-column article layout ---- */
 @media (min-width: 768px) {
   /* Forziamo flexbox row con gap. Specificity alta per battere eventuali
-     utility Tailwind. */
+     utility Tailwind. align-items default 'stretch' permette all'aside di
+     prendere l'altezza dell'article, requisito per il position:sticky del
+     .sidebar-stack di funzionare per tutta la durata dello scroll. */
   div.article-two-col {
     display: flex !important;
     flex-direction: row !important;
-    align-items: flex-start !important;
+    align-items: stretch !important;
     gap: 1.75rem !important;
   }
 
@@ -1217,6 +1219,7 @@ footer {
     max-width: 200px !important;
     min-width: 200px !important;
     overflow: visible !important;
+    align-self: stretch !important;
   }
 
   div.article-two-col > article {
