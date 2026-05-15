@@ -5,7 +5,7 @@ description: "PostgreSQL EXPLAIN ANALYZE: citirea planului de execuție, nested 
 date: "2025-10-28T08:03:00+01:00"
 draft: false
 translationKey: "explain_analyze_postgresql"
-tags: ["explain", "query-tuning", "execution-plan", "optimizer", "performance"]
+tags: ["query-tuning", "performance"]
 categories: ["postgresql"]
 image: "explain-analyze-postgresql.cover.jpg"
 ---

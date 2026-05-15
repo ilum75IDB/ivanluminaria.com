@@ -5,7 +5,7 @@ description: "Oracle 19c en Linux: tuning del kernel para rendimiento real. Huge
 date: "2026-02-24T08:03:00+01:00"
 draft: false
 translationKey: "oracle_linux_kernel"
-tags: ["oracle", "linux", "kernel", "tuning", "hugepages", "performance"]
+tags: ["linux", "tuning", "performance"]
 categories: ["oracle"]
 image: "oracle-linux-kernel.cover.jpg"
 ---

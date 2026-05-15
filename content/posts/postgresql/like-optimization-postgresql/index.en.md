@@ -6,7 +6,7 @@ date: "2026-01-06T08:03:00+01:00"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false
 translationKey: "like_optimization_postgresql"
-tags: ["query-tuning", "performance", "indexes", "pg_trgm"]
+tags: ["query-tuning", "performance", "indexes"]
 categories: ["postgresql"]
 image: "like-optimization-postgresql.cover.jpg"
 ---
@@ -144,6 +144,8 @@ Precautions:
 -   Create during an off-peak window
 -   Use CONCURRENTLY mode
 -   Monitor I/O during index build
+
+> ⚠️ **Note on migration tools**: `CREATE INDEX CONCURRENTLY` **cannot** be executed inside an explicit transaction block (`BEGIN; ... COMMIT;`). PostgreSQL returns `ERROR: CREATE INDEX CONCURRENTLY cannot run inside a transaction block`. With interactive `psql` it's not an issue (no implicit transaction), but with Flyway, Liquibase, alembic and similar — which wrap every migration in a transaction — it has to be handled explicitly: Flyway with `-- no transaction` as the first line of the script, Liquibase with `runInTransaction="false"`, alembic with `op.execute(..., autocommit=True)`. If this check is missing, the migration fails at execution time, not in dry-run.
 
 ------------------------------------------------------------------------
 

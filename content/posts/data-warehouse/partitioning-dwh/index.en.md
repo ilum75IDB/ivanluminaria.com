@@ -5,7 +5,7 @@ description: "Range partitioning on an 800-million-row fact table: from 12-minut
 date: "2026-04-07T08:03:00+01:00"
 draft: false
 translationKey: "partitioning_dwh"
-tags: ["partitioning", "performance", "oracle", "fact-table", "data-warehouse"]
+tags: ["partitioning", "performance", "dimensional-modeling"]
 categories: ["data-warehouse"]
 image: "partitioning-dwh.cover.jpg"
 ---

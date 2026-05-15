@@ -5,7 +5,7 @@ description: "MySQL multi-instance on Linux: exporting a CSV with INTO OUTFILE b
 date: "2025-11-04T08:03:00+01:00"
 draft: false
 translationKey: "mysql_multi_istanza_secure_file_priv"
-tags: ["multi-instance", "secure-file-priv", "csv-export", "systemd", "socket", "troubleshooting"]
+tags: ["linux"]
 categories: ["mysql"]
 image: "mysql-multi-istanza-secure-file-priv.cover.jpg"
 ---

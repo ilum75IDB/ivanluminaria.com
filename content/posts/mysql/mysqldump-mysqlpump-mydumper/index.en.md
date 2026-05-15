@@ -5,7 +5,7 @@ description: "MySQL backup tools compared: mysqldump vs mydumper vs mysqlpump on
 date: "2026-04-14T08:03:00+01:00"
 draft: false
 translationKey: "mysqldump_mysqlpump_mydumper"
-tags: ["backup", "mysqldump", "mydumper", "restore", "mariadb"]
+tags: ["backup", "mariadb"]
 categories: ["mysql"]
 image: "mysqldump-mysqlpump-mydumper.cover.jpg"
 ---

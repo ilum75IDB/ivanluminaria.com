@@ -5,7 +5,7 @@ description: "Oracle Partitioning pe tabelă de 2 miliarde de rânduri: range, i
 date: "2025-12-23T08:03:00+01:00"
 draft: false
 translationKey: "oracle_partitioning"
-tags: ["partitioning", "performance", "tuning", "execution-plan"]
+tags: ["partitioning", "performance", "tuning", "query-tuning"]
 categories: ["oracle"]
 image: "oracle-partitioning.cover.jpg"
 ---

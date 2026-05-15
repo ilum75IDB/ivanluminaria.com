@@ -5,7 +5,7 @@ description: "Caso real de gestión de proyectos: cliente asegurador gasta 4 mil
 date: "2025-12-30T08:03:00+01:00"
 draft: false
 translationKey: "consulenza_it_milioni_sprecati"
-tags: ["consulting", "data-warehouse", "insurance", "oracle", "outsourcing"]
+tags: ["consulting"]
 categories: ["Project Management"]
 image: "4-milioni-nessun-software.cover.jpg"
 ---

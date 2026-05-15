@@ -1201,15 +1201,31 @@ footer {
 
 /* ---- Two-column article layout ---- */
 @media (min-width: 768px) {
-  .article-two-col {
-    display: grid !important;
-    grid-template-columns: 160px 1fr;
-    gap: 1.5rem;
+  /* Forziamo flexbox row con gap. Specificity alta per battere eventuali
+     utility Tailwind. align-items default 'stretch' permette all'aside di
+     prendere l'altezza dell'article, requisito per il position:sticky del
+     .sidebar-stack di funzionare per tutta la durata dello scroll. */
+  div.article-two-col {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    gap: 1.75rem !important;
   }
 
-  .article-sidebar {
+  aside.article-sidebar {
     position: relative;
-    min-width: 0;
+    flex: 0 0 200px !important;
+    width: 200px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
+    overflow: visible !important;
+    align-self: stretch !important;
+  }
+
+  div.article-two-col > article {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 
   /* Desktop: hide mobile-only elements, show desktop cover */
@@ -1223,11 +1239,22 @@ footer {
   }
 }
 
-.author-sidebar-card {
+.sidebar-stack {
   position: sticky;
   top: 3rem;
+  width: 100% !important;
+  max-width: 200px !important;
+  box-sizing: border-box;
+  display: block;
+}
+
+.author-sidebar-card {
   text-align: center;
   padding-top: 35px;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  display: block;
 }
 
 .author-sidebar-card img,
@@ -4526,6 +4553,130 @@ footer {
 #to-top a svg {
   width: 18px !important;
   height: 18px !important;
+}
+
+/* --- Article TOC sidebar (option C: active scroll-spy) --- */
+.article-toc-card {
+  margin: 16px 0 0 !important;
+  padding: 14px 0 !important;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  position: relative;
+  text-align: left;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  flex: 0 0 auto;
+}
+.dark .article-toc-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.article-toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 16px 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.dark .article-toc-title {
+  color: rgba(255, 255, 255, 0.55);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.article-toc-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative;
+}
+.article-toc-list::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: #f3f4f6;
+}
+.article-toc-title {
+  margin-left: 12px !important;
+  margin-right: 12px !important;
+}
+.dark .article-toc-list::before {
+  background: rgba(255, 255, 255, 0.08);
+}
+.article-toc-list li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.article-toc-list a {
+  display: block;
+  padding: 6px 12px 6px 22px;
+  color: #6b7280;
+  text-decoration: none !important;
+  font-size: 12.5px;
+  line-height: 1.35;
+  position: relative;
+  transition: color 200ms, background 200ms;
+  word-break: break-word;
+  hyphens: auto;
+}
+.dark .article-toc-list a {
+  color: rgba(255, 255, 255, 0.6);
+}
+.article-toc-list a::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 13px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 200ms;
+}
+.article-toc-list a:hover {
+  color: #336791;
+}
+.dark .article-toc-list a:hover {
+  color: #6ea8d9;
+}
+.article-toc-list a.active {
+  color: #ffffff !important;
+  font-weight: 600;
+  background: #336791;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+.article-toc-list a.active::before {
+  background: #F80000;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+.dark .article-toc-list a.active {
+  color: #ffffff !important;
+  background: #4a8ab8;
+}
+.dark .article-toc-list a.active::before {
+  background: #F80000;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile: nascondi il TOC sidebar (la sidebar stessa è nascosta su mobile) */
+@media (max-width: 768px) {
+  .article-toc-card {
+    display: none;
+  }
+}
+
+/* Anchor scroll-margin: quando si clicca un link TOC, l'H2 non finisce sotto la navbar */
+.prose h2[id] {
+  scroll-margin-top: 80px;
 }
 
 /* --- Mini-card nella sidebar autore --- */

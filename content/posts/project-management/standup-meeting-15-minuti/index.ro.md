@@ -5,7 +5,7 @@ description: "Standup meeting Scrum: de ce doar 15 minute le fac să funcționez
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "standup_meeting_15_minuti"
-tags: ["standup", "agile", "meeting", "team-management", "scrum"]
+tags: ["agile"]
 categories: ["Project Management"]
 image: "standup-meeting.cover.jpg"
 ---

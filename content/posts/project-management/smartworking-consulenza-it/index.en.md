@@ -5,7 +5,7 @@ description: "Smart working in IT consulting: economic and strategic analysis of
 date: "2026-02-24T08:03:00+01:00"
 draft: false
 translationKey: "smartworking_consulenza_it"
-tags: ["smart-working", "consulting", "productivity", "remote-work"]
+tags: ["smart-working", "consulting"]
 categories: ["Project Management"]
 image: "smartworking-consulenza-it.cover.jpg"
 ---

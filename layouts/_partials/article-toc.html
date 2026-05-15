@@ -1,0 +1,40 @@
+{{- /* Article TOC sidebar (option C: active scroll-spy)
+       Estrae gli <h2 id="..."> dal contenuto e li mostra come navigazione sticky
+       fra il badge autore e il badge progresso di lettura.
+       Si mostra su tutti gli articoli (Section "posts") qualunque sia il
+       numero di H2.
+       I titoli vengono ripuliti da emoji/simboli iniziali per leggibilita'
+       nel TOC compatto in sidebar. */ -}}
+
+{{- if eq .Section "posts" -}}
+  {{- $h2Matches := findRESubmatch `<h2[^>]*id="([^"]+)"[^>]*>(.*?)</h2>` .Content -}}
+  {{- if gt (len $h2Matches) 0 -}}
+    <div class="article-toc-card" role="navigation" aria-label="{{ i18n "article_toc_title" | default "Indice articolo" }}">
+      <h3 class="article-toc-title">{{ i18n "article_toc_title" | default "Indice articolo" }}</h3>
+      <ul class="article-toc-list">
+        {{- range $h2Matches }}
+          {{- $id := index . 1 -}}
+          {{- $rawTitle := index . 2 | plainify -}}
+          {{- /* Strip emoji + simboli iniziali (Unicode ranges per simboli ed emoji)
+                 e l'eventuale "#" finale che Hugo aggiunge come ancor link. */ -}}
+          {{- $title := replaceRE `[\x{1F000}-\x{1FFFF}\x{2600}-\x{27BF}\x{2B00}-\x{2BFF}\x{1F300}-\x{1F9FF}\x{1FA00}-\x{1FAFF}]+\s*` "" $rawTitle -}}
+          {{- $title := replaceRE `\s*#\s*$` "" $title -}}
+          {{- /* Decodifica entita' HTML comuni introdotte da Goldmark
+                 (smart quotes, em/en dash, hellip, ampersand) */ -}}
+          {{- $title := replaceRE `&rsquo;` "’" $title -}}
+          {{- $title := replaceRE `&lsquo;` "‘" $title -}}
+          {{- $title := replaceRE `&rdquo;` "”" $title -}}
+          {{- $title := replaceRE `&ldquo;` "“" $title -}}
+          {{- $title := replaceRE `&hellip;` "…" $title -}}
+          {{- $title := replaceRE `&ndash;` "–" $title -}}
+          {{- $title := replaceRE `&mdash;` "—" $title -}}
+          {{- $title := replaceRE `&amp;` "&" $title -}}
+          {{- $title := replaceRE `&quot;` "\"" $title -}}
+          {{- $title := replaceRE `&#39;` "'" $title -}}
+          {{- $title := trim $title " " -}}
+          <li><a href="#{{ $id }}">{{ $title }}</a></li>
+        {{- end }}
+      </ul>
+    </div>
+  {{- end -}}
+{{- end -}}

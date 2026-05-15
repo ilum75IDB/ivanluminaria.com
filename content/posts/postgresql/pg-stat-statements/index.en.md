@@ -5,7 +5,7 @@ description: "PostgreSQL pg_stat_statements: the first query diagnostics extensi
 date: "2026-04-21T08:03:00+01:00"
 draft: false
 translationKey: "pg_stat_statements"
-tags: ["monitoring", "performance", "pg_stat_statements", "diagnostics", "tuning"]
+tags: ["monitoring", "performance", "tuning"]
 categories: ["postgresql"]
 image: "pg-stat-statements.cover.jpg"
 ---

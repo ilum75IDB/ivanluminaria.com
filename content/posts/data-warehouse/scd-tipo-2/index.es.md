@@ -5,7 +5,7 @@ description: "SCD Tipo 2 en data warehouse: historizar dimensiones con claves su
 date: "2025-11-11T08:03:00+01:00"
 draft: false
 translationKey: "scd_tipo_2"
-tags: ["scd", "dimensional-modeling", "etl", "kimball", "data-warehouse"]
+tags: ["dimensional-modeling", "etl", "kimball"]
 categories: ["data-warehouse"]
 image: "scd-tipo-2.cover.jpg"
 ---

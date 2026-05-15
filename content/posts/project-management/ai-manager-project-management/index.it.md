@@ -5,7 +5,7 @@ description: "AI Manager: il ruolo che governa l'impatto dell'intelligenza artif
 date: "2026-03-17T08:03:00+01:00"
 draft: false
 translationKey: "ai_manager_project_management"
-tags: ["ai", "project-management", "ai-manager", "governance", "strategy"]
+tags: ["ai", "consulting"]
 categories: ["Project Management"]
 image: "ai-manager-project-management.cover.jpg"
 ---

@@ -7,14 +7,14 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": {{ (site.GetPage "/").Permalink | jsonify }},
-    "name": {{ .Site.Title | jsonify }},
-    {{ with .Site.Params.description }}"description": {{ . | jsonify }},{{ end }}
-    {{ with site.Language.Lang }}"inLanguage": {{ . | jsonify }},{{ end }}
-    "url": {{ (site.GetPage "/").Permalink | jsonify }},
+    "@id": {{ (site.GetPage "/").Permalink | jsonify | safeJS }},
+    "name": {{ .Site.Title | jsonify | safeJS }},
+    {{ with .Site.Params.description }}"description": {{ . | jsonify | safeJS }},{{ end }}
+    {{ with site.Language.Lang }}"inLanguage": {{ . | jsonify | safeJS }},{{ end }}
+    "url": {{ (site.GetPage "/").Permalink | jsonify | safeJS }},
     "publisher": {
       "@type": "Person",
-      "name": {{ .Site.Language.Params.Author.name | jsonify }}
+      "name": {{ .Site.Language.Params.Author.name | jsonify | safeJS }}
     }
   }
   </script>

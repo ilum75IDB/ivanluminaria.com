@@ -5,7 +5,7 @@ description: "Migrare Oracle 19c on-premises la OCI: 2 TB cu RAC și Data Guard.
 date: "2026-04-28T08:03:00+01:00"
 draft: false
 translationKey: "oracle_cloud_migration"
-tags: ["migration", "cloud", "oci", "data-guard", "architecture", "licensing"]
+tags: ["cloud", "high-availability", "architecture"]
 categories: ["oracle"]
 image: "oracle-cloud-migration.cover.jpg"
 ---
