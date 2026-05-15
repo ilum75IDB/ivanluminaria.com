@@ -75,7 +75,7 @@ Se arrivi dalle due puntate precedenti della miniserie, tre cose vanno tenute in
 
 **Niente tipo ENUM nativo**. Su MySQL hai `ENUM('A','B','C')` come tipo di colonna; su PostgreSQL hai `CREATE TYPE ... AS ENUM` come oggetto a sé. Su Oracle, fino alla 23ai, queste due opzioni semplicemente non esistevano. Restavano `CHECK` e lookup table.
 
-**`CHECK` è pienamente applicato da sempre**. A differenza di MySQL pre-8.0.16 (dove i `CHECK` venivano parsati e silenziosamente ignorati [2]), Oracle valida i vincoli `CHECK` fin da prima del millennio. Un dettaglio storico ma rilevante: se vieni da MySQL, qui non c'è dubbio sulla loro efficacia.
+**`CHECK` è pienamente applicato da sempre**. A differenza di MySQL pre-8.0.16 (dove i `CHECK` venivano parsati e silenziosamente ignorati), Oracle valida i vincoli `CHECK` fin da prima del millennio. Un dettaglio storico ma rilevante: se vieni da MySQL, qui non c'è dubbio sulla loro efficacia.
 
 **Cultura della lookup table radicata**. La community Oracle, per il tipo di clienti che la usano (banking, assicurativo, PA, telco), ha sempre preferito la lookup table al `CHECK`. Non per dogma, ma perché in quei contesti l'evoluzione del set di valori è frequente, l'audit è obbligatorio, la localizzazione delle etichette è uno standard. La lookup table è una palestra di flessibilità — il `CHECK` è una promessa di rigidità.
 
@@ -142,7 +142,7 @@ ALTER DOMAIN stato_transazione
      'IN_AUTORIZZAZIONE_MANUALE'));
 ```
 
-Quel singolo statement aggiorna il vincolo **per tutte le colonne che usano `stato_transazione`** — in 18 tabelle, in 50, non importa. Oracle si fa carico di propagare il check, e di validare le righe esistenti (con `VALIDATE` o `NOVALIDATE`, secondo come preferisci gestire la transizione).
+Quel singolo statement aggiorna il vincolo **per tutte le colonne che usano `stato_transazione`** — in 18 tabelle, in 50, non importa. Oracle si fa carico di propagare il check, e di validare le righe esistenti (con `VALIDATE` o `NOVALIDATE`, secondo come preferisci gestire la transizione) [2].
 
 È quello che la lookup table dava già a livello logico (un solo posto dove cambiare i valori ammessi), ora portato a livello del **catalogo schema**, senza richiedere un JOIN, senza richiedere una tabella in più, e senza i 4 byte di OID di una FK numerica.
 
@@ -168,7 +168,7 @@ La lookup table **non è morta** con i SQL Domains. È rimasta la scelta giusta 
 
 ## Cosa arriva con la 26ai: le Assertions
 
-Oracle 26ai (annunciata come prossima major release) porta — tra le altre cose — il supporto formale alle **`ASSERTION`** [3]: un costrutto SQL standard, presente sulla carta da decenni e mai veramente implementato da nessun DBMS mainstream, che permette di esprimere vincoli **cross-tabella**. Vincoli che oggi devi codificare come trigger o come check applicativo, con tutti i rischi del caso (trigger che si scordano, transazioni che bypassano il vincolo, race condition con isolation level rilassati).
+Oracle 26ai (annunciata come prossima major release) porta — tra le altre cose — il supporto formale alle **`ASSERTION`**: un costrutto SQL standard, presente sulla carta da decenni e mai veramente implementato da nessun DBMS mainstream, che permette di esprimere vincoli **cross-tabella**. Vincoli che oggi devi codificare come trigger o come check applicativo, con tutti i rischi del caso (trigger che si scordano, transazioni che bypassano il vincolo, race condition con isolation level rilassati).
 
 Esempio possibile:
 
@@ -199,8 +199,7 @@ Il resto sono dettagli di sintassi e di motore. Quello che conta — e che ho im
 ## Fonti ufficiali
 
 1. Oracle Database 23ai SQL Language Reference — [CREATE DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/CREATE-DOMAIN.html)
-2. MySQL 8.0 Reference Manual — [CHECK Constraints (8.0.16+)](https://dev.mysql.com/doc/refman/8.0/en/create-table-check-constraints.html)
-3. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
+2. Oracle Database 23ai SQL Language Reference — [ALTER DOMAIN](https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ALTER-DOMAIN.html)
 
 ---
 
