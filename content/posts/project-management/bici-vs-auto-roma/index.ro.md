@@ -5,7 +5,7 @@ description: "Pendulare în Roma: Brompton electrică vs mașină. 18 minute vs 
 date: "2026-03-03T08:03:00+01:00"
 draft: false
 translationKey: "bici_vs_auto_roma"
-tags: ["urban-mobility", "cycling", "smart-working", "sustainability", "health"]
+tags: ["smart-working"]
 categories: ["Project Management"]
 image: "bici-vs-auto-roma.cover.jpg"
 ---

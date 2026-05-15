@@ -5,7 +5,7 @@ description: "MySQL 8.0 pre-upgrade assessment: measuring sizes, growth, backup 
 date: "2026-05-05T08:03:00+01:00"
 draft: false
 translationKey: "mysql_pre_upgrade_assessment"
-tags: ["mysql", "upgrade", "backup", "restore", "assessment", "information-schema", "mysqldump", "mydumper", "xtrabackup"]
+tags: ["upgrade", "backup"]
 categories: ["MySQL"]
 image: "mysql-pre-upgrade-assessment.cover.jpg"
 ---

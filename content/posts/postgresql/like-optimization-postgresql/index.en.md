@@ -6,7 +6,7 @@ date: "2026-01-06T08:03:00+01:00"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false
 translationKey: "like_optimization_postgresql"
-tags: ["query-tuning", "performance", "indexes", "pg_trgm"]
+tags: ["query-tuning", "performance", "indexes"]
 categories: ["postgresql"]
 image: "like-optimization-postgresql.cover.jpg"
 ---

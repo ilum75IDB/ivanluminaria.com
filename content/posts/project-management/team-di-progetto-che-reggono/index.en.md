@@ -5,7 +5,7 @@ description: "Project management: 5 rules observed in teams that hold under pres
 date: "2026-05-19T08:03:00+01:00"
 draft: false
 translationKey: "team_di_progetto_che_reggono"
-tags: ["project-management", "team", "leadership", "psychological-safety", "knowledge-transfer", "micromanagement"]
+tags: ["agile"]
 categories: ["Project Management"]
 image: "team-di-progetto-che-reggono.cover.jpg"
 ---

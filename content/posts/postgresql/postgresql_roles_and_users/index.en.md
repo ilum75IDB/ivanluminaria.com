@@ -6,7 +6,7 @@ date: "2026-02-10T08:03:00+01:00"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false
 translationKey: "postgresql_roles_and_users"
-tags: ["security", "roles", "privileges", "grant", "revoke"]
+tags: ["security", "privileges"]
 categories: ["postgresql"]
 image: "postgresql_roles_and_users.cover.jpg"
 ---

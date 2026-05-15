@@ -5,7 +5,7 @@ description: "PostgreSQL ENUM vs CHECK vs tabel lookup: ALTER TYPE ADD VALUE nu 
 date: "2026-06-09T08:03:00+01:00"
 draft: false
 translationKey: "enum_postgresql_paga_o_pesa"
-tags: ["enum", "data-modeling", "schema-design", "alter-type", "check-constraint"]
+tags: ["schema-design"]
 categories: ["postgresql"]
 image: "enum-postgresql-paga-o-pesa.cover.jpg"
 ---
