@@ -13,6 +13,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 | Termine | Descrizione | Contenuto in |
 |---------|-------------|--------------|
+| Annotations (Oracle 23ai) | Sistema di metadati Oracle 23ai che associa coppie chiave/valore a oggetti dello schema (colonne, domain, tabelle). Leggibile via USER_ANNOTATIONS_USAGE, usato da strumenti BI per derivare etichette di display e ordering | enum-oracle-19c-26ai-domini |
 | Anonymous User | Utente MySQL/MariaDB senza nome creato automaticamente durante l'installazione, rappresenta un rischio di sicurezza in produzione | mysql-users-and-hosts |
 | Authentication Plugin | Modulo MySQL/MariaDB che gestisce il metodo di verifica delle credenziali durante la connessione | mysql-users-and-hosts |
 | Additive Measure | Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni (importi, quantità, conteggi). Le misure semi-additive e non-additive hanno regole di aggregazione diverse | fatto-grana-sbagliata |
@@ -21,7 +22,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ALTER TYPE ADD VALUE | Comando PostgreSQL che aggiunge un valore a un ENUM esistente. Operazione di metadata, transazionale, senza rebuild della tabella. Disponibile dalla 9.1, con posizionamento BEFORE/AFTER dalla 9.6 | enum-postgresql-paga-o-pesa |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
-| ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai |
+| ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
 | Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql, mysql-group-replication-binlog-migration, mysql-pre-upgrade-assessment |
@@ -88,6 +89,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Kimball | Ralph Kimball — metodologia di progettazione data warehouse basata su dimensional modeling, star schema e processi ETL bottom-up. Riferimento standard per la classificazione delle SCD | scd-tipo-2, bus-matrix-terreno-comune |
 | Knowledge Transfer | Processo di trasferimento della conoscenza tra persone, team o sistemi, critico nei progetti IT dove la perdita di know-how compromette la continuità | ai-manager-project-management, team-di-progetto-che-reggono |
 | KPI | Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito | smartworking-consulenza-it |
+| Major release Oracle | Versione principale del Database server Oracle con cambiamenti significativi di feature, ciclo di supporto Premier dedicato e numerazione propria (19c, 21c, 23ai, 26ai). Alterna Long-Term Release e Innovation Release | enum-oracle-19c-26ai-domini |
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
 | Micromanagement | Stile di gestione basato sul controllo puntuale delle attività quotidiane del team. Genera calo di motivazione, turnover e disincentiva l'iniziativa | team-di-progetto-che-reggono |
 | Mobilità Sostenibile | Approccio ai trasporti urbani che privilegia mezzi a basso impatto ambientale, riducendo emissioni, traffico e costi | bici-vs-auto-roma |
@@ -142,7 +144,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | SCD | Slowly Changing Dimension — tecnica di data warehouse per tracciare le variazioni nel tempo dei dati nelle tabelle dimensionali | scd-tipo-2 |
 | secure-file-priv | Direttiva di sicurezza MySQL che limita le directory in cui il server può leggere e scrivere file, proteggendo il filesystem da operazioni non autorizzate | mysql-multi-istanza-secure-file-priv |
 | Split-brain | Condizione critica in un cluster database dove due o più parti operano indipendentemente, accettando scritture divergenti sugli stessi dati | galera-cluster-3-nodi |
-| SQL Domain | Costrutto introdotto in Oracle Database 23ai che permette di definire un dominio riusabile per una colonna (tipo base + CHECK + DEFAULT + annotations) come oggetto del dizionario dati. Equivalente concettuale del DOMAIN di PostgreSQL ma con sistema di annotations originale | enum-oracle-workaround-fino-a-23ai |
+| SQL Domain | Costrutto introdotto in Oracle Database 23ai che permette di definire un dominio riusabile per una colonna (tipo base + CHECK + DEFAULT + annotations) come oggetto del dizionario dati. Equivalente concettuale del DOMAIN di PostgreSQL ma con sistema di annotations originale | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | SQL Injection | Tecnica di attacco che inserisce codice SQL malevolo negli input di un'applicazione per manipolare le query eseguite dal database | mysql-multi-istanza-secure-file-priv |
 | SST | State Snapshot Transfer — meccanismo di Galera Cluster per trasferire una copia completa dei dati a un nodo che si unisce al cluster | galera-cluster-3-nodi |
 | Sequential Scan | Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella senza utilizzare indici, efficiente su tabelle piccole ma problematica su tabelle grandi | pg-stat-statements |
@@ -161,6 +163,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | systemd | Sistema di init e gestore dei servizi su Linux, usato per gestire istanze multiple di MySQL/MariaDB sullo stesso server tramite unit file separati | mysql-multi-istanza-secure-file-priv |
 | Version Control | Sistema che traccia ogni modifica al codice sorgente, permettendo cronologia, annullamento e collaborazione. Git è lo standard attuale | ai-github-project-management |
 | VACUUM | Comando PostgreSQL che recupera lo spazio occupato dai dead tuples, rendendolo riutilizzabile per nuovi inserimenti | vacuum-autovacuum-postgresql |
+| VALIDATE / NOVALIDATE | Modalità Oracle di applicazione di un vincolo al momento della creazione o modifica: VALIDATE controlla tutte le righe esistenti (default), NOVALIDATE salta il controllo per non bloccare grandi tabelle in finestra di manutenzione | enum-oracle-19c-26ai-domini |
 | Vendor Lock-in | Dipendenza strutturale da un fornitore esterno che rende difficile o costoso cambiare provider, spesso causata dalla perdita di know-how e dalla proprietà del codice | 4-milioni-nessun-software |
 | Unified Audit | Sistema di audit centralizzato introdotto in Oracle 12c che unifica tutti i tipi di audit in un'unica infrastruttura, sostituendo il vecchio audit tradizionale | oracle-roles-privileges |
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
@@ -173,5 +176,5 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 ---
 
 **Ultimo aggiornamento**: 2026-05-16
-**Totale termini**: 155
-**Totale articoli con glossario**: 35
+**Totale termini**: 158
+**Totale articoli con glossario**: 36

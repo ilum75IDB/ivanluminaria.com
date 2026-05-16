@@ -5,6 +5,7 @@ translationKey: "glossary_oracle_sql_domain"
 aka: "SQL Domain (Oracle 23ai)"
 articles:
   - "/posts/oracle/enum-oracle-workaround-fino-a-23ai"
+  - "/posts/oracle/enum-oracle-19c-26ai-domini"
 ---
 
 **SQL Domain** este un construct introdus în Oracle Database 23ai care permite definirea unui **domeniu reutilizabil** pentru o coloană: un tip de bază (ex. `VARCHAR2(20)`), o constrângere `CHECK`, o valoare `DEFAULT`, și eventuale **annotations** de metadate, totul încapsulat într-un obiect al dicționarului de date care poate fi reutilizat pe multe coloane diferite.
