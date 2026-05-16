@@ -32,7 +32,7 @@ CREATE TABLE transactions (
 );
 ```
 
-Standard SQL approach. Oracle has enforced `CHECK` constraints for decades [2] — no surprises about constraint validity like MySQL had before 8.0.16. Simple, readable, and for small projects it solves the problem immediately. The price, on a real system, you discover later: the same value list gets replicated on every table with the same `status` column, and every change becomes an `ALTER TABLE` per table. We'll see why this matters.
+Standard SQL approach. Oracle has enforced `CHECK` constraints for decades [2] — no surprises about constraint validity like MySQL had before 8.0.16. Simple, readable, and for small projects it solves the problem immediately. **On the performance side it's practically free**: validation costs a handful of microseconds at INSERT/UPDATE time, adds nothing to SELECT, and the optimizer can actually use the constraint to its advantage — a query with `WHERE status='X'` on a value not allowed by the `CHECK` returns immediately, without scanning a single block. The real price, on a real system, you discover later: the same value list gets replicated on every table with the same `status` column, and every change becomes an `ALTER TABLE` per table. We'll see why this matters.
 
 **Lookup table with foreign key**:
 
