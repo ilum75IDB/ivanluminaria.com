@@ -5,6 +5,8 @@ translationKey: "glossary_check_constraint"
 aka: "CHECK constraint"
 articles:
   - "/posts/mysql/enum-mysql-semplifica-o-complica"
+  - "/posts/postgresql/enum-postgresql-paga-o-pesa"
+  - "/posts/oracle/enum-oracle-workaround-fino-a-23ai"
 ---
 
 The **CHECK constraint** is a standard SQL constraint that restricts the values allowed in a column or table via a boolean expression. When an `INSERT` or `UPDATE` would produce a value that violates the expression, the database rejects the operation.
