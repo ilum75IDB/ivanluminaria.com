@@ -6,6 +6,7 @@ aka: "Tabelă de referință"
 articles:
   - "/posts/mysql/enum-mysql-semplifica-o-complica"
   - "/posts/postgresql/enum-postgresql-paga-o-pesa"
+  - "/posts/oracle/enum-oracle-workaround-fino-a-23ai"
 ---
 
 **Lookup table** este o tabelă de referință care stochează valorile valide ale unui domeniu enumerat, conectată la tabelele care o folosesc prin foreign key. Este calea "pur bază de date" pentru a modela o enumerare, alternativă la tipurile native ca ENUM sau la CHECK constraint.
