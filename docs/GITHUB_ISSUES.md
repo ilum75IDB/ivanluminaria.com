@@ -9,7 +9,6 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 52 | https://github.com/ilum75IDB/ivanluminaria.com/issues/52 | Migrazione Oracle 12c to 21c: 12 TB, nuovo server, 4 ore di downtime | aperta |
-| 88 | https://github.com/ilum75IDB/ivanluminaria.com/issues/88 | Articolo Oracle: enumerazioni - evoluzione delle feature da 19c a 26ai | aperta |
 
 ## Issue Aperte — Sezione Data Warehouse
 
@@ -66,6 +65,7 @@ tool `WebFetch`.
 
 | #  | Issue | Titolo | Chiusa il |
 |----|-------|--------|-----------|
+| 88 | https://github.com/ilum75IDB/ivanluminaria.com/issues/88 | Articolo Oracle: enumerazioni - evoluzione delle feature da 19c a 26ai | 2026-05-16 |
 | 70 | https://github.com/ilum75IDB/ivanluminaria.com/issues/70 | Articolo Oracle: enumerazioni, tabelle tipologiche e SQL Domains da CHECK a 23ai | 2026-05-16 |
 | 87 | https://github.com/ilum75IDB/ivanluminaria.com/issues/87 | Articolo PostgreSQL: enumerazioni - CREATE TYPE ENUM, CHECK constraint, tabelle lookup | 2026-05-13 |
 | 94 | https://github.com/ilum75IDB/ivanluminaria.com/issues/94 | Bug: like-optimization-postgresql versione ES ha titolo e corpo in inglese | 2026-05-12 |
