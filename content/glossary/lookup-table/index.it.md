@@ -6,6 +6,7 @@ aka: "Tabella di lookup, reference table"
 articles:
   - "/posts/mysql/enum-mysql-semplifica-o-complica"
   - "/posts/postgresql/enum-postgresql-paga-o-pesa"
+  - "/posts/oracle/enum-oracle-workaround-fino-a-23ai"
 ---
 
 La **lookup table** è una tabella di riferimento che memorizza i valori validi di un dominio enumerato, collegata alle tabelle che la usano tramite una foreign key. È la via "database-puro" per modellare un'enumerazione, alternativa a tipi nativi come ENUM o a CHECK constraint.
