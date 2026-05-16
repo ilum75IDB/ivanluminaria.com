@@ -32,7 +32,7 @@ CREATE TABLE tranzactii (
 );
 ```
 
-Abordare SQL standard. Oracle aplică `CHECK` constraint de zeci de ani [2] — nicio surpriză privind validitatea constrângerii cum se întâmpla în MySQL înainte de 8.0.16. Simplu, citibil, și pentru proiecte mici rezolvă imediat. Prețul, pe un sistem real, se descoperă mai târziu: aceeași listă de valori este replicată pe fiecare tabel care are aceeași coloană `stare`, și fiecare modificare devine un `ALTER TABLE` per tabel. Vom vedea de ce contează.
+Abordare SQL standard. Oracle aplică `CHECK` constraint de zeci de ani [2] — nicio surpriză privind validitatea constrângerii cum se întâmpla în MySQL înainte de 8.0.16. Simplu, citibil, și pentru proiecte mici rezolvă imediat. **Pe planul performanței este practic gratuit**: validarea costă câteva microsecunde la INSERT/UPDATE, nu adaugă nimic la SELECT, iar optimizatorul poate folosi constrângerea în avantajul său — o interogare cu `WHERE stare='X'` pe o valoare neadmisă de `CHECK` returnează imediat, fără a scana niciun bloc. Prețul real, pe un sistem real, se descoperă mai târziu: aceeași listă de valori este replicată pe fiecare tabel care are aceeași coloană `stare`, și fiecare modificare devine un `ALTER TABLE` per tabel. Vom vedea de ce contează.
 
 **Lookup table cu foreign key**:
 

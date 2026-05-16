@@ -32,7 +32,7 @@ CREATE TABLE transazioni (
 );
 ```
 
-Approccio SQL standard. Oracle applica i `CHECK` constraint da decenni [2] — niente sorprese sulla validità del vincolo come accadeva su MySQL prima della 8.0.16. Semplice, leggibile, e per progetti piccoli risolve subito. Il prezzo, su un sistema reale, lo si scopre dopo: la stessa lista di valori va replicata su ogni tabella che ha la stessa colonna `stato`, e ogni modifica diventa un `ALTER TABLE` per ciascuna. Vedremo perché conta.
+Approccio SQL standard. Oracle applica i `CHECK` constraint da decenni [2] — niente sorprese sulla validità del vincolo come accadeva su MySQL prima della 8.0.16. Semplice, leggibile, e per progetti piccoli risolve subito. **Sul piano performance è praticamente gratuito**: la validazione costa pochi microsecondi all'INSERT/UPDATE, in SELECT non aggiunge nulla, e l'ottimizzatore può usare il vincolo a proprio vantaggio — una query con `WHERE stato='X'` su un valore non ammesso dal `CHECK` ritorna immediata, senza scansionare un blocco. Il prezzo vero, su un sistema reale, lo si scopre più in là: la stessa lista di valori va replicata su ogni tabella che ha la stessa colonna `stato`, e ogni modifica diventa un `ALTER TABLE` per ciascuna. Vedremo perché conta.
 
 **Tabella di lookup con foreign key**:
 
