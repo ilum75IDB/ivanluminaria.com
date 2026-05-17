@@ -50,6 +50,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 | 35 | 2026-06-09 | —        | Tue | ENUM in PostgreSQL: il contesto in cui la scelta paga, e quello in cui te la fa pesare | postgresql | #87 | 2026-05-13 | scheduled |
 | 36 | 2026-06-16 | —        | Tue | Enumerazioni in Oracle: vent'anni di workaround, e la strada che si è aperta con la 23ai | oracle | #70 | 2026-05-16 | scheduled |
 | 37 | 2026-06-23 | —        | Tue | Oracle 19c, 21c, 23ai, 26ai: la riscrittura silenziosa dei domini di valori | oracle | #88 | 2026-05-16 | scheduled |
+| 38 | 2026-06-30 | —        | Tue | Da rivali a co-autori: come Booch, Rumbaugh e Jacobson hanno inventato UML | project-management | #85 | 2026-05-17 | scheduled |
 
 **Previous available slot**: 2025-10-07 (Tuesday)
-**Next available slot**: 2026-06-30 (Tuesday)
+**Next available slot**: 2026-07-07 (Tuesday)
