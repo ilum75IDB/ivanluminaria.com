@@ -18,6 +18,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Authentication Plugin | Modulo MySQL/MariaDB che gestisce il metodo di verifica delle credenziali durante la connessione | mysql-users-and-hosts |
 | Additive Measure | Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni (importi, quantità, conteggi). Le misure semi-additive e non-additive hanno regole di aggregazione diverse | fatto-grana-sbagliata |
 | AI Manager | Ruolo professionale che governa l'impatto dell'intelligenza artificiale su architetture, processi e persone all'interno di un progetto | ai-manager-project-management |
+| Agile Manifesto | Documento di poche righe firmato a Snowbird, Utah, l'11-13 febbraio 2001 da diciassette sviluppatori. Quattro coppie di valori che spostavano il focus dello sviluppo software dalle pratiche heavyweight (RUP-like) alle pratiche lightweight (Scrum, XP, Kanban) | da-rivali-a-co-autori-uml-rup |
 | ALTER DOMAIN | Comando Oracle 23ai che modifica un SQL Domain (vincolo CHECK, DEFAULT, annotations) propagando la modifica a tutte le colonne che usano il dominio. Sostituisce molteplici ALTER TABLE con una sola operazione di schema-wide governance | enum-oracle-workaround-fino-a-23ai |
 | ALTER TYPE ADD VALUE | Comando PostgreSQL che aggiunge un valore a un ENUM esistente. Operazione di metadata, transazionale, senza rebuild della tabella. Disponibile dalla 9.1, con posizionamento BEFORE/AFTER dalla 9.6 | enum-postgresql-paga-o-pesa |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
@@ -126,6 +127,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | RAC | Real Application Clusters — tecnologia Oracle che permette a più istanze di accedere contemporaneamente allo stesso database, garantendo alta disponibilità e scalabilità orizzontale | oracle-cloud-migration |
 | Ragged hierarchy | Gerarchia in cui non tutti i rami raggiungono la stessa profondità: alcuni livelli intermedi sono assenti. Tipica nelle anagrafiche clienti e strutture organizzative | ragged-hierarchies |
 | Range Partitioning | Strategia di partizionamento che divide una tabella in segmenti basati su intervalli di valori di una colonna (tipicamente una data). Ogni partizione contiene le righe il cui valore cade nell'intervallo definito | partitioning-dwh, oracle-partitioning |
+| RUP | Rational Unified Process — metodo di sviluppo software iterativo rilasciato da Rational nel 1998, organizzato in quattro fasi (Inception, Elaboration, Construction, Transition). Heavyweight e document-intensive, oggi vive in nicchie regolamentate (aviazione, medicale, banking critico) | da-rivali-a-co-autori-uml-rup |
 | Redo Log | File di log in cui Oracle registra ogni modifica ai dati prima di scriverla nei datafile, garantendo il recovery e la replica Data Guard | oracle-data-guard |
 | REVOKE | Comando SQL per rimuovere privilegi o ruoli precedentemente assegnati a un utente o ruolo, complementare al comando GRANT | oracle-roles-privileges |
 | Relay log | File di log intermedio sullo slave MySQL che riceve gli eventi dal binary log del master prima che vengano eseguiti localmente | binary-log-mysql |
@@ -153,6 +155,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Snapshot (Oracle) | Istantanea delle statistiche di performance catturata periodicamente da AWR (di default ogni 60 minuti) e usata per generare report diagnostici comparativi | oracle-awr-ash |
 | Star schema | Modello di dati tipico del data warehouse: una fact table al centro collegata a più tabelle dimensionali tramite chiavi esterne. Semplifica le query analitiche e ottimizza le performance | scd-tipo-2, fatto-grana-sbagliata, bus-matrix-terreno-comune |
 | Tablespace | Unità logica di storage in Oracle che raggruppa uno o più datafile fisici, usata per organizzare e gestire lo spazio su disco per tabelle, indici e partizioni | oracle-partitioning |
+| Three Amigos | Soprannome dato dalla stampa specializzata a Grady Booch, James Rumbaugh e Ivar Jacobson, i tre creatori di UML che lavoravano in Rational Software tra il 1994 e il 1998. Da rivali divennero co-autori di uno standard unificato | da-rivali-a-co-autori-uml-rup |
 | THP | Transparent Huge Pages — funzione del kernel Linux che promuove automaticamente le pagine normali a pagine grandi, causa latenze imprevedibili e deve essere disabilitata per Oracle | oracle-linux-kernel |
 | Timeboxing | Tecnica di gestione del tempo che assegna un intervallo fisso e non negoziabile a un'attività, forzando la conclusione entro il limite stabilito | tecnica-si-e-yes-and, standup-meeting-15-minuti |
 | Transport Lag | Ritardo nella trasmissione dei redo log dal database primary allo standby in una configurazione Data Guard, indicatore critico della salute della replica | oracle-cloud-migration |
@@ -165,7 +168,9 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | VACUUM | Comando PostgreSQL che recupera lo spazio occupato dai dead tuples, rendendolo riutilizzabile per nuovi inserimenti | vacuum-autovacuum-postgresql |
 | VALIDATE / NOVALIDATE | Modalità Oracle di applicazione di un vincolo al momento della creazione o modifica: VALIDATE controlla tutte le righe esistenti (default), NOVALIDATE salta il controllo per non bloccare grandi tabelle in finestra di manutenzione | enum-oracle-19c-26ai-domini |
 | Vendor Lock-in | Dipendenza strutturale da un fornitore esterno che rende difficile o costoso cambiare provider, spesso causata dalla perdita di know-how e dalla proprietà del codice | 4-milioni-nessun-software |
+| UML | Unified Modeling Language — linguaggio standard di modellazione object-oriented, adottato da OMG nel novembre 1997 a partire dalla fusione di tre metodi precedenti (Booch Method, OMT, Objectory). Include diagrammi strutturali e comportamentali | da-rivali-a-co-autori-uml-rup |
 | Unified Audit | Sistema di audit centralizzato introdotto in Oracle 12c che unifica tutti i tipi di audit in un'unica infrastruttura, sostituendo il vecchio audit tradizionale | oracle-roles-privileges |
+| Use Case | Tecnica di analisi dei requisiti introdotta da Ivar Jacobson che descrive il sistema dal punto di vista dell'attore che lo usa, non degli oggetti che lo compongono. Uno dei tre pilastri che hanno alimentato UML | da-rivali-a-co-autori-uml-rup |
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
 | Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
@@ -175,6 +180,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-05-16
-**Totale termini**: 158
-**Totale articoli con glossario**: 36
+**Ultimo aggiornamento**: 2026-05-17
+**Totale termini**: 163
+**Totale articoli con glossario**: 37
