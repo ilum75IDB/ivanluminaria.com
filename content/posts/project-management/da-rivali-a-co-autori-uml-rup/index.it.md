@@ -86,7 +86,7 @@ Era esattamente il rovescio di RUP. Dove RUP metteva i processi al centro, Agile
 
 Nessuno dei diciassette firmatari, vale la pena dirlo, attaccava esplicitamente RUP. Il Manifesto non nomina nessun metodo concorrente. Ma il messaggio era chiaro, e nei dieci anni successivi il vento è cambiato. **Scrum**, **XP** (Extreme Programming), **Kanban** sono diventati il vocabolario standard del team di sviluppo. RUP, in molti contesti, ha smesso di essere proposto nei nuovi progetti.
 
-Vale comunque la pena un cenno: molte idee dell'Agile **non sono nate da zero**. Le **user story** sono use case asciugati del formalismo di Jacobson, gli **sprint** brevi sono le Elaboration di RUP accorciate, e perfino la cerimonia BDD chiamata *"Three Amigos meeting"* — sviluppatore, tester e business analyst che discutono insieme una user story prima di iniziarla — è un omaggio esplicito al gruppo di Booch, Rumbaugh e Jacobson. L'Agile non ha tanto contraddetto UML, **ha più liberato le sue idee dal peso del processo**. È materia che vale un articolo a parte, in futuro.
+Merita comunque un cenno: molte idee dell'Agile **non sono nate da zero**. Le **user story** sono use case asciugati del formalismo di Jacobson, gli **sprint** brevi sono le Elaboration di RUP accorciate, e perfino la cerimonia BDD chiamata *"Three Amigos meeting"* — sviluppatore, tester e business analyst che discutono insieme una user story prima di iniziarla — è un omaggio esplicito al gruppo di Booch, Rumbaugh e Jacobson. L'Agile non ha tanto contraddetto UML, **ha più liberato le sue idee dal peso del processo**. È materia che vale un articolo a parte, in futuro.
 
 Non è morto. Ma il vento è cambiato.
 
