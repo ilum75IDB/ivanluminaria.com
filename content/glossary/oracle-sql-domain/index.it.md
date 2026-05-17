@@ -5,6 +5,7 @@ translationKey: "glossary_oracle_sql_domain"
 aka: "SQL Domain (Oracle 23ai)"
 articles:
   - "/posts/oracle/enum-oracle-workaround-fino-a-23ai"
+  - "/posts/oracle/enum-oracle-19c-26ai-domini"
 ---
 
 Il **SQL Domain** è un costrutto introdotto in Oracle Database 23ai che permette di definire un **dominio riusabile** per una colonna: un tipo base (es. `VARCHAR2(20)`), un vincolo `CHECK`, un valore di `DEFAULT`, ed eventuali **annotations** di metadati, tutto incapsulato in un oggetto del dizionario dati che può essere riusato su molte colonne diverse.
