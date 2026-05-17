@@ -5,6 +5,7 @@ translationKey: "glossary_sql_assertion"
 aka: "SQL ASSERTION (cross-table constraint)"
 articles:
   - "/posts/oracle/enum-oracle-workaround-fino-a-23ai"
+  - "/posts/oracle/enum-oracle-19c-26ai-domini"
 ---
 
 L'**`ASSERTION`** è un costrutto previsto dallo standard SQL — fin dagli anni '90 — per esprimere vincoli che **attraversano più tabelle**, validati direttamente dal motore del database a livello transazionale. Sulla carta è una soluzione elegante a problemi che oggi si risolvono con trigger o con check applicativi. Nella pratica, fino al 2026, nessun DBMS mainstream l'aveva implementata davvero. Oracle l'ha annunciata per la 26ai.
