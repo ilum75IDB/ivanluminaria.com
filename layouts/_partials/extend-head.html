@@ -3,6 +3,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
 
+{{/* Noindex per tag pages con meno di 2 articoli (thin content per Google).
+     I tag con 1 solo articolo non meritano di essere indicizzati: il singolo
+     articolo è già indicizzato di per sé, la tag page non aggiunge valore. */}}
+{{- if and (eq .Kind "term") (eq .Type "tags") (lt (len .Pages) 2) -}}
+<meta name="robots" content="noindex" />
+{{- end }}
+
 {{/* Hreflang alternate tags for multilingual SEO */}}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
 {{ range .Translations }}
