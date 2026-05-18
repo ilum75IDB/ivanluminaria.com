@@ -9,5 +9,9 @@ defaultContentLanguageInSubdir = true
 
 enableRobotsTXT = true
 
+# Taxonomies: solo "tags" (rimossa "categories" che generava /categories/X duplicate delle /posts/X)
+[taxonomies]
+  tag = "tags"
+
 [outputs]
   home = ["HTML", "RSS", "JSON"]
