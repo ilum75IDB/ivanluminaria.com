@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# RSS feeds (XML, non-HTML — Google non li indicizza comunque)
+# Crawl budget saving: dire esplicitamente di non perderci tempo
+Disallow: /*/index.xml
+
+Sitemap: {{ "sitemap.xml" | absURL }}
