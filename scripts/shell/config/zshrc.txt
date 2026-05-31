@@ -2,14 +2,27 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 4.0
-# Data: 05 Marzo 2026
-# Nota: Aggiunto progetto WWW (www.ivanluminaria.com)
+# Versione: 6.1
+# Data: 31 Maggio 2026
+# Nota: Refactor WWW allo standard RCCS2025 — env e help spostati in
+#       <progetto>/scripts/shell/www_env.zsh + www_help.zsh (parametrico)
+# ===================================================================
+# 
+# Alias per restart del menu (ricarica zshrc)
+alias prjmenu='source ~/.zshrc'
+#
+#
 # ===================================================================
 # Configurazione del TOKEN per gh (github)
-# IMPORTANTE: inserisci qui il tuo GitHub Personal Access Token
-# Non committare mai il token reale nel repository!
-export GH_TOKEN="<IL_TUO_GH_TOKEN_QUI>"
+# ⚠️  NON METTERE MAI IL TOKEN IN CHIARO IN QUESTO FILE.
+# Questo file è tracciato in git e finisce su GitHub.
+#
+# Modo sicuro (consigliato): usa "gh auth login" → il token è salvato
+# nel Keychain di macOS, non serve esportarlo qui.
+#
+# Modo alternativo: salva il token in ~/.gh_token (NON tracciato in git)
+# e decommenta la riga sotto:
+# [[ -f ~/.gh_token ]] && export GH_TOKEN="$(cat ~/.gh_token)"
 # ===================================================================
 # CONFIGURAZIONE COLORI LS
 # ===================================================================
@@ -44,7 +57,7 @@ alias fixbrew='brew completions link && rm -f ~/.zcompdump* && exec zsh'
 # ===================================================================
 # COMPLETAMENTI E OPZIONI ZSH
 # ===================================================================
-autoload -Uz compinit && compinit -i
+autoload -Uz compinit && compinit
 setopt AUTO_CD              # Cambia directory senza cd
 setopt AUTO_PUSHD          # Mantieni stack directory
 setopt PUSHD_IGNORE_DUPS   # No duplicati nello stack
@@ -64,7 +77,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -105,6 +118,18 @@ set_www_prompt() {
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{033}[WWW]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 🌐 %# '
 }
+# Prompt GMA (Gmail Assistant AI Agent)
+set_gma_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{208}[GMA]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+📧 %# '
+}
+# Prompt WEBO (Web Orchestrator)
+set_webo_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{220}[WEBO]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🎛  %# '
+}
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
 # ===================================================================
@@ -144,85 +169,84 @@ switch_project() {
         3|www)
             echo "🌐 Caricamento ambiente ivanluminaria.com..."
             export CURRENT_PROJECT="www"
-            # Variabili progetto WWW
-            export WWW_PROJECT_DIR="/Users/ivanluminaria/Development/APPLICAZIONI/My-Web-Site/ivanluminaria.com"
-            export WWW_CONTENT_DIR="$WWW_PROJECT_DIR/content"
-            export WWW_CONFIG_DIR="$WWW_PROJECT_DIR/config/_default"
-            export WWW_DOCS_DIR="$WWW_PROJECT_DIR/DOCS"
-            export HUGO_BASE_URL="https://ilum75IDB.github.io/ivanluminaria.com/"
-            export WWW_PROD_URL="https://www.ivanluminaria.com/"
-            export WWW_REPO="ilum75IDB/ivanluminaria.com"
-            if [[ -d "$WWW_PROJECT_DIR" ]]; then
+            # Carica environment WWW (pattern modulare come RCC/GDM/WEBO)
+            WWW_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/My-Web-Site/ivanluminaria.com/scripts/shell/www_env.zsh"
+            if [[ -f "$WWW_ENV_FILE" ]]; then
+                source "$WWW_ENV_FILE"
                 cd "$WWW_PROJECT_DIR"
                 set_www_prompt
-                # Alias specifici Hugo/sito
-                alias hserve='hugo server -D --navigateToChanged'
-                alias hservepreview='hugo server -D -F --navigateToChanged'
-                alias hbuild='hugo --minify'
-                alias hclean='rm -rf public/ resources/_gen/ .hugo_build.lock'
-                alias hnew='hugo new'
-                # Navigazione rapida
-                alias cdwww='cd $WWW_PROJECT_DIR'
-                alias cdcontent='cd $WWW_CONTENT_DIR'
-                alias cdposts='cd $WWW_CONTENT_DIR/posts'
-                alias cdresumes='cd $WWW_CONTENT_DIR/resumes'
-                alias cdconfig='cd $WWW_CONFIG_DIR'
-                alias cddocs='cd $WWW_DOCS_DIR'
-                alias cdcss='cd $WWW_PROJECT_DIR/assets/css'
-                alias cdlayouts='cd $WWW_PROJECT_DIR/layouts'
-                # Git shortcuts per il sito
-                alias gstatus='git status'
-                alias gdiff='git diff'
-                alias glog='git log --oneline -20'
-                alias gpush='git push origin main'
-                alias gpull='git pull origin main'
-                # Deploy & preview
-                alias deploy='git add -A && git commit -m "update site" && git push origin main'
-                alias preview='open "https://ilum75IDB.github.io/ivanluminaria.com/"'
-                alias ghactions='open "https://github.com/ilum75IDB/ivanluminaria.com/actions"'
-                # Contenuti multilingua - crea set di file per nuova pagina
-                www_new_page() {
-                    local name=$1
-                    local dir=${2:-"content"}
-                    if [[ -z "$name" ]]; then
-                        echo "❌ Uso: www_new_page <nome> [directory]"
-                        echo "   Esempio: www_new_page about content"
-                        return 1
-                    fi
-                    for lang in it en es ro; do
-                        local filepath="$WWW_PROJECT_DIR/$dir/${name}.${lang}.md"
-                        if [[ ! -f "$filepath" ]]; then
-                            echo "---" > "$filepath"
-                            echo "title: \"\"" >> "$filepath"
-                            echo "date: $(date +%Y-%m-%dT%H:%M:%S%z)" >> "$filepath"
-                            echo "draft: true" >> "$filepath"
-                            echo "---" >> "$filepath"
-                            echo "✅ Creato: $filepath"
-                        else
-                            echo "⚠️  Esiste già: $filepath"
-                        fi
-                    done
-                }
-                # Contenuti multilingua - crea set di file per nuovo post
-                www_new_post() {
-                    local name=$1
-                    if [[ -z "$name" ]]; then
-                        echo "❌ Uso: www_new_post <slug-del-post>"
-                        echo "   Esempio: www_new_post oracle-vs-postgres"
-                        return 1
-                    fi
-                    www_new_page "$name" "content/posts"
-                }
-                # Submodule update per il tema Congo
-                alias themeupdate='cd $WWW_PROJECT_DIR && git submodule update --init --recursive'
                 echo "✅ Ambiente WWW caricato!"
                 echo "📝 Digita 'wwwhelp' per vedere i comandi disponibili"
             else
-                echo "❌ Directory progetto non trovata: $WWW_PROJECT_DIR"
+                echo "❌ File environment WWW non trovato: $WWW_ENV_FILE"
                 set_base_prompt
             fi
             ;;
-        4|none)
+        4|gma)
+            echo "📧 Caricamento ambiente Gmail Assistant AI Agent..."
+            export CURRENT_PROJECT="gma"
+            # Variabili progetto GMA
+            export GMA_PROJECT_DIR="/Users/ivanluminaria/Development/APPLICAZIONI/Gmail-Asistant-AI-Agent"
+            export GMA_VENV_DIR="$GMA_PROJECT_DIR/.venv"
+            export GMA_REPO="ilum75IDB/gmail-asistant-ai-agent"
+            export GMA_PORT="8000"
+            if [[ -d "$GMA_PROJECT_DIR" ]]; then
+                cd "$GMA_PROJECT_DIR"
+                set_gma_prompt
+                # Attiva il venv Python se esiste
+                if [[ -f "$GMA_VENV_DIR/bin/activate" ]]; then
+                    source "$GMA_VENV_DIR/bin/activate"
+                fi
+                # Navigazione rapida
+                alias cdgma='cd $GMA_PROJECT_DIR'
+                alias cdgmaapp='cd $GMA_PROJECT_DIR/app'
+                alias cdgmadata='cd $GMA_PROJECT_DIR/data'
+                alias cdgmadash='cd $GMA_PROJECT_DIR/dashboard'
+                alias cdgmamockups='cd $GMA_PROJECT_DIR/mockups'
+                alias cdgmascripts='cd $GMA_PROJECT_DIR/scripts'
+                # Server FastAPI
+                alias gmaserver='uvicorn app.main:app --reload --port $GMA_PORT'
+                alias gmaopen='open http://127.0.0.1:$GMA_PORT/docs'
+                alias gmahealth='curl -s http://127.0.0.1:$GMA_PORT/api/health | python -m json.tool'
+                alias gmastatus='curl -s http://127.0.0.1:$GMA_PORT/api/diagnostics | python -m json.tool'
+                # Database e seed
+                alias gmaseed='python -m scripts.seed_db'
+                alias gmaseedreset='python -m scripts.seed_db --reset'
+                alias gmadb='sqlite3 $GMA_PROJECT_DIR/data/state.db'
+                # Git shortcuts
+                alias gstatus='git status'
+                alias gdiff='git diff'
+                alias glog='git log --oneline -20'
+                alias gpush='git push'
+                alias gpull='git pull'
+                echo "✅ Ambiente GMA caricato!"
+                if [[ -n "$VIRTUAL_ENV" ]]; then
+                    echo "🐍 venv Python attivo: $VIRTUAL_ENV"
+                else
+                    echo "⚠️  venv non trovato. Crealo con: python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
+                fi
+                echo "📝 Digita 'gmahelp' per vedere i comandi disponibili"
+            else
+                echo "❌ Directory progetto non trovata: $GMA_PROJECT_DIR"
+                set_base_prompt
+            fi
+            ;;
+        5|webo)
+            echo "🎛  Caricamento ambiente Web Orchestrator..."
+            export CURRENT_PROJECT="webo"
+            # Carica environment WEBO (pattern modulare come RCC/GDM)
+            WEBO_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/My-Web-Site/web-orchestrator/scripts/shell/webo_env.zsh"
+            if [[ -f "$WEBO_ENV_FILE" ]]; then
+                source "$WEBO_ENV_FILE"
+                set_webo_prompt
+                echo "✅ Ambiente WEBO caricato!"
+                echo "📝 Digita 'webohelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment WEBO non trovato: $WEBO_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        6|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -242,6 +266,8 @@ alias goXamp='cd /Applications/XAMPP/xamppfiles/htdocs/'
 alias workrcc='switch_project rcc'
 alias workgdm='switch_project gdm'
 alias workwww='switch_project www'
+alias workgma='switch_project gma'
+alias workwebo='switch_project webo'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -268,6 +294,28 @@ project_status() {
             echo "🌍 URL: $HUGO_BASE_URL"
             echo "🏗️  Repo: $WWW_REPO"
             ;;
+        gma)
+            echo "📧 Gmail Assistant AI Agent (Python + FastAPI + SQLite)"
+            echo "📂 Dir: $GMA_PROJECT_DIR"
+            echo "🌐 URL locale: http://127.0.0.1:$GMA_PORT/"
+            echo "🏗️  Repo: $GMA_REPO"
+            if [[ -n "$VIRTUAL_ENV" ]]; then
+                echo "🐍 venv: $VIRTUAL_ENV"
+            else
+                echo "⚠️  venv NON attivo"
+            fi
+            ;;
+        webo)
+            echo "🎛  Web Orchestrator (Python + FastAPI + SQLite — dashboard editoriale multi-site)"
+            echo "📂 Dir: $WEBO_PROJECT_DIR"
+            echo "🌐 URL locale: http://127.0.0.1:$WEBO_PORT/"
+            echo "🏗️  Repo: $WEBO_REPO"
+            if [[ -n "$VIRTUAL_ENV" ]]; then
+                echo "🐍 venv: $VIRTUAL_ENV"
+            else
+                echo "⚠️  venv NON attivo"
+            fi
+            ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
             ;;
@@ -276,54 +324,104 @@ project_status() {
 }
 # Alias per status
 alias pstatus='project_status'
-# Help WWW
-wwwhelp() {
+# Help GMA
+gmahelp() {
     echo ""
-    echo "🌐 COMANDI WWW.IVANLUMINARIA.COM"
+    echo "📧 COMANDI GMAIL ASSISTANT AI AGENT"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
-    echo "🚀 HUGO:"
-    echo "  hserve          # Server locale come apparirà su GitHub Pages (drafts, no post futuri)"
-    echo "  hservepreview   # Server locale con anche i post programmati (date future) visibili"
-    echo "  hbuild          # Build produzione (--minify)"
-    echo "  hclean          # Pulisci public/ e cache"
-    echo "  hnew            # Crea nuovo contenuto Hugo"
-    echo "  themeupdate     # Aggiorna submodule tema Congo"
+    echo "🚀 SERVER FASTAPI:"
+    echo "  gmaserver       # Avvia uvicorn su porta $GMA_PORT (con auto-reload)"
+    echo "  gmaopen         # Apri /docs (Swagger UI) nel browser"
+    echo "  gmahealth       # GET /api/health"
+    echo "  gmastatus       # GET /api/diagnostics (conteggio record)"
+    echo ""
+    echo "🗄️  DATABASE SQLite:"
+    echo "  gmaseed         # Importa dashboard/seed/seed.json nel DB (idempotente)"
+    echo "  gmaseedreset    # Cancella dati operativi e reimporta da zero"
+    echo "  gmadb           # Apri shell SQLite su data/state.db"
     echo ""
     echo "📂 NAVIGAZIONE:"
-    echo "  cdwww           # Root progetto"
-    echo "  cdcontent       # Cartella content/"
-    echo "  cdposts         # Cartella posts/"
-    echo "  cdresumes       # Cartella resumes/"
-    echo "  cdconfig        # Cartella config/_default/"
-    echo "  cddocs          # Cartella docs/"
-    echo "  cdcss           # Cartella assets/css/"
-    echo "  cdlayouts       # Cartella layouts/"
+    echo "  cdgma           # Root progetto"
+    echo "  cdgmaapp        # Cartella app/ (FastAPI)"
+    echo "  cdgmadata       # Cartella data/ (DB SQLite, gitignored)"
+    echo "  cdgmadash       # Cartella dashboard/ (seed.json)"
+    echo "  cdgmamockups    # Cartella mockups/ (HTML prototipi)"
+    echo "  cdgmascripts    # Cartella scripts/ (seed_db.py, ...)"
     echo ""
-    echo "📝 CONTENUTI MULTILINGUA:"
-    echo "  www_new_page <nome> [dir]  # Crea pagina in 4 lingue (it/en/es/ro)"
-    echo "  www_new_post <slug>        # Crea post in 4 lingue (it/en/es/ro)"
-    echo ""
-    echo "🔄 GIT & DEPLOY:"
+    echo "🔄 GIT:"
     echo "  gstatus         # git status"
     echo "  gdiff           # git diff"
     echo "  glog            # git log (ultimi 20)"
-    echo "  gpush           # git push origin main"
-    echo "  gpull           # git pull origin main"
-    echo "  deploy          # add + commit + push (veloce)"
-    echo ""
-    echo "🌍 LINKS:"
-    echo "  preview         # Apri sito nel browser"
-    echo "  ghactions       # Apri GitHub Actions nel browser"
+    echo "  gpush           # git push"
+    echo "  gpull           # git pull"
     echo ""
     echo "📋 VARIABILI AMBIENTE:"
-    echo "  \$WWW_PROJECT_DIR  # $WWW_PROJECT_DIR"
-    echo "  \$WWW_CONTENT_DIR  # $WWW_CONTENT_DIR"
-    echo "  \$WWW_CONFIG_DIR   # $WWW_CONFIG_DIR"
-    echo "  \$WWW_DOCS_DIR     # $WWW_DOCS_DIR"
-    echo "  \$WWW_REPO         # $WWW_REPO"
-    echo "  \$HUGO_BASE_URL    # $HUGO_BASE_URL"
-    echo "  \$WWW_PROD_URL     # $WWW_PROD_URL"
+    echo "  \$GMA_PROJECT_DIR  # $GMA_PROJECT_DIR"
+    echo "  \$GMA_VENV_DIR     # $GMA_VENV_DIR"
+    echo "  \$GMA_REPO         # $GMA_REPO"
+    echo "  \$GMA_PORT         # $GMA_PORT"
+    echo ""
+    echo "🐍 PYTHON / VENV:"
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "  venv attivo: $VIRTUAL_ENV"
+    else
+        echo "  ⚠️  venv NON attivo. Per attivarlo:"
+        echo "      source $GMA_VENV_DIR/bin/activate"
+        echo "  Se non esiste ancora:"
+        echo "      python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
+    fi
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+}
+# Help WEBO
+webohelp() {
+    echo ""
+    echo "🎛  COMANDI WEB ORCHESTRATOR"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "🚀 SERVER FASTAPI:"
+    echo "  weboserver      # Avvia uvicorn su porta $WEBO_PORT (con auto-reload)"
+    echo "  weboopen        # Apri /docs (Swagger UI) nel browser"
+    echo "  webohealth      # GET /api/health"
+    echo "  webostatus      # GET /api/diagnostics (conteggio record + meta)"
+    echo ""
+    echo "🗄️  DATABASE SQLite:"
+    echo "  webodb          # Apri shell SQLite su data/orchestrator.db"
+    echo ""
+    echo "🎨 DASHBOARD MOCKUPS:"
+    echo "  webomockups     # Apri indice 3 varianti UI Fase 1 nel browser"
+    echo ""
+    echo "📂 NAVIGAZIONE:"
+    echo "  cdwebo          # Root progetto"
+    echo "  cdweboapp       # Cartella app/ (FastAPI)"
+    echo "  cdwebodata      # Cartella data/ (DB SQLite, gitignored)"
+    echo "  cdwebodocs      # Cartella docs/ (handoff, mockups)"
+    echo "  cdwebomockups   # Cartella docs/mockups/"
+    echo "  cdweboscripts   # Cartella scripts/ (CLI tools)"
+    echo ""
+    echo "🔄 GIT:"
+    echo "  gstatus         # git status"
+    echo "  gdiff           # git diff"
+    echo "  glog            # git log (ultimi 20)"
+    echo "  gpush           # git push"
+    echo "  gpull           # git pull"
+    echo ""
+    echo "📋 VARIABILI AMBIENTE:"
+    echo "  \$WEBO_PROJECT_DIR  # $WEBO_PROJECT_DIR"
+    echo "  \$WEBO_VENV_DIR     # $WEBO_VENV_DIR"
+    echo "  \$WEBO_REPO         # $WEBO_REPO"
+    echo "  \$WEBO_PORT         # $WEBO_PORT"
+    echo ""
+    echo "🐍 PYTHON / VENV:"
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "  venv attivo: $VIRTUAL_ENV"
+    else
+        echo "  ⚠️  venv NON attivo. Per attivarlo:"
+        echo "      source $WEBO_VENV_DIR/bin/activate"
+        echo "  Se non esiste ancora:"
+        echo "      python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
+    fi
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 }
@@ -408,16 +506,18 @@ show_project_menu() {
     echo "🚀 SELEZIONA AMBIENTE DI LAVORO"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
-    echo "  1) 🎮 Revolution Chess Clock (RCC)"
-    echo "  2) ♟️  Game Director Manager  (GDM)"
-    echo "  3) 🌐 www.ivanluminaria.com  (WWW)"
-    echo "  4) 🔧 Ambiente Base (no progetti)"
+    echo "  1) 🎮 Revolution Chess Clock   (RCC)"
+    echo "  2) ♟️  Game Director Manager   (GDM)"
+    echo "  3) 🌐 www.ivanluminaria.com    (WWW)"
+    echo "  4) 📧 Gmail Assistant AI Agent (GMA)"
+    echo "  5) 🎛  Web Orchestrator        (WEBO)"
+    echo "  6) 🔧 Ambiente Base            (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo -n "Scegli (1-4) o premi INVIO per ambiente base: "
+    echo -n "Scegli (1-6) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=4  # Default: ambiente base
+        choice=6  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
@@ -435,6 +535,8 @@ help() {
     echo "  workrcc         # Passa a Revolution Chess Clock"
     echo "  workgdm         # Passa a Game Director Manager"
     echo "  workwww         # Passa a www.ivanluminaria.com"
+    echo "  workgma         # Passa a Gmail Assistant AI Agent"
+    echo "  workwebo        # Passa a Web Orchestrator"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
     echo ""
@@ -448,6 +550,12 @@ help() {
             ;;
         www)
             echo "  wwwhelp         # Help comandi WWW"
+            ;;
+        gma)
+            echo "  gmahelp         # Help comandi GMA"
+            ;;
+        webo)
+            echo "  webohelp        # Help comandi WEBO"
             ;;
         *)
             echo "  (carica un progetto per vedere i comandi specifici)"
@@ -484,3 +592,6 @@ fi
 if [[ -z "$PROMPT" ]]; then
     set_base_prompt
 fi
+
+# npm global packages
+export PATH=~/.npm-global/bin:$PATH

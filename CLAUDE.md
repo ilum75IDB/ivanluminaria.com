@@ -76,10 +76,40 @@ hugo --minify
 
 Hugo **extended** version is required (for SCSS/PostCSS processing in the Congo theme).
 
-**Alias zsh disponibili** (definiti in `docs/SYS_CONF/zshrc.txt`, da copiare nel `~/.zshrc` dell'utente, disponibili dopo `workwww`):
+**Alias zsh disponibili** (caricati automaticamente quando l'utente attiva l'ambiente con `workwww`):
 
 - `hserve` → `hugo server -D --navigateToChanged` — simula esattamente cosa è online su GitHub Pages (draft visibili, post con data futura nascosti)
 - `hservepreview` → `hugo server -D -F --navigateToChanged` — include anche i post `scheduled` (data futura), utile per la revisione pre-pubblicazione
+
+Vedi la sezione **Shell environment (`scripts/shell/`)** sotto per la struttura completa dei file zsh.
+
+## Shell environment (`scripts/shell/`)
+
+L'ambiente shell del progetto segue lo **standard RCCS2025** (env separato + help/navigation parametrici). I file sono in `scripts/shell/` e vengono caricati dal `~/.zshrc` dell'utente quando si attiva l'ambiente con `workwww`.
+
+```
+scripts/shell/
+├── www_env.zsh            # Variabili, alias Hugo/Git/Deploy, funzioni www_new_page/post, wrapper wwwgo/wwwhelp
+├── www_help.zsh           # Sistema help parametrico (wwwhelp -U/-N/-C/-G/-L/-V/-H)
+├── www_go_manager.zsh     # Go manager parametrico (wwwgo project|content|posts|... + help/list)
+└── config/
+    └── zshrc.txt          # Copia di riferimento del ~/.zshrc dell'utente (master globale gestione progetti)
+```
+
+**Comandi parametrici principali**:
+
+- `wwwhelp` → menu sezioni (7 sezioni); `wwwhelp -U` Hugo, `-N` Navigazione, `-C` Contenuti, `-G` Git, `-L` Links, `-V` Variabili, `-H` Help & Setup
+- `wwwgo` → lista 10 directory target; `wwwgo project|content|posts|resumes|config|docs|css|layouts|shell|scripts`; alias `root` (= `project`), `blog` (= `posts`)
+
+**`scripts/shell/config/zshrc.txt`** è una **copia di riferimento** del `~/.zshrc` master di Ivan (vive in `~/`, fuori dal repo, gestisce il menu progetti: RCC/GDM/WWW/GMA/WEBO). Serve a:
+
+1. **Documentare** la struttura del menu globale e come WWW si integra (case `3|www` carica `scripts/shell/www_env.zsh`)
+2. **Recuperare** il file in caso di perdita dell'home dell'utente (es. cambio Mac, formattazione)
+3. **Confrontare** modifiche al `~/.zshrc` master quando si lavora cross-progetto
+
+⚠️ **Non è il file attivo**: modificarlo non ha effetti sulla shell. Per modifiche reali al menu progetti l'utente edita direttamente `~/.zshrc`, poi (se vuole tracciare il cambio) ricopia il file qui con: `cp ~/.zshrc scripts/shell/config/zshrc.txt`.
+
+Per modifiche all'ambiente WWW invece (alias, funzioni, variabili, sezioni help, target navigazione) si editano i file `www_*.zsh` in `scripts/shell/`, che vengono ricaricati con `workwww` o `prjmenu`.
 
 ## Deployment
 
@@ -554,3 +584,49 @@ Quando l'utente chiede "fammi i post della settimana" o simili, generare **entra
 2. Identificare l'hook migliore: un numero, un paradosso, una situazione concreta vissuta in prima persona
 3. Scrivere il post seguendo le regole sopra
 4. Proporre il risultato completo (EN + IT + hashtag) pronto per il copia-incolla su LinkedIn
+
+### Scheduling automatico via MCP Buffer ufficiale
+
+Oltre al workflow copia-incolla manuale (sopra), il progetto integra il **server MCP ufficiale di Buffer** (`https://mcp.buffer.com/mcp`) per schedulare i post LinkedIn direttamente in coda Buffer, evitando il passaggio manuale via dashboard.
+
+**Setup**:
+
+- Server MCP configurato in `.mcp.json` (project scope, committato — contiene solo URL pubblico, nessun token)
+- Auth: OAuth 2.1 al primo tool call → Claude apre browser, l'utente autorizza l'app Buffer, token salvato in `~/.claude/.credentials` (mai nel repo)
+- Account Buffer: piano Free → 3 canali simultanei + **10 post in coda per canale** (sufficiente per cadenza 2 post/settimana × 5 settimane)
+- File di tracking idempotenza: `docs/BUFFER_QUEUE.md` (committato), aggiornato dopo ogni scheduling riuscito
+
+**Quando attivare il workflow MCP**:
+
+- **Trigger esplicito**: l'utente dice "schedula i post Buffer per articolo X" / "schedula main e teaser per `<slug>`" / "metti in coda Buffer X"
+- **Mai automatico** dopo step 4 (RO) o dopo il commit della versione finale — richiede sempre l'approvazione esplicita del testo prima del push verso Buffer
+- **Mai sovrascrivere** uno slot Buffer già occupato senza istruzione esplicita: se la query `get_scheduled_posts` rileva conflitto, Claude segnala e si ferma
+
+**Flusso operativo "schedula post Buffer per articolo X"**:
+
+1. **Idempotency check**: leggere `docs/BUFFER_QUEUE.md` → se lo slug X compare già in "Coda corrente" o "Storico", fermarsi e segnalarlo all'utente (eventuale comando di re-schedule esplicito necessario)
+2. **Calcolo slot**:
+   - Leggere `docs/HUGO_PUBLICATIONS_TABLE.md` per ottenere la data di pubblicazione `D` dell'articolo X
+   - Leggere `docs/HOLIDAYS_CALENDAR.md` per verificare festività italiane
+   - **Main slot**: `D` alle 10:15 CET (shift mercoledì 16:20 se `D` è festività)
+   - **Teaser slot**: venerdì precedente (`D − 4 giorni`) alle 15:20 CET (shift giovedì 17:10 se festività)
+3. **Generazione testi**: scrivere main e teaser seguendo TUTTE le regole della macro-sezione "LinkedIn Post per promozione articoli" sopra (formato EN→IT, tono, divieti AI-tells, hashtag, lunghezza max 10 righe/lingua, teaser senza link articolo + chiusura "Martedì prossimo sul blog")
+4. **Verifica slot Buffer**: chiamata MCP `get_scheduled_posts` sui due slot calcolati → se uno o entrambi sono già occupati da altri post, segnalare conflitto all'utente e fermarsi
+5. **Approvazione esplicita dell'utente**: mostrare i 2 testi completi + le 2 datetime calcolate + lo stato slot Buffer → chiedere conferma `Sì/No` via `AskUserQuestion`. **Mai pushare senza esplicito Sì.**
+6. **Scheduling via MCP**: su `Sì`, chiamata MCP `create_post` × 2 (uno per teaser, uno per main) sul canale LinkedIn collegato, con `scheduled_at` esatto e testo approvato
+7. **Aggiornamento tracking**: aggiungere riga in "Coda corrente" di `docs/BUFFER_QUEUE.md` con `slug | data pubblicazione | teaser_post_id | teaser_scheduled_at | main_post_id | main_scheduled_at | timestamp scheduling`
+8. **Commit + push**: messaggio convenzionale `chore(buffer): schedule post LinkedIn per <slug> (teaser <date> + main <date>)`
+
+**Comandi correlati supportati**:
+
+- *"fammi vedere la coda Buffer"* → MCP `get_scheduled_posts` + render tabella in chat
+- *"aggiorna stato coda Buffer"* → query post `published` recenti → sposta entry da "Coda corrente" a "Storico" in `BUFFER_QUEUE.md`
+- *"cancella post Buffer di articolo X"* → idempotency check + MCP `delete_post` × 2 (teaser + main) + rimozione riga `BUFFER_QUEUE.md` + commit
+- *"riscrivi il testo del post Buffer di X"* → MCP `update_post` (NON delete+create — preserva il `post_id` e lo slot)
+
+**Cosa il workflow MCP NON sostituisce**:
+
+- La revisione manuale del testo prima del push (step 5 sopra è obbligatorio)
+- Le regole di tono, formato, divieti AI-tells (valgono identiche)
+- L'eventuale shift dello slot per festività italiane (Claude lo calcola, ma se la festività emerge a posteriori va corretto manualmente con `update_post` via MCP)
+- La possibilità di pubblicare un post fuori coda Buffer (post manuale dal LinkedIn nativo) → in quel caso aggiornare comunque `BUFFER_QUEUE.md` per coerenza tracking
