@@ -76,10 +76,40 @@ hugo --minify
 
 Hugo **extended** version is required (for SCSS/PostCSS processing in the Congo theme).
 
-**Alias zsh disponibili** (definiti in `docs/SYS_CONF/zshrc.txt`, da copiare nel `~/.zshrc` dell'utente, disponibili dopo `workwww`):
+**Alias zsh disponibili** (caricati automaticamente quando l'utente attiva l'ambiente con `workwww`):
 
 - `hserve` → `hugo server -D --navigateToChanged` — simula esattamente cosa è online su GitHub Pages (draft visibili, post con data futura nascosti)
 - `hservepreview` → `hugo server -D -F --navigateToChanged` — include anche i post `scheduled` (data futura), utile per la revisione pre-pubblicazione
+
+Vedi la sezione **Shell environment (`scripts/shell/`)** sotto per la struttura completa dei file zsh.
+
+## Shell environment (`scripts/shell/`)
+
+L'ambiente shell del progetto segue lo **standard RCCS2025** (env separato + help/navigation parametrici). I file sono in `scripts/shell/` e vengono caricati dal `~/.zshrc` dell'utente quando si attiva l'ambiente con `workwww`.
+
+```
+scripts/shell/
+├── www_env.zsh            # Variabili, alias Hugo/Git/Deploy, funzioni www_new_page/post, wrapper wwwgo/wwwhelp
+├── www_help.zsh           # Sistema help parametrico (wwwhelp -U/-N/-C/-G/-L/-V/-H)
+├── www_go_manager.zsh     # Go manager parametrico (wwwgo project|content|posts|... + help/list)
+└── config/
+    └── zshrc.txt          # Copia di riferimento del ~/.zshrc dell'utente (master globale gestione progetti)
+```
+
+**Comandi parametrici principali**:
+
+- `wwwhelp` → menu sezioni (7 sezioni); `wwwhelp -U` Hugo, `-N` Navigazione, `-C` Contenuti, `-G` Git, `-L` Links, `-V` Variabili, `-H` Help & Setup
+- `wwwgo` → lista 10 directory target; `wwwgo project|content|posts|resumes|config|docs|css|layouts|shell|scripts`; alias `root` (= `project`), `blog` (= `posts`)
+
+**`scripts/shell/config/zshrc.txt`** è una **copia di riferimento** del `~/.zshrc` master di Ivan (vive in `~/`, fuori dal repo, gestisce il menu progetti: RCC/GDM/WWW/GMA/WEBO). Serve a:
+
+1. **Documentare** la struttura del menu globale e come WWW si integra (case `3|www` carica `scripts/shell/www_env.zsh`)
+2. **Recuperare** il file in caso di perdita dell'home dell'utente (es. cambio Mac, formattazione)
+3. **Confrontare** modifiche al `~/.zshrc` master quando si lavora cross-progetto
+
+⚠️ **Non è il file attivo**: modificarlo non ha effetti sulla shell. Per modifiche reali al menu progetti l'utente edita direttamente `~/.zshrc`, poi (se vuole tracciare il cambio) ricopia il file qui con: `cp ~/.zshrc scripts/shell/config/zshrc.txt`.
+
+Per modifiche all'ambiente WWW invece (alias, funzioni, variabili, sezioni help, target navigazione) si editano i file `www_*.zsh` in `scripts/shell/`, che vengono ricaricati con `workwww` o `prjmenu`.
 
 ## Deployment
 
