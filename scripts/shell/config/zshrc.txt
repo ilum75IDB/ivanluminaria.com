@@ -2,10 +2,14 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 6.1
-# Data: 31 Maggio 2026
-# Nota: Refactor WWW allo standard RCCS2025 — env e help spostati in
-#       <progetto>/scripts/shell/www_env.zsh + www_help.zsh (parametrico)
+# Versione: 6.4
+# Data: 2 Giugno 2026
+# Nota: Aggiunto progetto Business Consultant Time Tracker (BCT) — SPA
+#       HTML/CSS/JS vanilla + Tailwind CDN per il tracking ore di consulenza.
+#       Pattern shell allineato a RCCS2025 (env separato + help parametrico
+#       + go manager) tramite skill globale mac-create-menu-zsh. Case 7|bct,
+#       "none" spostato a 8|none. Menu interattivo show_project_menu()
+#       e default INVIO aggiornati di conseguenza (Scegli 1-8, default=8).
 # ===================================================================
 # 
 # Alias per restart del menu (ricarica zshrc)
@@ -77,7 +81,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -129,6 +133,18 @@ set_webo_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{220}[WEBO]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 🎛  %# '
+}
+# Prompt ASG (ai-skill-generator)
+set_asg_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{099}[ASG]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+📚 %# '
+}
+# Prompt BCT (Business Consultant Time Tracker)
+set_bct_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{046}[BCT]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+⏱️  %# '
 }
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
@@ -185,49 +201,16 @@ switch_project() {
         4|gma)
             echo "📧 Caricamento ambiente Gmail Assistant AI Agent..."
             export CURRENT_PROJECT="gma"
-            # Variabili progetto GMA
-            export GMA_PROJECT_DIR="/Users/ivanluminaria/Development/APPLICAZIONI/Gmail-Asistant-AI-Agent"
-            export GMA_VENV_DIR="$GMA_PROJECT_DIR/.venv"
-            export GMA_REPO="ilum75IDB/gmail-asistant-ai-agent"
-            export GMA_PORT="8000"
-            if [[ -d "$GMA_PROJECT_DIR" ]]; then
+            # Carica environment GMA (pattern modulare come RCC/GDM/WWW)
+            GMA_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/Gmail-Asistant-AI-Agent/scripts/shell/gma_env.zsh"
+            if [[ -f "$GMA_ENV_FILE" ]]; then
+                source "$GMA_ENV_FILE"
                 cd "$GMA_PROJECT_DIR"
                 set_gma_prompt
-                # Attiva il venv Python se esiste
-                if [[ -f "$GMA_VENV_DIR/bin/activate" ]]; then
-                    source "$GMA_VENV_DIR/bin/activate"
-                fi
-                # Navigazione rapida
-                alias cdgma='cd $GMA_PROJECT_DIR'
-                alias cdgmaapp='cd $GMA_PROJECT_DIR/app'
-                alias cdgmadata='cd $GMA_PROJECT_DIR/data'
-                alias cdgmadash='cd $GMA_PROJECT_DIR/dashboard'
-                alias cdgmamockups='cd $GMA_PROJECT_DIR/mockups'
-                alias cdgmascripts='cd $GMA_PROJECT_DIR/scripts'
-                # Server FastAPI
-                alias gmaserver='uvicorn app.main:app --reload --port $GMA_PORT'
-                alias gmaopen='open http://127.0.0.1:$GMA_PORT/docs'
-                alias gmahealth='curl -s http://127.0.0.1:$GMA_PORT/api/health | python -m json.tool'
-                alias gmastatus='curl -s http://127.0.0.1:$GMA_PORT/api/diagnostics | python -m json.tool'
-                # Database e seed
-                alias gmaseed='python -m scripts.seed_db'
-                alias gmaseedreset='python -m scripts.seed_db --reset'
-                alias gmadb='sqlite3 $GMA_PROJECT_DIR/data/state.db'
-                # Git shortcuts
-                alias gstatus='git status'
-                alias gdiff='git diff'
-                alias glog='git log --oneline -20'
-                alias gpush='git push'
-                alias gpull='git pull'
                 echo "✅ Ambiente GMA caricato!"
-                if [[ -n "$VIRTUAL_ENV" ]]; then
-                    echo "🐍 venv Python attivo: $VIRTUAL_ENV"
-                else
-                    echo "⚠️  venv non trovato. Crealo con: python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
-                fi
                 echo "📝 Digita 'gmahelp' per vedere i comandi disponibili"
             else
-                echo "❌ Directory progetto non trovata: $GMA_PROJECT_DIR"
+                echo "❌ File environment GMA non trovato: $GMA_ENV_FILE"
                 set_base_prompt
             fi
             ;;
@@ -246,7 +229,39 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        6|none)
+        6|asg)
+            echo "📚 Caricamento ambiente ai-skill-generator..."
+            export CURRENT_PROJECT="asg"
+            # Carica environment ASG (pattern modulare come RCC/GDM/WWW/WEBO)
+            ASG_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/ai-skill-generator/scripts/shell/asg_env.zsh"
+            if [[ -f "$ASG_ENV_FILE" ]]; then
+                source "$ASG_ENV_FILE"
+                cd "$ASG_PROJECT_DIR"
+                set_asg_prompt
+                echo "✅ Ambiente ASG caricato!"
+                echo "📝 Digita 'asghelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment ASG non trovato: $ASG_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        7|bct)
+            echo "⏱️  Caricamento ambiente Business Consultant Time Tracker..."
+            export CURRENT_PROJECT="bct"
+            # Carica environment BCT (pattern modulare come RCC/GDM/WWW/GMA/WEBO/ASG)
+            BCT_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/business-consultant-time-tracker/scripts/shell/bct_env.zsh"
+            if [[ -f "$BCT_ENV_FILE" ]]; then
+                source "$BCT_ENV_FILE"
+                cd "$BCT_PROJECT_DIR"
+                set_bct_prompt
+                echo "✅ Ambiente BCT caricato!"
+                echo "📝 Digita 'bcthelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment BCT non trovato: $BCT_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        8|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -268,6 +283,8 @@ alias workgdm='switch_project gdm'
 alias workwww='switch_project www'
 alias workgma='switch_project gma'
 alias workwebo='switch_project webo'
+alias workasg='switch_project asg'
+alias workbct='switch_project bct'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -316,6 +333,17 @@ project_status() {
                 echo "⚠️  venv NON attivo"
             fi
             ;;
+        asg)
+            echo "📚 ai-skill-generator (Markdown only — archivio materiale agentico Claude Code)"
+            echo "📂 Dir: $ASG_PROJECT_DIR"
+            echo "🏗️  Repo: $ASG_REPO (privato)"
+            ;;
+        bct)
+            echo "⏱️  Business Consultant Time Tracker (SPA HTML/CSS/JS vanilla + Tailwind CDN)"
+            echo "📂 Dir: $BCT_PROJECT_DIR"
+            echo "🌐 URL locale: $BCT_LOCAL_URL"
+            echo "🏗️  Repo: $BCT_REPO"
+            ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
             ;;
@@ -324,56 +352,8 @@ project_status() {
 }
 # Alias per status
 alias pstatus='project_status'
-# Help GMA
-gmahelp() {
-    echo ""
-    echo "📧 COMANDI GMAIL ASSISTANT AI AGENT"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo ""
-    echo "🚀 SERVER FASTAPI:"
-    echo "  gmaserver       # Avvia uvicorn su porta $GMA_PORT (con auto-reload)"
-    echo "  gmaopen         # Apri /docs (Swagger UI) nel browser"
-    echo "  gmahealth       # GET /api/health"
-    echo "  gmastatus       # GET /api/diagnostics (conteggio record)"
-    echo ""
-    echo "🗄️  DATABASE SQLite:"
-    echo "  gmaseed         # Importa dashboard/seed/seed.json nel DB (idempotente)"
-    echo "  gmaseedreset    # Cancella dati operativi e reimporta da zero"
-    echo "  gmadb           # Apri shell SQLite su data/state.db"
-    echo ""
-    echo "📂 NAVIGAZIONE:"
-    echo "  cdgma           # Root progetto"
-    echo "  cdgmaapp        # Cartella app/ (FastAPI)"
-    echo "  cdgmadata       # Cartella data/ (DB SQLite, gitignored)"
-    echo "  cdgmadash       # Cartella dashboard/ (seed.json)"
-    echo "  cdgmamockups    # Cartella mockups/ (HTML prototipi)"
-    echo "  cdgmascripts    # Cartella scripts/ (seed_db.py, ...)"
-    echo ""
-    echo "🔄 GIT:"
-    echo "  gstatus         # git status"
-    echo "  gdiff           # git diff"
-    echo "  glog            # git log (ultimi 20)"
-    echo "  gpush           # git push"
-    echo "  gpull           # git pull"
-    echo ""
-    echo "📋 VARIABILI AMBIENTE:"
-    echo "  \$GMA_PROJECT_DIR  # $GMA_PROJECT_DIR"
-    echo "  \$GMA_VENV_DIR     # $GMA_VENV_DIR"
-    echo "  \$GMA_REPO         # $GMA_REPO"
-    echo "  \$GMA_PORT         # $GMA_PORT"
-    echo ""
-    echo "🐍 PYTHON / VENV:"
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        echo "  venv attivo: $VIRTUAL_ENV"
-    else
-        echo "  ⚠️  venv NON attivo. Per attivarlo:"
-        echo "      source $GMA_VENV_DIR/bin/activate"
-        echo "  Se non esiste ancora:"
-        echo "      python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
-    fi
-    echo ""
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-}
+# Help GMA: gestito dal wrapper gmahelp() in scripts/shell/gma_env.zsh
+# (delega a scripts/shell/gma_help.zsh per il sistema parametrico).
 # Help WEBO
 webohelp() {
     echo ""
@@ -506,18 +486,20 @@ show_project_menu() {
     echo "🚀 SELEZIONA AMBIENTE DI LAVORO"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
-    echo "  1) 🎮 Revolution Chess Clock   (RCC)"
-    echo "  2) ♟️  Game Director Manager   (GDM)"
-    echo "  3) 🌐 www.ivanluminaria.com    (WWW)"
-    echo "  4) 📧 Gmail Assistant AI Agent (GMA)"
-    echo "  5) 🎛  Web Orchestrator        (WEBO)"
-    echo "  6) 🔧 Ambiente Base            (BASE)"
+    echo "  1) 🎮 Revolution Chess Clock      (RCC)"
+    echo "  2) ♟️  Game Director Manager      (GDM)"
+    echo "  3) 🌐 www.ivanluminaria.com       (WWW)"
+    echo "  4) 📧 Gmail Assistant AI Agent    (GMA)"
+    echo "  5) 🎛  Web Orchestrator           (WEBO)"
+    echo "  6) 📚 ai-skill-generator          (ASG)"
+    echo "  7) ⏱️  Business Consultant Tracker (BCT)"
+    echo "  8) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo -n "Scegli (1-6) o premi INVIO per ambiente base: "
+    echo -n "Scegli (1-8) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=6  # Default: ambiente base
+        choice=8  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
@@ -537,6 +519,7 @@ help() {
     echo "  workwww         # Passa a www.ivanluminaria.com"
     echo "  workgma         # Passa a Gmail Assistant AI Agent"
     echo "  workwebo        # Passa a Web Orchestrator"
+    echo "  workasg         # Passa ad ai-skill-generator"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
     echo ""
@@ -556,6 +539,9 @@ help() {
             ;;
         webo)
             echo "  webohelp        # Help comandi WEBO"
+            ;;
+        asg)
+            echo "  asghelp         # Help comandi ASG"
             ;;
         *)
             echo "  (carica un progetto per vedere i comandi specifici)"
