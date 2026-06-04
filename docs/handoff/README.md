@@ -9,3 +9,4 @@ Convenzione naming: `HANDOFF_YYYY-MM-DD[-NN].md` per handoff individuali, `HANDO
 | File | Tema |
 |---|---|
 | [`HANDOFF_2026-06-04.md`](./HANDOFF_2026-06-04.md) | Risync zshrc.txt + merge su main |
+| [`HANDOFF_2026-06-05.md`](./HANDOFF_2026-06-05.md) | Nuova skill `blog-idea-to-issue` (idea→issue blog-article rich) + addendum strategico web-orchestrator #19 |
