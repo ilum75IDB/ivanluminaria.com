@@ -381,16 +381,22 @@ When the user asks for "tabella delle idee", "fammi vedere le idee", or "fammi v
 
 ## GitHub Issues
 
-In questo ambiente **non è disponibile `gh` CLI** e non è possibile accedere direttamente alle API di GitHub. Quando l'utente chiede di "creare una issue", in realtà sta chiedendo di **generare il comando `gh issue create` pronto per il copia-incolla**, in modo che possa eseguirlo lui stesso dal proprio terminale. Non tentare di installare `gh`, non provare workaround con `curl` o API proxy: fornisci direttamente i comandi `gh issue create` completi e pronti all'uso.
+In questo ambiente **`gh` CLI è disponibile e autenticato** (verifica con `gh auth status`). Claude e le skill di progetto (es. `.claude/skills/blog-idea-to-issue/`) possono usarlo per **leggere** le issue del repository (es. `gh issue list --repo ilum75IDB/ivanluminaria.com --label blog-article --state all`, `gh issue view <n> --json number,title,body,labels`).
+
+Per la **creazione, chiusura e modifica** delle issue (`gh issue create`, `gh issue close`, `gh issue edit`), invece, il principio resta: **Claude prepara il comando completo pronto per copia-incolla** e l'utente lo esegue dal proprio terminale. Questo per safety — la scrittura su issue è un'azione pubblicamente visibile sul repo, e segue la regola globale "agent propone, utente approva, l'agent esegue solo ciò che è approvato". Mai eseguire operazioni di scrittura `gh` autonomamente.
 
 ### Consultare le issue aperte
 
-Poiché `gh` CLI non è disponibile, il file **`docs/GITHUB_ISSUES.md`** contiene i link diretti alle issue aperte del repository. Quando l'utente chiede di consultare, ricordare o lavorare sulle issue:
+Due strade complementari:
 
-1. **Leggere `docs/GITHUB_ISSUES.md`** per ottenere i link delle issue
-2. **Usare `WebFetch`** sui link per leggere il contenuto completo di ciascuna issue da GitHub
-3. Quando una issue viene chiusa o ne vengono create di nuove, **aggiornare `docs/GITHUB_ISSUES.md`** di conseguenza
-4. Quando l'utente chiede di **creare una nuova issue** e poi la crea dal suo terminale, **chiedere sempre il link** della issue appena creata per poterlo inserire in `docs/GITHUB_ISSUES.md`. Non procedere senza aver aggiornato il file
+1. **`gh issue list` / `gh issue view`** (preferito per query specifiche, filtri, lettura body completo): es. `gh issue list --repo ilum75IDB/ivanluminaria.com --label blog-article --state open --json number,title,body`.
+2. **`docs/GITHUB_ISSUES.md`** (indice riepilogativo curato a mano): tracking file con i link delle issue raggruppate per sezione. Utile per overview rapide e per la "Dashboard delle pubblicazioni" (vedi sezione apposita). Resta autoritativo per la vista aggregata anche con `gh` disponibile.
+
+Regole di mantenimento di `docs/GITHUB_ISSUES.md`:
+
+1. Quando si crea una nuova issue, **aggiungere la riga** nella sezione corrispondente (es. "Issue Aperte — Sezione Oracle"). La skill `blog-idea-to-issue` lo fa automaticamente al Passo 8.
+2. Quando una issue viene chiusa, **spostarla** dalla sezione aperte alla sezione "Issue Chiuse" con la data di chiusura.
+3. Quando l'utente crea una issue manualmente dal proprio terminale, **chiedergli sempre il link** per poterlo inserire in `GITHUB_ISSUES.md`. Non procedere senza aver aggiornato il file.
 
 ### Chiusura issue di articoli pubblicati
 
