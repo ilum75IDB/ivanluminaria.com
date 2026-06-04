@@ -277,6 +277,8 @@ switch_project() {
 # ===================================================================
 alias sublime="open -a /Applications/Sublime\ Text.app"
 alias goXamp='cd /Applications/XAMPP/xamppfiles/htdocs/'
+# Shortcut per chiudere rapidamente la finestra/tab del terminale
+alias x='exit'
 # Alias per cambiare progetto velocemente
 alias workrcc='switch_project rcc'
 alias workgdm='switch_project gdm'
