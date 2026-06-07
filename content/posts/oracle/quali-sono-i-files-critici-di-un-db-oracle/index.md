@@ -1,18 +1,11 @@
 ---
-title: "Quali sono i files critici di un DB oracle"
+title: "ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogno"
 date: 2099-12-31
 draft: true
 section: oracle
 webo_status: da_approvare
 webo_generated_at: 2026-06-07
 ---
-
-<!-- TITOLI CANDIDATI (review umana sceglie il preferito)
-1. Quella notte in cui Oracle non ripartiva: i tre file senza cui un'istanza non esiste
-2. SPFILE, Control File e Online Redo Log: i file critici di un'istanza Oracle 19c
-3. ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogno
--->
-
 ## La chiamata delle tre di notte
 
 Era una finestra di manutenzione pianificata su storage — il tipo di attività che di solito va liscia perché l'hai fatta decine di volte. Un grande gruppo farmaceutico italiano, sistemi Oracle 19c che gestiscono tracciabilità dei lotti e compliance regolatoria. Il team storage aveva completato il lavoro nei tempi previsti. Poi era arrivato il momento di riavviare l'istanza.
