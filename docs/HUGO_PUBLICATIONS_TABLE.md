@@ -52,5 +52,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 | 37 | 2026-06-23 | —        | Tue | Oracle 19c, 21c, 23ai, 26ai: la riscrittura silenziosa dei domini di valori | oracle | #88 | 2026-05-16 | scheduled |
 | 38 | 2026-06-30 | —        | Tue | Da rivali a co-autori: come Booch, Rumbaugh e Jacobson hanno inventato UML | project-management | #85 | 2026-05-17 | scheduled |
 
+| 39 | 2026-07-07 | — | mar | Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomen | postgresql | #102 | 2026-06-08 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-07-07 (Tuesday)
