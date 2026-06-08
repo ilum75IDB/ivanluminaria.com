@@ -9,7 +9,7 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 52 | https://github.com/ilum75IDB/ivanluminaria.com/issues/52 | Migrazione Oracle 12c to 21c: 12 TB, nuovo server, 4 ore di downtime | aperta |
-
+| 101 | https://github.com/ilum75IDB/ivanluminaria.com/issues/101 | Oracle Text: indicizzare e ricercare testo in modo efficiente | aperta |
 ## Issue Aperte — Sezione Data Warehouse
 
 | #  | Issue | Titolo | Stato |
