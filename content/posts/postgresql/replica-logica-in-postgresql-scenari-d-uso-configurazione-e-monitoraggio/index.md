@@ -234,7 +234,7 @@ Per modifiche di schema frequenti o complesse, strumenti come `pg_logical` o sol
 
 ---
 
-## Chiusura
+## Le domande di Claudio
 
 Il sistema è andato in produzione senza intoppi. Non c'è stato un problema dell'ultimo minuto, non c'è stato un momento di tensione da raccontare. Il nuovo cluster PostgreSQL 15 ha preso il traffico, il data warehouse ha continuato a ricevere i dati antifrode, e il gruppo assicurativo ha avuto il suo upgrade senza finestre di manutenzione visibili agli utenti.
 
