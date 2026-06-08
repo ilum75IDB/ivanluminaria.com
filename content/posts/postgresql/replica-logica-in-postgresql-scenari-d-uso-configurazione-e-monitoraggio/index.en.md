@@ -234,7 +234,7 @@ For frequent or complex schema changes, tools like `pg_logical` or dedicated CDC
 
 ---
 
-## Closing
+## Claudio's questions
 
 The system went to production without incident. There was no last-minute problem, no tense moment worth recounting. The new PostgreSQL 15 cluster took over traffic, the data warehouse kept receiving fraud detection data, and the insurance group got its upgrade with no maintenance window visible to users.
 
