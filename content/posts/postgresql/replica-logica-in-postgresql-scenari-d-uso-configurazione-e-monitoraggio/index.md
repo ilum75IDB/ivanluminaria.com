@@ -1,17 +1,11 @@
 ---
-title: "Replica logica in PostgreSQL: scenari d'uso, configurazione e monitoraggio"
+title: "Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomento"
 date: 2099-12-31
 draft: true
 section: postgresql
 webo_status: da_approvare
 webo_generated_at: 2026-06-08
 ---
-
-<!-- TITOLI CANDIDATI (review umana sceglie il preferito)
-1. Le domande di Claudio sulla replica logica di PostgreSQL: un affiancamento in produzione
-2. Replica logica in PostgreSQL: scenari d'uso, configurazione e monitoraggio
-3. Migrazione cross-versione senza downtime: replica logica PostgreSQL in un gruppo assicurativo
--->
 
 ## Un affiancamento che non era una lezione
 
