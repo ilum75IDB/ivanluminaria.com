@@ -183,3 +183,22 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 **Ultimo aggiornamento**: 2026-05-17
 **Totale termini**: 163
 **Totale articoli con glossario**: 37
+
+## Articolo #55 — Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomento
+Sezione: postgresql
+
+### Publication
+oggetto PostgreSQL che definisce l'insieme di tabelle (e opzionalmente righe, dalla versione 15) i cui cambiamenti vengono resi disponibili per la replica logica. Creata sul publisher con `CREATE PUBLICATION`, può essere referenziata da più subscriber indipendenti.
+
+### Subscription
+oggetto PostgreSQL creato sul subscriber che stabilisce la connessione al publisher, specifica la publication a cui iscriversi e gestisce il ciclo di vita della replica: snapshot iniziale, streaming delle modifiche, riconnessione automatica.
+
+### Slot di replica logica
+struttura persistente sul publisher che traccia la posizione di consumo dei WAL per ogni subscriber. Garantisce che nessuna modifica venga persa in caso di disconnessione temporanea, al costo di trattenere i segmenti WAL fino al consumo.
+
+### WAL (Write-Ahead Log)
+registro sequenziale di tutte le modifiche apportate al database PostgreSQL, scritto prima che le modifiche vengano applicate ai file di dati. È la sorgente da cui la replica logica estrae le operazioni da trasmettere ai subscriber tramite il processo di decodifica logica.
+
+### CDC (Change Data Capture)
+tecnica che intercetta e trasmette in tempo quasi reale le modifiche ai dati di una sorgente verso sistemi destinatari (data warehouse, message broker, applicazioni). La replica logica di PostgreSQL implementa CDC nativamente tramite il protocollo `pgoutput`.
+
