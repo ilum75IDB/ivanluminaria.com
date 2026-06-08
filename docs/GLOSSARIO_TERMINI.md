@@ -41,7 +41,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | CTAS | Create Table As Select — tecnica Oracle per creare una nuova tabella popolandola con i risultati di una query, usata per migrazioni di tabelle di grandi dimensioni | oracle-partitioning |
 | Churn | Misura di quanto una tabella database cambia dopo l'inserimento iniziale dei dati (UPDATE/DELETE). Determina il costo di manutenzione degli indici GIN | like-optimization-postgresql |
 | Carbon Footprint | Quantità totale di gas serra emessi da un'attività — un'auto nel traffico romano produce 120-150 g di CO₂ per km, una bici zero | bici-vs-auto-roma |
-| CDC | Change Data Capture — tecnica per intercettare e propagare le modifiche ai dati in tempo reale, spesso basata sulla lettura dei log delle transazioni | binary-log-mysql |
+| CDC | Change Data Capture — tecnica per intercettare e propagare le modifiche ai dati in tempo reale, spesso basata sulla lettura dei log delle transazioni | binary-log-mysql, replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | CHECK constraint | Vincolo SQL standard che limita i valori ammessi in una colonna tramite un'espressione booleana. In MySQL è realmente applicato solo dalla versione 8.0.16 | enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa, enum-oracle-workaround-fino-a-23ai |
 | Compliance | Conformità alle normative, regolamenti e standard applicabili — nel contesto AI include GDPR, regolamenti di settore e policy interne | ai-manager-project-management |
 | Code Review | Pratica di revisione del codice da parte di un collega prima del merge, per catturare bug e condividere conoscenza nel team | ai-github-project-management |
@@ -112,6 +112,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Partition Pruning | Meccanismo automatico di Oracle che esclude le partizioni non rilevanti durante l'esecuzione di una query, leggendo solo quelle corrispondenti al predicato | oracle-partitioning, partitioning-dwh |
 | Pre-upgrade assessment | Misurazione strutturata di dimensioni, crescita, tempi di backup e restore di un database prima di un upgrade. Serve a dimensionare la finestra di manutenzione e a definire una strategia di rollback realistica | mysql-pre-upgrade-assessment |
 | Psychological Safety | Clima di team in cui le persone possono ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione | team-di-progetto-che-reggono |
+| Publication (PostgreSQL) | Oggetto della replica logica PostgreSQL che definisce l'insieme di tabelle (e righe, dalla 15) i cui cambiamenti vengono resi disponibili ai subscriber. Risiede sul publisher e può essere consumata da più subscriber indipendenti | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
 | pg_trgm | Estensione PostgreSQL che fornisce funzioni e operatori per la ricerca di similarità basata su trigrammi, abilitando l'uso di indici GIN per LIKE con wildcard | like-optimization-postgresql |
@@ -152,6 +153,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Sequential Scan | Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella senza utilizzare indici, efficiente su tabelle piccole ma problematica su tabelle grandi | pg-stat-statements |
 | Self-parenting | Tecnica di bilanciamento delle gerarchie sbilanciate: chi non ha un padre diventa padre di sé stesso, eliminando i NULL dalla dimensione | ragged-hierarchies |
 | Single-primary | Modalità di MySQL Group Replication in cui un solo nodo accetta scritture, mentre gli altri sono in sola lettura con failover automatico | mysql-group-replication-binlog-migration |
+| Slot di replica logica | Struttura PostgreSQL persistente sul publisher che traccia la posizione di consumo dei WAL per ogni subscriber. Garantisce che nessuna modifica venga persa in caso di disconnessione, al costo di trattenere i segmenti WAL. La causa numero uno di outage da replica logica è lo slot orfano che riempie il disco | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | Snapshot (Oracle) | Istantanea delle statistiche di performance catturata periodicamente da AWR (di default ogni 60 minuti) e usata per generare report diagnostici comparativi | oracle-awr-ash |
 | Star schema | Modello di dati tipico del data warehouse: una fact table al centro collegata a più tabelle dimensionali tramite chiavi esterne. Semplifica le query analitiche e ottimizza le performance | scd-tipo-2, fatto-grana-sbagliata, bus-matrix-terreno-comune |
 | Tablespace | Unità logica di storage in Oracle che raggruppa uno o più datafile fisici, usata per organizzare e gestire lo spazio su disco per tabelle, indici e partizioni | oracle-partitioning |
@@ -163,6 +165,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Swappiness | Parametro kernel Linux (vm.swappiness) che controlla la propensione del sistema a spostare pagine di memoria nello swap | oracle-linux-kernel |
 | Switchover | Operazione pianificata di Data Guard che inverte i ruoli tra primary e standby senza perdita di dati, reversibile e controllata | oracle-cloud-migration |
 | System Privilege | Privilegio Oracle che autorizza operazioni globali sul database come CREATE TABLE, CREATE SESSION o ALTER SYSTEM, indipendenti da qualsiasi oggetto specifico | oracle-roles-privileges |
+| Subscription (PostgreSQL) | Oggetto della replica logica PostgreSQL sul subscriber che stabilisce la connessione al publisher e gestisce il ciclo di vita della replica: snapshot iniziale, streaming WAL, riconnessione. Si monitora via `pg_stat_subscription` | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | systemd | Sistema di init e gestore dei servizi su Linux, usato per gestire istanze multiple di MySQL/MariaDB sullo stesso server tramite unit file separati | mysql-multi-istanza-secure-file-priv |
 | Version Control | Sistema che traccia ogni modifica al codice sorgente, permettendo cronologia, annullamento e collaborazione. Git è lo standard attuale | ai-github-project-management |
 | VACUUM | Comando PostgreSQL che recupera lo spazio occupato dai dead tuples, rendendolo riutilizzabile per nuovi inserimenti | vacuum-autovacuum-postgresql |
@@ -172,6 +175,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Unified Audit | Sistema di audit centralizzato introdotto in Oracle 12c che unifica tutti i tipi di audit in un'unica infrastruttura, sostituendo il vecchio audit tradizionale | oracle-roles-privileges |
 | Use Case | Tecnica di analisi dei requisiti introdotta da Ivar Jacobson che descrive il sistema dal punto di vista dell'attore che lo usa, non degli oggetti che lo compongono. Uno dei tre pilastri che hanno alimentato UML | da-rivali-a-co-autori-uml-rup |
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
+| WAL | Write-Ahead Log — registro sequenziale di tutte le modifiche al database PostgreSQL, scritto prima dei file dati. Fondamento di durability, crash recovery, replica fisica e logica. La replica logica lo decodifica via plugin `pgoutput` in cambi logici riga per riga | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
 | xtrabackup | Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione, gestendo le transazioni attive tramite il redo log. Nettamente più veloce dei backup logici su dataset grandi | mysql-pre-upgrade-assessment |
@@ -180,25 +184,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-05-17
-**Totale termini**: 163
-**Totale articoli con glossario**: 37
-
-## Articolo #55 — Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomento
-Sezione: postgresql
-
-### Publication
-oggetto PostgreSQL che definisce l'insieme di tabelle (e opzionalmente righe, dalla versione 15) i cui cambiamenti vengono resi disponibili per la replica logica. Creata sul publisher con `CREATE PUBLICATION`, può essere referenziata da più subscriber indipendenti.
-
-### Subscription
-oggetto PostgreSQL creato sul subscriber che stabilisce la connessione al publisher, specifica la publication a cui iscriversi e gestisce il ciclo di vita della replica: snapshot iniziale, streaming delle modifiche, riconnessione automatica.
-
-### Slot di replica logica
-struttura persistente sul publisher che traccia la posizione di consumo dei WAL per ogni subscriber. Garantisce che nessuna modifica venga persa in caso di disconnessione temporanea, al costo di trattenere i segmenti WAL fino al consumo.
-
-### WAL (Write-Ahead Log)
-registro sequenziale di tutte le modifiche apportate al database PostgreSQL, scritto prima che le modifiche vengano applicate ai file di dati. È la sorgente da cui la replica logica estrae le operazioni da trasmettere ai subscriber tramite il processo di decodifica logica.
-
-### CDC (Change Data Capture)
-tecnica che intercetta e trasmette in tempo quasi reale le modifiche ai dati di una sorgente verso sistemi destinatari (data warehouse, message broker, applicazioni). La replica logica di PostgreSQL implementa CDC nativamente tramite il protocollo `pgoutput`.
+**Ultimo aggiornamento**: 2026-06-08
+**Totale termini**: 167
+**Totale articoli con glossario**: 38
 
