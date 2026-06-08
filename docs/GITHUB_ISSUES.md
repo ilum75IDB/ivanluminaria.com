@@ -32,7 +32,7 @@ tool `WebFetch`.
 | #  | Issue | Titolo | Stato |
 |----|-------|--------|-------|
 | 50 | https://github.com/ilum75IDB/ivanluminaria.com/issues/50 | PgBouncer: quando PostgreSQL non regge 500 connessioni | aperta |
-
+| 102 | https://github.com/ilum75IDB/ivanluminaria.com/issues/102 | Replica logica in PostgreSQL: scenari d'uso, configurazione e monitoraggio | aperta |
 ## Issue Aperte — Sezione Project Management
 
 | #  | Issue | Titolo | Stato |
