@@ -7,9 +7,11 @@ Copiare il blocco sottostante e sostituire il placeholder finale con la descrizi
 
 ## Prompt
 
-Crea un'illustrazione in formato 16:9, in stile cartone retro anni '50 UPA, arte vettoriale minimal mid-century modern con forte influenza Art Deco.
+Crea un'illustrazione in formato **3:2 (1536×1024 px)**, in stile cartone retro anni '50 UPA, arte vettoriale minimal mid-century modern con forte influenza Art Deco.
 
 Lo stile deve essere coerente con poster corporate americani anni '50, animazione UPA, grafica editoriale elegante e geometrica.
+
+**Resa visiva tassativa**: **illustrazione vettoriale 2D piatta**, mai 3D, mai effetto "plasticoso" o gloss/shiny, mai render fotorealistico, mai look pubblicitario contemporaneo. Texture di carta visibile per dare matericità "stampata". Ogni superficie deve apparire **piatta** e bidimensionale: niente riflessi, niente bevel, niente lucentezza moderna.
 
 **Direzione artistica:**
 
@@ -73,6 +75,14 @@ Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme s
 - evitare qualsiasi estetica moderna da stock illustration
 - evitare look realistico o digitale contemporaneo
 - evitare eccesso di oggetti, testo o micro-dettagli
+- **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna**: ogni superficie deve essere piatta come una serigrafia anni '50
+
+**Testo nell'immagine:**
+
+- Limitare al minimo qualsiasi testo nell'illustrazione
+- **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
+- Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
+- Preferire simboli geometrici, icone stilizzate, frecce e pittogrammi astratti al posto di parole quando possibile
 
 **SCENA DA RAPPRESENTARE:**
 
