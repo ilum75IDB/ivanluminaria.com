@@ -5,6 +5,7 @@ translationKey: "glossary_cdc"
 aka: "Change Data Capture"
 articles:
   - "/posts/mysql/binary-log-mysql"
+  - "/posts/postgresql/replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio"
 ---
 
 **CDC** (Change Data Capture) este o tehnică pentru interceptarea modificărilor de date (INSERT, UPDATE, DELETE) în momentul în care au loc și propagarea lor către alte sisteme în timp real sau aproape real. Spre deosebire de abordările batch tradiționale (ETL periodic), CDC captează modificările în mod continuu și incremental.
