@@ -2,18 +2,11 @@
 date: 2099-12-31
 draft: true
 section: oracle
-title: 'ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne
+title: "ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogno"
   bisogno'
 webo_generated_at: 2026-06-07
 webo_status: da_approvare
 ---
-
-<!--
-TITOLI CANDIDATI:
-1. ORA-00205 alle tre di notte: sequenza di startup Oracle e i tre file che non possono mancare
-2. La chiamata di Paolo: diagnosticare un'istanza Oracle ferma in MOUNT senza perdere tempo
-3. Startup Oracle in tre fasi: come un ORA-00205 insegna più di un corso di architettura
--->
 
 ## La chiamata
 
