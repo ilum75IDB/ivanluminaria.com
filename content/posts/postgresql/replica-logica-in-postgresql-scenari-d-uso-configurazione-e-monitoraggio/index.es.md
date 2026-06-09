@@ -1,10 +1,10 @@
 ---
-date: '2026-07-07'
-draft: false
+title: "Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomento"
+date: 2099-12-31
+draft: true
 section: postgresql
-title: 'Replica logica in PostgreSQL: le domande di un collega che chiariscono l''argomento'
+webo_status: da_tradurre
 webo_generated_at: 2026-06-08
-webo_status: scheduled
 ---
 
 ## Un acompañamiento que no era una clase
