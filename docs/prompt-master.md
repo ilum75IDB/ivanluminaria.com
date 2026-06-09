@@ -68,6 +68,42 @@ L'immagine deve sembrare una singola illustrazione coerente, non un collage.
 
 Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme semplificate, silhouette espressiva, baffi a manubrio come elemento grafico forte e immediatamente leggibile. Non fotorealistico — deve sembrare un personaggio da poster aziendale vintage.
 
+**PERSONAGGI MULTIPLI — scene a due o più voci (telefonate, affiancamenti, riunioni, conversazioni):**
+
+Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena specifica DEVE:
+
+1. **Identificare esplicitamente quale personaggio rappresenta "Ivan"** — il personaggio con i baffi a manubrio (vedi sopra). Gli altri personaggi NON hanno i baffi a manubrio, hanno un'identità visiva distinta (es. occhiali, cravatta da impiegato giovane, capelli lisci tirati indietro, ecc.).
+2. **Adattare abbigliamento, contesto e mood di Ivan al ruolo che ha nella scena**, non al default "giacca elegante anni '50". L'abbigliamento di default vale solo per scene di ufficio diurno o ambito professionale formale.
+
+**Caso telefonata notturna (Ivan = chi riceve la chiamata, viene svegliato):**
+
+- Ivan **NON è in giacca**: indossa vestaglia di seta o pigiama elegante anni '50 — la chiamata lo sveglia
+- Ambientazione **notturna in penombra**: una sola lampada da tavolo accesa, ombre lunghe, mood soffuso
+- Ivan **seduto in poltrona di pelle** o **in piedi accanto al letto**, telefono nero d'epoca con cornetta in mano
+- Espressione: **concentrato anche se appena svegliato**, mai imbambolato — sta già pensando alla soluzione
+- L'interlocutore (chi chiama, NON Ivan) può essere mostrato in **secondo piano stilizzato** (silhouette di profilo, mezzo busto su sfondo neutro) oppure **omesso** lasciando solo Ivan al telefono come unico focus
+- Orologio sullo sfondo che indichi l'ora notturna (es. silhouette di orologio a parete che segna le 3) come elemento simbolico
+- Mai scrivania-giacca-camicia in questa situazione
+
+**Caso telefonata diurna (Ivan = chi chiama, ufficio diurno):**
+
+- Ivan **seduto alla scrivania**, giacca elegante, telefono in mano, espressione decisa
+- Ambientazione **professionale diurna**, luce naturale
+- L'interlocutore può essere implicito o mostrato in piccolo in secondo piano
+
+**Caso affiancamento (Ivan = DBA senior mentor + collega junior):**
+
+- Ivan in giacca elegante + baffi a manubrio (il senior, riconoscibile)
+- Il junior: capelli ordinati senza baffi distintivi, camicia con cravatta giovane (es. cravatta colorata), espressione attenta, quaderno aperto in mano o sguardo verso la lavagna/monitor
+- Composizione: i due personaggi insieme davanti a una lavagna stilizzata, un monitor, o una scrivania con simboli geometrici (frecce, diagrammi, cilindri-database)
+- Mood didattico, conversazionale
+
+**Caso riunione / discussione tecnica (Ivan + 1-2 altri colleghi):**
+
+- Ivan riconoscibile per baffi a manubrio + abbigliamento di base
+- Altri: identità visive distinte, sguardi convergenti su un punto centrale (errore su monitor, comando SQL su lavagna, grafico)
+- Composizione triangolare/circolare attorno all'oggetto della discussione
+
 **Importante:**
 
 - mantenere sempre coerenza totale con lo stile retro UPA/mid-century
