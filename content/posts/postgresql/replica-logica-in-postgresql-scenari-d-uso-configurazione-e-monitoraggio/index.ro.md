@@ -1,10 +1,10 @@
 ---
-title: "Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomento"
-date: 2099-12-31
-draft: true
+date: '2026-07-07'
+draft: false
 section: postgresql
-webo_status: da_tradurre
+title: 'Replica logica in PostgreSQL: le domande di un collega che chiariscono l''argomento'
 webo_generated_at: 2026-06-08
+webo_status: scheduled
 ---
 
 ## Un însoțire care nu era o lecție
