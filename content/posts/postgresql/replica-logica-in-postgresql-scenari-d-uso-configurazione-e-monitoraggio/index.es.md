@@ -1,8 +1,13 @@
 ---
-date: '2026-07-07'
+title: "Replicación lógica en PostgreSQL: las preguntas de un colega que aclaran el tema"
+seoTitle: "Replicación lógica PostgreSQL: escenarios y configuración"
+description: "Replicación lógica PostgreSQL explicada con las preguntas de un colega: migración cross-version, CDC hacia data warehouse, configuración paso a paso."
+date: "2026-07-07T08:03:00+01:00"
 draft: false
-section: postgresql
-title: 'Replica logica in PostgreSQL: le domande di un collega che chiariscono l''argomento'
+translationKey: "replica_logica_in_postgresql_scenari_uso"
+tags: ["replica-logica", "cdc", "migration", "postgresql-13", "postgresql-15"]
+categories: ["postgresql"]
+image: "replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg"
 webo_generated_at: 2026-06-08
 webo_status: scheduled
 ---
