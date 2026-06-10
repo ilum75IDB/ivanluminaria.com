@@ -1,10 +1,11 @@
 ---
-date: 2099-12-31
-draft: true
+date: '2026-07-14'
+draft: false
 section: oracle
-title: "ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogno"
+title: 'ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne
+  bisogno'
 webo_generated_at: 2026-06-07
-webo_status: da_approvare
+webo_status: scheduled
 ---
 
 ## La chiamata

@@ -1,10 +1,11 @@
 ---
-title: "ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogno"
-date: 2099-12-31
-draft: true
+date: '2026-07-14'
+draft: false
 section: oracle
-webo_status: da_tradurre
+title: 'ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne
+  bisogno'
 webo_generated_at: 2026-06-09
+webo_status: scheduled
 ---
 
 ## Apelul
