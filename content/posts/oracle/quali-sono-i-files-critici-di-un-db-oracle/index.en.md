@@ -1,9 +1,13 @@
 ---
-date: '2026-07-14'
+title: "ORA-00205 at three in the morning: understanding Oracle critical files before you need to"
+seoTitle: "ORA-00205: Oracle 19c critical files (SPFILE, control, redo)"
+description: "Step-by-step diagnosis of ORA-00205 during a night emergency: MOUNT phase, control file, SPFILE, redo log. A practical method for on-call Oracle DBAs."
+date: "2026-07-14T08:03:00+01:00"
 draft: false
-section: oracle
-title: 'ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne
-  bisogno'
+translationKey: "quali_sono_i_files_critici_di_un_db_oracle"
+tags: ["incident-response", "startup", "control-file", "oracle-19c"]
+categories: ["oracle"]
+image: "quali-sono-i-files-critici-di-un-db-oracle.cover.jpg"
 webo_generated_at: 2026-06-09
 webo_status: scheduled
 ---
