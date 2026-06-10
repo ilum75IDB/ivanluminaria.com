@@ -54,5 +54,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 39 | 2026-07-07 | — | mar | Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomen | postgresql | #102 | 2026-06-09 | scheduled |
 
+| 40 | 2026-07-14 | — | Tue | ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogn | oracle | #99 | 2026-06-10 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-07-07 (Tuesday)

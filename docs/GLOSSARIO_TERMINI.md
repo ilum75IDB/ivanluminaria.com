@@ -35,6 +35,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration |
+| Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
 | Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
 | Cutover | Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura | oracle-cloud-migration |
@@ -101,6 +102,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | mysqlpump | Evoluzione di mysqldump introdotta in MySQL 5.7, con supporto per il parallelismo a livello di tabella e compressione nativa. Deprecato da Oracle in MySQL 8.0.34 per problemi di consistenza | mysqldump-mysqlpump-mydumper |
 | Nested Loop | Strategia di join che per ogni riga della tabella esterna cerca le corrispondenze nella tabella interna. Ideale per poche righe, disastrosa su grandi volumi | explain-analyze-postgresql |
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
+| OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
+| Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
 | Pull Request | Meccanismo di proposta e revisione delle modifiche al codice su GitHub, con code review e approvazione prima del merge nel branch principale | ai-github-project-management |
 | Parking Lot | Lista visibile di argomenti emersi durante una riunione che meritano approfondimento ma vengono rinviati a dopo per rispettare il timebox | standup-meeting-15-minuti |
 | Pedalata Assistita | Sistema di propulsione elettrica che amplifica la forza della pedalata, eliminando il problema delle salite e del sudore nei tragitti urbani | bici-vs-auto-roma |
@@ -136,6 +139,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | RPO | Recovery Point Objective — la quantità massima di dati che un'organizzazione può permettersi di perdere in caso di disastro, misurata in tempo | oracle-data-guard |
 | RTO | Recovery Time Objective — il tempo massimo accettabile per ripristinare un servizio dopo un guasto o un disastro | oracle-data-guard |
 | Schema | Namespace logico all'interno di un database che raggruppa tabelle, viste, funzioni e altri oggetti, permettendo organizzazione e separazione dei permessi | postgresql_roles_and_users |
+| SCN | Numero sequenziale monotono crescente che Oracle usa per identificare un punto preciso nella vita del database. Presente | quali-sono-i-files-critici-di-un-db-oracle |
 | Scrum | Framework agile per la gestione di progetti che organizza il lavoro in sprint a durata fissa, con ruoli definiti e cerimonie strutturate | standup-meeting-15-minuti |
 | Scope | Perimetro di un progetto che definisce cosa è incluso e cosa è escluso: funzionalità, deliverable, vincoli e confini concordati con gli stakeholder | tecnica-si-e-yes-and |
 | shared_buffers | Area di memoria condivisa di PostgreSQL che funge da cache per i blocchi dati letti dal disco. Il parametro più importante per il tuning della memoria, con un default di 128 MB quasi sempre inadeguato | pg-stat-statements |
@@ -143,6 +147,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | SCAN Listener | Single Client Access Name — componente Oracle RAC che fornisce un unico punto di accesso al cluster, distribuendo automaticamente le connessioni tra i nodi disponibili | oracle-cloud-migration |
 | Smart Working | Modello di lavoro flessibile che combina lavoro da remoto e presenza in ufficio, basato su obiettivi misurabili invece che su presenza fisica | smartworking-consulenza-it |
 | Scope Creep | Espansione incontrollata dei requisiti di progetto oltre il perimetro iniziale, che porta a ritardi, aumento dei costi e spesso al fallimento del progetto | 4-milioni-nessun-software |
+| SPFILE | Server Parameter File: file binario letto da Oracle all'avvio che contiene i parametri di configurazione dell'istanza (` | quali-sono-i-files-critici-di-un-db-oracle |
 | Stakeholder | Persona o gruppo con un interesse diretto nel risultato di un progetto: committente, utente finale, sponsor, team tecnico | tecnica-si-e-yes-and |
 | SCD | Slowly Changing Dimension — tecnica di data warehouse per tracciare le variazioni nel tempo dei dati nelle tabelle dimensionali | scd-tipo-2 |
 | secure-file-priv | Direttiva di sicurezza MySQL che limita le directory in cui il server può leggere e scrivere file, proteggendo il filesystem da operazioni non autorizzate | mysql-multi-istanza-secure-file-priv |
@@ -184,7 +189,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-06-08
-**Totale termini**: 167
-**Totale articoli con glossario**: 38
+**Ultimo aggiornamento**: 2026-06-10
+**Totale termini**: 172
+**Totale articoli con glossario**: 39
 
