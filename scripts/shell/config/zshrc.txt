@@ -2,14 +2,14 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 6.4
-# Data: 2 Giugno 2026
-# Nota: Aggiunto progetto Business Consultant Time Tracker (BCT) — SPA
-#       HTML/CSS/JS vanilla + Tailwind CDN per il tracking ore di consulenza.
-#       Pattern shell allineato a RCCS2025 (env separato + help parametrico
-#       + go manager) tramite skill globale mac-create-menu-zsh. Case 7|bct,
-#       "none" spostato a 8|none. Menu interattivo show_project_menu()
-#       e default INVIO aggiornati di conseguenza (Scegli 1-8, default=8).
+# Versione: 6.6
+# Data: 9 Giugno 2026
+# Nota: Mac Filesystem Cleaner (MFSC) migrato allo standard shell RCCS2025
+#       tramite skill /mac-create-menu-zsh: stub mfsc_env.zsh sostituito da
+#       env completo (alias FastAPI/DB/test/git/venv + wrapper mfscgo/mfschelp),
+#       aggiunti mfsc_help.zsh parametrico (8 sezioni: -S/-D/-T/-N/-G/-P/-V/-H)
+#       e mfsc_go_manager.zsh (13 target navigazione). Case 8|mfsc arricchito
+#       con riga "Digita 'mfschelp'". Nessun cambio alla numerazione del menu.
 # ===================================================================
 # 
 # Alias per restart del menu (ricarica zshrc)
@@ -81,7 +81,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, mfsc
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -145,6 +145,12 @@ set_bct_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{046}[BCT]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 ⏱️  %# '
+}
+# Prompt MFSC (Mac Filesystem Cleaner)
+set_mfsc_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{051}[MFSC]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🧹 %# '
 }
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
@@ -261,7 +267,22 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        8|none)
+        8|mfsc)
+            echo "🧹 Caricamento ambiente Mac Filesystem Cleaner..."
+            export CURRENT_PROJECT="mfsc"
+            MFSC_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/mac-filesystem-cleaner/scripts/shell/mfsc_env.zsh"
+            if [[ -f "$MFSC_ENV_FILE" ]]; then
+                source "$MFSC_ENV_FILE"
+                cd "$MFSC_PROJECT_DIR"
+                set_mfsc_prompt
+                echo "✅ Ambiente MFSC caricato!"
+                echo "📝 Digita 'mfschelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment MFSC non trovato: $MFSC_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        9|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -287,6 +308,7 @@ alias workgma='switch_project gma'
 alias workwebo='switch_project webo'
 alias workasg='switch_project asg'
 alias workbct='switch_project bct'
+alias workmfsc='switch_project mfsc'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -345,6 +367,11 @@ project_status() {
             echo "📂 Dir: $BCT_PROJECT_DIR"
             echo "🌐 URL locale: $BCT_LOCAL_URL"
             echo "🏗️  Repo: $BCT_REPO"
+            ;;
+        mfsc)
+            echo "🧹 Mac Filesystem Cleaner (stack ancora non definito)"
+            echo "📂 Dir: $MFSC_PROJECT_DIR"
+            echo "🏗️  Repo: $MFSC_REPO"
             ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
@@ -495,13 +522,14 @@ show_project_menu() {
     echo "  5) 🎛  Web Orchestrator           (WEBO)"
     echo "  6) 📚 ai-skill-generator          (ASG)"
     echo "  7) ⏱️  Business Consultant Tracker (BCT)"
-    echo "  8) 🔧 Ambiente Base               (BASE)"
+    echo "  8) 🧹 Mac Filesystem Cleaner      (MFSC)"
+    echo "  9) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo -n "Scegli (1-8) o premi INVIO per ambiente base: "
+    echo -n "Scegli (1-9) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=8  # Default: ambiente base
+        choice=9  # Default: ambiente base
     fi
     echo ""
     switch_project $choice

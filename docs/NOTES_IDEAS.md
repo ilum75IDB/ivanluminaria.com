@@ -2,6 +2,24 @@
 
 ## Issue create
 
+### Replica logica in PostgreSQL: scenari d'uso, configurazione e monitoraggio — Issue #102
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/102
+- **Concept**: L'articolo si concentrerà sulla replica logica di PostgreSQL, illustrando i concetti fondamentali, i suoi vantaggi rispetto alla replica fisica per specifici scenari (es. aggiornamenti selettivi, migrazioni cross-versioni, integrazione con sistemi esterni) e le limitazioni. Verranno forniti passaggi dettagliati per la configurazione, esempi pratici di utilizzo e consigli per il monitoraggio e la gestione degli eventuali problemi.
+- **Sezione**: PostgreSQL
+- **Slot proposto**: (da definire)
+- **Data nota**: 2026-06-08
+- **Data issue**: 2026-06-08
+
+
+### Oracle Text: indicizzare e ricercare testo in modo efficiente — Issue #101
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/101
+- **Concept**: L'articolo esplorerà le capacità di full-text search di Oracle Text, una componente integrata di Oracle Database. Verranno presentati i concetti di base degli indici CONTEXT, CATSEARCH e CTXXPATH, spiegando come configurarli, ottimizzarli per diverse tipologie di dati testuali (documenti, email, XML) e utilizzarli nelle query. L'obiettivo è fornire una guida pratica per implementare ricerche testuali avanzate e performanti.
+- **Sezione**: Oracle
+- **Slot proposto**: (da definire)
+- **Data nota**: 2026-06-08
+- **Data issue**: 2026-06-08
+
+
 ### Mini-serie cross-DB sulle enumerazioni (4 articoli, giugno 2026)
 
 Quattro articoli in quattro settimane consecutive, stesso tono didattico (linee guida applicate come commento alle 4 issue):
