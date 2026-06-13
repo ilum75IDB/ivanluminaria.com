@@ -1,5 +1,5 @@
 ---
-title: "Data Governance nel Data Warehouse: dal controllo qualità alla conformità normativa"
+title: "La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH"
 date: 2099-12-31
 draft: true
 translationKey: "data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati"
