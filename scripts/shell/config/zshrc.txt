@@ -526,6 +526,7 @@ show_project_menu() {
     echo "  9) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "💡 prjmenu = ricarica ~/.zshrc e rimostra questo menu (utile dopo modifiche)"
     echo -n "Scegli (1-9) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
@@ -550,8 +551,11 @@ help() {
     echo "  workgma         # Passa a Gmail Assistant AI Agent"
     echo "  workwebo        # Passa a Web Orchestrator"
     echo "  workasg         # Passa ad ai-skill-generator"
+    echo "  workbct         # Passa a Business Consultant Tracker"
+    echo "  workmfsc        # Passa a Mac Filesystem Cleaner"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
+    echo "  prjmenu         # Ricarica ~/.zshrc e rimostra il menu progetti"
     echo ""
     echo "❓ HELP SPECIFICI:"
     case $CURRENT_PROJECT in
@@ -572,6 +576,12 @@ help() {
             ;;
         asg)
             echo "  asghelp         # Help comandi ASG"
+            ;;
+        bct)
+            echo "  bcthelp         # Help comandi BCT"
+            ;;
+        mfsc)
+            echo "  mfschelp        # Help comandi MFSC"
             ;;
         *)
             echo "  (carica un progetto per vedere i comandi specifici)"
