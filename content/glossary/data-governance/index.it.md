@@ -1,22 +1,22 @@
 ---
 title: "Data Governance"
-description: "Insieme di politiche, processi e standard che garantiscono la qualità, la sicurezza e la conformità dei dati all'interno di un'organizzazione."
-translationKey: "glossary_data-governance"
-aka: "Governance dei dati"
+description: "Framework operativo continuo di processi, politiche e standard che garantiscono qualità, integrità, sicurezza e conformità normativa dei dati aziendali."
+translationKey: "glossary_data_governance"
+aka: "Governo del dato"
 articles:
-  - "/posts/project-management/ai-manager-project-management"
+  - "/posts/data-warehouse/data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati"
 ---
 
-La **Data Governance** è l'insieme di politiche, processi, ruoli e standard che un'organizzazione adotta per garantire che i propri dati siano accurati, sicuri, conformi alle normative e utilizzati in modo coerente.
+La Data Governance è l'insieme strutturato di processi, politiche, standard e metriche che regolano come un'organizzazione gestisce i propri dati. Non si tratta di un progetto con una data di fine, ma di un framework operativo continuo che attraversa persone, tecnologie e processi.
 
 ## Come funziona
 
-Definisce chi è responsabile dei dati (data owner, data steward), quali regole di qualità applicare, come classificare i dati per sensibilità e come tracciare la loro provenienza (data lineage). In un contesto AI, include anche la verifica della provenienza e qualità dei dati usati per il training dei modelli.
+Un programma di Data Governance definisce chi è responsabile di ogni dato (data ownership), come viene classificato, quali regole ne governano la qualità e chi può accedervi. Gli strumenti operativi includono data catalog, data lineage, policy di retention e controlli di qualità automatizzati integrati nelle pipeline ETL/ELT.
 
-## A cosa serve
+Nel contesto di un Data Warehouse, la governance si applica a ogni layer: dalla staging zone fino ai mart esposti agli utenti finali. Un check di qualità tipico può bloccare il caricamento di record con valori nulli su colonne critiche o segnalare derive statistiche nei KPI.
 
-Senza data governance, un'organizzazione non sa quali dati ha, dove sono, chi può accedervi e se sono affidabili. In progetti con componenti AI, la governance è il prerequisito per evitare che i modelli vengano addestrati su dati sporchi, non autorizzati o soggetti a vincoli normativi come il GDPR.
+## Contesto operativo
 
-## Perché è critico
+La Data Governance diventa non negoziabile quando entrano in gioco normative come GDPR, HIPAA o PCI-DSS: la tracciabilità del dato — chi lo ha creato, modificato, consumato — deve essere dimostrabile in sede di audit. Altrettanto rilevante è la gestione del data quality debt: senza governance, i problemi di qualità si accumulano silenziosamente fino a compromettere decisioni di business critiche.
 
-In ogni progetto AI in ambito regolamentato, il triangolo Governance-Compliance-Automazione deve restare in equilibrio. Un'automazione AI efficiente che viola le policy di data governance è un rischio. Una governance perfetta che blocca l'automazione ferma il progetto. L'AI Manager tiene in equilibrio questi tre vertici.
+Il principale trade-off è tra rigore e velocità: processi di governance troppo pesanti rallentano i team di sviluppo. La soluzione pratica è calibrare i controlli sul rischio effettivo del dato, non applicare lo stesso livello di scrutinio a ogni tabella.
