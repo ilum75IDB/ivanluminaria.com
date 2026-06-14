@@ -36,6 +36,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
+| Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
 | Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
 | Cutover | Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura | oracle-cloud-migration |
@@ -51,7 +52,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Conformed Dimension | Dimensione condivisa tra più data mart con la stessa struttura, semantica e chiave. Permette analisi cross-processo coerenti e sommabili | bus-matrix-terreno-comune |
 | Dead Tuple | Riga obsoleta in una tabella PostgreSQL, marcata come non più visibile dopo un UPDATE o DELETE ma non ancora rimossa fisicamente | vacuum-autovacuum-postgresql |
 | Daily Standup | Riunione quotidiana di massimo 15 minuti in cui ogni membro del team risponde a tre domande: cosa ho fatto ieri, cosa farò oggi, cosa mi blocca | standup-meeting-15-minuti |
-| Data Governance | Insieme di politiche, processi e standard che garantiscono la qualità, la sicurezza e la conformità dei dati in un'organizzazione | ai-manager-project-management |
+| Data Governance | Insieme di politiche, processi e standard che garantiscono la qualità, la sicurezza e la conformità dei dati in un'organizzazione | ai-manager-project-management, data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
 | Data Mart | Sottoinsieme del data warehouse focalizzato su un singolo processo di business o area funzionale. Spesso costruito in autonomia da un reparto, rischia di divergere dagli altri senza dimensioni conformi | bus-matrix-terreno-comune |
 | Data Guard | Tecnologia Oracle per la replica in tempo reale di un database su uno o più server standby, garantendo alta disponibilità e disaster recovery | oracle-data-guard, oracle-cloud-migration |
 | DEFAULT PRIVILEGES | Meccanismo PostgreSQL che definisce automaticamente i privilegi da assegnare a tutti gli oggetti futuri creati in uno schema | postgresql_roles_and_users |
@@ -189,7 +190,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-06-10
-**Totale termini**: 172
-**Totale articoli con glossario**: 39
+**Ultimo aggiornamento**: 2026-06-14
+**Totale termini**: 173
+**Totale articoli con glossario**: 40
 
