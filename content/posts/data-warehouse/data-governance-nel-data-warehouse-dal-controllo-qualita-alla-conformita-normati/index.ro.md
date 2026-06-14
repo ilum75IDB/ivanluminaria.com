@@ -1,13 +1,14 @@
 ---
-title: "La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH"
-date: 2099-12-31
-draft: true
-translationKey: "data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati"
+categories:
+- data-warehouse
+date: '2026-07-07'
+draft: false
+image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
 tags: []
-categories: ["data-warehouse"]
-image: "data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg"
-webo_status: da_tradurre
+title: La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH
+translationKey: data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati
 webo_generated_at: 2026-06-14
+webo_status: scheduled
 ---
 
 ```

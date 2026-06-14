@@ -1,15 +1,23 @@
 ---
-title: "La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH"
-seoTitle: "Data Governance nel DWH: qualità, GDPR e TDE in produzione"
-description: "Da una pausa pranzo con un senior data analyst assicurativo emergono i gap di governance prima del go-live: data quality, lineage, ownership, GDPR e Transparent Data Encryption su Oracle 19c."
-date: 2099-12-31
-draft: true
-translationKey: "data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati"
-tags: ["data-governance", "data-warehouse", "oracle-19c", "gdpr", "transparent-data-encryption"]
-categories: ["data-warehouse"]
-image: "data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg"
-webo_status: da_approvare
+categories:
+- data-warehouse
+date: '2026-07-07'
+description: 'Da una pausa pranzo con un senior data analyst assicurativo emergono
+  i gap di governance prima del go-live: data quality, lineage, ownership, GDPR e
+  Transparent Data Encryption su Oracle 19c.'
+draft: false
+image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
+seoTitle: 'Data Governance nel DWH: qualità, GDPR e TDE in produzione'
+tags:
+- data-governance
+- data-warehouse
+- oracle-19c
+- gdpr
+- transparent-data-encryption
+title: La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH
+translationKey: data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati
 webo_generated_at: 2026-06-14
+webo_status: scheduled
 ---
 
 ## Il tavolo fuori dall'ufficio
