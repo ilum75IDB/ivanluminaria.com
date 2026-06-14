@@ -1,22 +1,22 @@
 ---
 title: "Data Governance"
-description: "Set de politici, procese și standarde care garantează calitatea, securitatea și conformitatea datelor în cadrul unei organizații."
-translationKey: "glossary_data-governance"
+description: "Cadru operațional continuu de procese, politici și standarde care asigură calitatea, integritatea, securitatea și conformitatea normativă a datelor organizației."
+translationKey: "glossary_data_governance"
 aka: "Guvernanța datelor"
 articles:
-  - "/posts/project-management/ai-manager-project-management"
+  - "/posts/data-warehouse/data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati"
 ---
 
-**Data Governance** este setul de politici, procese, roluri și standarde pe care o organizație le adoptă pentru a garanta că datele sale sunt corecte, sigure, conforme cu reglementările și utilizate în mod coerent.
+Data Governance reprezintă ansamblul structurat de procese, politici, standarde și metrici care reglementează modul în care o organizație își gestionează activele de date. Nu este un proiect cu o dată de finalizare — este un framework operațional continuu care acoperă oameni, tehnologie și procese.
 
 ## Cum funcționează
 
-Definește cine este responsabil de date (data owner, data steward), ce reguli de calitate se aplică, cum se clasifică datele după sensibilitate și cum se trasează proveniența lor (data lineage). Într-un context AI, include și verificarea provenienței și calității datelor folosite pentru training-ul modelelor.
+Un program de Data Governance stabilește proprietatea datelor (cine răspunde de fiecare set de date), scheme de clasificare, reguli de calitate și controale de acces. Instrumentele operaționale includ de obicei un data catalog, trasabilitatea datelor (data lineage), politici de retenție și verificări automate de calitate integrate în pipeline-urile ETL/ELT.
 
-## La ce servește
+În contextul unui Data Warehouse, governance se aplică la fiecare nivel: de la staging zone până la mart-urile expuse utilizatorilor finali. Un control tipic de calitate poate respinge înregistrările cu valori nule pe coloane critice sau poate genera alerte când distribuțiile statistice ale KPI-urilor depășesc pragurile definite.
 
-Fără data governance, o organizație nu știe ce date are, unde sunt, cine le poate accesa și dacă sunt fiabile. În proiecte cu componente AI, guvernanța este prerequisitul pentru a preveni antrenarea modelelor pe date murdare, neautorizate sau supuse constrângerilor normative precum GDPR.
+## Context operațional
 
-## De ce contează
+Data Governance devine obligatorie când intră în vigoare reglementări precum GDPR, HIPAA sau PCI-DSS: trasabilitatea completă a cine a creat, modificat sau consumat un datum trebuie demonstrată în cadrul unui audit. Gestionarea datoriei de calitate a datelor este la fel de importantă: fără governance, problemele de calitate se acumulează silențios până când compromit decizii critice de business.
 
-În fiecare proiect AI într-un mediu reglementat, triunghiul Guvernanță-Conformitate-Automatizare trebuie să rămână în echilibru. O automatizare AI eficientă care încalcă politicile de data governance este un risc. O guvernanță perfectă care blochează automatizarea oprește proiectul. AI Managerul menține în echilibru aceste trei vârfuri.
+Principalul trade-off este între rigoare și viteză: procesele de governance prea greoaie încetinesc echipele de inginerie. Abordarea practică constă în calibrarea controalelor în funcție de profilul real de risc al fiecărui dataset, nu în aplicarea aceluiași nivel de scrutin pentru fiecare tabel.
