@@ -2,14 +2,19 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 6.6
-# Data: 9 Giugno 2026
-# Nota: Mac Filesystem Cleaner (MFSC) migrato allo standard shell RCCS2025
-#       tramite skill /mac-create-menu-zsh: stub mfsc_env.zsh sostituito da
-#       env completo (alias FastAPI/DB/test/git/venv + wrapper mfscgo/mfschelp),
-#       aggiunti mfsc_help.zsh parametrico (8 sezioni: -S/-D/-T/-N/-G/-P/-V/-H)
-#       e mfsc_go_manager.zsh (13 target navigazione). Case 8|mfsc arricchito
-#       con riga "Digita 'mfschelp'". Nessun cambio alla numerazione del menu.
+# Versione: 7.0
+# Data: 15 Giugno 2026
+# Nota: Refactor case 10|dbac allo standard shell RCCS2025 via skill
+#       /mac-create-menu-zsh. Il case ora carica i 3 file modulari
+#       (dbac_env.zsh + dbac_help.zsh + dbac_go_manager.zsh) in
+#       scripts/shell/ del progetto dba-cockpit, con wrapper parametrici
+#       'dbachelp' e 'dbacgo'. Aggiunto dbachelp tra gli help specifici
+#       della funzione help() globale. Nessun cambio di numerazione
+#       (case 10|dbac invariato, BASE resta 11|none).
+#       (storia 6.9: refactor RCCS2025 case 9|myctl; storia 6.8:
+#       bootstrap DBAC al case 10|dbac, "none" → 11|none, menu
+#       Scegli 1-11 default=11; storia 6.7: bootstrap MYCTL al case
+#       9|myctl.)
 # ===================================================================
 # 
 # Alias per restart del menu (ricarica zshrc)
@@ -81,7 +86,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, mfsc
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, myctl, dbac
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -151,6 +156,18 @@ set_mfsc_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{051}[MFSC]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 🧹 %# '
+}
+# Prompt MYCTL (MySQL Controlli)
+set_myctl_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{075}[MYCTL]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+📊 %# '
+}
+# Prompt DBAC (DBA Cockpit)
+set_dbac_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{196}[DBAC]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+✈️  %# '
 }
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
@@ -282,7 +299,37 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        9|none)
+        9|myctl)
+            echo "📊 Caricamento ambiente MySQL Controlli..."
+            export CURRENT_PROJECT="myctl"
+            MYCTL_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/mysql-controlli/scripts/shell/myctl_env.zsh"
+            if [[ -f "$MYCTL_ENV_FILE" ]]; then
+                source "$MYCTL_ENV_FILE"
+                cd "$MYCTL_PROJECT_DIR"
+                set_myctl_prompt
+                echo "✅ Ambiente MYCTL caricato!"
+                echo "📝 Digita 'myctlhelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment MYCTL non trovato: $MYCTL_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        10|dbac)
+            echo "✈️  Caricamento ambiente DBA Cockpit..."
+            export CURRENT_PROJECT="dbac"
+            DBAC_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/dba-cockpit/scripts/shell/dbac_env.zsh"
+            if [[ -f "$DBAC_ENV_FILE" ]]; then
+                source "$DBAC_ENV_FILE"
+                cd "$DBAC_PROJECT_DIR"
+                set_dbac_prompt
+                echo "✅ Ambiente DBAC caricato!"
+                echo "📝 Digita 'dbachelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment DBAC non trovato: $DBAC_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        11|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -309,6 +356,8 @@ alias workwebo='switch_project webo'
 alias workasg='switch_project asg'
 alias workbct='switch_project bct'
 alias workmfsc='switch_project mfsc'
+alias workmyctl='switch_project myctl'
+alias workdbac='switch_project dbac'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -372,6 +421,16 @@ project_status() {
             echo "🧹 Mac Filesystem Cleaner (stack ancora non definito)"
             echo "📂 Dir: $MFSC_PROJECT_DIR"
             echo "🏗️  Repo: $MFSC_REPO"
+            ;;
+        myctl)
+            echo "📊 MySQL Controlli (stack ancora non definito)"
+            echo "📂 Dir: $MYCTL_PROJECT_DIR"
+            echo "🏗️  Repo: $MYCTL_REPO"
+            ;;
+        dbac)
+            echo "✈️  DBA Cockpit (stack target: Python+FastAPI+SQLite+JS — non ancora applicato)"
+            echo "📂 Dir: $DBAC_PROJECT_DIR"
+            echo "🏗️  Repo: $DBAC_REPO"
             ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
@@ -523,14 +582,15 @@ show_project_menu() {
     echo "  6) 📚 ai-skill-generator          (ASG)"
     echo "  7) ⏱️  Business Consultant Tracker (BCT)"
     echo "  8) 🧹 Mac Filesystem Cleaner      (MFSC)"
-    echo "  9) 🔧 Ambiente Base               (BASE)"
+    echo "  9) 📊 MySQL Controlli             (MYCTL)"
+    echo " 10) ✈️  DBA Cockpit                 (DBAC)"
+    echo " 11) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "💡 prjmenu = ricarica ~/.zshrc e rimostra questo menu (utile dopo modifiche)"
-    echo -n "Scegli (1-9) o premi INVIO per ambiente base: "
+    echo -n "Scegli (1-11) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=9  # Default: ambiente base
+        choice=11  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
@@ -551,11 +611,8 @@ help() {
     echo "  workgma         # Passa a Gmail Assistant AI Agent"
     echo "  workwebo        # Passa a Web Orchestrator"
     echo "  workasg         # Passa ad ai-skill-generator"
-    echo "  workbct         # Passa a Business Consultant Tracker"
-    echo "  workmfsc        # Passa a Mac Filesystem Cleaner"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
-    echo "  prjmenu         # Ricarica ~/.zshrc e rimostra il menu progetti"
     echo ""
     echo "❓ HELP SPECIFICI:"
     case $CURRENT_PROJECT in
@@ -582,6 +639,12 @@ help() {
             ;;
         mfsc)
             echo "  mfschelp        # Help comandi MFSC"
+            ;;
+        myctl)
+            echo "  myctlhelp       # Help comandi MYCTL"
+            ;;
+        dbac)
+            echo "  dbachelp        # Help comandi DBAC"
             ;;
         *)
             echo "  (carica un progetto per vedere i comandi specifici)"
