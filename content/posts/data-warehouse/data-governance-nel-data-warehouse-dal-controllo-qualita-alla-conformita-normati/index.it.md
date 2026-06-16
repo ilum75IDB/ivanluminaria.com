@@ -14,7 +14,7 @@ tags:
 - oracle-19c
 - gdpr
 - transparent-data-encryption
-title: La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH
+title: 'La pausa pranzo che ha rimandato il go-live: Data Governance nel DWH'
 translationKey: data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati
 webo_generated_at: 2026-06-14
 webo_status: scheduled
