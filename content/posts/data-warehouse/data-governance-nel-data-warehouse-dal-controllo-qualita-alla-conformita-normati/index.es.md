@@ -2,23 +2,21 @@
 categories:
 - data-warehouse
 date: '2026-07-07'
+description: "Qué falta cuando un DWH está 'técnicamente listo': data ownership, calidad continua, TDE en Oracle 19c y Data Catalog. Caso real en sector asegurador."
 draft: false
 image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
-tags: []
+seoTitle: "Data governance en DWH: calidad, TDE y roles antes del go-live"
+tags:
+- data-governance
+- data-quality
+- oracle-19c
+- data-warehouse
+- gdpr
 title: 'La pausa del almuerzo que retrasó el go-live: Data Governance en el DWH'
 translationKey: data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati
 webo_generated_at: 2026-06-14
 webo_status: scheduled
 ---
-
-```
----
-title: "La mesa fuera de la oficina: data governance antes del go-live de un DWH"
-seoTitle: "Data governance en DWH: calidad, TDE y roles antes del go-live"
-description: "Qué falta cuando un DWH está 'técnicamente listo': data ownership, calidad continua, TDE en Oracle 19c y Data Catalog. Caso real en sector asegurador."
-tags: ["data-governance", "data-quality", "oracle-19c", "data-warehouse", "gdpr"]
----
-```
 
 ## La mesa fuera de la oficina
 

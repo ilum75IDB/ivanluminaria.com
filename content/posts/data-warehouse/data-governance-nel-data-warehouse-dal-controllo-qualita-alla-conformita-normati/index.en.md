@@ -2,23 +2,21 @@
 categories:
 - data-warehouse
 date: '2026-07-07'
+description: "A lunch conversation about what a technically ready Data Warehouse still lacks: data ownership, quality framework, GDPR, TDE on Oracle 19c."
 draft: false
 image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
-tags: []
+seoTitle: "DWH Data Governance: quality, ownership, TDE before go-live"
+tags:
+- data-governance
+- data-warehouse
+- oracle-19c
+- data-quality
+- gdpr
 title: 'The lunch break that delayed go-live: Data Governance in the DWH'
 translationKey: data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati
 webo_generated_at: 2026-06-14
 webo_status: scheduled
 ---
-
-```
----
-title: "The table outside the office: data governance before go-live"
-seoTitle: "DWH Data Governance: quality, ownership, TDE before go-live"
-description: "A lunch conversation about what a technically ready Data Warehouse still lacks: data ownership, quality framework, GDPR, TDE on Oracle 19c."
-tags: ["data-governance", "data-warehouse", "oracle-19c", "data-quality", "gdpr"]
----
-```
 
 ## The table outside the office
 
