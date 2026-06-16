@@ -2,23 +2,21 @@
 categories:
 - data-warehouse
 date: '2026-07-07'
+description: "Ce nu include un Data Warehouse tehnic funcțional: ownership, calitate continuă, TDE Oracle 19c, Data Catalog. Un caz real din sectorul asigurărilor."
 draft: false
 image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
-tags: []
+seoTitle: "Data governance DWH asigurări: TDE, Data Catalog, ownership"
+tags:
+- data-governance
+- data-warehouse
+- oracle-19c
+- data-quality
+- gdpr
 title: 'Pauza de prânz care a amânat go-live-ul: Data Governance în DWH'
 translationKey: data_governance_nel_data_warehouse_dal_controllo_qualita_alla_conformita_normati
 webo_generated_at: 2026-06-14
 webo_status: scheduled
 ---
-
-```
----
-title: "Masa din fața biroului: ce lipsește dintr-un DWH 'gata' înainte de go-live"
-seoTitle: "Data governance DWH asigurări: TDE, Data Catalog, ownership"
-description: "Ce nu include un Data Warehouse tehnic funcțional: ownership, calitate continuă, TDE Oracle 19c, Data Catalog. Un caz real din sectorul asigurărilor."
-tags: ["data-governance", "data-warehouse", "oracle-19c", "data-quality", "gdpr"]
----
-```
 
 ## Masa din fața biroului
 
