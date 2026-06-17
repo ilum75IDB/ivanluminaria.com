@@ -111,6 +111,53 @@ scripts/shell/
 
 Per modifiche all'ambiente WWW invece (alias, funzioni, variabili, sezioni help, target navigazione) si editano i file `www_*.zsh` in `scripts/shell/`, che vengono ricaricati con `workwww` o `prjmenu`.
 
+## Accesso LAN via Bonjour
+
+Oltre al server puramente locale (`hserve` / `wwwserver dev`), il progetto
+espone il sito anche sulla LAN domestica via mDNS, per anteprima da telefono /
+iPad / altro computer:
+
+```
+http://ivanluminaria.local:1313/      # nome primario
+http://ilum.local:1313/               # alias breve (3 char, come il prefisso shell `www`)
+```
+
+**Comandi rapidi** (env caricato con `workwww`):
+
+| Comando | Effetto |
+|---|---|
+| `wwwserver start` | Hugo server LAN in background (`bind 0.0.0.0`, drafts + scheduled visibili) |
+| `wwwserver status` / `stop` / `restart` | Stato / stop / restart del server background |
+| `wwwserver dev` / `preview` | Foreground locale 127.0.0.1 (= `hserve` / `hservepreview`) |
+| `wwwserver enable` / `disable` | LaunchAgent persistente (parte al login) |
+| `wwwbonjour on` / `off` / `status` / `test` | Gestione annuncio mDNS dei due nomi |
+| `wwwopenlan` / `wwwopenshort` | Browser su nome lungo / alias breve |
+| `wwwhelp -S` / `wwwhelp -B` | Schede help dedicate |
+
+**Caveat — leggere prima di esporre**:
+
+- **Hugo NON ha auth**. `wwwserver start` (e `enable`) espone **tutto** il sito
+  con `--buildDrafts --buildFuture`: chiunque sulla WiFi può vedere bozze e
+  articoli scheduled. Accettabile per la WiFi domestica privata di Ivan; per
+  scenari "ospiti in casa" usare `wwwserver dev` puro locale.
+- I link interni sono riscritti automaticamente con `--baseURL
+  http://ivanluminaria.local:1313/ --appendPort=false` per evitare il rimbalzo
+  a `localhost` quando navighi dal cellulare. Cambiare bind manualmente senza
+  passare dal manager rompe i link interni.
+- L'IP del Mac viene ricavato a runtime da `ipconfig getifaddr`; se cambia
+  (nuovo lease DHCP), `announce.sh` ri-annuncia entro 30s.
+
+**File coinvolti** (copie di riferimento nel repo; le copie attive vivono fuori
+in `~/Library/Application Support/bonjour-lan/` e `~/Library/LaunchAgents/`):
+
+- `scripts/shell/www_server_manager.zsh` — sub-comandi `wwwserver`
+- `scripts/shell/www_bonjour_manager.zsh` — sub-comandi `wwwbonjour`
+- `deploy/launchd/announce.sh` — annuncio mDNS condiviso multi-progetto
+- `deploy/launchd/com.ivanluminaria.bonjour.www.plist` — LaunchAgent Bonjour
+- `deploy/launchd/com.ivanluminaria.www.plist` — LaunchAgent server Hugo
+
+Doc completa: [`docs/BONJOUR_LAN_ACCESS.md`](docs/BONJOUR_LAN_ACCESS.md).
+
 ## Deployment
 
 Pushing to the `main` branch triggers the GitHub Actions workflow (`.github/workflows/hugo.yml`) which:

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  COPIA DI RIFERIMENTO. La copia ATTIVA va in ~/Library/LaunchAgents/.
+  Annuncia ivanluminaria.local + ilum.local (alias) :1313 via mDNS sulla LAN.
+  Replica per un altro progetto: cambia Label, l'argomento <porta> + i <nomi>
+  e i path dei log. Vedi docs/BONJOUR_LAN_ACCESS.md.
+  ProgramArguments: announce.sh <porta> <nome1> [nome2 ...]
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ivanluminaria.bonjour.www</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/ivanluminaria/Library/Application Support/bonjour-lan/announce.sh</string>
+        <string>1313</string>
+        <string>ivanluminaria</string>
+        <string>ilum</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/ivanluminaria/Library/Logs/bonjour-lan/ivanluminaria.com.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/ivanluminaria/Library/Logs/bonjour-lan/ivanluminaria.com.err.log</string>
+</dict>
+</plist>
