@@ -66,11 +66,10 @@ Architettura DWH telco su 30+ database Oracle critici (70+ istanze su cluster Ex
 
 ---
 
-### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**PL/SQL Expert | Oracle DBA & Tuning Expert** (per FINWAVE S.p.A.) | 2020 – 2022
+### 2020 – 2022 — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote)
+**PL/SQL Expert | Oracle DBA & Tuning Expert** (per FINWAVE S.p.A.) | 2 anni
 
-- Sviluppo avanzato PL/SQL e ottimizzazione delle query per applicazioni finanziarie che elaborano milioni di transazioni giornaliere.
-- Consulenza su architetture Oracle e best practice di performance tuning.
+Sviluppo PL/SQL avanzato e tuning query Oracle per applicazioni finanziarie con milioni di transazioni giornaliere.
 
 ---
 
