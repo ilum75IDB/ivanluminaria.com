@@ -66,11 +66,10 @@ Telco DWH architecture on 30+ critical Oracle databases (70+ instances on Exadat
 
 ---
 
-### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote)
-**PL/SQL Expert | Oracle DBA & Tuning Expert** (for FINWAVE S.p.A.) | 2020 – 2022
+### 2020 – 2022 — IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote)
+**PL/SQL Expert | Oracle DBA & Tuning Expert** (for FINWAVE S.p.A.) | 2 years
 
-- Advanced PL/SQL development and query optimization for financial applications processing millions of daily transactions.
-- Consulting on Oracle architectures and performance tuning best practices.
+Advanced PL/SQL development and Oracle query tuning for financial applications with millions of daily transactions.
 
 ---
 
