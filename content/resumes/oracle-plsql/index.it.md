@@ -14,109 +14,86 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Senior Oracle PL/SQL Developer con quasi 30 anni di esperienza nella progettazione, sviluppo, test e ottimizzazione di codice PL/SQL robusto ed efficiente per applicazioni data-intensive e sistemi di Data Warehouse. Profonda competenza nella creazione di package, procedure, funzioni, trigger e tipi complessi, con un focus costante su prestazioni, manutenibilità e qualità del codice. Esperto nell'ottimizzazione di query SQL complesse e nella gestione di grandi volumi di dati. Abile nel tradurre requisiti di business in logica applicativa performante e scalabile all'interno del database Oracle. Background consolidato anche come Oracle DBA e DWH Architect, che garantisce una visione completa del ciclo di vita del dato.
+Scrivo PL/SQL avanzato per applicazioni data-intensive e Data Warehouse che reggono sotto carico.
+
+ATRADIUS: 60.000+ righe di PL/SQL ETL coordinate end-to-end, ingestione DWH giornaliera completa portata da 4+ ore a sotto le 2 con BULK COLLECT/FORALL e DML partition-aware. FINWAVE: package PL/SQL per applicazioni finanziarie con milioni di transazioni giornaliere. Banking + Telepass: ottimizzazione di codice PL/SQL con Hierarchical Profiler su workload data-intensive da oltre 2 miliardi di righe.
+
+Trent'anni dentro PL/SQL. Package, procedure, funzioni, trigger. FORALL, BULK COLLECT, Dynamic SQL, Analytic Functions, CTE. Tuning con TKPROF, Explain Plan, SQL Profiles. Mentoring tecnico ai junior. Cosa porto: codice PL/SQL che fa girare workload data-intensive senza punti di rottura.
 
 ---
 
-## Competenze Tecniche — Sviluppo Oracle PL/SQL
+## Competenze Tecniche
 
-- **Linguaggi**: PL/SQL (Avanzato), SQL (Avanzato, inclusi Dynamic SQL, Analytic Functions, CTEs).
-- **Sviluppo PL/SQL**:
-  - Package, Procedure, Funzioni, Trigger.
-  - Tipi di Dati PL/SQL (Record, Collection, Object Types).
-  - Gestione di Errori ed Eccezioni.
-  - Elaborazione Massiva (FORALL, BULK COLLECT).
-  - Dynamic SQL (DBMS_SQL, Execute Immediate).
-  - Ottimizzazione del Codice PL/SQL (incluso l'uso del PL/SQL Hierarchical Profiler).
-  - Interazione con Oggetti di Database (Tabelle, Viste, Sequence, Sinonimi).
-- **Ottimizzazione SQL & Performance**:
-  - Analisi dei Piani di Esecuzione (Explain Plan), SQL Trace, TKPROF.
-  - Tecniche di SQL Tuning (Hints, Query Rewriting, Indici).
-  - Comprensione dell'impatto del database design sulle prestazioni PL/SQL.
-- **Strumenti di Sviluppo**: SQL Developer, Toad, SQL*Plus.
-- **Oracle Database**: Oracle Database (dalla 8i alla 21c, Autonomous Database).
-- **Concetti Correlati**: Data Warehousing (sviluppo di logiche ETL/ELT), Data Integration, Modellazione Dati Relazionale e Multidimensionale.
-- **Version Control**: Git, GitHub.
-- **Scripting**: Unix Shell Scripting (per automazione di deployment e gestione script).
-- **Cloud**: Oracle Cloud Infrastructure (OCI) — conoscenza dei servizi database.
+- **Linguaggi**: PL/SQL avanzato · SQL avanzato (Dynamic SQL, Analytic Functions, CTE) · Unix Shell Scripting.
+- **Sviluppo PL/SQL**: Package · Procedure · Funzioni · Trigger · Record · Collection · Object Types · Gestione errori ed eccezioni · Elaborazione massiva (FORALL, BULK COLLECT) · Dynamic SQL (DBMS_SQL, Execute Immediate) · Hierarchical Profiler per ottimizzazione del codice.
+- **SQL Tuning**: Explain Plan · SQL Trace · TKPROF · Hints · SQL Profiles · query rewriting · indici · comprensione dell'impatto del database design sulle prestazioni PL/SQL.
+- **Strumenti & DB**: SQL Developer · Toad · SQL*Plus · Oracle Database 8i → 21c · Autonomous Database · Oracle Cloud Infrastructure (OCI) · Git/GitHub.
+- **Concetti correlati**: Data Warehousing (ETL/ELT) · Data Integration · Modellazione dati relazionale e multidimensionale (Kimball, Inmon).
 
 ---
 
 ## Esperienza Professionale
 
-### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Senior Oracle PL/SQL Developer & DWH Architect** | 2022 – Presente
+### 2022 – Presente — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
+**Senior Oracle PL/SQL Developer & DWH Architect**
 
-- **PL/SQL Developer** (per ATRADIUS) | 2022 – 2026:
-  - Sviluppo e manutenzione di oltre 60.000 righe di codice PL/SQL (package, procedure, funzioni) per il Data Warehouse della divisione Surety, che consolida dati assicurativi e creditizi da Italia, Spagna, Francia e paesi del Nord Europa.
-  - Progettazione di template PL/SQL riutilizzabili per le procedure di caricamento dati — standardizzazione del workflow ETL interno con checkpoint integrati per il tracciamento e monitoraggio in tempo reale dei flussi di caricamento, consentendo anche a sviluppatori junior di seguire un pattern consistente e ripetibile.
-  - Implementazione di monitoraggio real-time dei caricamenti tramite package PL/SQL di logging personalizzati, con visibilità immediata sullo stato delle pipeline ETL e gestione errori in tutte le fasi di caricamento.
-  - Ottimizzazione delle prestazioni batch: riduzione del ciclo di ingestione giornaliera completa da 4+ ore a meno di 2 ore tramite riscrittura delle query, pattern BULK COLLECT/FORALL e DML partition-aware.
+- **PL/SQL Developer** (per ATRADIUS) | 4 anni
 
-- **PL/SQL Developer** (per FINWAVE S.p.A.) | 2020 – 2022:
-  - Sviluppo di package PL/SQL per applicazioni di elaborazione transazioni finanziarie che gestiscono milioni di operazioni giornaliere per clienti bancari e assicurativi.
-  - Ottimizzazione avanzata di query e tuning del codice PL/SQL per pipeline di dati finanziari ad alto volume.
+  60.000+ righe di codice PL/SQL (package, procedure, funzioni) per il DWH della divisione Surety (4 paesi europei). Template PL/SQL riutilizzabili con checkpoint integrati per tracciamento real-time delle pipeline ETL. Ingestione giornaliera portata da 4+ ore a sotto le 2 con BULK COLLECT/FORALL e DML partition-aware.
 
-- **PL/SQL Developer** (per FAI SERVICE) | 2021 – 2023:
-  - Sviluppo di procedure ETL in PL/SQL su Oracle 19c/OCI per flussi dati di statistiche fatturazione, segmentazione clienti e tracciamento costi/ricavi.
-  - Costruzione di moduli PL/SQL che alimentano dashboard Oracle Analytics Cloud con KPI finanziari aggregati.
+- **PL/SQL Developer** (per FINWAVE S.p.A.) | 2 anni
 
-- **Sviluppo PL/SQL** (Banking, Telepass e altri clienti):
-  - Sviluppo di package PL/SQL per logica di business in applicazioni DWH del settore bancario, con elaborazione di dataset superiori a 2 miliardi di righe.
-  - Ottimizzazione di codice PL/SQL e query SQL esistenti — utilizzo del Hierarchical Profiler per identificare colli di bottiglia e migliorare i tempi di esecuzione dei percorsi critici.
-  - Collaborazione con team di sviluppo e analisti funzionali per la definizione dei requisiti e la progettazione di soluzioni basate su PL/SQL.
+  Package PL/SQL per applicazioni di elaborazione transazioni finanziarie con milioni di operazioni giornaliere; ottimizzazione query e tuning del codice PL/SQL per pipeline dati ad alto volume.
+
+- **PL/SQL Developer** (per FAI SERVICE) | 2 anni
+
+  Procedure ETL in PL/SQL su Oracle 19c in OCI per flussi dati di fatturazione, segmentazione clienti e tracking costi/ricavi; moduli PL/SQL che alimentano dashboard Oracle Analytics Cloud con KPI aggregati.
+
+- **Sviluppo PL/SQL** (Banking, Telepass e altri clienti) | 1 anno
+
+  Package PL/SQL per logica di business in applicazioni DWH del settore bancario su dataset oltre 2 miliardi di righe. Ottimizzazione PL/SQL con Hierarchical Profiler per identificare colli di bottiglia sui percorsi critici.
 
 ---
 
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Expert con Focus sullo Sviluppo** (per TIM / HUAWEI) | 2020 – 2022
+### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
+**Senior Oracle DBA & Performance Expert con Focus sullo Sviluppo** (per TIM / HUAWEI) | 2 anni
 
-- Supporto specialistico ai team di sviluppo nell'ottimizzazione del codice PL/SQL e delle query SQL per applicazioni critiche su database Exadata.
-- Analisi e tuning di processi batch PL/SQL ad alto volume.
-- Sviluppo di script PL/SQL per attività di monitoraggio e amministrazione.
+Supporto specialistico ai team di sviluppo TIM/HUAWEI su database Oracle Exadata: ottimizzazione del codice PL/SQL e delle query SQL per applicazioni critiche, analisi e tuning di processi batch PL/SQL ad alto volume, script PL/SQL per monitoraggio e amministrazione.
 
 ---
 
-### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
-**Senior Oracle PL/SQL Developer & DBA / DWH Architect** | 2013 – 2020
+### 2013 – 2020 — LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
+**Senior Oracle PL/SQL Developer & DBA / DWH Architect** (Società di consulenza e Clienti diretti) | 7 anni
 
-- Progettazione e sviluppo di soluzioni PL/SQL personalizzate per diversi clienti, inclusi package per logiche ETL, procedure di elaborazione dati e API PL/SQL.
-- Ottimizzazione intensiva di codice PL/SQL e SQL per migliorare le prestazioni di sistemi esistenti.
-- Sviluppo di moduli PL/SQL per l'estrazione, la trasformazione e il caricamento (ETL) di dati in sistemi DWH.
-- Formazione e mentoring di sviluppatori junior sulle best practice di sviluppo PL/SQL.
+Soluzioni PL/SQL personalizzate per clienti Banking, Telco e servizi: package per logiche ETL, procedure di elaborazione dati e API PL/SQL, ottimizzazione intensiva di codice PL/SQL e SQL per sistemi esistenti, formazione e mentoring di sviluppatori junior sulle best practice PL/SQL.
 
 ---
 
-### AUSELDA AED GROUP S.P.A. — Roma, Italia
-**Oracle PL/SQL Developer & Specialista DWH** (per la Pubblica Amministrazione) | 2009 – 2013
+### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Roma, Italia
+**Oracle PL/SQL Developer & Specialista DWH** (per la Pubblica Amministrazione) | 4 anni
 
-- Sviluppo di componenti PL/SQL per sistemi di Data Warehousing e applicazioni gestionali per la Pubblica Amministrazione.
-- Manutenzione evolutiva e correttiva di codice PL/SQL.
-- Ottimizzazione di processi ETL basati su PL/SQL e OWB.
+Sviluppo di componenti PL/SQL per sistemi DWH e applicazioni gestionali della Pubblica Amministrazione, con manutenzione evolutiva e correttiva del codice e ottimizzazione di processi ETL basati su PL/SQL e Oracle Warehouse Builder (OWB).
 
 ---
 
-### ORACLE ITALIA S.R.L. — Varie sedi, Italia & Madrid, Spagna
-**SQL & PL/SQL Developer / DWH Architect / DBA / Training Specialist** | 1999 – 2009
+### 1999 – 2009 — ORACLE ITALIA S.R.L. — Varie sedi, Italia & Madrid, Spagna
+**SQL & PL/SQL Developer / DWH Architect / DBA / Training Specialist** | 10 anni
 
-- **Ruoli di Sviluppo PL/SQL (significativi e crescenti):** Sviluppo intensivo di codice PL/SQL per progetti DWH, BI e applicazioni personalizzate per clienti enterprise in diversi settori (Telco, Finance, Farmaceutico).
-- Creazione di package PL/SQL per logiche di business complesse, procedure di caricamento dati (ETL) con Oracle Warehouse Builder e PL/SQL.
-- Sviluppo di report BI e interfacce HTMLDB (Apex) con logica PL/SQL.
-- **Come Training Specialist (2000-2001):** Erogazione di corsi Oracle SQL (Base e Avanzato) e PL/SQL (Base e Avanzato).
+Sviluppo intensivo di PL/SQL per progetti DWH, BI e applicazioni personalizzate per clienti enterprise (Telco, Finance, Farmaceutico): package per logiche di business complesse, procedure ETL con Oracle Warehouse Builder, report BI e interfacce HTMLDB (Apex). Circa 1 anno di esperienza internazionale a Madrid. Training Specialist su Oracle SQL e PL/SQL (Base e Avanzato) nel 2000-2001.
 
 ---
 
-### ETNOTEAM S.P.A. — Roma, Italia
-**Web Developer / Oracle SQL & PL/SQL Developer** | 1999
+### 1999 — ETNOTEAM S.P.A. — Roma, Italia
+**Web Developer / Oracle SQL & PL/SQL Developer**
 
-- Sviluppo di portali web e applicazioni client-server con forte interazione con database Oracle, utilizzando SQL e PL/SQL per la logica di backend.
+Portali web e applicazioni client-server con forte interazione con database Oracle, usando SQL e PL/SQL per la logica di backend.
 
 ---
 
-### S.EL.DAT. S.P.A. — Roma, Italia
-**Software Developer / Junior DBA** | 1997 – 1999
+### 1997 – 1999 — S.EL.DAT. S.P.A. — Roma, Italia
+**Software Developer / Junior DBA** | 2 anni
 
-- Sviluppo di applicazioni client-server con backend Oracle; prime esperienze con SQL e PL/SQL.
+Sviluppo di applicazioni client-server con backend Oracle e prime esperienze con SQL e PL/SQL — il punto di partenza del percorso Oracle.
 
 ---
 
@@ -126,41 +103,27 @@ Senior Oracle PL/SQL Developer con quasi 30 anni di esperienza nella progettazio
 - **Diploma di Maturità Scientifica** (EQF Livello 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
 - **Inglese Avanzato (C1/C2)** | The British Council (Livello 4A), Roma | 2003 – 2004
 
-**Corsi di Formazione e Aggiornamento Selezionati:**
-
-- Scrum Agile — Randstad/Forma.temp (Maggio 2024)
-- Project Management — Randstad/Forma.temp (Maggio 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprile 2021)
-- Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (Agosto 2020)
-- Corsi di specializzazione Oracle 12c (Advanced SQL, New Features) — LinkedIn Learning (2020)
-- Learning Git and GitHub — LinkedIn Learning (Agosto 2020)
+**Corsi di Formazione e Aggiornamento:**
+Project Management & Scrum Agile — Randstad/Forma.temp (Maggio 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Aprile 2021) · Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (Agosto 2020) · Corsi di specializzazione Oracle 12c (Advanced SQL, New Features) + Learning Git and GitHub — LinkedIn Learning (2020).
 
 ---
 
 ## Lingue
 
-- **Italiano**: Madrelingua
-- **Inglese**: C1/C2 (Fluente, professionale)
-- **Spagnolo**: C1 (Fluente)
-- **Rumeno**: C1 (Fluente)
-- **Francese**: A1/A2 (Base)
+**Italiano** — Madrelingua · **Inglese** — C1/C2 (Fluente, professionale) · **Spagnolo** — C1 (Fluente) · **Rumeno** — C1 (Fluente) · **Francese** — A1/A2 (Base)
 
 ---
 
 ## Competenze Trasversali
 
-- Approccio analitico e orientamento alla risoluzione di problemi complessi
-- Scrittura di codice chiaro, efficiente e manutenibile
-- Competenze avanzate di debugging e troubleshooting
-- Eccellente comprensione dei requisiti funzionali e tecnici
-- Collaborazione efficace nei team di sviluppo
-- Attenzione ai dettagli e qualità del software
+Approccio analitico e orientamento alla risoluzione di problemi complessi · scrittura di codice chiaro, efficiente e manutenibile · debugging e troubleshooting avanzati · comprensione dei requisiti funzionali e tecnici · collaborazione efficace nei team di sviluppo · attenzione ai dettagli e qualità del software · mentoring tecnico ai junior.
 
 ---
 
 *Autorizzo il trattamento dei miei dati personali ai sensi dell'Art. 13 del Regolamento UE 2016/679 (GDPR).*
 
-Roma, Marzo 2026
+Location: Roma, Italia\
+Last Update: Giugno 2026
 
 ---
 
