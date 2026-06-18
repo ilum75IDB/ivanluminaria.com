@@ -135,7 +135,8 @@ Progetti DWH e BI per clienti primari Telco, Finance e Farmaceutico, con circa 1
 
 *Autorizzo il trattamento dei miei dati personali ai sensi dell'Art. 13 del Regolamento UE 2016/679 (GDPR).*
 
-Roma, Marzo 2026
+Location: Roma, Italia\
+Last Update: Giugno 2026
 
 ---
 

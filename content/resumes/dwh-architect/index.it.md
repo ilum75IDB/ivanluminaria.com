@@ -140,7 +140,8 @@ Sviluppo di applicazioni client-server per Telecom e Rover Italia, con prime esp
 
 *Autorizzo il trattamento dei miei dati personali ai sensi dell'Art. 13 del Regolamento UE 2016/679 (GDPR).*
 
-Roma, Marzo 2026
+Location: Roma, Italia\
+Last Update: Giugno 2026
 
 ---
 
