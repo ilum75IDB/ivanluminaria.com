@@ -74,12 +74,9 @@ Parco di 30+ database Oracle critici (70+ istanze su cluster Exadata) a supporto
 ---
 
 ### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Consultant** | 2013 – 2020
+**Responsabile tecnico di progetto & Senior DWH Consultant** (Società di consulenza e Clienti diretti) | 7 anni
 
-- Gestione di circa 10 progetti in 7 anni per clienti nei settori Banking, Telco e servizi, con budget nell'ordine di €100K-€500K e consegne quasi sempre rispettate.
-- Coordinamento di team di 3-7 persone in contesti multiculturali e distribuiti — assegnazione dei compiti, facilitazione della collaborazione e gestione delle priorità con approccio iterativo Agile.
-- Interfaccia diretta con i clienti per la raccolta dei requisiti, la definizione dello scope, la presentazione degli avanzamenti e la gestione delle aspettative.
-- Formazione tecnica e mentoring per i membri del team — sviluppo delle competenze e onboarding dei nuovi consulenti.
+10 progetti delivered in 7 anni per clienti nei settori Banking, Telco e servizi, con budget €100K-€500K. Team 3-7 persone in contesti multiculturali e distribuiti, coordinati con approccio Agile.
 
 ---
 

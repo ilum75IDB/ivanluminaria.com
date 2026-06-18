@@ -74,12 +74,9 @@ Fleet of 30+ critical Oracle databases (70+ instances on Exadata clusters) suppo
 ---
 
 ### FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
-**Project Manager & Senior DWH Consultant** | 2013 – 2020
+**Technical Project Manager & Senior DWH Consultant** (Consulting firms and Direct clients) | 7 years
 
-- Managed approximately 10 projects over 7 years for clients in Banking, Telco and services sectors, with budgets in the €100K-€500K range and a strong on-time delivery record.
-- Coordinated teams of 3-7 people in multicultural, distributed settings — task assignment, collaboration facilitation and priority management using an iterative Agile approach.
-- Direct client interface for requirements gathering, scope definition, progress reporting and expectation management.
-- Technical training and mentoring for team members — skill development and onboarding of new consultants.
+10 projects delivered over 7 years for clients in Banking, Telco and services sectors, with budgets €100K-€500K. Teams of 3-7 people in multicultural, distributed settings, coordinated with an Agile approach.
 
 ---
 
