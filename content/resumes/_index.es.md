@@ -23,7 +23,7 @@ Es la suma de las consecuencias que esas competencias generan.
 
 </div>
 
-{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202603_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Banco de Italia,Automoción" >}}
+{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Banco de Italia,Automoción" >}}
 
 Mi experiencia en Data Warehouse se ha desarrollado en entornos donde el dato es infraestructura crítica.
 
@@ -41,7 +41,7 @@ He diseñado arquitecturas de datos en entornos donde el margen de error no exis
 
 {{< /kh-role >}}
 
-{{< kh-role role="pm" title="Project Manager con background técnico" roadmap="project-manager" pdf="CV_Project_Manager_Ivan_Luminaria_202603_EN.pdf" sectors="Telco internacional,Instituciones financieras,Seguros,Farmacéutico,Automoción,AAPP" >}}
+{{< kh-role role="pm" title="Project Manager con background técnico" roadmap="project-manager" pdf="CV_Project_Manager_Ivan_Luminaria_202606_EN.pdf" sectors="Telco internacional,Instituciones financieras,Seguros,Farmacéutico,Automoción,AAPP" >}}
 
 Mi experiencia en gestión de proyectos ha madurado coordinando iniciativas en entornos complejos: telecomunicaciones internacionales, instituciones financieras centrales, seguros, farmacéutico, automoción y administración pública.
 
@@ -53,7 +53,7 @@ Conecto visión estratégica con detalle técnico. Roadmaps con implementación.
 
 {{< /kh-role >}}
 
-{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf" sectors="TIM,Huawei,Banco de Italia,Generali,Automoción" >}}
+{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Huawei,Banco de Italia,Generali,Automoción" >}}
 
 Mi actividad como Oracle DBA se ha consolidado en entornos mission-critical para operadores como TIM, Wind, Vodafone y 3, en contextos tecnológicos complejos como Huawei, para instituciones financieras como el Banco de Italia, la Oficina Italiana de Cambios y Cassa Depositi e Prestiti, para organizaciones aseguradoras como Generali, y en proyectos industriales en el sector automotriz.
 
@@ -66,7 +66,7 @@ Es protección operativa.
 
 {{< /kh-role >}}
 
-{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202603_EN.pdf" sectors="Banca,Seguros,Farmacéutico,Automoción,AAPP" >}}
+{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" sectors="Banca,Seguros,Farmacéutico,Automoción,AAPP" >}}
 
 He desarrollado PL/SQL en entornos Telco, Banca, Seguros, Automoción, Farmacéutico y Administración Pública.
 
