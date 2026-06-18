@@ -80,13 +80,10 @@ Data Warehouses para clientes Bancario, Seguros y Telco sobre plataformas Oracle
 
 ---
 
-### AUSELDA AED GROUP S.P.A. — Roma, Italia
-**Data Warehouse Architect | Performance & Tuning Expert | Oracle Project DBA** (para la Administración Pública) | 2009 – 2013
+### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Roma, Italia
+**Data Warehouse Architect | Performance & Tuning Expert | Oracle Project DBA** (para la Administración Pública) | 4 años
 
-- Diseño y modelado Data Warehouse (Kimball/Inmon) para entidades de la Administración Pública.
-- Desarrollo de procesos ETL/ELT y optimización de consultas SQL complejas.
-- Especialista del producto Oracle Warehouse Builder (OWB).
-- Gestión técnica de proyectos DWH y formación de usuarios.
+Arquitectura DWH (Kimball/Inmon) para entidades de la Administración Pública, con especialización en Oracle Warehouse Builder (OWB) y optimización de consultas SQL complejas.
 
 ---
 
