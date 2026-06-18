@@ -103,34 +103,20 @@ Desarrollo de aplicaciones cliente-servidor para Telecom y Rover Italia, con pri
 - **Diploma de Bachillerato Científico** (EQF Nivel 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
 - **Inglés Avanzado (C1/C2)** | The British Council (Nivel 4A), Roma | 2003 – 2004
 
-**Cursos de Formación y Actualización Seleccionados:**
-
-- Scrum Agile — Randstad/Forma.temp (Mayo 2024)
-- Project Management — Randstad/Forma.temp (Mayo 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Abril 2021)
-- Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (Septiembre 2020)
-- Cursos de especialización Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
-- MySQL Installation and Configuration — LinkedIn Learning (Agosto 2020)
-- Learning Git and GitHub — LinkedIn Learning (Agosto 2020)
+**Cursos de Formación y Actualización:**
+Project Management & Scrum Agile — Randstad/Forma.temp (Mayo 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Abril 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (Septiembre 2020) · Cursos de especialización Oracle 12c (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · MySQL Installation and Configuration + Learning Git and GitHub — LinkedIn Learning (Agosto 2020).
 
 ---
 
 ## Idiomas
 
-- **Italiano**: Lengua materna
-- **Inglés**: C1/C2 (Fluido, profesional)
-- **Español**: C1 (Fluido)
-- **Rumano**: C1 (Fluido)
-- **Francés**: A1/A2 (Básico)
+**Italiano** — Lengua materna · **Inglés** — C1/C2 (Fluido, profesional) · **Español** — C1 (Fluido) · **Rumano** — C1 (Fluido) · **Francés** — A1/A2 (Básico)
 
 ---
 
 ## Competencias Transversales
 
-- Resolución de problemas analítica y creativa
-- Trabajo en equipo y colaboración en contextos internacionales
-- Project Management (Definición de requisitos, Priorización, Diagramas de Gantt, ERD)
-- Comunicación eficaz y gestión de stakeholders
+Resolución analítica y creativa de problemas · colaboración en contextos internacionales y full-remote · project management (Agile/Scrum, definición de requisitos, priorización, diagramas Gantt, ERD) · liderazgo técnico de equipos 3-7 personas · mentoring técnico · stakeholder engagement.
 
 ---
 
