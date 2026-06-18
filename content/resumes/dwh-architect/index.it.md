@@ -24,15 +24,11 @@ Trent'anni dentro Oracle e PostgreSQL. Kimball, Inmon, Star Schema, Snowflake, S
 
 ## Competenze Tecniche
 
-- **Metodologie DWH**: Modellazione Multidimensionale dei Dati (Kimball, Inmon), Star Schema, Snowflake Schema, Slowly Changing Dimensions (SCD Type 1/2/3), Bus Matrix design.
-- **Oracle Databases**: Oracle Database (dalla 8i alla 21c), Oracle Exadata, Oracle RAC, Oracle Data Guard, Oracle Autonomous Database (ADB), Performance Tuning (AWR, ADDM, SQL Tuning Advisor), Storage Management (ASM), Backup & Recovery (RMAN), Oracle TDE.
-- **PostgreSQL**: PostgreSQL (14+), Query Optimization, Table Partitioning, pg_stat_statements, PgBouncer, Logical Replication, VACUUM/Autovacuum tuning.
-- **Cloud**: Oracle Cloud Infrastructure (OCI).
-- **Strumenti ETL/ELT**: Pipeline ETL basate su PL/SQL, Unix Shell Scripting, Oracle Data Integrator (ODI), Oracle Warehouse Builder (OWB, progetti legacy).
-- **Business Intelligence & Reporting**: Oracle Analytics Cloud (OAC) — Semantic Model Designer, Reports, Dashboard.
-- **Linguaggi di Programmazione e Scripting**: SQL (avanzato), PL/SQL, Unix Shell Scripting.
-- **Sistemi Operativi**: Linux (RHEL, CentOS, Oracle Linux), Unix, Windows Server.
-- **Altro**: Project Management (Agile/Scrum), Team Leadership (fino a 7 persone), Formazione Tecnica.
+- **Metodologie DWH**: Modellazione multidimensionale Kimball e Inmon · Star Schema · Snowflake · Slowly Changing Dimensions (SCD Type 1/2/3) · Bus Matrix design.
+- **Stack Oracle**: Oracle Database 8i → 21c · Exadata · RAC · Data Guard · Autonomous Database (ADB) · Oracle Cloud Infrastructure (OCI) · Performance Tuning (AWR, ADDM, SQL Tuning Advisor) · ASM · RMAN · TDE.
+- **PostgreSQL**: PostgreSQL 14+ · Query Optimization · Table Partitioning · Logical Replication · VACUUM/Autovacuum tuning · pg_stat_statements · PgBouncer.
+- **ETL/ELT e BI**: Pipeline ETL in PL/SQL · Oracle Data Integrator (ODI) · Oracle Warehouse Builder (OWB, legacy) · Oracle Analytics Cloud (OAC) per semantic model, report e dashboard.
+- **Linguaggi, OS e trasversale**: SQL e PL/SQL avanzati · Unix Shell Scripting · Linux (RHEL, CentOS, Oracle Linux), Unix, Windows Server · Project Management (Agile/Scrum) · team leadership 3-7 persone · formazione tecnica.
 
 ---
 
