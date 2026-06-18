@@ -8,7 +8,7 @@ draft: false
 layout: "simple"
 ---
 
-**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202603_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
@@ -127,4 +127,4 @@ Last Update: Giugno 2026
 
 ---
 
-**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202603_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Torna alla pagina precedente](/it/resumes/)**
+**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Torna alla pagina precedente](/it/resumes/)**

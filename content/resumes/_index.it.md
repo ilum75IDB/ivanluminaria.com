@@ -23,7 +23,7 @@ Quello che oggi offro non è un elenco di competenze.
 
 </div>
 
-{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202603_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Banca d'Italia,Automotive" >}}
+{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Banca d'Italia,Automotive" >}}
 
 La mia esperienza nel Data Warehouse si è sviluppata in contesti dove il dato è infrastruttura critica.
 
@@ -41,7 +41,7 @@ Ho progettato architetture dati in ambienti dove il margine di errore non è con
 
 {{< /kh-role >}}
 
-{{< kh-role role="pm" title="Project Manager con background tecnico" roadmap="project-manager" pdf="CV_Project_Manager_Ivan_Luminaria_202603_EN.pdf" sectors="Telco internazionale,Istituzioni finanziarie,Assicurazioni,Farmaceutico,Automotive,PA" >}}
+{{< kh-role role="pm" title="Project Manager con background tecnico" roadmap="project-manager" pdf="CV_Project_Manager_Ivan_Luminaria_202606_EN.pdf" sectors="Telco internazionale,Istituzioni finanziarie,Assicurazioni,Farmaceutico,Automotive,PA" >}}
 
 La gestione di progetto è maturata coordinando attività in contesti complessi: Telecomunicazioni internazionali, Istituzioni finanziarie centrali, Assicurazioni, Farmaceutico, Automotive e Pubblica Amministrazione.
 
@@ -53,7 +53,7 @@ Collego visione strategica e dettaglio tecnico. Roadmap e implementazione. Decis
 
 {{< /kh-role >}}
 
-{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf" sectors="TIM,Huawei,Banca d'Italia,Generali,Automotive" >}}
+{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Huawei,Banca d'Italia,Generali,Automotive" >}}
 
 La mia attività come Oracle DBA si è consolidata in ambienti mission-critical per operatori come TIM, Wind, Vodafone e 3, in contesti tecnologici complessi come Huawei, per istituzioni finanziarie come Banca d'Italia, Ufficio Italiano Cambi e Cassa Depositi e Prestiti, per realtà assicurative come Generali, e in progetti industriali in ambito Automotive.
 
@@ -66,7 +66,7 @@ Qui il tuning non è un miglioramento estetico.
 
 {{< /kh-role >}}
 
-{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202603_EN.pdf" sectors="Banking,Assicurazioni,Farmaceutico,Automotive,PA" >}}
+{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" sectors="Banking,Assicurazioni,Farmaceutico,Automotive,PA" >}}
 
 Ho sviluppato PL/SQL in ambienti Telco, Banking, Assicurazioni, Automotive, Farmaceutico e Pubblica Amministrazione.
 
