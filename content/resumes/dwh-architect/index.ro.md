@@ -24,15 +24,11 @@ Treizeci de ani in Oracle si PostgreSQL. Kimball, Inmon, Star Schema, Snowflake,
 
 ## Competente Tehnice
 
-- **Metodologii DWH**: Modelare Multidimensionala a Datelor (Kimball, Inmon), Star Schema, Snowflake Schema, Slowly Changing Dimensions (SCD Type 1/2/3), Bus Matrix design.
-- **Oracle Databases**: Oracle Database (de la 8i la 21c), Oracle Exadata, Oracle RAC, Oracle Data Guard, Oracle Autonomous Database (ADB), Performance Tuning (AWR, ADDM, SQL Tuning Advisor), Storage Management (ASM), Backup & Recovery (RMAN), Oracle TDE.
-- **PostgreSQL**: PostgreSQL (14+), Query Optimization, Table Partitioning, pg_stat_statements, PgBouncer, Logical Replication, VACUUM/Autovacuum tuning.
-- **Cloud**: Oracle Cloud Infrastructure (OCI).
-- **Instrumente ETL/ELT**: Pipeline ETL bazate pe PL/SQL, Unix Shell Scripting, Oracle Data Integrator (ODI), Oracle Warehouse Builder (OWB, proiecte legacy).
-- **Business Intelligence & Reporting**: Oracle Analytics Cloud (OAC) — Semantic Model Designer, Reports, Dashboards.
-- **Limbaje de Programare si Scripting**: SQL (avansat), PL/SQL, Unix Shell Scripting.
-- **Sisteme de Operare**: Linux (RHEL, CentOS, Oracle Linux), Unix, Windows Server.
-- **Altele**: Project Management (Agile/Scrum), Team Leadership (pana la 7 persoane), Training Tehnic.
+- **Metodologii DWH**: Modelare multidimensionala Kimball si Inmon · Star Schema · Snowflake · Slowly Changing Dimensions (SCD Type 1/2/3) · Bus Matrix design.
+- **Stack Oracle**: Oracle Database 8i → 21c · Exadata · RAC · Data Guard · Autonomous Database (ADB) · Oracle Cloud Infrastructure (OCI) · Performance Tuning (AWR, ADDM, SQL Tuning Advisor) · ASM · RMAN · TDE.
+- **PostgreSQL**: PostgreSQL 14+ · Query Optimization · Table Partitioning · Logical Replication · VACUUM/Autovacuum tuning · pg_stat_statements · PgBouncer.
+- **ETL/ELT si BI**: Pipeline-uri ETL in PL/SQL · Oracle Data Integrator (ODI) · Oracle Warehouse Builder (OWB, legacy) · Oracle Analytics Cloud (OAC) pentru semantic model, rapoarte si dashboard-uri.
+- **Limbaje, SO si transversal**: SQL si PL/SQL avansate · Unix Shell Scripting · Linux (RHEL, CentOS, Oracle Linux), Unix, Windows Server · Project Management (Agile/Scrum) · leadership echipe 3-7 persoane · formare tehnica.
 
 ---
 
