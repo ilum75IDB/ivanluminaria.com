@@ -87,19 +87,10 @@ Arquitectura DWH (Kimball/Inmon) para entidades de la Administración Pública, 
 
 ---
 
-### ORACLE ITALIA S.R.L. — Varias sedes, Italia & Madrid, España
-**Data Warehouse Architect | Oracle DBA | DWH Designer | SQL & PL/SQL Developer | Training Specialist** | 1999 – 2009
+### 1999 – 2009 — ORACLE ITALIA S.R.L. — Varias sedes, Italia & Madrid, España
+**Data Warehouse Architect | Oracle DBA | DWH Designer | SQL & PL/SQL Developer | Training Specialist** | 10 años
 
-- **Roles Arquitecturales y de Desarrollo DWH (2001-2009):**
-  - Diseño y desarrollo de Data Warehouses para clientes líderes en Telco (TIM, Vodafone, TRE), Finanzas (Banca d'Italia, Generali, RAS), Farmacéutico (Menarini) y otros sectores.
-  - Implementación de modelos de datos (Kimball/Inmon) y procesos ETL/ELT con Oracle Warehouse Builder.
-  - Consultoría en SQL Performance & Tuning, PL/SQL, BI Reports (Oracle Discoverer, HTMLDB), Oracle OLAP.
-  - Experiencia internacional con Vodafone España (Madrid).
-
-- **Training Specialist (2000-2001):**
-  - Impartición de cursos Oracle: SQL (Básico y Avanzado), PL/SQL (Básico y Avanzado), Oracle Database Administration, Performance and Tuning, Oracle Discoverer, Forms, Reports.
-
-- **Web Developer | Oracle SQL & PL/SQL Developer** (ETNOTEAM S.P.A. - 1999): Desarrollo de portales web y aplicaciones cliente-servidor.
+Arquitectura y desarrollo de Data Warehouses para clientes líderes en Telco (TIM, Vodafone, TRE), Finanzas (Banca d'Italia, Generali, RAS) y Farmacéutico (Menarini), con modelado Kimball/Inmon y ETL sobre Oracle Warehouse Builder. Cerca de 1 año de experiencia internacional en Madrid en Vodafone España. Training Specialist en cursos técnicos Oracle: SQL, PL/SQL, DBA y Performance Tuning (2000-2001).
 
 ---
 
