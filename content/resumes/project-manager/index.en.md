@@ -87,12 +87,10 @@ Data Warehouses for Public Administration entities on Oracle platform. Developme
 
 ---
 
-### ORACLE ITALIA S.R.L. — Various Locations, Italy & Madrid, Spain
-**Senior Consultant / DWH Specialist / Training Specialist** | 1999 – 2009
+### 1999 – 2009 — ORACLE ITALIA S.R.L. — Various Locations, Italy & Madrid, Spain
+**Senior Consultant / DWH Specialist / Training Specialist** | 10 years
 
-- Participated in complex DWH and BI implementation projects for major clients (Telco, Finance, Pharmaceutical), with increasing responsibilities in activity coordination and junior consultant support.
-- Managed relationships with client technical leads and provided progress reporting.
-- **As Training Specialist (2000-2001):** Delivered Oracle technical courses, managed classroom dynamics and adapted content — presentation and training skills directly applicable to the PM role.
+DWH and BI projects for major clients in Telco, Finance and Pharmaceutical, with about 1 year of international experience in Madrid. Growing responsibilities from consultant role to activity coordination and junior consultant support. Training Specialist on Oracle technical courses (2000-2001).
 
 ---
 
