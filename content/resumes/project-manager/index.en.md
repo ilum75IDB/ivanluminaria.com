@@ -74,7 +74,7 @@ Fleet of 30+ critical Oracle databases (70+ instances on Exadata clusters) suppo
 ---
 
 ### FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
-**Technical Project Manager & Senior DWH Consultant** (Consulting firms and Direct clients) | 7 years
+**Technical Project Manager & Senior DWH Consultant** (Consulting companies and Direct clients) | 7 years
 
 10 projects delivered over 7 years for clients in Banking, Telco and services sectors, with budgets €100K-€500K. Teams of 3-7 people in multicultural, distributed settings, coordinated with an Agile approach.
 
