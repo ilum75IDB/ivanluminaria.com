@@ -74,12 +74,9 @@ Parque de 30+ bases de datos Oracle criticas (70+ instancias en clusters Exadata
 ---
 
 ### PROFESIONAL INDEPENDIENTE / CONSULTOR — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Consultant** | 2013 – 2020
+**Responsable tecnico de proyecto & Senior DWH Consultant** (Empresas de consultoria y Clientes directos) | 7 anos
 
-- Gestion de aproximadamente 10 proyectos en 7 anos para clientes de los sectores Bancario, Telco y servicios, con presupuestos en el rango de €100K-€500K y un excelente historial de entregas puntuales.
-- Coordinacion de equipos de 3-7 personas en contextos multiculturales y distribuidos — asignacion de tareas, facilitacion de la colaboracion y gestion de prioridades con enfoque iterativo Agile.
-- Interlocucion directa con los clientes para la recopilacion de requisitos, definicion del alcance, presentacion de avances y gestion de expectativas.
-- Formacion tecnica y mentoring para miembros del equipo — desarrollo de competencias y onboarding de nuevos consultores.
+10 proyectos entregados en 7 anos para clientes de los sectores Bancario, Telco y servicios, con presupuestos €100K-€500K. Equipos de 3-7 personas en contextos multiculturales y distribuidos, coordinados con enfoque Agile.
 
 ---
 
