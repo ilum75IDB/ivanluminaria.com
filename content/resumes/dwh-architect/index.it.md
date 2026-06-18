@@ -73,14 +73,10 @@ Sviluppo PL/SQL avanzato e tuning query Oracle per applicazioni finanziarie con 
 
 ---
 
-### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
-**Oracle DBA | Oracle Performance & Tuning Expert | DWH Architect** | 2013 – 2020
+### 2013 – 2020 — LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
+**Oracle DBA | Oracle Performance & Tuning Expert | DWH Architect** (Società di consulenza e Clienti diretti) | 7 anni
 
-- Progettazione e sviluppo di Data Warehouse per clienti nei settori bancario, assicurativo e telecomunicazioni, applicando metodologie Kimball/Inmon su piattaforme Oracle e PostgreSQL.
-- Sviluppo di processi ETL/ELT per il caricamento dati DWH — costruzione di pipeline che gestiscono oltre 500 milioni di righe per ciclo di caricamento.
-- Consulenza specializzata su database Oracle e PostgreSQL, SQL performance tuning, architetture DWH, PL/SQL e progettazione ETL.
-- Leadership di team (3-7 persone) in contesti multiculturali, gestione di attività e priorità con metodologia Agile.
-- Creazione di report e analisi dati con Oracle Analytics Cloud (OAC).
+Data Warehouse per clienti Banking, Assicurazioni e Telco su piattaforme Oracle e PostgreSQL, con modellazione Kimball/Inmon. Pipeline ETL/ELT da oltre 500 milioni di righe per ciclo di caricamento; team multiculturali 3-7 persone coordinati con approccio Agile.
 
 ---
 
