@@ -52,13 +52,16 @@ Quello che riconosco subito su un progetto: quando un requisito non è implement
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
 **Project Manager & Senior DWH Architect** | 2022 – Presente
 
-- **Responsabile tecnico di progetto & DWH Lead** (per ATRADIUS) | 4 anni:
+- **Responsabile tecnico di progetto & DWH Lead** (per ATRADIUS) | 4 anni
+
   Data Warehouse della divisione Surety consolidato su 4 paesi europei. Ingestione giornaliera completa sotto le 2 ore.
 
-- **Project Coordinator** (Banking, Telepass e altri clienti) | 1 anno:
+- **Project Coordinator** (Banking, Telepass e altri clienti) | 1 anno
+
   Batch analitici portati da 4 ore a meno di 30 minuti su dataset oltre i 2 miliardi di righe.
 
-- **Responsabile tecnico di progetto & DWH Lead** (per GENERALI Assicurazioni) | 1 anno:
+- **Responsabile tecnico di progetto & DWH Lead** (per GENERALI Assicurazioni) | 1 anno
+
   Team di sviluppo Oracle coordinato su database assicurativi da 500GB a 8TB. Scope gestito dai requisiti al rilascio.
 
 ---

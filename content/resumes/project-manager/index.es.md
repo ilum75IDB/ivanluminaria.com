@@ -52,13 +52,16 @@ Mas de 10 proyectos cerrados entre 2013 y 2020, equipos de 3-7 personas, presupu
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
 **Project Manager & Senior DWH Architect** | 2022 – Presente
 
-- **Responsable tecnico de proyecto & DWH Lead** (para ATRADIUS) | 4 anos:
+- **Responsable tecnico de proyecto & DWH Lead** (para ATRADIUS) | 4 anos
+
   Data Warehouse de la division Surety consolidado en 4 paises europeos. Ingestion diaria completa en menos de 2 horas.
 
-- **Project Coordinator** (Banking, Telepass y otros clientes) | 1 ano:
+- **Project Coordinator** (Banking, Telepass y otros clientes) | 1 ano
+
   Batches analiticos reducidos de 4 horas a menos de 30 minutos en datasets superiores a 2.000 millones de filas.
 
-- **Responsable tecnico de proyecto & DWH Lead** (para GENERALI Seguros) | 1 ano:
+- **Responsable tecnico de proyecto & DWH Lead** (para GENERALI Seguros) | 1 ano
+
   Equipo de desarrollo Oracle coordinado en bases de datos aseguradoras de 500GB a 8TB. Scope gestionado desde los requisitos hasta el lanzamiento.
 
 ---
