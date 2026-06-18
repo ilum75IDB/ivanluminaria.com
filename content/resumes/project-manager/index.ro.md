@@ -56,7 +56,7 @@ Peste 10 proiecte incheiate intre 2013 si 2020, echipe de 3-7 persoane, bugete â
 
   Data Warehouse-ul diviziei Surety consolidat in 4 tari europene. Ingestia zilnica completa sub 2 ore.
 
-- **Project Coordinator** (Banking, Telepass si alti clienti) | 1 an
+- **Project Coordinator** (Bancar: Fincons/Lutech, Transport: Telepass/Fai Service) | 1 an
 
   Batch-uri analitice reduse de la 4 ore la sub 30 de minute pe seturi de date de peste 2 miliarde de randuri.
 
