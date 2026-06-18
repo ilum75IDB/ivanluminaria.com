@@ -87,12 +87,10 @@ Data Warehouse-uri pentru entitati ale Administratiei Publice pe platforma Oracl
 
 ---
 
-### ORACLE ITALIA S.R.L. — Diverse locatii, Italia si Madrid, Spania
-**Senior Consultant / DWH Specialist / Training Specialist** | 1999 – 2009
+### 1999 – 2009 — ORACLE ITALIA S.R.L. — Diverse locatii, Italia si Madrid, Spania
+**Senior Consultant / DWH Specialist / Training Specialist** | 10 ani
 
-- Participare la proiecte complexe de implementare DWH si BI pentru clienti primari (Telco, Finance, Farmaceutic), cu responsabilitati crescande in coordonarea activitatilor si sprijinirea consultantilor juniori.
-- Gestionarea relatiilor cu referentii tehnici ai clientului si raportarea progresului activitatilor.
-- **Ca Training Specialist (2000-2001):** Sustinerea de cursuri tehnice Oracle, gestionarea clasei si adaptarea continutului — competente de prezentare si formare direct aplicabile rolului de PM.
+Proiecte DWH si BI pentru clienti primari Telco, Finance si Farmaceutic, cu aproximativ 1 an de experienta internationala la Madrid. Responsabilitati crescande de la rolul de consultant la coordonarea activitatilor si sprijinirea consultantilor juniori. Training Specialist pe cursuri tehnice Oracle (2000-2001).
 
 ---
 
