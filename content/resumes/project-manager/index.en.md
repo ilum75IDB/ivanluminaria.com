@@ -49,8 +49,8 @@ What I recognize right away on a project: when a requirement is not implementabl
 
 ## Work Experience
 
-### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
-**Project Manager & Senior DWH Architect** | 2022 – Present
+### 2022 – Present — IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
+**Project Manager & Senior DWH Architect**
 
 - **Technical Project Manager & DWH Lead** (for ATRADIUS) | 4 years
 
@@ -66,14 +66,14 @@ What I recognize right away on a project: when a requirement is not implementabl
 
 ---
 
-### NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
+### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
 **Senior Oracle DBA & Performance Tuning Expert** (for TIM / HUAWEI) | 2 years
 
 Fleet of 30+ critical Oracle databases (70+ instances on Exadata clusters) supporting over 20 million prepaid mobile subscribers. Tuning and patching on fact tables ingesting up to 800 million phone-traffic records per day.
 
 ---
 
-### FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
+### 2013 – 2020 — FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
 **Technical Project Manager & Senior DWH Consultant** (Consulting companies and Direct clients) | 7 years
 
 10 projects delivered over 7 years for clients in Banking, Telco and services sectors, with budgets €100K-€500K. Teams of 3-7 people in multicultural, distributed settings, coordinated with an Agile approach.
