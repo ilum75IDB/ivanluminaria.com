@@ -14,7 +14,11 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Project Manager con quasi 30 anni di esperienza IT e un solido background tecnico in ambienti Data Warehouse e Oracle. Oltre 10 progetti completati con consegne quasi sempre rispettate, gestendo team di 3-7 persone in contesti multiculturali e remoti su progetti con budget nell'ordine di €100K-€500K. Competenze concrete in pianificazione, gestione del rischio, coordinamento delle risorse e interfaccia con gli stakeholder — maturate sul campo coordinando attività di sviluppo, rilascio e manutenzione per clienti nei settori Banking, Telco, Assicurativo e Pubblica Amministrazione. Metodologie Agile (Scrum) applicate nella gestione quotidiana dei progetti, con formazione certificata. Background tecnico approfondito (architettura DWH, Oracle DBA, PL/SQL, ETL/ELT) che consente di parlare la stessa lingua del team di sviluppo, valutare la fattibilità delle soluzioni e identificare i rischi tecnici prima che diventino problemi.
+Esiste il PM che gestisce il progetto. E il PM che capisce il progetto. Io sono il secondo. Trent'anni dentro Oracle, PL/SQL, Data Warehouse, performance tuning — da dieci ne uso per fare anche il Project Manager.
+
+Quello che riconosco subito su un progetto: quando un requisito non è implementabile come scritto. Quando una stima è ottimistica per pressione, non per dati. Quando il vero rischio non è la deadline, è l'architettura.
+
+10+ progetti chiusi tra il 2013 e il 2020, team 3-7 persone, budget €100K-€500K, multi-paese e full-remote. Settori: Banking, Telco, Assicurativo, Pubblica Amministrazione. Clienti: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum e Agile, formazione certificata. Cosa porto: traduzione tecnica dei requisiti, scoperta precoce dei rischi, una sola lingua per team e stakeholder.
 
 ---
 
