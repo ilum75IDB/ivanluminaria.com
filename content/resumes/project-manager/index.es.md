@@ -52,20 +52,14 @@ Mas de 10 proyectos cerrados entre 2013 y 2020, equipos de 3-7 personas, presupu
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
 **Project Manager & Senior DWH Architect** | 2022 – Presente
 
-- **PM & DWH Lead** (para GENERALI Seguros) | Feb 2024 – May 2025:
-  - Coordinacion de actividades de proyecto y gestion de prioridades para el equipo de desarrollo en bases de datos Oracle del sector asegurador.
-  - Interlocucion directa con el cliente para la recopilacion de requisitos, definicion del alcance y presentacion de soluciones.
-  - Monitorizacion del avance y gestion de criticidades en bases de datos de 500GB a 8TB.
+- **Responsable tecnico de proyecto & DWH Lead** (para ATRADIUS) | 4 anos:
+  Data Warehouse de la division Surety consolidado en 4 paises europeos. Ingestion diaria completa en menos de 2 horas.
 
-- **PM & DWH Lead** (para ATRADIUS) | 2022 – 2026:
-  - Gestion del proyecto de consolidacion de datos para la division Surety — coordinacion de la integracion de datos de 4 paises europeos (Italia, Espana, Francia, Norte de Europa).
-  - Planificacion de releases y gestion del backlog de desarrollo sobre mas de 60.000 lineas de codigo PL/SQL ETL.
-  - Tracking de actividades, reporting al stakeholder y gestion de dependencias entre equipos.
+- **Project Coordinator** (Banking, Telepass y otros clientes) | 1 ano:
+  Batches analiticos reducidos de 4 horas a menos de 30 minutos en datasets superiores a 2.000 millones de filas.
 
-- **Project Coordinator** (Banking, Telepass y otros clientes):
-  - Coordinacion de proyectos con reduccion de tiempos de procesamiento batch de 4 horas a menos de 30 minutos.
-  - Gestion de la integracion de datos de mas de 15 fuentes heterogeneas en datasets superiores a 2.000 millones de filas.
-  - Planificacion y supervision de releases en entornos Oracle OCI y Autonomous Database.
+- **Responsable tecnico de proyecto & DWH Lead** (para GENERALI Seguros) | 1 ano:
+  Equipo de desarrollo Oracle coordinado en bases de datos aseguradoras de 500GB a 8TB. Scope gestionado desde los requisitos hasta el lanzamiento.
 
 ---
 
