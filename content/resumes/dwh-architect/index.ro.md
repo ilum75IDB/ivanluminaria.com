@@ -103,34 +103,20 @@ Dezvoltare aplicatii client-server pentru Telecom si Rover Italia, cu prime expe
 - **Diploma de Bacalaureat Stiintific** (EQF Nivel 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
 - **Engleza Avansata (C1/C2)** | The British Council (Nivel 4A), Roma | 2003 – 2004
 
-**Cursuri de Formare si Actualizare Selectionate:**
-
-- Scrum Agile — Randstad/Forma.temp (Mai 2024)
-- Project Management — Randstad/Forma.temp (Mai 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprilie 2021)
-- Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (Septembrie 2020)
-- Cursuri de specializare Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
-- MySQL Installation and Configuration — LinkedIn Learning (August 2020)
-- Learning Git and GitHub — LinkedIn Learning (August 2020)
+**Cursuri de Formare si Actualizare:**
+Project Management & Scrum Agile — Randstad/Forma.temp (Mai 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Aprilie 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (Septembrie 2020) · Cursuri de specializare Oracle 12c (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · MySQL Installation and Configuration + Learning Git and GitHub — LinkedIn Learning (August 2020).
 
 ---
 
 ## Limbi Straine
 
-- **Italiana**: Limba materna
-- **Engleza**: C1/C2 (Fluent, profesional)
-- **Spaniola**: C1 (Fluent)
-- **Romana**: C1 (Fluent)
-- **Franceza**: A1/A2 (Baza)
+**Italiana** — Limba materna · **Engleza** — C1/C2 (Fluent, profesional) · **Spaniola** — C1 (Fluent) · **Romana** — C1 (Fluent) · **Franceza** — A1/A2 (Baza)
 
 ---
 
 ## Competente Transversale
 
-- Rezolvarea problemelor in mod analitic si creativ
-- Lucru in echipa si colaborare in contexte internationale
-- Project Management (Definirea cerintelor, Prioritizare, Diagrame Gantt, ERD)
-- Comunicare eficienta si implicarea stakeholderilor
+Rezolvarea analitica si creativa a problemelor · colaborare in contexte internationale si full-remote · project management (Agile/Scrum, definirea cerintelor, prioritizare, diagrame Gantt, ERD) · leadership tehnic al echipelor de 3-7 persoane · mentorat tehnic · stakeholder engagement.
 
 ---
 

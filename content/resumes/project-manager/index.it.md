@@ -24,26 +24,10 @@ Quello che riconosco subito su un progetto: quando un requisito non è implement
 
 ## Competenze Chiave
 
-- **Project Management & Metodologie**:
-  - Pianificazione di progetto, definizione delle milestone e monitoraggio dell'avanzamento.
-  - Gestione del rischio e delle criticità — identificazione proattiva e piani di mitigazione.
-  - Metodologie Agile e Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — Formazione certificata.
-  - Definizione dei requisiti, gestione dello scope e interfaccia con gli stakeholder.
-  - Pianificazione dei rilasci e coordinamento delle attività di delivery.
-- **Strumenti di Project Management & Produttività**:
-  - Microsoft Project e Jira (pianificazione, tracking, gestione backlog).
-  - Microsoft Excel e Google Sheets (reporting, dashboard di progetto, analisi dati — uso quotidiano).
-  - Git e GitHub (gestione del codice, issue tracking, CI/CD, workflow collaborativi).
-- **Competenze Tecniche a Supporto del PM**:
-  - Architettura Data Warehouse (Kimball, Inmon, Google Cloud Platform).
-  - Oracle Database: DBA, Performance Tuning, PL/SQL.
-  - SQL avanzato, processi ETL/ELT, Business Intelligence.
-  - Valutazione della fattibilità tecnica e stima dell'effort di sviluppo.
-- **Leadership & Comunicazione**:
-  - Coordinamento di team tecnici distribuiti (3-7 persone, multi-paese).
-  - Comunicazione efficace con team tecnici, stakeholder di business e management.
-  - Mentoring e sviluppo delle competenze del team.
-  - Facilitazione di meeting e gestione dei conflitti.
+- **Project Management & Metodologie**: Pianificazione e milestone · Gestione del rischio (identificazione proattiva, piani di mitigazione) · Agile e Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — formazione certificata · Definizione requisiti, scope management, stakeholder engagement · Pianificazione rilasci e delivery.
+- **Strumenti**: Microsoft Project · Jira · Microsoft Excel e Google Sheets (reporting, dashboard, analisi dati — uso quotidiano) · Git e GitHub (issue tracking, CI/CD, workflow collaborativi).
+- **Tech a supporto del PM**: Architettura Data Warehouse (Kimball, Inmon, GCP) · Oracle Database (DBA, Performance Tuning, PL/SQL) · SQL avanzato · ETL/ELT · Business Intelligence · valutazione fattibilità tecnica e stima dell'effort di sviluppo.
+- **Leadership & Comunicazione**: Coordinamento team tecnici distribuiti (3-7 persone, multi-paese) · Comunicazione efficace con team, stakeholder business e management · Mentoring e sviluppo competenze · Facilitazione meeting e gestione conflitti.
 
 ---
 
@@ -100,36 +84,20 @@ Progetti DWH e BI per clienti primari Telco, Finance e Farmaceutico, con circa 1
 - **Diploma di Maturità Scientifica** (EQF Livello 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
 - **Inglese Avanzato (C1/C2)** | The British Council (Livello 4A), Roma | 2003 – 2004
 
-**Corsi di Formazione e Aggiornamento Selezionati:**
-
-- Project Management — Randstad/Forma.temp (Maggio 2024)
-- Scrum Agile — Randstad/Forma.temp (Maggio 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprile 2021)
-- Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (Settembre 2020)
-- Corsi di specializzazione Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
-- Learning Excel 2016 — LinkedIn Learning (Agosto 2020)
-- Learning Git and GitHub — LinkedIn Learning (Agosto 2020)
+**Corsi di Formazione e Aggiornamento:**
+Project Management & Scrum Agile — Randstad/Forma.temp (Maggio 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Aprile 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (Settembre 2020) · Corsi di specializzazione Oracle 12c (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · Learning Excel 2016 + Learning Git and GitHub — LinkedIn Learning (Agosto 2020).
 
 ---
 
 ## Lingue
 
-- **Italiano**: Madrelingua
-- **Inglese**: C1/C2 (Fluente, professionale)
-- **Spagnolo**: C1 (Fluente)
-- **Rumeno**: C1 (Fluente)
-- **Francese**: A1/A2 (Base)
+**Italiano** — Madrelingua · **Inglese** — C1/C2 (Fluente, professionale) · **Spagnolo** — C1 (Fluente) · **Rumeno** — C1 (Fluente) · **Francese** — A1/A2 (Base)
 
 ---
 
 ## Competenze Trasversali
 
-- Capacità di tradurre requisiti tecnici in piani di progetto concreti e gestibili
-- Gestione simultanea di più progetti con priorità concorrenti
-- Comunicazione efficace a tutti i livelli (team tecnico, stakeholder, management)
-- Problem Solving analitico e gestione proattiva dei rischi
-- Esperienza di lavoro in team distribuiti, multiculturali e full-remote
-- Mentoring e sviluppo delle competenze del team
+Traduzione di requisiti tecnici in piani di progetto concreti · gestione simultanea di più progetti con priorità concorrenti · comunicazione con team tecnici, stakeholder e management · problem solving analitico · risk management proattivo · esperienza in team distribuiti, multiculturali e full-remote · mentoring tecnico.
 
 ---
 

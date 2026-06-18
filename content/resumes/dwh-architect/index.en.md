@@ -103,34 +103,20 @@ Client-server application development for Telecom and Rover Italia, with first e
 - **Scientific High School Diploma** (EQF Level 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Rome | 1988 – 1993
 - **Advanced English (C1/C2)** | The British Council (Level 4A), Rome | 2003 – 2004
 
-**Selected Training and Continuing Education Courses:**
-
-- Scrum Agile — Randstad/Forma.temp (May 2024)
-- Project Management — Randstad/Forma.temp (May 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (April 2021)
-- Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (September 2020)
-- Multiple Oracle 12c specialization courses (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
-- MySQL Installation and Configuration — LinkedIn Learning (August 2020)
-- Learning Git and GitHub — LinkedIn Learning (August 2020)
+**Selected Training and Continuing Education:**
+Project Management & Scrum Agile — Randstad/Forma.temp (May 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (April 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (September 2020) · Oracle 12c specialization (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · MySQL Installation and Configuration + Learning Git and GitHub — LinkedIn Learning (August 2020).
 
 ---
 
 ## Languages
 
-- **Italian**: Native
-- **English**: C1/C2 (Fluent, professional)
-- **Spanish**: C1 (Fluent)
-- **Romanian**: C1 (Fluent)
-- **French**: A1/A2 (Basic)
+**Italian** — Native · **English** — C1/C2 (Fluent, professional) · **Spanish** — C1 (Fluent) · **Romanian** — C1 (Fluent) · **French** — A1/A2 (Basic)
 
 ---
 
 ## Soft Skills
 
-- Analytical and Creative Problem Solving
-- Teamwork and Collaboration in International Contexts
-- Project Management (Requirements definition, Prioritization, Gantt charts, ERD)
-- Effective Communication and Stakeholder Engagement
+Analytical and creative problem solving · collaboration in international and fully remote contexts · project management (Agile/Scrum, requirements definition, prioritization, Gantt charts, ERD) · technical leadership of 3-7 people teams · technical mentoring · stakeholder engagement.
 
 ---
 
