@@ -184,6 +184,41 @@ Tradotto contestualmente in tutte e 4 le lingue (IT/EN/ES/RO). ES e RO mantengon
 - [ ] Stile Borzacchiello applicato anche agli altri 3 profili (DWH Architect, Oracle DBA, PL/SQL) o solo a PM? — Decisione architetturale: se sì serve coerenza, se no il PM diventa il pezzo "speciale" della sezione.
 - [ ] PDF `CV_Project_Manager_Ivan_Luminaria_202603_EN.pdf`: aggiornare anche il PDF EN con un'introduzione coerente con il nuovo paragrafo web, o lasciare il PDF allineato al vecchio profilo CV-classico?
 - [ ] Lo stesso paragrafo aggiornato va portato anche nella **card sulla landing** (`_index.it.md` shortcode `kh-role`)? Oggi la card landing mostra un testo introduttivo separato.
+- [ ] Le 4 occorrenze di "PM" nel paragrafo "Profilo Professionale" (usate come **concetto generico**, non come titolo di ruolo) sono state lasciate intatte. Decidere se sostituirle con "Responsabile tecnico di progetto" / "Technical Project Manager" / equivalenti, o se mantenerle perché lì "PM" è la formulazione più naturale per il ritmo della frase.
+
+---
+
+## Round 4 — Esperienza IDEA DB CONSULTING (sotto-blocchi 2022–Presente)
+
+**Sessione 2026-06-18**: refactor del primo blocco "Esperienza Professionale" della pagina PM. Quattro trasformazioni applicate in un'unica modifica:
+
+1. **Riordino dei 3 sotto-incarichi**: ATRADIUS in alto, Banking/Telepass al centro, GENERALI in fondo — riflette il peso strategico (ATRADIUS è il progetto più ampio: 4 paesi EU, 60K righe PL/SQL) e cronologico (ATRADIUS è iniziato per primo).
+2. **Date specifiche → durate sintetiche**: `Feb 2024 – Mag 2025`, `2022 – 2026` → `4 anni`, `1 anno`, `1 anno`. Più asciutto, focus sulla durata utile per il lettore.
+3. **Bullet → prosa orientata al risultato**: ogni sotto-incarico passa da 3 bullet tecnici a 1-2 frasi che dichiarano il risultato ottenuto. Stile coerente con il "Profilo Professionale" (frasi corte, ritmo punctuated, niente filler).
+4. **Sostituzione titolo ruolo**: `PM` → `Responsabile tecnico di progetto` (IT) / `Technical Project Manager` (EN) / `Responsable tecnico de proyecto` (ES, no diacritics per coerenza body) / `Responsabil tehnic de proiect` (RO, no diacritics).
+
+### Testo applicato (IT, master)
+
+```markdown
+- **Responsabile tecnico di progetto & DWH Lead** (per ATRADIUS) | 4 anni:
+  Data Warehouse della divisione Surety consolidato su 4 paesi europei. Ingestione giornaliera completa sotto le 2 ore.
+
+- **Project Coordinator** (Banking, Telepass e altri clienti) | 1 anno:
+  Batch analitici portati da 4 ore a meno di 30 minuti su dataset oltre i 2 miliardi di righe.
+
+- **Responsabile tecnico di progetto & DWH Lead** (per GENERALI Assicurazioni) | 1 anno:
+  Team di sviluppo Oracle coordinato su database assicurativi da 500GB a 8TB. Scope gestito dai requisiti al rilascio.
+```
+
+### Info informativa caduta consapevolmente
+
+Le seguenti metriche/dettagli erano nei bullet originali e sono stati rimossi nella prosa orientata al risultato:
+
+- "60.000 righe di codice PL/SQL ETL" (ATRADIUS) — il risultato chiave è il DWH consolidato + ingestione <2h, il volume di codice non aggiunge segnale per il lettore
+- "15+ sorgenti eterogenee" (Banking/Telepass) — mezzo non fine: il risultato è il 4h→30min
+- "Rilasci in Oracle OCI/Autonomous DB" (Banking/Telepass) — tecnologia specifica non rilevante per il punto
+- "Tracking, reporting, dipendenze tra team" (ATRADIUS) — attività implicite nel ruolo "Responsabile tecnico di progetto & DWH Lead"
+- "Raccolta requisiti, scope, presentazione soluzioni" (GENERALI) — compresso in "Scope gestito dai requisiti al rilascio"
 
 ---
 
