@@ -135,7 +135,8 @@ DWH and BI projects for major clients in Telco, Finance and Pharmaceutical, with
 
 *I consent to the processing of my personal data pursuant to Art. 13 of EU Regulation 2016/679 (GDPR).*
 
-Rome, March 2026
+Location: Rome, Italy\
+Last Update: June 2026
 
 ---
 
