@@ -14,7 +14,11 @@ layout: "simple"
 
 ## Perfil Profesional
 
-Project Manager con casi 30 anos de experiencia en TI y una solida base tecnica en entornos Data Warehouse y Oracle. Mas de 10 proyectos entregados con un excelente historial de cumplimiento de plazos, gestionando equipos de 3-7 personas en contextos multiculturales y remotos, en proyectos con presupuestos en el rango de €100K-€500K. Competencias concretas en planificacion, gestion de riesgos, coordinacion de recursos e interlocucion con stakeholders — desarrolladas en el campo coordinando actividades de desarrollo, release y mantenimiento para clientes en los sectores Bancario, Telco, Seguros y Administracion Publica. Metodologias Agile (Scrum) aplicadas en la gestion diaria de proyectos, con formacion certificada. Profunda base tecnica (arquitectura DWH, Oracle DBA, PL/SQL, ETL/ELT) que permite comunicarse eficazmente con los equipos de desarrollo, evaluar la viabilidad de las soluciones e identificar los riesgos tecnicos antes de que se conviertan en problemas.
+Existe el PM que gestiona el proyecto. Y el PM que entiende el proyecto. Yo soy el segundo. Treinta anos dentro de Oracle, PL/SQL, Data Warehouse, performance tuning — diez de ellos los uso tambien para hacer Project Management.
+
+Lo que reconozco enseguida en un proyecto: cuando un requisito no es implementable tal como esta escrito. Cuando una estimacion es optimista por presion, no por datos. Cuando el verdadero riesgo no es la fecha limite, es la arquitectura.
+
+Mas de 10 proyectos cerrados entre 2013 y 2020, equipos de 3-7 personas, presupuestos €100K-€500K, multipais y full-remote. Sectores: Bancario, Telco, Seguros, Administracion Publica. Clientes: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum y Agile, formacion certificada. Lo que aporto: traduccion tecnica de los requisitos, deteccion temprana de los riesgos, un unico lenguaje para el equipo y los stakeholders.
 
 ---
 
