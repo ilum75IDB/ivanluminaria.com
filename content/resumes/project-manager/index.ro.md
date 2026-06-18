@@ -80,12 +80,10 @@ Parc de 30+ baze de date Oracle critice (70+ instante pe clustere Exadata) care 
 
 ---
 
-### AUSELDA AED GROUP S.P.A. — Roma, Italia
-**Senior Data Warehouse Specialist & Oracle DBA** (pentru Administratia Publica) | 2009 – 2013
+### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Roma, Italia
+**Senior Data Warehouse Specialist & Oracle DBA** (pentru Administratia Publica) | 4 ani
 
-- Colaborare cu responsabilii de proiect pentru definirea cerintelor tehnice, planificarea activitatilor si validarea solutiilor.
-- Coordonarea activitatilor de dezvoltare si optimizare a Data Warehouse-urilor pentru entitati ale Administratiei Publice.
-- Suport tehnic si formare pentru utilizatorii platformelor DWH.
+Data Warehouse-uri pentru entitati ale Administratiei Publice pe platforma Oracle. Coordonarea dezvoltarii, definirea cerintelor tehnice cu responsabilii de proiect, formare utilizatori.
 
 ---
 
