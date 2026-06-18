@@ -24,26 +24,10 @@ Mas de 10 proyectos cerrados entre 2013 y 2020, equipos de 3-7 personas, presupu
 
 ## Competencias Clave
 
-- **Gestion de Proyectos y Metodologias**:
-  - Planificacion de proyectos, definicion de hitos y seguimiento del avance.
-  - Gestion de riesgos y criticidades — identificacion proactiva y planes de mitigacion.
-  - Metodologias Agile y Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — Formacion certificada.
-  - Definicion de requisitos, gestion del alcance e interlocucion con stakeholders.
-  - Planificacion de releases y coordinacion de entregas.
-- **Herramientas de Gestion de Proyectos y Productividad**:
-  - Microsoft Project y Jira (planificacion, tracking, gestion de backlog).
-  - Microsoft Excel y Google Sheets (reporting, dashboards de proyecto, analisis de datos — uso diario).
-  - Git y GitHub (gestion de codigo, issue tracking, CI/CD, workflows colaborativos).
-- **Competencias Tecnicas de Soporte al PM**:
-  - Arquitectura Data Warehouse (Kimball, Inmon, Google Cloud Platform).
-  - Oracle Database: DBA, Performance Tuning, PL/SQL.
-  - SQL avanzado, procesos ETL/ELT, Business Intelligence.
-  - Evaluacion de viabilidad tecnica y estimacion del esfuerzo de desarrollo.
-- **Liderazgo y Comunicacion**:
-  - Coordinacion de equipos tecnicos distribuidos (3-7 personas, multi-pais).
-  - Comunicacion eficaz con equipos tecnicos, stakeholders de negocio y direccion.
-  - Mentoring y desarrollo de competencias del equipo.
-  - Facilitacion de reuniones y gestion de conflictos.
+- **Gestion de Proyectos y Metodologias**: Planificacion e hitos · Gestion de riesgos (identificacion proactiva, planes de mitigacion) · Agile y Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — formacion certificada · Definicion de requisitos, gestion del alcance, interlocucion con stakeholders · Planificacion de releases y coordinacion de entregas.
+- **Herramientas**: Microsoft Project · Jira · Microsoft Excel y Google Sheets (reporting, dashboards, analisis de datos — uso diario) · Git y GitHub (issue tracking, CI/CD, workflows colaborativos).
+- **Competencias Tecnicas de Soporte al PM**: Arquitectura Data Warehouse (Kimball, Inmon, GCP) · Oracle Database (DBA, Performance Tuning, PL/SQL) · SQL avanzado · ETL/ELT · Business Intelligence · evaluacion de viabilidad tecnica y estimacion del esfuerzo de desarrollo.
+- **Liderazgo y Comunicacion**: Coordinacion de equipos tecnicos distribuidos (3-7 personas, multi-pais) · Comunicacion eficaz con equipos, stakeholders de negocio y direccion · Mentoring y desarrollo de competencias · Facilitacion de reuniones y gestion de conflictos.
 
 ---
 
@@ -102,34 +86,19 @@ Proyectos DWH y BI para clientes principales Telco, Finanzas y Farmaceutico, con
 
 **Cursos de Formacion Continua Seleccionados:**
 
-- Project Management — Randstad/Forma.temp (Mayo 2024)
-- Scrum Agile — Randstad/Forma.temp (Mayo 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Abril 2021)
-- Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (Septiembre 2020)
-- Cursos de especializacion Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
-- Learning Excel 2016 — LinkedIn Learning (Agosto 2020)
-- Learning Git and GitHub — LinkedIn Learning (Agosto 2020)
+Project Management & Scrum Agile — Randstad/Forma.temp (Mayo 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Abril 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (Septiembre 2020) · Cursos de especializacion Oracle 12c (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · Learning Excel 2016 + Learning Git and GitHub — LinkedIn Learning (Agosto 2020).
 
 ---
 
 ## Idiomas
 
-- **Italiano**: Lengua materna
-- **Ingles**: C1/C2 (Fluido, profesional)
-- **Espanol**: C1 (Fluido)
-- **Rumano**: C1 (Fluido)
-- **Frances**: A1/A2 (Basico)
+**Italiano** — Lengua materna · **Ingles** — C1/C2 (Fluido, profesional) · **Espanol** — C1 (Fluido) · **Rumano** — C1 (Fluido) · **Frances** — A1/A2 (Basico)
 
 ---
 
 ## Habilidades Interpersonales
 
-- Capacidad de traducir requisitos tecnicos en planes de proyecto concretos y gestionables
-- Gestion simultanea de multiples proyectos con prioridades concurrentes
-- Comunicacion eficaz a todos los niveles (equipo tecnico, stakeholders, direccion)
-- Resolucion Analitica de Problemas y gestion proactiva de riesgos
-- Experiencia de trabajo en equipos distribuidos, multiculturales y full-remote
-- Mentoring y desarrollo de competencias del equipo
+Traduccion de requisitos tecnicos en planes de proyecto concretos · gestion simultanea de multiples proyectos con prioridades concurrentes · comunicacion con equipos tecnicos, stakeholders y direccion · problem solving analitico · gestion proactiva de riesgos · experiencia en equipos distribuidos, multiculturales y full-remote · mentoring tecnico.
 
 ---
 
