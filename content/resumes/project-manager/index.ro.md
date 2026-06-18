@@ -24,26 +24,10 @@ Peste 10 proiecte incheiate intre 2013 si 2020, echipe de 3-7 persoane, bugete �
 
 ## Competente Cheie
 
-- **Project Management & Metodologii**:
-  - Planificarea proiectelor, definirea milestone-urilor si monitorizarea progresului.
-  - Managementul riscurilor si al criticalitatilor — identificare proactiva si planuri de mitigare.
-  - Metodologii Agile si Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — Formare certificata.
-  - Definirea cerintelor, managementul scope-ului si relatia cu stakeholderii.
-  - Planificarea release-urilor si coordonarea livrarilor.
-- **Instrumente de Project Management & Productivitate**:
-  - Microsoft Project si Jira (planificare, tracking, managementul backlog-ului).
-  - Microsoft Excel si Google Sheets (raportare, dashboard-uri de proiect, analiza datelor — utilizare zilnica).
-  - Git si GitHub (managementul codului, issue tracking, CI/CD, workflow-uri colaborative).
-- **Competente Tehnice de Suport pentru PM**:
-  - Arhitectura Data Warehouse (Kimball, Inmon, Google Cloud Platform).
-  - Oracle Database: DBA, Performance Tuning, PL/SQL.
-  - SQL avansat, procese ETL/ELT, Business Intelligence.
-  - Evaluarea fezabilitatii tehnice si estimarea efortului de dezvoltare.
-- **Leadership & Comunicare**:
-  - Coordonarea echipelor tehnice distribuite (3-7 persoane, multi-tara).
-  - Comunicare eficienta cu echipele tehnice, stakeholderii de business si managementul.
-  - Mentorat si dezvoltarea competentelor echipei.
-  - Facilitarea intalnirilor si managementul conflictelor.
+- **Project Management & Metodologii**: Planificare si milestone-uri · Managementul riscurilor (identificare proactiva, planuri de mitigare) · Agile si Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — formare certificata · Definirea cerintelor, scope management, stakeholder engagement · Planificarea release-urilor si coordonarea livrarilor.
+- **Instrumente**: Microsoft Project · Jira · Microsoft Excel si Google Sheets (raportare, dashboard-uri, analiza datelor — utilizare zilnica) · Git si GitHub (issue tracking, CI/CD, workflow-uri colaborative).
+- **Competente Tehnice de Suport pentru PM**: Arhitectura Data Warehouse (Kimball, Inmon, GCP) · Oracle Database (DBA, Performance Tuning, PL/SQL) · SQL avansat · ETL/ELT · Business Intelligence · evaluarea fezabilitatii tehnice si estimarea efortului de dezvoltare.
+- **Leadership & Comunicare**: Coordonarea echipelor tehnice distribuite (3-7 persoane, multi-tara) · Comunicare eficienta cu echipele, stakeholderii de business si managementul · Mentorat si dezvoltarea competentelor · Facilitarea intalnirilor si managementul conflictelor.
 
 ---
 
@@ -100,36 +84,20 @@ Proiecte DWH si BI pentru clienti primari Telco, Finance si Farmaceutic, cu apro
 - **Diploma de Liceu Stiintific** (EQF Nivel 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
 - **Engleza Avansata (C1/C2)** | The British Council (Level 4A), Roma | 2003 – 2004
 
-**Cursuri Selectate de Formare si Educatie Continua:**
-
-- Project Management — Randstad/Forma.temp (Mai 2024)
-- Scrum Agile — Randstad/Forma.temp (Mai 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprilie 2021)
-- Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (Septembrie 2020)
-- Cursuri de specializare Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
-- Learning Excel 2016 — LinkedIn Learning (August 2020)
-- Learning Git and GitHub — LinkedIn Learning (August 2020)
+**Cursuri de Formare si Educatie Continua:**
+Project Management & Scrum Agile — Randstad/Forma.temp (Mai 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Aprilie 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (Septembrie 2020) · Cursuri de specializare Oracle 12c (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · Learning Excel 2016 + Learning Git and GitHub — LinkedIn Learning (August 2020).
 
 ---
 
 ## Limbi Straine
 
-- **Italiana**: Limba materna
-- **Engleza**: C1/C2 (Fluent, profesional)
-- **Spaniola**: C1 (Fluent)
-- **Romana**: C1 (Fluent)
-- **Franceza**: A1/A2 (Baza)
+**Italiana** — Limba materna · **Engleza** — C1/C2 (Fluent, profesional) · **Spaniola** — C1 (Fluent) · **Romana** — C1 (Fluent) · **Franceza** — A1/A2 (Baza)
 
 ---
 
 ## Competente Transversale
 
-- Capacitatea de a transpune cerintele tehnice in planuri de proiect concrete si gestionabile
-- Gestionarea simultana a mai multor proiecte cu prioritati concurente
-- Comunicare eficienta la toate nivelurile (echipa tehnica, stakeholderi, management)
-- Rezolvare Analitica a Problemelor si gestionare proactiva a riscurilor
-- Experienta de lucru in echipe distribuite, multiculturale si full-remote
-- Mentorat si dezvoltarea competentelor echipei
+Traducerea cerintelor tehnice in planuri de proiect concrete · gestionarea simultana a mai multor proiecte cu prioritati concurente · comunicare cu echipele tehnice, stakeholderi si management · problem solving analitic · gestiune proactiva a riscurilor · experienta in echipe distribuite, multiculturale si full-remote · mentorat tehnic.
 
 ---
 

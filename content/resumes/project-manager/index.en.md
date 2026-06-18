@@ -24,26 +24,10 @@ What I recognize right away on a project: when a requirement is not implementabl
 
 ## Key Skills
 
-- **Project Management & Methodologies**:
-  - Project planning, milestone definition and progress tracking.
-  - Risk and issue management — proactive identification and mitigation planning.
-  - Agile and Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — Certified training.
-  - Requirements definition, scope management and stakeholder engagement.
-  - Release planning and delivery coordination.
-- **Project Management & Productivity Tools**:
-  - Microsoft Project and Jira (planning, tracking, backlog management).
-  - Microsoft Excel and Google Sheets (reporting, project dashboards, data analysis — daily use).
-  - Git and GitHub (code management, issue tracking, CI/CD, collaborative workflows).
-- **Technical Skills Supporting PM**:
-  - Data Warehouse Architecture (Kimball, Inmon, Google Cloud Platform).
-  - Oracle Database: DBA, Performance Tuning, PL/SQL.
-  - Advanced SQL, ETL/ELT processes, Business Intelligence.
-  - Technical feasibility assessment and development effort estimation.
-- **Leadership & Communication**:
-  - Coordination of distributed technical teams (3-7 people, multi-country).
-  - Effective communication with technical teams, business stakeholders and management.
-  - Mentoring and team skill development.
-  - Meeting facilitation and conflict management.
+- **Project Management & Methodologies**: Project planning and milestones · Risk and issue management (proactive identification, mitigation planning) · Agile and Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — certified training · Requirements definition, scope management, stakeholder engagement · Release planning and delivery coordination.
+- **Tools**: Microsoft Project · Jira · Microsoft Excel and Google Sheets (reporting, dashboards, data analysis — daily use) · Git and GitHub (issue tracking, CI/CD, collaborative workflows).
+- **Technical Skills Supporting PM**: Data Warehouse Architecture (Kimball, Inmon, GCP) · Oracle Database (DBA, Performance Tuning, PL/SQL) · Advanced SQL · ETL/ELT · Business Intelligence · technical feasibility assessment and development effort estimation.
+- **Leadership & Communication**: Coordination of distributed technical teams (3-7 people, multi-country) · Effective communication with teams, business stakeholders and management · Mentoring and team skill development · Meeting facilitation and conflict management.
 
 ---
 
@@ -100,36 +84,20 @@ DWH and BI projects for major clients in Telco, Finance and Pharmaceutical, with
 - **Scientific High School Diploma** (EQF Level 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Rome | 1988 – 1993
 - **Advanced English (C1/C2)** | The British Council (Level 4A), Rome | 2003 – 2004
 
-**Selected Training and Continuing Education Courses:**
-
-- Project Management — Randstad/Forma.temp (May 2024)
-- Scrum Agile — Randstad/Forma.temp (May 2024)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (April 2021)
-- Data Science on Google Cloud Platform: Designing Data Warehouses — LinkedIn Learning (September 2020)
-- Multiple Oracle 12c specialization courses (Administration, Security, Backup and Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020)
-- Learning Excel 2016 — LinkedIn Learning (August 2020)
-- Learning Git and GitHub — LinkedIn Learning (August 2020)
+**Selected Training and Continuing Education:**
+Project Management & Scrum Agile — Randstad/Forma.temp (May 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (April 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (September 2020) · Oracle 12c specialization (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · Learning Excel 2016 + Learning Git and GitHub — LinkedIn Learning (August 2020).
 
 ---
 
 ## Languages
 
-- **Italian**: Native
-- **English**: C1/C2 (Fluent, professional)
-- **Spanish**: C1 (Fluent)
-- **Romanian**: C1 (Fluent)
-- **French**: A1/A2 (Basic)
+**Italian** — Native · **English** — C1/C2 (Fluent, professional) · **Spanish** — C1 (Fluent) · **Romanian** — C1 (Fluent) · **French** — A1/A2 (Basic)
 
 ---
 
 ## Soft Skills
 
-- Ability to translate technical requirements into concrete, manageable project plans
-- Simultaneous management of multiple projects with competing priorities
-- Effective communication at all levels (technical team, stakeholders, management)
-- Analytical Problem Solving and proactive risk management
-- Experience working in distributed, multicultural and fully remote teams
-- Mentoring and team skill development
+Translation of technical requirements into concrete project plans · simultaneous management of multiple projects with competing priorities · communication with technical teams, stakeholders and management · analytical problem solving · proactive risk management · experience in distributed, multicultural and fully remote teams · technical mentoring.
 
 ---
 
