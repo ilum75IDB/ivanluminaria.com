@@ -56,7 +56,7 @@ What I recognize right away on a project: when a requirement is not implementabl
 
   Surety division Data Warehouse consolidated across 4 European countries. Full daily ingestion completed in under 2 hours.
 
-- **Project Coordinator** (Banking, Telepass and other clients) | 1 year
+- **Project Coordinator** (Banking: Fincons/Lutech, Transport: Telepass/Fai Service) | 1 year
 
   Analytical batches brought from 4 hours to under 30 minutes on datasets exceeding 2 billion rows.
 

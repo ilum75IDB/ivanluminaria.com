@@ -56,7 +56,7 @@ Quello che riconosco subito su un progetto: quando un requisito non è implement
 
   Data Warehouse della divisione Surety consolidato su 4 paesi europei. Ingestione giornaliera completa sotto le 2 ore.
 
-- **Project Coordinator** (Banking, Telepass e altri clienti) | 1 anno
+- **Project Coordinator** (Banking: Fincons/Lutech, Trasporti: Telepass/Fai Service) | 1 anno
 
   Batch analitici portati da 4 ore a meno di 30 minuti su dataset oltre i 2 miliardi di righe.
 
