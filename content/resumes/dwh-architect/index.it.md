@@ -38,33 +38,24 @@ Trent'anni dentro Oracle e PostgreSQL. Kimball, Inmon, Star Schema, Snowflake, S
 
 ## Esperienza Professionale
 
-### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Data Warehouse Architect | Oracle & PostgreSQL Expert | Amministratore Unico** | 2021 – Presente
+### 2021 – Presente — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
+**Data Warehouse Architect | Oracle & PostgreSQL Expert | Amministratore Unico**
 
-- **DWH Architect** (per ATRADIUS) | 2022 – 2026:
-  - Progettazione del Data Warehouse della divisione Surety per il consolidamento dei dati provenienti da Italia, Spagna, Francia e paesi del Nord Europa.
-  - Integrazione di sorgenti eterogenee — database Oracle, Microsoft SQL Server e file flat da sistemi esterni — in un DWH unificato basato su Oracle.
-  - Modellazione dei domini di business principali: portafoglio clienti, polizze, contratti, fatturazione, sinistri e transazioni sui sinistri.
-  - Sviluppo dell'intero data model e layer ETL — oltre 60.000 righe di codice PL/SQL — con un sistema di monitoraggio dei caricamenti in tempo reale. L'ingestione giornaliera completa da tutte e tre le sorgenti si completa in meno di 2 ore.
+- **DWH Architect** (per ATRADIUS) | 4 anni
 
-- **DWH Architect** (per FAI SERVICE) | 2021 – 2023:
-  - Progettazione di un data model Snowflake Schema su Oracle Analytics Cloud con processi ETL su Oracle 19c in OCI.
-  - Sviluppo di dashboard e report su OAC per statistiche di fatturazione, segmentazione clienti, analisi del portafoglio e tracking costi/ricavi.
+  Architettura DWH della divisione Surety: 4 paesi europei consolidati su Oracle, modello dimensionale completo e 60.000+ righe di PL/SQL ETL con ingestione giornaliera sotto le 2 ore.
 
-- **Progettazione e Architettura DWH** (Banking, Telepass e altri clienti):
-  - Definizione e implementazione di architetture Data Warehouse per clienti del settore bancario e partner Telepass, seguendo le metodologie Kimball e Inmon.
-  - Applicazione della modellazione multidimensionale (Star Schema, Snowflake) per ottimizzare analisi e reporting su dataset superiori ai 2 miliardi di righe.
-  - Progettazione e sviluppo di flussi ETL/ELT per l'integrazione di dati da oltre 15 sorgenti eterogenee.
-  - Progettazione e implementazione di soluzioni DWH su PostgreSQL come alternative cost-effective alle architetture Oracle, incluse strategie di partizionamento e ottimizzazione delle prestazioni delle query.
+- **DWH Architect** (per FAI SERVICE) | 2 anni
 
-- **Gestione e Ottimizzazione Database Oracle:**
-  - Amministrazione avanzata, tuning e ottimizzazione delle prestazioni di database Oracle, inclusi ambienti OCI e Autonomous Database.
-  - Ottimizzazione di query SQL complesse — riduzione dei tempi di elaborazione batch da 4 ore a meno di 30 minuti su workload analitici critici.
+  Snowflake Schema su Oracle Analytics Cloud con ETL su Oracle 19c in OCI, a supporto di dashboard di fatturazione, segmentazione clienti e tracking costi/ricavi.
 
-- **Leadership e Consulenza:**
-  - Guida tecnica e formazione per team interni e clienti sulle best practice DWH e Oracle/PostgreSQL.
-  - Installazione e patching di database Oracle, gestione Oracle OEM e RMAN.
-  - Sviluppo di report e dashboard con Oracle Analytics Cloud (OAC).
+- **Progettazione e Architettura DWH** (Banking, Telepass e altri clienti) | 1 anno
+
+  Architetture DWH Kimball/Inmon per Banking e Telepass: 15+ sorgenti eterogenee integrate, dataset oltre 2 miliardi di righe per ciclo, batch portati da 4 ore a meno di 30 minuti.
+
+- **Attività trasversali ai progetti**
+
+  Tuning di query SQL complesse e ottimizzazione DB Oracle in OCI/Autonomous; formazione tecnica e mentoring su best practice DWH e Oracle/PostgreSQL.
 
 ---
 
