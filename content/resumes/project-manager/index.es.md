@@ -49,8 +49,8 @@ Mas de 10 proyectos cerrados entre 2013 y 2020, equipos de 3-7 personas, presupu
 
 ## Experiencia Profesional
 
-### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Architect** | 2022 – Presente
+### 2022 – Presente — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
+**Project Manager & Senior DWH Architect**
 
 - **Responsable tecnico de proyecto & DWH Lead** (para ATRADIUS) | 4 anos
 
@@ -66,14 +66,14 @@ Mas de 10 proyectos cerrados entre 2013 y 2020, equipos de 3-7 personas, presupu
 
 ---
 
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
+### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
 **Senior Oracle DBA & Performance Tuning Expert** (para TIM / HUAWEI) | 2 anos
 
 Parque de 30+ bases de datos Oracle criticas (70+ instancias en clusters Exadata) que soportan mas de 20 millones de abonados moviles de prepago. Tuning y patching sobre tablas de hechos con ingesta de hasta 800 millones de registros de trafico telefonico al dia.
 
 ---
 
-### PROFESIONAL INDEPENDIENTE / CONSULTOR — Roma, Italia (Full Remote Europa)
+### 2013 – 2020 — PROFESIONAL INDEPENDIENTE / CONSULTOR — Roma, Italia (Full Remote Europa)
 **Responsable tecnico de proyecto & Senior DWH Consultant** (Empresas de consultoria y Clientes directos) | 7 anos
 
 10 proyectos entregados en 7 anos para clientes de los sectores Bancario, Telco y servicios, con presupuestos €100K-€500K. Equipos de 3-7 personas en contextos multiculturales y distribuidos, coordinados con enfoque Agile.
