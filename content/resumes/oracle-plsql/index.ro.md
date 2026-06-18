@@ -8,7 +8,7 @@ draft: false
 layout: "simple"
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202603_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
@@ -127,4 +127,4 @@ Last Update: Iunie 2026
 
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202603_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**
+**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**

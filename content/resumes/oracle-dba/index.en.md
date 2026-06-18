@@ -8,7 +8,7 @@ draft: false
 layout: "simple"
 ---
 
-**[Download PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)**
+**[Download PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202606_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
@@ -124,4 +124,4 @@ Last Update: June 2026
 
 ---
 
-**[Download PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)** | **[Back to previous page](/en/resumes/)**
+**[Download PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202606_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)** | **[Back to previous page](/en/resumes/)**
