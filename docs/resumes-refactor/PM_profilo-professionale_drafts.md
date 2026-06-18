@@ -260,6 +260,41 @@ Parco di 30+ database Oracle critici (70+ istanze su cluster Exadata) a supporto
 
 ---
 
+## Round 7 — Esperienza LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE (2013-2020)
+
+**Sessione 2026-06-18**: rifacimento del terzo blocco "Esperienza Professionale" della pagina PM. Stesso pattern dei round precedenti, con due novità rispetto a NIMIS:
+
+1. **Esteso il rinome ruolo** "Project Manager" → "Responsabile tecnico di progetto" (IT) / "Technical Project Manager" (EN) / "Responsable tecnico de proyecto" (ES) / "Responsabil tehnic de proiect" (RO) anche all'header del ruolo, perché qui "Project Manager" era scritto per esteso (non come acronimo "PM"). Decisione presa per coerenza con il positioning del CV.
+2. **Aggiunta precisazione tra parentesi sul ruolo**: `(Società di consulenza e Clienti diretti)` — esplicita le due tipologie di acquisizione cliente durante il periodo freelance. Pattern di parentesi mutuato da NIMIS `(per TIM / HUAWEI)`.
+
+### Testo applicato (IT, master)
+
+```markdown
+### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
+**Responsabile tecnico di progetto & Senior DWH Consultant** (Società di consulenza e Clienti diretti) | 7 anni
+
+10 progetti delivered in 7 anni per clienti nei settori Banking, Telco e servizi, con budget €100K-€500K. Team 3-7 persone in contesti multiculturali e distribuiti, coordinati con approccio Agile.
+```
+
+### Scelte editoriali
+
+- **Header datore invariato**: l'utente ha esplicitamente confermato di non sostituire `LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE` con `SOCIETÀ DI CONSULENZA E CLIENTI DIRETTI`. La precisazione va in parentesi sul ruolo, non come header.
+- **Durata 7 anni** coerente con i round precedenti (4/1/1 anni IDEA DB CONSULTING, 2 anni NIMIS).
+- **Numeri mantenuti**: i numeri del Profilo Professionale (10 progetti, 7 anni, settori, €100K-€500K, team 3-7, multiculturale/distribuito, Agile) vengono ripetuti qui come "dettaglio dell'esperienza specifica". Non ridondanza nociva, perché il Profilo Professionale è sintesi mentre questa sezione è il dettaglio del periodo.
+
+### Decisione aperta scartata (per ora)
+
+- **Scope-creep IDEA DB CONSULTING**: il blocco IDEA DB CONSULTING ha ancora "Project Manager & Senior DWH Architect" come header del ruolo. L'utente ha esplicitamente detto di NON includere il rinome in questo commit. Ripreso eventualmente in un ciclo separato.
+
+### Info caduta consapevolmente
+
+- "Consegne quasi sempre rispettate" → già nel Profilo Professionale, ridondante qui
+- "Assegnazione dei compiti / facilitazione collaborazione / gestione priorità" → attività standard di team coordination, implicite nel ruolo
+- "Interfaccia diretta con clienti per requisiti/scope/avanzamenti/aspettative" → compresso in "coordinati con approccio Agile" (la raccolta requisiti è parte di Agile)
+- "**Formazione tecnica e mentoring**" — l'utente ha esplicitamente confermato di non reintrodurla come 3a frase. Lasciata fuori per asciuttezza.
+
+---
+
 ## Riferimenti
 
 - File live target: `content/resumes/project-manager/index.it.md` (sezione `## Profilo Professionale`, riga 17)
