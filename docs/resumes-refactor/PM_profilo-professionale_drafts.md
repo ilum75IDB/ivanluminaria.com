@@ -220,6 +220,44 @@ Le seguenti metriche/dettagli erano nei bullet originali e sono stati rimossi ne
 - "Tracking, reporting, dipendenze tra team" (ATRADIUS) — attività implicite nel ruolo "Responsabile tecnico di progetto & DWH Lead"
 - "Raccolta requisiti, scope, presentazione soluzioni" (GENERALI) — compresso in "Scope gestito dai requisiti al rilascio"
 
+### Layout fix (round 5)
+
+Subito dopo l'applicazione, layout aggiustato: rimosso `:` finale dopo le durate (era residuo del formato bullet), e aggiunta riga vuota tra l'header del sotto-incarico e la prosa risultato. Goldmark ora rende la prosa come paragrafo separato dentro il `<li>`, invece di farla apparire in continuità con la riga del bullet.
+
+---
+
+## Round 6 — Esperienza NIMIS CONSULTING (TIM/HUAWEI, 2020-2022)
+
+**Sessione 2026-06-18**: stesso metodo dei round precedenti applicato al secondo blocco "Esperienza Professionale" della pagina PM. Differenza strutturale rispetto a IDEA DB CONSULTING: NIMIS non aveva sotto-incarichi multipli, era un singolo ruolo (DBA per TIM/HUAWEI) con 3 bullet di attività. Quindi niente riordino, solo trasformazione bullet→prosa + durata sintetica.
+
+Trasformazioni applicate:
+
+1. **Date specifiche → durata sintetica**: `2020 – 2022` → `2 anni`. Coerente con il round IDEA DB CONSULTING (4 anni / 1 anno / 1 anno).
+2. **3 bullet → 1 prosa risultato (2 frasi)**: focus sulla scala tecnica gestita (30+ DB, 70+ istanze Exadata, 20M abbonati, 800M record/giorno).
+3. **Layout**: stessa struttura della precedente (durata senza `:`, prosa come paragrafo separato sotto l'header del ruolo).
+
+### Testo applicato (IT, master)
+
+```markdown
+### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
+**Senior Oracle DBA & Performance Tuning Expert** (per TIM / HUAWEI) | 2 anni
+
+Parco di 30+ database Oracle critici (70+ istanze su cluster Exadata) a supporto di oltre 20 milioni di abbonati mobile prepagati. Tuning e patching su tabelle dei fatti con ingestione fino a 800 milioni di record di traffico telefonico al giorno.
+```
+
+### Scelte editoriali
+
+- **Titolo del ruolo invariato**: "Senior Oracle DBA & Performance Tuning Expert" è il titolo nominale del contratto NIMIS. Nel CV PM non viene rinominato retroattivamente — la scelta è ammettere onestamente che il ruolo era DBA, ed enfatizzare gli aspetti che hanno valore anche in un CV PM (scala del progetto gestito, criticità mission-critical, interfaccia con team di sviluppo).
+- **Numeri 20M abbonati e 800M record/giorno**: presi dal CV DWH Architect dello stesso periodo NIMIS/TIM/HUAWEI (sono ufficiali, già usati altrove). Riportarli qui amplifica il segnale "wow" rispetto ai soli 30+ DB / 70+ istanze, e rinforza il positioning "PM tecnico" già dichiarato nel Profilo Professionale.
+- **Variante 2 scartata**: c'era anche un'opzione più PM-oriented ("Interfaccia tecnica al team di sviluppo per prioritizzazione degli interventi e patching pianificato in 24/7"). Scartata perché meno asciutta, più descrittiva e meno coerente con il pattern dei sotto-incarichi ATRADIUS/GENERALI (numeri-wow secchi).
+
+### Info caduta consapevolmente
+
+- "Pianificazione ed esecuzione manutenzione/patching" → "patching" basta (la pianificazione è implicita)
+- "Coordinamento con team di sviluppo" / "supporto tecnico specializzato" / "prioritizzazione degli interventi" → tutti compressi (impliciti nel ruolo)
+- "Gestione autonoma del proprio carico di lavoro" → dropped (caratteristica generica del ruolo senior)
+- "Reportistica verso il responsabile di progetto" → dropped (attività gestionale standard)
+
 ---
 
 ## Riferimenti
