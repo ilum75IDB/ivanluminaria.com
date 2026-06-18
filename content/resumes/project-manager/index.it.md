@@ -67,11 +67,9 @@ Quello che riconosco subito su un progetto: quando un requisito non è implement
 ---
 
 ### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (per TIM / HUAWEI) | 2020 – 2022
+**Senior Oracle DBA & Performance Tuning Expert** (per TIM / HUAWEI) | 2 anni
 
-- Pianificazione ed esecuzione di attività di manutenzione e patching su oltre 30 database Oracle critici (70+ istanze) su cluster Exadata.
-- Coordinamento con il team di sviluppo per ottimizzare le interazioni con il database e risolvere problemi di prestazioni — supporto tecnico specializzato e prioritizzazione degli interventi.
-- Gestione autonoma del proprio carico di lavoro e delle attività di tuning, con reportistica verso il responsabile di progetto.
+Parco di 30+ database Oracle critici (70+ istanze su cluster Exadata) a supporto di oltre 20 milioni di abbonati mobile prepagati. Tuning e patching su tabelle dei fatti con ingestione fino a 800 milioni di record di traffico telefonico al giorno.
 
 ---
 
