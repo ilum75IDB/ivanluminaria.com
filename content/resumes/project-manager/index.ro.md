@@ -52,20 +52,14 @@ Peste 10 proiecte incheiate intre 2013 si 2020, echipe de 3-7 persoane, bugete �
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
 **Project Manager & Senior DWH Architect** | 2022 – Prezent
 
-- **PM & DWH Lead** (pentru GENERALI Asigurari) | Feb 2024 – Mai 2025:
-  - Coordonarea activitatilor de proiect si gestionarea prioritatilor pentru echipa de dezvoltare pe baze de date Oracle in sectorul asigurarilor.
-  - Interfata directa cu clientul pentru colectarea cerintelor, definirea scope-ului si prezentarea solutiilor.
-  - Monitorizarea progresului si gestionarea criticalitatilor pe baze de date de 500GB la 8TB.
+- **Responsabil tehnic de proiect & DWH Lead** (pentru ATRADIUS) | 4 ani:
+  Data Warehouse-ul diviziei Surety consolidat in 4 tari europene. Ingestia zilnica completa sub 2 ore.
 
-- **PM & DWH Lead** (pentru ATRADIUS) | 2022 – 2026:
-  - Gestionarea proiectului de consolidare a datelor pentru divizia Surety — coordonarea integrarii datelor din 4 tari europene (Italia, Spania, Franta, Europa de Nord).
-  - Planificarea release-urilor si managementul backlog-ului de dezvoltare pe peste 60.000 de linii de cod PL/SQL ETL.
-  - Tracking-ul activitatilor, raportare catre stakeholder si gestionarea dependentelor intre echipe.
+- **Project Coordinator** (Banking, Telepass si alti clienti) | 1 an:
+  Batch-uri analitice reduse de la 4 ore la sub 30 de minute pe seturi de date de peste 2 miliarde de randuri.
 
-- **Project Coordinator** (Banking, Telepass si alti clienti):
-  - Coordonarea proiectelor cu reducerea timpilor de procesare batch de la 4 ore la sub 30 de minute.
-  - Gestionarea integrarii datelor din peste 15 surse eterogene pe seturi de date depasindu 2 miliarde de randuri.
-  - Planificarea si supervizarea release-urilor in medii Oracle OCI si Autonomous Database.
+- **Responsabil tehnic de proiect & DWH Lead** (pentru GENERALI Asigurari) | 1 an:
+  Echipa de dezvoltare Oracle coordonata pe baze de date de asigurari de la 500GB la 8TB. Scope gestionat de la cerinte pana la lansare.
 
 ---
 

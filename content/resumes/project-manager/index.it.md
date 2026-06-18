@@ -52,20 +52,14 @@ Quello che riconosco subito su un progetto: quando un requisito non è implement
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
 **Project Manager & Senior DWH Architect** | 2022 – Presente
 
-- **PM & DWH Lead** (per GENERALI Assicurazioni) | Feb 2024 – Mag 2025:
-  - Coordinamento delle attività progettuali e gestione delle priorità per il team di sviluppo su database Oracle nel settore assicurativo.
-  - Interfaccia diretta con il cliente per la raccolta dei requisiti, la definizione dello scope e la presentazione delle soluzioni.
-  - Monitoraggio dell'avanzamento e gestione delle criticità su database da 500GB a 8TB.
+- **Responsabile tecnico di progetto & DWH Lead** (per ATRADIUS) | 4 anni:
+  Data Warehouse della divisione Surety consolidato su 4 paesi europei. Ingestione giornaliera completa sotto le 2 ore.
 
-- **PM & DWH Lead** (per ATRADIUS) | 2022 – 2026:
-  - Gestione del progetto di consolidamento dati per la divisione Surety — coordinamento dell'integrazione dati da 4 paesi europei (Italia, Spagna, Francia, Nord Europa).
-  - Pianificazione dei rilasci e gestione del backlog di sviluppo su oltre 60.000 righe di codice PL/SQL ETL.
-  - Tracking delle attività, reporting allo stakeholder e gestione delle dipendenze tra team.
+- **Project Coordinator** (Banking, Telepass e altri clienti) | 1 anno:
+  Batch analitici portati da 4 ore a meno di 30 minuti su dataset oltre i 2 miliardi di righe.
 
-- **Project Coordinator** (Banking, Telepass e altri clienti):
-  - Coordinamento di progetti con riduzione dei tempi di elaborazione batch da 4 ore a meno di 30 minuti.
-  - Gestione dell'integrazione dati da oltre 15 sorgenti eterogenee su dataset superiori ai 2 miliardi di righe.
-  - Pianificazione e supervisione dei rilasci in ambienti Oracle OCI e Autonomous Database.
+- **Responsabile tecnico di progetto & DWH Lead** (per GENERALI Assicurazioni) | 1 anno:
+  Team di sviluppo Oracle coordinato su database assicurativi da 500GB a 8TB. Scope gestito dai requisiti al rilascio.
 
 ---
 

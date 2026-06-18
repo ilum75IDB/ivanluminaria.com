@@ -52,20 +52,14 @@ What I recognize right away on a project: when a requirement is not implementabl
 ### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
 **Project Manager & Senior DWH Architect** | 2022 – Present
 
-- **PM & DWH Lead** (for GENERALI Insurance) | Feb 2024 – May 2025:
-  - Coordinated project activities and managed priorities for the development team on Oracle databases in the insurance sector.
-  - Direct client interface for requirements gathering, scope definition and solution presentation.
-  - Progress monitoring and issue management across databases ranging from 500GB to 8TB.
+- **Technical Project Manager & DWH Lead** (for ATRADIUS) | 4 years:
+  Surety division Data Warehouse consolidated across 4 European countries. Full daily ingestion completed in under 2 hours.
 
-- **PM & DWH Lead** (for ATRADIUS) | 2022 – 2026:
-  - Managed the data consolidation project for the Surety division — coordinating data integration from 4 European countries (Italy, Spain, France, Northern Europe).
-  - Release planning and development backlog management across 60,000+ lines of PL/SQL ETL code.
-  - Activity tracking, stakeholder reporting and cross-team dependency management.
+- **Project Coordinator** (Banking, Telepass and other clients) | 1 year:
+  Analytical batches brought from 4 hours to under 30 minutes on datasets exceeding 2 billion rows.
 
-- **Project Coordinator** (Banking, Telepass and other clients):
-  - Coordinated projects achieving batch processing time reduction from 4 hours to under 30 minutes.
-  - Managed data integration from 15+ heterogeneous sources across datasets exceeding 2 billion rows.
-  - Release planning and oversight in Oracle OCI and Autonomous Database environments.
+- **Technical Project Manager & DWH Lead** (for GENERALI Insurance) | 1 year:
+  Oracle development team coordinated on insurance databases from 500GB to 8TB. Scope managed from requirements to release.
 
 ---
 
