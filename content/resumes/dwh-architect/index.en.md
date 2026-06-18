@@ -80,13 +80,10 @@ Data Warehouses for Banking, Insurance and Telco clients on Oracle and PostgreSQ
 
 ---
 
-### AUSELDA AED GROUP S.P.A. — Rome, Italy
-**Data Warehouse Architect | Performance & Tuning Expert | Oracle Project DBA** (for Public Administration) | 2009 – 2013
+### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Rome, Italy
+**Data Warehouse Architect | Performance & Tuning Expert | Oracle Project DBA** (for Public Administration) | 4 years
 
-- Data Warehouse design and modeling (Kimball/Inmon) for Public Administration entities.
-- Development of ETL/ELT processes and optimization of complex SQL queries.
-- Oracle Warehouse Builder (OWB) product specialist.
-- Technical management of DWH projects and user training.
+DWH architecture (Kimball/Inmon) for Public Administration entities, with specialization in Oracle Warehouse Builder (OWB) and complex SQL query optimization.
 
 ---
 
