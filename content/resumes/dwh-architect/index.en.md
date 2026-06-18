@@ -94,10 +94,10 @@ Data Warehouse architecture and development for major clients in Telco (TIM, Vod
 
 ---
 
-### S.EL.DAT. S.P.A. — Rome, Italy
-**Software Developer** (for Telecom, Rover Italia) | 1997 – 1999
+### 1997 – 1999 — S.EL.DAT. S.P.A. — Rome, Italy
+**Software Developer** (for Telecom, Rover Italia) | 2 years
 
-- Client-server application development, Junior Oracle DBA, DB monitoring.
+Client-server application development for Telecom and Rover Italia, with first experiences as Junior Oracle DBA and database monitoring — the starting point of the Oracle journey.
 
 ---
 
