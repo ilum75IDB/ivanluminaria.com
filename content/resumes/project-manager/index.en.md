@@ -52,13 +52,16 @@ What I recognize right away on a project: when a requirement is not implementabl
 ### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
 **Project Manager & Senior DWH Architect** | 2022 – Present
 
-- **Technical Project Manager & DWH Lead** (for ATRADIUS) | 4 years:
+- **Technical Project Manager & DWH Lead** (for ATRADIUS) | 4 years
+
   Surety division Data Warehouse consolidated across 4 European countries. Full daily ingestion completed in under 2 hours.
 
-- **Project Coordinator** (Banking, Telepass and other clients) | 1 year:
+- **Project Coordinator** (Banking, Telepass and other clients) | 1 year
+
   Analytical batches brought from 4 hours to under 30 minutes on datasets exceeding 2 billion rows.
 
-- **Technical Project Manager & DWH Lead** (for GENERALI Insurance) | 1 year:
+- **Technical Project Manager & DWH Lead** (for GENERALI Insurance) | 1 year
+
   Oracle development team coordinated on insurance databases from 500GB to 8TB. Scope managed from requirements to release.
 
 ---
