@@ -1,0 +1,143 @@
+/* CV PDF stylesheet — compatto, target max 2 pagine A4
+   Brand: Inter font, Postgres-blue per accenti, Oracle-red per link */
+
+@page {
+  size: A4;
+  margin: 1.1cm 1.3cm 1.0cm 1.3cm;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #2a2a2a;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nasconde l'header automatico iniettato da pandoc --standalone */
+header#title-block-header { display: none !important; }
+
+/* Name (h1) */
+h1 {
+  font-size: 18pt;
+  font-weight: 700;
+  color: #336791;
+  margin: 0 0 0.15em 0;
+  letter-spacing: -0.01em;
+}
+
+/* Blocco anagrafica/contatti subito sotto il nome */
+h1 + p {
+  margin: 0.15em 0 0.45em 0;
+  font-size: 9pt;
+  color: #4a4a4a;
+  line-height: 1.45;
+}
+
+/* Sezioni */
+h2 {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #336791;
+  margin: 0.55em 0 0.25em 0;
+  padding-bottom: 1.5px;
+  border-bottom: 0.6pt solid #336791;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  /* clearfix per il floated span */
+  overflow: hidden;
+}
+
+/* Job role tag a destra dell'H2 (es. su "Professional Profile") */
+.job-role {
+  float: right;
+  font-size: 10pt;
+  font-weight: 600;
+  color: #F80000;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 1px;
+}
+
+/* Datore / azienda */
+h3 {
+  font-size: 10pt;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin: 0.5em 0 0.05em 0;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* Mantieni l'h3 e i suoi contenuti immediati sulla stessa pagina */
+h3 + p,
+h3 + p + p,
+h3 + p + ul,
+h3 + ul {
+  page-break-before: avoid;
+  break-before: avoid;
+}
+
+/* Custom wrapper per i blocchi esperienza: mantienili compatti */
+.exp-block {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Bold inline — accentato col blue */
+strong { color: #336791; font-weight: 700; }
+
+em { font-style: italic; color: #555; font-size: 9pt; }
+
+/* Liste compatte */
+ul, ol {
+  margin: 0.2em 0 0.35em 0;
+  padding-left: 1.2em;
+}
+li {
+  margin-bottom: 0.18em;
+  page-break-inside: avoid;
+}
+li > ul, li > ol {
+  margin: 0.15em 0 0.1em 0;
+}
+
+/* Paragrafi */
+p {
+  margin: 0.2em 0 0.35em 0;
+  text-align: justify;
+}
+
+/* Header row immediatamente sotto h3 (rigo del ruolo) */
+h3 + p {
+  margin-top: 0;
+  font-weight: 500;
+}
+
+/* HR come separatori sezionali tra datori — invisibili, solo spacing */
+hr {
+  border: none;
+  border-top: 0.3pt solid #d8d8d8;
+  margin: 0.3em 0 0.3em 0;
+}
+
+/* Link */
+a {
+  color: #F80000;
+  text-decoration: none;
+}
+
+/* Footer (data + GDPR) */
+hr + p {
+  font-size: 9pt;
+  color: #4a4a4a;
+  margin-bottom: 0.15em;
+}
+
+/* Evita orfani */
+h2, h3 { page-break-after: avoid; }
+ul, ol, p { orphans: 2; widows: 2; }
