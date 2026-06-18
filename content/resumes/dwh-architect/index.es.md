@@ -59,18 +59,10 @@ Treinta años dentro de Oracle y PostgreSQL. Kimball, Inmon, Star Schema, Snowfl
 
 ---
 
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Oracle DBA | DWH Architect | Oracle Performance & Tuning Expert** (para TIM / HUAWEI) | 2020 – 2022
+### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
+**Oracle DBA | DWH Architect | Oracle Performance & Tuning Expert** (para TIM / HUAWEI) | 2 años
 
-- **Administración de Proyectos DWH/DBA:**
-  - Gestión y administración de más de 30 bases de datos Oracle críticas (70+ instancias) en clusters Oracle Exadata (3 y 5 nodos) para un importante cliente Telco.
-  - Responsable de la disponibilidad 24/7 de los sistemas de bases de datos que soportan más de 20 millones de abonados móviles prepago.
-  - Gestión de tablas de hechos con ingestión de hasta 800 millones de registros de tráfico telefónico por día, requiriendo estrategias avanzadas de particionamiento y compresión.
-
-- **Performance Tuning Avanzado:**
-  - Análisis en profundidad del rendimiento mediante AWR, ADDM y tuning proactivo para garantizar SLAs por debajo de 500ms de tiempo de respuesta en consultas críticas.
-  - Implementación de estrategias de indexación, particionamiento y compresión para mejorar el rendimiento del sistema DWH.
-  - Gestión de la seguridad de los datos con Oracle TDE (Transparent Data Encryption).
+Arquitectura DWH telco sobre más de 30 bases de datos Oracle críticas (70+ instancias en clusters Exadata) que soportan más de 20 millones de abonados móviles de prepago. Tablas de hechos con ingesta de hasta 800 millones de registros de tráfico telefónico al día, particionamiento y compresión avanzados para SLA <500ms en consultas críticas.
 
 ---
 
