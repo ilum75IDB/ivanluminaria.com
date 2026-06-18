@@ -140,7 +140,8 @@ Client-server application development for Telecom and Rover Italia, with first e
 
 *I consent to the processing of my personal data pursuant to Art. 13 of EU Regulation 2016/679 (GDPR).*
 
-Rome, March 2026
+Location: Rome, Italy\
+Last Update: June 2026
 
 ---
 
