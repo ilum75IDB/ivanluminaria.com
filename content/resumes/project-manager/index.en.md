@@ -80,12 +80,10 @@ Fleet of 30+ critical Oracle databases (70+ instances on Exadata clusters) suppo
 
 ---
 
-### AUSELDA AED GROUP S.P.A. — Rome, Italy
-**Senior Data Warehouse Specialist & Oracle DBA** (for Public Administration) | 2009 – 2013
+### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Rome, Italy
+**Senior Data Warehouse Specialist & Oracle DBA** (for Public Administration) | 4 years
 
-- Collaborated with project leads on technical requirements definition, activity planning and solution validation.
-- Coordinated development and optimization activities for Data Warehouses serving Public Administration entities.
-- Technical support and user training on DWH platforms.
+Data Warehouses for Public Administration entities on Oracle platform. Development coordination, technical requirements definition with project leads, user training.
 
 ---
 
