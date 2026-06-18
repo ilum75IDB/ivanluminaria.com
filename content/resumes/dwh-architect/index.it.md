@@ -14,7 +14,11 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Data Warehouse Architect e professionista IT con quasi 30 anni di esperienza nella progettazione, implementazione e gestione di soluzioni DWH complesse e ad alte prestazioni in ambienti Oracle e PostgreSQL. Esperto in metodologie di modellazione multidimensionale dei dati (Kimball, Inmon) e nell'ottimizzazione di processi ETL/ELT e query SQL su dataset che vanno da centinaia di milioni a miliardi di righe. Comprovata capacità di guidare progetti DWH end-to-end — dall'analisi dei requisiti al deployment in produzione — garantendo integrità, qualità e disponibilità dei dati a supporto delle decisioni di business. Leadership tecnica e mentalità orientata al problem-solving in contesti internazionali e full-remote.
+Progetto e lavoro su Data Warehouse con dataset che vanno da centinaia di milioni a miliardi di righe.
+
+ATRADIUS: divisione Surety consolidata su 4 paesi europei, 60.000+ righe di PL/SQL ETL, ingestione giornaliera completa sotto le 2 ore. TIM/Huawei: 30+ database Oracle critici su cluster Exadata, 70+ istanze, fino a 800 milioni di record di traffico telefonico al giorno. Banking + Telepass: integrazione da 15+ sorgenti eterogenee, oltre 2 miliardi di righe per ciclo.
+
+Trent'anni dentro Oracle e PostgreSQL. Kimball, Inmon, Star Schema, Snowflake, SCD Type 2. Settori: Banking, Telco, Assicurazioni, Pubblica Amministrazione. Cosa porto: architetture che reggono sotto carico e scalano con il dato che cresce.
 
 ---
 
