@@ -1,11 +1,12 @@
 ---
 categories:
 - data-warehouse
-date: '2026-07-07'
-description: "Ce nu include un Data Warehouse tehnic funcțional: ownership, calitate continuă, TDE Oracle 19c, Data Catalog. Un caz real din sectorul asigurărilor."
+date: '2026-07-20'
+description: 'Ce nu include un Data Warehouse tehnic funcțional: ownership, calitate
+  continuă, TDE Oracle 19c, Data Catalog. Un caz real din sectorul asigurărilor.'
 draft: false
 image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
-seoTitle: "Data governance DWH asigurări: TDE, Data Catalog, ownership"
+seoTitle: 'Data governance DWH asigurări: TDE, Data Catalog, ownership'
 tags:
 - data-governance
 - data-warehouse

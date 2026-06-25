@@ -1,7 +1,7 @@
 ---
 categories:
 - data-warehouse
-date: '2026-07-07'
+date: '2026-07-20'
 description: 'Da una pausa pranzo con un senior data analyst assicurativo emergono
   i gap di governance prima del go-live: data quality, lineage, ownership, GDPR e
   Transparent Data Encryption su Oracle 19c.'

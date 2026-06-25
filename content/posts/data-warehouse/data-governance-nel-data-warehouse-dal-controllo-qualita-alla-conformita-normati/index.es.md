@@ -1,11 +1,12 @@
 ---
 categories:
 - data-warehouse
-date: '2026-07-07'
-description: "Qué falta cuando un DWH está 'técnicamente listo': data ownership, calidad continua, TDE en Oracle 19c y Data Catalog. Caso real en sector asegurador."
+date: '2026-07-20'
+description: 'Qué falta cuando un DWH está ''técnicamente listo'': data ownership,
+  calidad continua, TDE en Oracle 19c y Data Catalog. Caso real en sector asegurador.'
 draft: false
 image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
-seoTitle: "Data governance en DWH: calidad, TDE y roles antes del go-live"
+seoTitle: 'Data governance en DWH: calidad, TDE y roles antes del go-live'
 tags:
 - data-governance
 - data-quality
