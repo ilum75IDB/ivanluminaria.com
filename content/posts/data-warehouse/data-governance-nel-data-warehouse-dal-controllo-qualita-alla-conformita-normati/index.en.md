@@ -1,7 +1,7 @@
 ---
 categories:
 - data-warehouse
-date: '2026-07-21'
+date: '2026-07-20'
 description: 'A lunch conversation about what a technically ready Data Warehouse still
   lacks: data ownership, quality framework, GDPR, TDE on Oracle 19c.'
 draft: false
