@@ -1,11 +1,12 @@
 ---
 categories:
 - data-warehouse
-date: '2026-07-07'
-description: "A lunch conversation about what a technically ready Data Warehouse still lacks: data ownership, quality framework, GDPR, TDE on Oracle 19c."
+date: '2026-07-20'
+description: 'A lunch conversation about what a technically ready Data Warehouse still
+  lacks: data ownership, quality framework, GDPR, TDE on Oracle 19c.'
 draft: false
 image: data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati.cover.jpg
-seoTitle: "DWH Data Governance: quality, ownership, TDE before go-live"
+seoTitle: 'DWH Data Governance: quality, ownership, TDE before go-live'
 tags:
 - data-governance
 - data-warehouse
