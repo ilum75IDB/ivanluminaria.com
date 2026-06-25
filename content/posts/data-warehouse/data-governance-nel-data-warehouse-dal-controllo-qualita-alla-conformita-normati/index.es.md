@@ -1,7 +1,7 @@
 ---
 categories:
 - data-warehouse
-date: '2026-07-21'
+date: '2026-07-20'
 description: 'Qué falta cuando un DWH está ''técnicamente listo'': data ownership,
   calidad continua, TDE en Oracle 19c y Data Catalog. Caso real en sector asegurador.'
 draft: false

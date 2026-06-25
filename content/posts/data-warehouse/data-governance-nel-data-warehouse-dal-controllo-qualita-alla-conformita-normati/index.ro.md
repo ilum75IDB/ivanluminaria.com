@@ -1,7 +1,7 @@
 ---
 categories:
 - data-warehouse
-date: '2026-07-21'
+date: '2026-07-20'
 description: 'Ce nu include un Data Warehouse tehnic funcțional: ownership, calitate
   continuă, TDE Oracle 19c, Data Catalog. Un caz real din sectorul asigurărilor.'
 draft: false
