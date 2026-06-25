@@ -56,7 +56,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 40 | 2026-07-14 | — | Tue | ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogn | oracle | #99 | 2026-06-10 | scheduled |
 
-| 41 | 2026-07-07 | — | Tue | La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH | data-warehouse | #103 | 2026-06-14 | scheduled |
+| 41 | 2026-07-21 | — | Tue | La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH | data-warehouse | #103 | 2026-06-14 | scheduled |
 
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-07-07 (Tuesday)
