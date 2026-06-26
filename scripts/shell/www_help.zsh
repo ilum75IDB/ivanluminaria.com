@@ -38,14 +38,16 @@ show_main_menu() {
     echo -e "${YELLOW}SEZIONI HELP DISPONIBILI:${NC}"
     echo ""
     echo -e "  ${WHITE}1${NC}  wwwhelp -U    Hugo (server, build, clean, theme)"
-    echo -e "  ${WHITE}2${NC}  wwwhelp -N    Navigazione directory"
-    echo -e "  ${WHITE}3${NC}  wwwhelp -C    Contenuti multilingua (4 lingue)"
-    echo -e "  ${WHITE}4${NC}  wwwhelp -G    Git & Deploy"
-    echo -e "  ${WHITE}5${NC}  wwwhelp -L    Links esterni"
-    echo -e "  ${WHITE}6${NC}  wwwhelp -V    Variabili ambiente"
-    echo -e "  ${WHITE}7${NC}  wwwhelp -H    Help e Setup"
+    echo -e "  ${WHITE}2${NC}  wwwhelp -S    Server manager (wwwserver: start/stop/dev/preview/enable...)"
+    echo -e "  ${WHITE}3${NC}  wwwhelp -B    Bonjour / accesso LAN (altri device sulla stessa WiFi)"
+    echo -e "  ${WHITE}4${NC}  wwwhelp -N    Navigazione directory"
+    echo -e "  ${WHITE}5${NC}  wwwhelp -C    Contenuti multilingua (4 lingue)"
+    echo -e "  ${WHITE}6${NC}  wwwhelp -G    Git & Deploy"
+    echo -e "  ${WHITE}7${NC}  wwwhelp -L    Links esterni"
+    echo -e "  ${WHITE}8${NC}  wwwhelp -V    Variabili ambiente"
+    echo -e "  ${WHITE}9${NC}  wwwhelp -H    Help e Setup"
     echo ""
-    echo -e "${CYAN}Esempio:${NC} wwwhelp -U  ${CYAN}(mostra help Hugo)${NC}"
+    echo -e "${CYAN}Esempio:${NC} wwwhelp -S  ${CYAN}(mostra help Server LAN)${NC}"
     echo ""
     show_footer
 }
@@ -74,6 +76,80 @@ show_hugo() {
     echo -e "  • Hugo deve essere installato in versione ${WHITE}extended${NC} (per SCSS Congo)"
     echo -e "  • Il tema Congo è un Git submodule: dopo clone usa ${WHITE}themeupdate${NC}"
     echo -e "  • Deploy live: solo via ${WHITE}git push origin main${NC} (workflow GitHub Actions)"
+    echo ""
+    show_footer
+}
+
+# Sezione: SERVER MANAGER (wwwserver)
+show_server() {
+    show_header
+    echo ""
+    echo -e "${YELLOW}🚀 SERVER hugo server — manager parametrico ${WHITE}wwwserver <cmd>${NC}:"
+    echo ""
+    echo -e "${CYAN}LAN (background, raggiungibile da telefono/iPad/PC):${NC}"
+    echo -e "  ${WHITE}wwwserver start${NC}    # Avvia in background (bind 0.0.0.0:$WWW_PORT)"
+    echo -e "                     # flags: --buildDrafts --buildFuture --baseURL=http://$WWW_BONJOUR_HOSTNAME:$WWW_PORT/ --appendPort=false"
+    echo -e "  ${WHITE}wwwserver stop${NC}     # Ferma il server background"
+    echo -e "  ${WHITE}wwwserver restart${NC}  # Stop + start"
+    echo -e "  ${WHITE}wwwserver status${NC}   # Stato (background / porta / LaunchAgent / URL)"
+    echo -e "  ${WHITE}wwwserver fg${NC}       # Foreground LAN (stesso bind di start, blocca il terminale)"
+    echo ""
+    echo -e "${CYAN}Locale (foreground, 127.0.0.1 — workflow editoriale):${NC}"
+    echo -e "  ${WHITE}wwwserver dev${NC}      # hugo server -D --navigateToChanged   (= ${WHITE}hserve${NC})"
+    echo -e "                     # draft visibili, scheduled nascosti (anteprima GitHub Pages)"
+    echo -e "  ${WHITE}wwwserver preview${NC}  # hugo server -D -F --navigateToChanged   (= ${WHITE}hservepreview${NC})"
+    echo -e "                     # draft + scheduled visibili (revisione pre-pubblicazione)"
+    echo ""
+    echo -e "${CYAN}Log:${NC}"
+    echo -e "  ${WHITE}wwwserver log [N]${NC}  # Ultime N righe (default 50). Es: wwwserver log 100"
+    echo -e "  ${WHITE}wwwserver logf${NC}     # tail -f (segui live)  ·  anche: wwwserver log -f"
+    echo ""
+    echo -e "${CYAN}Servizio persistente (LaunchAgent, parte al login):${NC}"
+    echo -e "  ${WHITE}wwwserver enable${NC}   # Installa + carica il LaunchAgent (sempre attivo)"
+    echo -e "  ${WHITE}wwwserver disable${NC}  # Scarica il LaunchAgent"
+    echo -e "  ${WHITE}wwwserver svc${NC}      # Stato del LaunchAgent"
+    echo ""
+    echo -e "${CYAN}Browser quick-open:${NC}"
+    echo -e "  ${WHITE}wwwopen${NC}        # http://$WWW_HOST:$WWW_PORT/ (locale)"
+    echo -e "  ${WHITE}wwwopenlan${NC}     # http://$WWW_BONJOUR_HOSTNAME:$WWW_PORT/ (nome lungo)"
+    echo -e "  ${WHITE}wwwopenshort${NC}   # http://$WWW_BONJOUR_HOSTNAME_ALIAS:$WWW_PORT/ (alias breve)"
+    echo ""
+    echo -e "${CYAN}Note:${NC}"
+    echo -e "  • Bind 0.0.0.0 (\$WWW_BIND) → raggiungibile dalla LAN — vedi wwwhelp -B"
+    echo -e "  • Background e LaunchAgent usano la stessa porta :$WWW_PORT → usa l'uno O l'altro"
+    echo -e "  • Log: \$WWW_SERVER_LOG (~/Library/Logs/ivanluminaria.com/server.log)"
+    echo -e "  • Hugo NON ha auth: \`start\` espone TUTTO il sito (drafts + scheduled inclusi)"
+    echo ""
+    show_footer
+}
+
+# Sezione: BONJOUR / ACCESSO LAN (wwwbonjour)
+show_bonjour() {
+    show_header
+    echo ""
+    echo -e "${YELLOW}📡 BONJOUR / ACCESSO LAN — manager parametrico ${WHITE}wwwbonjour <cmd>${NC}:"
+    echo ""
+    echo -e "  ${WHITE}wwwbonjour on${NC}      # Attiva l'annuncio mDNS (load LaunchAgent)"
+    echo -e "  ${WHITE}wwwbonjour off${NC}     # Disattiva l'annuncio (unload LaunchAgent)"
+    echo -e "  ${WHITE}wwwbonjour status${NC}  # Stato annuncio + nomi pubblicati"
+    echo -e "  ${WHITE}wwwbonjour test${NC}    # Risolve i nomi via dns-sd (deve dare l'IP del Mac)"
+    echo -e "  ${WHITE}wwwbonjour log [N]${NC} # Ultime N righe del log annuncio (default 50)"
+    echo -e "  ${WHITE}wwwbonjour logf${NC}    # tail -f del log  ·  anche: wwwbonjour log -f"
+    echo -e "  ${WHITE}wwwbonjour open${NC}    # Apri http://$WWW_BONJOUR_HOSTNAME:$WWW_PORT/"
+    echo ""
+    echo -e "${CYAN}Scorciatoie:${NC} ${WHITE}wwwopenlan${NC} (nome lungo) · ${WHITE}wwwopenshort${NC} (alias breve) · ${WHITE}wwwip${NC} (IP del Mac)"
+    echo ""
+    echo -e "${CYAN}Nomi annunciati sulla LAN:${NC}"
+    echo -e "  • http://$WWW_BONJOUR_HOSTNAME:$WWW_PORT/   (primario)"
+    echo -e "  • http://$WWW_BONJOUR_HOSTNAME_ALIAS:$WWW_PORT/                 (alias breve)"
+    echo ""
+    echo -e "${CYAN}Note:${NC}"
+    echo -e "  • Il nome .local risolve a un IP, la porta resta nell'URL (:$WWW_PORT)"
+    echo -e "  • Auto-healing: se l'IP DHCP cambia, l'annuncio si aggiorna da solo"
+    echo -e "  • Il server deve girare (wwwserver start / enable) per rispondere"
+    echo -e "  • Particolarità Hugo: --baseURL crucial per link interni (gestito dal manager)"
+    echo -e "  • Client: macOS/iOS/Android 12+ nativi; Windows richiede Bonjour Service"
+    echo -e "  • Doc completa + replica multi-progetto: docs/BONJOUR_LAN_ACCESS.md"
     echo ""
     show_footer
 }
@@ -220,6 +296,11 @@ show_help_section() {
     echo -e "  ${WHITE}wwwhelp${NC}         # Mostra elenco sezioni"
     echo -e "  ${WHITE}wwwhelp -X${NC}      # Mostra sezione specifica (X = parametro)"
     echo ""
+    echo -e "${CYAN}Sezioni disponibili:${NC}"
+    echo -e "  -U  Hugo            |  -S  Server (wwwserver)  |  -B  Bonjour/LAN"
+    echo -e "  -N  Navigazione     |  -C  Contenuti           |  -G  Git & Deploy"
+    echo -e "  -L  Links           |  -V  Variabili           |  -H  Help & Setup (questa)"
+    echo ""
     echo -e "${CYAN}Setup ambiente:${NC}"
     echo -e "  ${WHITE}workwww${NC}         # Carica ambiente WWW (alias da ~/.zshrc)"
     echo -e "  ${WHITE}prjmenu${NC}         # Ricarica ~/.zshrc (menu progetti)"
@@ -248,6 +329,12 @@ main() {
     case "${param_lower}" in
         -u|--hugo)
             show_hugo
+            ;;
+        -s|--server)
+            show_server
+            ;;
+        -b|--bonjour)
+            show_bonjour
             ;;
         -n|--navigation)
             show_navigation
