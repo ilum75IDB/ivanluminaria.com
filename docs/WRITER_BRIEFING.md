@@ -224,6 +224,20 @@ Sempre con linguaggio dichiarato:
 
 I commenti dentro i code block possono essere in italiano (es. `-- aggiunto per perf`).
 
+### Citazioni e documenti in lingua originale
+
+Quando citi un **documento storico, un manifesto, uno slogan o una frase celebre** nella sua lingua originale (es. le quattro coppie di valori dell'Agile Manifesto in inglese, un motto, una definizione canonica), riporta **sempre l'originale seguito dalla traduzione affiancata** nella lingua del file, sulla stessa riga, nel formato:
+
+```
+*testo nella lingua originale* — traduzione nella lingua del file
+```
+
+Esempio (file italiano):
+
+- *Working software over comprehensive documentation* — Il software funzionante più che la documentazione esaustiva
+
+**Mai** lasciare un blocco o un elenco in lingua straniera senza traduzione: il lettore deve capirlo senza cercare altrove. La regola vale in tutte le lingue del sito (IT/EN/ES/RO): l'originale resta invariato, cambia solo la lingua della parte tradotta. Nel file EN, se l'originale è già inglese, non serve il doppione.
+
 ### Dati e scenari (anonimizzati)
 
 Quando l'articolo cita comandi/sintassi/parametri/feature tecnici, includi una sezione opzionale con:
