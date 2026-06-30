@@ -75,12 +75,12 @@ Era la respuesta correcta para el contexto en el que había nacido. En los años
 
 Mientras RUP alcanzaba su pico de adopción, **al otro lado del río** estaba naciendo algo completamente diferente. Entre el 11 y el 13 de febrero de 2001, **diecisiete desarrolladores se reúnen en una estación de esquí de Utah** — Snowbird — y firman un póster de pocas líneas que se convertiría en el **Manifiesto Ágil** [3].
 
-Cuatro pares de valores, cada uno con la forma "X sobre Y":
+Cuatro pares de valores, cada uno en su forma original "X over Y" (con la traducción al español a continuación):
 
-- *Individuos e interacciones sobre procesos y herramientas*
-- *Software funcionando sobre documentación exhaustiva*
-- *Colaboración con el cliente sobre negociación contractual*
-- *Respuesta al cambio sobre seguir un plan*
+- *Individuals and interactions over processes and tools* — Individuos e interacciones sobre procesos y herramientas
+- *Working software over comprehensive documentation* — Software funcionando sobre documentación exhaustiva
+- *Customer collaboration over contract negotiation* — Colaboración con el cliente sobre negociación contractual
+- *Responding to change over following a plan* — Respuesta al cambio sobre seguir un plan
 
 Era exactamente lo contrario de RUP. Donde RUP ponía los procesos en el centro, Agile ponía las personas. Donde RUP pedía seis meses de documentos antes del código, Agile pedía código funcionando cada dos semanas. Donde RUP formalizaba los contratos, Agile pedía conversaciones continuas con el cliente.
 
