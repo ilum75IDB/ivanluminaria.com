@@ -75,12 +75,12 @@ Era răspunsul potrivit pentru contextul în care se născuse. În anii 1998-200
 
 În timp ce RUP își atingea apogeul de adopție, **de cealaltă parte a râului** se năștea ceva complet diferit. Între 11 și 13 februarie 2001, **șaptesprezece dezvoltatori se întâlnesc într-o stațiune de ski din Utah** — Snowbird — și semnează un poster de câteva rânduri care avea să devină **Manifestul Agile** [3].
 
-Patru perechi de valori, fiecare cu forma "X peste Y":
+Patru perechi de valori, fiecare în forma originală "X over Y" (cu traducerea în română mai jos):
 
-- *Indivizi și interacțiuni peste procese și instrumente*
-- *Software funcțional peste documentație cuprinzătoare*
-- *Colaborare cu clientul peste negociere contractuală*
-- *Răspuns la schimbare peste urmărirea unui plan*
+- *Individuals and interactions over processes and tools* — Indivizi și interacțiuni peste procese și instrumente
+- *Working software over comprehensive documentation* — Software funcțional peste documentație cuprinzătoare
+- *Customer collaboration over contract negotiation* — Colaborare cu clientul peste negociere contractuală
+- *Responding to change over following a plan* — Răspuns la schimbare peste urmărirea unui plan
 
 Era exact opusul RUP-ului. Acolo unde RUP punea procesele în centru, Agile punea oamenii. Acolo unde RUP cerea șase luni de documente înainte de cod, Agile cerea software funcțional la fiecare două săptămâni. Acolo unde RUP formaliza contractele, Agile cerea conversații continue cu clientul.
 
