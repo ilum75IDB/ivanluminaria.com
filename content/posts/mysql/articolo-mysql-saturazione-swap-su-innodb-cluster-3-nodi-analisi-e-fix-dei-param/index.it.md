@@ -291,8 +291,8 @@ In questo caso il carico giusto è stato una query aggregata su una tabella da 1
 
 - **[innodb_buffer_pool_size](/it/glossary/group-replication/)** (MySQL/InnoDB) — Parametro globale che definisce la dimensione della cache principale di InnoDB per dati e indici. È il parametro di memoria più impattante su MySQL: tipicamente si dimensiona al 70-80% della RAM disponibile su server dedicati.
 
-- **Group Replication** (MySQL) — Meccanismo di replica sincrona multi-master integrato in MySQL, base di InnoDB Cluster. Garantisce consistenza tra i nodi tramite un protocollo di consenso distribuito; permette rolling restart senza perdita di quorum con 3+ nodi.
+- **[Group Replication](/it/glossary/join-buffer-size/)** (MySQL) — Meccanismo di replica sincrona multi-master integrato in MySQL, base di InnoDB Cluster. Garantisce consistenza tra i nodi tramite un protocollo di consenso distribuito; permette rolling restart senza perdita di quorum con 3+ nodi.
 
-- **performance_schema** (MySQL) — Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memoria allocata per thread. Base per la diagnostica delle performance senza strumenti esterni.
+- **[performance_schema](/it/glossary/innodb-buffer-pool-size/)** (MySQL) — Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memoria allocata per thread. Base per la diagnostica delle performance senza strumenti esterni.
 
-- **rolling restart** — Procedura di riavvio sequenziale dei nodi di un cluster che mantiene il servizio attivo durante l'operazione. Su InnoDB Cluster con 3 nodi, permette di applicare modifiche alla configurazione senza downtime, riavviando un nodo alla volta mentre gli altri mantengono il quorum.
+- **[rolling restart](/it/glossary/group-replication/)** — Procedura di riavvio sequenziale dei nodi di un cluster che mantiene il servizio attivo durante l'operazione. Su InnoDB Cluster con 3 nodi, permette di applicare modifiche alla configurazione senza downtime, riavviando un nodo alla volta mentre gli altri mantengono il quorum.

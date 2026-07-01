@@ -292,8 +292,8 @@ In this case, the right load was an aggregation query on a 1.3-billion-row table
 
 - **[innodb_buffer_pool_size](/en/glossary/group-replication/)** (MySQL/InnoDB) — Global parameter defining the size of InnoDB's main cache for data and indexes. The most impactful memory parameter in MySQL: typically sized at 70–80% of available RAM on dedicated servers.
 
-- **Group Replication** (MySQL) — MySQL's built-in synchronous multi-master replication mechanism, the foundation of InnoDB Cluster. Guarantees consistency across nodes via a distributed consensus protocol; enables rolling restarts without quorum loss with 3+ nodes.
+- **[Group Replication](/en/glossary/join-buffer-size/)** (MySQL) — MySQL's built-in synchronous multi-master replication mechanism, the foundation of InnoDB Cluster. Guarantees consistency across nodes via a distributed consensus protocol; enables rolling restarts without quorum loss with 3+ nodes.
 
-- **performance_schema** (MySQL) — System schema that collects real-time execution metrics: per-query-digest statistics, wait events, per-thread memory allocation. The foundation for performance diagnostics without external tooling.
+- **[performance_schema](/en/glossary/innodb-buffer-pool-size/)** (MySQL) — System schema that collects real-time execution metrics: per-query-digest statistics, wait events, per-thread memory allocation. The foundation for performance diagnostics without external tooling.
 
-- **rolling restart** — Sequential node restart procedure that keeps a cluster's service active throughout the operation. On a 3-node InnoDB Cluster, it allows configuration changes to be applied without downtime by restarting one node at a time while the others maintain quorum.
+- **[rolling restart](/en/glossary/group-replication/)** — Sequential node restart procedure that keeps a cluster's service active throughout the operation. On a 3-node InnoDB Cluster, it allows configuration changes to be applied without downtime by restarting one node at a time while the others maintain quorum.
