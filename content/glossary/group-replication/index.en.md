@@ -1,11 +1,13 @@
 ---
-title: "Group Replication"
-description: "MySQL's native mechanism for synchronous multi-node replication with automatic failover and quorum management."
-translationKey: "glossary_group_replication"
-aka: "MySQL Group Replication / InnoDB Cluster"
+aka: MySQL Group Replication / InnoDB Cluster
 articles:
-  - "/posts/mysql/mysql-group-replication-binlog-migration"
-  - "/posts/mysql/binary-log-mysql"
+- /posts/mysql/mysql-group-replication-binlog-migration
+- /posts/mysql/binary-log-mysql
+- /posts/mysql/articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param
+description: MySQL's native mechanism for synchronous multi-node replication with
+  automatic failover and quorum management.
+title: Group Replication
+translationKey: glossary_group_replication
 ---
 
 **Group Replication** is MySQL's native mechanism for creating high-availability clusters with synchronous replication across multiple nodes. Unlike classic replication (asynchronous, master-slave), Group Replication ensures every transaction is confirmed by a majority of nodes before being considered committed.
