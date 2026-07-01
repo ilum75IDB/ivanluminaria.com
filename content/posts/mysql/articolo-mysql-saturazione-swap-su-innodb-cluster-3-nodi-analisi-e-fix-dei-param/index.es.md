@@ -292,8 +292,8 @@ En este caso la carga adecuada fue una query agregada sobre una tabla de 1.300 m
 
 - **[innodb_buffer_pool_size](/es/glossary/group-replication/)** (MySQL/InnoDB) — Parámetro global que define el tamaño de la caché principal de InnoDB para datos e índices. Es el parámetro de memoria más impactante en MySQL: habitualmente se dimensiona al 70-80% de la RAM disponible en servidores dedicados.
 
-- **Group Replication** (MySQL) — Mecanismo de replicación síncrona multi-master integrado en MySQL, base de InnoDB Cluster. Garantiza consistencia entre los nodos mediante un protocolo de consenso distribuido; permite rolling restart sin pérdida de quorum con 3 o más nodos.
+- **[Group Replication](/es/glossary/join-buffer-size/)** (MySQL) — Mecanismo de replicación síncrona multi-master integrado en MySQL, base de InnoDB Cluster. Garantiza consistencia entre los nodos mediante un protocolo de consenso distribuido; permite rolling restart sin pérdida de quorum con 3 o más nodos.
 
-- **performance_schema** (MySQL) — Schema de sistema que recopila métricas de ejecución en tiempo real: estadísticas por query digest, wait events, memoria asignada por thread. Base para el diagnóstico de rendimiento sin herramientas externas.
+- **[performance_schema](/es/glossary/innodb-buffer-pool-size/)** (MySQL) — Schema de sistema que recopila métricas de ejecución en tiempo real: estadísticas por query digest, wait events, memoria asignada por thread. Base para el diagnóstico de rendimiento sin herramientas externas.
 
-- **rolling restart** — Procedimiento de reinicio secuencial de los nodos de un cluster que mantiene el servicio activo durante la operación. En InnoDB Cluster con 3 nodos, permite aplicar cambios de configuración sin downtime, reiniciando un nodo a la vez mientras los demás mantienen el quorum.
+- **[rolling restart](/es/glossary/group-replication/)** — Procedimiento de reinicio secuencial de los nodos de un cluster que mantiene el servicio activo durante la operación. En InnoDB Cluster con 3 nodos, permite aplicar cambios de configuración sin downtime, reiniciando un nodo a la vez mientras los demás mantienen el quorum.
