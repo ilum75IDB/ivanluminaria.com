@@ -1,14 +1,14 @@
 ---
 categories:
 - mysql
-date: 2099-12-31
-draft: true
+date: '2026-07-28'
+draft: false
 image: articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg
 tags: []
 title: 'Swap at 100% on InnoDB Cluster: when join_buffer_size multiplies the problem'
 translationKey: articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param
 webo_generated_at: 2026-07-01
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ```
