@@ -68,6 +68,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
+| innodb_buffer_pool_size | Parametro globale che definisce la dimensione della cache principale di InnoDB per dati e indici. È il parametro di memo | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
+| join_buffer_size | Buffer allocato per thread per ogni join eseguito senza indice. A differenza del buffer pool, viene allocato per ogni co | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
 | Lift-and-Shift | Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione | tecnica-si-e-yes-and |
 | Local Index | Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente | oracle-partitioning, partitioning-dwh |
@@ -78,7 +80,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Grain | Livello di dettaglio (granularità) di una fact table nel data warehouse. Determina cosa rappresenta ciascuna riga e quali domande il modello dimensionale può soddisfare | fatto-grana-sbagliata |
 | Full Table Scan | Operazione di lettura in cui il database legge tutti i blocchi di una tabella senza utilizzare indici. In Oracle si manifesta come wait event `db file scattered read` | oracle-awr-ash, partitioning-dwh |
 | GTID | Global Transaction Identifier — identificativo univoco assegnato a ogni transazione in MySQL, che semplifica la gestione della replica e il tracking delle transazioni tra master e slave | mysqldump-mysqlpump-mydumper, mysql-group-replication-binlog-migration |
-| Group Replication | Meccanismo nativo di MySQL per la replica sincrona multi-nodo con failover automatico e gestione del quorum | mysql-group-replication-binlog-migration |
+| Group Replication | Meccanismo nativo di MySQL per la replica sincrona multi-nodo con failover automatico e gestione del quorum | mysql-group-replication-binlog-migration, articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Hash Join | Strategia di join che costruisce una hash table dalla tabella più piccola e poi scansiona la più grande cercando corrispondenze con lookup O(1). Efficiente su grandi volumi senza indici | explain-analyze-postgresql |
 | Hot Desk | Modello di organizzazione degli spazi ufficio in cui le postazioni non sono assegnate: chi viene in ufficio occupa una scrivania libera | smartworking-consulenza-it |
 | Huge Pages | Pagine di memoria da 2 MB che riducono drasticamente la pressione sulla MMU e sul TLB, migliorando le performance di Oracle su Linux | oracle-linux-kernel |
@@ -105,6 +107,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
+| performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Pull Request | Meccanismo di proposta e revisione delle modifiche al codice su GitHub, con code review e approvazione prima del merge nel branch principale | ai-github-project-management |
 | Parking Lot | Lista visibile di argomenti emersi durante una riunione che meritano approfondimento ma vengono rinviati a dopo per rispettare il timebox | standup-meeting-15-minuti |
 | Pedalata Assistita | Sistema di propulsione elettrica che amplifica la forza della pedalata, eliminando il problema delle salite e del sudore nei tragitti urbani | bici-vs-auto-roma |
@@ -132,6 +135,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | RAC | Real Application Clusters — tecnologia Oracle che permette a più istanze di accedere contemporaneamente allo stesso database, garantendo alta disponibilità e scalabilità orizzontale | oracle-cloud-migration |
 | Ragged hierarchy | Gerarchia in cui non tutti i rami raggiungono la stessa profondità: alcuni livelli intermedi sono assenti. Tipica nelle anagrafiche clienti e strutture organizzative | ragged-hierarchies |
 | Range Partitioning | Strategia di partizionamento che divide una tabella in segmenti basati su intervalli di valori di una colonna (tipicamente una data). Ogni partizione contiene le righe il cui valore cade nell'intervallo definito | partitioning-dwh, oracle-partitioning |
+| rolling restart | Procedura di riavvio sequenziale dei nodi di un cluster che mantiene il servizio attivo durante l'operazione. Su InnoDB  | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | RUP | Rational Unified Process — metodo di sviluppo software iterativo rilasciato da Rational nel 1998, organizzato in quattro fasi (Inception, Elaboration, Construction, Transition). Heavyweight e document-intensive, oggi vive in nicchie regolamentate (aviazione, medicale, banking critico) | da-rivali-a-co-autori-uml-rup |
 | Redo Log | File di log in cui Oracle registra ogni modifica ai dati prima di scriverla nei datafile, garantendo il recovery e la replica Data Guard | oracle-data-guard |
 | REVOKE | Comando SQL per rimuovere privilegi o ruoli precedentemente assegnati a un utente o ruolo, complementare al comando GRANT | oracle-roles-privileges |
@@ -190,7 +194,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-06-14
-**Totale termini**: 173
-**Totale articoli con glossario**: 40
+**Ultimo aggiornamento**: 2026-07-01
+**Totale termini**: 177
+**Totale articoli con glossario**: 41
 

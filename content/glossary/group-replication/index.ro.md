@@ -1,11 +1,13 @@
 ---
-title: "Group Replication"
-description: "Mecanismul nativ MySQL pentru replicare sincronă multi-nod cu failover automat și gestionarea quorum-ului."
-translationKey: "glossary_group_replication"
-aka: "MySQL Group Replication / InnoDB Cluster"
+aka: MySQL Group Replication / InnoDB Cluster
 articles:
-  - "/posts/mysql/mysql-group-replication-binlog-migration"
-  - "/posts/mysql/binary-log-mysql"
+- /posts/mysql/mysql-group-replication-binlog-migration
+- /posts/mysql/binary-log-mysql
+- /posts/mysql/articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param
+description: Mecanismul nativ MySQL pentru replicare sincronă multi-nod cu failover
+  automat și gestionarea quorum-ului.
+title: Group Replication
+translationKey: glossary_group_replication
 ---
 
 **Group Replication** este mecanismul nativ al MySQL pentru crearea de clustere cu disponibilitate ridicată și replicare sincronă între mai multe noduri. Spre deosebire de replicarea clasică (asincronă, master-slave), Group Replication garantează că fiecare tranzacție este confirmată de majoritatea nodurilor înainte de a fi considerată committed.
