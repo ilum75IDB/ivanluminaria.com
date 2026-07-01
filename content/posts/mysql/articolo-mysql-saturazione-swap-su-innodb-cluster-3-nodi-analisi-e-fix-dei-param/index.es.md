@@ -1,15 +1,23 @@
 ---
-title: "La llamada del martes por la mañana: swap al 100% en InnoDB Cluster y cómo join_buffer_size multiplica el problema"
-seoTitle: "Swap 100% en InnoDB Cluster: join_buffer_size y memoria MySQL"
-description: "Diagnóstico en producción de un cluster MySQL InnoDB con swap saturado: cómo join_buffer_size a 2 GB por thread colapsa un nodo con 157 GB de RAM."
+categories:
+- mysql
 date: 2099-12-31
+description: 'Diagnóstico en producción de un cluster MySQL InnoDB con swap saturado:
+  cómo join_buffer_size a 2 GB por thread colapsa un nodo con 157 GB de RAM.'
 draft: true
-translationKey: "articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param"
-tags: ["mysql", "innodb-cluster", "memory-tuning", "performance", "incident-response"]
-categories: ["mysql"]
-image: "articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg"
-webo_status: da_tradurre
+image: articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg
+seoTitle: 'Swap 100% en InnoDB Cluster: join_buffer_size y memoria MySQL'
+tags:
+- mysql
+- innodb-cluster
+- memory-tuning
+- performance
+- incident-response
+title: 'La llamada del martes por la mañana: swap al 100% en InnoDB Cluster y cómo
+  join_buffer_size multiplica el problema'
+translationKey: articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param
 webo_generated_at: 2026-07-01
+webo_status: da_tradurre
 ---
 
 ## La llamada del martes por la mañana
@@ -279,11 +287,10 @@ En este caso la carga adecuada fue una query agregada sobre una tabla de 1.300 m
 3. MySQL 8.0 Reference Manual — [Memory Use in MySQL](https://dev.mysql.com/doc/refman/8.0/en/memory-use.html)
 4. MySQL 8.0 Reference Manual — [InnoDB Cluster — Rolling Restart](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-innodb-cluster-working-with-cluster.html)
 
-## Glosario candidato
+## Glosario
+- **[join_buffer_size](/es/glossary/join-buffer-size/)** (MySQL) — Buffer asignado por thread para cada join ejecutado sin índice. A diferencia del buffer pool, se asigna por cada conexión activa: su impacto en la memoria total depende del número de conexiones concurrentes.
 
-- **join_buffer_size** (MySQL) — Buffer asignado por thread para cada join ejecutado sin índice. A diferencia del buffer pool, se asigna por cada conexión activa: su impacto en la memoria total depende del número de conexiones concurrentes.
-
-- **innodb_buffer_pool_size** (MySQL/InnoDB) — Parámetro global que define el tamaño de la caché principal de InnoDB para datos e índices. Es el parámetro de memoria más impactante en MySQL: habitualmente se dimensiona al 70-80% de la RAM disponible en servidores dedicados.
+- **[innodb_buffer_pool_size](/es/glossary/group-replication/)** (MySQL/InnoDB) — Parámetro global que define el tamaño de la caché principal de InnoDB para datos e índices. Es el parámetro de memoria más impactante en MySQL: habitualmente se dimensiona al 70-80% de la RAM disponible en servidores dedicados.
 
 - **Group Replication** (MySQL) — Mecanismo de replicación síncrona multi-master integrado en MySQL, base de InnoDB Cluster. Garantiza consistencia entre los nodos mediante un protocolo de consenso distribuido; permite rolling restart sin pérdida de quorum con 3 o más nodos.
 

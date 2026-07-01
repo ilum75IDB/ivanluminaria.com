@@ -1,13 +1,14 @@
 ---
-title: "Swap at 100% on InnoDB Cluster: when join_buffer_size multiplies the problem"
+categories:
+- mysql
 date: 2099-12-31
 draft: true
-translationKey: "articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param"
+image: articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg
 tags: []
-categories: ["mysql"]
-image: "articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg"
-webo_status: da_tradurre
+title: 'Swap at 100% on InnoDB Cluster: when join_buffer_size multiplies the problem'
+translationKey: articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param
 webo_generated_at: 2026-07-01
+webo_status: da_tradurre
 ---
 
 ```
@@ -286,11 +287,10 @@ In this case, the right load was an aggregation query on a 1.3-billion-row table
 3. MySQL 8.0 Reference Manual — [Memory Use in MySQL](https://dev.mysql.com/doc/refman/8.0/en/memory-use.html)
 4. MySQL 8.0 Reference Manual — [InnoDB Cluster — Rolling Restart](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-innodb-cluster-working-with-cluster.html)
 
-## Glossary candidate
+## Glossary
+- **[join_buffer_size](/en/glossary/join-buffer-size/)** (MySQL) — Buffer allocated per thread for every join executed without an index. Unlike the buffer pool, it is allocated for each active connection: its total memory impact depends on the number of concurrent connections.
 
-- **join_buffer_size** (MySQL) — Buffer allocated per thread for every join executed without an index. Unlike the buffer pool, it is allocated for each active connection: its total memory impact depends on the number of concurrent connections.
-
-- **innodb_buffer_pool_size** (MySQL/InnoDB) — Global parameter defining the size of InnoDB's main cache for data and indexes. The most impactful memory parameter in MySQL: typically sized at 70–80% of available RAM on dedicated servers.
+- **[innodb_buffer_pool_size](/en/glossary/group-replication/)** (MySQL/InnoDB) — Global parameter defining the size of InnoDB's main cache for data and indexes. The most impactful memory parameter in MySQL: typically sized at 70–80% of available RAM on dedicated servers.
 
 - **Group Replication** (MySQL) — MySQL's built-in synchronous multi-master replication mechanism, the foundation of InnoDB Cluster. Guarantees consistency across nodes via a distributed consensus protocol; enables rolling restarts without quorum loss with 3+ nodes.
 
