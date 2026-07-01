@@ -1,15 +1,24 @@
 ---
-title: "Apelul de marți dimineața: cum un join_buffer_size de 2 GB a blocat un cluster MySQL de 157 GB"
-seoTitle: "MySQL join_buffer_size: diagnostic și fix pe InnoDB Cluster 3 noduri"
-description: "Un full scan pe 1,3 miliarde de rânduri a saturat swap-ul pe două noduri MySQL. Diagnostic cu performance_schema, reconfigurare buffere per-thread și rolling restart fără downtime."
-date: 2099-12-31
-draft: true
-translationKey: "articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param"
-tags: ["mysql", "innodb-cluster", "performance-tuning", "memory-configuration", "incident-response"]
-categories: ["mysql"]
-image: "articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg"
-webo_status: da_tradurre
+categories:
+- mysql
+date: '2026-07-28'
+description: Un full scan pe 1,3 miliarde de rânduri a saturat swap-ul pe două noduri
+  MySQL. Diagnostic cu performance_schema, reconfigurare buffere per-thread și rolling
+  restart fără downtime.
+draft: false
+image: articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg
+seoTitle: 'MySQL join_buffer_size: diagnostic și fix pe InnoDB Cluster 3 noduri'
+tags:
+- mysql
+- innodb-cluster
+- performance-tuning
+- memory-configuration
+- incident-response
+title: 'Apelul de marți dimineața: cum un join_buffer_size de 2 GB a blocat un cluster
+  MySQL de 157 GB'
+translationKey: articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param
 webo_generated_at: 2026-07-01
+webo_status: scheduled
 ---
 
 ## Apelul de marți dimineața

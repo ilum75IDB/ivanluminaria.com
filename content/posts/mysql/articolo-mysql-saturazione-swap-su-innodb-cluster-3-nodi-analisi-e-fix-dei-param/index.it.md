@@ -1,10 +1,10 @@
 ---
 categories:
 - mysql
-date: 2099-12-31
+date: '2026-07-28'
 description: 'Swap al 100% su un cluster MySQL InnoDB 3 nodi in produzione: diagnosi,
   la matematica dei buffer per thread, fix e rolling restart a zero downtime.'
-draft: true
+draft: false
 image: articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg
 seoTitle: 'InnoDB Cluster 3 nodi: swap 100% e fix dei buffer per thread'
 tags:
@@ -16,7 +16,7 @@ tags:
 title: 'Swap al 100% su InnoDB Cluster: quando join_buffer_size moltiplica il problema'
 translationKey: articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param
 webo_generated_at: 2026-07-01
-webo_status: da_approvare
+webo_status: scheduled
 ---
 
 ## La telefonata del martedì mattina

@@ -1,10 +1,10 @@
 ---
 categories:
 - mysql
-date: 2099-12-31
+date: '2026-07-28'
 description: 'Diagnóstico en producción de un cluster MySQL InnoDB con swap saturado:
   cómo join_buffer_size a 2 GB por thread colapsa un nodo con 157 GB de RAM.'
-draft: true
+draft: false
 image: articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg
 seoTitle: 'Swap 100% en InnoDB Cluster: join_buffer_size y memoria MySQL'
 tags:
@@ -17,7 +17,7 @@ title: 'La llamada del martes por la mañana: swap al 100% en InnoDB Cluster y c
   join_buffer_size multiplica el problema'
 translationKey: articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param
 webo_generated_at: 2026-07-01
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## La llamada del martes por la mañana
