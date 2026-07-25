@@ -2,21 +2,25 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 7.0
-# Data: 15 Giugno 2026
-# Nota: Refactor case 10|dbac allo standard shell RCCS2025 via skill
-#       /mac-create-menu-zsh. Il case ora carica i 3 file modulari
-#       (dbac_env.zsh + dbac_help.zsh + dbac_go_manager.zsh) in
-#       scripts/shell/ del progetto dba-cockpit, con wrapper parametrici
-#       'dbachelp' e 'dbacgo'. Aggiunto dbachelp tra gli help specifici
-#       della funzione help() globale. Nessun cambio di numerazione
-#       (case 10|dbac invariato, BASE resta 11|none).
-#       (storia 6.9: refactor RCCS2025 case 9|myctl; storia 6.8:
-#       bootstrap DBAC al case 10|dbac, "none" → 11|none, menu
-#       Scegli 1-11 default=11; storia 6.7: bootstrap MYCTL al case
-#       9|myctl.)
+# Versione: 7.1
+# Data: 25 Luglio 2026
+# Nota: Merge cross-Mac iMac (v7.0) + MacBook (v6.8). Il MacBook aveva
+#       aggiunto Fatturazione Web (FATT) al case 9|fatt (v6.7 bootstrap
+#       + v6.8 std shell RCCS2025), l'iMac aveva aggiunto MySQL Controlli
+#       (MYCTL, v6.9) e DBA Cockpit (DBAC, v7.0). Il merge tiene ENTRAMBI
+#       i lati: FATT al 9, MYCTL shifta a 10, DBAC shifta a 11, BASE
+#       shifta a 12. Menu interattivo Scegli 1-12 default=12. Recuperate
+#       anche dal v6.8: (a) hint "💡 prjmenu = ricarica ~/.zshrc..." nel
+#       menu, (b) righe workbct/workmfsc/prjmenu in help() globale (che
+#       nel v7.0 mancavano). Aggiunti workfatt/workmyctl/workdbac e le
+#       relative sezioni fatthelp/myctlhelp/dbachelp in help().
+#       (storia 7.0: refactor RCCS2025 case 10|dbac; storia 6.9: refactor
+#       RCCS2025 case 9|myctl; storia 6.8: bootstrap DBAC al case
+#       10|dbac su iMac E parallela migrazione FATT std shell su MacBook;
+#       storia 6.7: bootstrap MYCTL su iMac E bootstrap FATT su MacBook;
+#       storia 6.6: migrazione MFSC std shell.)
 # ===================================================================
-# 
+#
 # Alias per restart del menu (ricarica zshrc)
 alias prjmenu='source ~/.zshrc'
 #
@@ -86,7 +90,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, myctl, dbac
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -156,6 +160,12 @@ set_mfsc_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{051}[MFSC]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 🧹 %# '
+}
+# Prompt FATT (Fatturazione Web)
+set_fatt_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{118}[FATT]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+💶 %# '
 }
 # Prompt MYCTL (MySQL Controlli)
 set_myctl_prompt() {
@@ -299,7 +309,22 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        9|myctl)
+        9|fatt)
+            echo "💶 Caricamento ambiente Fatturazione Web..."
+            export CURRENT_PROJECT="fatt"
+            FATT_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/fatturazione-web/scripts/shell/fatt_env.zsh"
+            if [[ -f "$FATT_ENV_FILE" ]]; then
+                source "$FATT_ENV_FILE"
+                cd "$FATT_PROJECT_DIR"
+                set_fatt_prompt
+                echo "✅ Ambiente FATT caricato!"
+                echo "📝 Digita 'fatthelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment FATT non trovato: $FATT_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        10|myctl)
             echo "📊 Caricamento ambiente MySQL Controlli..."
             export CURRENT_PROJECT="myctl"
             MYCTL_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/mysql-controlli/scripts/shell/myctl_env.zsh"
@@ -314,7 +339,7 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        10|dbac)
+        11|dbac)
             echo "✈️  Caricamento ambiente DBA Cockpit..."
             export CURRENT_PROJECT="dbac"
             DBAC_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/dba-cockpit/scripts/shell/dbac_env.zsh"
@@ -329,7 +354,7 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        11|none)
+        12|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -356,6 +381,7 @@ alias workwebo='switch_project webo'
 alias workasg='switch_project asg'
 alias workbct='switch_project bct'
 alias workmfsc='switch_project mfsc'
+alias workfatt='switch_project fatt'
 alias workmyctl='switch_project myctl'
 alias workdbac='switch_project dbac'
 alias workbase='switch_project none'
@@ -421,6 +447,11 @@ project_status() {
             echo "🧹 Mac Filesystem Cleaner (stack ancora non definito)"
             echo "📂 Dir: $MFSC_PROJECT_DIR"
             echo "🏗️  Repo: $MFSC_REPO"
+            ;;
+        fatt)
+            echo "💶 Fatturazione Web (stack ancora non definito)"
+            echo "📂 Dir: $FATT_PROJECT_DIR"
+            echo "🏗️  Repo: $FATT_REPO"
             ;;
         myctl)
             echo "📊 MySQL Controlli (stack ancora non definito)"
@@ -582,15 +613,17 @@ show_project_menu() {
     echo "  6) 📚 ai-skill-generator          (ASG)"
     echo "  7) ⏱️  Business Consultant Tracker (BCT)"
     echo "  8) 🧹 Mac Filesystem Cleaner      (MFSC)"
-    echo "  9) 📊 MySQL Controlli             (MYCTL)"
-    echo " 10) ✈️  DBA Cockpit                 (DBAC)"
-    echo " 11) 🔧 Ambiente Base               (BASE)"
+    echo "  9) 💶 Fatturazione Web            (FATT)"
+    echo " 10) 📊 MySQL Controlli             (MYCTL)"
+    echo " 11) ✈️  DBA Cockpit                 (DBAC)"
+    echo " 12) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo -n "Scegli (1-11) o premi INVIO per ambiente base: "
+    echo "💡 prjmenu = ricarica ~/.zshrc e rimostra questo menu (utile dopo modifiche)"
+    echo -n "Scegli (1-12) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=11  # Default: ambiente base
+        choice=12  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
@@ -611,8 +644,14 @@ help() {
     echo "  workgma         # Passa a Gmail Assistant AI Agent"
     echo "  workwebo        # Passa a Web Orchestrator"
     echo "  workasg         # Passa ad ai-skill-generator"
+    echo "  workbct         # Passa a Business Consultant Tracker"
+    echo "  workmfsc        # Passa a Mac Filesystem Cleaner"
+    echo "  workfatt        # Passa a Fatturazione Web"
+    echo "  workmyctl       # Passa a MySQL Controlli"
+    echo "  workdbac        # Passa a DBA Cockpit"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
+    echo "  prjmenu         # Ricarica ~/.zshrc e rimostra il menu progetti"
     echo ""
     echo "❓ HELP SPECIFICI:"
     case $CURRENT_PROJECT in
@@ -639,6 +678,9 @@ help() {
             ;;
         mfsc)
             echo "  mfschelp        # Help comandi MFSC"
+            ;;
+        fatt)
+            echo "  fatthelp        # Help comandi FATT"
             ;;
         myctl)
             echo "  myctlhelp       # Help comandi MYCTL"
