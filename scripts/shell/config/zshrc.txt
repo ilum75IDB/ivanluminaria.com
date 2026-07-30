@@ -2,23 +2,35 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 7.1
-# Data: 25 Luglio 2026
-# Nota: Merge cross-Mac iMac (v7.0) + MacBook (v6.8). Il MacBook aveva
-#       aggiunto Fatturazione Web (FATT) al case 9|fatt (v6.7 bootstrap
-#       + v6.8 std shell RCCS2025), l'iMac aveva aggiunto MySQL Controlli
-#       (MYCTL, v6.9) e DBA Cockpit (DBAC, v7.0). Il merge tiene ENTRAMBI
-#       i lati: FATT al 9, MYCTL shifta a 10, DBAC shifta a 11, BASE
-#       shifta a 12. Menu interattivo Scegli 1-12 default=12. Recuperate
-#       anche dal v6.8: (a) hint "💡 prjmenu = ricarica ~/.zshrc..." nel
-#       menu, (b) righe workbct/workmfsc/prjmenu in help() globale (che
-#       nel v7.0 mancavano). Aggiunti workfatt/workmyctl/workdbac e le
-#       relative sezioni fatthelp/myctlhelp/dbachelp in help().
-#       (storia 7.0: refactor RCCS2025 case 10|dbac; storia 6.9: refactor
-#       RCCS2025 case 9|myctl; storia 6.8: bootstrap DBAC al case
-#       10|dbac su iMac E parallela migrazione FATT std shell su MacBook;
-#       storia 6.7: bootstrap MYCTL su iMac E bootstrap FATT su MacBook;
-#       storia 6.6: migrazione MFSC std shell.)
+# Versione: 7.4
+# Data: 28 Luglio 2026
+# Nota: v7.4 applica lo standard shell RCCS2025 a Family Kudos (FKUD, case
+#       13|fkud) tramite skill /mac-create-menu-zsh. Stack definito: Python
+#       3.12 + FastAPI + SQLite + Vue 3 + Vite + TS + PrimeVue. Porte
+#       backend :8009 + vite dev :5175 (dispari, consecutivi a NAIT
+#       8008/5174). Case 13|fkud arricchito con echo 'fkudhelp' post-load;
+#       project_status(fkud) esteso con URL locale/FE/repo; help() case
+#       fkud rimanda a fkudhelp. Menu interattivo invariato (1-14, default
+#       INVIO=14). (storia 7.3: aggiunge Family Kudos (FKUD) al case
+#       13|fkud tramite skill /project-bootstrap, stack "da definire",
+#       prompt 🏆 colore 226 giallo brillante. Storia 7.2: aggiunge
+#       Negulici AI Translator Pro (NAIT) al case
+#       12|nait — bootstrap 2026-07-25, prompt 🌍 colore 207 rosa.
+#       Storia 7.1: Merge cross-Mac iMac (v7.0) + MacBook (v6.8). Il
+#       MacBook aveva aggiunto Fatturazione Web (FATT) al case 9|fatt
+#       (v6.7 bootstrap + v6.8 std shell RCCS2025), l'iMac aveva aggiunto
+#       MySQL Controlli (MYCTL, v6.9) e DBA Cockpit (DBAC, v7.0). Il
+#       merge tiene ENTRAMBI i lati: FATT al 9, MYCTL shifta a 10, DBAC
+#       shifta a 11, BASE shifta a 12. Menu interattivo Scegli 1-12
+#       default=12. Recuperate anche dal v6.8: (a) hint "💡 prjmenu =
+#       ricarica ~/.zshrc..." nel menu, (b) righe workbct/workmfsc/prjmenu
+#       in help() globale (che nel v7.0 mancavano). Aggiunti workfatt/
+#       workmyctl/workdbac e le relative sezioni fatthelp/myctlhelp/
+#       dbachelp in help(). Storia 7.0: refactor RCCS2025 case 10|dbac;
+#       storia 6.9: refactor RCCS2025 case 9|myctl; storia 6.8: bootstrap
+#       DBAC al case 10|dbac su iMac E parallela migrazione FATT std
+#       shell su MacBook; storia 6.7: bootstrap MYCTL su iMac E bootstrap
+#       FATT su MacBook; storia 6.6: migrazione MFSC std shell.)
 # ===================================================================
 #
 # Alias per restart del menu (ricarica zshrc)
@@ -90,7 +102,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac, nait, fkud
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -178,6 +190,18 @@ set_dbac_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{196}[DBAC]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 ✈️  %# '
+}
+# Prompt NAIT (Negulici AI Translator Pro)
+set_nait_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{207}[NAIT]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🌍 %# '
+}
+# Prompt FKUD (Family Kudos)
+set_fkud_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{226}[FKUD]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🏆 %# '
 }
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
@@ -354,7 +378,37 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        12|none)
+        12|nait)
+            echo "🌍 Caricamento ambiente Negulici AI Translator Pro..."
+            export CURRENT_PROJECT="nait"
+            NAIT_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/negulici-ai-translator-pro/scripts/shell/nait_env.zsh"
+            if [[ -f "$NAIT_ENV_FILE" ]]; then
+                source "$NAIT_ENV_FILE"
+                cd "$NAIT_PROJECT_DIR"
+                set_nait_prompt
+                echo "✅ Ambiente NAIT caricato!"
+                echo "📝 Digita 'naithelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment NAIT non trovato: $NAIT_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        13|fkud)
+            echo "🏆 Caricamento ambiente Family Kudos..."
+            export CURRENT_PROJECT="fkud"
+            FKUD_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/family-kudos/scripts/shell/fkud_env.zsh"
+            if [[ -f "$FKUD_ENV_FILE" ]]; then
+                source "$FKUD_ENV_FILE"
+                cd "$FKUD_PROJECT_DIR"
+                set_fkud_prompt
+                echo "✅ Ambiente FKUD caricato!"
+                echo "📝 Digita 'fkudhelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment FKUD non trovato: $FKUD_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        14|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -384,6 +438,8 @@ alias workmfsc='switch_project mfsc'
 alias workfatt='switch_project fatt'
 alias workmyctl='switch_project myctl'
 alias workdbac='switch_project dbac'
+alias worknait='switch_project nait'
+alias workfkud='switch_project fkud'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -462,6 +518,20 @@ project_status() {
             echo "✈️  DBA Cockpit (stack target: Python+FastAPI+SQLite+JS — non ancora applicato)"
             echo "📂 Dir: $DBAC_PROJECT_DIR"
             echo "🏗️  Repo: $DBAC_REPO"
+            ;;
+        nait)
+            echo "🌍 Negulici AI Translator Pro (Vue 3 + Vite + TS + FastAPI + SQLite — CAT tool giuridico IT→RO per Marie)"
+            echo "📂 Dir: $NAIT_PROJECT_DIR"
+            echo "🌐 URL backend: $NAIT_LOCAL_URL"
+            echo "🎨 URL frontend: $NAIT_FE_URL"
+            echo "🏗️  Repo: $NAIT_REPO"
+            ;;
+        fkud)
+            echo "🏆 Family Kudos (Python + FastAPI + SQLite + Vue 3 + Vite + TS + PrimeVue — gamification familiare)"
+            echo "📂 Dir: $FKUD_PROJECT_DIR"
+            echo "🌐 URL backend: $FKUD_LOCAL_URL"
+            echo "🎨 URL frontend: $FKUD_FE_URL"
+            echo "🏗️  Repo: $FKUD_REPO"
             ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
@@ -616,14 +686,16 @@ show_project_menu() {
     echo "  9) 💶 Fatturazione Web            (FATT)"
     echo " 10) 📊 MySQL Controlli             (MYCTL)"
     echo " 11) ✈️  DBA Cockpit                 (DBAC)"
-    echo " 12) 🔧 Ambiente Base               (BASE)"
+    echo " 12) 🌍 Negulici AI Translator Pro  (NAIT)"
+    echo " 13) 🏆 Family Kudos                (FKUD)"
+    echo " 14) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "💡 prjmenu = ricarica ~/.zshrc e rimostra questo menu (utile dopo modifiche)"
-    echo -n "Scegli (1-12) o premi INVIO per ambiente base: "
+    echo -n "Scegli (1-14) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=12  # Default: ambiente base
+        choice=14  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
@@ -649,6 +721,8 @@ help() {
     echo "  workfatt        # Passa a Fatturazione Web"
     echo "  workmyctl       # Passa a MySQL Controlli"
     echo "  workdbac        # Passa a DBA Cockpit"
+    echo "  worknait        # Passa a Negulici AI Translator Pro"
+    echo "  workfkud        # Passa a Family Kudos"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
     echo "  prjmenu         # Ricarica ~/.zshrc e rimostra il menu progetti"
@@ -687,6 +761,12 @@ help() {
             ;;
         dbac)
             echo "  dbachelp        # Help comandi DBAC"
+            ;;
+        nait)
+            echo "  naithelp        # Help comandi NAIT"
+            ;;
+        fkud)
+            echo "  fkudhelp        # Help comandi FKUD"
             ;;
         *)
             echo "  (carica un progetto per vedere i comandi specifici)"
