@@ -240,6 +240,6 @@ Mover la regla de negocio al lugar correcto — el esquema — es una decisión 
 
 - **[Predicado universal](/es/glossary/predicato-existential/)** (SQL) — expresión lógica que afirma que una condición se cumple para todas las filas de un conjunto. En SQL se expresa indirectamente con `NOT EXISTS (... WHERE NOT condicion)`, porque SQL no tiene un cuantificador universal nativo.
 
-- **DEFERRABLE constraint** (Oracle / estándar SQL) — restricción de integridad cuya verificación puede posponerse al final de la transacción en lugar de hacerse tras cada instrucción DML individual. Útil para DML multi-paso, pero no equivalente a una Assertion: no expresa predicados cross-tabla.
+- **[DEFERRABLE constraint](/es/glossary/assertion/)** (Oracle / estándar SQL) — restricción de integridad cuya verificación puede posponerse al final de la transacción en lugar de hacerse tras cada instrucción DML individual. Útil para DML multi-paso, pero no equivalente a una Assertion: no expresa predicados cross-tabla.
 
-- **Direct-path insert** (Oracle) — modalidad de carga de datos que bypasea el buffer cache y escribe directamente en los datafiles, activable con el hint `/*+ APPEND */`. Interactúa con las restricciones de integridad de forma distinta al conventional insert; el comportamiento con las Assertions debe verificarse caso por caso.
+- **[Direct-path insert](/es/glossary/predicato-existential/)** (Oracle) — modalidad de carga de datos que bypasea el buffer cache y escribe directamente en los datafiles, activable con el hint `/*+ APPEND */`. Interactúa con las restricciones de integridad de forma distinta al conventional insert; el comportamiento con las Assertions debe verificarse caso por caso.
