@@ -60,5 +60,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 42 | 2026-07-28 | — | Tue | Swap al 100% su InnoDB Cluster: quando join_buffer_size moltiplica il problema | mysql | #74 | 2026-07-01 | scheduled |
 
+| 43 | 2026-08-04 | — | mar | Assertions in Oracle 26ai: finalmente un vincolo che attraversa le tabelle | oracle | #100 | 2026-07-31 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-07-07 (Tuesday)
