@@ -1,11 +1,11 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
+date: '2026-08-04'
 description: Oracle 26ai implementa CREATE ASSERTION, la restricción cross-tabla que
   SQL-92 prometía desde hace décadas. Sintaxis, comparación con triggers y casos reales
   en seguros.
-draft: true
+draft: false
 image: articolo-oracle-assertions-in-oracle-26ai.cover.jpg
 seoTitle: 'CREATE ASSERTION en Oracle 26ai: restricciones cross-tabla declarativas'
 tags:
@@ -18,7 +18,7 @@ title: 'Tres triggers, un job nocturno y 1.247 pólizas huérfanas: ASSERTION en
   26ai'
 translationKey: articolo_oracle_assertions_in_oracle_26ai
 webo_generated_at: 2026-07-31
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## Tres triggers, un job nocturno y 1.247 pólizas huérfanas

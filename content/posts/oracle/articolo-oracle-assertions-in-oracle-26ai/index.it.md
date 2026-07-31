@@ -1,14 +1,14 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
-draft: true
+date: '2026-08-04'
+draft: false
 image: articolo-oracle-assertions-in-oracle-26ai.cover.jpg
 tags: []
 title: 'Assertions in Oracle 26ai: finalmente un vincolo che attraversa le tabelle'
 translationKey: articolo_oracle_assertions_in_oracle_26ai
 webo_generated_at: 2026-07-31
-webo_status: da_approvare
+webo_status: scheduled
 ---
 
 ```yaml

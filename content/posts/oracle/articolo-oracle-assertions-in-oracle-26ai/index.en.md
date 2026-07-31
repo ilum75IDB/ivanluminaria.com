@@ -1,11 +1,11 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
+date: '2026-08-04'
 description: Oracle 26ai introduces CREATE ASSERTION, the cross-table declarative
   constraint SQL-92 promised for decades. Syntax, comparison with triggers, and real
   insurance use cases.
-draft: true
+draft: false
 image: articolo-oracle-assertions-in-oracle-26ai.cover.jpg
 seoTitle: 'Oracle 26ai CREATE ASSERTION: cross-table constraints explained'
 tags:
@@ -18,7 +18,7 @@ title: 'Three triggers, a nightly job, and 1,247 orphaned policies: Oracle 26ai 
   explained'
 translationKey: articolo_oracle_assertions_in_oracle_26ai
 webo_generated_at: 2026-07-31
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## Three triggers, a nightly job, and 1,247 orphaned policies
