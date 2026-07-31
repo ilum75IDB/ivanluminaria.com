@@ -238,6 +238,6 @@ Spostare la regola di business nel posto giusto — lo schema — è una scelta 
 
 - **[Predicato universal](/it/glossary/predicato-existential/)** (SQL) — espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettamente con `NOT EXISTS (... WHERE NOT condizione)`, perché SQL non ha un quantificatore universale nativo.
 
-- **DEFERRABLE constraint** (Oracle / SQL standard) — vincolo di integrità la cui verifica può essere posticipata alla fine della transazione anziché a ogni singola istruzione DML. Utile per DML multi-step, ma non equivalente a un'Assertion: non esprime predicati cross-tabella.
+- **[DEFERRABLE constraint](/it/glossary/assertion/)** (Oracle / SQL standard) — vincolo di integrità la cui verifica può essere posticipata alla fine della transazione anziché a ogni singola istruzione DML. Utile per DML multi-step, ma non equivalente a un'Assertion: non esprime predicati cross-tabella.
 
-- **Direct-path insert** (Oracle) — modalità di caricamento dati che bypassa il buffer cache e scrive direttamente nei datafile, attivabile con il hint `/*+ APPEND */`. Interagisce con i vincoli di integrità in modo diverso rispetto al conventional insert; il comportamento con le Assertions va verificato caso per caso.
+- **[Direct-path insert](/it/glossary/predicato-existential/)** (Oracle) — modalità di caricamento dati che bypassa il buffer cache e scrive direttamente nei datafile, attivabile con il hint `/*+ APPEND */`. Interagisce con i vincoli di integrità in modo diverso rispetto al conventional insert; il comportamento con le Assertions va verificato caso per caso.
