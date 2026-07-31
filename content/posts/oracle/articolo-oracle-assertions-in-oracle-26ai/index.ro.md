@@ -1,15 +1,24 @@
 ---
-title: "Trei trigger, un job nocturn și 1.247 de polițe orfane: ASSERTION în Oracle 26ai"
-seoTitle: "CREATE ASSERTION Oracle 26ai: constrângeri cross-tabel declarative"
-description: "Oracle 26ai introduce CREATE ASSERTION, constrângerea cross-tabel pe care SQL-92 o promitea de decenii. Sintaxă, comparație cu trigger-e și cazuri reale din asigurări."
-date: 2099-12-31
-draft: true
-translationKey: "articolo_oracle_assertions_in_oracle_26ai"
-tags: ["oracle-26ai", "integrity-constraints", "assertions", "sql-standard", "oracle-23ai"]
-categories: ["oracle"]
-image: "articolo-oracle-assertions-in-oracle-26ai.cover.jpg"
-webo_status: da_tradurre
+categories:
+- oracle
+date: '2026-08-04'
+description: Oracle 26ai introduce CREATE ASSERTION, constrângerea cross-tabel pe
+  care SQL-92 o promitea de decenii. Sintaxă, comparație cu trigger-e și cazuri reale
+  din asigurări.
+draft: false
+image: articolo-oracle-assertions-in-oracle-26ai.cover.jpg
+seoTitle: 'CREATE ASSERTION Oracle 26ai: constrângeri cross-tabel declarative'
+tags:
+- oracle-26ai
+- integrity-constraints
+- assertions
+- sql-standard
+- oracle-23ai
+title: 'Trei trigger, un job nocturn și 1.247 de polițe orfane: ASSERTION în Oracle
+  26ai'
+translationKey: articolo_oracle_assertions_in_oracle_26ai
 webo_generated_at: 2026-07-31
+webo_status: scheduled
 ---
 
 ## Trei trigger, un job nocturn și 1.247 de polițe orfane
