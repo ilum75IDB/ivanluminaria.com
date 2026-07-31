@@ -236,9 +236,9 @@ Moving the business rule to the right place — the schema — is a design choic
 ## Glossary
 - **[ASSERTION](/en/glossary/predicato-existential/)** (Oracle 26ai / SQL standard) — declarative integrity constraint that expresses a predicate over the entire state of the database, potentially involving multiple tables. Defined in SQL-92, implemented for the first time in a mainstream enterprise RDBMS with Oracle 23ai/26ai.
 
-- **Existential predicate** (SQL) — logical expression asserting the existence of at least one row satisfying a condition. In SQL typically expressed with `EXISTS` or `NOT EXISTS` in a correlated subquery; the base pattern for "at least one" Assertions.
+- **[Existential predicate](/en/glossary/assertion/)** (SQL) — logical expression asserting the existence of at least one row satisfying a condition. In SQL typically expressed with `EXISTS` or `NOT EXISTS` in a correlated subquery; the base pattern for "at least one" Assertions.
 
-- **Universal predicate** (SQL) — logical expression asserting that a condition holds for all rows in a set. In SQL expressed indirectly with `NOT EXISTS (... WHERE NOT condition)`, because SQL has no native universal quantifier.
+- **[Universal predicate](/en/glossary/predicato-existential/)** (SQL) — logical expression asserting that a condition holds for all rows in a set. In SQL expressed indirectly with `NOT EXISTS (... WHERE NOT condition)`, because SQL has no native universal quantifier.
 
 - **DEFERRABLE constraint** (Oracle / SQL standard) — integrity constraint whose verification can be postponed to the end of the transaction rather than after each individual DML statement. Useful for multi-step DML, but not equivalent to an Assertion: it does not express cross-table predicates.
 
