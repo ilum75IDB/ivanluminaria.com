@@ -1,13 +1,14 @@
 ---
-title: "Assertions in Oracle 26ai: finalmente un vincolo che attraversa le tabelle"
+categories:
+- oracle
 date: 2099-12-31
 draft: true
-translationKey: "articolo_oracle_assertions_in_oracle_26ai"
+image: articolo-oracle-assertions-in-oracle-26ai.cover.jpg
 tags: []
-categories: ["oracle"]
-image: "articolo-oracle-assertions-in-oracle-26ai.cover.jpg"
-webo_status: da_approvare
+title: 'Assertions in Oracle 26ai: finalmente un vincolo che attraversa le tabelle'
+translationKey: articolo_oracle_assertions_in_oracle_26ai
 webo_generated_at: 2026-07-31
+webo_status: da_approvare
 ---
 
 ```yaml
@@ -230,9 +231,8 @@ Spostare la regola di business nel posto giusto — lo schema — è una scelta 
 4. Oracle Database 26ai Release Notes — stato GA vs preview delle Assertions, known limitations — `<TODO: scout fonte ufficiale per "Oracle 26ai Release Notes">`
 5. ISO/IEC 9075 SQL Standard, SQL-92 — definizione originale di `CREATE ASSERTION` — `<TODO: scout riferimento pubblico accessibile per SQL-92 CREATE ASSERTION>`
 
-## Glossario candidato
-
-- **ASSERTION** (Oracle 26ai / SQL standard) — vincolo di integrità dichiarativo che esprime un predicato sull'intero stato del database, potenzialmente coinvolgendo più tabelle. Definito in SQL-92, implementato per la prima volta in un RDBMS enterprise mainstream con Oracle 23ai/26ai.
+## Glossario
+- **[ASSERTION](/it/glossary/predicato-existential/)** (Oracle 26ai / SQL standard) — vincolo di integrità dichiarativo che esprime un predicato sull'intero stato del database, potenzialmente coinvolgendo più tabelle. Definito in SQL-92, implementato per la prima volta in un RDBMS enterprise mainstream con Oracle 23ai/26ai.
 
 - **Predicato existential** (SQL) — espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente con `EXISTS` o `NOT EXISTS` in subquery correlata; è il pattern base per le Assertions di tipo "almeno uno".
 
