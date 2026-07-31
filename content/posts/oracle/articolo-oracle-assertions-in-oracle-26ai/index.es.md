@@ -236,9 +236,9 @@ Mover la regla de negocio al lugar correcto — el esquema — es una decisión 
 ## Glosario
 - **[ASSERTION](/es/glossary/predicato-existential/)** (Oracle 26ai / estándar SQL) — restricción de integridad declarativa que expresa un predicado sobre el estado completo de la base de datos, pudiendo involucrar varias tablas. Definida en SQL-92, implementada por primera vez en un RDBMS enterprise mainstream con Oracle 23ai/26ai.
 
-- **Predicado existencial** (SQL) — expresión lógica que afirma la existencia de al menos una fila que satisface una condición. En SQL se expresa típicamente con `EXISTS` o `NOT EXISTS` en subquery correlacionada; es el patrón base para las Assertions de tipo "al menos uno".
+- **[Predicado existencial](/es/glossary/assertion/)** (SQL) — expresión lógica que afirma la existencia de al menos una fila que satisface una condición. En SQL se expresa típicamente con `EXISTS` o `NOT EXISTS` en subquery correlacionada; es el patrón base para las Assertions de tipo "al menos uno".
 
-- **Predicado universal** (SQL) — expresión lógica que afirma que una condición se cumple para todas las filas de un conjunto. En SQL se expresa indirectamente con `NOT EXISTS (... WHERE NOT condicion)`, porque SQL no tiene un cuantificador universal nativo.
+- **[Predicado universal](/es/glossary/predicato-existential/)** (SQL) — expresión lógica que afirma que una condición se cumple para todas las filas de un conjunto. En SQL se expresa indirectamente con `NOT EXISTS (... WHERE NOT condicion)`, porque SQL no tiene un cuantificador universal nativo.
 
 - **DEFERRABLE constraint** (Oracle / estándar SQL) — restricción de integridad cuya verificación puede posponerse al final de la transacción en lugar de hacerse tras cada instrucción DML individual. Útil para DML multi-paso, pero no equivalente a una Assertion: no expresa predicados cross-tabla.
 
