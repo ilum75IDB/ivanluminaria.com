@@ -56,6 +56,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Data Mart | Sottoinsieme del data warehouse focalizzato su un singolo processo di business o area funzionale. Spesso costruito in autonomia da un reparto, rischia di divergere dagli altri senza dimensioni conformi | bus-matrix-terreno-comune |
 | Data Guard | Tecnologia Oracle per la replica in tempo reale di un database su uno o più server standby, garantendo alta disponibilità e disaster recovery | oracle-data-guard, oracle-cloud-migration |
 | DEFAULT PRIVILEGES | Meccanismo PostgreSQL che definisce automaticamente i privilegi da assegnare a tutti gli oggetti futuri creati in uno schema | postgresql_roles_and_users |
+| DEFERRABLE constraint | vincolo di integrità la cui verifica può essere posticipata alla fine della transazione anziché a ogni singola istruzion | articolo-oracle-assertions-in-oracle-26ai |
+| Direct-path insert | modalità di caricamento dati che bypassa il buffer cache e scrive direttamente nei datafile, attivabile con il hint `/*+ | articolo-oracle-assertions-in-oracle-26ai |
 | Direttiva 2011/7/UE | Direttiva europea sui ritardi di pagamento che fissa il termine standard a 30 giorni, il massimo a 60, con interessi di mora automatici | pagamenti-60-90-120-giorni |
 | Drill-down | Navigazione nei report dal livello aggregato al livello di dettaglio. Richiede una gerarchia completa e bilanciata per funzionare correttamente | ragged-hierarchies, fatto-grana-sbagliata |
 | Data Warehouse | Sistema centralizzato di raccolta e storicizzazione dati provenienti da fonti diverse, progettato per l'analisi e il supporto alle decisioni aziendali | 4-milioni-nessun-software |
@@ -108,6 +110,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
+| Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
+| Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
 | Pull Request | Meccanismo di proposta e revisione delle modifiche al codice su GitHub, con code review e approvazione prima del merge nel branch principale | ai-github-project-management |
 | Parking Lot | Lista visibile di argomenti emersi durante una riunione che meritano approfondimento ma vengono rinviati a dopo per rispettare il timebox | standup-meeting-15-minuti |
 | Pedalata Assistita | Sistema di propulsione elettrica che amplifica la forza della pedalata, eliminando il problema delle salite e del sudore nei tragitti urbani | bici-vs-auto-roma |
@@ -194,7 +198,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-07-01
-**Totale termini**: 177
-**Totale articoli con glossario**: 41
+**Ultimo aggiornamento**: 2026-07-31
+**Totale termini**: 182
+**Totale articoli con glossario**: 42
 
