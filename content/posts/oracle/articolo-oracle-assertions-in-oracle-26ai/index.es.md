@@ -1,15 +1,24 @@
 ---
-title: "Tres triggers, un job nocturno y 1.247 pólizas huérfanas: ASSERTION en Oracle 26ai"
-seoTitle: "CREATE ASSERTION en Oracle 26ai: restricciones cross-tabla declarativas"
-description: "Oracle 26ai implementa CREATE ASSERTION, la restricción cross-tabla que SQL-92 prometía desde hace décadas. Sintaxis, comparación con triggers y casos reales en seguros."
+categories:
+- oracle
 date: 2099-12-31
+description: Oracle 26ai implementa CREATE ASSERTION, la restricción cross-tabla que
+  SQL-92 prometía desde hace décadas. Sintaxis, comparación con triggers y casos reales
+  en seguros.
 draft: true
-translationKey: "articolo_oracle_assertions_in_oracle_26ai"
-tags: ["oracle-26ai", "integrity-constraints", "assertions", "sql-standard", "oracle-23ai"]
-categories: ["oracle"]
-image: "articolo-oracle-assertions-in-oracle-26ai.cover.jpg"
-webo_status: da_tradurre
+image: articolo-oracle-assertions-in-oracle-26ai.cover.jpg
+seoTitle: 'CREATE ASSERTION en Oracle 26ai: restricciones cross-tabla declarativas'
+tags:
+- oracle-26ai
+- integrity-constraints
+- assertions
+- sql-standard
+- oracle-23ai
+title: 'Tres triggers, un job nocturno y 1.247 pólizas huérfanas: ASSERTION en Oracle
+  26ai'
+translationKey: articolo_oracle_assertions_in_oracle_26ai
 webo_generated_at: 2026-07-31
+webo_status: da_tradurre
 ---
 
 ## Tres triggers, un job nocturno y 1.247 pólizas huérfanas
@@ -224,9 +233,8 @@ Mover la regla de negocio al lugar correcto — el esquema — es una decisión 
 4. Oracle Database 26ai Release Notes — estado GA vs preview de las Assertions, limitaciones conocidas — `<TODO: scout fuente oficial para "Oracle 26ai Release Notes">`
 5. ISO/IEC 9075 SQL Standard, SQL-92 — definición original de `CREATE ASSERTION` — `<TODO: scout referencia pública accesible para SQL-92 CREATE ASSERTION>`
 
-## Glosario candidato
-
-- **ASSERTION** (Oracle 26ai / estándar SQL) — restricción de integridad declarativa que expresa un predicado sobre el estado completo de la base de datos, pudiendo involucrar varias tablas. Definida en SQL-92, implementada por primera vez en un RDBMS enterprise mainstream con Oracle 23ai/26ai.
+## Glosario
+- **[ASSERTION](/es/glossary/predicato-existential/)** (Oracle 26ai / estándar SQL) — restricción de integridad declarativa que expresa un predicado sobre el estado completo de la base de datos, pudiendo involucrar varias tablas. Definida en SQL-92, implementada por primera vez en un RDBMS enterprise mainstream con Oracle 23ai/26ai.
 
 - **Predicado existencial** (SQL) — expresión lógica que afirma la existencia de al menos una fila que satisface una condición. En SQL se expresa típicamente con `EXISTS` o `NOT EXISTS` en subquery correlacionada; es el patrón base para las Assertions de tipo "al menos uno".
 
