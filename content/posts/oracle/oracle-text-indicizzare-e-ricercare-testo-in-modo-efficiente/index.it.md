@@ -1,9 +1,11 @@
 ---
 title: "Ricerche su milioni di documenti legali: come Oracle Text ha cambiato i tempi di risposta"
+seoTitle: "Oracle Text: full-text search su archivi documentali Oracle 19c"
+description: "Come Oracle Text risolve ricerche lente su archivi di documenti ed email: indici CONTEXT, CATSEARCH e CTXXPATH configurati sulle reali esigenze di ricerca."
 date: 2099-12-31
 draft: true
 translationKey: "oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente"
-tags: []
+tags: ["oracle-text", "full-text-search", "oracle-19c", "indexing", "performance-tuning"]
 categories: ["oracle"]
 image: "oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg"
 webo_status: da_approvare
