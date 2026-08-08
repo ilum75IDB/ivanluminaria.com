@@ -255,9 +255,9 @@ Oracle Text indexes shouldn't be built from the documentation toward the data. T
 ## Glossary
 - **[Oracle Text](/en/glossary/oracle-text/)** — Built-in Oracle Database component for indexing and full-text search on textual data. Requires no separate license and operates directly on database data structures, including CLOB, BLOB, and VARCHAR2 columns.
 
-- **CONTEXT index** — Oracle Text index type for full-text search on unstructured text (documents, articles, legal opinions). Builds an inverted token→document structure that avoids full CLOB column scans on every query.
+- **[CONTEXT index](/en/glossary/oracle-text/)** — Oracle Text index type for full-text search on unstructured text (documents, articles, legal opinions). Builds an inverted token→document structure that avoids full CLOB column scans on every query.
 
-- **CATSEARCH index** — Oracle Text index type optimized for archives that combine structured attributes (sender, date, category) with free text. SQL predicates and text search are resolved together inside the index, not in separate phases.
+- **[CATSEARCH index](/en/glossary/indice-context/)** — Oracle Text index type optimized for archives that combine structured attributes (sender, date, category) with free text. SQL predicates and text search are resolved together inside the index, not in separate phases.
 
 - **CTXXPATH index** — Oracle Text index type for XML or JSON documents stored in CLOB/BLOB. Preserves the hierarchical path structure during indexing, enabling queries that restrict search to specific nodes within the document.
 
