@@ -1,15 +1,23 @@
 ---
-title: "El informe del lunes por la mañana: lag de réplica MySQL y por qué Seconds_Behind_Master miente"
-seoTitle: "Lag réplica MySQL: GTID, parallel replication y pt-heartbeat"
-description: "Cuatro horas de lag en un sistema logístico: cómo diagnosticamos el problema, por qué Seconds_Behind_Master engaña y qué cambios lo resolvieron."
+categories:
+- mysql
 date: 2099-12-31
+description: 'Cuatro horas de lag en un sistema logístico: cómo diagnosticamos el
+  problema, por qué Seconds_Behind_Master engaña y qué cambios lo resolvieron.'
 draft: true
-translationKey: "replica_mysql_quando_lo_slave_resta_indietro_e_nessuno_se_ne_accorge"
-tags: ["mysql", "replication", "performance-tuning", "monitoring", "gtid"]
-categories: ["mysql"]
-image: "replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge.cover.jpg"
-webo_status: da_tradurre
+image: replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge.cover.jpg
+seoTitle: 'Lag réplica MySQL: GTID, parallel replication y pt-heartbeat'
+tags:
+- mysql
+- replication
+- performance-tuning
+- monitoring
+- gtid
+title: 'El informe del lunes por la mañana: lag de réplica MySQL y por qué Seconds_Behind_Master
+  miente'
+translationKey: replica_mysql_quando_lo_slave_resta_indietro_e_nessuno_se_ne_accorge
 webo_generated_at: 2026-08-08
+webo_status: da_tradurre
 ---
 
 ## El informe del lunes por la mañana
@@ -260,11 +268,10 @@ La monitorización del lag de réplica no es un nice-to-have. Es una métrica op
 
 ---
 
-## Glosario candidato
+## Glosario
+- **[Binlog](/es/glossary/binlog/)** (MySQL binary log) — registro secuencial de todas las modificaciones a los datos en el master MySQL. Base de la réplica: el slave lee el binlog para saber qué aplicar. Formato ROW, STATEMENT o MIXED.
 
-- **Binlog** (MySQL binary log) — registro secuencial de todas las modificaciones a los datos en el master MySQL. Base de la réplica: el slave lee el binlog para saber qué aplicar. Formato ROW, STATEMENT o MIXED.
-
-- **Relay log** — copia local del binlog del master, escrita por el IO thread en el slave. El SQL thread lee el relay log para aplicar las transacciones. Es el buffer entre la recepción y la aplicación de los eventos.
+- **[Relay log](/es/glossary/gtid/)** — copia local del binlog del master, escrita por el IO thread en el slave. El SQL thread lee el relay log para aplicar las transacciones. Es el buffer entre la recepción y la aplicación de los eventos.
 
 - **GTID** (Global Transaction Identifier) — identificador único asignado a cada transacción commiteada en un servidor MySQL. Formato `source_uuid:transaction_id`. Permite failover simplificado y monitorización precisa del lag de réplica.
 
