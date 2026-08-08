@@ -254,9 +254,9 @@ Gli indici Oracle Text non vanno costruiti dalla documentazione verso i dati. Va
 ## Glossario
 - **[Oracle Text](/it/glossary/oracle-text/)** — Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licenza separata e opera direttamente sulle strutture dati del database, incluse colonne CLOB, BLOB e VARCHAR2.
 
-- **Indice CONTEXT** — Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce una struttura invertita token→documento che evita la scansione completa della colonna CLOB a ogni query.
+- **[Indice CONTEXT](/it/glossary/oracle-text/)** — Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce una struttura invertita token→documento che evita la scansione completa della colonna CLOB a ogni query.
 
-- **Indice CATSEARCH** — Tipo di indice Oracle Text ottimizzato per archivi che combinano attributi strutturati (mittente, data, categoria) con testo libero. I predicati SQL e la ricerca testuale vengono risolti insieme dentro l'indice, non in fasi separate.
+- **[Indice CATSEARCH](/it/glossary/indice-context/)** — Tipo di indice Oracle Text ottimizzato per archivi che combinano attributi strutturati (mittente, data, categoria) con testo libero. I predicati SQL e la ricerca testuale vengono risolti insieme dentro l'indice, non in fasi separate.
 
 - **Indice CTXXPATH** — Tipo di indice Oracle Text per documenti XML o JSON archiviati in CLOB/BLOB. Preserva la struttura gerarchica dei path XML durante l'indicizzazione, permettendo query che limitano la ricerca a nodi specifici del documento.
 
