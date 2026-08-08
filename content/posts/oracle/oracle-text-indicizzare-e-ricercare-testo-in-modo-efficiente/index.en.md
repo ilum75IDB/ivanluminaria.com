@@ -259,6 +259,6 @@ Oracle Text indexes shouldn't be built from the documentation toward the data. T
 
 - **[CATSEARCH index](/en/glossary/indice-context/)** — Oracle Text index type optimized for archives that combine structured attributes (sender, date, category) with free text. SQL predicates and text search are resolved together inside the index, not in separate phases.
 
-- **CTXXPATH index** — Oracle Text index type for XML or JSON documents stored in CLOB/BLOB. Preserves the hierarchical path structure during indexing, enabling queries that restrict search to specific nodes within the document.
+- **[CTXXPATH index](/en/glossary/oracle-text/)** — Oracle Text index type for XML or JSON documents stored in CLOB/BLOB. Preserves the hierarchical path structure during indexing, enabling queries that restrict search to specific nodes within the document.
 
-- **Lexer** (Oracle Text) — Component that analyzes text during the indexing phase, breaking it into tokens and applying language- and format-specific normalization rules. The `BASIC_LEXER` with `BASE_LETTER YES` handles, for example, accent normalization for Italian text.
+- **[Lexer](/en/glossary/indice-context/)** (Oracle Text) — Component that analyzes text during the indexing phase, breaking it into tokens and applying language- and format-specific normalization rules. The `BASIC_LEXER` with `BASE_LETTER YES` handles, for example, accent normalization for Italian text.
