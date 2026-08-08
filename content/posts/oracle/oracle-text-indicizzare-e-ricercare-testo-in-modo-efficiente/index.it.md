@@ -1,7 +1,7 @@
 ---
 categories:
 - oracle
-date: '2026-07-07'
+date: '2026-08-11'
 description: 'Come Oracle Text risolve ricerche lente su archivi di documenti ed email:
   indici CONTEXT, CATSEARCH e CTXXPATH configurati sulle reali esigenze di ricerca.'
 draft: false
