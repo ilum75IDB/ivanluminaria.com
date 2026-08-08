@@ -1,7 +1,7 @@
 ---
 categories:
 - mysql
-date: '2026-08-18'
+date: '2026-08-08'
 description: 'View rotte, GTID warning, check replica prima dello stop: il workflow
   reale di un patching MySQL 8.0 su RHEL 8.3, con query riutilizzabili e tutti gli
   errori del campo.'
