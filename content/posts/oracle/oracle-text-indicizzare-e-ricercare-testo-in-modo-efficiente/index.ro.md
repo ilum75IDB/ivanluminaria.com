@@ -1,15 +1,24 @@
 ---
-title: "Frustrarea lui Alberto: Oracle Text și cele trei tipuri de index pentru arhiva juridică"
-seoTitle: "Oracle Text CONTEXT CATSEARCH CTXXPATH: full-text pe arhive juridice"
-description: "Cum am redus timpii de căutare de la 90 de secunde la sub un secundă pe un arhiv Oracle de 30 de ani, alegând indexul potrivit pentru fiecare pattern de căutare."
-date: 2099-12-31
-draft: true
-translationKey: "oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente"
-tags: ["oracle-text", "full-text-search", "oracle-19c", "clob", "indexing"]
-categories: ["oracle"]
-image: "oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg"
-webo_status: da_tradurre
+categories:
+- oracle
+date: '2026-07-07'
+description: Cum am redus timpii de căutare de la 90 de secunde la sub un secundă
+  pe un arhiv Oracle de 30 de ani, alegând indexul potrivit pentru fiecare pattern
+  de căutare.
+draft: false
+image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
+seoTitle: 'Oracle Text CONTEXT CATSEARCH CTXXPATH: full-text pe arhive juridice'
+tags:
+- oracle-text
+- full-text-search
+- oracle-19c
+- clob
+- indexing
+title: 'Frustrarea lui Alberto: Oracle Text și cele trei tipuri de index pentru arhiva
+  juridică'
+translationKey: oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente
 webo_generated_at: 2026-08-08
+webo_status: scheduled
 ---
 
 ## Frustrarea lui Alberto

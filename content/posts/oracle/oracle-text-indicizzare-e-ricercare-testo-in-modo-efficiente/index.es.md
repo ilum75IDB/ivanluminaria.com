@@ -1,10 +1,10 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
+date: '2026-07-07'
 description: Cómo tres tipos de índice Oracle Text transformaron búsquedas de 90 segundos
   en menos de 700 ms en un archivo legal con décadas de documentos.
-draft: true
+draft: false
 image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
 seoTitle: 'Oracle Text: índices CONTEXT, CATSEARCH y CTXXPATH en producción'
 tags:
@@ -17,7 +17,7 @@ title: 'La frustración de Alberto: Oracle Text y la búsqueda full-text en un a
   legal de treinta años'
 translationKey: oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente
 webo_generated_at: 2026-08-08
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## La frustración de Alberto

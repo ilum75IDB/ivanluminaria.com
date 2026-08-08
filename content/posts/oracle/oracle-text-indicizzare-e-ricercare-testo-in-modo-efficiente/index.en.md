@@ -1,15 +1,15 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
-draft: true
+date: '2026-07-07'
+draft: false
 image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
 tags: []
 title: 'Research on millions of legal documents: how Oracle Text changed response
   times'
 translationKey: oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente
 webo_generated_at: 2026-08-08
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ```
