@@ -1,13 +1,15 @@
 ---
-title: "Research on millions of legal documents: how Oracle Text changed response times"
+categories:
+- oracle
 date: 2099-12-31
 draft: true
-translationKey: "oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente"
+image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
 tags: []
-categories: ["oracle"]
-image: "oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg"
-webo_status: da_tradurre
+title: 'Research on millions of legal documents: how Oracle Text changed response
+  times'
+translationKey: oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente
 webo_generated_at: 2026-08-08
+webo_status: da_tradurre
 ---
 
 ```
@@ -250,9 +252,8 @@ Oracle Text indexes shouldn't be built from the documentation toward the data. T
 2. Oracle Text Application Developer's Guide 19c — [Advanced concepts, tuning and best practices](https://docs.oracle.com/en/database/oracle/oracle-database/19/texta/toc.htm)
 3. Oracle-Base (Tim Hall) — [Oracle Text Articles: practical examples](https://oracle-base.com/articles/misc/oracle-text)
 
-## Glossary candidate
-
-- **Oracle Text** — Built-in Oracle Database component for indexing and full-text search on textual data. Requires no separate license and operates directly on database data structures, including CLOB, BLOB, and VARCHAR2 columns.
+## Glossary
+- **[Oracle Text](/en/glossary/oracle-text/)** — Built-in Oracle Database component for indexing and full-text search on textual data. Requires no separate license and operates directly on database data structures, including CLOB, BLOB, and VARCHAR2 columns.
 
 - **CONTEXT index** — Oracle Text index type for full-text search on unstructured text (documents, articles, legal opinions). Builds an inverted token→document structure that avoids full CLOB column scans on every query.
 

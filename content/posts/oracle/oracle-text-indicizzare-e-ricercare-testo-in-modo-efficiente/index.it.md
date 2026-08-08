@@ -1,15 +1,23 @@
 ---
-title: "Ricerche su milioni di documenti legali: come Oracle Text ha cambiato i tempi di risposta"
-seoTitle: "Oracle Text: full-text search su archivi documentali Oracle 19c"
-description: "Come Oracle Text risolve ricerche lente su archivi di documenti ed email: indici CONTEXT, CATSEARCH e CTXXPATH configurati sulle reali esigenze di ricerca."
+categories:
+- oracle
 date: 2099-12-31
+description: 'Come Oracle Text risolve ricerche lente su archivi di documenti ed email:
+  indici CONTEXT, CATSEARCH e CTXXPATH configurati sulle reali esigenze di ricerca.'
 draft: true
-translationKey: "oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente"
-tags: ["oracle-text", "full-text-search", "oracle-19c", "indexing", "performance-tuning"]
-categories: ["oracle"]
-image: "oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg"
-webo_status: da_approvare
+image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
+seoTitle: 'Oracle Text: full-text search su archivi documentali Oracle 19c'
+tags:
+- oracle-text
+- full-text-search
+- oracle-19c
+- indexing
+- performance-tuning
+title: 'Ricerche su milioni di documenti legali: come Oracle Text ha cambiato i tempi
+  di risposta'
+translationKey: oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente
 webo_generated_at: 2026-08-07
+webo_status: da_approvare
 ---
 
 ## La frustrazione di Alberto
@@ -243,9 +251,8 @@ Gli indici Oracle Text non vanno costruiti dalla documentazione verso i dati. Va
 2. Oracle Text Application Developer's Guide 19c — [Concetti avanzati, tuning e best practice](https://docs.oracle.com/en/database/oracle/oracle-database/19/texta/toc.htm)
 3. Oracle-Base (Tim Hall) — [Oracle Text Articles: esempi pratici](https://oracle-base.com/articles/misc/oracle-text)
 
-## Glossario candidato
-
-- **Oracle Text** — Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licenza separata e opera direttamente sulle strutture dati del database, incluse colonne CLOB, BLOB e VARCHAR2.
+## Glossario
+- **[Oracle Text](/it/glossary/oracle-text/)** — Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licenza separata e opera direttamente sulle strutture dati del database, incluse colonne CLOB, BLOB e VARCHAR2.
 
 - **Indice CONTEXT** — Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce una struttura invertita token→documento che evita la scansione completa della colonna CLOB a ogni query.
 
