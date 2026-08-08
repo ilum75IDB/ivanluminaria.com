@@ -1,10 +1,10 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
+date: '2026-07-07'
 description: 'Come Oracle Text risolve ricerche lente su archivi di documenti ed email:
   indici CONTEXT, CATSEARCH e CTXXPATH configurati sulle reali esigenze di ricerca.'
-draft: true
+draft: false
 image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
 seoTitle: 'Oracle Text: full-text search su archivi documentali Oracle 19c'
 tags:
@@ -17,7 +17,7 @@ title: 'Ricerche su milioni di documenti legali: come Oracle Text ha cambiato i 
   di risposta'
 translationKey: oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente
 webo_generated_at: 2026-08-07
-webo_status: da_approvare
+webo_status: scheduled
 ---
 
 ## La frustrazione di Alberto
