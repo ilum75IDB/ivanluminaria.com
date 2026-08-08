@@ -1,7 +1,7 @@
 ---
 categories:
 - mysql
-date: '2026-08-08'
+date: '2026-08-18'
 description: 'A real MySQL 8.0.34→8.0.45 patching workflow: broken views blocking
   mysqldump, GTID warnings, replica role check, and RPM upgrade order on RHEL 8.'
 draft: false

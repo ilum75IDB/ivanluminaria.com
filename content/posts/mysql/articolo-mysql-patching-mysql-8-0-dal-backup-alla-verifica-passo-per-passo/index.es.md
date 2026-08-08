@@ -1,7 +1,7 @@
 ---
 categories:
 - mysql
-date: '2026-08-08'
+date: '2026-08-18'
 description: 'Workflow real de patching MySQL 8.0.34→8.0.45 en RHEL 8: vistas inválidas,
   GTID, verificación de réplica y upgrade RPM. Lo que el ticket de cuatro líneas no
   contaba.'
