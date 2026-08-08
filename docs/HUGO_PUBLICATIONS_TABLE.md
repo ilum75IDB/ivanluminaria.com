@@ -64,7 +64,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 44 | 2026-08-11 | — | Tue | Ricerche su milioni di documenti legali: come Oracle Text ha cambiato i tempi di | oracle | #101 | 2026-08-08 | scheduled |
 
-| 45 | 2026-08-18 | — | Tue | MySQL 8.0.34→8.0.45: workflow di patching reale con errori inclusi | mysql | #68 | 2026-08-08 | scheduled |
+| 45 | 2026-08-08 | — | Sat | MySQL 8.0.34→8.0.45: workflow di patching reale con errori inclusi | mysql | #68 | 2026-08-08 | scheduled |
 
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-08-18 (Tuesday)
