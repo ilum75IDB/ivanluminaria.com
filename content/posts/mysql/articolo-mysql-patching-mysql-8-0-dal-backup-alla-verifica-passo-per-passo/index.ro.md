@@ -1,7 +1,7 @@
 ---
 categories:
 - mysql
-date: '2026-08-18'
+date: '2026-08-08'
 description: 'Upgrade MySQL Community 8.0.34→8.0.45 pe RHEL 8: view-uri invalide,
   GTID, verificarea replicii și pașii corecți de patching. Workflow real, cu query-urile
   folosite.'
