@@ -70,9 +70,13 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
+| Indice CATSEARCH | Tipo di indice Oracle Text ottimizzato per archivi che combinano attributi strutturati (mittente, data, categoria) con t | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| Indice CONTEXT | Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce u | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| Indice CTXXPATH | Tipo di indice Oracle Text per documenti XML o JSON archiviati in CLOB/BLOB. Preserva la struttura gerarchica dei path X | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | innodb_buffer_pool_size | Parametro globale che definisce la dimensione della cache principale di InnoDB per dati e indici. È il parametro di memo | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | join_buffer_size | Buffer allocato per thread per ogni join eseguito senza indice. A differenza del buffer pool, viene allocato per ogni co | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
+| Lexer | Componente che analizza il testo durante la fase di indicizzazione, suddividendolo in token e applicando regole di norma | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Lift-and-Shift | Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione | tecnica-si-e-yes-and |
 | Local Index | Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente | oracle-partitioning, partitioning-dwh |
 | Lookup table | Tabella di riferimento collegata via foreign key che memorizza i valori validi di un'enumerazione, insieme ad eventuali attributi descrittivi (etichetta, ordine, flag attivo) | enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa, enum-oracle-workaround-fino-a-23ai |
@@ -109,6 +113,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
+| Oracle Text | Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licen | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
 | Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
@@ -198,7 +203,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 
-**Ultimo aggiornamento**: 2026-07-31
-**Totale termini**: 182
-**Totale articoli con glossario**: 42
+**Ultimo aggiornamento**: 2026-08-08
+**Totale termini**: 187
+**Totale articoli con glossario**: 43
 
