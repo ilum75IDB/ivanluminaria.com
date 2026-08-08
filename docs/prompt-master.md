@@ -11,7 +11,9 @@ Crea un'illustrazione in formato **3:2 (1536×1024 px)**, in stile cartone retro
 
 Lo stile deve essere coerente con poster corporate americani anni '50, animazione UPA, grafica editoriale elegante e geometrica.
 
-**Resa visiva tassativa**: **illustrazione vettoriale 2D piatta**, mai 3D, mai effetto "plasticoso" o gloss/shiny, mai render fotorealistico, mai look pubblicitario contemporaneo. Texture di carta visibile per dare matericità "stampata". Ogni superficie deve apparire **piatta** e bidimensionale: niente riflessi, niente bevel, niente lucentezza moderna.
+**Resa visiva tassativa**: **illustrazione 2D disegnata a mano**, mai render 3D, mai effetto "plasticoso" o gloss/shiny, mai fotorealismo, mai look pubblicitario contemporaneo. Texture di carta visibile per dare matericità "stampata".
+
+**Profondità sì, lucido no.** Il divieto riguarda la finitura moderna (riflessi speculari, bevel, gradienti lucidi, plastica), NON il volume: l'illustrazione deve avere ombre proiettate nette e stilizzate, chiaroscuro reso a campiture o mezzitoni (screen-tone, tratteggio, grana), e una chiara distinzione tra primo piano, piano medio e sfondo. Il riferimento sono le illustrazioni editoriali stampate anni '50, che sono piatte nella *finitura* ma piene di profondità nella *composizione* — non le sagome di cartone.
 
 **Direzione artistica:**
 
@@ -21,7 +23,7 @@ Lo stile deve essere coerente con poster corporate americani anni '50, animazion
 - proporzioni dei personaggi leggermente esagerate
 - stile raffinato, intelligente, visivamente ordinato
 - atmosfera da jazz club vintage
-- illuminazione soffusa e discreta
+- illuminazione soffusa e discreta, con una direzione della luce riconoscibile e ombre proiettate coerenti
 - texture di carta ruvida ben visibile
 - mood elegante, colto, professionale
 
@@ -33,12 +35,12 @@ Lo stile deve essere coerente con poster corporate americani anni '50, animazion
 - marrone
 - bianco
 
-Usare colori piatti e uniformi, con pochissime sfumature.
+Usare campiture prevalentemente piatte, ammettendo variazioni tonali dentro la palette (toni più chiari e più scuri dello stesso colore) per dare volume e distinguere i piani. Vietati i gradienti lucidi e i colori saturi moderni, non la variazione tonale in sé.
 
-**Evitare:** effetti realistici, fotorealismo, rendering 3D, dettagli superflui, ombreggiature complesse, colori saturi moderni, look pubblicitario contemporaneo.
+**Evitare:** fotorealismo, rendering 3D, finiture lucide o plastiche, colori saturi moderni, look pubblicitario contemporaneo, affollamento disordinato della scena.
 
-La scena deve apparire grafica, essenziale, simbolica, con forte contrasto visivo tra gli elementi principali.
-Ogni oggetto deve essere semplificato in forme pulite e leggibili.
+La scena deve apparire grafica e leggibile, con forte contrasto visivo tra gli elementi principali.
+Ogni oggetto va stilizzato in forme pulite ma **deve restare riconoscibile per quello che è**: una pizza è una pizza con i suoi ingredienti, non un cerchio dentro un cerchio. Le icone puramente astratte si usano per i concetti astratti (flussi, relazioni, stati), non per gli oggetti fisici della scena.
 L'immagine deve sembrare una singola illustrazione coerente, non un collage.
 
 **Elementi grafici preferiti:**
@@ -110,15 +112,15 @@ Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena 
 - privilegiare chiarezza grafica e composizione rispetto al dettaglio
 - evitare qualsiasi estetica moderna da stock illustration
 - evitare look realistico o digitale contemporaneo
-- evitare eccesso di oggetti, testo o micro-dettagli
-- **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna**: ogni superficie deve essere piatta come una serigrafia anni '50
+- popolare l'ambiente con oggetti di contesto coerenti (arredi, strumenti, dettagli d'epoca) distribuiti sui tre piani: una scena ricca ma ordinata batte una scena spoglia
+- **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna** nella *finitura* delle superfici — restano invece necessarie ombre stilizzate, mezzitoni e profondità compositiva
 
 **Testo nell'immagine:**
 
-- Limitare al minimo qualsiasi testo nell'illustrazione
+- Il testo è ammesso quando aiuta a leggere la scena (etichette, insegne, intestazioni di grafici, cartelli): non va eliminato per principio, va tenuto breve
 - **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
 - Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
-- Preferire simboli geometrici, icone stilizzate, frecce e pittogrammi astratti al posto di parole quando possibile
+- Preferire simboli geometrici, icone stilizzate e frecce alle parole quando il concetto è astratto; gli oggetti concreti vanno però disegnati come oggetti, non sostituiti da pittogrammi
 
 **SCENA DA RAPPRESENTARE:**
 
