@@ -1,11 +1,13 @@
 ---
-title: "GTID"
-description: "Global Transaction Identifier — identificador único asignado a cada transacción en MySQL para simplificar la gestión de la replicación."
-translationKey: "glossary_gtid"
-aka: "Global Transaction Identifier"
+aka: Global Transaction Identifier
 articles:
-  - "/posts/mysql/mysql-group-replication-binlog-migration"
-  - "/posts/mysql/mysqldump-mysqlpump-mydumper"
+- /posts/mysql/mysql-group-replication-binlog-migration
+- /posts/mysql/mysqldump-mysqlpump-mydumper
+- /posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo
+description: Global Transaction Identifier — identificador único asignado a cada transacción
+  en MySQL para simplificar la gestión de la replicación.
+title: GTID
+translationKey: glossary_gtid
 ---
 
 **GTID** (Global Transaction Identifier) es un identificador único asignado automáticamente a cada transacción confirmada en un servidor MySQL. El formato es `server_uuid:transaction_id` — por ejemplo `3E11FA47-71CA-11E1-9E33-C80AA9429562:23`.

@@ -1,11 +1,13 @@
 ---
-title: "mysqldump"
-description: "Utilitar de backup logic inclus în fiecare instalare MySQL, produce un fișier SQL secvențial pentru recrearea schemei și datelor."
-translationKey: "glossary_mysqldump"
-aka: "MySQL dump"
+aka: MySQL dump
 articles:
-  - "/posts/mysql/mysqldump-mysqlpump-mydumper"
-  - "/posts/mysql/mysql-pre-upgrade-assessment"
+- /posts/mysql/mysqldump-mysqlpump-mydumper
+- /posts/mysql/mysql-pre-upgrade-assessment
+- /posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo
+description: Utilitar de backup logic inclus în fiecare instalare MySQL, produce un
+  fișier SQL secvențial pentru recrearea schemei și datelor.
+title: mysqldump
+translationKey: glossary_mysqldump
 ---
 
 **mysqldump** este utilitarul de backup logic inclus standard în fiecare instalare de MySQL și MariaDB. Produce un fișier SQL care conține toate instrucțiunile (CREATE TABLE, INSERT) necesare pentru a reconstrui complet schema și datele unei baze de date.
