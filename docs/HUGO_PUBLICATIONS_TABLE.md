@@ -62,5 +62,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 43 | 2026-08-04 | — | mar | Assertions in Oracle 26ai: finalmente un vincolo che attraversa le tabelle | oracle | #100 | 2026-07-31 | scheduled |
 
+| 44 | 2026-07-07 | — | Tue | Ricerche su milioni di documenti legali: come Oracle Text ha cambiato i tempi di | oracle | #101 | 2026-08-08 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-07-07 (Tuesday)
