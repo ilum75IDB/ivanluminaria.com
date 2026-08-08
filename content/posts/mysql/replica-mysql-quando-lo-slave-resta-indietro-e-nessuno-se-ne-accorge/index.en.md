@@ -272,8 +272,8 @@ Replica lag monitoring is not a nice-to-have. It's an operational metric that di
 
 - **[Relay log](/en/glossary/gtid/)** — local copy of the master's binlog, written by the IO thread on the slave. The SQL thread reads the relay log to apply transactions. It's the buffer between event reception and application.
 
-- **GTID** (Global Transaction Identifier) — unique identifier assigned to every transaction committed on a MySQL server. Format: `source_uuid:transaction_id`. Enables simplified failover and precise replica lag monitoring.
+- **[GTID](/en/glossary/binlog/)** (Global Transaction Identifier) — unique identifier assigned to every transaction committed on a MySQL server. Format: `source_uuid:transaction_id`. Enables simplified failover and precise replica lag monitoring.
 
-- **Parallel replication** — replication event application mode that uses multiple worker threads instead of a single SQL thread. In MySQL, `LOGICAL_CLOCK` mode identifies transactions that can be applied in parallel based on commit timestamps in the binlog.
+- **[Parallel replication](/en/glossary/relay-log/)** — replication event application mode that uses multiple worker threads instead of a single SQL thread. In MySQL, `LOGICAL_CLOCK` mode identifies transactions that can be applied in parallel based on commit timestamps in the binlog.
 
-- **pt-heartbeat** — Percona Toolkit tool that measures MySQL replica lag by writing timestamps to the master and comparing them with values read on the slave. More reliable than `Seconds_Behind_Master` for production alerting.
+- **[pt-heartbeat](/en/glossary/gtid/)** — Percona Toolkit tool that measures MySQL replica lag by writing timestamps to the master and comparing them with values read on the slave. More reliable than `Seconds_Behind_Master` for production alerting.

@@ -273,8 +273,8 @@ La monitorización del lag de réplica no es un nice-to-have. Es una métrica op
 
 - **[Relay log](/es/glossary/gtid/)** — copia local del binlog del master, escrita por el IO thread en el slave. El SQL thread lee el relay log para aplicar las transacciones. Es el buffer entre la recepción y la aplicación de los eventos.
 
-- **GTID** (Global Transaction Identifier) — identificador único asignado a cada transacción commiteada en un servidor MySQL. Formato `source_uuid:transaction_id`. Permite failover simplificado y monitorización precisa del lag de réplica.
+- **[GTID](/es/glossary/binlog/)** (Global Transaction Identifier) — identificador único asignado a cada transacción commiteada en un servidor MySQL. Formato `source_uuid:transaction_id`. Permite failover simplificado y monitorización precisa del lag de réplica.
 
-- **Parallel replication** — modo de aplicación de los eventos de réplica que usa varios worker threads en lugar de un único SQL thread. En MySQL, el modo `LOGICAL_CLOCK` identifica transacciones ejecutables en paralelo basándose en los commit timestamps del binlog.
+- **[Parallel replication](/es/glossary/relay-log/)** — modo de aplicación de los eventos de réplica que usa varios worker threads en lugar de un único SQL thread. En MySQL, el modo `LOGICAL_CLOCK` identifica transacciones ejecutables en paralelo basándose en los commit timestamps del binlog.
 
-- **pt-heartbeat** — herramienta de Percona Toolkit que mide el lag de réplica MySQL escribiendo timestamps en el master y comparándolos con los valores leídos en el slave. Más fiable que `Seconds_Behind_Master` para el alerting en producción.
+- **[pt-heartbeat](/es/glossary/gtid/)** — herramienta de Percona Toolkit que mide el lag de réplica MySQL escribiendo timestamps en el master y comparándolos con los valores leídos en el slave. Más fiable que `Seconds_Behind_Master` para el alerting en producción.
