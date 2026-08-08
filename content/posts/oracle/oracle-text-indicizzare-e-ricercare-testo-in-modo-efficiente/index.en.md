@@ -1,7 +1,7 @@
 ---
 categories:
 - oracle
-date: '2026-07-07'
+date: '2026-08-11'
 draft: false
 image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
 tags: []

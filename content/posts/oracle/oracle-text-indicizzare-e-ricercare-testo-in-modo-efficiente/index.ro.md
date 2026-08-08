@@ -1,7 +1,7 @@
 ---
 categories:
 - oracle
-date: '2026-07-07'
+date: '2026-08-11'
 description: Cum am redus timpii de căutare de la 90 de secunde la sub un secundă
   pe un arhiv Oracle de 30 de ani, alegând indexul potrivit pentru fiecare pattern
   de căutare.
