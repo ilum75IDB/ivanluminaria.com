@@ -1,7 +1,7 @@
 ---
 categories:
 - oracle
-date: '2026-07-07'
+date: '2026-08-11'
 description: Cómo tres tipos de índice Oracle Text transformaron búsquedas de 90 segundos
   en menos de 700 ms en un archivo legal con décadas de documentos.
 draft: false
