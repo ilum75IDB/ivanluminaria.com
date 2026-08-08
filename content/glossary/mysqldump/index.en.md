@@ -1,11 +1,13 @@
 ---
-title: "mysqldump"
-description: "Logical backup utility included in every MySQL installation, producing a sequential SQL file to recreate schema and data."
-translationKey: "glossary_mysqldump"
-aka: "MySQL dump"
+aka: MySQL dump
 articles:
-  - "/posts/mysql/mysqldump-mysqlpump-mydumper"
-  - "/posts/mysql/mysql-pre-upgrade-assessment"
+- /posts/mysql/mysqldump-mysqlpump-mydumper
+- /posts/mysql/mysql-pre-upgrade-assessment
+- /posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo
+description: Logical backup utility included in every MySQL installation, producing
+  a sequential SQL file to recreate schema and data.
+title: mysqldump
+translationKey: glossary_mysqldump
 ---
 
 **mysqldump** is the logical backup utility included by default in every MySQL and MariaDB installation. It produces an SQL file containing all the statements (CREATE TABLE, INSERT) needed to fully rebuild a database's schema and data.
