@@ -1,15 +1,23 @@
 ---
-title: "MySQL 8.0.34→8.0.45: workflow di patching reale con errori inclusi"
-seoTitle: "Patching MySQL 8.0.34→8.0.45 su RHEL 8: workflow completo"
-description: "View rotte, GTID warning, check replica prima dello stop: il workflow reale di un patching MySQL 8.0 su RHEL 8.3, con query riutilizzabili e tutti gli errori del campo."
-date: 2099-12-31
-draft: true
-translationKey: "articolo_mysql_patching_mysql_8_0_dal_backup_alla_verifica_passo_per_passo"
-tags: ["mysql-8", "patching", "mysqldump", "gtid", "rhel"]
-categories: ["mysql"]
-image: "articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo.cover.jpg"
-webo_status: da_approvare
+categories:
+- mysql
+date: '2026-08-18'
+description: 'View rotte, GTID warning, check replica prima dello stop: il workflow
+  reale di un patching MySQL 8.0 su RHEL 8.3, con query riutilizzabili e tutti gli
+  errori del campo.'
+draft: false
+image: articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo.cover.jpg
+seoTitle: 'Patching MySQL 8.0.34→8.0.45 su RHEL 8: workflow completo'
+tags:
+- mysql-8
+- patching
+- mysqldump
+- gtid
+- rhel
+title: 'MySQL 8.0.34→8.0.45: workflow di patching reale con errori inclusi'
+translationKey: articolo_mysql_patching_mysql_8_0_dal_backup_alla_verifica_passo_per_passo
 webo_generated_at: 2026-08-08
+webo_status: scheduled
 ---
 
 ## Il ticket diceva "aggiorna MySQL e spegni il servizio"
