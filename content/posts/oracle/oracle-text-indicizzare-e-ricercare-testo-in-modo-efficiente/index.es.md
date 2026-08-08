@@ -258,6 +258,6 @@ Los índices Oracle Text no se construyen desde la documentación hacia los dato
 
 - **[Índice CATSEARCH](/es/glossary/indice-context/)** — Tipo de índice Oracle Text optimizado para archivos que combinan atributos estructurados (remitente, fecha, categoría) con texto libre. Los predicados SQL y la búsqueda textual se resuelven juntos dentro del índice, no en fases separadas.
 
-- **Índice CTXXPATH** — Tipo de índice Oracle Text para documentos XML o JSON almacenados en CLOB/BLOB. Preserva la estructura jerárquica de los paths XML durante la indexación, permitiendo consultas que limitan la búsqueda a nodos específicos del documento.
+- **[Índice CTXXPATH](/es/glossary/oracle-text/)** — Tipo de índice Oracle Text para documentos XML o JSON almacenados en CLOB/BLOB. Preserva la estructura jerárquica de los paths XML durante la indexación, permitiendo consultas que limitan la búsqueda a nodos específicos del documento.
 
-- **Lexer** (Oracle Text) — Componente que analiza el texto durante la fase de indexación, dividiéndolo en tokens y aplicando reglas de normalización específicas para el idioma y el formato. El `BASIC_LEXER` con `BASE_LETTER YES` gestiona, por ejemplo, la normalización de acentos para el italiano.
+- **[Lexer](/es/glossary/indice-context/)** (Oracle Text) — Componente que analiza el texto durante la fase de indexación, dividiéndolo en tokens y aplicando reglas de normalización específicas para el idioma y el formato. El `BASIC_LEXER` con `BASE_LETTER YES` gestiona, por ejemplo, la normalización de acentos para el italiano.
