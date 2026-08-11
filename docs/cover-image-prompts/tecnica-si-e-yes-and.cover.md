@@ -1,21 +1,125 @@
-# Cover image prompt — tecnica-si-e-yes-and.cover.jpg
+# Prompt Master — Generazione Immagini Sito
 
-## Articolo di riferimento
+Prompt standard da utilizzare per generare **tutte** le immagini del sito.
+Copiare il blocco sottostante e sostituire il placeholder finale con la descrizione specifica della scena.
 
-- **Slug**: `tecnica-si-e-yes-and`
-- **Sezione**: `project-management`
-- **Titolo IT**: *La tecnica del Sì-E: come ho evitato una discussione che stava per esplodere*
+---
 
-## Descrizione della scena
+## Prompt
 
-Illustrazione editoriale in stile retro anni '60, palette monocromatica nei toni dell'ocra, ambra e marrone caldo, su sfondo color carta invecchiata leggermente granulosa. Due uomini in completo seduti uno di fronte all'altro a un tavolo da riunione di legno scuro, in posa simmetrica e calma. L'uomo a sinistra, in giacca marrone scuro e cravatta rosso mattone, è leggermente inclinato in avanti, con la mano destra aperta in un gesto di apertura e accoglienza (il classico "passo la parola a te"). L'uomo a destra, in camicia bianca e cravatta scura, è seduto composto, le mani appoggiate al tavolo, lo sguardo attento. Sul tavolo tra loro, una serie di fogli sparpagliati con piccoli diagrammi tecnici, grafici a torta e icone di processo (suggeriscono documenti di progetto). Sullo sfondo, sospeso a parete, un grande diagramma con caselle di testo collegate da frecce che convergono verso un nodo centrale ovale — il classico schema "molte voci, una sintesi" — riproposto in toni più chiari della scena. A destra, dietro il secondo uomo, si intravede una vetrata con la silhouette di palazzi cittadini. Atmosfera serena, niente tensione, niente urla: il momento è quello in cui la conversazione ha già preso la direzione giusta.
+Crea un'illustrazione in formato **3:2 (1536×1024 px)**, in stile cartone retro anni '50 UPA, arte vettoriale minimal mid-century modern con forte influenza Art Deco.
 
-## Metafora visiva
+Lo stile deve essere coerente con poster corporate americani anni '50, animazione UPA, grafica editoriale elegante e geometrica.
 
-Il gesto aperto del primo uomo e la postura attenta del secondo rappresentano la tecnica del "Yes-And" presa in prestito dal teatro di improvvisazione: si accoglie l'idea dell'altro, la si rilancia, non la si demolisce. Il diagramma alle spalle con le frecce che convergono in un nodo centrale è la metafora visiva della sintesi che emerge da posizioni inizialmente opposte — non un compromesso, ma una soluzione nuova costruita partendo da entrambe le voci. L'assenza di tensione nella scena (niente urla, niente posture aggressive) è essa stessa il messaggio: la tecnica funziona proprio perché disarma la discussione prima che esploda.
+**Resa visiva tassativa**: **illustrazione 2D disegnata a mano**, mai render 3D, mai effetto "plasticoso" o gloss/shiny, mai fotorealismo, mai look pubblicitario contemporaneo. Texture di carta visibile per dare matericità "stampata".
 
-## File output
+**Profondità sì, lucido no.** Il divieto riguarda la finitura moderna (riflessi speculari, bevel, gradienti lucidi, plastica), NON il volume: l'illustrazione deve avere ombre proiettate nette e stilizzate, chiaroscuro reso a campiture o mezzitoni (screen-tone, tratteggio, grana), e una chiara distinzione tra primo piano, piano medio e sfondo. Il riferimento sono le illustrazioni editoriali stampate anni '50, che sono piatte nella *finitura* ma piene di profondità nella *composizione* — non le sagome di cartone.
 
-- **Nome file**: `tecnica-si-e-yes-and.cover.jpg`
-- **Path di destinazione**: `content/posts/project-management/tecnica-si-e-yes-and/tecnica-si-e-yes-and.cover.jpg`
-- **Formato**: JPG, ratio 3:2 (coerente con il sistema editoriale del blog)
+**Direzione artistica:**
+
+- composizione semplice, chiara e leggibile
+- grandi forme geometriche
+- linee fluide e silhouette eleganti
+- proporzioni dei personaggi leggermente esagerate
+- stile raffinato, intelligente, visivamente ordinato
+- atmosfera da jazz club vintage
+- illuminazione soffusa e discreta, con una direzione della luce riconoscibile e ombre proiettate coerenti
+- texture di carta ruvida ben visibile
+- mood elegante, colto, professionale
+
+**Palette colori molto limitata:**
+
+- nero
+- rosso
+- beige
+- marrone
+- bianco
+
+Usare campiture prevalentemente piatte, ammettendo variazioni tonali dentro la palette (toni più chiari e più scuri dello stesso colore) per dare volume e distinguere i piani. Vietati i gradienti lucidi e i colori saturi moderni, non la variazione tonale in sé.
+
+**Evitare:** fotorealismo, rendering 3D, finiture lucide o plastiche, colori saturi moderni, look pubblicitario contemporaneo, affollamento disordinato della scena.
+
+La scena deve apparire grafica e leggibile, con forte contrasto visivo tra gli elementi principali. Ogni oggetto va stilizzato in forme pulite ma **deve restare riconoscibile per quello che è**: una pizza è una pizza con i suoi ingredienti, non un cerchio dentro un cerchio. Le icone puramente astratte si usano per i concetti astratti (flussi, relazioni, stati), non per gli oggetti fisici della scena. L'immagine deve sembrare una singola illustrazione coerente, non un collage.
+
+**Elementi grafici preferiti:**
+
+- monitor, lavagne, scrivanie, architetture dati, grafici, icone stilizzate
+- simboli geometrici chiari
+- ambienti ordinati
+- sfondi semplici e strutturati
+- silhouette in secondo piano per suggerire contesto senza affollare la scena
+
+**Se presenti personaggi:**
+
+- eleganti, espressivi, sintetici
+- abbigliamento classico anni '50 reinterpretato in chiave corporate
+- pose sicure, naturali, leggibili
+
+**PERSONAGGIO PRINCIPALE — se presente un unico personaggio o un personaggio principale nella scena, deve avere queste caratteristiche (riconoscibile e ricorrente):**
+
+- uomo sui 30-40 anni, corporatura media
+- capelli mossi, leggermente spettinati e voluminosi sulla parte alta, fondo scuro con evidenti sfumature brizzolate (sale e pepe)
+- vistosi baffi a manubrio (handlebar mustache), scuri, ben curvati verso l'alto alle punte — questo è il tratto più riconoscibile e distintivo
+- solo baffi: viso rasato, senza barba, senza pizzetto, senza basettoni lunghi (al massimo un accenno di ricrescita di un giorno)
+- senza occhiali
+- espressione intelligente, sicura, con un accenno di ironia
+- abbigliamento: giacca elegante scura, stile professionale anni '50
+- NON deve apparire stanco, triste o imbambolato a meno che la SCENA DA RAPPRESENTARE non lo richieda esplicitamente. L'espressione di default è sveglia, attenta, leggermente ironica
+
+Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme semplificate, silhouette espressiva, baffi a manubrio come elemento grafico forte e immediatamente leggibile. Non fotorealistico — deve sembrare un personaggio da poster aziendale vintage.
+
+**PERSONAGGI MULTIPLI — scene a due o più voci (telefonate, affiancamenti, riunioni, conversazioni):**
+
+Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena specifica DEVE:
+
+1. **Identificare esplicitamente quale personaggio rappresenta "Ivan"** — il personaggio con i baffi a manubrio (vedi sopra). Gli altri personaggi NON hanno i baffi a manubrio, hanno un'identità visiva distinta (es. occhiali, cravatta da impiegato giovane, capelli lisci tirati indietro, ecc.).
+2. **Adattare abbigliamento, contesto e mood di Ivan al ruolo che ha nella scena**, non al default "giacca elegante anni '50". L'abbigliamento di default vale solo per scene di ufficio diurno o ambito professionale formale.
+
+**Caso telefonata notturna (Ivan = chi riceve la chiamata, viene svegliato):**
+
+- Ivan **NON è in giacca**: indossa vestaglia di seta o pigiama elegante anni '50 — la chiamata lo sveglia
+- Ambientazione **notturna in penombra**: una sola lampada da tavolo accesa, ombre lunghe, mood soffuso
+- Ivan **seduto in poltrona di pelle** o **in piedi accanto al letto**, telefono nero d'epoca con cornetta in mano
+- Espressione: **concentrato anche se appena svegliato**, mai imbambolato — sta già pensando alla soluzione
+- L'interlocutore (chi chiama, NON Ivan) può essere mostrato in **secondo piano stilizzato** (silhouette di profilo, mezzo busto su sfondo neutro) oppure **omesso** lasciando solo Ivan al telefono come unico focus
+- Orologio sullo sfondo che indichi l'ora notturna (es. silhouette di orologio a parete che segna le 3) come elemento simbolico
+- Mai scrivania-giacca-camicia in questa situazione
+
+**Caso telefonata diurna (Ivan = chi chiama, ufficio diurno):**
+
+- Ivan **seduto alla scrivania**, giacca elegante, telefono in mano, espressione decisa
+- Ambientazione **professionale diurna**, luce naturale
+- L'interlocutore può essere implicito o mostrato in piccolo in secondo piano
+
+**Caso affiancamento (Ivan = DBA senior mentor + collega junior):**
+
+- Ivan in giacca elegante + baffi a manubrio (il senior, riconoscibile)
+- Il junior: capelli ordinati senza baffi distintivi, camicia con cravatta giovane (es. cravatta colorata), espressione attenta, quaderno aperto in mano o sguardo verso la lavagna/monitor
+- Composizione: i due personaggi insieme davanti a una lavagna stilizzata, un monitor, o una scrivania con simboli geometrici (frecce, diagrammi, cilindri-database)
+- Mood didattico, conversazionale
+
+**Caso riunione / discussione tecnica (Ivan + 1-2 altri colleghi):**
+
+- Ivan riconoscibile per baffi a manubrio + abbigliamento di base
+- Altri: identità visive distinte, sguardi convergenti su un punto centrale (errore su monitor, comando SQL su lavagna, grafico)
+- Composizione triangolare/circolare attorno all'oggetto della discussione
+
+**Importante:**
+
+- mantenere sempre coerenza totale con lo stile retro UPA/mid-century
+- privilegiare chiarezza grafica e composizione rispetto al dettaglio
+- evitare qualsiasi estetica moderna da stock illustration
+- evitare look realistico o digitale contemporaneo
+- popolare l'ambiente con oggetti di contesto coerenti (arredi, strumenti, dettagli d'epoca) distribuiti sui tre piani: una scena ricca ma ordinata batte una scena spoglia
+- **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna** nella *finitura* delle superfici — restano invece necessarie ombre stilizzate, mezzitoni e profondità compositiva
+
+**Testo nell'immagine:**
+
+- Il testo è ammesso quando aiuta a leggere la scena (etichette, insegne, intestazioni di grafici, cartelli): non va eliminato per principio, va tenuto breve
+- **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
+- Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
+- Preferire simboli geometrici, icone stilizzate e frecce alle parole quando il concetto è astratto; gli oggetti concreti vanno però disegnati come oggetti, non sostituiti da pittogrammi
+
+**SCENA DA RAPPRESENTARE:**
+
+Una sala riunioni mid-century elegante, tavolo ovale al centro con tre personaggi seduti in posizione di tensione visibile: a sinistra un uomo maturo con capelli grigi e braccia conserte (il responsabile infrastruttura), a destra un giovane con cravatta colorata e postura rigida in avanti (il lead developer). Al centro-fondo, in piedi, Ivan — baffi a manubrio, giacca scura, espressione ironica e sicura — con una mano aperta e distesa sul tavolo in gesto pacificatore. Sulla lavagna stilizzata alle sue spalle due colonne simboliche: a sinistra un cilindro-database con una freccia dritta verso l'alto (lift-and-shift), a destra lo stesso cilindro con frecce ramificate e un simbolo cloud geometrico (cloud-native). Le due colonne non si oppongono: una freccia curva le collega in basso, a suggerire sintesi. Illuminazione calda e soffusa da lampada a soffitto Art Deco. Mood da sala decisioni, tensione che si sta sciogliendo.
