@@ -1,27 +1,35 @@
 ---
 title: "Relay log"
-description: "Fișier de log intermediar pe slave-ul MySQL care primește evenimentele din binary log-ul master-ului înainte de a fi executate local."
-translationKey: "glossary_relay-log"
+description: "Relay log-ul este copia locală a binlog-ului masterului pe slave-ul MySQL: IO thread-ul îl scrie, SQL thread-ul îl citește pentru a aplica tranzacțiile."
+translationKey: "glossary_relay_log"
+aka: null
 articles:
-  - "/posts/mysql/binary-log-mysql"
+  - "/posts/mysql/replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge"
 ---
 
-**Relay log-ul** este un fișier de log intermediar prezent pe slave într-o arhitectură de replicare MySQL. Conține evenimentele primite din binary log-ul master-ului, în așteptarea de a fi executate local de către thread-ul SQL al slave-ului.
+Relay log-ul este fișierul binar pe care slave-ul MySQL îl menține local ca o copie a evenimentelor primite de la master. Funcționează ca un buffer între recepția evenimentelor de replicare și aplicarea lor efectivă în baza de date: două thread-uri distincte gestionează fiecare fază, iar relay log-ul reprezintă punctul de legătură dintre ele.
 
 ## Cum funcționează
 
-Fluxul replicării MySQL trece prin relay log în trei faze:
+Replicarea MySQL pe slave se bazează pe două thread-uri independente:
 
-1. **I/O thread-ul** slave-ului se conectează la master și citește binary log-urile
-2. Evenimentele primite sunt scrise în relay log-ul local
-3. **SQL thread-ul** slave-ului citește evenimentele din relay log și le execută pe baza de date locală
+- **IO thread**: se conectează la master, citește binlog-ul și scrie evenimentele în relay log-ul local.
+- **SQL thread**: citește relay log-ul și aplică evenimentele (INSERT, UPDATE, DELETE, DDL) pe baza de date slave.
 
-Această arhitectură cu două thread-uri permite decuplarea recepției datelor de aplicarea lor: slave-ul poate continua să primească evenimente de la master chiar dacă execuția locală este temporar mai lentă.
+Această separare permite slave-ului să primească în continuare evenimente chiar și atunci când SQL thread-ul rămâne în urmă. Fișierele relay log urmează o convenție de denumire de tipul `hostname-relay-bin.000001` și sunt rotite automat.
 
-## La ce folosește
+```sql
+-- Verificarea stării relay log-ului pe slave
+SHOW SLAVE STATUS\G
+-- Câmpuri relevante:
+-- Relay_Log_File: fișierul curent citit de SQL thread
+-- Relay_Log_Pos: poziția curentă
+-- Relay_Master_Log_File: fișierul binlog al masterului corespunzător
+-- Exec_Master_Log_Pos: poziția aplicată pe master
+```
 
-Relay log-ul este mecanismul care garantează consistența replicării. Funcționează ca un buffer între master și aplicarea locală a evenimentelor, permițând slave-ului să gestioneze diferențele de viteză fără a pierde date.
+## Context operațional
 
-## Când se folosește
+Relay log-ul este esențial pentru diagnosticarea lag-ului de replicare. Când `Seconds_Behind_Master` crește, relay log-ul acumulează evenimente neaplicare încă: IO thread-ul este înaintea SQL thread-ului. Monitorizarea dimensiunii fișierelor relay log și a diferenței dintre `Read_Master_Log_Pos` și `Exec_Master_Log_Pos` permite identificarea blocajului.
 
-Relay log-ul este creat automat când se configurează replicarea MySQL. Nu necesită gestionare manuală directă, dar starea sa (poziția curentă, eventuala întârziere) este vizibilă prin `SHOW REPLICA STATUS` și este fundamentală pentru diagnosticarea problemelor de replica lag.
+După un crash al slave-ului, MySQL folosește fișierul `relay-log.info` pentru a relua de la ultima poziție aplicată. Cu `relay_log_recovery = ON`, relay log-ul este regenerat de la master la repornire, reducând riscul de corupție.

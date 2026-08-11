@@ -1,27 +1,35 @@
 ---
 title: "Relay log"
-description: "File di log intermedio sullo slave MySQL che riceve gli eventi dal binary log del master prima che vengano eseguiti localmente."
-translationKey: "glossary_relay-log"
+description: "Il relay log è la copia locale del binlog del master sullo slave MySQL: l'IO thread lo scrive, lo SQL thread lo legge per applicare le transazioni."
+translationKey: "glossary_relay_log"
+aka: null
 articles:
-  - "/posts/mysql/binary-log-mysql"
+  - "/posts/mysql/replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge"
 ---
 
-Il **relay log** è un file di log intermedio presente sullo slave in un'architettura di replica MySQL. Contiene gli eventi ricevuti dal binary log del master, in attesa di essere eseguiti localmente dal thread SQL dello slave.
+Il relay log è il file binario che lo slave MySQL mantiene localmente come copia degli eventi ricevuti dal master. Funziona da buffer tra la ricezione degli eventi di replica e la loro applicazione effettiva sul database: due thread distinti si occupano delle due fasi, e il relay log è il punto di contatto tra loro.
 
 ## Come funziona
 
-Il flusso della replica MySQL passa attraverso il relay log in tre fasi:
+La replica MySQL si articola su due thread separati sullo slave:
 
-1. L'**I/O thread** dello slave si connette al master e legge i binary log
-2. Gli eventi ricevuti vengono scritti nel relay log locale
-3. Il **SQL thread** dello slave legge gli eventi dal relay log e li esegue sul database locale
+- **IO thread**: si connette al master, legge il binlog e scrive gli eventi nel relay log locale.
+- **SQL thread**: legge il relay log e applica gli eventi (INSERT, UPDATE, DELETE, DDL) sul database slave.
 
-Questa architettura a due thread permette di disaccoppiare la ricezione dei dati dalla loro applicazione: lo slave può continuare a ricevere eventi dal master anche se l'esecuzione locale è temporaneamente rallentata.
+Questo disaccoppiamento permette allo slave di ricevere eventi anche quando l'SQL thread è in ritardo. I file del relay log seguono una naming convention del tipo `hostname-relay-bin.000001` e vengono ruotati automaticamente.
 
-## A cosa serve
+```sql
+-- Verificare lo stato del relay log sullo slave
+SHOW SLAVE STATUS\G
+-- Campi rilevanti:
+-- Relay_Log_File: file corrente letto dall'SQL thread
+-- Relay_Log_Pos: posizione corrente
+-- Relay_Master_Log_File: file del binlog master corrispondente
+-- Exec_Master_Log_Pos: posizione applicata sul master
+```
 
-Il relay log è il meccanismo che garantisce la consistenza della replica. Funge da buffer tra il master e l'applicazione locale degli eventi, permettendo allo slave di gestire eventuali differenze di velocità senza perdere dati.
+## Contesto operativo
 
-## Quando si usa
+Il relay log è centrale nella diagnosi del lag di replica. Se `Seconds_Behind_Master` cresce, il relay log accumula eventi non ancora applicati: l'IO thread è avanti rispetto all'SQL thread. Monitorare la dimensione dei file di relay log e la differenza tra `Read_Master_Log_Pos` e `Exec_Master_Log_Pos` permette di capire dove si trova il collo di bottiglia.
 
-Il relay log viene creato automaticamente quando si configura una replica MySQL. Non richiede gestione manuale diretta, ma il suo stato (posizione corrente, eventuale ritardo) è visibile tramite `SHOW REPLICA STATUS` ed è fondamentale per diagnosticare problemi di replica lag.
+In caso di crash dello slave, MySQL usa il file `relay-log.info` per riprendere dall'ultima posizione applicata. Con `relay_log_recovery = ON` il relay log viene rigenerato dal master alla ripartenza, riducendo il rischio di corruzione.
