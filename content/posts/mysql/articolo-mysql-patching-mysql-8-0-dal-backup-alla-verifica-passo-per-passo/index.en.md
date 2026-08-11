@@ -5,7 +5,7 @@ date: '2026-08-18'
 description: 'A real MySQL 8.0.34→8.0.45 patching workflow: broken views blocking
   mysqldump, GTID warnings, replica role check, and RPM upgrade order on RHEL 8.'
 draft: false
-image: mysql-8-0-348-0-45-workflow-di-patching-reale-con-errori-inclusi.cover.jpg
+image: articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo.cover.jpg
 seoTitle: 'MySQL 8.0 upgrade on RHEL 8: broken views, GTID, replica check'
 tags:
 - mysql
@@ -14,7 +14,7 @@ tags:
 - gtid
 - replication
 title: The ticket said 'update MySQL and shut down the service'
-translationKey: mysql_8_0_348_0_45_workflow_di_patching_reale_con_errori_inclusi
+translationKey: articolo_mysql_patching_mysql_8_0_dal_backup_alla_verifica_passo_per_passo
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---
