@@ -4,7 +4,7 @@ description: "Binary Log-ul MySQL înregistrează secvențial fiecare modificare
 translationKey: "glossary_binlog"
 aka: "Binary Log"
 articles:
-  - "/posts/mysql/replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge"
+  - "/posts/mysql/mysql-slave-lag-diagnosi-e-fix-con-parallel-replication"
 ---
 
 Binlog-ul (Binary Log) este registrul secvențial pe care MySQL îl menține pe master pentru a urmări fiecare operațiune care modifică date. Slave-ul îl citește pentru a ști exact ce să replice și în ce ordine. Fără Binlog nu există replicare, iar fără replicare nu există înaltă disponibilitate sau disaster recovery pe MySQL.
