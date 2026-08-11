@@ -5,7 +5,7 @@ date: '2026-08-25'
 description: 'Cum am redus lag-ul de replicare MySQL de la patru ore la treizeci de
   secunde: GTID, parallel replication cu LOGICAL_CLOCK și monitorizare reală cu pt-heartbeat.'
 draft: false
-image: mysql-slave-lag-diagnosi-e-fix-con-parallel-replication.cover.jpg
+image: mysql-slave-lag-seconds-behind-master-mente-gtid-no-diagnosi-e-fix-con-parallel.cover.jpg
 seoTitle: 'MySQL replica lag: GTID, parallel replication și pt-heartbeat'
 tags:
 - mysql
@@ -14,7 +14,7 @@ tags:
 - performance-tuning
 - monitoring
 title: 'Raportul de luni dimineața: patru ore de lag pe replica MySQL'
-translationKey: mysql_slave_lag_diagnosi_e_fix_con_parallel_replication
+translationKey: mysql_slave_lag_seconds_behind_master_mente_gtid_no_diagnosi_e_fix_con_parallel
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---
