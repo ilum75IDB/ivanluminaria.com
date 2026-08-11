@@ -6,7 +6,7 @@ description: 'Upgrade MySQL Community 8.0.34→8.0.45 pe RHEL 8: view-uri invali
   GTID, verificarea replicii și pașii corecți de patching. Workflow real, cu query-urile
   folosite.'
 draft: false
-image: articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo.cover.jpg
+image: mysql-8-0-348-0-45-workflow-di-patching-reale-con-errori-inclusi.cover.jpg
 seoTitle: 'Upgrade MySQL 8.0 pe RHEL 8: ghid practic pentru DBA'
 tags:
 - mysql
@@ -15,7 +15,7 @@ tags:
 - gtid
 - mysqldump
 title: Tichetul spunea «actualizează MySQL și oprește serviciul»
-translationKey: articolo_mysql_patching_mysql_8_0_dal_backup_alla_verifica_passo_per_passo
+translationKey: mysql_8_0_348_0_45_workflow_di_patching_reale_con_errori_inclusi
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---
