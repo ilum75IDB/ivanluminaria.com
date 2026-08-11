@@ -6,7 +6,7 @@ description: 'Workflow real de patching MySQL 8.0.34→8.0.45 en RHEL 8: vistas 
   GTID, verificación de réplica y upgrade RPM. Lo que el ticket de cuatro líneas no
   contaba.'
 draft: false
-image: articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo.cover.jpg
+image: mysql-8-0-patching-gtid-rhel.cover.jpg
 seoTitle: 'Upgrade MySQL 8.0 en RHEL 8: guía práctica con GTID y vistas rotas'
 tags:
 - mysql
@@ -15,7 +15,7 @@ tags:
 - replication
 - mysqldump
 title: El ticket decía 'actualiza MySQL y apaga el servicio'
-translationKey: articolo_mysql_patching_mysql_8_0_dal_backup_alla_verifica_passo_per_passo
+translationKey: mysql_8_0_patching_gtid_rhel
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---
