@@ -1,15 +1,22 @@
 ---
-title: "Raportul de luni dimineața: patru ore de lag pe replica MySQL"
-seoTitle: "MySQL replica lag: GTID, parallel replication și pt-heartbeat"
-description: "Cum am redus lag-ul de replicare MySQL de la patru ore la treizeci de secunde: GTID, parallel replication cu LOGICAL_CLOCK și monitorizare reală cu pt-heartbeat."
-date: 2099-12-31
-draft: true
-translationKey: "replica_mysql_quando_lo_slave_resta_indietro_e_nessuno_se_ne_accorge"
-tags: ["mysql", "replication", "gtid", "performance-tuning", "monitoring"]
-categories: ["mysql"]
-image: "replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge.cover.jpg"
-webo_status: da_tradurre
+categories:
+- mysql
+date: '2026-08-25'
+description: 'Cum am redus lag-ul de replicare MySQL de la patru ore la treizeci de
+  secunde: GTID, parallel replication cu LOGICAL_CLOCK și monitorizare reală cu pt-heartbeat.'
+draft: false
+image: replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge.cover.jpg
+seoTitle: 'MySQL replica lag: GTID, parallel replication și pt-heartbeat'
+tags:
+- mysql
+- replication
+- gtid
+- performance-tuning
+- monitoring
+title: 'Raportul de luni dimineața: patru ore de lag pe replica MySQL'
+translationKey: replica_mysql_quando_lo_slave_resta_indietro_e_nessuno_se_ne_accorge
 webo_generated_at: 2026-08-08
+webo_status: scheduled
 ---
 
 ## Raportul de luni dimineața
