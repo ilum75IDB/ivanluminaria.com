@@ -4,7 +4,7 @@ description: "MySQL replication mode that applies binlog events using multiple w
 translationKey: "glossary_parallel_replication"
 aka: "Multi-threaded Replication (MTR)"
 articles:
-  - "/posts/mysql/replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge"
+  - "/posts/mysql/mysql-slave-lag-diagnosi-e-fix-con-parallel-replication"
 ---
 
 Parallel Replication is the mode in which MySQL applies binlog events on the replica using multiple worker threads simultaneously, replacing the traditional single SQL thread. The goal is to reduce replication lag when the primary generates transactions faster than the replica can apply them sequentially.

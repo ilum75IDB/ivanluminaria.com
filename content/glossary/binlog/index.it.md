@@ -4,7 +4,7 @@ description: "Il Binary Log di MySQL registra in sequenza ogni modifica ai dati:
 translationKey: "glossary_binlog"
 aka: "Binary Log"
 articles:
-  - "/posts/mysql/replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge"
+  - "/posts/mysql/mysql-slave-lag-diagnosi-e-fix-con-parallel-replication"
 ---
 
 Il Binlog (Binary Log) è il registro sequenziale che MySQL mantiene sul master per tracciare ogni operazione che modifica i dati. Lo slave lo legge per sapere esattamente cosa replicare, nell'ordine in cui è avvenuto. Senza Binlog non esiste replica, e senza replica non esiste alta disponibilità né disaster recovery su MySQL.

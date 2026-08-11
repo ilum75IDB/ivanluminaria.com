@@ -4,7 +4,7 @@ articles:
 - /posts/mysql/mysql-group-replication-binlog-migration
 - /posts/mysql/mysqldump-mysqlpump-mydumper
 - /posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo
-- /posts/mysql/replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge
+- /posts/mysql/mysql-slave-lag-diagnosi-e-fix-con-parallel-replication
 description: Global Transaction Identifier — unique identifier assigned to every transaction
   in MySQL to simplify replication management.
 title: GTID
