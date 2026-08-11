@@ -5,7 +5,7 @@ date: '2026-08-25'
 description: Four hours of lag on a MySQL replica in a logistics system. How we diagnosed
   it, why Seconds_Behind_Master lies, and what actually fixed it.
 draft: false
-image: replica-mysql-quando-lo-slave-resta-indietro-e-nessuno-se-ne-accorge.cover.jpg
+image: mysql-slave-lag-diagnosi-e-fix-con-parallel-replication.cover.jpg
 seoTitle: 'MySQL replica lag: GTID, parallel replication, pt-heartbeat'
 tags:
 - mysql
@@ -14,7 +14,7 @@ tags:
 - performance
 - monitoring
 title: 'The Monday morning report: four hours of MySQL replica lag'
-translationKey: replica_mysql_quando_lo_slave_resta_indietro_e_nessuno_se_ne_accorge
+translationKey: mysql_slave_lag_diagnosi_e_fix_con_parallel_replication
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---
