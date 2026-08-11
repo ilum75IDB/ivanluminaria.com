@@ -3,7 +3,7 @@ aka: MySQL dump
 articles:
 - /posts/mysql/mysqldump-mysqlpump-mydumper
 - /posts/mysql/mysql-pre-upgrade-assessment
-- /posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo
+- /posts/mysql/mysql-8-0-patching-gtid-rhel
 description: Utility di backup logico inclusa in ogni installazione MySQL, produce
   un file SQL sequenziale per ricreare schema e dati.
 title: mysqldump

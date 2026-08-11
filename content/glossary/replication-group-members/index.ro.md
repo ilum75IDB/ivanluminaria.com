@@ -4,7 +4,7 @@ description: "Vedere de sistem MySQL care listează nodurile active dintr-un clu
 translationKey: "glossary_replication_group_members"
 aka: "performance_schema.replication_group_members"
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 `replication_group_members` este o vedere expusă de `performance_schema` care oferă o imagine în timp real a compoziției unui cluster MySQL Group Replication. Fiecare rând corespunde unui nod din grup și indică starea sa curentă și rolul pe care îl îndeplinește în protocolul de consens distribuit. Pe un server standalone sau cu replicare tradițională (asincronă sau semisync), vederea nu returnează niciun rând.

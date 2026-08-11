@@ -6,7 +6,7 @@ description: 'View rotte, GTID warning, check replica prima dello stop: il workf
   reale di un patching MySQL 8.0 su RHEL 8.3, con query riutilizzabili e tutti gli
   errori del campo.'
 draft: false
-image: articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo.cover.jpg
+image: mysql-8-0-patching-gtid-rhel.cover.jpg
 seoTitle: 'Patching MySQL 8.0.34→8.0.45 su RHEL 8: workflow completo'
 tags:
 - mysql-8
@@ -15,7 +15,7 @@ tags:
 - gtid
 - rhel
 title: 'MySQL 8.0.34→8.0.45: workflow di patching reale con errori inclusi'
-translationKey: articolo_mysql_patching_mysql_8_0_dal_backup_alla_verifica_passo_per_passo
+translationKey: mysql_8_0_patching_gtid_rhel
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---

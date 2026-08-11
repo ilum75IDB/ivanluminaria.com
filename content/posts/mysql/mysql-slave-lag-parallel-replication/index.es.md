@@ -5,7 +5,7 @@ date: '2026-08-25'
 description: 'Cuatro horas de lag en un sistema logístico: cómo diagnosticamos el
   problema, por qué Seconds_Behind_Master engaña y qué cambios lo resolvieron.'
 draft: false
-image: mysql-slave-lag-diagnosi-e-fix-con-parallel-replication.cover.jpg
+image: mysql-slave-lag-parallel-replication.cover.jpg
 seoTitle: 'Lag réplica MySQL: GTID, parallel replication y pt-heartbeat'
 tags:
 - mysql
@@ -15,7 +15,7 @@ tags:
 - gtid
 title: 'El informe del lunes por la mañana: lag de réplica MySQL y por qué Seconds_Behind_Master
   miente'
-translationKey: mysql_slave_lag_diagnosi_e_fix_con_parallel_replication
+translationKey: mysql_slave_lag_parallel_replication
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---

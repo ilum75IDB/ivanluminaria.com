@@ -4,7 +4,7 @@ description: "El relay log es la copia local del binlog del master en el slave M
 translationKey: "glossary_relay_log"
 aka: null
 articles:
-  - "/posts/mysql/mysql-slave-lag-diagnosi-e-fix-con-parallel-replication"
+  - "/posts/mysql/mysql-slave-lag-parallel-replication"
 ---
 
 El relay log es el archivo binario que el slave de MySQL mantiene localmente como copia de los eventos recibidos desde el master. Actúa como buffer entre la recepción de los eventos de replicación y su aplicación efectiva en la base de datos: dos threads independientes se encargan de cada fase, y el relay log es el punto de transferencia entre ambos.

@@ -4,7 +4,7 @@ description: "Vista del sistema MySQL que lista los nodos activos en un clúster
 translationKey: "glossary_replication_group_members"
 aka: "performance_schema.replication_group_members"
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 `replication_group_members` es una vista expuesta por `performance_schema` que ofrece una instantánea en tiempo real de la composición de un clúster MySQL Group Replication. Cada fila corresponde a un nodo del grupo e indica su estado actual y el rol que desempeña dentro del protocolo de consenso distribuido. En un servidor standalone o con replicación tradicional (asíncrona o semisync), la vista no devuelve filas.

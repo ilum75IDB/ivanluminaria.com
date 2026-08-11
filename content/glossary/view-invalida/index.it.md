@@ -4,7 +4,7 @@ description: "Vista MySQL il cui corpo SQL referenzia oggetti non più esistenti
 translationKey: "glossary_view_invalida"
 aka: "Vista corrotta, Broken view"
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 Una **view invalida** è una vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili: tabelle rinominate, colonne eliminate, permessi revocati. MySQL non invalida automaticamente le view quando la tabella sottostante viene modificata, quindi l'errore rimane silente fino alla prima esecuzione della vista o durante un `mysqldump`.

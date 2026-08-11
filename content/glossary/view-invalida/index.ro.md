@@ -4,7 +4,7 @@ description: "O view MySQL al cărei corp SQL referențiază obiecte inexistente
 translationKey: "glossary_view_invalida"
 aka: "View stricată, Broken view"
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 O **view invalidă** este o vedere al cărei corp SQL referențiază obiecte care nu mai există sau nu mai sunt accesibile: tabele redenumite, coloane șterse, permisiuni revocate. MySQL nu invalidează automat view-urile atunci când tabelul de bază este modificat, astfel că eroarea rămâne silențioasă până la prima execuție a view-ului sau în timpul unui `mysqldump`.
