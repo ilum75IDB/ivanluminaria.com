@@ -5,7 +5,7 @@ date: '2026-08-25'
 description: Replica MySQL con 4 ore di lag e nessun alert. Come funziona il binlog,
   perché Seconds_Behind_Master mente, e come il parallel replication risolve davvero.
 draft: false
-image: mysql-slave-lag-diagnosi-e-fix-con-parallel-replication.cover.jpg
+image: mysql-slave-lag-parallel-replication.cover.jpg
 seoTitle: 'MySQL replica lag: diagnosi, GTID e parallel replication'
 tags:
 - replication
@@ -15,7 +15,7 @@ tags:
 - mysql
 title: 'MySQL slave lag: Seconds_Behind_Master mente, GTID no — diagnosi e fix con
   parallel replication'
-translationKey: mysql_slave_lag_diagnosi_e_fix_con_parallel_replication
+translationKey: mysql_slave_lag_parallel_replication
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---

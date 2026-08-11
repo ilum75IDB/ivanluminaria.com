@@ -4,7 +4,7 @@ description: "Percona Toolkit tool that measures MySQL replication lag by writin
 translationKey: "glossary_pt_heartbeat"
 aka: "Percona Toolkit Heartbeat"
 articles:
-  - "/posts/mysql/mysql-slave-lag-diagnosi-e-fix-con-parallel-replication"
+  - "/posts/mysql/mysql-slave-lag-parallel-replication"
 ---
 
 `pt-heartbeat` is a Percona Toolkit utility designed to measure MySQL replication lag directly and reliably. Unlike the native `Seconds_Behind_Master` metric — which can return misleading values when replication errors occur or the connection drops — `pt-heartbeat` measures actual delay by tracking data written on the master and read on the slave.

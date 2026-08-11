@@ -24,7 +24,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
-| Binlog | registro sequenziale di tutte le modifiche ai dati sul master MySQL. Base della replica: lo slave legge il binlog per sa | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
+| Binlog | registro sequenziale di tutte le modifiche ai dati sul master MySQL. Base della replica: lo slave legge il binlog per sa | mysql-slave-lag-parallel-replication |
 | Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
 | Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql, mysql-group-replication-binlog-migration, mysql-pre-upgrade-assessment |
@@ -86,7 +86,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | GiST Index | Generalized Search Tree — famiglia di indici PostgreSQL per dati con struttura geometrica, range o di similarità, indispensabile per query spaziali e su intervalli | postgresql-indici-quando-fanno-male |
 | Grain | Livello di dettaglio (granularità) di una fact table nel data warehouse. Determina cosa rappresenta ciascuna riga e quali domande il modello dimensionale può soddisfare | fatto-grana-sbagliata |
 | Full Table Scan | Operazione di lettura in cui il database legge tutti i blocchi di una tabella senza utilizzare indici. In Oracle si manifesta come wait event `db file scattered read` | oracle-awr-ash, partitioning-dwh |
-| GTID | Global Transaction Identifier — identificativo univoco assegnato a ogni transazione in MySQL, che semplifica la gestione della replica e il tracking delle transazioni tra master e slave | mysqldump-mysqlpump-mydumper, mysql-group-replication-binlog-migration, articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo, mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
+| GTID | Global Transaction Identifier — identificativo univoco assegnato a ogni transazione in MySQL, che semplifica la gestione della replica e il tracking delle transazioni tra master e slave | mysqldump-mysqlpump-mydumper, mysql-group-replication-binlog-migration, mysql-8-0-patching-gtid-rhel, mysql-slave-lag-parallel-replication |
 | Group Replication | Meccanismo nativo di MySQL per la replica sincrona multi-nodo con failover automatico e gestione del quorum | mysql-group-replication-binlog-migration, articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Hash Join | Strategia di join che costruisce una hash table dalla tabella più piccola e poi scansiona la più grande cercando corrispondenze con lookup O(1). Efficiente su grandi volumi senza indici | explain-analyze-postgresql |
 | Hot Desk | Modello di organizzazione degli spazi ufficio in cui le postazioni non sono assegnate: chi viene in ufficio occupa una scrivania libera | smartworking-consulenza-it |
@@ -108,18 +108,18 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | MVCC | Multi-Version Concurrency Control — modello di concorrenza di PostgreSQL che mantiene più versioni delle righe per garantire isolamento transazionale | vacuum-autovacuum-postgresql |
 | mydumper | Tool open source di backup logico per MySQL/MariaDB con parallelismo reale a livello di chunk. Divide le tabelle grandi in pezzi e li esporta con thread multipli, con restore parallelo tramite myloader | mysqldump-mysqlpump-mydumper, mysql-pre-upgrade-assessment |
 | mysqlbinlog | Utility da riga di comando di MySQL per leggere, filtrare e riapplicare il contenuto dei file binary log. Indispensabile per il point-in-time recovery e il debug della replica | binary-log-mysql |
-| mysqldump | Utility di backup logico inclusa in ogni installazione MySQL. Produce un file SQL sequenziale con tutte le istruzioni per ricreare schema e dati. Single-threaded, affidabile ma lenta su database grandi | mysqldump-mysqlpump-mydumper, mysql-pre-upgrade-assessment, articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
+| mysqldump | Utility di backup logico inclusa in ogni installazione MySQL. Produce un file SQL sequenziale con tutte le istruzioni per ricreare schema e dati. Single-threaded, affidabile ma lenta su database grandi | mysqldump-mysqlpump-mydumper, mysql-pre-upgrade-assessment, mysql-8-0-patching-gtid-rhel |
 | mysqlpump | Evoluzione di mysqldump introdotta in MySQL 5.7, con supporto per il parallelismo a livello di tabella e compressione nativa. Deprecato da Oracle in MySQL 8.0.34 per problemi di consistenza | mysqldump-mysqlpump-mydumper |
 | Nested Loop | Strategia di join che per ogni riga della tabella esterna cerca le corrispondenze nella tabella interna. Ideale per poche righe, disastrosa su grandi volumi | explain-analyze-postgresql |
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
 | Oracle Text | Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licen | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
-| Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
+| Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
 | Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
-| pt-heartbeat | tool di Percona Toolkit che misura il lag di replica MySQL scrivendo timestamp sul master e confrontandoli con i valori  | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
+| pt-heartbeat | tool di Percona Toolkit che misura il lag di replica MySQL scrivendo timestamp sul master e confrontandoli con i valori  | mysql-slave-lag-parallel-replication |
 | Pull Request | Meccanismo di proposta e revisione delle modifiche al codice su GitHub, con code review e approvazione prima del merge nel branch principale | ai-github-project-management |
 | Parking Lot | Lista visibile di argomenti emersi durante una riunione che meritano approfondimento ma vengono rinviati a dopo per rispettare il timebox | standup-meeting-15-minuti |
 | Pedalata Assistita | Sistema di propulsione elettrica che amplifica la forza della pedalata, eliminando il problema delle salite e del sudore nei tragitti urbani | bici-vs-auto-roma |
@@ -197,7 +197,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Unified Audit | Sistema di audit centralizzato introdotto in Oracle 12c che unifica tutti i tipi di audit in un'unica infrastruttura, sostituendo il vecchio audit tradizionale | oracle-roles-privileges |
 | Use Case | Tecnica di analisi dei requisiti introdotta da Ivar Jacobson che descrive il sistema dal punto di vista dell'attore che lo usa, non degli oggetti che lo compongono. Uno dei tre pilastri che hanno alimentato UML | da-rivali-a-co-autori-uml-rup |
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
-| View invalida | vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne elimina | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
+| View invalida | vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne elimina | mysql-8-0-patching-gtid-rhel |
 | WAL | Write-Ahead Log — registro sequenziale di tutte le modifiche al database PostgreSQL, scritto prima dei file dati. Fondamento di durability, crash recovery, replica fisica e logica. La replica logica lo decodifica via plugin `pgoutput` in cambi logici riga per riga | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
@@ -206,8 +206,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ZDM | Zero Downtime Migration — strumento Oracle per automatizzare le migrazioni verso OCI combinando Data Guard e Data Pump sotto un layer di orchestrazione | oracle-cloud-migration |
 
 ---
-| `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
-| `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
+| `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | mysql-8-0-patching-gtid-rhel |
+| `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | mysql-8-0-patching-gtid-rhel |
 
 **Ultimo aggiornamento**: 2026-08-08
 **Totale termini**: 194
