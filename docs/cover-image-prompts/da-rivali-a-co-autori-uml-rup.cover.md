@@ -1,48 +1,125 @@
-# Cover image prompt — da-rivali-a-co-autori-uml-rup.cover.jpg
+# Prompt Master — Generazione Immagini Sito
 
-## Articolo di riferimento
+Prompt standard da utilizzare per generare **tutte** le immagini del sito.
+Copiare il blocco sottostante e sostituire il placeholder finale con la descrizione specifica della scena.
 
-- **Slug**: `da-rivali-a-co-autori-uml-rup`
-- **Sezione**: `project-management`
-- **Issue**: #85
-- **Data pubblicazione**: 2026-06-30 (martedì)
-- **Titolo IT**: *Da rivali a co-autori: come Booch, Rumbaugh e Jacobson hanno inventato UML (e quello che ne resta oggi)*
+---
 
-## Descrizione della scena
+## Prompt
 
-Illustrazione retro anni '50, stile editoriale mid-century modern, **palette dominante marrone caldo / beige / crema / ottone**, con accenti **rosso** (segnali, sottolineature) e dettagli **verde-bottiglia** (paralume lampada, sfondo lavagna). Ratio 3:2.
+Crea un'illustrazione in formato **3:2 (1536×1024 px)**, in stile cartone retro anni '50 UPA, arte vettoriale minimal mid-century modern con forte influenza Art Deco.
 
-Al centro della composizione: un **grande tavolo rotondo in legno di quercia scuro** visto in tre quarti dall'alto, occupante circa due terzi dell'immagine. Sul piano del tavolo sono disposte **tre postazioni di disegno**, simmetricamente sistemate ai vertici di un triangolo equilatero, ciascuna con un kit di lavoro distintivo:
+Lo stile deve essere coerente con poster corporate americani anni '50, animazione UPA, grafica editoriale elegante e geometrica.
 
-- **Postazione in basso a sinistra (Booch)**: foglio di **carta da lucido** semitrasparente con disegnati a inchiostro nero alcuni **simboli ricchi del Booch Method** — nuvolette, ellissi sfumate, frecce con etichette dettagliate. Accanto al foglio: una **matita meccanica in ottone**, una **gomma morbida**, un **portamine**, e una piccola **bandierina USA** (Stelle e Strisce stilizzate) infilata in un portapenne.
+**Resa visiva tassativa**: **illustrazione 2D disegnata a mano**, mai render 3D, mai effetto "plasticoso" o gloss/shiny, mai fotorealismo, mai look pubblicitario contemporaneo. Texture di carta visibile per dare matericità "stampata".
 
-- **Postazione in basso a destra (Rumbaugh)**: foglio di **carta millimetrata** con **simboli geometrici puliti dell'OMT** — rettangoli connessi da linee diritte, attributi elencati ordinatamente, niente abbellimenti. Accanto: un **compasso da disegno tecnico in ottone**, una **squadretta**, una **piccola bandierina USA**, e una targhetta in pelle marrone con la dicitura *"General Electric Research"* in lettere stampate sobrie.
+**Profondità sì, lucido no.** Il divieto riguarda la finitura moderna (riflessi speculari, bevel, gradienti lucidi, plastica), NON il volume: l'illustrazione deve avere ombre proiettate nette e stilizzate, chiaroscuro reso a campiture o mezzitoni (screen-tone, tratteggio, grana), e una chiara distinzione tra primo piano, piano medio e sfondo. Il riferimento sono le illustrazioni editoriali stampate anni '50, che sono piatte nella *finitura* ma piene di profondità nella *composizione* — non le sagome di cartone.
 
-- **Postazione in alto (Jacobson)**: **blocco notes giallo** con disegnati a mano **use case stilizzati** — figure stilizzate di omini (stick figures) connesse a ellissi che contengono frasi corte. Accanto: una **stilografica con inchiostro blu**, una **bandierina svedese** (croce gialla su fondo blu) piccola, e una **scatoletta** con scritto *"Objectory AB"* in font sans-serif scandinavo.
+**Direzione artistica:**
 
-Al **centro del tavolo**, fra le tre postazioni: un **grande foglio di carta da disegno** disteso, che mostra un **diagramma UML class diagram completo** in inchiostro nero — i tre rettangoli classici della classe UML (nome, attributi, metodi), connessi da linee di associazione, ereditarietà (frecce triangolari vuote), aggregazione (rombo vuoto). Sopra il diagramma, scritto a mano con calligrafia da architetto in inchiostro rosso scuro: ***"UML 1.1 — November 1997"***. Un **piccolo fermacarte in ottone** a forma di rombo tiene fermo l'angolo del foglio.
+- composizione semplice, chiara e leggibile
+- grandi forme geometriche
+- linee fluide e silhouette eleganti
+- proporzioni dei personaggi leggermente esagerate
+- stile raffinato, intelligente, visivamente ordinato
+- atmosfera da jazz club vintage
+- illuminazione soffusa e discreta, con una direzione della luce riconoscibile e ombre proiettate coerenti
+- texture di carta ruvida ben visibile
+- mood elegante, colto, professionale
 
-Sulla **parete di fondo** dietro al tavolo: una **grande lavagna verde-bottiglia** (stile aule scolastiche anni '60) con tre colonne di scritte in gesso bianco:
-- Colonna sinistra: *"BOOCH METHOD"* con una **riga obliqua rossa** che lo barra
-- Colonna centrale: *"OMT"* con una **riga obliqua rossa** che lo barra
-- Colonna destra: *"OBJECTORY"* con una **riga obliqua rossa** che lo barra
+**Palette colori molto limitata:**
 
-Sotto le tre colonne barrate, al centro, una sola parola in gesso bianco maiuscolo e con un **cerchio rosso intorno**: ***"UNIFIED"***.
+- nero
+- rosso
+- beige
+- marrone
+- bianco
 
-Sul lato destro della scena, sospesa sopra il tavolo, una **lampada da scrivania ad arco in ottone** con paralume verde-bottiglia proietta un cono di luce calda esattamente sul diagramma UML centrale. La luce sfuma in ombra ambient sulle tre postazioni laterali, dando profondità alla composizione.
+Usare campiture prevalentemente piatte, ammettendo variazioni tonali dentro la palette (toni più chiari e più scuri dello stesso colore) per dare volume e distinguere i piani. Vietati i gradienti lucidi e i colori saturi moderni, non la variazione tonale in sé.
 
-In un angolo della parete: una piccola **targhetta in metallo inciso** con scritto *"Rational Software — Santa Clara, CA"* — il luogo e l'azienda dove i Three Amigos si sono incontrati fra il 1994 e il 1995.
+**Evitare:** fotorealismo, rendering 3D, finiture lucide o plastiche, colori saturi moderni, look pubblicitario contemporaneo, affollamento disordinato della scena.
 
-**Niente persone in piena figura, niente volti**. Solo gli strumenti, le notazioni, il tavolo, il risultato. La scena cattura il momento immediatamente dopo la convergenza: i tre kit sono ancora distinguibili (ognuno con la sua identità), ma il centro del tavolo è ormai occupato da una sola lingua condivisa.
+La scena deve apparire grafica e leggibile, con forte contrasto visivo tra gli elementi principali. Ogni oggetto va stilizzato in forme pulite ma **deve restare riconoscibile per quello che è**: una pizza è una pizza con i suoi ingredienti, non un cerchio dentro un cerchio. Le icone puramente astratte si usano per i concetti astratti (flussi, relazioni, stati), non per gli oggetti fisici della scena. L'immagine deve sembrare una singola illustrazione coerente, non un collage.
 
-## Metafora visiva
+**Elementi grafici preferiti:**
 
-Le **tre postazioni distinte** rappresentano i tre Amigos (Booch / Rumbaugh / Jacobson) e i loro metodi originari (Booch Method / OMT / Objectory) — riconoscibili dai dettagli (bandiere, materiali, simboli). Il **diagramma UML al centro del tavolo** è il prodotto della loro convergenza, scritto in una lingua nuova che è la sintesi delle tre. La **lavagna sullo sfondo** racconta in modo esplicito la storia: tre metodi barrati, una parola sola al centro — *"UNIFIED"*.
+- monitor, lavagne, scrivanie, architetture dati, grafici, icone stilizzate
+- simboli geometrici chiari
+- ambienti ordinati
+- sfondi semplici e strutturati
+- silhouette in secondo piano per suggerire contesto senza affollare la scena
 
-Coerente con il tono no-eroe dell'articolo: nessun protagonista, nessun volto. Le **tre identità nazionali** (USA × 2, Svezia) sono lasciate come dettaglio minore (le bandierine) per chi vuole notarle, ma non sono il punto. Il punto è il tavolo condiviso, la lampada che illumina il centro (non le periferie), e il fatto che le tre postazioni stanno ancora lì — non sono state buttate via. UML non ha distrutto i tre metodi: li ha riconciliati.
+**Se presenti personaggi:**
 
-## File output
+- eleganti, espressivi, sintetici
+- abbigliamento classico anni '50 reinterpretato in chiave corporate
+- pose sicure, naturali, leggibili
 
-- **Nome file**: `da-rivali-a-co-autori-uml-rup.cover.jpg`
-- **Path di destinazione**: `content/posts/project-management/da-rivali-a-co-autori-uml-rup/da-rivali-a-co-autori-uml-rup.cover.jpg`
-- **Formato**: JPG, ratio 3:2 (coerente con il sistema editoriale del blog)
+**PERSONAGGIO PRINCIPALE — se presente un unico personaggio o un personaggio principale nella scena, deve avere queste caratteristiche (riconoscibile e ricorrente):**
+
+- uomo sui 30-40 anni, corporatura media
+- capelli mossi, leggermente spettinati e voluminosi sulla parte alta, fondo scuro con evidenti sfumature brizzolate (sale e pepe)
+- vistosi baffi a manubrio (handlebar mustache), scuri, ben curvati verso l'alto alle punte — questo è il tratto più riconoscibile e distintivo
+- solo baffi: viso rasato, senza barba, senza pizzetto, senza basettoni lunghi (al massimo un accenno di ricrescita di un giorno)
+- senza occhiali
+- espressione intelligente, sicura, con un accenno di ironia
+- abbigliamento: giacca elegante scura, stile professionale anni '50
+- NON deve apparire stanco, triste o imbambolato a meno che la SCENA DA RAPPRESENTARE non lo richieda esplicitamente. L'espressione di default è sveglia, attenta, leggermente ironica
+
+Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme semplificate, silhouette espressiva, baffi a manubrio come elemento grafico forte e immediatamente leggibile. Non fotorealistico — deve sembrare un personaggio da poster aziendale vintage.
+
+**PERSONAGGI MULTIPLI — scene a due o più voci (telefonate, affiancamenti, riunioni, conversazioni):**
+
+Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena specifica DEVE:
+
+1. **Identificare esplicitamente quale personaggio rappresenta "Ivan"** — il personaggio con i baffi a manubrio (vedi sopra). Gli altri personaggi NON hanno i baffi a manubrio, hanno un'identità visiva distinta (es. occhiali, cravatta da impiegato giovane, capelli lisci tirati indietro, ecc.).
+2. **Adattare abbigliamento, contesto e mood di Ivan al ruolo che ha nella scena**, non al default "giacca elegante anni '50". L'abbigliamento di default vale solo per scene di ufficio diurno o ambito professionale formale.
+
+**Caso telefonata notturna (Ivan = chi riceve la chiamata, viene svegliato):**
+
+- Ivan **NON è in giacca**: indossa vestaglia di seta o pigiama elegante anni '50 — la chiamata lo sveglia
+- Ambientazione **notturna in penombra**: una sola lampada da tavolo accesa, ombre lunghe, mood soffuso
+- Ivan **seduto in poltrona di pelle** o **in piedi accanto al letto**, telefono nero d'epoca con cornetta in mano
+- Espressione: **concentrato anche se appena svegliato**, mai imbambolato — sta già pensando alla soluzione
+- L'interlocutore (chi chiama, NON Ivan) può essere mostrato in **secondo piano stilizzato** (silhouette di profilo, mezzo busto su sfondo neutro) oppure **omesso** lasciando solo Ivan al telefono come unico focus
+- Orologio sullo sfondo che indichi l'ora notturna (es. silhouette di orologio a parete che segna le 3) come elemento simbolico
+- Mai scrivania-giacca-camicia in questa situazione
+
+**Caso telefonata diurna (Ivan = chi chiama, ufficio diurno):**
+
+- Ivan **seduto alla scrivania**, giacca elegante, telefono in mano, espressione decisa
+- Ambientazione **professionale diurna**, luce naturale
+- L'interlocutore può essere implicito o mostrato in piccolo in secondo piano
+
+**Caso affiancamento (Ivan = DBA senior mentor + collega junior):**
+
+- Ivan in giacca elegante + baffi a manubrio (il senior, riconoscibile)
+- Il junior: capelli ordinati senza baffi distintivi, camicia con cravatta giovane (es. cravatta colorata), espressione attenta, quaderno aperto in mano o sguardo verso la lavagna/monitor
+- Composizione: i due personaggi insieme davanti a una lavagna stilizzata, un monitor, o una scrivania con simboli geometrici (frecce, diagrammi, cilindri-database)
+- Mood didattico, conversazionale
+
+**Caso riunione / discussione tecnica (Ivan + 1-2 altri colleghi):**
+
+- Ivan riconoscibile per baffi a manubrio + abbigliamento di base
+- Altri: identità visive distinte, sguardi convergenti su un punto centrale (errore su monitor, comando SQL su lavagna, grafico)
+- Composizione triangolare/circolare attorno all'oggetto della discussione
+
+**Importante:**
+
+- mantenere sempre coerenza totale con lo stile retro UPA/mid-century
+- privilegiare chiarezza grafica e composizione rispetto al dettaglio
+- evitare qualsiasi estetica moderna da stock illustration
+- evitare look realistico o digitale contemporaneo
+- popolare l'ambiente con oggetti di contesto coerenti (arredi, strumenti, dettagli d'epoca) distribuiti sui tre piani: una scena ricca ma ordinata batte una scena spoglia
+- **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna** nella *finitura* delle superfici — restano invece necessarie ombre stilizzate, mezzitoni e profondità compositiva
+
+**Testo nell'immagine:**
+
+- Il testo è ammesso quando aiuta a leggere la scena (etichette, insegne, intestazioni di grafici, cartelli): non va eliminato per principio, va tenuto breve
+- **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
+- Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
+- Preferire simboli geometrici, icone stilizzate e frecce alle parole quando il concetto è astratto; gli oggetti concreti vanno però disegnati come oggetti, non sostituiti da pittogrammi
+
+**SCENA DA RAPPRESENTARE:**
+
+Una sala conferenze mid-century elegante, illuminazione soffusa proveniente da applique a parete in stile Art Deco. Al centro della composizione una grande lavagna stilizzata su cui sono tracciati tre cerchi geometrici distinti — ciascuno con un simbolo diverso dentro (nuvola di simboli, griglia di dati, figura umana stilizzata che interagisce col sistema) — collegati da frecce convergenti verso un unico simbolo unificato al centro: uno scudo o un diamante geometrico con la scritta "UML". Tre personaggi in piedi attorno alla lavagna, in composizione triangolare: nessuno ha i baffi a manubrio — si tratta dei Three Amigos storici, tre figure distinte per postura e dettaglio visivo (uno con capelli ricci e corporatura robusta, uno con capelli lisci e occhiali sottili, uno con postura slanciata e cravatta a contrasto). Le braccia sono aperte in gesti di discussione, non di conflitto — il mood è quello di una convergenza appena raggiunta, non di una disputa. In primo piano, di spalle e leggermente decentrato, la silhouette del personaggio principale con baffi a manubrio brizzolati — osservatore della scena, testimone della storia — in giacca elegante scura, quaderno chiuso sotto il braccio. Sfondo semplice e strutturato, ombre proiettate nette, texture di carta ruvida visibile.
