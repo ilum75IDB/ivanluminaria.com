@@ -1,47 +1,129 @@
-# Cover image prompt — enum-oracle-workaround-fino-a-23ai.cover.jpg
+# Prompt Master — Generazione Immagini Sito
 
-## Articolo di riferimento
+Prompt standard da utilizzare per generare **tutte** le immagini del sito.
+Copiare il blocco sottostante e sostituire il placeholder finale con la descrizione specifica della scena.
 
-- **Slug**: `enum-oracle-workaround-fino-a-23ai`
-- **Sezione**: `oracle`
-- **Issue**: #70
-- **Data pubblicazione**: 2026-06-16 (martedì)
-- **Titolo IT**: *Enumerazioni in Oracle: vent'anni di workaround, e la strada che si è aperta con la 23ai*
+---
 
-## Descrizione della scena
+## Prompt
 
-Illustrazione retro anni '50, stile editoriale mid-century modern, **palette dominante marrone caldo / beige / crema** con accenti **rosso Oracle** (`#F80000`) e dettagli **ottone-bronzo**.
+Crea un'illustrazione in formato **3:2 (1536×1024 px)**, in stile cartone retro anni '50 UPA, arte vettoriale minimal mid-century modern con forte influenza Art Deco.
 
-Al centro della composizione: un **grande tavolo da cartografo** in legno scuro, sul quale è steso un **mappa antica** che rappresenta un "territorio Oracle" in stile geometrico mid-century — colline stilizzate, fiumi sinuosi, piccoli **insediamenti fortificati** con torri esagonali, il tutto disegnato a inchiostro seppia su pergamena.
+Lo stile deve essere coerente con poster corporate americani anni '50, animazione UPA, grafica editoriale elegante e geometrica.
 
-Attraverso la mappa si snodano **tre rotte commerciali consolidate**, percorse da carovane minute (silhouette di carri con cavalli), ognuna accompagnata da una **targhetta smaltata** posizionata accanto al sentiero:
+**Resa visiva tassativa**: **illustrazione 2D disegnata a mano**, mai render 3D, mai effetto "plasticoso" o gloss/shiny, mai fotorealismo, mai look pubblicitario contemporaneo. Texture di carta visibile per dare matericità "stampata".
 
-- **Prima rotta** (la più antica, tracciata con linea spessa marrone, segnata da molti passaggi): targhetta *"CHECK CONSTRAINT — 1995"*
-- **Seconda rotta** (più pavimentata, costellata di piccoli insediamenti lungo il percorso, ben tenuta): targhetta *"LOOKUP TABLE + FK — the enterprise road"*
-- **Terza rotta** (interrotta, con pietre sparse di traverso, abbandonata): targhetta *"TYPE / SUBTYPE — strada chiusa"*
+**Profondità sì, lucido no.** Il divieto riguarda la finitura moderna (riflessi speculari, bevel, gradienti lucidi, plastica), NON il volume: l'illustrazione deve avere ombre proiettate nette e stilizzate, chiaroscuro reso a campiture o mezzitoni (screen-tone, tratteggio, grana), e una chiara distinzione tra primo piano, piano medio e sfondo. Il riferimento sono le illustrazioni editoriali stampate anni '50, che sono piatte nella *finitura* ma piene di profondità nella *composizione* — non le sagome di cartone.
 
-In primo piano, una **mano di cartografo** (visibile dal polso, camicia color cuoio con manica rimboccata) impugna una **stilografica con inchiostro rosso Oracle** e sta tracciando in questo momento una **quarta rotta** — più diretta, con tratto deciso e nuovo, che attraversa il territorio dove prima nessuno passava. Accanto a questa nuova rotta, una **targhetta smaltata fresca, ancora lucida**, riporta in lettere nette: ***"SQL DOMAIN — 23ai"***.
+**Direzione artistica:**
 
-Sul tavolo, intorno alla mappa:
+- composizione semplice, chiara e leggibile
+- grandi forme geometriche
+- linee fluide e silhouette eleganti
+- proporzioni dei personaggi leggermente esagerate
+- stile raffinato, intelligente, visivamente ordinato
+- atmosfera da jazz club vintage
+- illuminazione soffusa e discreta, con una direzione della luce riconoscibile e ombre proiettate coerenti
+- texture di carta ruvida ben visibile
+- mood elegante, colto, professionale
 
-- Una **bussola da cartografia in ottone** (forme geometriche, design art déco)
-- Un **taccuino in pelle aperto** con annotazioni scritte a mano — parole leggibili: *"VALIDATE / NOVALIDATE"*, *"ALTER DOMAIN propagates"*, *"no JOIN required"*
-- Un **calamaio in peltro** con inchiostro rosso, etichetta *"2024"* incisa
-- Alcuni **rotoli di mappe** legati con nastri di stoffa, accantonati sul lato destro del tavolo
-- All'**angolo in alto della mappa**, una zona ancora ombreggiata: un **abbozzo a matita morbida** di una rotta futura, appena accennata, con la dicitura *"ASSERTION — 26ai"* (il prossimo capitolo, ancora da disegnare)
+**Palette colori molto limitata:**
 
-Sulla **parete dietro al tavolo**: un grande **manifesto stilizzato** con la dicitura ***"TERRITORY MAPPED. ROADS DRAWN. PRICE PAID."*** in lettere cremose su fondo rosso scuro, carattere serif mid-century. Sotto il manifesto, una **mensola in legno** con alcuni **libri rilegati in pelle rossa** e una piccola **lampada da scrivania ad arco** che proietta un cono di luce calda sulla scena, dando alla composizione un'atmosfera di lavoro paziente e attento.
+- nero
+- rosso
+- beige
+- marrone
+- bianco
 
-**Niente persone in piena figura**: solo la mano del cartografo (no-eroe — non c'è un volto, non c'è un protagonista). Atmosfera contemplativa, da officina di chi ha visto evolvere il territorio per vent'anni e ora registra una rotta che era sempre mancata.
+Usare campiture prevalentemente piatte, ammettendo variazioni tonali dentro la palette (toni più chiari e più scuri dello stesso colore) per dare volume e distinguere i piani. Vietati i gradienti lucidi e i colori saturi moderni, non la variazione tonale in sé.
 
-## Metafora visiva
+**Evitare:** fotorealismo, rendering 3D, finiture lucide o plastiche, colori saturi moderni, look pubblicitario contemporaneo, affollamento disordinato della scena.
 
-Il **territorio Oracle** ha avuto tre rotte commerciali stabilite per vent'anni — ciascuna con il suo costo, i suoi limiti, la sua utilità. Il cartografo non sta "scoprendo" la quarta strada: la sta **disegnando perché ora esiste**. Non è un esploratore eroe, è un professionista che registra l'evoluzione del terreno. Il SQL Domain è la rotta che mancava, e la stilografica rossa è il gesto di chi l'ha aspettata abbastanza a lungo da saperne esattamente il valore. L'abbozzo a matita della rotta 26ai (le ASSERTION) suggerisce che il territorio continua a evolversi — la mappa non sarà mai finita.
+La scena deve apparire grafica e leggibile, con forte contrasto visivo tra gli elementi principali.
+Ogni oggetto va stilizzato in forme pulite ma **deve restare riconoscibile per quello che è**: una pizza è una pizza con i suoi ingredienti, non un cerchio dentro un cerchio. Le icone puramente astratte si usano per i concetti astratti (flussi, relazioni, stati), non per gli oggetti fisici della scena.
+L'immagine deve sembrare una singola illustrazione coerente, non un collage.
 
-Coerente con il tono no-eroe dell'articolo, con il messaggio centrale (*"la scelta è sempre dove vuoi pagare il prezzo"*), e con la palette editoriale del blog (marroni caldi + rosso Oracle, niente effetti drammatici, illustrazione retro pulita).
+**Elementi grafici preferiti:**
 
-## File output
+- monitor, lavagne, scrivanie, architetture dati, grafici, icone stilizzate
+- simboli geometrici chiari
+- ambienti ordinati
+- sfondi semplici e strutturati
+- silhouette in secondo piano per suggerire contesto senza affollare la scena
 
-- **Nome file**: `enum-oracle-workaround-fino-a-23ai.cover.jpg`
-- **Path di destinazione**: `content/posts/oracle/enum-oracle-workaround-fino-a-23ai/enum-oracle-workaround-fino-a-23ai.cover.jpg`
-- **Formato**: JPG, ratio 3:2 (coerente con il sistema editoriale del blog)
+**Se presenti personaggi:**
+
+- eleganti, espressivi, sintetici
+- abbigliamento classico anni '50 reinterpretato in chiave corporate
+- pose sicure, naturali, leggibili
+
+**PERSONAGGIO PRINCIPALE — se presente un unico personaggio o un personaggio principale nella scena, deve avere queste caratteristiche (riconoscibile e ricorrente):**
+
+- uomo sui 30-40 anni, corporatura media
+- capelli mossi, leggermente spettinati e voluminosi sulla parte alta, fondo scuro con evidenti sfumature brizzolate (sale e pepe)
+- vistosi baffi a manubrio (handlebar mustache), scuri, ben curvati verso l'alto alle punte — questo è il tratto più riconoscibile e distintivo
+- solo baffi: viso rasato, senza barba, senza pizzetto, senza basettoni lunghi (al massimo un accenno di ricrescita di un giorno)
+- senza occhiali
+- espressione intelligente, sicura, con un accenno di ironia
+- abbigliamento: giacca elegante scura, stile professionale anni '50
+- NON deve apparire stanco, triste o imbambolato a meno che la SCENA DA RAPPRESENTARE non lo richieda esplicitamente. L'espressione di default è sveglia, attenta, leggermente ironica
+
+Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme semplificate, silhouette espressiva, baffi a manubrio come elemento grafico forte e immediatamente leggibile. Non fotorealistico — deve sembrare un personaggio da poster aziendale vintage.
+
+**PERSONAGGI MULTIPLI — scene a due o più voci (telefonate, affiancamenti, riunioni, conversazioni):**
+
+Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena specifica DEVE:
+
+1. **Identificare esplicitamente quale personaggio rappresenta "Ivan"** — il personaggio con i baffi a manubrio (vedi sopra). Gli altri personaggi NON hanno i baffi a manubrio, hanno un'identità visiva distinta (es. occhiali, cravatta da impiegato giovane, capelli lisci tirati indietro, ecc.).
+2. **Adattare abbigliamento, contesto e mood di Ivan al ruolo che ha nella scena**, non al default "giacca elegante anni '50". L'abbigliamento di default vale solo per scene di ufficio diurno o ambito professionale formale.
+
+**Caso telefonata notturna (Ivan = chi riceve la chiamata, viene svegliato):**
+
+- Ivan **NON è in giacca**: indossa vestaglia di seta o pigiama elegante anni '50 — la chiamata lo sveglia
+- Ambientazione **notturna in penombra**: una sola lampada da tavolo accesa, ombre lunghe, mood soffuso
+- Ivan **seduto in poltrona di pelle** o **in piedi accanto al letto**, telefono nero d'epoca con cornetta in mano
+- Espressione: **concentrato anche se appena svegliato**, mai imbambolato — sta già pensando alla soluzione
+- L'interlocutore (chi chiama, NON Ivan) può essere mostrato in **secondo piano stilizzato** (silhouette di profilo, mezzo busto su sfondo neutro) oppure **omesso** lasciando solo Ivan al telefono come unico focus
+- Orologio sullo sfondo che indichi l'ora notturna (es. silhouette di orologio a parete che segna le 3) come elemento simbolico
+- Mai scrivania-giacca-camicia in questa situazione
+
+**Caso telefonata diurna (Ivan = chi chiama, ufficio diurno):**
+
+- Ivan **seduto alla scrivania**, giacca elegante, telefono in mano, espressione decisa
+- Ambientazione **professionale diurna**, luce naturale
+- L'interlocutore può essere implicito o mostrato in piccolo in secondo piano
+
+**Caso affiancamento (Ivan = DBA senior mentor + collega junior):**
+
+- Ivan in giacca elegante + baffi a manubrio (il senior, riconoscibile)
+- Il junior: capelli ordinati senza baffi distintivi, camicia con cravatta giovane (es. cravatta colorata), espressione attenta, quaderno aperto in mano o sguardo verso la lavagna/monitor
+- Composizione: i due personaggi insieme davanti a una lavagna stilizzata, un monitor, o una scrivania con simboli geometrici (frecce, diagrammi, cilindri-database)
+- Mood didattico, conversazionale
+
+**Caso riunione / discussione tecnica (Ivan + 1-2 altri colleghi):**
+
+- Ivan riconoscibile per baffi a manubrio + abbigliamento di base
+- Altri: identità visive distinte, sguardi convergenti su un punto centrale (errore su monitor, comando SQL su lavagna, grafico)
+- Composizione triangolare/circolare attorno all'oggetto della discussione
+
+**Importante:**
+
+- mantenere sempre coerenza totale con lo stile retro UPA/mid-century
+- privilegiare chiarezza grafica e composizione rispetto al dettaglio
+- evitare qualsiasi estetica moderna da stock illustration
+- evitare look realistico o digitale contemporaneo
+- popolare l'ambiente con oggetti di contesto coerenti (arredi, strumenti, dettagli d'epoca) distribuiti sui tre piani: una scena ricca ma ordinata batte una scena spoglia
+- **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna** nella *finitura* delle superfici — restano invece necessarie ombre stilizzate, mezzitoni e profondità compositiva
+- **mai etichette o scritte con i nomi dei personaggi**: niente targhette, didascalie, callout o frecce che indichino chi è chi, e in particolare **mai la scritta "Ivan"** accanto al personaggio principale. I personaggi si riconoscono dai loro tratti visivi (i baffi a manubrio per il principale), non da un'etichetta: nominarli è autoreferenziale e rompe l'illustrazione
+
+**Testo nell'immagine:**
+
+- Il testo è ammesso quando aiuta a leggere la scena (etichette, insegne, intestazioni di grafici, cartelli): non va eliminato per principio, va tenuto breve
+- **Eccezione tassativa**: il testo non nomina MAI i personaggi. Niente nomi propri (in particolare "Ivan"), niente targhette identificative, niente frecce con didascalia che puntino a una figura. Le etichette servono a leggere oggetti, grafici e ambiente, non le persone
+- **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
+- Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
+- Preferire simboli geometrici, icone stilizzate e frecce alle parole quando il concetto è astratto; gli oggetti concreti vanno però disegnati come oggetti, non sostituiti da pittogrammi
+
+**SCENA DA RAPPRESENTARE:**
+
+Un ufficio elegante mid-century, luce diurna soffusa. Il DBA con baffi a manubrio brizzolati è in piedi davanti a una grande lavagna stilizzata, giacca scura, espressione soddisfatta e leggermente ironica. Sulla lavagna: tre colonne geometriche verticali etichettate "CHECK", "LOOKUP", "DOMAIN", collegate in alto da una freccia orizzontale che punta verso destra — a suggerire un'evoluzione, non una gerarchia. Al centro della composizione, in primo piano sulla scrivania, un cilindro-database stilizzato con un sigillo geometrico che evoca un timbro ufficiale — simbolo del dominio centralizzato. Sullo sfondo, una silhouette di architettura bancaria (cornicione classico stilizzato, colonne geometriche) che richiama il contesto banking senza affollare la scena. Mood da poster corporate anni '50: ordinato, autorevole, con un accenno di "finalmente".
