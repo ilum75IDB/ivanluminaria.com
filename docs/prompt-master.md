@@ -114,10 +114,12 @@ Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena 
 - evitare look realistico o digitale contemporaneo
 - popolare l'ambiente con oggetti di contesto coerenti (arredi, strumenti, dettagli d'epoca) distribuiti sui tre piani: una scena ricca ma ordinata batte una scena spoglia
 - **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna** nella *finitura* delle superfici — restano invece necessarie ombre stilizzate, mezzitoni e profondità compositiva
+- **mai etichette o scritte con i nomi dei personaggi**: niente targhette, didascalie, callout o frecce che indichino chi è chi, e in particolare **mai la scritta "Ivan"** accanto al personaggio principale. I personaggi si riconoscono dai loro tratti visivi (i baffi a manubrio per il principale), non da un'etichetta: nominarli è autoreferenziale e rompe l'illustrazione
 
 **Testo nell'immagine:**
 
 - Il testo è ammesso quando aiuta a leggere la scena (etichette, insegne, intestazioni di grafici, cartelli): non va eliminato per principio, va tenuto breve
+- **Eccezione tassativa**: il testo non nomina MAI i personaggi. Niente nomi propri (in particolare "Ivan"), niente targhette identificative, niente frecce con didascalia che puntino a una figura. Le etichette servono a leggere oggetti, grafici e ambiente, non le persone
 - **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
 - Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
 - Preferire simboli geometrici, icone stilizzate e frecce alle parole quando il concetto è astratto; gli oggetti concreti vanno però disegnati come oggetti, non sostituiti da pittogrammi
