@@ -1,21 +1,127 @@
-# Cover image prompt — mysql-group-replication-binlog-migration.cover.jpg
+# Prompt Master — Generazione Immagini Sito
 
-## Articolo di riferimento
+Prompt standard da utilizzare per generare **tutte** le immagini del sito.
+Copiare il blocco sottostante e sostituire il placeholder finale con la descrizione specifica della scena.
 
-- **Slug**: `mysql-group-replication-binlog-migration`
-- **Sezione**: `mysql`
-- **Titolo IT**: *Disco pieno su un cluster MySQL: binary log, Group Replication e la migrazione che non ammette errori*
+---
 
-## Descrizione della scena
+## Prompt
 
-Illustrazione in stile retro anni '50, palette di **neri, grigi scuri e gialli senape** con accenti di **rosso allarme**. La scena rappresenta una **sala di controllo industriale** d'epoca con il pavimento a piastrelle quadrettate. Al centro, in primo piano, un **uomo in completo scuro con baffi sottili** tiene in una mano una **grossa chiave inglese** e nell'altra un **manometro analogico circolare** la cui lancetta rossa è puntata su "92" — vicino al fondoscala. Ai due lati dell'uomo si trovano **due grandi pannelli di controllo industriali** identici, con display rettangolari illuminati: uno mostra la scritta **"FULL 89%"** in rosso, l'altro **"FULL"** con un quadrante a metà. Sullo sfondo, una **terza consolle più grande** sormontata da una **spia rossa pulsante a forma di punto esclamativo**, come un allarme attivo. Ai lati estremi della scena, due **rack di server vintage** in metallo grigio chiaro. I fasci di luce dei riflettori a soffitto convergono drammaticamente verso il centro della scena, illuminando l'uomo come un protagonista che però sta semplicemente facendo il suo lavoro di manutenzione, non un eroe in posa.
+Crea un'illustrazione in formato **3:2 (1536×1024 px)**, in stile cartone retro anni '50 UPA, arte vettoriale minimal mid-century modern con forte influenza Art Deco.
 
-## Metafora visiva
+Lo stile deve essere coerente con poster corporate americani anni '50, animazione UPA, grafica editoriale elegante e geometrica.
 
-I tre pannelli di controllo con livelli diversi di riempimento (85%, 66%, 25%) richiamano direttamente i tre nodi del cluster Group Replication descritti nell'articolo, ciascuno con un filesystem in uno stato differente. La chiave inglese e il manometro nelle mani del DBA sono gli strumenti di chi non spegne incendi ma fa un intervento chirurgico: spostare i binary log su un volume dedicato senza far perdere il quorum al cluster. La spia rossa al centro è il filesystem al 92% che ha fatto partire tutta la storia.
+**Resa visiva tassativa**: **illustrazione 2D disegnata a mano**, mai render 3D, mai effetto "plasticoso" o gloss/shiny, mai fotorealismo, mai look pubblicitario contemporaneo. Texture di carta visibile per dare matericità "stampata".
 
-## File output
+**Profondità sì, lucido no.** Il divieto riguarda la finitura moderna (riflessi speculari, bevel, gradienti lucidi, plastica), NON il volume: l'illustrazione deve avere ombre proiettate nette e stilizzate, chiaroscuro reso a campiture o mezzitoni (screen-tone, tratteggio, grana), e una chiara distinzione tra primo piano, piano medio e sfondo. Il riferimento sono le illustrazioni editoriali stampate anni '50, che sono piatte nella *finitura* ma piene di profondità nella *composizione* — non le sagome di cartone.
 
-- **Nome file**: `mysql-group-replication-binlog-migration.cover.jpg`
-- **Path di destinazione**: `content/posts/mysql/mysql-group-replication-binlog-migration/mysql-group-replication-binlog-migration.cover.jpg`
-- **Formato**: JPG, ratio 3:2 (coerente con il sistema editoriale del blog)
+**Direzione artistica:**
+
+- composizione semplice, chiara e leggibile
+- grandi forme geometriche
+- linee fluide e silhouette eleganti
+- proporzioni dei personaggi leggermente esagerate
+- stile raffinato, intelligente, visivamente ordinato
+- atmosfera da jazz club vintage
+- illuminazione soffusa e discreta, con una direzione della luce riconoscibile e ombre proiettate coerenti
+- texture di carta ruvida ben visibile
+- mood elegante, colto, professionale
+
+**Palette colori molto limitata:**
+
+- nero
+- rosso
+- beige
+- marrone
+- bianco
+
+Usare campiture prevalentemente piatte, ammettendo variazioni tonali dentro la palette (toni più chiari e più scuri dello stesso colore) per dare volume e distinguere i piani. Vietati i gradienti lucidi e i colori saturi moderni, non la variazione tonale in sé.
+
+**Evitare:** fotorealismo, rendering 3D, finiture lucide o plastiche, colori saturi moderni, look pubblicitario contemporaneo, affollamento disordinato della scena.
+
+La scena deve apparire grafica e leggibile, con forte contrasto visivo tra gli elementi principali. Ogni oggetto va stilizzato in forme pulite ma **deve restare riconoscibile per quello che è**: una pizza è una pizza con i suoi ingredienti, non un cerchio dentro un cerchio. Le icone puramente astratte si usano per i concetti astratti (flussi, relazioni, stati), non per gli oggetti fisici della scena. L'immagine deve sembrare una singola illustrazione coerente, non un collage.
+
+**Elementi grafici preferiti:**
+
+- monitor, lavagne, scrivanie, architetture dati, grafici, icone stilizzate
+- simboli geometrici chiari
+- ambienti ordinati
+- sfondi semplici e strutturati
+- silhouette in secondo piano per suggerire contesto senza affollare la scena
+
+**Se presenti personaggi:**
+
+- eleganti, espressivi, sintetici
+- abbigliamento classico anni '50 reinterpretato in chiave corporate
+- pose sicure, naturali, leggibili
+
+**PERSONAGGIO PRINCIPALE — se presente un unico personaggio o un personaggio principale nella scena, deve avere queste caratteristiche (riconoscibile e ricorrente):**
+
+- uomo sui 30-40 anni, corporatura media
+- capelli mossi, leggermente spettinati e voluminosi sulla parte alta, fondo scuro con evidenti sfumature brizzolate (sale e pepe)
+- vistosi baffi a manubrio (handlebar mustache), scuri, ben curvati verso l'alto alle punte — questo è il tratto più riconoscibile e distintivo
+- solo baffi: viso rasato, senza barba, senza pizzetto, senza basettoni lunghi (al massimo un accenno di ricrescita di un giorno)
+- senza occhiali
+- espressione intelligente, sicura, con un accenno di ironia
+- abbigliamento: giacca elegante scura, stile professionale anni '50
+- NON deve apparire stanco, triste o imbambolato a meno che la SCENA DA RAPPRESENTARE non lo richieda esplicitamente. L'espressione di default è sveglia, attenta, leggermente ironica
+
+Stilizzare il personaggio in modo coerente con lo stile UPA/mid-century: forme semplificate, silhouette espressiva, baffi a manubrio come elemento grafico forte e immediatamente leggibile. Non fotorealistico — deve sembrare un personaggio da poster aziendale vintage.
+
+**PERSONAGGI MULTIPLI — scene a due o più voci (telefonate, affiancamenti, riunioni, conversazioni):**
+
+Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena specifica DEVE:
+
+1. **Identificare esplicitamente quale personaggio rappresenta "Ivan"** — il personaggio con i baffi a manubrio (vedi sopra). Gli altri personaggi NON hanno i baffi a manubrio, hanno un'identità visiva distinta (es. occhiali, cravatta da impiegato giovane, capelli lisci tirati indietro, ecc.).
+2. **Adattare abbigliamento, contesto e mood di Ivan al ruolo che ha nella scena**, non al default "giacca elegante anni '50". L'abbigliamento di default vale solo per scene di ufficio diurno o ambito professionale formale.
+
+**Caso telefonata notturna (Ivan = chi riceve la chiamata, viene svegliato):**
+
+- Ivan **NON è in giacca**: indossa vestaglia di seta o pigiama elegante anni '50 — la chiamata lo sveglia
+- Ambientazione **notturna in penombra**: una sola lampada da tavolo accesa, ombre lunghe, mood soffuso
+- Ivan **seduto in poltrona di pelle** o **in piedi accanto al letto**, telefono nero d'epoca con cornetta in mano
+- Espressione: **concentrato anche se appena svegliato**, mai imbambolato — sta già pensando alla soluzione
+- L'interlocutore (chi chiama, NON Ivan) può essere mostrato in **secondo piano stilizzato** (silhouette di profilo, mezzo busto su sfondo neutro) oppure **omesso** lasciando solo Ivan al telefono come unico focus
+- Orologio sullo sfondo che indichi l'ora notturna (es. silhouette di orologio a parete che segna le 3) come elemento simbolico
+- Mai scrivania-giacca-camicia in questa situazione
+
+**Caso telefonata diurna (Ivan = chi chiama, ufficio diurno):**
+
+- Ivan **seduto alla scrivania**, giacca elegante, telefono in mano, espressione decisa
+- Ambientazione **professionale diurna**, luce naturale
+- L'interlocutore può essere implicito o mostrato in piccolo in secondo piano
+
+**Caso affiancamento (Ivan = DBA senior mentor + collega junior):**
+
+- Ivan in giacca elegante + baffi a manubrio (il senior, riconoscibile)
+- Il junior: capelli ordinati senza baffi distintivi, camicia con cravatta giovane (es. cravatta colorata), espressione attenta, quaderno aperto in mano o sguardo verso la lavagna/monitor
+- Composizione: i due personaggi insieme davanti a una lavagna stilizzata, un monitor, o una scrivania con simboli geometrici (frecce, diagrammi, cilindri-database)
+- Mood didattico, conversazionale
+
+**Caso riunione / discussione tecnica (Ivan + 1-2 altri colleghi):**
+
+- Ivan riconoscibile per baffi a manubrio + abbigliamento di base
+- Altri: identità visive distinte, sguardi convergenti su un punto centrale (errore su monitor, comando SQL su lavagna, grafico)
+- Composizione triangolare/circolare attorno all'oggetto della discussione
+
+**Importante:**
+
+- mantenere sempre coerenza totale con lo stile retro UPA/mid-century
+- privilegiare chiarezza grafica e composizione rispetto al dettaglio
+- evitare qualsiasi estetica moderna da stock illustration
+- evitare look realistico o digitale contemporaneo
+- popolare l'ambiente con oggetti di contesto coerenti (arredi, strumenti, dettagli d'epoca) distribuiti sui tre piani: una scena ricca ma ordinata batte una scena spoglia
+- **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna** nella *finitura* delle superfici — restano invece necessarie ombre stilizzate, mezzitoni e profondità compositiva
+- **mai etichette o scritte con i nomi dei personaggi**: niente targhette, didascalie, callout o frecce che indichino chi è chi, e in particolare **mai la scritta "Ivan"** accanto al personaggio principale. I personaggi si riconoscono dai loro tratti visivi (i baffi a manubrio per il principale), non da un'etichetta: nominarli è autoreferenziale e rompe l'illustrazione
+
+**Testo nell'immagine:**
+
+- Il testo è ammesso quando aiuta a leggere la scena (etichette, insegne, intestazioni di grafici, cartelli): non va eliminato per principio, va tenuto breve
+- **Eccezione tassativa**: il testo non nomina MAI i personaggi. Niente nomi propri (in particolare "Ivan"), niente targhette identificative, niente frecce con didascalia che puntino a una figura. Le etichette servono a leggere oggetti, grafici e ambiente, non le persone
+- **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
+- Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
+- Preferire simboli geometrici, icone stilizzate e frecce alle parole quando il concetto è astratto; gli oggetti concreti vanno però disegnati come oggetti, non sostituiti da pittogrammi
+
+**SCENA DA RAPPRESENTARE:**
+
+Un ufficio tecnico mid-century, luce mattutina proveniente da una finestra laterale. Il DBA con baffi a manubrio brizzolati è in piedi davanti a una grande lavagna stilizzata, espressione concentrata e leggermente ironica. Sulla lavagna: tre cilindri-database disposti in triangolo (i tre nodi del cluster), collegati da frecce geometriche eleganti; un cilindro è evidenziato da un indicatore a barra quasi piena — il volume saturo — mentre una freccia spessa e curvata lo collega a un secondo rettangolo separato, etichettato "BINARY LOGS", che rappresenta il nuovo volume dedicato. In primo piano, sulla scrivania, un foglio con una griglia di percentuali stilizzate (85% / 66% / 25%) reso come grafico a barre essenziale. Atmosfera da jazz club vintage, ombre proiettate nette, texture di carta ruvida visibile. Mood analitico e composto: la diagnosi è fatta, la soluzione è sulla lavagna.
