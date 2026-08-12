@@ -35,7 +35,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | B-Tree | Struttura dati ad albero bilanciato, tipo di indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, inadatto per LIKE con wildcard iniziale | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
-| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration |
+| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
@@ -115,6 +115,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
 | Oracle Text | Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licen | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| Parallel DML | Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION E | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
@@ -165,6 +166,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Smart Working | Modello di lavoro flessibile che combina lavoro da remoto e presenza in ufficio, basato su obiettivi misurabili invece che su presenza fisica | smartworking-consulenza-it |
 | Scope Creep | Espansione incontrollata dei requisiti di progetto oltre il perimetro iniziale, che porta a ritardi, aumento dei costi e spesso al fallimento del progetto | 4-milioni-nessun-software |
 | SPFILE | Server Parameter File: file binario letto da Oracle all'avvio che contiene i parametri di configurazione dell'istanza (` | quali-sono-i-files-critici-di-un-db-oracle |
+| Staging table | Tabella temporanea usata come area di atterraggio dei dati grezzi prima della trasformazione e del caricamento nella des | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Stakeholder | Persona o gruppo con un interesse diretto nel risultato di un progetto: committente, utente finale, sponsor, team tecnico | tecnica-si-e-yes-and |
 | SCD | Slowly Changing Dimension — tecnica di data warehouse per tracciare le variazioni nel tempo dei dati nelle tabelle dimensionali | scd-tipo-2 |
 | secure-file-priv | Direttiva di sicurezza MySQL che limita le directory in cui il server può leggere e scrivere file, proteggendo il filesystem da operazioni non autorizzate | mysql-multi-istanza-secure-file-priv |
@@ -209,7 +211,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 
-**Ultimo aggiornamento**: 2026-08-08
-**Totale termini**: 194
-**Totale articoli con glossario**: 45
+**Ultimo aggiornamento**: 2026-08-12
+**Totale termini**: 197
+**Totale articoli con glossario**: 46
 

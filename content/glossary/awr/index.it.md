@@ -1,11 +1,13 @@
 ---
-title: "AWR"
-description: "Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance."
-translationKey: "glossary_awr"
-aka: "Automatic Workload Repository"
+aka: Automatic Workload Repository
 articles:
-  - "/posts/oracle/oracle-awr-ash"
-  - "/posts/oracle/oracle-cloud-migration"
+- /posts/oracle/oracle-awr-ash
+- /posts/oracle/oracle-cloud-migration
+- /posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml
+description: Automatic Workload Repository — strumento diagnostico integrato in Oracle
+  Database per la raccolta e l'analisi delle statistiche di performance.
+title: AWR
+translationKey: glossary_awr
 ---
 
 **AWR** (Automatic Workload Repository) è un componente integrato nel database Oracle che raccoglie automaticamente statistiche sulle performance del sistema a intervalli regolari (di default ogni 60 minuti) e le conserva per un periodo configurabile.
