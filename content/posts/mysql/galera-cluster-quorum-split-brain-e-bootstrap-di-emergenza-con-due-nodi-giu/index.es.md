@@ -239,6 +239,6 @@ Simple sobre el papel. Menos simple cuando estás en casa de un cliente, tienes 
 
 - **[IST (Incremental State Transfer)](/es/glossary/sst/)** (Galera) — Sincronización incremental de un nodo que se reincorpora al cluster: recibe solo los writesets que le faltan desde el gcache de los otros nodos. Rápido y no invasivo para el donor; posible solo si el gap está cubierto por el gcache.
 
-- **SST (State Snapshot Transfer)** (Galera) — Transferencia completa del estado desde un nodo donor a un joiner: equivale a un backup físico completo. Necesario cuando el gap es demasiado grande para IST. Puede ralentizar al donor durante la transferencia.
+- **[SST (State Snapshot Transfer)](/es/glossary/primary-component/)** (Galera) — Transferencia completa del estado desde un nodo donor a un joiner: equivale a un backup físico completo. Necesario cuando el gap es demasiado grande para IST. Puede ralentizar al donor durante la transferencia.
 
-- **gcache** (Galera) — Buffer circular en disco que cada nodo Galera mantiene para conservar los writesets recientes. Dimensionar correctamente el gcache (`gcache.size`) es la principal palanca para favorecer IST frente a SST en reinicios breves.
+- **[gcache](/es/glossary/wsrep-cluster-size/)** (Galera) — Buffer circular en disco que cada nodo Galera mantiene para conservar los writesets recientes. Dimensionar correctamente el gcache (`gcache.size`) es la principal palanca para favorecer IST frente a SST en reinicios breves.
