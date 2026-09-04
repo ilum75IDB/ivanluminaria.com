@@ -1,13 +1,15 @@
 ---
-title: "ETL Oracle: from 4 hours to 25 minutes with staging tables, MERGE and parallel DML"
-date: 2099-12-31
-draft: true
-translationKey: "etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml"
+categories:
+- data-warehouse
+date: '2026-09-01'
+draft: false
+image: etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg
 tags: []
-categories: ["data-warehouse"]
-image: "etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg"
-webo_status: da_tradurre
+title: 'ETL Oracle: from 4 hours to 25 minutes with staging tables, MERGE and parallel
+  DML'
+translationKey: etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml
 webo_generated_at: 2026-09-04
+webo_status: scheduled
 ---
 
 ```
