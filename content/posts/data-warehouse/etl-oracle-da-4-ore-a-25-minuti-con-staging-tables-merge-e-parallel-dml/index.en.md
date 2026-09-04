@@ -7,32 +7,32 @@ tags: []
 categories: ["data-warehouse"]
 image: "etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg"
 webo_status: da_tradurre
-webo_generated_at: 2026-08-12
+webo_generated_at: 2026-09-04
 ---
 
 ```
 ---
-title: "The window that kept closing: rewriting a legacy Oracle ETL from 4 hours to 25 minutes"
-seoTitle: "Oracle ETL optimization: from 4 hours to 25 minutes with bulk DML"
-description: "A real Oracle 19c Data Warehouse case: how we rewrote a row-by-row PL/SQL ETL using staging tables, MERGE, direct path insert and parallel DML."
-tags: ["oracle-19c", "etl", "data-warehouse", "performance-tuning", "parallel-dml"]
+title: "The window that was closing: rewriting a legacy Oracle ETL from 4 hours to 24 minutes"
+seoTitle: "Oracle ETL optimization: from 4 hours to 24 minutes with bulk DML"
+description: "A real Oracle 19c Data Warehouse case: row-by-row ETL slipping past the batch window, diagnosed with AWR and fixed with staging, MERGE, and parallel DML."
+tags: ["oracle-19c", "etl", "performance-tuning", "data-warehouse", "parallel-dml"]
 ---
 ```
 
-## The window that kept closing
+## The window that was closing
 
 The client's DBA sent us a terse message: "Last night's batch finished at 7:12. The 7:00 reports were empty."
 
-It wasn't the first time. For a few weeks the nightly load had been slipping — first three and a half hours, then nearly four, then beyond. The batch window was fixed between 11 PM and 6:30 AM, and the process was regularly blowing past it. The next day we sat down with the client's DBA in front of the logs and started looking at what was actually happening.
+It wasn't the first time. For a few weeks the nightly load had been slipping — first three and a half hours, then nearly four, then beyond. The batch window was set between 11 PM and 6:30 AM, and the process had started overrunning it regularly. The next day we sat down with the client's DBA in front of the logs and started looking at what was actually happening.
 
-The context: an Oracle 19c Data Warehouse, a legacy ETL process written in PL/SQL, 15 million rows to load every night from operational sources. The volume hadn't changed significantly compared to the previous year — it had grown by 12%, nothing dramatic. The slowness wasn't a scale problem: it was a problem with how the code was written.
+The context: an Oracle 19c Data Warehouse, a legacy ETL process written in PL/SQL, 15 million rows to load every night from operational sources. The volume hadn't changed significantly compared to the previous year — it had grown 12%, nothing dramatic. The slowness wasn't a scale problem: it was a problem with how the code was written.
 
 ## What the logs were telling us
 
 The first tool we reached for was AWR [1]. An AWR report covering the nightly window immediately showed where the time was going: the top SQL by elapsed time was a PL/SQL block with a cursor iterating row by row over 15 million records.
 
 ```sql
--- original pattern (simplified) — the problem was exactly this
+-- original pattern (simplified) — this was exactly the problem
 FOR rec IN (SELECT * FROM stg_source_data WHERE process_flag = 'N') LOOP
     -- lookup on reference table with no index
     SELECT dim_id INTO v_dim_id
@@ -52,15 +52,15 @@ FOR rec IN (SELECT * FROM stg_source_data WHERE process_flag = 'N') LOOP
 END LOOP;
 ```
 
-Three lines of code, three causes of slowness. Let's go through them in order.
+Three patterns in the code, three causes of slowness. Let's go through them in order.
 
-## The four reasons an ETL falls behind
+## The four causes of an ETL that can't keep up
 
 **1. Row-by-row INSERT (row-by-row = slow-by-slow)**
 
-It's one of the most quoted phrases in Oracle training, yet it keeps showing up in production. Every single `INSERT` generates a round-trip to the buffer cache, updates undo segments, writes to the redo log. Multiplied across 15 million rows, the per-operation context overhead becomes dominant compared to the cost of the data itself.
+It's one of the most quoted lines in Oracle training, yet it keeps showing up in production. Every single `INSERT` generates a round-trip to the buffer cache, updates undo segments, writes to the redo log. Multiplied across 15 million rows, the per-operation context overhead becomes dominant compared to the cost of the data itself.
 
-The internal comparison we ran: a bulk `INSERT ... SELECT` over 15 million rows takes a fraction of the time compared to 15 million individual `INSERT` statements, even with identical data. It's not an I/O issue — it's per-operation overhead.
+The comparison we ran internally: a bulk `INSERT ... SELECT` over 15 million rows takes a fraction of the time compared to 15 million individual `INSERT` statements, even with identical data. It's not an I/O issue — it's per-operation overhead.
 
 **2. Lookup with no index on `dim_customer`**
 
@@ -70,7 +70,7 @@ AWR showed `dim_customer` as the table with the highest number of logical reads 
 
 **3. COMMIT every 100 rows**
 
-Frequent commits are often introduced with good intentions: "if something goes wrong, we don't lose everything." In practice, on Oracle, every COMMIT carries a non-trivial cost: flushing the redo log buffer, updating SCNs, synchronizing with background processes. Doing that 150,000 times per night (15M / 100) adds measurable overhead and, more importantly, prevents the database from optimizing operations in batch.
+Frequent commits are often introduced with good intentions: "if something goes wrong, we don't lose everything." In practice, on Oracle, every COMMIT carries a non-trivial cost: redo log buffer flush, SCN advancement, synchronization with background processes. Doing it 150,000 times per night (15M / 100) adds measurable overhead and, more importantly, prevents the database from optimizing operations in batch.
 
 **4. No parallelism**
 
@@ -112,7 +112,7 @@ CREATE INDEX idx_dim_customer_ext_code
     NOLOGGING;
 ```
 
-After creation, lookups against 2.8 million rows became index range scans on a highly selective column. The per-lookup cost dropped sharply.
+After creation, lookups across 2.8 million rows became index range scans on a highly selective column. The per-lookup cost dropped sharply.
 
 ### MERGE instead of separate INSERT + UPDATE
 
@@ -155,11 +155,11 @@ To get parallelism working on the `MERGE`, you have to enable it explicitly [4]:
 ALTER SESSION ENABLE PARALLEL DML;
 ```
 
-Without this, `PARALLEL` hints on DML operations are silently ignored — a detail that cost us time the first time we tested the rewrite and couldn't see meaningful improvements.
+Without this statement, `PARALLEL` hints on DML operations are silently ignored — a detail that cost us time the first time we tested the rewrite and weren't seeing meaningful improvements.
 
 ## The numbers, before and after
 
-We ran three test passes on a staging environment with an anonymized real dataset (same cardinality, same value distribution).
+We ran three test passes on a staging environment with a real anonymized dataset (same cardinality, same value distribution).
 
 | Metric | Before | After |
 |---|---|---|
@@ -173,17 +173,17 @@ Redo generated also dropped thanks to `NOLOGGING` on the staging table — thoug
 
 The load now finishes at 00:24. The batch window is comfortable again.
 
-## What's worth carrying forward
+## What's worth taking away
 
-A few weeks after going to production, the client's DBA sent another message — this one less terse: "It works. Thanks."
+A few weeks after going live, the client's DBA sent another message — this time less terse: "It works. Thanks."
 
 What we learned (or rather, confirmed) on this project isn't new, but it's worth writing down explicitly because it keeps coming up:
 
-**Row-by-row is the silent killer of legacy ETLs.** It's not obvious until you look at AWR or a 10046 trace. The code looks reasonable — a loop, an insert, a commit. The problem is that "reasonable" doesn't mean "efficient" when you scale to millions of rows.
+**Row-by-row is the silent killer of legacy ETLs.** It's not obvious until you look at AWR or a 10046 trace. The code looks reasonable — a loop, an insert, a commit. The issue is that "reasonable" doesn't mean "efficient" when you're scaling to millions of rows.
 
-**Frequent COMMITs don't protect you: they slow you down.** If the process needs to be restartable after a failure, the right approach is a staging table with a status flag — not committing every N rows to the destination table.
+**Frequent COMMITs don't protect: they slow things down.** If the process needs to be resumable after a failure, the right strategy is a staging table with a status flag — not committing every N rows to the destination table.
 
-**Oracle parallelism requires explicit configuration.** `ALTER SESSION ENABLE PARALLEL DML` is not optional if you want parallel DML operations. And the degree of parallelism needs to be calibrated on the actual server, not picked arbitrarily.
+**Oracle parallelism requires explicit configuration.** `ALTER SESSION ENABLE PARALLEL DML` is not optional if you want parallel DML operations. And the degree of parallelism needs to be calibrated against the actual server, not picked arbitrarily.
 
 **MERGE is underused.** Many legacy ETLs handle upserts with separate SELECT + INSERT/UPDATE statements. MERGE does the same thing in a single operation, with a single pass over the destination table.
 
@@ -198,12 +198,12 @@ The pattern — staging table → transformation with indexed joins → bulk MER
 
 ## Glossary candidate
 
-- **AWR** (Oracle Automatic Workload Repository) — Repository of periodic snapshots of Oracle workload metrics. Foundation for AWR reports and ADDM. Essential for diagnosing bottlenecks across specific time windows such as a nightly batch run.
+- **AWR** (Oracle Automatic Workload Repository) — Repository of periodic Oracle workload metric snapshots. Foundation for AWR reports and ADDM. Essential for diagnosing bottlenecks over specific time windows such as a nightly batch run.
 
 - **Direct Path Insert** — Oracle INSERT mode (activated by the `APPEND` hint) that bypasses the buffer cache and writes directly to datafiles. Dramatically reduces bulk load cost but requires careful attention to backup and recovery strategy.
 
-- **MERGE** (SQL) — SQL statement that combines INSERT and UPDATE into a single atomic operation (upsert). Performs a single pass over the destination table, eliminating the SELECT + INSERT/UPDATE pattern typical of legacy ETLs.
+- **MERGE** (SQL) — SQL statement that combines INSERT and UPDATE into a single atomic operation (upsert). Performs a single pass over the destination table, eliminating the separate SELECT + INSERT/UPDATE pattern typical of legacy ETLs.
 
 - **Parallel DML** (Oracle) — Parallel execution of DML operations (INSERT, UPDATE, DELETE, MERGE) across multiple Oracle processes. Requires `ALTER SESSION ENABLE PARALLEL DML` and explicit hints. Without session-level enablement, hints are silently ignored.
 
-- **Staging table** — Temporary table used as a landing area for raw data before transformation and loading into the final destination. Allows ETL phases to be separated, supports restartability, and enables bulk transformations instead of row-by-row processing.
+- **Staging table** — Temporary table used as a landing area for raw data before transformation and loading into the final destination. Allows ETL phases to be separated, supports resumability, and enables bulk transformations instead of row-by-row processing.
