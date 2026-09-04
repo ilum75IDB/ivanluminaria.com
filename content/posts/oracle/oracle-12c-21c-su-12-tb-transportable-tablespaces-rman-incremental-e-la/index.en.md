@@ -1,15 +1,23 @@
 ---
-title: "The Saturday night nobody wants: migrating 12 TB from Oracle 12.2 to 21c in a four-hour window"
-seoTitle: "Oracle 12.2 to 21c migration: 12 TB in 4 hours of downtime"
-description: "Moving 12 TB from Oracle 12.2 to 21c with transportable tablespaces and RMAN incremental backups, keeping downtime under four hours. Real numbers and commands."
+categories:
+- oracle
 date: 2099-12-31
+description: Moving 12 TB from Oracle 12.2 to 21c with transportable tablespaces and
+  RMAN incremental backups, keeping downtime under four hours. Real numbers and commands.
 draft: true
-translationKey: "oracle_12c_21c_su_12_tb_transportable_tablespaces_rman_incremental_e_la"
-tags: ["oracle", "migration", "rman", "transportable-tablespaces", "multitenant"]
-categories: ["oracle"]
-image: "oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la.cover.jpg"
-webo_status: da_tradurre
+image: oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la.cover.jpg
+seoTitle: 'Oracle 12.2 to 21c migration: 12 TB in 4 hours of downtime'
+tags:
+- oracle
+- migration
+- rman
+- transportable-tablespaces
+- multitenant
+title: 'The Saturday night nobody wants: migrating 12 TB from Oracle 12.2 to 21c in
+  a four-hour window'
+translationKey: oracle_12c_21c_su_12_tb_transportable_tablespaces_rman_incremental_e_la
 webo_generated_at: 2026-09-04
+webo_status: da_tradurre
 ---
 
 ## The Saturday night nobody wants
@@ -365,9 +373,8 @@ The longest part wasn't Saturday night. It was the week before: pre-checks with 
 
 ---
 
-## Glossary candidate
-
-- **Transportable Tablespaces (TTS)** — Oracle technique for moving tablespaces between databases by copying the physical datafiles and importing only the metadata via Data Pump. Much faster than a full export/import at large volumes.
+## Glossary
+- **[Transportable Tablespaces (TTS)](/en/glossary/transportable-tablespaces/)** — Oracle technique for moving tablespaces between databases by copying the physical datafiles and importing only the metadata via Data Pump. Much faster than a full export/import at large volumes.
 
 - **RMAN Incremental Backup** — an RMAN backup that records only the blocks changed since the last backup at the same or higher level. Level 0 is the full baseline, level 1 is the delta. Used in migration to synchronize the gap between the initial copy and the downtime window.
 
