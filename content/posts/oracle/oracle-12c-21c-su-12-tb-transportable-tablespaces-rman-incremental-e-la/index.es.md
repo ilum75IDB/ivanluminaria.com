@@ -86,7 +86,7 @@ SELECT platform_name, endian_format FROM v$transportable_platform
 WHERE endian_format = (SELECT endian_format FROM v$database);
 ```
 
-**Arquitectura de destino**: es la restricción que determina la forma de toda la migración, y conviene descubrirla antes de pedir el servidor, no la semana antes de la ventana. **En Oracle 21c la arquitectura non-CDB está desoportada**: multitenant es la única arquitectura soportada [3]. Un 12.2 non-CDB no se convierte en un 21c non-CDB, porque ese destino ya no existe — se convierte en una **PDB dentro de un CDB 21c**. No es un detalle de empaquetado: cambia dónde aterrizan las tablespace, cómo se abre la base de datos, y qué comandos se usan en la ventana.
+**Arquitectura de destino**: es la restricción que determina la forma de toda la migración, y conviene descubrirla antes de pedir el servidor, no la semana antes de la ventana. **En Oracle 21c la arquitectura non-CDB ya no tiene soporte**: multitenant es la única arquitectura soportada [3]. Un 12.2 non-CDB no se convierte en un 21c non-CDB, porque ese destino ya no existe — se convierte en una **PDB dentro de un CDB 21c**. No es un detalle de empaquetado: cambia dónde aterrizan las tablespace, cómo se abre la base de datos, y qué comandos se usan en la ventana.
 
 **Componentes deprecados**: el informe de pre-upgrade ya no se genera con un script SQL. A partir de Oracle 21c el Pre-Upgrade Information Tool (`preupgrade.jar`) ya no se distribuye, y sus funciones se han integrado en **AutoUpgrade** [4]:
 
@@ -246,13 +246,13 @@ No hay `dbupgrade` en este recorrido: el diccionario de datos no se migra, porqu
 
 Cuatro problemas que solo aparecen cuando ya estás dentro de la ventana.
 
-**Password file**: el formato en sí no cambia — `12.2` es el valor por defecto tanto en 12.2 como en 21c. Lo que cambia es la tolerancia: en 21c el parámetro `IGNORECASE` está desoportado y los password files son siempre case-sensitive [6]. Un password file heredado de un entorno que convivía con contraseñas case-insensitive deja de dejar entrar a los usuarios administrativos, y ocurre en el primer `sqlplus sys as sysdba` remoto — es decir, en el peor momento. Se regenera en el destino antes de la apertura:
+**Password file**: el formato en sí no cambia — `12.2` es el valor por defecto tanto en 12.2 como en 21c. Lo que cambia es la tolerancia: en 21c el parámetro `IGNORECASE` ya no tiene soporte y los password files son siempre case-sensitive [6]. Un password file heredado de un entorno que convivía con contraseñas case-insensitive deja de dejar entrar a los usuarios administrativos, y ocurre en el primer `sqlplus sys as sysdba` remoto — es decir, en el peor momento. Se regenera en el destino antes de la apertura:
 
 ```bash
 orapwd file=$ORACLE_HOME/dbs/orapwCDB1 password=<sys_password> format=12.2
 ```
 
-**Auditoría, y lo que se lee por ahí**: la versión que circula es "en 21c la auditoría tradicional ya no existe". No es así, y la diferencia importa cuando se planifica. En 21c el modo por defecto sigue siendo el **mixed mode** — unified auditing activo junto a la auditoría tradicional — exactamente igual que desde 12c en adelante; la auditoría tradicional está **deprecada** en 21c y **desoportada** solo a partir de 23c [5]. El *pure* unified auditing no es un parámetro: se obtiene reenlazando el binario Oracle con `uniaud_on` y reiniciando la instancia. En la práctica: la migración no obliga a rehacer las políticas de auditoría esa noche, pero la factura llega en la siguiente release — y conviene planificar la conversión, no descubrirla cuando ya es obligatoria.
+**Auditoría, y lo que se lee por ahí**: la versión que circula es "en 21c la auditoría tradicional ya no existe". No es así, y la diferencia importa cuando se planifica. En 21c el modo por defecto sigue siendo el **mixed mode** — unified auditing activo junto a la auditoría tradicional — exactamente igual que desde 12c en adelante; la auditoría tradicional está **deprecada** en 21c y **sin soporte** solo a partir de 23c [5]. El *pure* unified auditing no es un parámetro: se obtiene reenlazando el binario Oracle con `uniaud_on` y reiniciando la instancia. En la práctica: la migración no obliga a rehacer las políticas de auditoría esa noche, pero la factura llega en la siguiente release — y conviene planificar la conversión, no descubrirla cuando ya es obligatoria.
 
 **Auto-Indexing**: Oracle 21c tiene Auto-Indexing habilitado (introducido en 19c). Si no se quiere que Oracle empiece a crear índices automáticamente en la nueva base de datos, hay que deshabilitarlo explícitamente:
 
@@ -260,7 +260,7 @@ orapwd file=$ORACLE_HOME/dbs/orapwCDB1 password=<sys_password> format=12.2
 EXEC DBMS_AUTO_INDEX.CONFIGURE('AUTO_INDEX_MODE','OFF');
 ```
 
-**El CDB no es una decisión que se puede aplazar**: quien viene de 12.2 tiende a tratar multitenant como una decisión arquitectónica que se puede tomar con calma, quizás en la siguiente release. En 21c esa calma no existe: el non-CDB está desoportado, así que el destino es una PDB y punto. La consecuencia operativa es que el CDB hay que crearlo y probarlo **antes** de la ventana, con su `db_name`, sus parámetros de memoria, sus servicios — y hay que trasladar a la PDB los objetos que en la base de datos antigua vivían fuera de las tablespace transportadas: perfiles, roles, usuarios, directory objects, DB links, jobs del scheduler. No viajan con el TTS, y son la partida que más a menudo se descubre que falta el lunes por la mañana.
+**El CDB no es una decisión que se puede aplazar**: quien viene de 12.2 tiende a tratar multitenant como una decisión arquitectónica que se puede tomar con calma, quizás en la siguiente release. En 21c esa calma no existe: el non-CDB ya no tiene soporte, así que el destino es una PDB y punto. La consecuencia operativa es que el CDB hay que crearlo y probarlo **antes** de la ventana, con su `db_name`, sus parámetros de memoria, sus servicios — y hay que trasladar a la PDB los objetos que en la base de datos antigua vivían fuera de las tablespace transportadas: perfiles, roles, usuarios, directory objects, DB links, jobs del scheduler. No viajan con el TTS, y son la partida que más a menudo se descubre que falta el lunes por la mañana.
 
 ---
 
@@ -358,10 +358,10 @@ La parte más larga no fue la noche del sábado. Fue la semana anterior: los pre
 
 1. Oracle Database Backup and Recovery User's Guide 21c — [Transporting Data Across Platforms](https://docs.oracle.com/en/database/oracle/oracle-database/21/bradv/rman-transporting-data-across-platforms.html) (`BACKUP … FOR TRANSPORT ALLOW INCONSISTENT`, `RESTORE FOREIGN TABLESPACE`, `RECOVER FOREIGN DATAFILECOPY`)
 2. Oracle Database Administrator's Guide 21c — [Transporting Tablespaces Between Databases](https://docs.oracle.com/en/database/oracle/oracle-database/21/admin/transporting-data.html)
-3. Oracle Database Upgrade Guide 21c — [Manual Non-CDB Release Upgrades to Multitenant Architecture](https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/upgrade-scenarios-non-cdb-oracle-databases.html) (desoporto de la arquitectura non-CDB)
+3. Oracle Database Upgrade Guide 21c — [Manual Non-CDB Release Upgrades to Multitenant Architecture](https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/upgrade-scenarios-non-cdb-oracle-databases.html) (fin del soporte para la arquitectura non-CDB)
 4. Oracle Database Upgrade Guide 21c — [Using the Pre-Upgrade Information Tool](https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/using-preupgrade-information-tool-for-oracle-database.html) (`preupgrade.jar` ya no distribuido, funciones integradas en AutoUpgrade)
 5. Oracle Database Security Guide 21c — [Introduction to Auditing](https://docs.oracle.com/en/database/oracle/oracle-database/21/dbseg/introduction-to-auditing.html) (mixed mode por defecto, `uniaud_on` para el pure unified auditing)
-6. Oracle Database Administrator's Reference 21c — [Creating and Populating Password Files](https://docs.oracle.com/en/database/oracle/oracle-database/21/ntqrf/creating-and-populating-password-files.html) (`format`, desoporto de `IGNORECASE`)
+6. Oracle Database Administrator's Reference 21c — [Creating and Populating Password Files](https://docs.oracle.com/en/database/oracle/oracle-database/21/ntqrf/creating-and-populating-password-files.html) (`format`, fin del soporte de `IGNORECASE`)
 
 ---
 
