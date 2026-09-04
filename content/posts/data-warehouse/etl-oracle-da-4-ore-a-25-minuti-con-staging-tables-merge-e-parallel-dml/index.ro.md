@@ -14,7 +14,7 @@ webo_generated_at: 2026-09-04
 ---
 title: "Fereastra care se închidea: cum am rescris un ETL Oracle de la 4 ore la 24 de minute"
 seoTitle: "ETL Oracle 19c: de la 4 ore la 24 minute cu bulk load și MERGE"
-description: "Un batch nocturn care depășea fereastra de încărcare. AWR, direct path insert, MERGE paralel și un singur COMMIT: diagnosticare și rescriere pas cu pas."
+description: "Un batch nocturn Oracle 19c depășea fereastra de încărcare. Diagnostic AWR, rescrierea cu direct path insert, MERGE paralel și un singur COMMIT."
 tags: ["oracle-19c", "etl", "data-warehouse", "parallel-dml", "performance-tuning"]
 ---
 ```
@@ -23,18 +23,18 @@ tags: ["oracle-19c", "etl", "data-warehouse", "parallel-dml", "performance-tunin
 
 DBA-ul clientului ne trimisese un mesaj laconic: „Batch-ul de ieri noapte a terminat la 7:12. Rapoartele de la 7:00 erau goale."
 
-Nu era prima dată. De câteva săptămâni, încărcarea nocturnă aluneca — mai întâi 3 ore și jumătate, apoi aproape 4, apoi peste. Fereastra batch era fixată între 23:00 și 6:30, iar sistemul începuse să depășească regulat. A doua zi ne-am așezat în fața log-urilor împreună cu DBA-ul clientului și am început să vedem ce se întâmpla cu adevărat.
+Nu era prima dată. De câteva săptămâni, încărcarea nocturnă aluneca — mai întâi 3 ore și jumătate, apoi aproape 4, apoi peste. Fereastra batch era fixată între 23:00 și 6:30, iar sistemul începuse să o depășească regulat. A doua zi ne-am așezat în fața log-urilor împreună cu DBA-ul clientului și am început să vedem ce se întâmpla cu adevărat.
 
-Contextul: un Data Warehouse Oracle 19c, un proces ETL legacy scris în PL/SQL, 15 milioane de rânduri de încărcat în fiecare noapte din surse operaționale. Volumul nu se schimbase semnificativ față de anul precedent — crescuse cu 12%, nimic dramatic. Lentoarea nu era o problemă de scală: era o problemă legată de modul în care era scris codul.
+Contextul: un Data Warehouse Oracle 19c, un proces ETL legacy scris în PL/SQL, 15 milioane de rânduri de încărcat în fiecare noapte din surse operaționale. Volumul nu crescuse semnificativ față de anul precedent — plus 12%, nimic dramatic. Lentoarea nu era o problemă de scală: era o problemă de cum era scris codul.
 
 ## Ce povesteau log-urile
 
-Primul instrument pe care l-am folosit a fost AWR [1]. Un raport AWR pe fereastra nocturnă arăta imediat unde se ducea timpul: top SQL-ul după elapsed time era un bloc PL/SQL cu un cursor care itera rând cu rând peste 15 milioane de înregistrări.
+Primul instrument pe care l-am folosit a fost AWR [1]. Un raport AWR pe fereastra nocturnă arăta imediat unde se ducea timpul: top SQL după elapsed time era un bloc PL/SQL cu un cursor care itera rând cu rând peste 15 milioane de înregistrări.
 
 ```sql
--- pattern original (simplificat) — problema era exact aceasta
+-- pattern original (simplificat) — problema era exact acesta
 FOR rec IN (SELECT * FROM stg_source_data WHERE process_flag = 'N') LOOP
-    -- lookup pe tabelă de referință fără index
+    -- lookup pe tabel de referință fără index
     SELECT dim_id INTO v_dim_id
     FROM dim_customer
     WHERE ext_code = rec.customer_code;
@@ -58,19 +58,19 @@ Trei rânduri de cod, trei cauze de lentoare. Să le luăm pe rând.
 
 **1. INSERT rând cu rând (row-by-row = slow-by-slow)**
 
-E una dintre frazele cele mai citate în cursurile Oracle, dar continuă să apară în producție. Fiecare `INSERT` individual generează un round-trip către buffer cache, actualizează segmentele de undo, scrie în redo log. Înmulțit cu 15 milioane de rânduri, costul de context per operațiune devine dominant față de costul datei în sine.
+E una dintre frazele cel mai des citate în cursurile Oracle, dar continuă să apară în producție. Fiecare `INSERT` individual generează un round-trip către buffer cache, actualizează segmentele de undo, scrie în redo log. Înmulțit cu 15 milioane de rânduri, costul de context per operație devine dominant față de costul datei în sine.
 
-Comparația pe care am făcut-o intern: un `INSERT ... SELECT` bulk pe 15 milioane de rânduri consumă o fracțiune din timp față de 15 milioane de `INSERT`-uri individuale, chiar la aceleași date. Nu e o problemă de IO — e o problemă de overhead per operațiune.
+Comparația pe care am făcut-o intern: un `INSERT ... SELECT` bulk pe 15 milioane de rânduri consumă o fracțiune din timp față de 15 milioane de `INSERT`-uri individuale, la date identice. Nu e o problemă de IO — e o problemă de overhead per operație.
 
 **2. Lookup fără index pe `dim_customer`**
 
-Tabela `dim_customer` avea aproximativ 2,8 milioane de rânduri. Coloana `ext_code` — cea folosită pentru join cu sursa — nu avea niciun index. Fiecare lookup era un full table scan pe 2,8 milioane de rânduri, repetat de 15 milioane de ori.
+Tabelul `dim_customer` avea aproximativ 2,8 milioane de rânduri. Coloana `ext_code` — cea folosită pentru join cu sursa — nu avea niciun index. Fiecare lookup era un full table scan pe 2,8 milioane de rânduri, repetat de 15 milioane de ori.
 
-AWR arăta `dim_customer` ca tabela cu cel mai mare număr de logical reads din întreaga fereastră nocturnă. Nu era o coincidență.
+AWR arăta `dim_customer` ca tabelul cu cel mai mare număr de logical reads din întreaga fereastră nocturnă. Nu era o coincidență.
 
 **3. COMMIT la fiecare 100 de rânduri**
 
-COMMIT-ul frecvent e introdus adesea cu intenții bune: „dacă ceva merge prost, nu pierdem totul". În realitate, pe Oracle, fiecare COMMIT are un cost deloc neglijabil: flush al redo log buffer, actualizarea SCN-urilor, sincronizare cu procesele de background. A-l face de 150.000 de ori pe noapte (15M / 100) adaugă un overhead măsurabil și, mai ales, împiedică baza de date să optimizeze operațiunile în batch.
+COMMIT-ul frecvent e introdus adesea cu intenții bune: „dacă ceva merge prost, nu pierdem totul". În realitate, pe Oracle, fiecare COMMIT are un cost deloc neglijabil: flush al redo log buffer, actualizarea SCN-urilor, sincronizare cu procesele de background. A-l face de 150.000 de ori pe noapte (15M / 100) adaugă un overhead măsurabil și, mai ales, împiedică baza de date să optimizeze operațiile în batch.
 
 **4. Niciun paralelism**
 
@@ -82,7 +82,7 @@ Strategia pe care am adoptat-o împreună cu echipa se articula în patru mișc�
 
 ### Staging table cu bulk load
 
-Primul pas a fost separarea încărcării de transformare. Datele din sursă sunt mai întâi încărcate într-o staging table cu un `INSERT /*+ APPEND */ ... SELECT` — o singură operațiune bulk care ocolește buffer cache-ul și scrie direct în datafile-uri (direct path insert) [2].
+Primul pas a fost separarea încărcării de transformare. Datele din sursă sunt mai întâi încărcate într-un staging table cu un `INSERT /*+ APPEND */ ... SELECT` — o singură operație bulk care ocolește buffer cache-ul și scrie direct în datafile-uri (direct path insert) [2].
 
 ```sql
 -- încărcare staging: direct path insert, nologging
@@ -99,7 +99,7 @@ WHERE s.load_date = TRUNC(SYSDATE);
 COMMIT;  -- un singur commit după bulk
 ```
 
-Hint-ul `APPEND` activează direct path insert. `NOLOGGING` reduce scrierea în redo log (acceptabil pentru o staging table recreată în fiecare noapte). `PARALLEL` distribuie lucrul pe 8 procese paralele.
+Hint-ul `APPEND` activează direct path insert. `NOLOGGING` reduce scrierea în redo log (acceptabil pentru un staging table recreat în fiecare noapte). `PARALLEL` distribuie lucrul pe 8 procese paralele.
 
 ### Index pe `dim_customer.ext_code`
 
@@ -112,11 +112,11 @@ CREATE INDEX idx_dim_customer_ext_code
     NOLOGGING;
 ```
 
-După creare, lookup-urile pe 2,8 milioane de rânduri au devenit index range scan pe o coloană cu selectivitate ridicată. Costul per lookup a scăzut drastic.
+După creare, lookup-urile pe 2,8 milioane de rânduri au devenit index range scan pe o coloană cu selectivitate ridicată. Costul per lookup a scăzut dramatic.
 
 ### MERGE în loc de INSERT + UPDATE separate
 
-Procesul original avea și o logică de „upsert" implicită: dacă rândul exista deja în `fact_sales` (pentru reprelucrări parțiale), trebuia actualizat; altfel, inserat. Codul original gestiona asta cu un `SELECT COUNT(*)` înainte de fiecare `INSERT`, adăugând un round-trip suplimentar per rând.
+Procesul original conținea și o logică implicită de „upsert": dacă rândul exista deja în `fact_sales` (pentru reprelucrări parțiale), trebuia actualizat; altfel, inserat. Codul original gestiona asta cu un `SELECT COUNT(*)` înaintea fiecărui `INSERT`, adăugând un round-trip suplimentar per rând.
 
 Rescrierea folosește `MERGE` [3]:
 
@@ -142,10 +142,10 @@ WHEN NOT MATCHED THEN
     INSERT (dim_customer_id, sale_date, amount, product_id)
     VALUES (src.dim_customer_id, src.sale_date, src.amount, src.product_id);
 
-COMMIT;  -- un singur commit pentru tot MERGE-ul
+COMMIT;  -- un singur commit pentru întregul MERGE
 ```
 
-O singură operațiune, un singur commit, join-ul cu `dim_customer` executat o singură dată pe întregul dataset în loc de 15 milioane de ori.
+O singură operație, un singur commit, join-ul cu `dim_customer` executat o singură dată pe întregul dataset în loc de 15 milioane de ori.
 
 ### Parallel DML activat la nivel de sesiune
 
@@ -155,7 +155,7 @@ Pentru ca paralelismul să funcționeze pe `MERGE`, trebuie activat explicit [4]
 ALTER SESSION ENABLE PARALLEL DML;
 ```
 
-Fără această instrucțiune, hint-urile `PARALLEL` pe operațiunile DML sunt ignorate în tăcere — un detaliu care ne-a costat timp și nouă prima dată când am testat rescrierea și nu vedeam îmbunătățiri semnificative.
+Fără această instrucțiune, hint-urile `PARALLEL` pe operațiile DML sunt ignorate în tăcere — un detaliu care ne-a costat timp și nouă la prima testare a rescrierii, când nu vedeam îmbunătățiri semnificative.
 
 ## Cifrele, înainte și după
 
@@ -169,27 +169,27 @@ Am rulat trei teste pe un mediu de staging cu un dataset real anonimizat (aceea�
 | Procese paralele active | 1 | 8 |
 | Redo generat | ~18 GB | ~3,2 GB |
 
-Redo-ul generat a scăzut și datorită `NOLOGGING` pe staging table — care trebuie folosit cu discernământ: o staging table `NOLOGGING` nu este recuperabilă dintr-un backup incremental luat în timpul încărcării. În cazul nostru era acceptabil, deoarece staging-ul este recreat de la zero în fiecare noapte din sursă.
+Redo-ul generat a scăzut și datorită `NOLOGGING` pe staging table — care însă trebuie folosit cu discernământ: un staging table `NOLOGGING` nu poate fi recuperat dintr-un backup incremental luat în timpul încărcării. În cazul nostru era acceptabil, pentru că staging-ul este recreat de la zero în fiecare noapte din sursă.
 
-Încărcarea termină acum la 00:24. Fereastra batch este din nou confortabilă.
+Încărcarea se termină acum la 00:24. Fereastra batch e din nou confortabilă.
 
 ## Ce merită dus mai departe
 
-La câteva săptămâni după punerea în producție, DBA-ul clientului ne-a trimis un alt mesaj — de data aceasta mai puțin laconic: „Funcționează. Mulțumim."
+La câteva săptămâni după punerea în producție, DBA-ul clientului ne-a trimis un alt mesaj — de data aceasta mai puțin laconic: „Funcționează. Mulțumesc."
 
-Ce am învățat (sau mai bine zis, confirmat) în acest proiect nu e nou, dar merită scris explicit pentru că tot continuă să apară:
+Ce am învățat (sau mai degrabă confirmat) în acest proiect nu e nou, dar merită scris explicit pentru că se tot repetă:
 
 **Row-by-row este ucigașul tăcut al ETL-urilor legacy.** Nu e evident până nu te uiți în AWR sau într-un trace 10046. Codul pare rezonabil — un loop, un insert, un commit. Problema e că „rezonabil" nu înseamnă „eficient" când scalezi la milioane de rânduri.
 
-**COMMIT-ul frecvent nu protejează: încetinește.** Dacă procesul trebuie să poată fi reluat în caz de eroare, strategia corectă este staging table cu un flag de stare — nu commit la fiecare N rânduri pe tabela de destinație.
+**COMMIT-ul frecvent nu protejează: încetinește.** Dacă procesul trebuie să fie reluabil în caz de eroare, strategia corectă este staging table-ul cu un flag de stare — nu commit la fiecare N rânduri pe tabelul de destinație.
 
-**Paralelismul Oracle necesită configurare explicită.** `ALTER SESSION ENABLE PARALLEL DML` nu e opțional dacă vrei operațiuni DML paralele. Iar gradele de paralelism trebuie calibrate pe serverul real, nu alese la întâmplare.
+**Paralelismul Oracle necesită configurare explicită.** `ALTER SESSION ENABLE PARALLEL DML` nu e opțional dacă vrei operații DML paralele. Iar gradele de paralelism trebuie calibrate pe serverul real, nu alese la întâmplare.
 
-**MERGE este subutilizat.** Multe ETL-uri legacy gestionează upsert-ul cu SELECT + INSERT/UPDATE separate. MERGE face același lucru într-o singură operațiune, cu un singur acces la tabela de destinație.
+**MERGE este subutilizat.** Multe ETL-uri legacy gestionează upsert-ul cu SELECT + INSERT/UPDATE separate. MERGE face același lucru într-o singură operație, cu un singur acces la tabelul de destinație.
 
-Tiparul — staging table → transformare cu join-uri indexate → MERGE bulk cu parallel DML → commit unic — este reutilizabil pe orice ETL Oracle cu caracteristici similare. Nu e o soluție magică: necesită înțelegerea profilului datei (cardinalitate, distribuție, frecvență de actualizare) și testarea gradelor de paralelism pe hardware-ul real. Ca punct de plecare pentru o rescriere, funcționează.
+Tiparul — staging table → transformare cu join-uri indexate → MERGE bulk cu parallel DML → commit unic — este reutilizabil pe orice ETL Oracle cu caracteristici similare. Nu e o soluție magică: necesită înțelegerea profilului datei (cardinalitate, distribuție, frecvență de actualizare) și testarea gradelor de paralelism pe hardware-ul real. Dar ca punct de plecare pentru o rescriere, funcționează.
 
-## Fonti ufficiali
+## Surse oficiale
 
 1. Oracle Database — [Automatic Workload Repository (AWR)](https://docs.oracle.com/en/database/oracle/oracle-database/19/tgdba/gathering-database-statistics.html)
 2. Oracle Database — [Direct Path INSERT](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/INSERT.html#GUID-903F8043-0254-4EE9-ACC1-CB8AC0AF3423)
@@ -198,12 +198,12 @@ Tiparul — staging table → transformare cu join-uri indexate → MERGE bulk c
 
 ## Glosar candidat
 
-- **AWR** (Oracle Automatic Workload Repository) — Repository de snapshot-uri periodice ale metricilor de workload Oracle. Baza pentru rapoartele AWR și pentru ADDM. Esențial pentru diagnosticarea blocajelor pe ferestre temporale specifice, cum ar fi o noapte de batch.
+- **[AWR](/ro/glossary/awr/)** (Oracle Automatic Workload Repository) — Depozit de snapshot-uri periodice cu metrici de workload Oracle. Baza pentru rapoartele AWR și pentru ADDM. Esențial pentru diagnosticarea blocajelor pe ferestre temporale specifice, cum ar fi o noapte de batch.
 
-- **Direct Path Insert** — Modalitate de INSERT Oracle (activată prin hint-ul `APPEND`) care ocolește buffer cache-ul și scrie direct în datafile-uri. Reduce drastic costul încărcărilor bulk, dar necesită atenție la strategia de backup și recovery.
+- **[Direct Path Insert](/ro/glossary/direct-path-insert/)** — Modalitate de INSERT Oracle (activată prin hint-ul `APPEND`) care ocolește buffer cache-ul și scrie direct în datafile-uri. Reduce drastic costul încărcărilor bulk, dar necesită atenție la strategia de backup și recovery.
 
-- **MERGE** (SQL) — Instrucțiune SQL care combină INSERT și UPDATE într-o singură operațiune atomică (upsert). Efectuează un singur acces la tabela de destinație, eliminând tiparul SELECT + INSERT/UPDATE separate specific ETL-urilor legacy.
+- **[MERGE](/ro/glossary/merge/)** (SQL) — Instrucțiune SQL care combină INSERT și UPDATE într-o singură operație atomică (upsert). Execută un singur acces la tabelul de destinație, eliminând tiparul SELECT + INSERT/UPDATE separate specific ETL-urilor legacy.
 
-- **Parallel DML** (Oracle) — Execuție paralelă a operațiunilor DML (INSERT, UPDATE, DELETE, MERGE) pe mai multe procese Oracle. Necesită `ALTER SESSION ENABLE PARALLEL DML` și hint-uri explicite. Fără activarea la nivel de sesiune, hint-urile sunt ignorate în tăcere.
+- **[Parallel DML](/ro/glossary/awr/)** (Oracle) — Execuție paralelă a operațiilor DML (INSERT, UPDATE, DELETE, MERGE) pe mai multe procese Oracle. Necesită `ALTER SESSION ENABLE PARALLEL DML` și hint-uri explicite. Fără activarea la nivel de sesiune, hint-urile sunt ignorate în tăcere.
 
-- **Staging table** — Tabelă temporară folosită ca zonă de aterizare a datelor brute înainte de transformare și încărcare în destinația finală. Permite separarea fazelor ETL, gestionarea posibilității de reluare și aplicarea transformărilor în bulk în loc de rând cu rând.
+- **[Staging table](/ro/glossary/direct-path-insert/)** — Tabel temporar folosit ca zonă de aterizare a datelor brute înainte de transformare și încărcare în destinația finală. Permite separarea fazelor ETL, gestionarea reluabilității și aplicarea transformărilor în bulk în loc de rând cu rând.
