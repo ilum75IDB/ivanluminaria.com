@@ -1,11 +1,11 @@
 ---
 categories:
 - data-warehouse
-date: 2099-12-31
+date: '2026-09-01'
 description: 'Un ETL notturno su DWH Oracle: 15 milioni di righe, finestra batch in
   esaurimento. Diagnosi, riscrittura con staging tables, MERGE e parallel DML. Numeri
   prima e dopo.'
-draft: true
+draft: false
 image: etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg
 seoTitle: 'ETL Oracle: da 4 ore a 25 minuti con bulk loading e MERGE'
 tags:
@@ -17,7 +17,7 @@ tags:
 title: 'ETL Oracle: da 4 ore a 25 minuti con staging tables, MERGE e parallel DML'
 translationKey: etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml
 webo_generated_at: 2026-08-12
-webo_status: da_approvare
+webo_status: scheduled
 ---
 
 ## La finestra che si chiudeva
