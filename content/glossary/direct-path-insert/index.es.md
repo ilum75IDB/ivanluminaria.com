@@ -1,10 +1,12 @@
 ---
-title: "Direct-path insert"
-description: "Modo de carga de datos de Oracle que omite el buffer cache y escribe directamente en los datafiles mediante el hint /*+ APPEND */."
-translationKey: "glossary_direct_path_insert"
-aka: "Direct-path insert (hint APPEND de Oracle)"
+aka: Direct-path insert (hint APPEND de Oracle)
 articles:
-  - "/posts/oracle/articolo-oracle-assertions-in-oracle-26ai"
+- /posts/oracle/articolo-oracle-assertions-in-oracle-26ai
+- /posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml
+description: Modo de carga de datos de Oracle que omite el buffer cache y escribe
+  directamente en los datafiles mediante el hint /*+ APPEND */.
+title: Direct-path insert
+translationKey: glossary_direct_path_insert
 ---
 
 El Direct-path insert es un modo de escritura de Oracle que omite el buffer cache e inserta los datos directamente en los datafiles, por encima del high-water mark del segmento. Se activa mediante el hint `/*+ APPEND */` en una instrucción `INSERT` y se utiliza habitualmente en operaciones de carga masiva para reducir la sobrecarga de I/O y el volumen de redo generado.
