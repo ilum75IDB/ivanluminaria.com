@@ -93,6 +93,16 @@ Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena 
 - Ambientazione **professionale diurna**, luce naturale
 - L'interlocutore può essere implicito o mostrato in piccolo in secondo piano
 
+**Regola dell'unica cornetta (vale per TUTTI i casi di telefonata):**
+
+Nella scena esiste **una sola cornetta**, e sta all'orecchio del personaggio.
+
+- La base del telefono appoggiata sulla scrivania ha la **culla vuota e scoperta**: si vedono i due appoggi metallici liberi, il piano della culla sgombro, la sagoma della base interrotta al centro
+- **Un solo filo a spirale** collega la base alla cornetta in mano, e nessun altro
+- Se disegnare la culla vuota risulta ambiguo, **inquadra la base parzialmente** (tagliata dal bordo, o coperta da un oggetto in primo piano) oppure **ometti del tutto l'apparecchio**, lasciando solo cornetta e filo che escono di scena
+
+La regola esiste perché "telefono nero d'epoca su scrivania" e "personaggio al telefono" sono due immagini che tendono a comparire insieme ciascuna completa di cornetta: il risultato è un apparecchio con due cornette, una all'orecchio e una in culla, con il filo che le collega. Descrivere la culla per quello che **contiene** (nulla, appoggi liberi) funziona meglio che dire cosa non deve esserci.
+
 **Caso affiancamento (Ivan = DBA senior mentor + collega junior):**
 
 - Ivan in giacca elegante + baffi a manubrio (il senior, riconoscibile)
