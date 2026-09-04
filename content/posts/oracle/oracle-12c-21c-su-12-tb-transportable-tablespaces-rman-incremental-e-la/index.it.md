@@ -1,11 +1,11 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
+date: '2026-09-15'
 description: Strategia ibrida con transportable tablespaces e RMAN incremental per
   migrare 12 TB da Oracle 12c a 21c. Piano passo per passo, tempi reali, problemi
   nascosti.
-draft: true
+draft: false
 image: oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la.cover.jpg
 seoTitle: 'Migrazione Oracle 12c → 21c: 12 TB in 4 ore di downtime'
 tags:
@@ -18,7 +18,7 @@ title: 'Oracle 12c → 21c su 12 TB: transportable tablespaces, RMAN incremental
   finestra del sabato notte'
 translationKey: oracle_12c_21c_su_12_tb_transportable_tablespaces_rman_incremental_e_la
 webo_generated_at: 2026-09-04
-webo_status: da_approvare
+webo_status: scheduled
 ---
 
 ## Il sabato notte che nessuno vuole

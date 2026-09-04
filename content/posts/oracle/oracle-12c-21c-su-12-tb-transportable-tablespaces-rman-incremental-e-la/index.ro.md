@@ -1,15 +1,23 @@
 ---
-title: "Sâmbătă noaptea pe care nimeni nu și-o dorește: migrare Oracle 12c → 21c pe 12 TB cu transportable tablespaces și RMAN incremental"
-seoTitle: "Migrare Oracle 12.2 → 21c: 12 TB în 4 ore de downtime"
-description: "Cum am mutat 12 TB Oracle de la 12.2 la 21c într-o fereastră de 4 ore: strategie TTS + RMAN incremental, pași detaliați și cifrele reale din noaptea migrării."
-date: 2099-12-31
-draft: true
-translationKey: "oracle_12c_21c_su_12_tb_transportable_tablespaces_rman_incremental_e_la"
-tags: ["oracle", "migration", "rman", "transportable-tablespaces", "multitenant"]
-categories: ["oracle"]
-image: "oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la.cover.jpg"
-webo_status: da_tradurre
+categories:
+- oracle
+date: '2026-09-15'
+description: 'Cum am mutat 12 TB Oracle de la 12.2 la 21c într-o fereastră de 4 ore:
+  strategie TTS + RMAN incremental, pași detaliați și cifrele reale din noaptea migrării.'
+draft: false
+image: oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la.cover.jpg
+seoTitle: 'Migrare Oracle 12.2 → 21c: 12 TB în 4 ore de downtime'
+tags:
+- oracle
+- migration
+- rman
+- transportable-tablespaces
+- multitenant
+title: 'Sâmbătă noaptea pe care nimeni nu și-o dorește: migrare Oracle 12c → 21c pe
+  12 TB cu transportable tablespaces și RMAN incremental'
+translationKey: oracle_12c_21c_su_12_tb_transportable_tablespaces_rman_incremental_e_la
 webo_generated_at: 2026-09-04
+webo_status: scheduled
 ---
 
 ## Sâmbătă noaptea pe care nimeni nu și-o dorește
