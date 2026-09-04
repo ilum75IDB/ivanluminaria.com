@@ -68,5 +68,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 48 | 2026-09-08 | — | Tue | Galera Cluster: quorum, split-brain e bootstrap di emergenza con due nodi giù | mysql | #54 | 2026-09-04 | scheduled |
 
+| 49 | 2026-09-15 | — | Tue | Oracle 12c → 21c su 12 TB: transportable tablespaces, RMAN incremental e la fine | oracle | #52 | 2026-09-04 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-08-18 (Tuesday)

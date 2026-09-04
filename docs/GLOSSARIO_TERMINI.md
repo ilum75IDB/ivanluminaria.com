@@ -24,6 +24,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
+| Auto-Indexing | funzionalità Oracle (disponibile da 19c, configurabile in 21c) che analizza il workload e crea automaticamente indici in | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Binlog | registro sequenziale di tutte le modifiche ai dati sul master MySQL. Base della replica: lo slave legge il binlog per sa | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
@@ -38,6 +39,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
+| dbupgrade | utility Oracle (successore di `catupgrd.sql`) che aggiorna il dizionario dati di sistema durante un upgrade di versione. | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
 | Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
 | Cutover | Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura | oracle-cloud-migration |
@@ -135,6 +137,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Pre-upgrade assessment | Misurazione strutturata di dimensioni, crescita, tempi di backup e restore di un database prima di un upgrade. Serve a dimensionare la finestra di manutenzione e a definire una strategia di rollback realistica | mysql-pre-upgrade-assessment |
 | Psychological Safety | Clima di team in cui le persone possono ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione | team-di-progetto-che-reggono |
 | Publication (PostgreSQL) | Oggetto della replica logica PostgreSQL che definisce l'insieme di tabelle (e righe, dalla 15) i cui cambiamenti vengono resi disponibili ai subscriber. Risiede sul publisher e può essere consumata da più subscriber indipendenti | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
+| RMAN Incremental Backup | backup RMAN che registra solo i blocchi modificati dall'ultimo backup di livello uguale o superiore. Level 0 è la base c | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
 | pg_trgm | Estensione PostgreSQL che fornisce funzioni e operatori per la ricerca di similarità basata su trigrammi, abilitando l'uso di indici GIN per LIKE con wildcard | like-optimization-postgresql |
@@ -187,12 +190,14 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | THP | Transparent Huge Pages — funzione del kernel Linux che promuove automaticamente le pagine normali a pagine grandi, causa latenze imprevedibili e deve essere disabilitata per Oracle | oracle-linux-kernel |
 | Timeboxing | Tecnica di gestione del tempo che assegna un intervallo fisso e non negoziabile a un'attività, forzando la conclusione entro il limite stabilito | tecnica-si-e-yes-and, standup-meeting-15-minuti |
 | Transport Lag | Ritardo nella trasmissione dei redo log dal database primary allo standby in una configurazione Data Guard, indicatore critico della salute della replica | oracle-cloud-migration |
+| Transportable Tablespaces (TTS) | tecnica Oracle che permette di spostare tablespace tra database copiando i datafile fisici e importando solo il metadata | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Type safety | Proprietà di un sistema di tipi che impedisce, a parse-time, l'uso di valori incompatibili con il tipo dichiarato di colonna, parametro o variabile | enum-postgresql-paga-o-pesa |
 | Swappiness | Parametro kernel Linux (vm.swappiness) che controlla la propensione del sistema a spostare pagine di memoria nello swap | oracle-linux-kernel |
 | Switchover | Operazione pianificata di Data Guard che inverte i ruoli tra primary e standby senza perdita di dati, reversibile e controllata | oracle-cloud-migration |
 | System Privilege | Privilegio Oracle che autorizza operazioni globali sul database come CREATE TABLE, CREATE SESSION o ALTER SYSTEM, indipendenti da qualsiasi oggetto specifico | oracle-roles-privileges |
 | Subscription (PostgreSQL) | Oggetto della replica logica PostgreSQL sul subscriber che stabilisce la connessione al publisher e gestisce il ciclo di vita della replica: snapshot iniziale, streaming WAL, riconnessione. Si monitora via `pg_stat_subscription` | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | systemd | Sistema di init e gestore dei servizi su Linux, usato per gestire istanze multiple di MySQL/MariaDB sullo stesso server tramite unit file separati | mysql-multi-istanza-secure-file-priv |
+| Unified Auditing | framework di auditing Oracle introdotto in 12c e obbligatorio in 21c, che consolida tutti i log di audit (database, fine | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Version Control | Sistema che traccia ogni modifica al codice sorgente, permettendo cronologia, annullamento e collaborazione. Git è lo standard attuale | ai-github-project-management |
 | VACUUM | Comando PostgreSQL che recupera lo spazio occupato dai dead tuples, rendendolo riutilizzabile per nuovi inserimenti | vacuum-autovacuum-postgresql |
 | VALIDATE / NOVALIDATE | Modalità Oracle di applicazione di un vincolo al momento della creazione o modifica: VALIDATE controlla tutte le righe esistenti (default), NOVALIDATE salta il controllo per non bloccare grandi tabelle in finestra di manutenzione | enum-oracle-19c-26ai-domini |
@@ -215,6 +220,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 
 **Ultimo aggiornamento**: 2026-09-04
-**Totale termini**: 200
-**Totale articoli con glossario**: 47
+**Totale termini**: 205
+**Totale articoli con glossario**: 48
 
