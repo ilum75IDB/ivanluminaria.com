@@ -377,7 +377,7 @@ La parte più lunga non è stata la notte del sabato. È stata la settimana prim
 ## Glossario
 - **[Transportable Tablespaces (TTS)](/it/glossary/transportable-tablespaces/)** — tecnica Oracle che permette di spostare tablespace tra database copiando i datafile fisici e importando solo il metadata tramite Data Pump. Molto più veloce di un export/import completo su grandi volumi.
 
-- **RMAN Incremental Backup** — backup RMAN che registra solo i blocchi modificati dall'ultimo backup di livello uguale o superiore. Level 0 è la base completa, level 1 è il delta. Usato in migrazione per sincronizzare il gap tra copia iniziale e finestra di downtime.
+- **[RMAN Incremental Backup](/it/glossary/transportable-tablespaces/)** — backup RMAN che registra solo i blocchi modificati dall'ultimo backup di livello uguale o superiore. Level 0 è la base completa, level 1 è il delta. Usato in migrazione per sincronizzare il gap tra copia iniziale e finestra di downtime.
 
 - **AutoUpgrade** — utility Java (`autoupgrade.jar`) che da Oracle 21c è lo strumento unico per analisi pre-upgrade, correzioni e upgrade vero e proprio. Con `-preupgrade … -mode analyze` produce a sola lettura il report che prima si otteneva con `preupgrade.jar`, non più distribuito.
 
