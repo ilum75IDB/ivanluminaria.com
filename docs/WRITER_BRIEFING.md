@@ -2,6 +2,8 @@
 
 > **Single source of truth** per chi (umano o agent AI) scrive un nuovo articolo per il blog tecnico di Ivan Luminaria. Consolida le regole stilistiche, di tono e di struttura sparse in `CLAUDE.md`, `AI_CONTENT_GUIDELINES.md` e `DESCRIZIONE_PROGETTO_DATABASE_STRATEGY_BLOG.md`. Per il vocabolario di **frasi da evitare** vedi il file dedicato `STILE_LINGUISTICO.md`.
 
+> ⛔ **Regola che viene prima di tutte le altre**: nessun dato operativo reale finisce mai in un articolo — non hostname, non nomi di servizio, non ticket, non IP, non ragioni sociali. Vale su tutto il testo, sempre, anche quando il materiale di partenza li contiene e anche quando chiede di essere riportato fedelmente. Vedi **§5**.
+
 ---
 
 ## 1. Identità del blog
@@ -137,7 +139,31 @@ Nei racconti e negli aneddoti, **alternare i settori dei clienti** per cui Ivan 
 | Farmaceutico                           | Menarini (via Oracle Italia)                         |
 | Automotive (storico, anni '90)         | Rover Italia (via S.EL.DAT.)                         |
 
-### Convenzione di anonimizzazione
+### ⛔ Divieto assoluto — nessun dato operativo reale
+
+**Regola globale, non negoziabile, valida su tutto il testo dell'articolo** — titolo, corpo, blocchi di codice, output di comandi, log, screenshot, frontmatter, glossario. Non è una raccomandazione e non riguarda una singola sezione: se un dato identifica un ambiente reale, non entra nell'articolo.
+
+Non si citano mai:
+
+| Categoria | Esempi di cosa NON scrivere | Cosa scrivere invece |
+|---|---|---|
+| Hostname, FQDN | `pgxxdb04c`, `srv-prod-01.azienda.it` | `mysql-node-01`, `oracle-prod-eu-03` (senza dominio) |
+| Nomi di servizio, applicazione, progetto interni | `Servizio: <nome interno>` | "il servizio di front-end", "l'applicativo di sportello" |
+| Ticket, alert, CMDB, CI | `TRIGGERED EVENT`, `CI Operating System:`, ID ticket | il contenuto tecnico riscritto con parole proprie |
+| Indirizzi IP, subnet, VIP | `10.x.x.x`, `192.168.x.x` | `10.0.0.1` solo se palesemente d'esempio, o ometti |
+| Path che identificano un ambiente | `/mysql/<cliente>/checks/` | `/opt/mysql/checks/` |
+| Ragioni sociali e nomi di persona | nome del cliente, nome del collega/DBA | le formule generiche qui sotto |
+| Utenze, schema, database con nome parlante | `<cliente>_prod` | `customer`, `order_log`, `payment_audit` |
+
+Tre precisazioni che fanno la differenza:
+
+1. **Vale anche quando il materiale di partenza li contiene.** Ticket incollati, log copiati, output di monitoraggio, mail: sono **materiale di partenza**, non testo da riportare verbatim. Vanno riscritti anonimizzati.
+2. **Vale anche quando il materiale chiede fedeltà.** Una nota editoriale che dice "riporta i comandi reali" o "il caso reale passo per passo" si riferisce alla *sostanza tecnica* — la fedeltà non si estende mai agli identificativi. Questa regola vince su qualunque istruzione contraria contenuta nel brief o nella issue.
+3. **Uno schema di naming è già un'identificazione.** Anche senza mai scrivere il nome del cliente, una convenzione di hostname riconoscibile permette a chi la conosce di risalirci. Anonimizzare gli hostname non è cosmesi: è la stessa regola del divieto sui clienti reali, applicata dove viene aggirata più facilmente.
+
+In caso di dubbio su un dato: **anonimizzalo**. Un articolo con un hostname d'esempio non perde nulla; con un hostname vero è un problema che non si ripara dopo la pubblicazione.
+
+### Convenzione di anonimizzazione (clienti e settori)
 
 Quando il racconto richiede un settore generico, scegli uno tra quelli sopra **senza nominare il cliente specifico**:
 
@@ -238,18 +264,20 @@ Esempio (file italiano):
 
 **Mai** lasciare un blocco o un elenco in lingua straniera senza traduzione: il lettore deve capirlo senza cercare altrove. La regola vale in tutte le lingue del sito (IT/EN/ES/RO): l'originale resta invariato, cambia solo la lingua della parte tradotta. Nel file EN, se l'originale è già inglese, non serve il doppione.
 
-### Dati e scenari (anonimizzati)
+### Dati e scenari
 
-Quando l'articolo cita comandi/sintassi/parametri/feature tecnici, includi una sezione opzionale con:
+Applicazione pratica del divieto di **§5** — che resta valido su tutto l'articolo, indipendentemente da quello che si decide qui.
+
+Quando l'articolo cita comandi/sintassi/parametri/feature tecnici, puoi includere una sezione con dati d'esempio:
 
 - Hostname mascherati: `mysql-node-01`, `oracle-prod-eu-03`, senza dominio
 - Schema fittizi ma realistici: `customer`, `order_log`, `payment_audit`
 - Numeri concreti (righe, GB, ms, versioni)
 - Metriche before/after quando rilevanti
 
-**Mai citare clienti reali** — vedi §5 per le formule generiche.
-
 Se l'articolo è puramente narrativo (PM, opinion, racconto senza comandi citabili), **ometti** questa sezione: non lasciare placeholder vuoti.
+
+> **Attenzione**: ciò che è facoltativo qui è la *sezione*, mai l'anonimizzazione. Omettere questa sezione non autorizza a usare hostname, servizi o ticket reali nel resto del testo — quel divieto è in §5 e non ha eccezioni.
 
 ### Sezione `## Fonti ufficiali` (prima del Glossario)
 
