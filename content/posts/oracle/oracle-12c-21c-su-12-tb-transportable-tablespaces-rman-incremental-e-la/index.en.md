@@ -1,10 +1,10 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
+date: '2026-09-15'
 description: Moving 12 TB from Oracle 12.2 to 21c with transportable tablespaces and
   RMAN incremental backups, keeping downtime under four hours. Real numbers and commands.
-draft: true
+draft: false
 image: oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la.cover.jpg
 seoTitle: 'Oracle 12.2 to 21c migration: 12 TB in 4 hours of downtime'
 tags:
@@ -17,7 +17,7 @@ title: 'The Saturday night nobody wants: migrating 12 TB from Oracle 12.2 to 21c
   a four-hour window'
 translationKey: oracle_12c_21c_su_12_tb_transportable_tablespaces_rman_incremental_e_la
 webo_generated_at: 2026-09-04
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## The Saturday night nobody wants

@@ -1,10 +1,10 @@
 ---
 categories:
 - oracle
-date: 2099-12-31
+date: '2026-09-15'
 description: Doce terabytes, cuatro horas de ventana. Cómo combinar Transportable
   Tablespaces y RMAN incremental para migrar Oracle 12.2 a 21c con downtime mínimo.
-draft: true
+draft: false
 image: oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la.cover.jpg
 seoTitle: 'Migración Oracle 12.2 a 21c: TTS + RMAN incremental en 4 horas'
 tags:
@@ -16,7 +16,7 @@ tags:
 title: 'El sábado noche que nadie quiere: migración Oracle 12.2 a 21c en cuatro horas'
 translationKey: oracle_12c_21c_su_12_tb_transportable_tablespaces_rman_incremental_e_la
 webo_generated_at: 2026-09-04
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## El sábado noche que nadie quiere
