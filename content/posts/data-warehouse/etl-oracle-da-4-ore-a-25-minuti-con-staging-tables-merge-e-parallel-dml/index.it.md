@@ -204,6 +204,6 @@ Il pattern — staging table → trasformazione con join indicizzati → MERGE b
 
 - **[MERGE](/it/glossary/merge/)** (SQL) — Istruzione SQL che combina INSERT e UPDATE in un'unica operazione atomica (upsert). Esegue un singolo accesso alla tabella di destinazione, eliminando il pattern SELECT + INSERT/UPDATE separati tipico degli ETL legacy.
 
-- **Parallel DML** (Oracle) — Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION ENABLE PARALLEL DML` e hint espliciti. Senza l'abilitazione a livello di sessione, gli hint vengono ignorati silenziosamente.
+- **[Parallel DML](/it/glossary/awr/)** (Oracle) — Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION ENABLE PARALLEL DML` e hint espliciti. Senza l'abilitazione a livello di sessione, gli hint vengono ignorati silenziosamente.
 
-- **Staging table** — Tabella temporanea usata come area di atterraggio dei dati grezzi prima della trasformazione e del caricamento nella destinazione finale. Permette di separare le fasi dell'ETL, gestire la riprendibilità e applicare trasformazioni in bulk invece che riga per riga.
+- **[Staging table](/it/glossary/direct-path-insert/)** — Tabella temporanea usata come area di atterraggio dei dati grezzi prima della trasformazione e del caricamento nella destinazione finale. Permette di separare le fasi dell'ETL, gestire la riprendibilità e applicare trasformazioni in bulk invece che riga per riga.
