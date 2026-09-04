@@ -1,10 +1,12 @@
 ---
-title: "SST"
-description: "State Snapshot Transfer — mecanismo de Galera Cluster para transferir una copia completa de los datos a un nodo que se une al cluster."
-translationKey: "glossary_sst"
-aka: "State Snapshot Transfer"
+aka: State Snapshot Transfer
 articles:
-  - "/posts/mysql/galera-cluster-3-nodi"
+- /posts/mysql/galera-cluster-3-nodi
+- /posts/mysql/galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu
+description: State Snapshot Transfer — mecanismo de Galera Cluster para transferir
+  una copia completa de los datos a un nodo que se une al cluster.
+title: SST
+translationKey: glossary_sst
 ---
 
 **SST** (State Snapshot Transfer) es el mecanismo por el cual un nodo Galera que se une al cluster (o que ha estado offline demasiado tiempo) recibe una copia completa del dataset entero desde un nodo donante.

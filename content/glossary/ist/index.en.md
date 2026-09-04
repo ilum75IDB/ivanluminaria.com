@@ -1,10 +1,12 @@
 ---
-title: "IST"
-description: "Incremental State Transfer — Galera Cluster mechanism for transferring only missing transactions to a node rejoining the cluster."
-translationKey: "glossary_ist"
-aka: "Incremental State Transfer"
+aka: Incremental State Transfer
 articles:
-  - "/posts/mysql/galera-cluster-3-nodi"
+- /posts/mysql/galera-cluster-3-nodi
+- /posts/mysql/galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu
+description: Incremental State Transfer — Galera Cluster mechanism for transferring
+  only missing transactions to a node rejoining the cluster.
+title: IST
+translationKey: glossary_ist
 ---
 
 **IST** (Incremental State Transfer) is the mechanism by which a Galera node rejoining the cluster after a brief absence receives only the missing transactions, without having to download the entire dataset.
