@@ -379,9 +379,9 @@ La parte più lunga non è stata la notte del sabato. È stata la settimana prim
 
 - **[RMAN Incremental Backup](/it/glossary/transportable-tablespaces/)** — backup RMAN che registra solo i blocchi modificati dall'ultimo backup di livello uguale o superiore. Level 0 è la base completa, level 1 è il delta. Usato in migrazione per sincronizzare il gap tra copia iniziale e finestra di downtime.
 
-- **AutoUpgrade** — utility Java (`autoupgrade.jar`) che da Oracle 21c è lo strumento unico per analisi pre-upgrade, correzioni e upgrade vero e proprio. Con `-preupgrade … -mode analyze` produce a sola lettura il report che prima si otteneva con `preupgrade.jar`, non più distribuito.
+- **[AutoUpgrade](/it/glossary/transportable-tablespaces/)** — utility Java (`autoupgrade.jar`) che da Oracle 21c è lo strumento unico per analisi pre-upgrade, correzioni e upgrade vero e proprio. Con `-preupgrade … -mode analyze` produce a sola lettura il report che prima si otteneva con `preupgrade.jar`, non più distribuito.
 
-- **Foreign datafile copy** — datafile che RMAN materializza sul database di destinazione a partire da un backset trasportabile, prima che le tablespace vengano agganciate. È l'oggetto su cui agiscono `RESTORE FOREIGN TABLESPACE` e `RECOVER FOREIGN DATAFILECOPY` nel trasporto incrementale.
+- **[Foreign datafile copy](/it/glossary/rman-incremental-backup/)** — datafile che RMAN materializza sul database di destinazione a partire da un backset trasportabile, prima che le tablespace vengano agganciate. È l'oggetto su cui agiscono `RESTORE FOREIGN TABLESPACE` e `RECOVER FOREIGN DATAFILECOPY` nel trasporto incrementale.
 
 - **Unified Auditing** — framework di auditing introdotto in 12c che consolida i log (database, fine-grained, SYSDBA) nella struttura `AUDSYS`. In 21c convive con l'auditing tradizionale in *mixed mode*, che resta il default; il *pure* unified auditing richiede il relink del binario con `uniaud_on`.
 

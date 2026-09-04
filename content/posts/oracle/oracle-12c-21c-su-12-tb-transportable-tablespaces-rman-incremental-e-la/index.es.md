@@ -377,9 +377,9 @@ La parte más larga no fue la noche del sábado. Fue la semana anterior: los pre
 
 - **[RMAN Incremental Backup](/es/glossary/transportable-tablespaces/)** — backup RMAN que registra solo los bloques modificados desde el último backup de nivel igual o superior. Level 0 es la base completa, level 1 es el delta. Se usa en migración para sincronizar el gap entre la copia inicial y la ventana de downtime.
 
-- **AutoUpgrade** — utilidad Java (`autoupgrade.jar`) que desde Oracle 21c es la herramienta única para análisis pre-upgrade, correcciones y el upgrade propiamente dicho. Con `-preupgrade … -mode analyze` produce en modo solo lectura el informe que antes se obtenía con `preupgrade.jar`, ya no distribuido.
+- **[AutoUpgrade](/es/glossary/transportable-tablespaces/)** — utilidad Java (`autoupgrade.jar`) que desde Oracle 21c es la herramienta única para análisis pre-upgrade, correcciones y el upgrade propiamente dicho. Con `-preupgrade … -mode analyze` produce en modo solo lectura el informe que antes se obtenía con `preupgrade.jar`, ya no distribuido.
 
-- **Foreign datafile copy** — datafile que RMAN materializa en la base de datos de destino a partir de un backset transportable, antes de que las tablespace sean conectadas. Es el objeto sobre el que actúan `RESTORE FOREIGN TABLESPACE` y `RECOVER FOREIGN DATAFILECOPY` en el transporte incremental.
+- **[Foreign datafile copy](/es/glossary/rman-incremental-backup/)** — datafile que RMAN materializa en la base de datos de destino a partir de un backset transportable, antes de que las tablespace sean conectadas. Es el objeto sobre el que actúan `RESTORE FOREIGN TABLESPACE` y `RECOVER FOREIGN DATAFILECOPY` en el transporte incremental.
 
 - **Unified Auditing** — framework de auditoría introducido en 12c que consolida los logs (base de datos, fine-grained, SYSDBA) en la estructura `AUDSYS`. En 21c convive con la auditoría tradicional en *mixed mode*, que sigue siendo el valor por defecto; el *pure* unified auditing requiere reenlazar el binario con `uniaud_on`.
 
