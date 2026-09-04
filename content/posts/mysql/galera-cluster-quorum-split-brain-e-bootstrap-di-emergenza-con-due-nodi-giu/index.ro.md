@@ -1,15 +1,22 @@
 ---
-title: "Telefonul de la 8 și 40: recovery Galera Cluster cu doi noduri căzute"
-seoTitle: "Galera Cluster recovery: bootstrap de urgență pas cu pas"
-description: "Cum se recuperează un Galera Cluster cu doi noduri căzute și unul în non-Primary: diagnostic, SST vs IST, bootstrap de urgență și runbook operațional."
-date: 2099-12-31
-draft: true
-translationKey: "galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu"
-tags: ["galera-cluster", "mysql", "high-availability", "incident-response", "wsrep"]
-categories: ["mysql"]
-image: "galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg"
-webo_status: da_tradurre
+categories:
+- mysql
+date: '2026-09-08'
+description: 'Cum se recuperează un Galera Cluster cu doi noduri căzute și unul în
+  non-Primary: diagnostic, SST vs IST, bootstrap de urgență și runbook operațional.'
+draft: false
+image: galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg
+seoTitle: 'Galera Cluster recovery: bootstrap de urgență pas cu pas'
+tags:
+- galera-cluster
+- mysql
+- high-availability
+- incident-response
+- wsrep
+title: 'Telefonul de la 8 și 40: recovery Galera Cluster cu doi noduri căzute'
+translationKey: galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu
 webo_generated_at: 2026-09-04
+webo_status: scheduled
 ---
 
 ## Telefonul de la 8 și 40
