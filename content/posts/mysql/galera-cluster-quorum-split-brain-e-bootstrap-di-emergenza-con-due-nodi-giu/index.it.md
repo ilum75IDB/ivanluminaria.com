@@ -1,15 +1,23 @@
 ---
-title: "Galera Cluster: quorum, split-brain e bootstrap di emergenza con due nodi giù"
-seoTitle: "Galera Cluster: due nodi giù — diagnosi e recovery"
-description: "Due ticket di monitoraggio, due nodi fuori dal cluster Galera in sequenza. Diagnosi passo per passo: wsrep_cluster_size, quorum, SST/IST, bootstrap di emergenza."
+categories:
+- mysql
 date: 2099-12-31
+description: 'Due ticket di monitoraggio, due nodi fuori dal cluster Galera in sequenza.
+  Diagnosi passo per passo: wsrep_cluster_size, quorum, SST/IST, bootstrap di emergenza.'
 draft: true
-translationKey: "galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu"
-tags: ["galera-cluster", "mysql", "high-availability", "incident-response", "wsrep"]
-categories: ["mysql"]
-image: "galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg"
-webo_status: da_approvare
+image: galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg
+seoTitle: 'Galera Cluster: due nodi giù — diagnosi e recovery'
+tags:
+- galera-cluster
+- mysql
+- high-availability
+- incident-response
+- wsrep
+title: 'Galera Cluster: quorum, split-brain e bootstrap di emergenza con due nodi
+  giù'
+translationKey: galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu
 webo_generated_at: 2026-09-04
+webo_status: da_approvare
 ---
 
 ## La telefonata delle 8 e 40
@@ -225,13 +233,12 @@ Semplice sulla carta. Meno semplice quando sei da un cliente, hai il secondo tic
 3. Codership — [Galera Cluster Recovery](https://galeracluster.com/library/documentation/recovery.html) <TODO: scout URL specifico per bootstrap di emergenza>
 4. Percona Blog — [gcache sizing](https://www.percona.com/blog/gcache-record-set-cache-state-transfer-cache/) <TODO: scout URL aggiornato>
 
-## Glossario candidato
+## Glossario
+- **[Primary Component (PC)](/it/glossary/primary-component/)** (Galera) — Il sottoinsieme di nodi che detiene il quorum e può continuare a processare scritture. Un nodo fuori dal PC passa in stato `non-Primary` e smette di accettare DML per evitare split-brain.
 
-- **Primary Component (PC)** (Galera) — Il sottoinsieme di nodi che detiene il quorum e può continuare a processare scritture. Un nodo fuori dal PC passa in stato `non-Primary` e smette di accettare DML per evitare split-brain.
+- **[wsrep_cluster_size](/it/glossary/ist/)** (Galera) — Variabile di stato che riporta il numero di nodi attualmente nel cluster Galera. Valore atteso in un cluster a 3 nodi: `3`. Scendere sotto la soglia di quorum (≤ 1 su 3) blocca le scritture.
 
-- **wsrep_cluster_size** (Galera) — Variabile di stato che riporta il numero di nodi attualmente nel cluster Galera. Valore atteso in un cluster a 3 nodi: `3`. Scendere sotto la soglia di quorum (≤ 1 su 3) blocca le scritture.
-
-- **IST (Incremental State Transfer)** (Galera) — Sincronizzazione incrementale di un nodo che rientra nel cluster: riceve solo i writeset mancanti dal gcache degli altri nodi. Veloce e non invasivo per il donor; possibile solo se il gap è coperto dal gcache.
+- **[IST (Incremental State Transfer)](/it/glossary/sst/)** (Galera) — Sincronizzazione incrementale di un nodo che rientra nel cluster: riceve solo i writeset mancanti dal gcache degli altri nodi. Veloce e non invasivo per il donor; possibile solo se il gap è coperto dal gcache.
 
 - **SST (State Snapshot Transfer)** (Galera) — Trasferimento completo dello stato da un nodo donor a un joiner: equivale a un backup fisico completo. Necessario quando il gap è troppo grande per IST. Può rallentare il donor durante il trasferimento.
 

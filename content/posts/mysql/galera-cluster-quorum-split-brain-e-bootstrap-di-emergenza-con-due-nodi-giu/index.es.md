@@ -1,15 +1,22 @@
 ---
-title: "La llamada de las 8 y 40: recovery de un Galera Cluster con dos nodos caídos"
-seoTitle: "Galera Cluster recovery: dos nodos caídos, procedimiento paso a paso"
-description: "Cómo recuperar un Galera Cluster a 3 nodos cuando caen dos nodos en cascada: diagnóstico, SST vs IST, bootstrap de emergencia y runbook operativo."
+categories:
+- mysql
 date: 2099-12-31
+description: 'Cómo recuperar un Galera Cluster a 3 nodos cuando caen dos nodos en
+  cascada: diagnóstico, SST vs IST, bootstrap de emergencia y runbook operativo.'
 draft: true
-translationKey: "galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu"
-tags: ["galera-cluster", "mysql", "high-availability", "incident-response", "wsrep"]
-categories: ["mysql"]
-image: "galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg"
-webo_status: da_tradurre
+image: galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg
+seoTitle: 'Galera Cluster recovery: dos nodos caídos, procedimiento paso a paso'
+tags:
+- galera-cluster
+- mysql
+- high-availability
+- incident-response
+- wsrep
+title: 'La llamada de las 8 y 40: recovery de un Galera Cluster con dos nodos caídos'
+translationKey: galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu
 webo_generated_at: 2026-09-04
+webo_status: da_tradurre
 ---
 
 ## La llamada de las 8 y 40
@@ -225,13 +232,12 @@ Simple sobre el papel. Menos simple cuando estás en casa de un cliente, tienes 
 3. Codership — [Galera Cluster Recovery](https://galeracluster.com/library/documentation/recovery.html) <TODO: scout URL específico para bootstrap de emergencia>
 4. Percona Blog — [gcache sizing](https://www.percona.com/blog/gcache-record-set-cache-state-transfer-cache/) <TODO: scout URL actualizado>
 
-## Glosario candidato
+## Glosario
+- **[Primary Component (PC)](/es/glossary/primary-component/)** (Galera) — El subconjunto de nodos que posee el quórum y puede seguir procesando escrituras. Un nodo fuera del PC pasa a estado `non-Primary` y deja de aceptar DML para evitar split-brain.
 
-- **Primary Component (PC)** (Galera) — El subconjunto de nodos que posee el quórum y puede seguir procesando escrituras. Un nodo fuera del PC pasa a estado `non-Primary` y deja de aceptar DML para evitar split-brain.
+- **[wsrep_cluster_size](/es/glossary/ist/)** (Galera) — Variable de estado que reporta el número de nodos actualmente en el cluster Galera. Valor esperado en un cluster de 3 nodos: `3`. Caer por debajo del umbral de quórum (≤ 1 de 3) bloquea las escrituras.
 
-- **wsrep_cluster_size** (Galera) — Variable de estado que reporta el número de nodos actualmente en el cluster Galera. Valor esperado en un cluster de 3 nodos: `3`. Caer por debajo del umbral de quórum (≤ 1 de 3) bloquea las escrituras.
-
-- **IST (Incremental State Transfer)** (Galera) — Sincronización incremental de un nodo que se reincorpora al cluster: recibe solo los writesets que le faltan desde el gcache de los otros nodos. Rápido y no invasivo para el donor; posible solo si el gap está cubierto por el gcache.
+- **[IST (Incremental State Transfer)](/es/glossary/sst/)** (Galera) — Sincronización incremental de un nodo que se reincorpora al cluster: recibe solo los writesets que le faltan desde el gcache de los otros nodos. Rápido y no invasivo para el donor; posible solo si el gap está cubierto por el gcache.
 
 - **SST (State Snapshot Transfer)** (Galera) — Transferencia completa del estado desde un nodo donor a un joiner: equivale a un backup físico completo. Necesario cuando el gap es demasiado grande para IST. Puede ralentizar al donor durante la transferencia.
 

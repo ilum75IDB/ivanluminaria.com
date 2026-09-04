@@ -1,15 +1,23 @@
 ---
-title: "The 8:40 AM phone call: recovering a Galera Cluster when nodes fall one after another"
-seoTitle: "Galera Cluster recovery: bootstrap, IST, SST step by step"
-description: "A Galera 3-node cluster loses quorum during a live incident. Diagnosis, emergency bootstrap, and recovery procedure guided over the phone — with the runbook."
+categories:
+- mysql
 date: 2099-12-31
+description: A Galera 3-node cluster loses quorum during a live incident. Diagnosis,
+  emergency bootstrap, and recovery procedure guided over the phone — with the runbook.
 draft: true
-translationKey: "galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu"
-tags: ["galera-cluster", "mysql", "high-availability", "incident-response", "wsrep"]
-categories: ["mysql"]
-image: "galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg"
-webo_status: da_tradurre
+image: galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg
+seoTitle: 'Galera Cluster recovery: bootstrap, IST, SST step by step'
+tags:
+- galera-cluster
+- mysql
+- high-availability
+- incident-response
+- wsrep
+title: 'The 8:40 AM phone call: recovering a Galera Cluster when nodes fall one after
+  another'
+translationKey: galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu
 webo_generated_at: 2026-09-04
+webo_status: da_tradurre
 ---
 
 ## The 8:40 AM phone call
@@ -225,13 +233,12 @@ Simple on paper. Less simple when you're at a client site, the second ticket is 
 3. Codership — [Galera Cluster Recovery](https://galeracluster.com/library/documentation/recovery.html) <TODO: scout specific URL for emergency bootstrap>
 4. Percona Blog — [gcache sizing](https://www.percona.com/blog/gcache-record-set-cache-state-transfer-cache/) <TODO: scout updated URL>
 
-## Glossary candidate
+## Glossary
+- **[Primary Component (PC)](/en/glossary/primary-component/)** (Galera) — The subset of nodes that holds quorum and can continue processing writes. A node outside the PC transitions to `non-Primary` state and stops accepting DML to prevent split-brain.
 
-- **Primary Component (PC)** (Galera) — The subset of nodes that holds quorum and can continue processing writes. A node outside the PC transitions to `non-Primary` state and stops accepting DML to prevent split-brain.
+- **[wsrep_cluster_size](/en/glossary/ist/)** (Galera) — Status variable reporting the number of nodes currently in the Galera cluster. Expected value in a 3-node cluster: `3`. Dropping below the quorum threshold (≤ 1 out of 3) blocks all writes.
 
-- **wsrep_cluster_size** (Galera) — Status variable reporting the number of nodes currently in the Galera cluster. Expected value in a 3-node cluster: `3`. Dropping below the quorum threshold (≤ 1 out of 3) blocks all writes.
-
-- **IST (Incremental State Transfer)** (Galera) — Incremental synchronization for a node rejoining the cluster: it receives only the missing writesets from the other nodes' gcache. Fast and non-disruptive to the donor; only possible if the gap is covered by the gcache.
+- **[IST (Incremental State Transfer)](/en/glossary/sst/)** (Galera) — Incremental synchronization for a node rejoining the cluster: it receives only the missing writesets from the other nodes' gcache. Fast and non-disruptive to the donor; only possible if the gap is covered by the gcache.
 
 - **SST (State Snapshot Transfer)** (Galera) — Full state transfer from a donor node to a joiner: equivalent to a complete physical backup. Required when the gap is too large for IST. Can slow down the donor during the transfer.
 
