@@ -1,10 +1,10 @@
 ---
 categories:
 - mysql
-date: 2099-12-31
+date: '2026-09-08'
 description: 'Cómo recuperar un Galera Cluster a 3 nodos cuando caen dos nodos en
   cascada: diagnóstico, SST vs IST, bootstrap de emergencia y runbook operativo.'
-draft: true
+draft: false
 image: galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg
 seoTitle: 'Galera Cluster recovery: dos nodos caídos, procedimiento paso a paso'
 tags:
@@ -16,7 +16,7 @@ tags:
 title: 'La llamada de las 8 y 40: recovery de un Galera Cluster con dos nodos caídos'
 translationKey: galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu
 webo_generated_at: 2026-09-04
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## La llamada de las 8 y 40

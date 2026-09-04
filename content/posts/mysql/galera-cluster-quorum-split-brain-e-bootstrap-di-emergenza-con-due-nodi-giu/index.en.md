@@ -1,10 +1,10 @@
 ---
 categories:
 - mysql
-date: 2099-12-31
+date: '2026-09-08'
 description: A Galera 3-node cluster loses quorum during a live incident. Diagnosis,
   emergency bootstrap, and recovery procedure guided over the phone — with the runbook.
-draft: true
+draft: false
 image: galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg
 seoTitle: 'Galera Cluster recovery: bootstrap, IST, SST step by step'
 tags:
@@ -17,7 +17,7 @@ title: 'The 8:40 AM phone call: recovering a Galera Cluster when nodes fall one 
   another'
 translationKey: galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu
 webo_generated_at: 2026-09-04
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## The 8:40 AM phone call

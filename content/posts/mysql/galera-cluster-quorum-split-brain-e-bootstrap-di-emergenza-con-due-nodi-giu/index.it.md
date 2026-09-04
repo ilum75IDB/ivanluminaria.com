@@ -1,10 +1,10 @@
 ---
 categories:
 - mysql
-date: 2099-12-31
+date: '2026-09-08'
 description: 'Due ticket di monitoraggio, due nodi fuori dal cluster Galera in sequenza.
   Diagnosi passo per passo: wsrep_cluster_size, quorum, SST/IST, bootstrap di emergenza.'
-draft: true
+draft: false
 image: galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu.cover.jpg
 seoTitle: 'Galera Cluster: due nodi giù — diagnosi e recovery'
 tags:
@@ -17,7 +17,7 @@ title: 'Galera Cluster: quorum, split-brain e bootstrap di emergenza con due nod
   giù'
 translationKey: galera_cluster_quorum_split_brain_e_bootstrap_di_emergenza_con_due_nodi_giu
 webo_generated_at: 2026-09-04
-webo_status: da_approvare
+webo_status: scheduled
 ---
 
 ## La telefonata delle 8 e 40
