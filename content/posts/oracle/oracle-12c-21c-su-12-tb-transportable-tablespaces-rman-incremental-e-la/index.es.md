@@ -381,6 +381,6 @@ La parte más larga no fue la noche del sábado. Fue la semana anterior: los pre
 
 - **[Foreign datafile copy](/es/glossary/rman-incremental-backup/)** — datafile que RMAN materializa en la base de datos de destino a partir de un backset transportable, antes de que las tablespace sean conectadas. Es el objeto sobre el que actúan `RESTORE FOREIGN TABLESPACE` y `RECOVER FOREIGN DATAFILECOPY` en el transporte incremental.
 
-- **Unified Auditing** — framework de auditoría introducido en 12c que consolida los logs (base de datos, fine-grained, SYSDBA) en la estructura `AUDSYS`. En 21c convive con la auditoría tradicional en *mixed mode*, que sigue siendo el valor por defecto; el *pure* unified auditing requiere reenlazar el binario con `uniaud_on`.
+- **[Unified Auditing](/es/glossary/transportable-tablespaces/)** — framework de auditoría introducido en 12c que consolida los logs (base de datos, fine-grained, SYSDBA) en la estructura `AUDSYS`. En 21c convive con la auditoría tradicional en *mixed mode*, que sigue siendo el valor por defecto; el *pure* unified auditing requiere reenlazar el binario con `uniaud_on`.
 
-- **Auto-Indexing** — funcionalidad Oracle (disponible desde 19c, configurable en 21c) que analiza el workload y crea automáticamente índices invisibles, los valida y los hace visibles si mejoran el rendimiento. Hay que deshabilitarlo explícitamente si no se desea en producción.
+- **[Auto-Indexing](/es/glossary/rman-incremental-backup/)** — funcionalidad Oracle (disponible desde 19c, configurable en 21c) que analiza el workload y crea automáticamente índices invisibles, los valida y los hace visibles si mejoran el rendimiento. Hay que deshabilitarlo explícitamente si no se desea en producción.
