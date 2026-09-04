@@ -71,6 +71,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
+| gcache | Buffer circolare su disco che ogni nodo Galera mantiene per conservare i writeset recenti. Dimensionare il gcache corret | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | Indice CATSEARCH | Tipo di indice Oracle Text ottimizzato per archivi che combinano attributi strutturati (mittente, data, categoria) con t | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CONTEXT | Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce u | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CTXXPATH | Tipo di indice Oracle Text per documenti XML o JSON archiviati in CLOB/BLOB. Preserva la struttura gerarchica dei path X | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
@@ -97,7 +98,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | information_schema | Schema di sistema MySQL/MariaDB in sola lettura che espone metadati su database, tabelle, indici, utenti e stato del server. Punto di partenza per assessment, sizing e analisi strutturale | mysql-pre-upgrade-assessment |
 | INTO OUTFILE | Clausola SQL di MySQL per esportare il risultato di una query direttamente in un file sul filesystem del server, soggetta alle restrizioni di secure-file-priv | mysql-multi-istanza-secure-file-priv |
 | I/O Scheduler | Componente del kernel Linux che decide l'ordine in cui le richieste di I/O vengono inviate al disco, con impatto diretto sulle performance del database | oracle-linux-kernel |
-| IST | Incremental State Transfer — meccanismo di Galera Cluster per trasferire solo le transazioni mancanti a un nodo che rientra nel cluster | galera-cluster-3-nodi |
+| IST | Incremental State Transfer — meccanismo di Galera Cluster per trasferire solo le transazioni mancanti a un nodo che rientra nel cluster | galera-cluster-3-nodi, galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | Kimball | Ralph Kimball — metodologia di progettazione data warehouse basata su dimensional modeling, star schema e processi ETL bottom-up. Riferimento standard per la classificazione delle SCD | scd-tipo-2, bus-matrix-terreno-comune |
 | Knowledge Transfer | Processo di trasferimento della conoscenza tra persone, team o sistemi, critico nei progetti IT dove la perdita di know-how compromette la continuità | ai-manager-project-management, team-di-progetto-che-reggono |
 | KPI | Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito | smartworking-consulenza-it |
@@ -120,6 +121,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
 | Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
+| Primary Component (PC) | Il sottoinsieme di nodi che detiene il quorum e può continuare a processare scritture. Un nodo fuori dal PC passa in sta | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | pt-heartbeat | tool di Percona Toolkit che misura il lag di replica MySQL scrivendo timestamp sul master e confrontandoli con i valori  | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | Pull Request | Meccanismo di proposta e revisione delle modifiche al codice su GitHub, con code review e approvazione prima del merge nel branch principale | ai-github-project-management |
 | Parking Lot | Lista visibile di argomenti emersi durante una riunione che meritano approfondimento ma vengono rinviati a dopo per rispettare il timebox | standup-meeting-15-minuti |
@@ -173,7 +175,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Split-brain | Condizione critica in un cluster database dove due o più parti operano indipendentemente, accettando scritture divergenti sugli stessi dati | galera-cluster-3-nodi |
 | SQL Domain | Costrutto introdotto in Oracle Database 23ai che permette di definire un dominio riusabile per una colonna (tipo base + CHECK + DEFAULT + annotations) come oggetto del dizionario dati. Equivalente concettuale del DOMAIN di PostgreSQL ma con sistema di annotations originale | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | SQL Injection | Tecnica di attacco che inserisce codice SQL malevolo negli input di un'applicazione per manipolare le query eseguite dal database | mysql-multi-istanza-secure-file-priv |
-| SST | State Snapshot Transfer — meccanismo di Galera Cluster per trasferire una copia completa dei dati a un nodo che si unisce al cluster | galera-cluster-3-nodi |
+| SST | State Snapshot Transfer — meccanismo di Galera Cluster per trasferire una copia completa dei dati a un nodo che si unisce al cluster | galera-cluster-3-nodi, galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | Sequential Scan | Operazione di lettura in cui PostgreSQL legge tutti i blocchi di una tabella senza utilizzare indici, efficiente su tabelle piccole ma problematica su tabelle grandi | pg-stat-statements |
 | Self-parenting | Tecnica di bilanciamento delle gerarchie sbilanciate: chi non ha un padre diventa padre di sé stesso, eliminando i NULL dalla dimensione | ragged-hierarchies |
 | Single-primary | Modalità di MySQL Group Replication in cui un solo nodo accetta scritture, mentre gli altri sono in sola lettura con failover automatico | mysql-group-replication-binlog-migration |
@@ -203,6 +205,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | WAL | Write-Ahead Log — registro sequenziale di tutte le modifiche al database PostgreSQL, scritto prima dei file dati. Fondamento di durability, crash recovery, replica fisica e logica. La replica logica lo decodifica via plugin `pgoutput` in cambi logici riga per riga | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
+| wsrep_cluster_size | Variabile di stato che riporta il numero di nodi attualmente nel cluster Galera. Valore atteso in un cluster a 3 nodi: ` | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | xtrabackup | Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione, gestendo le transazioni attive tramite il redo log. Nettamente più veloce dei backup logici su dataset grandi | mysql-pre-upgrade-assessment |
 | Yes-And | Tecnica di comunicazione nata nel teatro di improvvisazione che sostituisce il "No, però..." con "Sì, e...", trasformando le discussioni in costruzione collaborativa | tecnica-si-e-yes-and |
 | ZDM | Zero Downtime Migration — strumento Oracle per automatizzare le migrazioni verso OCI combinando Data Guard e Data Pump sotto un layer di orchestrazione | oracle-cloud-migration |
@@ -211,7 +214,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 
-**Ultimo aggiornamento**: 2026-08-12
-**Totale termini**: 197
-**Totale articoli con glossario**: 46
+**Ultimo aggiornamento**: 2026-09-04
+**Totale termini**: 200
+**Totale articoli con glossario**: 47
 
