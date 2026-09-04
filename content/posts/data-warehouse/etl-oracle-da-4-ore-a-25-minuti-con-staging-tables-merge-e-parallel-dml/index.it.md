@@ -1,15 +1,23 @@
 ---
-title: "ETL Oracle: da 4 ore a 25 minuti con staging tables, MERGE e parallel DML"
-seoTitle: "ETL Oracle: da 4 ore a 25 minuti con bulk loading e MERGE"
-description: "Un ETL notturno su DWH Oracle: 15 milioni di righe, finestra batch in esaurimento. Diagnosi, riscrittura con staging tables, MERGE e parallel DML. Numeri prima e dopo."
+categories:
+- data-warehouse
 date: 2099-12-31
+description: 'Un ETL notturno su DWH Oracle: 15 milioni di righe, finestra batch in
+  esaurimento. Diagnosi, riscrittura con staging tables, MERGE e parallel DML. Numeri
+  prima e dopo.'
 draft: true
-translationKey: "etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml"
-tags: ["etl", "oracle", "bulk-loading", "data-warehouse", "performance"]
-categories: ["data-warehouse"]
-image: "etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg"
-webo_status: da_approvare
+image: etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg
+seoTitle: 'ETL Oracle: da 4 ore a 25 minuti con bulk loading e MERGE'
+tags:
+- etl
+- oracle
+- bulk-loading
+- data-warehouse
+- performance
+title: 'ETL Oracle: da 4 ore a 25 minuti con staging tables, MERGE e parallel DML'
+translationKey: etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml
 webo_generated_at: 2026-08-12
+webo_status: da_approvare
 ---
 
 ## La finestra che si chiudeva
@@ -189,13 +197,12 @@ Il pattern — staging table → trasformazione con join indicizzati → MERGE b
 3. Oracle Database SQL Language Reference 19c — [MERGE](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/MERGE.html)
 4. Oracle Database — [Parallel DML](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/using-parallel-dml.html)
 
-## Glossario candidato
+## Glossario
+- **[AWR](/it/glossary/awr/)** (Oracle Automatic Workload Repository) — Repository di snapshot periodici di metriche di workload Oracle. Base per i report AWR e per ADDM. Fondamentale per diagnosticare colli di bottiglia su finestre temporali specifiche come una notte di batch.
 
-- **AWR** (Oracle Automatic Workload Repository) — Repository di snapshot periodici di metriche di workload Oracle. Base per i report AWR e per ADDM. Fondamentale per diagnosticare colli di bottiglia su finestre temporali specifiche come una notte di batch.
+- **[Direct Path Insert](/it/glossary/direct-path-insert/)** — Modalità di INSERT Oracle (attivata dall'hint `APPEND`) che bypassa il buffer cache e scrive direttamente nei datafile. Riduce drasticamente il costo di caricamento bulk ma richiede attenzione alla strategia di backup e recovery.
 
-- **Direct Path Insert** — Modalità di INSERT Oracle (attivata dall'hint `APPEND`) che bypassa il buffer cache e scrive direttamente nei datafile. Riduce drasticamente il costo di caricamento bulk ma richiede attenzione alla strategia di backup e recovery.
-
-- **MERGE** (SQL) — Istruzione SQL che combina INSERT e UPDATE in un'unica operazione atomica (upsert). Esegue un singolo accesso alla tabella di destinazione, eliminando il pattern SELECT + INSERT/UPDATE separati tipico degli ETL legacy.
+- **[MERGE](/it/glossary/merge/)** (SQL) — Istruzione SQL che combina INSERT e UPDATE in un'unica operazione atomica (upsert). Esegue un singolo accesso alla tabella di destinazione, eliminando il pattern SELECT + INSERT/UPDATE separati tipico degli ETL legacy.
 
 - **Parallel DML** (Oracle) — Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION ENABLE PARALLEL DML` e hint espliciti. Senza l'abilitazione a livello di sessione, gli hint vengono ignorati silenziosamente.
 

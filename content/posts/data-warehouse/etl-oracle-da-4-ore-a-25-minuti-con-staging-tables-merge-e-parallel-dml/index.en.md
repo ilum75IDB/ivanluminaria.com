@@ -1,13 +1,15 @@
 ---
-title: "ETL Oracle: from 4 hours to 25 minutes with staging tables, MERGE and parallel DML"
+categories:
+- data-warehouse
 date: 2099-12-31
 draft: true
-translationKey: "etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml"
+image: etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg
 tags: []
-categories: ["data-warehouse"]
-image: "etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg"
-webo_status: da_tradurre
+title: 'ETL Oracle: from 4 hours to 25 minutes with staging tables, MERGE and parallel
+  DML'
+translationKey: etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml
 webo_generated_at: 2026-09-04
+webo_status: da_tradurre
 ---
 
 ```
@@ -196,13 +198,12 @@ The pattern — staging table → transformation with indexed joins → bulk MER
 3. Oracle Database SQL Language Reference 19c — [MERGE](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/MERGE.html)
 4. Oracle Database — [Parallel DML](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/using-parallel-dml.html)
 
-## Glossary candidate
+## Glossary
+- **[AWR](/en/glossary/awr/)** (Oracle Automatic Workload Repository) — Repository of periodic Oracle workload metric snapshots. Foundation for AWR reports and ADDM. Essential for diagnosing bottlenecks over specific time windows such as a nightly batch run.
 
-- **AWR** (Oracle Automatic Workload Repository) — Repository of periodic Oracle workload metric snapshots. Foundation for AWR reports and ADDM. Essential for diagnosing bottlenecks over specific time windows such as a nightly batch run.
+- **[Direct Path Insert](/en/glossary/direct-path-insert/)** — Oracle INSERT mode (activated by the `APPEND` hint) that bypasses the buffer cache and writes directly to datafiles. Dramatically reduces bulk load cost but requires careful attention to backup and recovery strategy.
 
-- **Direct Path Insert** — Oracle INSERT mode (activated by the `APPEND` hint) that bypasses the buffer cache and writes directly to datafiles. Dramatically reduces bulk load cost but requires careful attention to backup and recovery strategy.
-
-- **MERGE** (SQL) — SQL statement that combines INSERT and UPDATE into a single atomic operation (upsert). Performs a single pass over the destination table, eliminating the separate SELECT + INSERT/UPDATE pattern typical of legacy ETLs.
+- **[MERGE](/en/glossary/merge/)** (SQL) — SQL statement that combines INSERT and UPDATE into a single atomic operation (upsert). Performs a single pass over the destination table, eliminating the separate SELECT + INSERT/UPDATE pattern typical of legacy ETLs.
 
 - **Parallel DML** (Oracle) — Parallel execution of DML operations (INSERT, UPDATE, DELETE, MERGE) across multiple Oracle processes. Requires `ALTER SESSION ENABLE PARALLEL DML` and explicit hints. Without session-level enablement, hints are silently ignored.
 
