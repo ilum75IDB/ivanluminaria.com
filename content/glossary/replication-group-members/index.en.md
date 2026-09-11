@@ -4,7 +4,7 @@ description: "MySQL system view listing active nodes in a Group Replication clus
 translationKey: "glossary_replication_group_members"
 aka: "performance_schema.replication_group_members"
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 `replication_group_members` is a view exposed by `performance_schema` that provides a real-time snapshot of the membership in a MySQL Group Replication cluster. Each row represents one node and reports its current state and role within the distributed consensus protocol. On a standalone server or one using traditional replication (asynchronous or semisync), the view returns no rows.

@@ -4,7 +4,7 @@ description: "Opțiune mysqldump care deschide o tranzacție REPEATABLE READ pen
 translationKey: "glossary_single_transaction"
 aka: null
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 `--single-transaction` este o opțiune a `mysqldump` care deschide o tranzacție `REPEATABLE READ` înainte de a începe exportul. Izolarea asigurată de InnoDB garantează un snapshot consistent al datelor fără a bloca scrierile concurente.

@@ -4,7 +4,7 @@ description: "A MySQL view whose SQL body references objects that no longer exis
 translationKey: "glossary_view_invalida"
 aka: "Broken view, Stale view"
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 An **invalid view** is a view whose SQL body references objects that no longer exist or are no longer accessible: renamed tables, dropped columns, revoked privileges. MySQL does not automatically invalidate views when the underlying table is modified, so the error stays silent until the view is first queried or until a `mysqldump` attempts to export it.

@@ -4,7 +4,7 @@ description: "Flag de mysqldump que abre una transacción REPEATABLE READ para e
 translationKey: "glossary_single_transaction"
 aka: null
 articles:
-  - "/posts/mysql/articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo"
+  - "/posts/mysql/mysql-8-0-patching-gtid-rhel"
 ---
 
 `--single-transaction` es una opción de `mysqldump` que abre una transacción `REPEATABLE READ` antes de iniciar la exportación. El aislamiento proporcionado por InnoDB garantiza una lectura consistente de los datos sin bloquear las escrituras concurrentes.
