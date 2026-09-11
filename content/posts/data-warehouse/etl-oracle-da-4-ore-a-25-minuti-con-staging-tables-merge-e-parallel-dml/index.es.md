@@ -2,23 +2,22 @@
 categories:
 - data-warehouse
 date: '2026-09-01'
+description: Un batch nocturno que se pasaba de la ventana. AWR, row-by-row, COMMIT
+  frecuente y cero paralelismo. Cómo lo resolvimos con staging, MERGE y parallel DML.
 draft: false
 image: etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg
-tags: []
+seoTitle: 'ETL Oracle lento: de 4 horas a 25 minutos con bulk y parallel DML'
+tags:
+- oracle-19c
+- etl
+- performance-tuning
+- parallel-dml
+- data-warehouse
 title: 'ETL Oracle: de 4 horas a 25 minutos con staging tables, MERGE y DML paralelo'
 translationKey: etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml
 webo_generated_at: 2026-09-04
 webo_status: scheduled
 ---
-
-```
----
-title: "La ventana que se cerraba: cómo reescribimos un ETL Oracle de 4 horas a 24 minutos"
-seoTitle: "ETL Oracle lento: de 4 horas a 24 minutos con bulk y parallel DML"
-description: "Un batch nocturno que se pasaba de la ventana. AWR, row-by-row, COMMIT frecuente y cero paralelismo. Cómo lo resolvimos con staging, MERGE y parallel DML."
-tags: ["oracle-19c", "etl", "performance-tuning", "parallel-dml", "data-warehouse"]
----
-```
 
 ## La ventana que se cerraba
 

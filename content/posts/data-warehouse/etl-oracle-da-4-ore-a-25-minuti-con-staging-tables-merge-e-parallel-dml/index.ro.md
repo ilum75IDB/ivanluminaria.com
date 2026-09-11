@@ -2,24 +2,23 @@
 categories:
 - data-warehouse
 date: '2026-09-01'
+description: Un batch nocturn Oracle 19c depășea fereastra de încărcare. Diagnostic
+  AWR, rescrierea cu direct path insert, MERGE paralel și un singur COMMIT.
 draft: false
 image: etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg
-tags: []
+seoTitle: 'ETL Oracle 19c: de la 4 ore la 25 de minute cu bulk load și MERGE'
+tags:
+- oracle-19c
+- etl
+- data-warehouse
+- parallel-dml
+- performance-tuning
 title: 'ETL Oracle: de la 4 ore la 25 de minute cu tabele de staging, MERGE și DML
   paralel'
 translationKey: etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml
 webo_generated_at: 2026-09-04
 webo_status: scheduled
 ---
-
-```
----
-title: "Fereastra care se închidea: cum am rescris un ETL Oracle de la 4 ore la 24 de minute"
-seoTitle: "ETL Oracle 19c: de la 4 ore la 24 minute cu bulk load și MERGE"
-description: "Un batch nocturn Oracle 19c depășea fereastra de încărcare. Diagnostic AWR, rescrierea cu direct path insert, MERGE paralel și un singur COMMIT."
-tags: ["oracle-19c", "etl", "data-warehouse", "parallel-dml", "performance-tuning"]
----
-```
 
 ## Fereastra care se închidea
 
