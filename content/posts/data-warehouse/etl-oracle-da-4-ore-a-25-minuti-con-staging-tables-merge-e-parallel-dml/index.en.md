@@ -2,24 +2,23 @@
 categories:
 - data-warehouse
 date: '2026-09-01'
+description: 'A real Oracle 19c Data Warehouse case: how row-by-row inserts, missing
+  indexes, and frequent COMMITs were killing a nightly ETL batch window.'
 draft: false
 image: etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml.cover.jpg
-tags: []
+seoTitle: 'Oracle ETL optimization: from 4 hours to 25 minutes with bulk DML'
+tags:
+- oracle-19c
+- etl
+- performance-tuning
+- parallel-dml
+- data-warehouse
 title: 'ETL Oracle: from 4 hours to 25 minutes with staging tables, MERGE and parallel
   DML'
 translationKey: etl_oracle_da_4_ore_a_25_minuti_con_staging_tables_merge_e_parallel_dml
 webo_generated_at: 2026-09-04
 webo_status: scheduled
 ---
-
-```
----
-title: "The window that was closing: rewriting a legacy Oracle ETL from 4 hours to 24 minutes"
-seoTitle: "Oracle ETL optimization: from 4 hours to 24 minutes with bulk DML"
-description: "A real Oracle 19c Data Warehouse case: how row-by-row inserts, missing indexes, and frequent COMMITs were killing a nightly ETL batch window."
-tags: ["oracle-19c", "etl", "performance-tuning", "parallel-dml", "data-warehouse"]
----
-```
 
 ## The window that was closing
 

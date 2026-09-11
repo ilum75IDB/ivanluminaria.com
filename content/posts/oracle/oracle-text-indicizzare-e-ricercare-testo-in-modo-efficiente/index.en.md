@@ -2,24 +2,23 @@
 categories:
 - oracle
 date: '2026-08-11'
+description: How three Oracle Text indexes cut legal archive search times from 90
+  seconds to under 700ms. A real case with CONTEXT, CATSEARCH, and CTXXPATH.
 draft: false
 image: oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente.cover.jpg
-tags: []
+seoTitle: 'Oracle Text: CONTEXT, CATSEARCH, CTXXPATH on CLOB columns'
+tags:
+- oracle-text
+- full-text-search
+- oracle-19c
+- clob
+- performance-tuning
 title: 'Research on millions of legal documents: how Oracle Text changed response
   times'
 translationKey: oracle_text_indicizzare_e_ricercare_testo_in_modo_efficiente
 webo_generated_at: 2026-08-08
 webo_status: scheduled
 ---
-
-```
----
-title: "Alberto's frustration: Oracle Text full-text search on a 30-year legal archive"
-seoTitle: "Oracle Text: CONTEXT, CATSEARCH, CTXXPATH on CLOB columns"
-description: "How three Oracle Text indexes cut legal archive search times from 90 seconds to under 700ms. A real case with CONTEXT, CATSEARCH, and CTXXPATH."
-tags: ["oracle-text", "full-text-search", "oracle-19c", "clob", "performance-tuning"]
----
-```
 
 ## Alberto's frustration
 

@@ -2,23 +2,22 @@
 categories:
 - mysql
 date: '2026-07-28'
+description: A MySQL InnoDB Cluster grinding to a halt due to join_buffer_size set
+  to 2 GB per thread. Diagnosis, rolling restart, and the math behind per-thread buffers.
 draft: false
 image: articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param.cover.jpg
-tags: []
+seoTitle: 'MySQL InnoDB Cluster: swap at 100% and join_buffer_size fix'
+tags:
+- mysql
+- innodb-cluster
+- performance-tuning
+- memory
+- incident-response
 title: 'Swap at 100% on InnoDB Cluster: when join_buffer_size multiplies the problem'
 translationKey: articolo_mysql_saturazione_swap_su_innodb_cluster_3_nodi_analisi_e_fix_dei_param
 webo_generated_at: 2026-07-01
 webo_status: scheduled
 ---
-
-```
----
-title: "The Tuesday morning call: MySQL InnoDB Cluster, swap at 100%, and a 2 GB per-thread buffer"
-seoTitle: "MySQL InnoDB Cluster: swap at 100% and join_buffer_size fix"
-description: "A MySQL InnoDB Cluster grinding to a halt due to join_buffer_size set to 2 GB per thread. Diagnosis, rolling restart, and the math behind per-thread buffers."
-tags: ["mysql", "innodb-cluster", "performance-tuning", "memory", "incident-response"]
----
-```
 
 ## The Tuesday morning call
 
