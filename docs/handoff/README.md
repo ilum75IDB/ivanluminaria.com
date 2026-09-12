@@ -13,3 +13,4 @@ Convenzione naming: `HANDOFF_YYYY-MM-DD[-NN].md` per handoff individuali, `HANDO
 | [`HANDOFF_2026-06-18.md`](./HANDOFF_2026-06-18.md) | Bonjour LAN per Hugo + refactor completo 4 CV (PM/DWH/DBA/PL/SQL) × 4 lingue + 8 PDF v2026-06 std+Randstad |
 | [`HANDOFF_2026-06-18-02.md`](./HANDOFF_2026-06-18-02.md) | ↳ supersede `HANDOFF_2026-06-18.md` — pubblicazione live 4 PDF v2026-06 in `static/downloads/`, riallineamento 48 link, chiusura branch `claude/resumes-refactor`, audit branch globale |
 | [`HANDOFF_2026-06-26.md`](./HANDOFF_2026-06-26.md) | Health-check ambiente locale (Hugo + Bonjour) + produzione dashboard editoriale con segnalazione 2 anomalie (date duplicate `2026-07-07` su #102/#103 + doppio stato issue #102) |
+| [`HANDOFF_2026-09-12.md`](./HANDOFF_2026-09-12.md) | Allineamento repo iMac alla storia riscritta con `git filter-repo` post-rewrite MacBook (rimozione trailer `Co-Authored-By`/`Claude-Session` + hostname reali + UUID cluster) |
