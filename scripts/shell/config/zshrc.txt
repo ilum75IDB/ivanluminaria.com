@@ -2,16 +2,50 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 6.6
-# Data: 9 Giugno 2026
-# Nota: Mac Filesystem Cleaner (MFSC) migrato allo standard shell RCCS2025
-#       tramite skill /mac-create-menu-zsh: stub mfsc_env.zsh sostituito da
-#       env completo (alias FastAPI/DB/test/git/venv + wrapper mfscgo/mfschelp),
-#       aggiunti mfsc_help.zsh parametrico (8 sezioni: -S/-D/-T/-N/-G/-P/-V/-H)
-#       e mfsc_go_manager.zsh (13 target navigazione). Case 8|mfsc arricchito
-#       con riga "Digita 'mfschelp'". Nessun cambio alla numerazione del menu.
+# Versione: 7.6
+# Data: 13 Settembre 2026
+# Nota: v7.6 aggiunge Personal Branding IDB (BRAND) al case 15|brand tramite
+#       skill /mac-create-menu-zsh. Progetto di posizionamento e brand
+#       personale per IDEA DB CONSULTING (documenti strategici, dashboard
+#       HTML, test degli archetipi su porta 8011). Stack shell completo:
+#       brand_env.zsh + brand_help.zsh + brand_go_manager.zsh.
+#       BASE shifta da 15 a 16|none. Menu interattivo Scegli 1-16,
+#       default INVIO=16. (storia 7.5: aggiunge Smart Home Casa Mare (CMHL) al case 14|cmhl tramite
+#       skill /project-bootstrap. Progetto homelab (NON software): nodo
+#       Proxmox VE + VM Home Assistant OS su Beelink Mini S (Intel N150,
+#       12GB, 512GB) per la domotica della casa al mare, accesso remoto
+#       via Tailscale. Stack shell ancora STUB (solo cmhl_env.zsh) —
+#       /mac-create-menu-zsh da invocare quando l'ambiente sara' definito.
+#       BASE shifta da 14 a 15|none. Menu interattivo Scegli 1-15,
+#       default INVIO=15. (storia 7.4: applica lo standard shell RCCS2025 a Family Kudos (FKUD, case
+#       13|fkud) tramite skill /mac-create-menu-zsh. Stack definito: Python
+#       3.12 + FastAPI + SQLite + Vue 3 + Vite + TS + PrimeVue. Porte
+#       backend :8009 + vite dev :5175 (dispari, consecutivi a NAIT
+#       8008/5174). Case 13|fkud arricchito con echo 'fkudhelp' post-load;
+#       project_status(fkud) esteso con URL locale/FE/repo; help() case
+#       fkud rimanda a fkudhelp. Menu interattivo invariato (1-14, default
+#       INVIO=14). (storia 7.3: aggiunge Family Kudos (FKUD) al case
+#       13|fkud tramite skill /project-bootstrap, stack "da definire",
+#       prompt 🏆 colore 226 giallo brillante. Storia 7.2: aggiunge
+#       Negulici AI Translator Pro (NAIT) al case
+#       12|nait — bootstrap 2026-07-25, prompt 🌍 colore 207 rosa.
+#       Storia 7.1: Merge cross-Mac iMac (v7.0) + MacBook (v6.8). Il
+#       MacBook aveva aggiunto Fatturazione Web (FATT) al case 9|fatt
+#       (v6.7 bootstrap + v6.8 std shell RCCS2025), l'iMac aveva aggiunto
+#       MySQL Controlli (MYCTL, v6.9) e DBA Cockpit (DBAC, v7.0). Il
+#       merge tiene ENTRAMBI i lati: FATT al 9, MYCTL shifta a 10, DBAC
+#       shifta a 11, BASE shifta a 12. Menu interattivo Scegli 1-12
+#       default=12. Recuperate anche dal v6.8: (a) hint "💡 prjmenu =
+#       ricarica ~/.zshrc..." nel menu, (b) righe workbct/workmfsc/prjmenu
+#       in help() globale (che nel v7.0 mancavano). Aggiunti workfatt/
+#       workmyctl/workdbac e le relative sezioni fatthelp/myctlhelp/
+#       dbachelp in help(). Storia 7.0: refactor RCCS2025 case 10|dbac;
+#       storia 6.9: refactor RCCS2025 case 9|myctl; storia 6.8: bootstrap
+#       DBAC al case 10|dbac su iMac E parallela migrazione FATT std
+#       shell su MacBook; storia 6.7: bootstrap MYCTL su iMac E bootstrap
+#       FATT su MacBook; storia 6.6: migrazione MFSC std shell.)
 # ===================================================================
-# 
+#
 # Alias per restart del menu (ricarica zshrc)
 alias prjmenu='source ~/.zshrc'
 #
@@ -81,7 +115,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, mfsc
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac, nait, fkud, cmhl
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -151,6 +185,47 @@ set_mfsc_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{051}[MFSC]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 🧹 %# '
+}
+# Prompt FATT (Fatturazione Web)
+set_fatt_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{118}[FATT]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+💶 %# '
+}
+# Prompt MYCTL (MySQL Controlli)
+set_myctl_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{075}[MYCTL]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+📊 %# '
+}
+# Prompt DBAC (DBA Cockpit)
+set_dbac_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{196}[DBAC]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+✈️  %# '
+}
+# Prompt NAIT (Negulici AI Translator Pro)
+set_nait_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{207}[NAIT]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🌍 %# '
+}
+# Prompt FKUD (Family Kudos)
+set_fkud_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{226}[FKUD]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🏆 %# '
+}
+# Prompt CMHL (Smart Home Casa Mare)
+set_cmhl_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{087}[CMHL]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🏖 %# '
+}
+set_brand_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{045}[BRAND]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+📈 %# '
 }
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
@@ -282,7 +357,111 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        9|none)
+        9|fatt)
+            echo "💶 Caricamento ambiente Fatturazione Web..."
+            export CURRENT_PROJECT="fatt"
+            FATT_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/fatturazione-web/scripts/shell/fatt_env.zsh"
+            if [[ -f "$FATT_ENV_FILE" ]]; then
+                source "$FATT_ENV_FILE"
+                cd "$FATT_PROJECT_DIR"
+                set_fatt_prompt
+                echo "✅ Ambiente FATT caricato!"
+                echo "📝 Digita 'fatthelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment FATT non trovato: $FATT_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        10|myctl)
+            echo "📊 Caricamento ambiente MySQL Controlli..."
+            export CURRENT_PROJECT="myctl"
+            MYCTL_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/mysql-controlli/scripts/shell/myctl_env.zsh"
+            if [[ -f "$MYCTL_ENV_FILE" ]]; then
+                source "$MYCTL_ENV_FILE"
+                cd "$MYCTL_PROJECT_DIR"
+                set_myctl_prompt
+                echo "✅ Ambiente MYCTL caricato!"
+                echo "📝 Digita 'myctlhelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment MYCTL non trovato: $MYCTL_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        11|dbac)
+            echo "✈️  Caricamento ambiente DBA Cockpit..."
+            export CURRENT_PROJECT="dbac"
+            DBAC_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/dba-cockpit/scripts/shell/dbac_env.zsh"
+            if [[ -f "$DBAC_ENV_FILE" ]]; then
+                source "$DBAC_ENV_FILE"
+                cd "$DBAC_PROJECT_DIR"
+                set_dbac_prompt
+                echo "✅ Ambiente DBAC caricato!"
+                echo "📝 Digita 'dbachelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment DBAC non trovato: $DBAC_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        12|nait)
+            echo "🌍 Caricamento ambiente Negulici AI Translator Pro..."
+            export CURRENT_PROJECT="nait"
+            NAIT_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/negulici-ai-translator-pro/scripts/shell/nait_env.zsh"
+            if [[ -f "$NAIT_ENV_FILE" ]]; then
+                source "$NAIT_ENV_FILE"
+                cd "$NAIT_PROJECT_DIR"
+                set_nait_prompt
+                echo "✅ Ambiente NAIT caricato!"
+                echo "📝 Digita 'naithelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment NAIT non trovato: $NAIT_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        13|fkud)
+            echo "🏆 Caricamento ambiente Family Kudos..."
+            export CURRENT_PROJECT="fkud"
+            FKUD_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/family-kudos/scripts/shell/fkud_env.zsh"
+            if [[ -f "$FKUD_ENV_FILE" ]]; then
+                source "$FKUD_ENV_FILE"
+                cd "$FKUD_PROJECT_DIR"
+                set_fkud_prompt
+                echo "✅ Ambiente FKUD caricato!"
+                echo "📝 Digita 'fkudhelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment FKUD non trovato: $FKUD_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        14|cmhl)
+            echo "🏖 Caricamento ambiente Smart Home Casa Mare..."
+            export CURRENT_PROJECT="cmhl"
+            CMHL_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/smarthome-mare/scripts/shell/cmhl_env.zsh"
+            if [[ -f "$CMHL_ENV_FILE" ]]; then
+                source "$CMHL_ENV_FILE"
+                cd "$CMHL_PROJECT_DIR"
+                set_cmhl_prompt
+                echo "✅ Ambiente CMHL caricato!"
+            else
+                echo "❌ File environment CMHL non trovato: $CMHL_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        15|brand)
+            echo "📈 Caricamento ambiente Personal Branding IDB..."
+            export CURRENT_PROJECT="brand"
+            BRAND_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/personal-branding-idb/scripts/shell/brand_env.zsh"
+            if [[ -f "$BRAND_ENV_FILE" ]]; then
+                source "$BRAND_ENV_FILE"
+                cd "$BRAND_PROJECT_DIR"
+                set_brand_prompt
+                echo "✅ Ambiente BRAND caricato!"
+                echo "📝 Digita 'brandhelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment BRAND non trovato: $BRAND_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        16|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -309,6 +488,13 @@ alias workwebo='switch_project webo'
 alias workasg='switch_project asg'
 alias workbct='switch_project bct'
 alias workmfsc='switch_project mfsc'
+alias workfatt='switch_project fatt'
+alias workmyctl='switch_project myctl'
+alias workdbac='switch_project dbac'
+alias worknait='switch_project nait'
+alias workfkud='switch_project fkud'
+alias workcmhl='switch_project cmhl'
+alias workbrand='switch_project brand'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -372,6 +558,46 @@ project_status() {
             echo "🧹 Mac Filesystem Cleaner (stack ancora non definito)"
             echo "📂 Dir: $MFSC_PROJECT_DIR"
             echo "🏗️  Repo: $MFSC_REPO"
+            ;;
+        fatt)
+            echo "💶 Fatturazione Web (stack ancora non definito)"
+            echo "📂 Dir: $FATT_PROJECT_DIR"
+            echo "🏗️  Repo: $FATT_REPO"
+            ;;
+        myctl)
+            echo "📊 MySQL Controlli (stack ancora non definito)"
+            echo "📂 Dir: $MYCTL_PROJECT_DIR"
+            echo "🏗️  Repo: $MYCTL_REPO"
+            ;;
+        dbac)
+            echo "✈️  DBA Cockpit (stack target: Python+FastAPI+SQLite+JS — non ancora applicato)"
+            echo "📂 Dir: $DBAC_PROJECT_DIR"
+            echo "🏗️  Repo: $DBAC_REPO"
+            ;;
+        nait)
+            echo "🌍 Negulici AI Translator Pro (Vue 3 + Vite + TS + FastAPI + SQLite — CAT tool giuridico IT→RO per Marie)"
+            echo "📂 Dir: $NAIT_PROJECT_DIR"
+            echo "🌐 URL backend: $NAIT_LOCAL_URL"
+            echo "🎨 URL frontend: $NAIT_FE_URL"
+            echo "🏗️  Repo: $NAIT_REPO"
+            ;;
+        fkud)
+            echo "🏆 Family Kudos (Python + FastAPI + SQLite + Vue 3 + Vite + TS + PrimeVue — gamification familiare)"
+            echo "📂 Dir: $FKUD_PROJECT_DIR"
+            echo "🌐 URL backend: $FKUD_LOCAL_URL"
+            echo "🎨 URL frontend: $FKUD_FE_URL"
+            echo "🏗️  Repo: $FKUD_REPO"
+            ;;
+        cmhl)
+            echo "🏖 Smart Home Casa Mare (homelab Proxmox + Home Assistant OS — stack shell ancora stub)"
+            echo "📂 Dir: $CMHL_PROJECT_DIR"
+            echo "🏗️  Repo: $CMHL_REPO"
+            ;;
+        brand)
+            echo "📈 Personal Branding IDB (posizionamento IDEA DB CONSULTING)"
+            echo "📂 Dir: $BRAND_PROJECT_DIR"
+            echo "🧭 Test archetipi: http://127.0.0.1:$BRAND_TEST_PORT/"
+            echo "🏗️  Repo: $BRAND_REPO (privato)"
             ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
@@ -523,13 +749,21 @@ show_project_menu() {
     echo "  6) 📚 ai-skill-generator          (ASG)"
     echo "  7) ⏱️  Business Consultant Tracker (BCT)"
     echo "  8) 🧹 Mac Filesystem Cleaner      (MFSC)"
-    echo "  9) 🔧 Ambiente Base               (BASE)"
+    echo "  9) 💶 Fatturazione Web            (FATT)"
+    echo " 10) 📊 MySQL Controlli             (MYCTL)"
+    echo " 11) ✈️  DBA Cockpit                 (DBAC)"
+    echo " 12) 🌍 Negulici AI Translator Pro  (NAIT)"
+    echo " 13) 🏆 Family Kudos                (FKUD)"
+    echo " 14) 🏖 Smart Home Casa Mare        (CMHL)"
+    echo " 15) 📈 Personal Branding IDB       (BRAND)"
+    echo " 16) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo -n "Scegli (1-9) o premi INVIO per ambiente base: "
+    echo "💡 prjmenu = ricarica ~/.zshrc e rimostra questo menu (utile dopo modifiche)"
+    echo -n "Scegli (1-16) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=9  # Default: ambiente base
+        choice=16  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
@@ -550,8 +784,17 @@ help() {
     echo "  workgma         # Passa a Gmail Assistant AI Agent"
     echo "  workwebo        # Passa a Web Orchestrator"
     echo "  workasg         # Passa ad ai-skill-generator"
+    echo "  workbct         # Passa a Business Consultant Tracker"
+    echo "  workmfsc        # Passa a Mac Filesystem Cleaner"
+    echo "  workfatt        # Passa a Fatturazione Web"
+    echo "  workmyctl       # Passa a MySQL Controlli"
+    echo "  workdbac        # Passa a DBA Cockpit"
+    echo "  worknait        # Passa a Negulici AI Translator Pro"
+    echo "  workfkud        # Passa a Family Kudos"
+    echo "  workcmhl        # Passa a Smart Home Casa Mare"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
+    echo "  prjmenu         # Ricarica ~/.zshrc e rimostra il menu progetti"
     echo ""
     echo "❓ HELP SPECIFICI:"
     case $CURRENT_PROJECT in
@@ -572,6 +815,27 @@ help() {
             ;;
         asg)
             echo "  asghelp         # Help comandi ASG"
+            ;;
+        bct)
+            echo "  bcthelp         # Help comandi BCT"
+            ;;
+        mfsc)
+            echo "  mfschelp        # Help comandi MFSC"
+            ;;
+        fatt)
+            echo "  fatthelp        # Help comandi FATT"
+            ;;
+        myctl)
+            echo "  myctlhelp       # Help comandi MYCTL"
+            ;;
+        dbac)
+            echo "  dbachelp        # Help comandi DBAC"
+            ;;
+        nait)
+            echo "  naithelp        # Help comandi NAIT"
+            ;;
+        fkud)
+            echo "  fkudhelp        # Help comandi FKUD"
             ;;
         *)
             echo "  (carica un progetto per vedere i comandi specifici)"
