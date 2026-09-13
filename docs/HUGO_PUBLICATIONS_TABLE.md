@@ -66,6 +66,10 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 45 | 2026-08-18 | — | Tue | MySQL 8.0.34→8.0.45: workflow di patching reale con errori inclusi | mysql | #68 | 2026-08-08 | scheduled |
 
+| 46 | 2026-08-25 | — | Tue | MySQL slave lag: Seconds_Behind_Master mente, GTID no — diagnosi e fix con paral | mysql | #45 | 2026-08-11 | scheduled |
+
+| 47 | 2026-09-01 | — | Tue | ETL Oracle: da 4 ore a 25 minuti con staging tables, MERGE e parallel DML | data-warehouse | #39 | 2026-09-04 | scheduled |
+
 | 48 | 2026-09-08 | — | Tue | Galera Cluster: quorum, split-brain e bootstrap di emergenza con due nodi giù | mysql | #54 | 2026-09-04 | scheduled |
 
 | 49 | 2026-09-15 | — | Tue | Oracle 12c → 21c su 12 TB: transportable tablespaces, RMAN incremental e la fine | oracle | #52 | 2026-09-04 | scheduled |
