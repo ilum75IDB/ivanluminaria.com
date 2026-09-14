@@ -32,6 +32,16 @@
         <aside class="article-cta print:hidden" aria-label="{{ $copy.bridge }}">
           <div class="article-cta-title">{{ $copy.title }}</div>
           <p class="article-cta-text">{{ $copy.text_intro }} {{ $copy.bridge }} <a href="{{ relURL $profileUrl }}">{{ $copy.link_profile }}</a> {{ $copy.or_word }} <a class="article-cta-dl" href="{{ relURL $dossierUrl }}">{{ $copy.link_dossier }}</a>.</p>
+          {{- if ne $profile "technical-leader" -}}
+          {{- $tlCta := index .Site.Data.cta_copy "technical-leader" -}}
+          {{- if $tlCta -}}
+          {{- $tlCopy := index $tlCta .Lang -}}
+          {{- if $tlCopy -}}
+          {{- $tlUrl := printf "/%s/resumes/%s/" .Lang $tlCta.profile_slug -}}
+          <p class="article-cta-secondary">{{ i18n "cta_see_also" | default "Vedi anche il profilo generale:" }} <a href="{{ relURL $tlUrl }}">{{ $tlCopy.link_profile }}</a>.</p>
+          {{- end -}}
+          {{- end -}}
+          {{- end -}}
         </aside>
       {{- end -}}
     {{- end -}}

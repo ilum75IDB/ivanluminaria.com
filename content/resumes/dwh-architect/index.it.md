@@ -10,6 +10,8 @@ layout: "simple"
 
 **[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
+> **Un ruolo, quattro pilastri.** Questo profilo è uno dei quattro pilastri del ruolo [Technical Leader per database mission-critical](/it/resumes/technical-leader/).
+
 ---
 
 ## Profilo Professionale

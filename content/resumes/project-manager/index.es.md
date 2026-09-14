@@ -10,6 +10,8 @@ layout: "simple"
 
 **[Descargar PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Perfil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
+> **Un rol, cuatro pilares.** Este perfil es uno de los cuatro pilares del rol [Technical Leader para bases de datos de misión crítica](/es/resumes/technical-leader/).
+
 ---
 
 ## Perfil Profesional
