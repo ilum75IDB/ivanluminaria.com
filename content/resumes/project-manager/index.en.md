@@ -2,110 +2,181 @@
 title: "Project Manager"
 seoTitle: "Ivan Luminaria | Project Manager Scrum/Agile in IT"
 description: "Ivan Luminaria, Scrum/Agile IT Project Manager: 30 years managing software projects with solid Oracle and Data Warehouse technical background. Real cases."
-date: "2026-03-10"
-lastmod: "2026-03-10"
+date: "2026-09-14"
+lastmod: "2026-09-15"
 draft: false
 layout: "simple"
 ---
 
-**[Download PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202606_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)**
+**[Download PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
 ## Professional Profile
 
-There's the PM who manages the project. And the PM who understands the project. I'm the second one. Thirty years inside Oracle, PL/SQL, Data Warehouse, performance tuning — for ten of them I've also been doing Project Management.
+Project Manager with nearly 30 years of IT experience and a solid technical background in Data Warehouse and Oracle. Over 10 projects delivered with a strong on-time track record, leading teams of 3–7 in multicultural, remote settings on **€100K–€500K** engagements.
 
-What I recognize right away on a project: when a requirement is not implementable as written. When an estimate is optimistic out of pressure, not data. When the real risk is not the deadline, it's the architecture.
+Hands-on planning, risk management, resource coordination and stakeholder engagement — developed through years of running development, release and maintenance activities for Banking, Telco, Insurance and Public Administration clients.
 
-10+ projects delivered between 2013 and 2020, teams of 3-7 people, budgets €100K-€500K, multi-country and full-remote. Sectors: Banking, Telco, Insurance, Public Administration. Clients: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum and Agile, certified training. What I bring: technical translation of requirements, early discovery of risks, one common language for both the team and the stakeholders.
-
----
-
-## Key Skills
-
-- **Project Management & Methodologies**: Project planning and milestones · Risk and issue management (proactive identification, mitigation planning) · Agile and Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — certified training · Requirements definition, scope management, stakeholder engagement · Release planning and delivery coordination.
-- **Tools**: Microsoft Project · Jira · Microsoft Excel and Google Sheets (reporting, dashboards, data analysis — daily use) · Git and GitHub (issue tracking, CI/CD, collaborative workflows).
-- **Technical Skills Supporting PM**: Data Warehouse Architecture (Kimball, Inmon, GCP) · Oracle Database (DBA, Performance Tuning, PL/SQL) · Advanced SQL · ETL/ELT · Business Intelligence · technical feasibility assessment and development effort estimation.
-- **Leadership & Communication**: Coordination of distributed technical teams (3-7 people, multi-country) · Effective communication with teams, business stakeholders and management · Mentoring and team skill development · Meeting facilitation and conflict management.
+Agile and Scrum applied daily, backed by certified training. Deep technical foundation (DWH architecture, Oracle DBA, PL/SQL, ETL/ELT) enables realistic feasibility assessments and early identification of technical risks.
 
 ---
 
-## Work Experience
+## Areas of engagement
 
-### 2022 – Present — IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
-**Project Manager & Senior DWH Architect**
-
-- **Technical Project Manager & DWH Lead** (for ATRADIUS) | 4 years
-
-  Surety division Data Warehouse consolidated across 4 European countries. Full daily ingestion completed in under 2 hours.
-
-- **Project Coordinator** (Banking: Fincons/Lutech, Transport: Telepass/Fai Service) | 1 year
-
-  Analytical batches brought from 4 hours to under 30 minutes on datasets exceeding 2 billion rows.
-
-- **Technical Project Manager & DWH Lead** (for GENERALI Insurance) | 1 year
-
-  Oracle development team coordinated on insurance databases from 500GB to 8TB. Scope managed from requirements to release.
+- **Project planning and delivery** — milestone definition, progress tracking, release planning, delivery coordination.
+- **Risk and issue management** — proactive identification, mitigation planning, early escalation of technical risks.
+- **Stakeholder engagement** — direct client interface, requirements gathering, scope negotiation, executive reporting.
+- **Team coordination and mentoring** — distributed teams, Agile ceremonies, capability building, onboarding of new consultants.
 
 ---
 
-### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (for TIM / HUAWEI) | 2 years
+## Key results
 
-Fleet of 30+ critical Oracle databases (70+ instances on Exadata clusters) supporting over 20 million prepaid mobile subscribers. Tuning and patching on fact tables ingesting up to 800 million phone-traffic records per day.
-
----
-
-### 2013 – 2020 — FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
-**Technical Project Manager & Senior DWH Consultant** (Consulting companies and Direct clients) | 7 years
-
-10 projects delivered over 7 years for clients in Banking, Telco and services sectors, with budgets €100K-€500K. Teams of 3-7 people in multicultural, distributed settings, coordinated with an Agile approach.
+- **~10 projects delivered** in the last independent cycle (2013–2020), budget range **€100K–€500K**, strong on-time track record.
+- Teams of **3–7 people** coordinated in multicultural, distributed and full-remote settings.
+- Critical analytical batches cut **from 4 hours to under 30 minutes** through coordinated tuning and release planning.
+- Multi-country DWH programme (**4 European countries**, 60,000+ lines of PL/SQL ETL) delivered with backlog management, cross-team dependency handling and stakeholder reporting.
+- Oracle Cloud and Autonomous Database rollouts orchestrated across banking and Telepass-related workloads.
 
 ---
 
-### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Rome, Italy
-**Senior Data Warehouse Specialist & Oracle DBA** (for Public Administration) | 4 years
+## Core Skills
 
-Data Warehouses for Public Administration entities on Oracle platform. Development coordination, technical requirements definition with project leads, user training.
+### Project Management & Methodologies
+
+- Project planning, milestone definition, progress tracking
+- Risk & issue management
+- Agile & Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — certified training
+- Requirements definition, scope management, stakeholder engagement
+- Release planning
+
+### PM & Productivity Tools
+
+- Microsoft Project, Jira (planning, tracking, backlog management)
+- Microsoft Excel, Google Sheets (reporting, dashboards, data analysis)
+- Git and GitHub (issue tracking, collaborative workflows, CI/CD)
+
+### Technical foundations supporting PM
+
+- Data Warehouse architecture (Kimball, Inmon, GCP)
+- Oracle Database (DBA, Performance Tuning, PL/SQL)
+- Advanced SQL, ETL/ELT, Business Intelligence
+- Technical feasibility assessment and development effort estimation
+
+### Leadership & Communication
+
+- Coordination of distributed technical teams (3–7 people, multi-country)
+- Effective communication with technical teams, business stakeholders and management
+- Mentoring and team skill development
+- Meeting facilitation and conflict management
 
 ---
 
-### 1999 – 2009 — ORACLE ITALIA S.R.L. — Various Locations, Italy & Madrid, Spain
-**Senior Consultant / DWH Specialist / Training Specialist** | 10 years
+## Professional Experience
 
-DWH and BI projects for major clients in Telco, Finance and Pharmaceutical, with about 1 year of international experience in Madrid. Growing responsibilities from consultant role to activity coordination and junior consultant support. Training Specialist on Oracle technical courses (2000-2001).
+### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
+**Sole Director · Project Manager & Senior DWH Architect** | 2021 – Present
+
+- **PM & DWH Lead** (for GENERALI Insurance) | Feb 2024 – May 2025:
+  - Coordinated project activities and managed priorities for the development team on Oracle databases in the insurance sector.
+  - Direct client interface for requirements gathering, scope definition and solution presentation.
+  - Progress monitoring and issue management on 500 GB–8 TB databases.
+- **PM & DWH Lead** (for ATRADIUS, Surety division) | 2022 – Jun 2025:
+  - Multi-country data consolidation programme across 4 European countries.
+  - Release planning and development backlog management across 60,000+ lines of PL/SQL ETL.
+  - Activity tracking, stakeholder reporting, cross-team dependency management.
+- **Project Coordinator** (Banking clients, Telepass and others):
+  - Coordinated projects achieving batch processing reductions from 4 hours to under 30 minutes.
+  - Managed data integration from 15+ heterogeneous sources on 2B+ row datasets.
+  - Release planning in Oracle OCI and Autonomous Database environments.
 
 ---
 
-## Education and Training
+### SILICONDEV S.p.A. — Rome, Italy (Full Remote)
+**Senior Database Consultant** (for POSTE ITALIANE) | Jul 2025 – Present
 
-- **Faculty of Computer Engineering (Software Engineering)** | University of Rome Tre, Rome | 1994 – 2000
-- **Scientific High School Diploma** (EQF Level 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Rome | 1988 – 1993
-- **Advanced English (C1/C2)** | The British Council (Level 4A), Rome | 2003 – 2004
+- Administration of about 1,500 MySQL and PostgreSQL instances across production, certification and development.
+- Performance monitoring, query tuning, replication management and capacity planning at enterprise scale.
 
-**Selected Training and Continuing Education:**
-Project Management & Scrum Agile — Randstad/Forma.temp (May 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (April 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (September 2020) · Oracle 12c specialization (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · Learning Excel 2016 + Learning Git and GitHub — LinkedIn Learning (August 2020).
+---
+
+### NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
+**Senior Oracle DBA & Performance Tuning Expert** (for TIM / HUAWEI) | 2020 – 2022
+
+- Planned and executed maintenance and patching activities across 30+ critical Oracle databases (70+ instances) on Exadata clusters.
+- Coordinated with the development team to optimise database interactions and resolve performance issues.
+- Autonomous workload management with regular reporting to the project lead.
+
+---
+
+### FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
+**Project Manager & Senior DWH Consultant** | 2013 – 2020
+
+- **~10 projects over 7 years** for Banking, Telco and services clients, budget range €100K–€500K, strong on-time delivery record.
+- Teams of 3–7 in multicultural distributed settings using iterative Agile.
+- Direct client interface for requirements, scope, progress reporting and expectation management.
+- Technical training and mentoring for team members, onboarding new consultants.
+
+---
+
+### AUSELDA AED GROUP S.P.A. — Rome, Italy
+**Senior Data Warehouse Specialist & Oracle DBA** (for the Public Administration) | 2009 – 2013
+
+- Collaboration with project leads on requirements definition, activity planning and solution validation.
+- Coordination of DWH development and optimisation activities.
+- Technical support and user training on DWH platforms.
+
+---
+
+### ORACLE ITALIA S.R.L. — Various offices, Italy & Madrid, Spain
+**Senior Consultant · DWH Specialist · Training Specialist** | 1999 – 2009
+
+- Complex DWH and BI implementation projects for TIM, Vodafone (Italy and Spain), TRE, Bank of Italy, Generali, Menarini, with growing responsibility for activity coordination and junior consultant support.
+- Client-side technical lead relationships and progress reporting.
+- Training Specialist (2000-2001): Oracle technical courses and classroom dynamics — presentation and training skills directly applicable to the PM role.
+
+---
+
+### ETNOTEAM S.P.A. · 1999 — S.EL.DAT. S.P.A. · 1997 – 1999
+**Software Developer · Junior Oracle DBA** (for Telecom, Rover Italia)
+
+---
+
+## Education
+
+- **Computer Engineering studies (Software Engineering)** | Roma Tre University, Rome | 1994 – 2000
+- **Scientific High School Diploma** | Liceo Scientifico Isacco Newton / Manieri Copernico, Rome | 1988 – 1993
+- **Advanced English (C1/C2)** | The British Council, Rome | 2003 – 2004
+- Continuous learning: Project Management and Scrum Agile (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Data Science on GCP: Designing DWH (LinkedIn Learning, 2020) · Learning Excel 2016 · Learning Git and GitHub (LinkedIn Learning, 2020)
 
 ---
 
 ## Languages
 
-**Italian** — Native · **English** — C1/C2 (Fluent, professional) · **Spanish** — C1 (Fluent) · **Romanian** — C1 (Fluent) · **French** — A1/A2 (Basic)
+- **Italian**: Native
+- **English**: C1/C2 (Fluent, professional)
+- **Spanish**: C1 (Fluent)
+- **Romanian**: C1 (Fluent)
+- **French**: A1/A2 (Basic)
 
 ---
 
 ## Soft Skills
 
-Translation of technical requirements into concrete project plans · simultaneous management of multiple projects with competing priorities · communication with technical teams, stakeholders and management · analytical problem solving · proactive risk management · experience in distributed, multicultural and fully remote teams · technical mentoring.
+- Ability to translate technical requirements into concrete, manageable project plans
+- Simultaneous management of multiple projects with competing priorities
+- Effective communication at all levels (technical team, stakeholders, management)
+- Analytical problem solving and proactive risk management
+- Experience working in distributed, multicultural and fully remote teams
+- Mentoring and team skill development
 
 ---
 
-*I consent to the processing of my personal data pursuant to Art. 13 of EU Regulation 2016/679 (GDPR).*
+*I authorise the processing of my personal data pursuant to Art. 13 of EU Regulation 2016/679 (GDPR).*
 
-Location: Rome, Italy\
-Last Update: June 2026
+Rome, September 2026
 
 ---
 
-**[Download PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202606_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)** | **[Back to previous page](/en/resumes/)**
+**[Download PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)** | **[Back to previous page](/en/resumes/)**
