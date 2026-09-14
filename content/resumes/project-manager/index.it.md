@@ -2,110 +2,181 @@
 title: "Project Manager"
 seoTitle: "Ivan Luminaria | Project Manager Scrum/Agile in IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 anni di gestione progetti software con solido background tecnico Oracle e Data Warehouse. Casi reali."
-date: "2026-03-10"
-lastmod: "2026-03-10"
+date: "2026-09-14"
+lastmod: "2026-09-15"
 draft: false
 layout: "simple"
 ---
 
-**[Scarica PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+**[Scarica PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
 ## Profilo Professionale
 
-Esiste il PM che gestisce il progetto. E il PM che capisce il progetto. Io sono il secondo. Trent'anni dentro Oracle, PL/SQL, Data Warehouse, performance tuning — da dieci ne uso per fare anche il Project Manager.
+Project Manager con quasi 30 anni di esperienza IT e un solido background tecnico su Data Warehouse e Oracle. Oltre 10 progetti consegnati con un forte track record di rispetto delle tempistiche, guidando team da 3 a 7 persone in contesti multiculturali e remoti su ingaggi da **€100K a €500K**.
 
-Quello che riconosco subito su un progetto: quando un requisito non è implementabile come scritto. Quando una stima è ottimistica per pressione, non per dati. Quando il vero rischio non è la deadline, è l'architettura.
+Pianificazione, gestione dei rischi, coordinamento delle risorse e stakeholder engagement — sviluppati in anni di conduzione di attività di sviluppo, release e manutenzione per clienti Banking, Telco, Insurance e Pubblica Amministrazione.
 
-10+ progetti chiusi tra il 2013 e il 2020, team 3-7 persone, budget €100K-€500K, multi-paese e full-remote. Settori: Banking, Telco, Assicurativo, Pubblica Amministrazione. Clienti: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum e Agile, formazione certificata. Cosa porto: traduzione tecnica dei requisiti, scoperta precoce dei rischi, una sola lingua per team e stakeholder.
+Agile e Scrum applicati quotidianamente, con formazione certificata. La base tecnica profonda (architettura DWH, Oracle DBA, PL/SQL, ETL/ELT) permette valutazioni di fattibilità realistiche e identificazione precoce dei rischi tecnici.
+
+---
+
+## Aree di intervento
+
+- **Pianificazione e delivery** — definizione di milestone, tracking dell'avanzamento, release planning, delivery coordination.
+- **Gestione dei rischi** — identificazione proattiva, piani di mitigation, escalation precoce dei rischi tecnici.
+- **Stakeholder engagement** — interfaccia diretta con il cliente, raccolta requisiti, negoziazione dello scope, reporting executive.
+- **Coordinamento team e mentoring** — team distribuiti, cerimonie Agile, capability building, onboarding di nuovi consulenti.
+
+---
+
+## Risultati in evidenza
+
+- **Circa 10 progetti consegnati** nell'ultimo ciclo indipendente (2013-2020), fascia di budget **€100K-€500K**, forte track record di rispetto delle tempistiche.
+- Team da **3 a 7 persone** coordinati in contesti multiculturali distribuiti e full-remote.
+- Batch analitici critici ridotti **da 4 ore a meno di 30 minuti** attraverso tuning coordinato e release planning.
+- Programma DWH multi-paese (**4 Paesi europei**, oltre 60.000 righe di PL/SQL ETL) consegnato con backlog management, gestione delle dipendenze cross-team e reporting agli stakeholder.
+- Rollout Oracle Cloud e Autonomous Database orchestrati su workload Banking e Telepass.
 
 ---
 
 ## Competenze Chiave
 
-- **Project Management & Metodologie**: Pianificazione e milestone · Gestione del rischio (identificazione proattiva, piani di mitigazione) · Agile e Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — formazione certificata · Definizione requisiti, scope management, stakeholder engagement · Pianificazione rilasci e delivery.
-- **Strumenti**: Microsoft Project · Jira · Microsoft Excel e Google Sheets (reporting, dashboard, analisi dati — uso quotidiano) · Git e GitHub (issue tracking, CI/CD, workflow collaborativi).
-- **Tech a supporto del PM**: Architettura Data Warehouse (Kimball, Inmon, GCP) · Oracle Database (DBA, Performance Tuning, PL/SQL) · SQL avanzato · ETL/ELT · Business Intelligence · valutazione fattibilità tecnica e stima dell'effort di sviluppo.
-- **Leadership & Comunicazione**: Coordinamento team tecnici distribuiti (3-7 persone, multi-paese) · Comunicazione efficace con team, stakeholder business e management · Mentoring e sviluppo competenze · Facilitazione meeting e gestione conflitti.
+### Project Management e metodologie
+
+- Project planning, definizione delle milestone, tracking dell'avanzamento
+- Risk & issue management
+- Agile e Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — formazione certificata
+- Requirements definition, scope management, stakeholder engagement
+- Release planning
+
+### Strumenti di PM e produttività
+
+- Microsoft Project, Jira (planning, tracking, gestione del backlog)
+- Microsoft Excel, Google Sheets (reporting, dashboard, analisi dati)
+- Git e GitHub (issue tracking, workflow collaborativi, CI/CD)
+
+### Fondamenta tecniche a supporto del PM
+
+- Data Warehouse architecture (Kimball, Inmon, GCP)
+- Oracle Database (DBA, Performance Tuning, PL/SQL)
+- SQL avanzato, ETL/ELT, Business Intelligence
+- Valutazione tecnica della fattibilità e stima degli effort di sviluppo
+
+### Leadership e comunicazione
+
+- Coordinamento di team tecnici distribuiti (3-7 persone, multi-country)
+- Comunicazione efficace con team tecnici, business stakeholder e management
+- Mentoring e sviluppo delle competenze del team
+- Facilitazione dei meeting e gestione dei conflitti
 
 ---
 
 ## Esperienza Professionale
 
-### 2022 – Presente — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Architect**
+### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
+**Amministratore Unico · Project Manager & Senior DWH Architect** | 2021 – Presente
 
-- **Responsabile tecnico di progetto & DWH Lead** (per ATRADIUS) | 4 anni
-
-  Data Warehouse della divisione Surety consolidato su 4 paesi europei. Ingestione giornaliera completa sotto le 2 ore.
-
-- **Project Coordinator** (Banking: Fincons/Lutech, Trasporti: Telepass/Fai Service) | 1 anno
-
-  Batch analitici portati da 4 ore a meno di 30 minuti su dataset oltre i 2 miliardi di righe.
-
-- **Responsabile tecnico di progetto & DWH Lead** (per GENERALI Assicurazioni) | 1 anno
-
-  Team di sviluppo Oracle coordinato su database assicurativi da 500GB a 8TB. Scope gestito dai requisiti al rilascio.
-
----
-
-### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (per TIM / HUAWEI) | 2 anni
-
-Parco di 30+ database Oracle critici (70+ istanze su cluster Exadata) a supporto di oltre 20 milioni di abbonati mobile prepagati. Tuning e patching su tabelle dei fatti con ingestione fino a 800 milioni di record di traffico telefonico al giorno.
+- **PM & DWH Lead** (per GENERALI Assicurazioni) | Feb 2024 – Mag 2025:
+  - Coordinamento delle attività di progetto e gestione delle priorità del team di sviluppo su database Oracle nel settore assicurativo.
+  - Interfaccia diretta con il cliente per requisiti, definizione dello scope e presentazione delle soluzioni.
+  - Monitoraggio dell'avanzamento e gestione delle criticità su database da 500 GB a 8 TB.
+- **PM & DWH Lead** (per ATRADIUS, divisione Surety) | 2022 – Giu 2025:
+  - Programma di consolidamento dati multi-paese su 4 Paesi europei.
+  - Release planning e gestione del backlog di sviluppo su oltre 60.000 righe di PL/SQL ETL.
+  - Activity tracking, reporting agli stakeholder e gestione delle dipendenze cross-team.
+- **Project Coordinator** (clienti Banking, Telepass e altri):
+  - Coordinamento di progetti che hanno portato alla riduzione dei batch da 4 ore a meno di 30 minuti.
+  - Gestione dell'integrazione dati da oltre 15 sorgenti eterogenee su dataset superiori ai 2 miliardi di righe.
+  - Release planning in ambienti Oracle OCI e Autonomous Database.
 
 ---
 
-### 2013 – 2020 — LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
-**Responsabile tecnico di progetto & Senior DWH Consultant** (Società di consulenza e Clienti diretti) | 7 anni
+### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
+**Senior Database Consultant** (per POSTE ITALIANE) | Lug 2025 – Presente
 
-10 progetti delivered in 7 anni per clienti nei settori Banking, Telco e servizi, con budget €100K-€500K. Team 3-7 persone in contesti multiculturali e distribuiti, coordinati con approccio Agile.
-
----
-
-### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Roma, Italia
-**Senior Data Warehouse Specialist & Oracle DBA** (per la Pubblica Amministrazione) | 4 anni
-
-Data Warehouse per enti della Pubblica Amministrazione su piattaforma Oracle. Coordinamento dello sviluppo, definizione requisiti tecnici con i referenti di progetto, formazione utenti.
+- Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
+- Monitoraggio delle performance, query tuning, gestione della replica e capacity planning su scala enterprise.
 
 ---
 
-### 1999 – 2009 — ORACLE ITALIA S.R.L. — Varie sedi, Italia & Madrid, Spagna
-**Senior Consultant / DWH Specialist / Training Specialist** | 10 anni
+### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
+**Senior Oracle DBA & Performance Tuning Expert** (per TIM / HUAWEI) | 2020 – 2022
 
-Progetti DWH e BI per clienti primari Telco, Finance e Farmaceutico, con circa 1 anno di esperienza internazionale a Madrid. Responsabilità crescenti dal ruolo di consulente al coordinamento delle attività e supporto ai consulenti junior. Training Specialist su corsi tecnici Oracle (2000-2001).
+- Pianificazione ed esecuzione di attività di manutenzione e patching su oltre 30 database Oracle critici (70+ istanze) su cluster Exadata.
+- Coordinamento con il team di sviluppo per l'ottimizzazione delle interazioni database e la risoluzione dei problemi di performance.
+- Gestione autonoma del workload con reporting regolare al project lead.
+
+---
+
+### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
+**Project Manager & Senior DWH Consultant** | 2013 – 2020
+
+- **Circa 10 progetti gestiti in 7 anni** per clienti Banking, Telco e servizi, con budget da €100K a €500K e un solido track record di consegna nei tempi.
+- Team da 3 a 7 persone in contesti multiculturali distribuiti, con approccio Agile iterativo.
+- Interfaccia diretta con il cliente per raccolta requisiti, definizione dello scope, reporting di avanzamento e gestione delle aspettative.
+- Formazione tecnica e mentoring dei membri del team, onboarding di nuovi consulenti.
+
+---
+
+### AUSELDA AED GROUP S.P.A. — Roma, Italia
+**Senior Data Warehouse Specialist & Oracle DBA** (per la Pubblica Amministrazione) | 2009 – 2013
+
+- Collaborazione con i project lead per la definizione dei requisiti tecnici, la pianificazione delle attività e la validazione delle soluzioni.
+- Coordinamento delle attività di sviluppo e ottimizzazione dei DWH al servizio degli enti della Pubblica Amministrazione.
+- Supporto tecnico e formazione degli utenti sulle piattaforme DWH.
+
+---
+
+### ORACLE ITALIA S.R.L. — Varie sedi, Italia & Madrid, Spagna
+**Senior Consultant · DWH Specialist · Training Specialist** | 1999 – 2009
+
+- Progetti complessi di implementazione DWH e BI per TIM, Vodafone (Italia e Spagna), TRE, Banca d'Italia, Generali, Menarini, con responsabilità crescenti nel coordinamento delle attività e nel supporto ai consulenti junior.
+- Gestione della relazione con i technical lead lato cliente e reporting sull'avanzamento.
+- Training Specialist (2000-2001): erogazione di corsi tecnici Oracle e gestione dinamica d'aula — competenze di presentazione direttamente applicabili al ruolo di PM.
+
+---
+
+### ETNOTEAM S.P.A. · 1999 — S.EL.DAT. S.P.A. · 1997 – 1999
+**Software Developer · Junior Oracle DBA** (per Telecom, Rover Italia)
 
 ---
 
 ## Formazione
 
 - **Facoltà di Ingegneria Informatica (Ingegneria del Software)** | Università degli Studi Roma Tre, Roma | 1994 – 2000
-- **Diploma di Maturità Scientifica** (EQF Livello 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
-- **Inglese Avanzato (C1/C2)** | The British Council (Livello 4A), Roma | 2003 – 2004
-
-**Corsi di Formazione e Aggiornamento:**
-Project Management & Scrum Agile — Randstad/Forma.temp (Maggio 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Aprile 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (Settembre 2020) · Corsi di specializzazione Oracle 12c (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · Learning Excel 2016 + Learning Git and GitHub — LinkedIn Learning (Agosto 2020).
+- **Diploma di Maturità Scientifica** | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
+- **Inglese Avanzato (C1/C2)** | The British Council, Roma | 2003 – 2004
+- Formazione continua: Project Management e Scrum Agile (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Data Science on GCP: Designing DWH (LinkedIn Learning, 2020) · Learning Excel 2016 · Learning Git and GitHub (LinkedIn Learning, 2020)
 
 ---
 
 ## Lingue
 
-**Italiano** — Madrelingua · **Inglese** — C1/C2 (Fluente, professionale) · **Spagnolo** — C1 (Fluente) · **Rumeno** — C1 (Fluente) · **Francese** — A1/A2 (Base)
+- **Italiano**: Madrelingua
+- **Inglese**: C1/C2 (Fluente, professionale)
+- **Spagnolo**: C1 (Fluente)
+- **Rumeno**: C1 (Fluente)
+- **Francese**: A1/A2 (Base)
 
 ---
 
 ## Competenze Trasversali
 
-Traduzione di requisiti tecnici in piani di progetto concreti · gestione simultanea di più progetti con priorità concorrenti · comunicazione con team tecnici, stakeholder e management · problem solving analitico · risk management proattivo · esperienza in team distribuiti, multiculturali e full-remote · mentoring tecnico.
+- Traduzione di requisiti tecnici in piani di progetto concreti e gestibili
+- Gestione simultanea di più progetti con priorità concorrenti
+- Comunicazione efficace a tutti i livelli (team tecnico, stakeholder, management)
+- Problem solving analitico e gestione proattiva dei rischi
+- Esperienza in team distribuiti, multiculturali e full-remote
+- Mentoring e sviluppo delle competenze del team
 
 ---
 
 *Autorizzo il trattamento dei miei dati personali ai sensi dell'Art. 13 del Regolamento UE 2016/679 (GDPR).*
 
-Location: Roma, Italia\
-Last Update: Giugno 2026
+Roma, Settembre 2026
 
 ---
 
-**[Scarica PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Torna alla pagina precedente](/it/resumes/)**
+**[Scarica PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Torna alla pagina precedente](/it/resumes/)**

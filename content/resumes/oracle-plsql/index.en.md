@@ -1,130 +1,191 @@
 ---
 title: "Oracle PL/SQL Developer"
 seoTitle: "Ivan Luminaria | Oracle PL/SQL Developer & SQL Tuning"
-description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning: 30 years developing, refactoring and optimizing PL/SQL code for enterprise data-intensive apps."
-date: "2026-03-10"
-lastmod: "2026-03-10"
+description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 years developing, refactoring and optimising PL/SQL code for enterprise data-intensive apps."
+date: "2026-09-14"
+lastmod: "2026-09-15"
 draft: false
 layout: "simple"
 ---
 
-**[Download PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)**
+**[Download PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202609_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
 ## Professional Profile
 
-I write advanced PL/SQL for data-intensive applications and Data Warehouses that hold under load.
+Senior Oracle PL/SQL Developer with nearly 30 years designing, building, testing and optimising robust PL/SQL code for data-intensive applications and Data Warehouse systems.
 
-ATRADIUS: 60,000+ lines of PL/SQL ETL coordinated end-to-end, full daily ingestion brought from 4+ hours to under 2 with BULK COLLECT/FORALL and partition-aware DML. FINWAVE: PL/SQL packages for financial applications with millions of daily transactions. Banking + Telepass: PL/SQL code optimization with Hierarchical Profiler on data-intensive workloads over 2 billion rows.
+Deep expertise in packages, procedures, functions, triggers and types, with a constant focus on performance, maintainability and code quality. Fluent in optimising complex SQL queries and managing very large volumes.
 
-Thirty years inside PL/SQL. Packages, procedures, functions, triggers. FORALL, BULK COLLECT, Dynamic SQL, Analytic Functions, CTEs. Tuning with TKPROF, Explain Plan, SQL Profiles. Technical mentoring of junior developers. What I bring: PL/SQL code that runs data-intensive workloads without breaking points.
-
----
-
-## Technical Skills
-
-- **Languages**: Advanced PL/SQL · Advanced SQL (Dynamic SQL, Analytic Functions, CTEs) · Unix Shell Scripting.
-- **PL/SQL Development**: Packages · Procedures · Functions · Triggers · Records · Collections · Object Types · Error and exception handling · Bulk processing (FORALL, BULK COLLECT) · Dynamic SQL (DBMS_SQL, Execute Immediate) · Hierarchical Profiler for code optimization.
-- **SQL Tuning**: Explain Plan · SQL Trace · TKPROF · Hints · SQL Profiles · query rewriting · indexes · understanding of database design impact on PL/SQL performance.
-- **Tools & DB**: SQL Developer · Toad · SQL*Plus · Oracle Database 8i → 21c · Autonomous Database · Oracle Cloud Infrastructure (OCI) · Git/GitHub.
-- **Related concepts**: Data Warehousing (ETL/ELT) · Data Integration · relational and multidimensional data modeling (Kimball, Inmon).
+Consolidated background as Oracle DBA and DWH Architect provides a full view of the data lifecycle, from source ingestion to analytical consumption.
 
 ---
 
-## Work Experience
+## Areas of engagement
 
-### 2022 – Present — IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
-**Senior Oracle PL/SQL Developer & DWH Architect**
-
-- **PL/SQL Developer** (for ATRADIUS) | 4 years
-
-  60,000+ lines of PL/SQL code (packages, procedures, functions) for the Surety division DWH (4 European countries). Reusable PL/SQL templates with built-in checkpoints for real-time ETL pipeline tracking. Daily ingestion brought from 4+ hours to under 2 with BULK COLLECT/FORALL and partition-aware DML.
-
-- **PL/SQL Developer** (for FINWAVE S.p.A.) | 2 years
-
-  PL/SQL packages for financial transaction processing applications handling millions of daily operations; advanced query optimization and PL/SQL code tuning for high-volume financial data pipelines.
-
-- **PL/SQL Developer** (for FAI SERVICE) | 2 years
-
-  ETL procedures in PL/SQL on Oracle 19c in OCI for billing, customer segmentation and cost/revenue tracking; PL/SQL modules feeding Oracle Analytics Cloud dashboards with aggregated KPIs.
-
-- **PL/SQL Development** (Banking, Telepass and other clients) | 1 year
-
-  PL/SQL business logic packages for banking-sector DWH applications on datasets over 2 billion rows. PL/SQL code optimization with Hierarchical Profiler to identify bottlenecks on critical paths.
+- **PL/SQL development & code review** — packages for ETL logic, data-processing procedures, PL/SQL APIs, business logic; audit and refactor of legacy PL/SQL codebases.
+- **PL/SQL & SQL performance tuning** — Hierarchical Profiler analysis, BULK COLLECT/FORALL patterns, partition-aware DML, execution-plan-driven rewrites.
+- **ETL/ELT design in PL/SQL** — standardised loading templates with checkpoints, real-time logging, error recovery, monitoring dashboards.
+- **Mentoring & knowledge transfer** — coaching junior developers on PL/SQL best practices, code standards, testable patterns.
 
 ---
 
-### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
-**Senior Oracle DBA & Performance Expert with Development Focus** (for TIM / HUAWEI) | 2 years
+## Key results
 
-Specialist support to TIM/HUAWEI development teams on Oracle Exadata databases: PL/SQL code and SQL query optimization for critical applications, analysis and tuning of high-volume PL/SQL batch processes, PL/SQL scripts for monitoring and administration tasks.
-
----
-
-### 2013 – 2020 — FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
-**Senior Oracle PL/SQL Developer & DBA / DWH Architect** (Consulting companies and Direct clients) | 7 years
-
-Custom PL/SQL solutions for Banking, Telco and services clients: packages for ETL logic, data processing procedures, PL/SQL APIs, intensive optimization of PL/SQL and SQL code for existing systems, training and mentoring of junior developers on PL/SQL best practices.
+- **60,000+ lines of PL/SQL** designed and maintained for a multi-country DWH across **4 European countries** (Italy, Spain, France, Northern Europe); reusable templates and real-time load monitoring.
+- Full daily ingestion **from 4+ hours to under 2 hours** through query rewriting, BULK COLLECT/FORALL and partition-aware DML.
+- PL/SQL packages for financial transaction processing handling **millions of daily operations** across banking and insurance clients.
+- Critical analytical batches cut **from 4 hours to under 30 minutes** on 2B+ row datasets.
+- ETL/ELT pipelines integrating **15+ heterogeneous sources** into Oracle and Oracle Analytics Cloud dashboards.
 
 ---
 
-### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Rome, Italy
-**Oracle PL/SQL Developer & DWH Specialist** (for Public Administration) | 4 years
+## Core Skills
 
-Development of PL/SQL components for DWH systems and management applications for Public Administration, with evolutionary and corrective code maintenance and optimization of ETL processes based on PL/SQL and Oracle Warehouse Builder (OWB).
+### Languages
+
+- Advanced PL/SQL · advanced SQL (Dynamic SQL, analytic functions, CTEs)
+- Unix Shell scripting
+
+### PL/SQL Development
+
+- Packages, procedures, functions, triggers
+- Records, collections, object types · error/exception handling
+- Bulk processing (FORALL, BULK COLLECT) · dynamic SQL (DBMS_SQL, EXECUTE IMMEDIATE)
+- PL/SQL Hierarchical Profiler
+- Interaction with tables, views, sequences, synonyms
+
+### SQL Optimisation & Performance
+
+- Execution-plan analysis (Explain Plan), SQL Trace, TKPROF
+- SQL tuning techniques (Hints, query rewriting, indexes)
+- Impact of database design on PL/SQL performance
+
+### Oracle Database
+
+- Oracle Database 8i → 21c, Autonomous Database
+
+### Related concepts
+
+- Data Warehousing (ETL/ELT logic), data integration
+- Relational and multidimensional modelling
+
+### Development tools
+
+- SQL Developer, Toad, SQL*Plus
+- Git and GitHub for version control
+
+### Cloud
+
+- Oracle Cloud Infrastructure (OCI) — database services knowledge
 
 ---
 
-### 1999 – 2009 — ORACLE ITALIA S.R.L. — Various Locations, Italy & Madrid, Spain
-**SQL & PL/SQL Developer / DWH Architect / DBA / Training Specialist** | 10 years
+## Professional Experience
 
-Intensive PL/SQL development for DWH, BI and custom application projects for enterprise clients (Telco, Finance, Pharmaceutical): PL/SQL packages for complex business logic, ETL data loading procedures with Oracle Warehouse Builder, BI Reports and HTMLDB (Apex) interfaces. About 1 year of international experience in Madrid. Training Specialist on Oracle SQL and PL/SQL (Basic and Advanced) in 2000-2001.
+### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
+**Sole Director · Senior Oracle PL/SQL Developer · DWH Architect** | 2021 – Present
+
+- **PL/SQL Developer** (for ATRADIUS, Surety division) | 2022 – Jun 2025:
+  - Over 60,000 lines of PL/SQL code (packages, procedures, functions) for the multi-country DWH consolidating insurance claims and credit data.
+  - Reusable PL/SQL templates for loading procedures with checkpoints and real-time logging.
+  - Batch performance optimisation (query rewriting, BULK COLLECT/FORALL, partition-aware DML): daily cycle reduced from 4+ hours to under 2 hours.
+- **PL/SQL Developer** (for FINWAVE S.p.A.) | 2020 – 2022:
+  - PL/SQL packages for financial transaction processing handling millions of daily operations across banking and insurance clients.
+- **PL/SQL Developer** (for FAI SERVICE) | 2021 – 2023:
+  - ETL procedures in PL/SQL on Oracle 19c in OCI for billing statistics, customer segmentation and cost/revenue tracking.
+  - PL/SQL modules feeding Oracle Analytics Cloud dashboards with aggregated financial KPIs.
+- **PL/SQL development** (Banking clients, Telepass and others):
+  - PL/SQL business logic packages for banking-sector DWH applications on 2B+ row datasets.
+  - PL/SQL and SQL optimisation with Hierarchical Profiler analysis to identify bottlenecks.
 
 ---
 
-### 1999 — ETNOTEAM S.P.A. — Rome, Italy
-**Web Developer / Oracle SQL & PL/SQL Developer**
+### SILICONDEV S.p.A. — Rome, Italy (Full Remote)
+**Senior Database Consultant** (for POSTE ITALIANE) | Jul 2025 – Present
 
-Web portals and client-server applications with strong interaction with Oracle databases, using SQL and PL/SQL for backend logic.
-
----
-
-### 1997 – 1999 — S.EL.DAT. S.P.A. — Rome, Italy
-**Software Developer / Junior DBA** | 2 years
-
-Client-server application development with Oracle backend and first experiences with SQL and PL/SQL — the starting point of the Oracle journey.
+- Administration of about 1,500 MySQL and PostgreSQL instances across production, certification and development.
+- Query tuning, performance monitoring, replication management and capacity planning at enterprise scale.
 
 ---
 
-## Education and Training
+### NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
+**Senior Oracle DBA & Performance Expert (with development focus)** (for TIM / HUAWEI) | 2020 – 2022
 
-- **Faculty of Computer Engineering (Software Engineering)** | University of Rome Tre, Rome | 1994 – 2000
-- **Scientific High School Diploma** (EQF Level 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Rome | 1988 – 1993
-- **Advanced English (C1/C2)** | The British Council (Level 4A), Rome | 2003 – 2004
+- Specialist support to development teams in PL/SQL and SQL optimisation for critical applications on Exadata.
+- Analysis and tuning of high-volume PL/SQL batch processes; PL/SQL scripts for monitoring and administration tasks.
 
-**Selected Training and Continuing Education:**
-Project Management & Scrum Agile — Randstad/Forma.temp (May 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (April 2021) · Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (August 2020) · Oracle 12c specialization (Advanced SQL, New Features) + Learning Git and GitHub — LinkedIn Learning (2020).
+---
+
+### FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
+**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2020
+
+- Custom PL/SQL solutions for various clients: packages for ETL logic, data-processing procedures, PL/SQL APIs.
+- Intensive PL/SQL and SQL optimisation to improve the performance of existing systems.
+- Training and mentoring of junior developers on PL/SQL best practices.
+
+---
+
+### AUSELDA AED GROUP S.P.A. — Rome, Italy
+**Oracle PL/SQL Developer · DWH Specialist** (for the Public Administration) | 2009 – 2013
+
+- Development of PL/SQL components for Data Warehousing systems and management applications for Public Administration.
+- Evolutionary and corrective maintenance of PL/SQL code; ETL optimisation on PL/SQL and OWB.
+
+---
+
+### ORACLE ITALIA S.R.L. — Various offices, Italy & Madrid, Spain
+**SQL & PL/SQL Developer · DWH Architect · DBA · Training Specialist** | 1999 – 2009
+
+- Intensive PL/SQL development for DWH, BI and custom application projects for TIM, Vodafone (Italy and Spain), Bank of Italy, Generali, Menarini.
+- Creation of PL/SQL packages for complex business logic and data-loading procedures (ETL) with Oracle Warehouse Builder.
+- BI Reports and HTMLDB (Apex) interfaces with PL/SQL logic.
+- Training Specialist (2000-2001) on Oracle SQL and PL/SQL (basic and advanced) courses.
+
+---
+
+### ETNOTEAM S.P.A. · 1999 — S.EL.DAT. S.P.A. · 1997 – 1999
+**Web Developer · Oracle SQL & PL/SQL Developer · Junior DBA** (for Telecom, Rover Italia)
+
+- Web portal and client-server development with strong Oracle backend interaction; SQL and PL/SQL for backend logic.
+
+---
+
+## Education
+
+- **Computer Engineering studies (Software Engineering)** | Roma Tre University, Rome | 1994 – 2000
+- **Scientific High School Diploma** | Liceo Scientifico Isacco Newton / Manieri Copernico, Rome | 1988 – 1993
+- **Advanced English (C1/C2)** | The British Council, Rome | 2003 – 2004
+- Continuous learning: Scrum Agile and Project Management (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Advanced SQL for Query Tuning and Oracle 12c (LinkedIn Learning, 2020)
 
 ---
 
 ## Languages
 
-**Italian** — Native · **English** — C1/C2 (Fluent, professional) · **Spanish** — C1 (Fluent) · **Romanian** — C1 (Fluent) · **French** — A1/A2 (Basic)
+- **Italian**: Native
+- **English**: C1/C2 (Fluent, professional)
+- **Spanish**: C1 (Fluent)
+- **Romanian**: C1 (Fluent)
+- **French**: A1/A2 (Basic)
 
 ---
 
 ## Soft Skills
 
-Analytical approach and orientation to complex problem solving · writing clear, efficient and maintainable code · advanced debugging and troubleshooting · understanding of functional and technical requirements · effective collaboration in development teams · attention to detail and software quality · technical mentoring of junior developers.
+- Analytical approach and orientation to solving complex problems
+- Writing clean, efficient and maintainable code
+- Advanced debugging and troubleshooting skills
+- Excellent understanding of functional and technical requirements
+- Effective collaboration in development teams
+- Attention to detail and software quality
 
 ---
 
-*I consent to the processing of my personal data pursuant to Art. 13 of EU Regulation 2016/679 (GDPR).*
+*I authorise the processing of my personal data pursuant to Art. 13 of EU Regulation 2016/679 (GDPR).*
 
-Location: Rome, Italy\
-Last Update: June 2026
+Rome, September 2026
 
 ---
 
-**[Download PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)** | **[Back to previous page](/en/resumes/)**
+**[Download PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202609_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)** | **[Back to previous page](/en/resumes/)**

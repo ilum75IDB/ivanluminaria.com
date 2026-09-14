@@ -1,130 +1,191 @@
 ---
 title: "Oracle PL/SQL Developer"
 seoTitle: "Ivan Luminaria | Oracle PL/SQL Developer & SQL Tuning"
-description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning: 30 ani dezvoltând și optimizând cod PL/SQL pentru aplicații enterprise data-intensive."
-date: "2026-03-10"
-lastmod: "2026-03-10"
+description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 de ani dezvoltand, refactorizand si optimizand cod PL/SQL pentru aplicatii enterprise data-intensive."
+date: "2026-09-14"
+lastmod: "2026-09-15"
 draft: false
 layout: "simple"
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
 ## Profil Profesional
 
-Scriu PL/SQL avansat pentru aplicatii data-intensive si Data Warehouse-uri care rezista sub sarcina.
+Senior Oracle PL/SQL Developer cu aproape 30 de ani in proiectarea, dezvoltarea, testarea si optimizarea de cod PL/SQL robust pentru aplicatii data-intensive si sisteme Data Warehouse.
 
-ATRADIUS: peste 60.000 de linii de PL/SQL ETL coordonate end-to-end, ingestia zilnica completa adusa de la peste 4 ore la sub 2 cu BULK COLLECT/FORALL si DML partition-aware. FINWAVE: pachete PL/SQL pentru aplicatii financiare cu milioane de tranzactii zilnice. Bancar + Telepass: optimizare a codului PL/SQL cu Hierarchical Profiler pe sarcini data-intensive de peste 2 miliarde de randuri.
+Expertiza aprofundata pe packages, procedures, functions, triggers si tipuri complexe, cu atentie constanta la performance, mentenabilitate si calitatea codului. Fluenta in optimizarea de interogari SQL complexe si gestionarea volumelor mari.
 
-Treizeci de ani in PL/SQL. Pachete, proceduri, functii, triggere. FORALL, BULK COLLECT, Dynamic SQL, Analytic Functions, CTEs. Tuning cu TKPROF, Explain Plan, SQL Profiles. Mentorat tehnic dezvoltatorilor juniori. Ce aduc: cod PL/SQL care face sa ruleze sarcini data-intensive fara puncte de rupere.
+Baza consolidata si ca Oracle DBA si DWH Architect: viziune completa asupra ciclului de viata al datelor, de la ingestion la consumul analitic.
 
 ---
 
-## Competente Tehnice
+## Arii de interventie
 
-- **Limbaje**: PL/SQL avansat · SQL avansat (Dynamic SQL, Analytic Functions, CTEs) · Unix Shell Scripting.
-- **Dezvoltare PL/SQL**: Packages · Procedures · Functions · Triggers · Records · Collections · Object Types · Gestionarea erorilor si exceptiilor · Bulk processing (FORALL, BULK COLLECT) · Dynamic SQL (DBMS_SQL, Execute Immediate) · Hierarchical Profiler pentru optimizarea codului.
-- **SQL Tuning**: Explain Plan · SQL Trace · TKPROF · Hints · SQL Profiles · query rewriting · indecsi · intelegerea impactului proiectarii bazei de date asupra performantei PL/SQL.
-- **Instrumente si BD**: SQL Developer · Toad · SQL*Plus · Oracle Database 8i → 21c · Autonomous Database · Oracle Cloud Infrastructure (OCI) · Git/GitHub.
-- **Concepte conexe**: Data Warehousing (ETL/ELT) · Data Integration · modelare relationala si multidimensionala a datelor (Kimball, Inmon).
+- **Dezvoltare PL/SQL & code review** — packages pentru logica ETL, proceduri de procesare a datelor, PL/SQL APIs, business logic; audit si refactor de codebase-uri legacy.
+- **PL/SQL & SQL performance tuning** — analiza Hierarchical Profiler, pattern-uri BULK COLLECT/FORALL, partition-aware DML, rescrieri ghidate de execution plan.
+- **Design ETL/ELT in PL/SQL** — template-uri de incarcare standardizate cu checkpoint-uri, logging in timp real, error recovery, dashboard-uri de monitorizare.
+- **Mentoring & transfer de competente** — coaching de dezvoltatori juniori pe best practices PL/SQL, standarde de cod, pattern-uri testabile.
+
+---
+
+## Rezultate in evidenta
+
+- **Peste 60.000 de linii de PL/SQL** proiectate si mentinute pentru un DWH multi-tara pe **4 tari europene** (Italia, Spania, Franta, Nordul Europei); template-uri reutilizabile si monitorizare in timp real a incarcarilor.
+- Ingestion zilnica completa **de la peste 4 ore la mai putin de 2 ore** prin query rewriting, BULK COLLECT/FORALL si partition-aware DML.
+- Packages PL/SQL pentru procesarea tranzactiilor financiare cu **milioane de operatiuni zilnice** pentru clienti banking si insurance.
+- Batch-uri analitice critice reduse **de la 4 ore la mai putin de 30 de minute** pe seturi de date de peste 2 miliarde de randuri.
+- Pipeline-uri ETL/ELT care integreaza **peste 15 surse eterogene** catre Oracle si dashboard-uri Oracle Analytics Cloud.
+
+---
+
+## Competente Cheie
+
+### Limbaje
+
+- PL/SQL avansat · SQL avansat (Dynamic SQL, analytic functions, CTEs)
+- Unix Shell scripting
+
+### Dezvoltare PL/SQL
+
+- Packages, procedures, functions, triggers
+- Records, collections, object types · error/exception handling
+- Bulk processing (FORALL, BULK COLLECT) · dynamic SQL (DBMS_SQL, EXECUTE IMMEDIATE)
+- PL/SQL Hierarchical Profiler
+- Interactiune cu tabele, view-uri, sequences, synonyms
+
+### SQL Optimisation & Performance
+
+- Analiza Execution Plan (Explain Plan), SQL Trace, TKPROF
+- Tehnici de SQL Tuning (Hints, query rewriting, indexes)
+- Impactul designului de baza de date asupra performantei PL/SQL
+
+### Oracle Database
+
+- Oracle Database 8i → 21c, Autonomous Database
+
+### Concepte conexe
+
+- Data Warehousing (logica ETL/ELT), data integration
+- Modelare relationala si multidimensionala
+
+### Instrumente de dezvoltare
+
+- SQL Developer, Toad, SQL*Plus
+- Git si GitHub pentru version control
+
+### Cloud
+
+- Oracle Cloud Infrastructure (OCI) — cunoastere a database services
 
 ---
 
 ## Experienta Profesionala
 
-### 2022 – Prezent — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Senior Oracle PL/SQL Developer & DWH Architect**
+### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
+**Administrator Unic · Senior Oracle PL/SQL Developer · DWH Architect** | 2021 – Prezent
 
-- **PL/SQL Developer** (pentru ATRADIUS) | 4 ani
-
-  Peste 60.000 de linii de cod PL/SQL (pachete, proceduri, functii) pentru DWH-ul diviziei Surety (4 tari europene). Template-uri PL/SQL reutilizabile cu puncte de control integrate pentru urmarirea in timp real a pipeline-urilor ETL. Ingestie zilnica adusa de la peste 4 ore la sub 2 cu BULK COLLECT/FORALL si DML partition-aware.
-
-- **PL/SQL Developer** (pentru FINWAVE S.p.A.) | 2 ani
-
-  Pachete PL/SQL pentru aplicatii de procesare a tranzactiilor financiare cu milioane de operatiuni zilnice; optimizare avansata a interogarilor si tuning de cod PL/SQL pentru pipeline-uri de date de volum mare.
-
-- **PL/SQL Developer** (pentru FAI SERVICE) | 2 ani
-
-  Proceduri ETL in PL/SQL pe Oracle 19c in OCI pentru fluxuri de facturare, segmentare clienti si urmarire costuri/venituri; module PL/SQL care alimenteaza dashboard-uri Oracle Analytics Cloud cu KPI-uri agregate.
-
-- **Dezvoltare PL/SQL** (Banking, Telepass si alti clienti) | 1 an
-
-  Pachete PL/SQL pentru logica de business in aplicatii DWH din sectorul bancar pe seturi de date de peste 2 miliarde de randuri. Optimizarea codului PL/SQL cu Hierarchical Profiler pentru identificarea blocajelor pe caile critice.
+- **PL/SQL Developer** (pentru ATRADIUS, divizia Surety) | 2022 – Iun 2025:
+  - Peste 60.000 de linii de cod PL/SQL (packages, procedures, functions) pentru DWH-ul multi-tara care consolideaza daune de asigurari si date de credit.
+  - Template-uri PL/SQL reutilizabile pentru proceduri de incarcare cu checkpoint-uri si logging in timp real.
+  - Optimizarea performantei batch (query rewriting, BULK COLLECT/FORALL, partition-aware DML): ciclu zilnic redus de la peste 4 ore la mai putin de 2 ore.
+- **PL/SQL Developer** (pentru FINWAVE S.p.A.) | 2020 – 2022:
+  - Packages PL/SQL pentru procesarea tranzactiilor financiare cu milioane de operatiuni zilnice pe clienti banking si insurance.
+- **PL/SQL Developer** (pentru FAI SERVICE) | 2021 – 2023:
+  - Proceduri ETL in PL/SQL pe Oracle 19c in OCI pentru facturare, segmentare clienti si tracking costuri/venituri.
+  - Module PL/SQL de sprijin pentru dashboard-urile Oracle Analytics Cloud cu KPI financiari agregati.
+- **Dezvoltare PL/SQL** (clienti Banking, Telepass si altii):
+  - Packages de business logic PL/SQL pentru aplicatii DWH din sectorul banking pe seturi de date de peste 2 miliarde de randuri.
+  - Optimizarea codului PL/SQL si a interogarilor SQL cu analiza Hierarchical Profiler pentru identificarea blocajelor.
 
 ---
 
-### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Expert cu Focus pe Dezvoltare** (pentru TIM / HUAWEI) | 2 ani
+### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
+**Senior Database Consultant** (pentru POSTE ITALIANE) | Iul 2025 – Prezent
 
-Suport specializat echipelor de dezvoltare TIM/HUAWEI pe baze de date Oracle Exadata: optimizarea codului PL/SQL si a interogarilor SQL pentru aplicatii critice, analiza si tuning-ul proceselor PL/SQL batch cu volume mari, scripturi PL/SQL pentru sarcini de monitorizare si administrare.
-
----
-
-### 2013 – 2020 — PROFESIONIST INDEPENDENT / CONSULTANT — Roma, Italia (Full Remote Europa)
-**Senior Oracle PL/SQL Developer & DBA / DWH Architect** (Firme de consultanta si Clienti directi) | 7 ani
-
-Solutii PL/SQL personalizate pentru clienti Bancar, Telco si servicii: pachete pentru logica ETL, proceduri de procesare a datelor, API-uri PL/SQL, optimizare intensiva a codului PL/SQL si SQL pentru sisteme existente, formare si mentorat pentru dezvoltatorii juniori privind bunele practici PL/SQL.
+- Administrarea a aproximativ 1.500 de instante MySQL si PostgreSQL intre productie, certificare si dezvoltare.
+- Query tuning, monitorizarea performantei, gestionarea replicarii si capacity planning la scara enterprise.
 
 ---
 
-### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Roma, Italia
-**Oracle PL/SQL Developer & DWH Specialist** (pentru Administratia Publica) | 4 ani
+### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
+**Senior Oracle DBA & Performance Expert (cu focus Development)** (pentru TIM / HUAWEI) | 2020 – 2022
 
-Dezvoltarea componentelor PL/SQL pentru sisteme DWH si aplicatii de gestiune ale Administratiei Publice, cu mentenanta evolutiva si corectiva a codului si optimizarea proceselor ETL bazate pe PL/SQL si Oracle Warehouse Builder (OWB).
-
----
-
-### 1999 – 2009 — ORACLE ITALIA S.R.L. — Diverse locatii, Italia si Madrid, Spania
-**SQL & PL/SQL Developer / DWH Architect / DBA / Training Specialist** | 10 ani
-
-Dezvoltare intensiva de PL/SQL pentru proiecte DWH, BI si aplicatii personalizate pentru clienti enterprise (Telco, Finance, Farmaceutic): pachete PL/SQL pentru logica de business complexa, proceduri ETL cu Oracle Warehouse Builder, Rapoarte BI si interfete HTMLDB (Apex). Aproximativ 1 an de experienta internationala la Madrid. Training Specialist pe Oracle SQL si PL/SQL (Basic si Advanced) in 2000-2001.
+- Suport specializat pentru echipele de dezvoltare in optimizarea codului PL/SQL si a interogarilor SQL pentru aplicatii critice pe Exadata.
+- Analiza si tuning de procese batch PL/SQL de volum mare; script-uri PL/SQL pentru monitorizare si administrare.
 
 ---
 
-### 1999 — ETNOTEAM S.P.A. — Roma, Italia
-**Web Developer / Oracle SQL & PL/SQL Developer**
+### PROFESIONIST INDEPENDENT / CONSULTANT — Roma, Italia (Full Remote Europa)
+**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2020
 
-Portaluri web si aplicatii client-server cu interactiune puternica cu baze de date Oracle, utilizand SQL si PL/SQL pentru logica backend.
-
----
-
-### 1997 – 1999 — S.EL.DAT. S.P.A. — Roma, Italia
-**Software Developer / Junior DBA** | 2 ani
-
-Dezvoltare de aplicatii client-server cu backend Oracle si prime experiente cu SQL si PL/SQL — punctul de plecare al parcursului Oracle.
+- Solutii PL/SQL custom pentru diversi clienti: packages pentru logica ETL, proceduri de procesare a datelor, PL/SQL APIs.
+- Optimizare intensa de cod PL/SQL si SQL pentru imbunatatirea performantei sistemelor existente.
+- Formare si mentoring de dezvoltatori juniori pe best practices de dezvoltare PL/SQL.
 
 ---
 
-## Educatie si Formare
+### AUSELDA AED GROUP S.P.A. — Roma, Italia
+**Oracle PL/SQL Developer · DWH Specialist** (pentru Administratia Publica) | 2009 – 2013
 
-- **Facultatea de Inginerie Informatica (Inginerie Software)** | Universitatea Roma Tre, Roma | 1994 – 2000
-- **Diploma de Liceu Stiintific** (EQF Nivel 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
-- **Engleza Avansata (C1/C2)** | The British Council (Level 4A), Roma | 2003 – 2004
-
-**Cursuri de Formare si Actualizare:**
-Project Management & Scrum Agile — Randstad/Forma.temp (Mai 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Aprilie 2021) · Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (August 2020) · Cursuri de specializare Oracle 12c (Advanced SQL, New Features) + Learning Git and GitHub — LinkedIn Learning (2020).
+- Dezvoltare de componente PL/SQL pentru sisteme de Data Warehousing si aplicatii de gestiune pentru Administratia Publica.
+- Mentenanta evolutiva si corectiva a codului PL/SQL; optimizare de procese ETL bazate pe PL/SQL si OWB.
 
 ---
 
-## Limbi Straine
+### ORACLE ITALIA S.R.L. — Diverse sedii, Italia & Madrid, Spania
+**SQL & PL/SQL Developer · DWH Architect · DBA · Training Specialist** | 1999 – 2009
 
-**Italiana** — Limba materna · **Engleza** — C1/C2 (Fluent, profesional) · **Spaniola** — C1 (Fluent) · **Romana** — C1 (Fluent) · **Franceza** — A1/A2 (Baza)
+- Dezvoltare intensa de cod PL/SQL pentru proiecte DWH, BI si aplicatii custom pentru TIM, Vodafone (Italia si Spania), Banca Italiei, Generali, Menarini.
+- Crearea de packages PL/SQL pentru business logic complexa si proceduri de incarcare a datelor (ETL) cu Oracle Warehouse Builder.
+- BI Reports si interfete HTMLDB (Apex) cu logica PL/SQL.
+- Training Specialist (2000-2001) pe cursuri Oracle SQL si PL/SQL (de baza si avansat).
+
+---
+
+### ETNOTEAM S.P.A. · 1999 — S.EL.DAT. S.P.A. · 1997 – 1999
+**Web Developer · Oracle SQL & PL/SQL Developer · Junior DBA** (pentru Telecom, Rover Italia)
+
+- Dezvoltare de portale web si aplicatii client-server cu interactiune puternica Oracle; SQL si PL/SQL pentru logica de backend.
+
+---
+
+## Formare
+
+- **Facultatea de Inginerie Informatica (Ingineria Software)** | Universitatea Roma Tre, Roma | 1994 – 2000
+- **Diploma de Bacalaureat Stiintific** | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
+- **Engleza Avansata (C1/C2)** | The British Council, Roma | 2003 – 2004
+- Formare continua: Scrum Agile si Project Management (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Advanced SQL for Query Tuning si Oracle 12c (LinkedIn Learning, 2020)
+
+---
+
+## Limbi
+
+- **Italiana**: Materna
+- **Engleza**: C1/C2 (Fluenta, profesionala)
+- **Spaniola**: C1 (Fluenta)
+- **Romana**: C1 (Fluenta)
+- **Franceza**: A1/A2 (De baza)
 
 ---
 
 ## Competente Transversale
 
-Abordare analitica si orientare spre rezolvarea problemelor complexe · scrierea de cod clar, eficient si usor de intretinut · debugging si troubleshooting avansate · intelegerea cerintelor functionale si tehnice · colaborare eficienta in echipele de dezvoltare · atentie la detalii si calitatea software-ului · mentorat tehnic dezvoltatorilor juniori.
+- Abordare analitica si orientare spre rezolvarea problemelor complexe
+- Scrierea de cod curat, eficient si mentenabil
+- Debugging si troubleshooting avansate
+- Intelegerea cerintelor functionale si tehnice
+- Colaborare eficienta in echipe de dezvoltare
+- Atentie la detaliu si calitatea software-ului
 
 ---
 
 *Autorizez prelucrarea datelor mele personale conform Art. 13 din Regulamentul UE 2016/679 (GDPR).*
 
-Location: Roma, Italia\
-Last Update: Iunie 2026
+Roma, Septembrie 2026
 
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**
+**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**

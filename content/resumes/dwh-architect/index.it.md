@@ -1,130 +1,185 @@
 ---
 title: "Data Warehouse Architect"
 seoTitle: "Ivan Luminaria | Data Warehouse Architect Oracle/PostgreSQL"
-description: "Ivan Luminaria, Data Warehouse Architect Oracle/PostgreSQL: 30 anni di progettazione DWH, modellazione dimensionale Kimball, ETL e architetture analitiche."
-date: "2026-03-10"
-lastmod: "2026-03-10"
+description: "Ivan Luminaria, Data Warehouse Architect Oracle/PostgreSQL: 30 anni di progettazione DWH, modellazione Kimball, pipeline ETL e architetture analitiche."
+date: "2026-09-14"
+lastmod: "2026-09-15"
 draft: false
 layout: "simple"
 ---
 
-**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
 ## Profilo Professionale
 
-Progetto e lavoro su Data Warehouse con dataset che vanno da centinaia di milioni a miliardi di righe.
+Data Warehouse Architect con quasi 30 anni nella progettazione, implementazione e gestione di soluzioni DWH complesse e ad alte performance su Oracle e PostgreSQL.
 
-ATRADIUS: divisione Surety consolidata su 4 paesi europei, 60.000+ righe di PL/SQL ETL, ingestione giornaliera completa sotto le 2 ore. TIM/Huawei: 30+ database Oracle critici su cluster Exadata, 70+ istanze, fino a 800 milioni di record di traffico telefonico al giorno. Banking + Telepass: integrazione da 15+ sorgenti eterogenee, oltre 2 miliardi di righe per ciclo.
+Esperto di modellazione multidimensionale (Kimball, Inmon) e di ottimizzazione di processi ETL/ELT e query SQL su dataset che vanno da centinaia di milioni a miliardi di righe. Guido progetti DWH end-to-end — dall'analisi dei requisiti al deploy in produzione — garantendo integrità, qualità e disponibilità del dato a supporto delle decisioni di business.
 
-Trent'anni dentro Oracle e PostgreSQL. Kimball, Inmon, Star Schema, Snowflake, SCD Type 2. Settori: Banking, Telco, Assicurazioni, Pubblica Amministrazione. Cosa porto: architetture che reggono sotto carico e scalano con il dato che cresce.
+Leadership tecnica e mindset di problem solving in contesti internazionali e full remote.
 
 ---
 
-## Competenze Tecniche
+## Aree di intervento
 
-- **Metodologie DWH**: Modellazione multidimensionale Kimball e Inmon · Star Schema · Snowflake · Slowly Changing Dimensions (SCD Type 1/2/3) · Bus Matrix design.
-- **Stack Oracle**: Oracle Database 8i → 21c · Exadata · RAC · Data Guard · Autonomous Database (ADB) · Oracle Cloud Infrastructure (OCI) · Performance Tuning (AWR, ADDM, SQL Tuning Advisor) · ASM · RMAN · TDE.
-- **PostgreSQL**: PostgreSQL 14+ · Query Optimization · Table Partitioning · Logical Replication · VACUUM/Autovacuum tuning · pg_stat_statements · PgBouncer.
-- **ETL/ELT e BI**: Pipeline ETL in PL/SQL · Oracle Data Integrator (ODI) · Oracle Warehouse Builder (OWB, legacy) · Oracle Analytics Cloud (OAC) per semantic model, report e dashboard.
-- **Linguaggi, OS e trasversale**: SQL e PL/SQL avanzati · Unix Shell Scripting · Linux (RHEL, CentOS, Oracle Linux), Unix, Windows Server · Project Management (Agile/Scrum) · team leadership 3-7 persone · formazione tecnica.
+- **Data Warehouse design** — modellazione dimensionale, Star Schema e Snowflake, Slowly Changing Dimensions, Bus Matrix, source-to-target mapping.
+- **Design e ottimizzazione ETL/ELT** — pipeline in PL/SQL, Oracle Data Integrator, migrazione di progetti Oracle Warehouse Builder legacy, integrazione cross-source.
+- **DWH performance tuning** — strategie di partitioning, compression, materialized view, query rewriting, analisi degli execution plan.
+- **Modernizzazione e migrazione** — valutazione di DWH Oracle verso alternative PostgreSQL, piattaforme DWH cloud (OCI, AWS, Azure).
+
+---
+
+## Risultati in evidenza
+
+- Data Warehouse multi-paese consolidato su **4 Paesi europei** (Italia, Spagna, Francia, Nord Europa): **oltre 60.000 righe di PL/SQL**, caricamento giornaliero completo in **meno di 2 ore**, monitoraggio in tempo reale delle fasi di load.
+- Progettazione DWH su dataset superiori ai **2 miliardi di righe** con integrazione di **oltre 15 sorgenti eterogenee**.
+- Modello dati Snowflake su Oracle Analytics Cloud con ETL su Oracle 19c in OCI per fatturazione, segmentazione clienti, portafoglio e tracking costi/ricavi.
+- Batch analitici critici ridotti **da 4 ore a meno di 30 minuti** su Oracle in OCI e Autonomous Database.
+- Data Warehouse su PostgreSQL progettato come **alternativa cost-effective** a Oracle per workload Banking e Telepass.
+
+---
+
+## Competenze Chiave
+
+### Metodologie DWH
+
+- Modellazione multidimensionale Kimball e Inmon
+- Star Schema, Snowflake Schema, Slowly Changing Dimensions (SCD Type 1/2/3), Bus Matrix design
+
+### Stack Oracle
+
+- Oracle Database 8i → 21c, Exadata, RAC, Data Guard, Autonomous Database (ADB)
+- Performance Tuning (AWR, ADDM, SQL Tuning Advisor), Storage Management (ASM), Backup & Recovery (RMAN), Oracle TDE
+
+### PostgreSQL
+
+- PostgreSQL 14+, Query Optimization, Table Partitioning
+- `pg_stat_statements`, PgBouncer, replica logica, tuning di VACUUM/Autovacuum
+
+### Cloud
+
+- Oracle Cloud Infrastructure (OCI): Compute, Storage, Networking, Database Services, Autonomous Database
+- AWS Aurora PostgreSQL, ambienti Microsoft Azure Database
+
+### ETL/ELT e Business Intelligence
+
+- Pipeline ETL in PL/SQL, Unix Shell scripting
+- Oracle Data Integrator (ODI), Oracle Warehouse Builder (OWB, progetti legacy)
+- Oracle Analytics Cloud (OAC): Semantic Model Designer, dashboard e report
+
+### Linguaggi, sistemi e trasversale
+
+- SQL avanzato, PL/SQL avanzato, Unix Shell scripting
+- Linux (RHEL, CentOS, Oracle Linux), Unix, Windows Server
+- Project Management (Agile/Scrum), team leadership fino a 7 persone, formazione tecnica
 
 ---
 
 ## Esperienza Professionale
 
-### 2021 – Presente — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Data Warehouse Architect | Oracle & PostgreSQL Expert | Amministratore Unico**
+### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
+**Amministratore Unico · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2021 – Presente
 
-- **DWH Architect** (per ATRADIUS) | 4 anni
-
-  Architettura DWH della divisione Surety: 4 paesi europei consolidati su Oracle, modello dimensionale completo e 60.000+ righe di PL/SQL ETL con ingestione giornaliera sotto le 2 ore.
-
-- **DWH Architect** (per FAI SERVICE) | 2 anni
-
-  Snowflake Schema su Oracle Analytics Cloud con ETL su Oracle 19c in OCI, a supporto di dashboard di fatturazione, segmentazione clienti e tracking costi/ricavi.
-
-- **Progettazione e Architettura DWH** (Banking, Telepass e altri clienti) | 1 anno
-
-  Architetture DWH Kimball/Inmon per Banking e Telepass: 15+ sorgenti eterogenee integrate, dataset oltre 2 miliardi di righe per ciclo, batch portati da 4 ore a meno di 30 minuti.
-
-- **Attività trasversali ai progetti**
-
-  Tuning di query SQL complesse e ottimizzazione DB Oracle in OCI/Autonomous; formazione tecnica e mentoring su best practice DWH e Oracle/PostgreSQL.
+- **DWH Architect** (per ATRADIUS, divisione Surety) | 2022 – Giu 2025:
+  - Data Warehouse Oracle unificato per consolidare i dati di 4 Paesi europei da sorgenti eterogenee (Oracle, SQL Server, file esterni).
+  - Modellazione dei domini core (portafoglio clienti, polizze, contratti, fatturazione, sinistri, movimenti sinistri).
+  - Intero data model e livello ETL, oltre 60.000 righe di PL/SQL, con framework di caricamento, checkpoint e logging in tempo reale; caricamento giornaliero completo in meno di 2 ore.
+- **DWH Architect & Oracle DBA** (per FAI SERVICE) | 2021 – 2023:
+  - Modello dati Snowflake su Oracle Analytics Cloud, ETL su Oracle 19c in OCI, dashboard per fatturazione, segmentazione e portafoglio.
+- **Design e Architettura DWH** (clienti Banking, Telepass e altri):
+  - Architetture DWH Kimball/Inmon su dataset superiori ai 2 miliardi di righe, integrazione di oltre 15 sorgenti eterogenee.
+  - Batch analitici critici ridotti da 4 ore a meno di 30 minuti su Oracle in OCI e Autonomous Database.
+  - DWH su PostgreSQL come alternativa sostenibile a Oracle con strategie di partitioning e query optimization.
+- **PL/SQL Expert & Oracle DBA** (per FINWAVE S.p.A.) | 2020 – 2022:
+  - Sviluppo PL/SQL avanzato e ottimizzazione di query per applicazioni finanziarie con milioni di transazioni giornaliere.
 
 ---
 
-### 2020 – 2022 — NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Oracle DBA | DWH Architect | Oracle Performance & Tuning Expert** (per TIM / HUAWEI) | 2 anni
+### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
+**Senior Database Consultant — MySQL & PostgreSQL DBA** (per POSTE ITALIANE) | Lug 2025 – Presente
 
-Architettura DWH telco su 30+ database Oracle critici (70+ istanze su cluster Exadata) a supporto di 20+ milioni di abbonati mobile prepagati. Tabelle dei fatti con ingestione fino a 800 milioni di record di traffico telefonico al giorno, partizionamento e compressione avanzati per SLA <500ms sulle query critiche.
-
----
-
-### 2020 – 2022 — IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**PL/SQL Expert | Oracle DBA & Tuning Expert** (per FINWAVE S.p.A.) | 2 anni
-
-Sviluppo PL/SQL avanzato e tuning query Oracle per applicazioni finanziarie con milioni di transazioni giornaliere.
+- Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
+- Monitoraggio delle performance, query tuning, gestione della replica e capacity planning su scala enterprise.
+- Supporto ai team di sviluppo e infrastruttura in un contesto database eterogeneo con requisiti di continuità operativa.
 
 ---
 
-### 2013 – 2020 — LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
-**Oracle DBA | Oracle Performance & Tuning Expert | DWH Architect** (Società di consulenza e Clienti diretti) | 7 anni
+### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
+**Oracle DBA · DWH Architect · Oracle Performance & Tuning Expert** (per TIM / HUAWEI) | 2020 – 2022
 
-Data Warehouse per clienti Banking, Assicurazioni e Telco su piattaforme Oracle e PostgreSQL, con modellazione Kimball/Inmon. Pipeline ETL/ELT da oltre 500 milioni di righe per ciclo di caricamento; team multiculturali 3-7 persone coordinati con approccio Agile.
-
----
-
-### 2009 – 2013 — AUSELDA AED GROUP S.P.A. — Roma, Italia
-**Data Warehouse Architect | Performance & Tuning Expert | Oracle Project DBA** (per la Pubblica Amministrazione) | 4 anni
-
-Architettura DWH (Kimball/Inmon) per enti della Pubblica Amministrazione, con specializzazione su Oracle Warehouse Builder (OWB) e ottimizzazione di query SQL complesse.
+- Architettura DWH telco su oltre 30 database Oracle critici (70+ istanze su cluster Exadata) al servizio di oltre 20 milioni di utenti prepagati mobile.
+- Fact table con ingestion fino a 800 milioni di record di traffico al giorno, con strategie avanzate di partitioning e compression.
+- Performance tuning proattivo (AWR/ADDM) per SLA sotto i 500 ms; ASM e Oracle TDE.
 
 ---
 
-### 1999 – 2009 — ORACLE ITALIA S.R.L. — Varie sedi, Italia & Madrid, Spagna
-**Data Warehouse Architect | Oracle DBA | DWH Designer | SQL & PL/SQL Developer | Training Specialist** | 10 anni
+### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
+**Oracle DBA · Performance Tuning · DWH Architect** | 2013 – 2020
 
-Architettura e sviluppo Data Warehouse per clienti primari Telco (TIM, Vodafone, TRE), Finance (Banca d'Italia, Generali, RAS) e Farmaceutico (Menarini), con modellazione Kimball/Inmon ed ETL su Oracle Warehouse Builder. Circa 1 anno di esperienza internazionale a Madrid presso Vodafone Spagna. Training Specialist su corsi tecnici Oracle SQL, PL/SQL, DBA e Performance Tuning (2000-2001).
+- Data Warehouse per clienti Banking, Insurance e Telco su piattaforme Oracle e PostgreSQL, con modellazione Kimball/Inmon.
+- Pipeline ETL/ELT che gestiscono 500 milioni di righe per ciclo di caricamento.
+- Team da 3 a 7 persone in contesti multiculturali distribuiti, con approccio Agile.
 
 ---
 
-### 1997 – 1999 — S.EL.DAT. S.P.A. — Roma, Italia
-**Software Developer** (per Telecom, Rover Italia) | 2 anni
+### AUSELDA AED GROUP S.P.A. — Roma, Italia
+**Data Warehouse Architect · Performance & Tuning Expert · Oracle Project DBA** (per la Pubblica Amministrazione) | 2009 – 2013
 
-Sviluppo di applicazioni client-server per Telecom e Rover Italia, con prime esperienze come Junior Oracle DBA e monitoraggio database — il punto di partenza del percorso Oracle.
+- Progettazione e modellazione (Kimball/Inmon) di DWH per enti della Pubblica Amministrazione.
+- Sviluppo di processi ETL/ELT, ottimizzazione di query SQL complesse, product specialist Oracle Warehouse Builder.
+
+---
+
+### ORACLE ITALIA S.R.L. — Varie sedi, Italia & Madrid, Spagna
+**Data Warehouse Architect · Oracle DBA · SQL & PL/SQL Developer · Training Specialist** | 1999 – 2009
+
+- Data Warehouse per clienti Telco (TIM, Vodafone, TRE), Finance (Banca d'Italia, Generali, RAS) e Farmaceutico (Menarini) con modellazione Kimball/Inmon ed ETL su Oracle Warehouse Builder.
+- Ingaggio internazionale su Vodafone Spagna (Madrid).
+- Training Specialist (2000-2001) su SQL, PL/SQL, Oracle DBA e Performance & Tuning.
+
+---
+
+### ETNOTEAM S.P.A. · 1999 — S.EL.DAT. S.P.A. · 1997 – 1999
+**Web e Software Developer · Junior Oracle DBA** (per Telecom, Rover Italia)
 
 ---
 
 ## Formazione
 
 - **Facoltà di Ingegneria Informatica (Ingegneria del Software)** | Università degli Studi Roma Tre, Roma | 1994 – 2000
-- **Diploma di Maturità Scientifica** (EQF Livello 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
-- **Inglese Avanzato (C1/C2)** | The British Council (Livello 4A), Roma | 2003 – 2004
-
-**Corsi di Formazione e Aggiornamento:**
-Project Management & Scrum Agile — Randstad/Forma.temp (Maggio 2024) · Data Wrangling, Analysis and AB Testing with SQL — Coursera, UC Davis (Aprile 2021) · Data Science on GCP: Designing Data Warehouses — LinkedIn Learning (Settembre 2020) · Corsi di specializzazione Oracle 12c (Administration, Security, Backup & Recovery, Advanced SQL, Performance Optimization) — LinkedIn Learning (2020) · MySQL Installation and Configuration + Learning Git and GitHub — LinkedIn Learning (Agosto 2020).
+- **Diploma di Maturità Scientifica** | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
+- **Inglese Avanzato (C1/C2)** | The British Council, Roma | 2003 – 2004
+- Formazione continua: Scrum Agile e Project Management (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Advanced SQL for Query Tuning e Oracle 12c (LinkedIn Learning, 2020)
 
 ---
 
 ## Lingue
 
-**Italiano** — Madrelingua · **Inglese** — C1/C2 (Fluente, professionale) · **Spagnolo** — C1 (Fluente) · **Rumeno** — C1 (Fluente) · **Francese** — A1/A2 (Base)
+- **Italiano**: Madrelingua
+- **Inglese**: C1/C2 (Fluente, professionale)
+- **Spagnolo**: C1 (Fluente)
+- **Rumeno**: C1 (Fluente)
+- **Francese**: A1/A2 (Base)
 
 ---
 
 ## Competenze Trasversali
 
-Problem solving analitico e creativo · collaborazione in contesti internazionali e full-remote · project management (Agile/Scrum, definizione requisiti, prioritizzazione, diagrammi Gantt, ERD) · leadership tecnica di team 3-7 persone · mentoring tecnico · stakeholder engagement.
+- Lettura trasversale delle situazioni complesse, fino alla causa reale
+- Traduzione tra livello tecnico e livello business, per team e management
+- Coordinamento di team distribuiti, in presenza e full remote
+- Mentoring e trasferimento di competenze
+- Gestione delle priorità sotto pressione operativa
+- Comunicazione tecnica chiara, basata sulle evidenze
 
 ---
 
 *Autorizzo il trattamento dei miei dati personali ai sensi dell'Art. 13 del Regolamento UE 2016/679 (GDPR).*
 
-Location: Roma, Italia\
-Last Update: Giugno 2026
+Roma, Settembre 2026
 
 ---
 
-**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Torna alla pagina precedente](/it/resumes/)**
+**[Scarica PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profilo LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Torna alla pagina precedente](/it/resumes/)**
