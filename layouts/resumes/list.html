@@ -34,9 +34,13 @@
         {{ with .Description }}
           <p class="kh-header-tagline">{{ . | emojify }}</p>
         {{ end }}
-        {{ if gt $rolesCount 0 }}
+        {{ $pillars := 0 }}
+        {{ range .Pages }}
+          {{ if not (in .Path "technical-leader") }}{{ $pillars = add $pillars 1 }}{{ end }}
+        {{ end }}
+        {{ if gt $pillars 0 }}
           <div class="kh-header-count">
-            <strong>{{ $rolesCount }}</strong>&nbsp;{{ i18n "knowhow.count_text" }}
+            <strong>1</strong>&nbsp;{{ i18n "knowhow.role_word" }} · <strong>{{ $pillars }}</strong>&nbsp;{{ i18n "knowhow.pillars_word" }}
           </div>
         {{ end }}
       </div>

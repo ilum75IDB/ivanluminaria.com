@@ -40,8 +40,8 @@ html, body {
 nav .z-40 > a {
   color: var(--ivan-blue) !important;
   text-transform: uppercase !important;
-  font-size: 1.875rem !important;
-  letter-spacing: 0.05em;
+  font-size: 2.1rem !important;
+  letter-spacing: 0.12em;
   text-decoration: none !important;
 }
 
@@ -49,6 +49,29 @@ nav .z-40 > a:hover {
   color: var(--ivan-red) !important;
   text-decoration: none !important;
 }
+
+/* 1b. BRAND BLOCK: nome + ruolo + frase d'effetto (Technical Leader, 2026-09) */
+nav .z-40.brand-wrap {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+.brand-role {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--ivan-red);
+}
+.brand-tagline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ivan-gray-obj);
+  max-width: 32rem;
+}
+.dark .brand-role { color: #ff5c5c; }
+.dark .brand-tagline { color: rgb(163, 163, 163); }
 
 /* 2. TITOLI: Grigio Antracite */
 h1, h2, h3, h4,
@@ -521,9 +544,16 @@ header.print\:hidden {
   margin: 0 !important;
 }
 
-/* 2b) Body padding-top per compensare la navbar fixed */
+/* 2b) Body padding-top per compensare la navbar fixed.
+   Aggiornato 2026-09-14: navbar cresciuta di 2 righe (brand-role + brand-tagline)
+   per il ruolo Technical Leader. Desktop ~120px, mobile ~90px (tagline nascosta). */
 body {
-  padding-top: 4.5rem !important;
+  padding-top: 7.5rem !important;
+}
+@media (max-width: 767px) {
+  body {
+    padding-top: 5.5rem !important;
+  }
 }
 
 /* 2c) Margini laterali ridotti + max-width 1600px per schermi grandi */
@@ -1275,12 +1305,29 @@ footer {
 
 .author-sidebar-roles {
   margin-top: 0.3rem;
-  font-size: 0.65rem;
-  color: #6b7280;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ivan-red);
+  line-height: 1.35;
 }
 
 .dark .author-sidebar-roles {
+  color: #ff5c5c;
+}
+
+.author-sidebar-pillars,
+.author-footer-pillars,
+.author-mobile-pillars {
+  margin-top: 0.25rem;
+  font-size: 0.65rem;
+  color: #6b7280;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.dark .author-sidebar-pillars,
+.dark .author-footer-pillars,
+.dark .author-mobile-pillars {
   color: #9ca3af;
 }
 
@@ -1353,6 +1400,21 @@ footer {
   .nav-inner > div:first-child {
     order: 1 !important;                       /* dopo il burger */
     align-self: center !important;
+  }
+  /* Brand block su mobile: ruolo su una riga con ellissi, frase nascosta */
+  nav .z-40.brand-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .brand-tagline {
+    display: none !important;
+  }
+  .brand-role {
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
 }
 
@@ -3338,12 +3400,23 @@ footer {
   line-height: 1.15;
 }
 .about-profile-role {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: rgb(107, 114, 128);
-  margin: 0 0 1rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ivan-red);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.25;
 }
 .dark .about-profile-role {
+  color: #ff5c5c;
+}
+.about-profile-pillars {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(107, 114, 128);
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.01em;
+}
+.dark .about-profile-pillars {
   color: rgb(156, 163, 175);
 }
 .about-profile-desc {
@@ -3755,6 +3828,43 @@ footer {
   border-color: rgb(64, 64, 64);
 }
 
+/* Scheda principale Technical Leader */
+.kh-role-card--featured {
+  border: 2px solid var(--ivan-red);
+  box-shadow: 0 10px 28px rgba(248, 0, 0, 0.08);
+  margin-bottom: 3rem;
+}
+.kh-role-card--featured .kh-role-main {
+  padding: 2.5rem 2.75rem;
+  background: linear-gradient(135deg, #ffffff 0%, #fdf5f5 100%);
+}
+.dark .kh-role-card--featured .kh-role-main {
+  background: linear-gradient(135deg, rgb(38, 38, 38) 0%, rgb(52, 36, 36) 100%);
+}
+.kh-role-card--featured .kh-role-title {
+  font-size: 1.85rem !important;
+}
+.kh-role-card--featured .kh-role-body {
+  font-size: 1.02rem;
+}
+/* Titolo di raccordo «I quattro pilastri» */
+.kh-pillars {
+  margin: 0 0 1.5rem;
+  padding-top: 0.5rem;
+}
+.kh-pillars h2 {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  margin: 0 0 0.35rem !important;
+}
+.kh-pillars p {
+  margin: 0;
+  color: var(--ivan-gray-obj);
+}
+.dark .kh-pillars p {
+  color: rgb(163, 163, 163);
+}
+
 .kh-role-main {
   padding: 2rem 2.25rem;
   display: flex;
@@ -3943,6 +4053,12 @@ footer {
   .kh-btn {
     width: auto;
     flex: 1;
+  }
+  .kh-role-card--featured .kh-role-main {
+    padding: 1.75rem 1.5rem;
+  }
+  .kh-role-card--featured .kh-role-title {
+    font-size: 1.45rem !important;
   }
 }
 

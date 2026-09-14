@@ -7,6 +7,7 @@
     roadmap — slug della sottosezione (es. "dwh-architect") per build URL localizzato
     pdf     — filename del PDF in static/downloads/ (es. "CV_DWH_Architect...pdf")
     sectors — elenco settori separati da virgola (es. "TIM,Vodafone,Generali")
+    featured — "true" per la scheda principale (Technical Leader): stile in evidenza + etichetta
   Inner: narrativa in markdown
 -->
 {{- $role := .Get "role" -}}
@@ -14,6 +15,7 @@
 {{- $roadmapSlug := .Get "roadmap" -}}
 {{- $pdfFile := .Get "pdf" -}}
 {{- $sectors := .Get "sectors" -}}
+{{- $featured := eq (.Get "featured") "true" -}}
 {{- $roadmapUrl := "" -}}
 {{- if $roadmapSlug -}}
   {{- with $.Page.Site.GetPage (printf "/resumes/%s" $roadmapSlug) -}}
@@ -24,7 +26,7 @@
 {{- if $pdfFile -}}
   {{- $pdfUrl = relURL (printf "downloads/%s" $pdfFile) -}}
 {{- end -}}
-<div class="kh-role-card" data-role="{{ $role }}">
+<div class="kh-role-card{{ if $featured }} kh-role-card--featured{{ end }}" data-role="{{ $role }}">
   <div class="kh-role-main">
     <div class="kh-role-header">
       <h3 class="kh-role-title">{{ $title }}</h3>
