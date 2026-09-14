@@ -1,10 +1,14 @@
 ---
-title: "Project Management"
-seoTitle: "Project Management IT: Scrum, AI, consulenza"
-description: "Articoli Project Management IT: Scrum, standup meeting, smart working, AI Manager, gestione team, freelance e consulenza IT. Casi reali da 30 anni."
+title: "Leadership tecnica e progetti"
+seoTitle: "Leadership tecnica e project management IT: casi reali"
+description: "Leadership tecnica e project management IT: decisioni, team, metodo e consulenza, con storie vere e numeri da 30 anni di progetti in banche, telco e PA."
 layout: "list"
 image: "project-management.cover.jpg"
 ---
+
+Questa sezione racconta la parte del mestiere che non sta nei piani di esecuzione: le decisioni, i team, il metodo. È lo spazio della **leadership tecnica**, dove persone, sistemi e scelte devono funzionare insieme.
+
+------------------------------------------------------------------------
 
 Ho visto project manager far piangere sviluppatori senior in riunione. Ho visto team brillanti distrutti da PM che confondevano l'autorità con l'autoritarismo. Ho visto software consegnati "in tempo" che non funzionavano, e progetti da milioni di euro finiti nel nulla.
 

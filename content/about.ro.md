@@ -1,9 +1,9 @@
 ---
 title: "Despre mine"
-seoTitle: "Ivan Luminaria: DBA Oracle, PostgreSQL și DWH Architect"
-description: "Ivan Luminaria: 30 ani de experiență ca DBA Oracle, PostgreSQL și DWH Architect. Specialist în performance tuning, înaltă disponibilitate și securitate DB."
+seoTitle: "Ivan Luminaria: Technical Leader, baze de date critice"
+description: "Ivan Luminaria, Technical Leader pentru baze de date critice: 30 de ani de Oracle, PostgreSQL, MySQL și Data Warehouse alături de CIO și CTO."
 date: "2026-02-20"
-lastmod: "2026-02-26"
+lastmod: "2026-09-14"
 draft: false
 layout: "about"
 showTitle: false
@@ -17,7 +17,8 @@ showTitle: false
   </div>
   <div class="about-profile-info">
     <h1 class="about-profile-name">IVAN LUMINARIA</h1>
-    <p class="about-profile-role">Oracle, PostgreSQL &amp; MySQL Expert · DWH Architect · Project Manager</p>
+    <p class="about-profile-role">Technical Leader pentru baze de date critice</p>
+    <p class="about-profile-pillars">Oracle DBA · Oracle PL/SQL · DWH Architect · Project Manager</p>
     <p class="about-profile-desc">
       Profesionist IT cu aproximativ <strong>30 de ani de experiență</strong> în proiectarea, implementarea și gestionarea soluțiilor de baze de date și Data Warehouse în medii Oracle, PostgreSQL și MySQL.
     </p>

@@ -1,10 +1,10 @@
 ---
 title: "Know-How e Impacto"
-seoTitle: "Know-How e Impacto: 30 años de DBA, DWH y equipos IT"
-description: "Know-How e Impacto de Ivan Luminaria: los 4 perfiles profesionales — DWH Architect, Oracle DBA, Oracle PL/SQL Developer, Project Manager Scrum/Agile."
+seoTitle: "Ivan Luminaria, Technical Leader de bases de datos críticas"
+description: "Technical Leader de bases de datos de misión crítica: 30 años en banca, seguros, telco y sector público. Cuatro pilares: DWH, Oracle DBA, PL/SQL y PM."
 hero_title: "Experiencia, profundidad, impacto"
 date: "2026-02-23"
-lastmod: "2026-02-26"
+lastmod: "2026-09-14"
 draft: false
 image: "resumes.cover.jpg"
 ---
@@ -21,9 +21,35 @@ Ha sido una profundización vertical.
 Lo que hoy ofrezco no es una lista de competencias.  
 Es la suma de las consecuencias que esas competencias generan.
 
+Hoy esas profundidades trabajan juntas, en un único rol.
+
 </div>
 
-{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Banco de Italia,Automoción" >}}
+{{< kh-role role="tl" featured="true" title="Technical Leader para bases de datos de misión crítica" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banca,Seguros,Telco,Sector público,Movilidad y pagos" >}}
+
+Hoy mi trabajo es acompañar a CIOs, CTOs e IT Directors cuando un sistema de datos de misión crítica se ralentiza, se detiene o debe tomar una nueva dirección.
+
+Cuando la causa atraviesa varios niveles — aplicación, SQL, base de datos, sistema operativo, almacenamiento, red — hace falta alguien que los lea juntos.  
+Y que sepa explicar cada paso a quien debe decidir.
+
+Aporto treinta años de sistemas reales en banca, seguros, telco y sector público.  
+Y un método que se queda con el equipo cuando termina la intervención.
+
+Sistemas más estables.  
+Decisiones defendibles.  
+Personas más autónomas.
+
+{{< /kh-role >}}
+
+<div class="kh-pillars">
+
+## Los cuatro pilares
+
+Las competencias sobre las que se apoya el rol de Technical Leader. Cada una tiene su roadmap y su CV.
+
+</div>
+
+{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Seguros,Banco de Italia,Automoción" >}}
 
 Mi experiencia en Data Warehouse se ha desarrollado en entornos donde el dato es infraestructura crítica.
 
@@ -53,7 +79,7 @@ Conecto visión estratégica con detalle técnico. Roadmaps con implementación.
 
 {{< /kh-role >}}
 
-{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Huawei,Banco de Italia,Generali,Automoción" >}}
+{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202606_EN.pdf" sectors="POSTE,TIM,Huawei,Banco de Italia,Generali,Automoción" >}}
 
 Mi actividad como Oracle DBA se ha consolidado en entornos mission-critical para operadores como TIM, Wind, Vodafone y 3, en contextos tecnológicos complejos como Huawei, para instituciones financieras como el Banco de Italia, la Oficina Italiana de Cambios y Cassa Depositi e Prestiti, para organizaciones aseguradoras como Generali, y en proyectos industriales en el sector automotriz.
 
@@ -66,7 +92,7 @@ Es protección operativa.
 
 {{< /kh-role >}}
 
-{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" sectors="Banca,Seguros,Farmacéutico,Automoción,AAPP" >}}
+{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" sectors="Banca,Finance,Seguros,Farmacéutico,Automoción,AAPP" >}}
 
 He desarrollado PL/SQL en entornos Telco, Banca, Seguros, Automoción, Farmacéutico y Administración Pública.
 
