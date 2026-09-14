@@ -1,140 +1,140 @@
 ---
 title: "Project Manager"
-seoTitle: "Ivan Luminaria | Project Manager Scrum/Agile in IT"
-description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 de ani gestionand proiecte software cu fundament tehnic solid Oracle si Data Warehouse. Cazuri reale."
+seoTitle: "Ivan Luminaria | Project Manager Scrum/Agile în IT"
+description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 de ani gestionand proiecte software cu fundament tehnic solid Oracle și Data Warehouse. Cazuri reale."
 date: "2026-09-14"
 lastmod: "2026-09-15"
 draft: false
 layout: "simple"
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+**[Descarcă PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
 ---
 
 ## Profil Profesional
 
-Project Manager cu aproape 30 de ani de experienta IT si un fundament tehnic solid pe Data Warehouse si Oracle. Peste 10 proiecte livrate cu un track record puternic de respectare a termenelor, conducand echipe de la 3 la 7 persoane in contexte multiculturale si remote pe angajamente de **€100K–€500K**.
+Project Manager cu aproape 30 de ani de experiență IT și un fundament tehnic solid pe Data Warehouse și Oracle. Peste 10 proiecte livrate cu un track record puternic de respectare a termenelor, conducand echipe de la 3 la 7 persoane în contexte multiculturale și remote pe angajamente de **€100K–€500K**.
 
-Planificare, gestionarea riscurilor, coordonarea resurselor si stakeholder engagement — dezvoltate in ani de conducere a activitatilor de dezvoltare, release si mentenanta pentru clienti Banking, Telco, Insurance si Administratie Publica.
+Planificare, gestionarea riscurilor, coordonarea resurselor și stakeholder engagement — dezvoltate în ani de conducere a activitatilor de dezvoltare, release și mentenanță pentru clienți Banking, Telco, Insurance și Administratie Publica.
 
-Agile si Scrum aplicate zilnic, cu formare certificata. Baza tehnica profunda (arhitectura DWH, Oracle DBA, PL/SQL, ETL/ELT) permite evaluari realiste de fezabilitate si identificarea timpurie a riscurilor tehnice.
+Agile și Scrum aplicate zilnic, cu formare certificata. Bază tehnică profundă (arhitectură DWH, Oracle DBA, PL/SQL, ETL/ELT) permite evaluări realiste de fezabilitate și identificarea timpurie a riscurilor tehnice.
 
 ---
 
-## Arii de interventie
+## Arii de intervenție
 
-- **Planificare si delivery** — definirea milestone-urilor, tracking-ul avansarii, release planning, delivery coordination.
+- **Planificare și delivery** — definirea milestone-urilor, tracking-ul avansarii, release planning, delivery coordination.
 - **Gestionarea riscurilor** — identificare proactiva, planuri de mitigation, escaladare timpurie a riscurilor tehnice.
-- **Stakeholder engagement** — interfata directa cu clientul, colectarea cerintelor, negocierea scope-ului, executive reporting.
-- **Coordonare echipe si mentoring** — echipe distribuite, ceremonii Agile, capability building, onboarding de noi consultanti.
+- **Stakeholder engagement** — interfață directă cu clientul, colectarea cerințelor, negocierea scope-ului, executive reporting.
+- **Coordonare echipe și mentoring** — echipe distribuite, ceremonii Agile, capability building, onboarding de noi consultanti.
 
 ---
 
-## Rezultate in evidenta
+## Rezultate în evidență
 
-- **Aproximativ 10 proiecte livrate** in ultimul ciclu independent (2013–2020), interval de buget **€100K–€500K**, track record puternic de respectare a termenelor.
-- Echipe de **3 la 7 persoane** coordonate in contexte multiculturale distribuite si full-remote.
-- Batch-uri analitice critice reduse **de la 4 ore la mai putin de 30 de minute** prin tuning coordonat si release planning.
-- Program DWH multi-tara (**4 tari europene**, peste 60.000 de linii de PL/SQL ETL) livrat cu backlog management, gestionare a dependentelor cross-team si reporting catre stakeholder-i.
-- Rollout-uri Oracle Cloud si Autonomous Database orchestrate pe workload-uri Banking si Telepass.
+- **Aproximativ 10 proiecte livrate** în ultimul ciclu independent (2013–2020), interval de buget **€100K–€500K**, track record puternic de respectare a termenelor.
+- Echipe de **3 la 7 persoane** coordonate în contexte multiculturale distribuite și full-remote.
+- Batch-uri analitice critice reduse **de la 4 ore la mai puțin de 30 de minute** prin tuning coordonat și release planning.
+- Program DWH multi-țară (**4 țări europene**, peste 60.000 de linii de PL/SQL ETL) livrat cu backlog management, gestionare a dependentelor cross-team și reporting către stakeholder-i.
+- Rollout-uri Oracle Cloud și Autonomous Database orchestrate pe workload-uri Banking și Telepass.
 
 ---
 
-## Competente Cheie
+## Competențe Cheie
 
-### Project Management si metodologii
+### Project Management și metodologii
 
 - Project planning, definirea milestone-urilor, tracking-ul avansarii
 - Risk & issue management
-- Agile si Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — formare certificata
+- Agile și Scrum (Sprint Planning, Daily Stand-up, Retrospective, Backlog Refinement) — formare certificata
 - Requirements definition, scope management, stakeholder engagement
 - Release planning
 
-### Instrumente de PM si productivitate
+### Instrumente de PM și productivitate
 
 - Microsoft Project, Jira (planning, tracking, gestionarea backlog-ului)
 - Microsoft Excel, Google Sheets (reporting, dashboard-uri, analiza date)
-- Git si GitHub (issue tracking, workflow-uri colaborative, CI/CD)
+- Git și GitHub (issue tracking, workflow-uri colaborative, CI/CD)
 
 ### Fundamente tehnice care sustin PM-ul
 
 - Data Warehouse architecture (Kimball, Inmon, GCP)
 - Oracle Database (DBA, Performance Tuning, PL/SQL)
 - SQL avansat, ETL/ELT, Business Intelligence
-- Evaluare tehnica a fezabilitatii si estimare a effort-ului de dezvoltare
+- Evaluare tehnică a fezabilitatii și estimare a effort-ului de dezvoltare
 
-### Leadership si comunicare
+### Leadership și comunicare
 
 - Coordonarea echipelor tehnice distribuite (3–7 persoane, multi-country)
-- Comunicare eficienta cu echipe tehnice, business stakeholder-i si management
-- Mentoring si dezvoltarea competentelor echipei
-- Facilitarea sedintelor si gestionarea conflictelor
+- Comunicare eficiență cu echipe tehnice, business stakeholder-i și management
+- Mentoring și dezvoltarea competențelor echipei
+- Facilitarea sedintelor și gestionarea conflictelor
 
 ---
 
-## Experienta Profesionala
+## Experiență Profesională
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
 **Administrator Unic · Project Manager & Senior DWH Architect** | 2021 – Prezent
 
-- **PM & DWH Lead** (pentru GENERALI Asigurari) | Feb 2024 – Mai 2025:
-  - Coordonarea activitatilor de proiect si gestionarea prioritatilor echipei de dezvoltare pe baze de date Oracle in sectorul asigurarilor.
-  - Interfata directa cu clientul pentru cerinte, definirea scope-ului si prezentarea solutiilor.
-  - Monitorizarea avansarii si gestionarea situatiilor critice pe baze de date de la 500 GB la 8 TB.
+- **PM & DWH Lead** (pentru GENERALI Asigurări) | Feb 2024 – Mai 2025:
+  - Coordonarea activitatilor de proiect și gestionarea priorităților echipei de dezvoltare pe baze de date Oracle în sectorul asigurărilor.
+  - Interfață directă cu clientul pentru cerințe, definirea scope-ului și prezentarea solutiilor.
+  - Monitorizarea avansarii și gestionarea situațiilor critice pe baze de date de la 500 GB la 8 TB.
 - **PM & DWH Lead** (pentru ATRADIUS, divizia Surety) | 2022 – Iun 2025:
-  - Program de consolidare a datelor multi-tara pe 4 tari europene.
-  - Release planning si gestionarea backlog-ului de dezvoltare pe peste 60.000 de linii de PL/SQL ETL.
-  - Activity tracking, reporting catre stakeholder-i si gestionarea dependentelor cross-team.
-- **Project Coordinator** (clienti Banking, Telepass si altii):
-  - Coordonarea proiectelor care au dus la reducerea batch-urilor de la 4 ore la mai putin de 30 de minute.
-  - Gestionarea integrarii datelor de la peste 15 surse eterogene pe seturi de date de peste 2 miliarde de randuri.
-  - Release planning in medii Oracle OCI si Autonomous Database.
+  - Program de consolidare a datelor multi-țară pe 4 țări europene.
+  - Release planning și gestionarea backlog-ului de dezvoltare pe peste 60.000 de linii de PL/SQL ETL.
+  - Activity tracking, reporting către stakeholder-i și gestionarea dependentelor cross-team.
+- **Project Coordinator** (clienți Banking, Telepass și altii):
+  - Coordonarea proiectelor care au dus la reducerea batch-urilor de la 4 ore la mai puțin de 30 de minute.
+  - Gestionarea integrarii datelor de la peste 15 surse eterogene pe seturi de date de peste 2 miliarde de rânduri.
+  - Release planning în medii Oracle OCI și Autonomous Database.
 
 ---
 
 ### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
 **Senior Database Consultant** (pentru POSTE ITALIANE) | Iul 2025 – Prezent
 
-- Administrarea a aproximativ 1.500 de instante MySQL si PostgreSQL intre productie, certificare si dezvoltare.
-- Monitorizarea performantei, query tuning, gestionarea replicarii si capacity planning la scara enterprise.
+- Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
+- Monitorizarea performanței, query tuning, gestionarea replicarii și capacity planning la scara enterprise.
 
 ---
 
 ### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
 **Senior Oracle DBA & Performance Tuning Expert** (pentru TIM / HUAWEI) | 2020 – 2022
 
-- Planificarea si executarea activitatilor de mentenanta si patching pe peste 30 de baze de date Oracle critice (70+ instante) pe cluster-e Exadata.
-- Coordonare cu echipa de dezvoltare pentru optimizarea interactiunilor database si rezolvarea problemelor de performance.
-- Gestionarea autonoma a workload-ului cu reporting regulat catre project lead.
+- Planificarea și executarea activitatilor de mentenanță și patching pe peste 30 de baze de date Oracle critice (70+ instanțe) pe cluster-e Exadata.
+- Coordonare cu echipa de dezvoltare pentru optimizarea interactiunilor database și rezolvarea problemelor de performance.
+- Gestionarea autonoma a workload-ului cu reporting regulat către project lead.
 
 ---
 
 ### PROFESIONIST INDEPENDENT / CONSULTANT — Roma, Italia (Full Remote Europa)
 **Project Manager & Senior DWH Consultant** | 2013 – 2020
 
-- **Aproximativ 10 proiecte gestionate in 7 ani** pentru clienti Banking, Telco si servicii, cu bugete de €100K–€500K si un track record solid de livrare la timp.
-- Echipe de la 3 la 7 persoane in contexte multiculturale distribuite, cu abordare Agile iterativa.
-- Interfata directa cu clientul pentru colectarea cerintelor, definirea scope-ului, reporting-ul avansarii si gestionarea asteptarilor.
-- Formare tehnica si mentoring pentru membrii echipei, onboarding de noi consultanti.
+- **Aproximativ 10 proiecte gestionate în 7 ani** pentru clienți Banking, Telco și servicii, cu bugete de €100K–€500K și un track record solid de livrare la timp.
+- Echipe de la 3 la 7 persoane în contexte multiculturale distribuite, cu abordare Agile iterativă.
+- Interfață directă cu clientul pentru colectarea cerințelor, definirea scope-ului, reporting-ul avansarii și gestionarea asteptarilor.
+- Formare tehnică și mentoring pentru membrii echipei, onboarding de noi consultanti.
 
 ---
 
 ### AUSELDA AED GROUP S.P.A. — Roma, Italia
 **Senior Data Warehouse Specialist & Oracle DBA** (pentru Administratia Publica) | 2009 – 2013
 
-- Colaborare cu project lead-urile pe definirea cerintelor tehnice, planificarea activitatilor si validarea solutiilor.
-- Coordonarea activitatilor de dezvoltare si optimizare a DWH-urilor in sprijinul entitatilor din Administratia Publica.
-- Suport tehnic si formare a utilizatorilor pe platforme DWH.
+- Colaborare cu project lead-urile pe definirea cerințelor tehnice, planificarea activitatilor și validarea solutiilor.
+- Coordonarea activitatilor de dezvoltare și optimizare a DWH-urilor în sprijinul entitatilor din Administratia Publica.
+- Suport tehnic și formare a utilizatorilor pe platforme DWH.
 
 ---
 
 ### ORACLE ITALIA S.R.L. — Diverse sedii, Italia & Madrid, Spania
 **Senior Consultant · DWH Specialist · Training Specialist** | 1999 – 2009
 
-- Proiecte complexe de implementare DWH si BI pentru TIM, Vodafone (Italia si Spania), TRE, Banca Italiei, Generali, Menarini, cu responsabilitati crescande in coordonarea activitatilor si sprijinul consultantilor juniori.
-- Gestionarea relatiei cu technical lead-urile din partea clientului si reporting asupra avansarii.
-- Training Specialist (2000-2001): livrare de cursuri tehnice Oracle si gestionarea dinamicii de sala — competente de prezentare direct aplicabile rolului de PM.
+- Proiecte complexe de implementare DWH și BI pentru TIM, Vodafone (Italia și Spania), TRE, Banca Italiei, Generali, Menarini, cu responsabilități crescande în coordonarea activitatilor și sprijinul consultantilor juniori.
+- Gestionarea relatiei cu technical lead-urile din partea clientului și reporting asupra avansarii.
+- Training Specialist (2000-2001): livrare de cursuri tehnice Oracle și gestionarea dinamicii de sala — competențe de prezentare direct aplicabile rolului de PM.
 
 ---
 
@@ -145,31 +145,31 @@ Agile si Scrum aplicate zilnic, cu formare certificata. Baza tehnica profunda (a
 
 ## Formare
 
-- **Facultatea de Inginerie Informatica (Ingineria Software)** | Universitatea Roma Tre, Roma | 1994 – 2000
+- **Facultatea de Inginerie Informatică (Ingineria Software)** | Universitatea Roma Tre, Roma | 1994 – 2000
 - **Diploma de Bacalaureat Stiintific** | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
-- **Engleza Avansata (C1/C2)** | The British Council, Roma | 2003 – 2004
-- Formare continua: Project Management si Scrum Agile (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Data Science on GCP: Designing DWH (LinkedIn Learning, 2020) · Learning Excel 2016 · Learning Git and GitHub (LinkedIn Learning, 2020)
+- **Engleză Avansată (C1/C2)** | The British Council, Roma | 2003 – 2004
+- Formare continua: Project Management și Scrum Agile (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Data Science on GCP: Designing DWH (LinkedIn Learning, 2020) · Learning Excel 2016 · Learning Git and GitHub (LinkedIn Learning, 2020)
 
 ---
 
 ## Limbi
 
-- **Italiana**: Materna
-- **Engleza**: C1/C2 (Fluenta, profesionala)
-- **Spaniola**: C1 (Fluenta)
-- **Romana**: C1 (Fluenta)
-- **Franceza**: A1/A2 (De baza)
+- **Italiană**: Maternă
+- **Engleză**: C1/C2 (Fluentă, profesională)
+- **Spaniolă**: C1 (Fluentă)
+- **Română**: C1 (Fluentă)
+- **Franceză**: A1/A2 (De bază)
 
 ---
 
-## Competente Transversale
+## Competențe Transversale
 
-- Capacitatea de a traduce cerinte tehnice in planuri de proiect concrete si gestionabile
-- Gestionarea simultana a mai multor proiecte cu prioritati concurente
-- Comunicare eficienta la toate nivelurile (echipa tehnica, stakeholder-i, management)
-- Problem solving analitic si gestionare proactiva a riscurilor
-- Experienta in echipe distribuite, multiculturale si full-remote
-- Mentoring si dezvoltarea competentelor echipei
+- Capacitatea de a traduce cerințe tehnice în planuri de proiect concrete și gestionabile
+- Gestionarea simultana a mai multor proiecte cu priorități concurente
+- Comunicare eficiență la toate nivelurile (echipa tehnică, stakeholder-i, management)
+- Problem solving analitic și gestionare proactiva a riscurilor
+- Experiență în echipe distribuite, multiculturale și full-remote
+- Mentoring și dezvoltarea competențelor echipei
 
 ---
 
@@ -179,4 +179,4 @@ Roma, Septembrie 2026
 
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**
+**[Descarcă PDF]({{% staticurl "downloads/CV_Project_Manager_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Înapoi la pagina anterioară](/ro/resumes/)**
