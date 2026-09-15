@@ -26,6 +26,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | Auto-Indexing | funzionalità Oracle (disponibile da 19c, configurabile in 21c) che analizza il workload e crea automaticamente indici in | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Binlog | registro sequenziale di tutte le modifiche ai dati sul master MySQL. Base della replica: lo slave legge il binlog per sa | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
+| Buffer pool warm-up | Processo di ricaricamento delle pagine calde nel buffer pool dopo un restart. Con `innodb_buffer_pool_dump_at_shutdown`  | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
 | Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql, mysql-group-replication-binlog-migration, mysql-pre-upgrade-assessment |
@@ -74,9 +75,11 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
 | gcache | Buffer circolare su disco che ogni nodo Galera mantiene per conservare i writeset recenti. Dimensionare il gcache corret | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
+| Hit ratio | Percentuale di letture servite dalla memoria rispetto al totale. Si esprime in formato X/1000 nell'output di `SHOW ENGIN | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Indice CATSEARCH | Tipo di indice Oracle Text ottimizzato per archivi che combinano attributi strutturati (mittente, data, categoria) con t | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CONTEXT | Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce u | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CTXXPATH | Tipo di indice Oracle Text per documenti XML o JSON archiviati in CLOB/BLOB. Preserva la struttura gerarchica dei path X | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| InnoDB buffer pool | Area di memoria principale di InnoDB dove vengono cachate pagine di dati e indici. Più è grande, meno letture finiscono  | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | innodb_buffer_pool_size | Parametro globale che definisce la dimensione della cache principale di InnoDB per dati e indici. È il parametro di memo | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | join_buffer_size | Buffer allocato per thread per ogni join eseguito senza indice. A differenza del buffer pool, viene allocato per ogni co | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
@@ -104,6 +107,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Kimball | Ralph Kimball — metodologia di progettazione data warehouse basata su dimensional modeling, star schema e processi ETL bottom-up. Riferimento standard per la classificazione delle SCD | scd-tipo-2, bus-matrix-terreno-comune |
 | Knowledge Transfer | Processo di trasferimento della conoscenza tra persone, team o sistemi, critico nei progetti IT dove la perdita di know-how compromette la continuità | ai-manager-project-management, team-di-progetto-che-reggono |
 | KPI | Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito | smartworking-consulenza-it |
+| LRU list | Struttura a due zone (young list + old list) usata da InnoDB per decidere quali pagine tenere in cache e quali rimuovere | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Major release Oracle | Versione principale del Database server Oracle con cambiamenti significativi di feature, ciclo di supporto Premier dedicato e numerazione propria (19c, 21c, 23ai, 26ai). Alterna Long-Term Release e Innovation Release | enum-oracle-19c-26ai-domini |
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
 | Micromanagement | Stile di gestione basato sul controllo puntuale delle attività quotidiane del team. Genera calo di motivazione, turnover e disincentiva l'iniziativa | team-di-progetto-che-reggono |
@@ -118,6 +122,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
 | Oracle Text | Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licen | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| Pagina dirty | Pagina del buffer pool modificata in memoria ma non ancora sincronizzata su disco. InnoDB le gestisce tramite flush in b | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Parallel DML | Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION E | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
@@ -219,7 +224,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 
-**Ultimo aggiornamento**: 2026-09-04
-**Totale termini**: 205
-**Totale articoli con glossario**: 48
+**Ultimo aggiornamento**: 2026-09-15
+**Totale termini**: 210
+**Totale articoli con glossario**: 49
 
