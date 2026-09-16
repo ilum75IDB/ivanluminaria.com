@@ -26,6 +26,7 @@ Vocabolario di frasi e parole da **evitare** nella scrittura degli articoli del 
 
 | Frase / parola da evitare    | Motivo                                   | Sostituzione consigliata       | Alternative                          | Tema linguistico                 |
 |------------------------------|------------------------------------------|--------------------------------|--------------------------------------|----------------------------------|
+| a dire il vero / francamente | Suggerisce che il resto non fosse vero   | dire la cosa e basta           | la mia lettura è                     | Credibilità                      |
 | appena posso                 | Indefinito                               | entro oggi                     | entro venerdì                        | Precisione temporale             |
 | arrangiati                   | Chiusura relazionale                     | vediamo come fare              | troviamo un modo                     | Collaborazione                   |
 | attenzione a non sbagliare   | Focus sull'errore                        | fai con precisione             | controlla bene i passaggi            | Focus mentale                    |
@@ -88,6 +89,7 @@ Vocabolario di frasi e parole da **evitare** nella scrittura degli articoli del 
 | pazienza                     | Rinuncia passiva                         | troviamo una soluzione         | valutiamo alternative                | Proattività                      |
 | penso che                    | Indebolisce affermazione                 | ritengo                        | la mia analisi è, considero          | Autorevolezza                    |
 | però                         | Introduce opposizione                    | e al tempo stesso              | contemporaneamente, insieme a questo | Riduzione conflitto              |
+| posso essere sincero?        | Insinua che finora non lo eri            | entrare nel merito             | ti dico come la vedo                 | Credibilità                      |
 | prima o poi                  | Nessun commitment                        | entro una data precisa         | pianifico per                        | Affidabilità                     |
 | problema                     | Evoca ostacolo e stress                  | situazione                     | aspetto, punto, elemento             | Frame mentale                    |
 | provo                        | Comunica incertezza                      | faccio                         | verifico, me ne occupo               | Responsabilità                   |
@@ -98,6 +100,7 @@ Vocabolario di frasi e parole da **evitare** nella scrittura degli articoli del 
 | sei disordinato              | Etichetta identitaria                    | questa parte va riordinata     | possiamo organizzare meglio          | Identità vs comportamento        |
 | sei in ritardo               | Accusa                                   | aggiorniamo le tempistiche     | riallineiamo i tempi                 | Collaborazione                   |
 | sei negativo                 | Etichetta mentale                        | vedo delle preoccupazioni      | analizziamo i rischi                 | Comunicazione empatica           |
+| sinceramente / onestamente   | Stesso effetto, in forma avverbiale      | togliere l'avverbio            | in base ai dati che vedo             | Credibilità                      |
 | sono bloccato                | Immobilità                               | sto cercando una soluzione     | sto ridefinendo l'approccio          | Metafore                         |
 | sono costretto               | Perdita di controllo                     | è necessario                   | lo considero utile                   | Percezione del controllo         |
 | sono fatto male              | Identità negativa                        | sto migliorando                | sto crescendo                        | Identità                         |
@@ -133,6 +136,7 @@ Le voci sono raggruppate per macro-area. Cliccando il termine si trova la riga c
 ### Autorevolezza e responsabilità
 - Assertività: `non mi interessa`
 - Autorevolezza: `penso che`, `scusa il disturbo`, `un attimo`
+- Credibilità: `a dire il vero / francamente`, `posso essere sincero?`, `sinceramente / onestamente`
 - Determinazione: `cercherò`
 - Leadership: `comando aggressivo ("fallo")`
 - Leadership linguistica: `credo che`
@@ -214,6 +218,6 @@ Le voci sono raggruppate per macro-area. Cliccando il termine si trova la riga c
 
 ---
 
-**Ultimo aggiornamento**: 2026-05-13
-**Totale voci**: 88
-**Totale temi linguistici**: 51
+**Ultimo aggiornamento**: 2026-09-14
+**Totale voci**: 91
+**Totale temi linguistici**: 52

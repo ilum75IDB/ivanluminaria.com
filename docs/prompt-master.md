@@ -93,6 +93,16 @@ Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena 
 - Ambientazione **professionale diurna**, luce naturale
 - L'interlocutore può essere implicito o mostrato in piccolo in secondo piano
 
+**Regola dell'unica cornetta (vale per TUTTI i casi di telefonata):**
+
+Nella scena esiste **una sola cornetta**, e sta all'orecchio del personaggio.
+
+- La base del telefono appoggiata sulla scrivania ha la **culla vuota e scoperta**: si vedono i due appoggi metallici liberi, il piano della culla sgombro, la sagoma della base interrotta al centro
+- **Un solo filo a spirale** collega la base alla cornetta in mano, e nessun altro
+- Se disegnare la culla vuota risulta ambiguo, **inquadra la base parzialmente** (tagliata dal bordo, o coperta da un oggetto in primo piano) oppure **ometti del tutto l'apparecchio**, lasciando solo cornetta e filo che escono di scena
+
+La regola esiste perché "telefono nero d'epoca su scrivania" e "personaggio al telefono" sono due immagini che tendono a comparire insieme ciascuna completa di cornetta: il risultato è un apparecchio con due cornette, una all'orecchio e una in culla, con il filo che le collega. Descrivere la culla per quello che **contiene** (nulla, appoggi liberi) funziona meglio che dire cosa non deve esserci.
+
 **Caso affiancamento (Ivan = DBA senior mentor + collega junior):**
 
 - Ivan in giacca elegante + baffi a manubrio (il senior, riconoscibile)
@@ -114,10 +124,12 @@ Quando la narrativa dell'articolo coinvolge **due o più personaggi**, la scena 
 - evitare look realistico o digitale contemporaneo
 - popolare l'ambiente con oggetti di contesto coerenti (arredi, strumenti, dettagli d'epoca) distribuiti sui tre piani: una scena ricca ma ordinata batte una scena spoglia
 - **mai 3D, mai effetto plasticoso, mai gloss/shiny, mai lucentezza moderna** nella *finitura* delle superfici — restano invece necessarie ombre stilizzate, mezzitoni e profondità compositiva
+- **mai etichette o scritte con i nomi dei personaggi**: niente targhette, didascalie, callout o frecce che indichino chi è chi, e in particolare **mai la scritta "Ivan"** accanto al personaggio principale. I personaggi si riconoscono dai loro tratti visivi (i baffi a manubrio per il principale), non da un'etichetta: nominarli è autoreferenziale e rompe l'illustrazione
 
 **Testo nell'immagine:**
 
 - Il testo è ammesso quando aiuta a leggere la scena (etichette, insegne, intestazioni di grafici, cartelli): non va eliminato per principio, va tenuto breve
+- **Eccezione tassativa**: il testo non nomina MAI i personaggi. Niente nomi propri (in particolare "Ivan"), niente targhette identificative, niente frecce con didascalia che puntino a una figura. Le etichette servono a leggere oggetti, grafici e ambiente, non le persone
 - **SE compare testo** (etichette, cartelli, indicazioni, copertine di libri, schermi con scritte, ecc.) deve essere **SEMPRE in inglese**
 - Il sito è multilingue (IT/EN/ES/RO) e le immagini sono condivise tra tutte le lingue: il testo in inglese le rende neutre e non richiede traduzioni
 - Preferire simboli geometrici, icone stilizzate e frecce alle parole quando il concetto è astratto; gli oggetti concreti vanno però disegnati come oggetti, non sostituiti da pittogrammi

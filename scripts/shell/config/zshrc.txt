@@ -2,9 +2,22 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 7.4
-# Data: 28 Luglio 2026
-# Nota: v7.4 applica lo standard shell RCCS2025 a Family Kudos (FKUD, case
+# Versione: 7.6
+# Data: 13 Settembre 2026
+# Nota: v7.6 aggiunge Personal Branding IDB (BRAND) al case 15|brand tramite
+#       skill /mac-create-menu-zsh. Progetto di posizionamento e brand
+#       personale per IDEA DB CONSULTING (documenti strategici, dashboard
+#       HTML, test degli archetipi su porta 8011). Stack shell completo:
+#       brand_env.zsh + brand_help.zsh + brand_go_manager.zsh.
+#       BASE shifta da 15 a 16|none. Menu interattivo Scegli 1-16,
+#       default INVIO=16. (storia 7.5: aggiunge Smart Home Casa Mare (CMHL) al case 14|cmhl tramite
+#       skill /project-bootstrap. Progetto homelab (NON software): nodo
+#       Proxmox VE + VM Home Assistant OS su Beelink Mini S (Intel N150,
+#       12GB, 512GB) per la domotica della casa al mare, accesso remoto
+#       via Tailscale. Stack shell ancora STUB (solo cmhl_env.zsh) —
+#       /mac-create-menu-zsh da invocare quando l'ambiente sara' definito.
+#       BASE shifta da 14 a 15|none. Menu interattivo Scegli 1-15,
+#       default INVIO=15. (storia 7.4: applica lo standard shell RCCS2025 a Family Kudos (FKUD, case
 #       13|fkud) tramite skill /mac-create-menu-zsh. Stack definito: Python
 #       3.12 + FastAPI + SQLite + Vue 3 + Vite + TS + PrimeVue. Porte
 #       backend :8009 + vite dev :5175 (dispari, consecutivi a NAIT
@@ -102,7 +115,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac, nait, fkud
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac, nait, fkud, cmhl
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -202,6 +215,17 @@ set_fkud_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{226}[FKUD]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 🏆 %# '
+}
+# Prompt CMHL (Smart Home Casa Mare)
+set_cmhl_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{087}[CMHL]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🏖 %# '
+}
+set_brand_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{045}[BRAND]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+📈 %# '
 }
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
@@ -408,7 +432,36 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        14|none)
+        14|cmhl)
+            echo "🏖 Caricamento ambiente Smart Home Casa Mare..."
+            export CURRENT_PROJECT="cmhl"
+            CMHL_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/smarthome-mare/scripts/shell/cmhl_env.zsh"
+            if [[ -f "$CMHL_ENV_FILE" ]]; then
+                source "$CMHL_ENV_FILE"
+                cd "$CMHL_PROJECT_DIR"
+                set_cmhl_prompt
+                echo "✅ Ambiente CMHL caricato!"
+            else
+                echo "❌ File environment CMHL non trovato: $CMHL_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        15|brand)
+            echo "📈 Caricamento ambiente Personal Branding IDB..."
+            export CURRENT_PROJECT="brand"
+            BRAND_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/personal-branding-idb/scripts/shell/brand_env.zsh"
+            if [[ -f "$BRAND_ENV_FILE" ]]; then
+                source "$BRAND_ENV_FILE"
+                cd "$BRAND_PROJECT_DIR"
+                set_brand_prompt
+                echo "✅ Ambiente BRAND caricato!"
+                echo "📝 Digita 'brandhelp' per vedere i comandi disponibili"
+            else
+                echo "❌ File environment BRAND non trovato: $BRAND_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        16|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -440,6 +493,8 @@ alias workmyctl='switch_project myctl'
 alias workdbac='switch_project dbac'
 alias worknait='switch_project nait'
 alias workfkud='switch_project fkud'
+alias workcmhl='switch_project cmhl'
+alias workbrand='switch_project brand'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -532,6 +587,17 @@ project_status() {
             echo "🌐 URL backend: $FKUD_LOCAL_URL"
             echo "🎨 URL frontend: $FKUD_FE_URL"
             echo "🏗️  Repo: $FKUD_REPO"
+            ;;
+        cmhl)
+            echo "🏖 Smart Home Casa Mare (homelab Proxmox + Home Assistant OS — stack shell ancora stub)"
+            echo "📂 Dir: $CMHL_PROJECT_DIR"
+            echo "🏗️  Repo: $CMHL_REPO"
+            ;;
+        brand)
+            echo "📈 Personal Branding IDB (posizionamento IDEA DB CONSULTING)"
+            echo "📂 Dir: $BRAND_PROJECT_DIR"
+            echo "🧭 Test archetipi: http://127.0.0.1:$BRAND_TEST_PORT/"
+            echo "🏗️  Repo: $BRAND_REPO (privato)"
             ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
@@ -688,14 +754,16 @@ show_project_menu() {
     echo " 11) ✈️  DBA Cockpit                 (DBAC)"
     echo " 12) 🌍 Negulici AI Translator Pro  (NAIT)"
     echo " 13) 🏆 Family Kudos                (FKUD)"
-    echo " 14) 🔧 Ambiente Base               (BASE)"
+    echo " 14) 🏖 Smart Home Casa Mare        (CMHL)"
+    echo " 15) 📈 Personal Branding IDB       (BRAND)"
+    echo " 16) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "💡 prjmenu = ricarica ~/.zshrc e rimostra questo menu (utile dopo modifiche)"
-    echo -n "Scegli (1-14) o premi INVIO per ambiente base: "
+    echo -n "Scegli (1-16) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=14  # Default: ambiente base
+        choice=16  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
@@ -723,6 +791,7 @@ help() {
     echo "  workdbac        # Passa a DBA Cockpit"
     echo "  worknait        # Passa a Negulici AI Translator Pro"
     echo "  workfkud        # Passa a Family Kudos"
+    echo "  workcmhl        # Passa a Smart Home Casa Mare"
     echo "  workbase        # Passa ad ambiente base"
     echo "  pstatus         # Mostra progetto attivo"
     echo "  prjmenu         # Ricarica ~/.zshrc e rimostra il menu progetti"
