@@ -1,6 +1,6 @@
 ---
 title: "Oracle PL/SQL Developer"
-seoTitle: "Ivan Luminaria | Oracle PL/SQL Developer & SQL Tuning"
+seoTitle: "Oracle PL/SQL Developer & SQL Tuning"
 description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 de ani dezvoltand, refactorizand și optimizand cod PL/SQL pentru aplicații enterprise data-intensive."
 date: "2026-09-14"
 lastmod: "2026-09-15"

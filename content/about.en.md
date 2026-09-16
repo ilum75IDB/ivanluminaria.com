@@ -1,6 +1,6 @@
 ---
 title: "About me"
-seoTitle: "Ivan Luminaria: Technical Leader, mission-critical databases and Data Warehouses"
+seoTitle: "Technical Leader, mission-critical databases and Data Warehouses"
 description: "Ivan Luminaria, Technical Leader for mission-critical databases and Data Warehouses: 30 years across Oracle, PostgreSQL, MySQL alongside CIOs and CTOs."
 date: "2026-02-20"
 lastmod: "2026-09-14"

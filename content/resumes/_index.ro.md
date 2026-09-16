@@ -1,6 +1,6 @@
 ---
 title: "Know-How și Impact"
-seoTitle: "Ivan Luminaria, Technical Leader pentru baze de date și Data Warehouse mission-critical"
+seoTitle: "Technical Leader baze de date și Data Warehouse mission-critical"
 description: "Technical Leader pentru baze de date și Data Warehouse mission-critical: 30 de ani în banking, asigurări, telco, PA. Piloni: DWH, DBA, PL/SQL, PM."
 hero_title: "Experiență, profunzime, impact"
 date: "2026-02-23"

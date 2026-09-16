@@ -1,6 +1,6 @@
 ---
 title: "Despre mine"
-seoTitle: "Ivan Luminaria: Technical Leader, baze de date și Data Warehouse mission-critical"
+seoTitle: "Technical Leader baze de date și Data Warehouse mission-critical"
 description: "Ivan Luminaria, Technical Leader pentru baze de date și Data Warehouse mission-critical: 30 de ani cu Oracle, PostgreSQL, MySQL alături de CIO și CTO."
 date: "2026-02-20"
 lastmod: "2026-09-14"
