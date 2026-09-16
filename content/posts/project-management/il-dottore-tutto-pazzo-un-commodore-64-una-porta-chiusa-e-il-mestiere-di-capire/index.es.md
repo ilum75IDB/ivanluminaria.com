@@ -112,5 +112,4 @@ Luego de una profesora que, con las herramientas de aquellos años, quería prot
 Si tú también empezaste delante de un cursor que parpadeaba, sabes de qué hablo. Y si hoy tienes delante una línea 340 que parece perfecta, la pregunta útil es una sola: ¿dónde está la línea 330?
 
 ## Glosario
-
 **[BASIC](/es/glossary/basic/)** — BASIC es un lenguaje de programación interpretado de los años 80, diseñado para ordenadores domésticos con líneas numeradas y sintaxis legible para usuarios no especializados.

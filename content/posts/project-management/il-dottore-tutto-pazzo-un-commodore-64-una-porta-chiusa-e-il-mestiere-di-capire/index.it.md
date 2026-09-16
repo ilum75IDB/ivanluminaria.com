@@ -105,5 +105,4 @@ Poi di una professoressa che, con gli strumenti di quegli anni, voleva protegger
 Se anche tu hai cominciato davanti a un cursore che lampeggiava, sai di cosa parlo. E se oggi hai davanti una riga 340 che sembra perfetta, la domanda utile è una sola: dove sta la riga 330?
 
 ## Glossario
-
 **[BASIC](/it/glossary/basic/)** — BASIC è un linguaggio di programmazione interpretato degli anni '80, progettato per home computer con righe numerate e sintassi leggibile anche da non specialisti.

@@ -111,5 +111,4 @@ Apoi o profesoară care, cu instrumentele acelor ani, voia să-mi protejeze proc
 Dacă și tu ai început în fața unui cursor care clipea, știi despre ce vorbesc. Și dacă azi ai în față un rând 340 care pare perfect, întrebarea utilă e una singură: unde e rândul 330?
 
 ## Glosar
-
 **[BASIC](/ro/glossary/basic/)** — BASIC este un limbaj de programare interpretat din anii '80, conceput pentru calculatoare personale cu linii numerotate și sintaxă lizibilă pentru utilizatori fără pregătire specializată.
