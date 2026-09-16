@@ -22,11 +22,13 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ALTER DOMAIN | Comando Oracle 23ai che modifica un SQL Domain (vincolo CHECK, DEFAULT, annotations) propagando la modifica a tutte le colonne che usano il dominio. Sostituisce molteplici ALTER TABLE con una sola operazione di schema-wide governance | enum-oracle-workaround-fino-a-23ai |
 | ALTER TYPE ADD VALUE | Comando PostgreSQL che aggiunge un valore a un ENUM esistente. Operazione di metadata, transazionale, senza rebuild della tabella. Disponibile dalla 9.1, con posizionamento BEFORE/AFTER dalla 9.6 | enum-postgresql-paga-o-pesa |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
+| anamnesi | Nel contesto della diagnostica di sistemi informatici, raccolta sistematica di informazioni su sintomi, eventi recenti e | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | Auto-Indexing | funzionalità Oracle (disponibile da 19c, configurabile in 21c) che analizza il workload e crea automaticamente indici in | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
-| AutoUpgrade | utility Java (`autoupgrade.jar`) che da Oracle 21c è lo strumento unico per analisi pre-upgrade, correzioni e upgrade del database. Sostituisce `preupgrade.jar`, non più distribuito | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
+| BASIC | Linguaggio di programmazione semplice e interpretato, diffuso negli anni '80 sui home computer. I programmi erano scritt | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Binlog | registro sequenziale di tutte le modifiche ai dati sul master MySQL. Base della replica: lo slave legge il binlog per sa | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
+| Buffer pool warm-up | Processo di ricaricamento delle pagine calde nel buffer pool dopo un restart. Con `innodb_buffer_pool_dump_at_shutdown`  | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
 | Binary log | Registro binario sequenziale di MySQL che traccia tutte le modifiche ai dati (INSERT, UPDATE, DELETE, DDL), usato per la replica e il point-in-time recovery | binary-log-mysql, mysql-group-replication-binlog-migration, mysql-pre-upgrade-assessment |
@@ -38,6 +40,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
+| Commodore 64 |  | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
 | dbupgrade | utility Oracle (successore di `catupgrd.sql`) che aggiorna il dizionario dati di sistema durante un upgrade di versione. | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
@@ -71,19 +74,21 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Exchange Partition | Operazione DDL Oracle che scambia istantaneamente i segmenti dati tra una tabella non partizionata e una partizione, senza spostare fisicamente i dati | partitioning-dwh |
 | Float Finanziario | Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori | pagamenti-60-90-120-giorni |
 | FLUSH PRIVILEGES | Comando MySQL/MariaDB che ricarica le tabelle dei grant in memoria, rendendo effettive le modifiche manuali ai privilegi | mysql-users-and-hosts |
-| Foreign datafile copy | datafile che RMAN materializza sul database di destinazione a partire da un backset trasportabile, prima che le tablespace vengano agganciate via plug-in. Oggetto su cui operano `RESTORE FOREIGN TABLESPACE` e `RECOVER FOREIGN DATAFILECOPY` | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
 | gcache | Buffer circolare su disco che ogni nodo Galera mantiene per conservare i writeset recenti. Dimensionare il gcache corret | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
+| Hit ratio | Percentuale di letture servite dalla memoria rispetto al totale. Si esprime in formato X/1000 nell'output di `SHOW ENGIN | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Indice CATSEARCH | Tipo di indice Oracle Text ottimizzato per archivi che combinano attributi strutturati (mittente, data, categoria) con t | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CONTEXT | Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce u | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CTXXPATH | Tipo di indice Oracle Text per documenti XML o JSON archiviati in CLOB/BLOB. Preserva la struttura gerarchica dei path X | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| InnoDB buffer pool | Area di memoria principale di InnoDB dove vengono cachate pagine di dati e indici. Più è grande, meno letture finiscono  | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | innodb_buffer_pool_size | Parametro globale che definisce la dimensione della cache principale di InnoDB per dati e indici. È il parametro di memo | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | join_buffer_size | Buffer allocato per thread per ogni join eseguito senza indice. A differenza del buffer pool, viene allocato per ogni co | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
 | Lexer | Componente che analizza il testo durante la fase di indicizzazione, suddividendolo in token e applicando regole di norma | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Lift-and-Shift | Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione | tecnica-si-e-yes-and |
+| listato | Testo completo del codice sorgente di un programma, stampato o visualizzato riga per riga. Nel contesto dei home compute | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Local Index | Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente | oracle-partitioning, partitioning-dwh |
 | Lookup table | Tabella di riferimento collegata via foreign key che memorizza i valori validi di un'enumerazione, insieme ad eventuali attributi descrittivi (etichetta, ordine, flag attivo) | enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa, enum-oracle-workaround-fino-a-23ai |
 | GRANT | Comando SQL per assegnare privilegi specifici a un utente o ruolo su database, tabelle o colonne | mysql-users-and-hosts, postgresql_roles_and_users |
@@ -106,6 +111,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Kimball | Ralph Kimball — metodologia di progettazione data warehouse basata su dimensional modeling, star schema e processi ETL bottom-up. Riferimento standard per la classificazione delle SCD | scd-tipo-2, bus-matrix-terreno-comune |
 | Knowledge Transfer | Processo di trasferimento della conoscenza tra persone, team o sistemi, critico nei progetti IT dove la perdita di know-how compromette la continuità | ai-manager-project-management, team-di-progetto-che-reggono |
 | KPI | Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito | smartworking-consulenza-it |
+| LRU list | Struttura a due zone (young list + old list) usata da InnoDB per decidere quali pagine tenere in cache e quali rimuovere | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Major release Oracle | Versione principale del Database server Oracle con cambiamenti significativi di feature, ciclo di supporto Premier dedicato e numerazione propria (19c, 21c, 23ai, 26ai). Alterna Long-Term Release e Innovation Release | enum-oracle-19c-26ai-domini |
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
 | Micromanagement | Stile di gestione basato sul controllo puntuale delle attività quotidiane del team. Genera calo di motivazione, turnover e disincentiva l'iniziativa | team-di-progetto-che-reggono |
@@ -120,6 +126,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
 | Oracle Text | Componente integrata di Oracle Database per l'indicizzazione e la ricerca full-text su dati testuali. Non richiede licen | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| Pagina dirty | Pagina del buffer pool modificata in memoria ma non ancora sincronizzata su disco. InnoDB le gestisce tramite flush in b | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Parallel DML | Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION E | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
@@ -139,6 +146,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Pre-upgrade assessment | Misurazione strutturata di dimensioni, crescita, tempi di backup e restore di un database prima di un upgrade. Serve a dimensionare la finestra di manutenzione e a definire una strategia di rollback realistica | mysql-pre-upgrade-assessment |
 | Psychological Safety | Clima di team in cui le persone possono ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione | team-di-progetto-che-reggono |
 | Publication (PostgreSQL) | Oggetto della replica logica PostgreSQL che definisce l'insieme di tabelle (e righe, dalla 15) i cui cambiamenti vengono resi disponibili ai subscriber. Risiede sul publisher e può essere consumata da più subscriber indipendenti | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
+| REM | Istruzione del BASIC (abbreviazione di REMark) che introduce un commento nel codice. La riga viene ignorata dall'interpr | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | RMAN Incremental Backup | backup RMAN che registra solo i blocchi modificati dall'ultimo backup di livello uguale o superiore. Level 0 è la base c | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
@@ -220,8 +228,9 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 ---
 | `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
+| ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
 **Ultimo aggiornamento**: 2026-09-16
-**Totale termini**: 207
-**Totale articoli con glossario**: 48
+**Totale termini**: 216
+**Totale articoli con glossario**: 50
 

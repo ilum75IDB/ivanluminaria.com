@@ -74,5 +74,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 49 | 2026-09-15 | — | Tue | Oracle 12c → 21c su 12 TB: transportable tablespaces, RMAN incremental e la fine | oracle | #52 | 2026-09-04 | scheduled |
 
+| 50 | 2026-09-22 | — | Tue | Il dottore tutto pazzo: un Commodore 64, una porta chiusa e il mestiere di capir | project-management | #None | 2026-09-16 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-08-18 (Tuesday)
