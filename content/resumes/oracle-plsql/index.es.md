@@ -10,7 +10,7 @@ layout: "simple"
 
 **[Descargar PDF]({{% staticurl "downloads/CV_Oracle_PLSQL_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Perfil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
-> **Un rol, cuatro pilares.** Este perfil es uno de los cuatro pilares del rol [Technical Leader para bases de datos de misión crítica](/es/resumes/technical-leader/).
+> **Un rol, cuatro pilares.** Este perfil es uno de los cuatro pilares del rol [Technical Leader para bases de datos y Data Warehouse mission-critical](/es/resumes/technical-leader/).
 
 ---
 

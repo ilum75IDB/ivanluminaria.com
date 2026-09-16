@@ -1,7 +1,7 @@
 ---
 title: "Database Strategy"
 seoTitle: "Database Strategy: Ivan Luminaria's blog on DB and architecture"
-description: "Database Strategy: Technical Leader's blog on mission-critical databases. 30 years in banking, postal, insurance, telco, pharma, finance and public sector."
+description: "Database Strategy: Technical Leader's blog on mission-critical databases and Data Warehouses. 30 years in banking, postal, insurance, telco and public sector."
 layout: "list"
 image: "database-strategy.cover.jpg"
 ---

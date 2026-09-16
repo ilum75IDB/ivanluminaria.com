@@ -10,7 +10,7 @@ layout: "simple"
 
 **[Descarcă PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
 
-> **Un rol, patru piloni.** Acest profil este unul dintre cei patru piloni ai rolului [Technical Leader pentru baze de date critice](/ro/resumes/technical-leader/).
+> **Un rol, patru piloni.** Acest profil este unul dintre cei patru piloni ai rolului [Technical Leader pentru baze de date și Data Warehouse mission-critical](/ro/resumes/technical-leader/).
 
 ---
 

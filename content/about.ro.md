@@ -1,7 +1,7 @@
 ---
 title: "Despre mine"
-seoTitle: "Ivan Luminaria: Technical Leader, baze de date critice"
-description: "Ivan Luminaria, Technical Leader pentru baze de date critice: 30 de ani de Oracle, PostgreSQL, MySQL și Data Warehouse alături de CIO și CTO."
+seoTitle: "Ivan Luminaria: Technical Leader, baze de date și Data Warehouse mission-critical"
+description: "Ivan Luminaria, Technical Leader pentru baze de date și Data Warehouse mission-critical: 30 de ani cu Oracle, PostgreSQL, MySQL alături de CIO și CTO."
 date: "2026-02-20"
 lastmod: "2026-09-14"
 draft: false
@@ -17,7 +17,7 @@ showTitle: false
   </div>
   <div class="about-profile-info">
     <h1 class="about-profile-name">IVAN LUMINARIA</h1>
-    <p class="about-profile-role">Technical Leader pentru baze de date critice</p>
+    <p class="about-profile-role">Technical Leader pentru baze de date și Data Warehouse mission-critical</p>
     <p class="about-profile-pillars">Oracle DBA · Oracle PL/SQL · DWH Architect · Project Manager</p>
     <p class="about-profile-desc">
       Profesionist IT cu aproximativ <strong>30 de ani de experiență</strong> în proiectarea, implementarea și gestionarea soluțiilor de baze de date și Data Warehouse în medii Oracle, PostgreSQL și MySQL.

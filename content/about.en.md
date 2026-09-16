@@ -1,7 +1,7 @@
 ---
 title: "About me"
-seoTitle: "Ivan Luminaria: Technical Leader, mission-critical databases"
-description: "Ivan Luminaria, Technical Leader for mission-critical databases: 30 years of Oracle, PostgreSQL, MySQL and Data Warehouse alongside CIOs and CTOs."
+seoTitle: "Ivan Luminaria: Technical Leader, mission-critical databases and Data Warehouses"
+description: "Ivan Luminaria, Technical Leader for mission-critical databases and Data Warehouses: 30 years across Oracle, PostgreSQL, MySQL alongside CIOs and CTOs."
 date: "2026-02-20"
 lastmod: "2026-09-14"
 draft: false
@@ -17,7 +17,7 @@ showTitle: false
   </div>
   <div class="about-profile-info">
     <h1 class="about-profile-name">IVAN LUMINARIA</h1>
-    <p class="about-profile-role">Technical Leader for mission-critical databases</p>
+    <p class="about-profile-role">Technical Leader for mission-critical databases and Data Warehouses</p>
     <p class="about-profile-pillars">Oracle DBA · Oracle PL/SQL · DWH Architect · Project Manager</p>
     <p class="about-profile-desc">
       IT professional with approximately <strong>30 years of experience</strong> in designing, implementing and managing database and Data Warehouse solutions across Oracle, PostgreSQL and MySQL environments.
