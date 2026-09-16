@@ -1,7 +1,7 @@
 ---
 title: "Know-How & Impact"
-seoTitle: "Ivan Luminaria, Technical Leader for mission-critical databases"
-description: "Technical Leader for mission-critical databases: 30 years across banking, insurance, telco and public sector. Four pillars: DWH, Oracle DBA, PL/SQL and PM."
+seoTitle: "Ivan Luminaria, Technical Leader for mission-critical databases and Data Warehouses"
+description: "Technical Leader for mission-critical databases and Data Warehouses: 30 years across banking, insurance, telco, public sector. Pillars: DWH, DBA, PL/SQL, PM."
 hero_title: "Experience, depth, impact"
 date: "2026-02-23"
 lastmod: "2026-09-14"
@@ -25,7 +25,7 @@ Today those depths work together, in a single role.
 
 </div>
 
-{{< kh-role role="tl" featured="true" title="Technical Leader for mission-critical databases" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banking,Insurance,Telco,Public sector,Mobility & payments" >}}
+{{< kh-role role="tl" featured="true" title="Technical Leader for mission-critical databases and Data Warehouses" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banking,Insurance,Telco,Public sector,Mobility & payments" >}}
 
 Today my work is to stand alongside CIOs, CTOs and IT Directors when a mission-critical data system slows down, stops, or needs to take a new direction.
 

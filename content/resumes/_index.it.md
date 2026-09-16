@@ -1,7 +1,7 @@
 ---
 title: "Know-How e Impatto"
-seoTitle: "Ivan Luminaria, Technical Leader per database mission-critical"
-description: "Technical Leader per database mission-critical: 30 anni tra banche, assicurazioni, telco e PA. Quattro pilastri: DWH, Oracle DBA, PL/SQL e project management."
+seoTitle: "Ivan Luminaria, Technical Leader per database e Data Warehouse mission-critical"
+description: "Technical Leader per database e Data Warehouse mission-critical: 30 anni tra banche, assicurazioni, telco e PA. Quattro pilastri: DWH, Oracle DBA, PL/SQL e PM."
 hero_title: "Esperienza, profondità, impatto"
 date: "2026-02-23"
 lastmod: "2026-09-14"
@@ -25,7 +25,7 @@ Oggi quelle profondità lavorano insieme, in un unico ruolo.
 
 </div>
 
-{{< kh-role role="tl" featured="true" title="Technical Leader per database mission-critical" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banking,Assicurazioni,Telco,Pubblica Amministrazione,Mobilità e pagamenti" >}}
+{{< kh-role role="tl" featured="true" title="Technical Leader per database e Data Warehouse mission-critical" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banking,Assicurazioni,Telco,Pubblica Amministrazione,Mobilità e pagamenti" >}}
 
 Oggi il mio lavoro è affiancare CIO, CTO e IT Director quando un sistema dati mission-critical rallenta, si ferma o deve prendere una direzione nuova.
 

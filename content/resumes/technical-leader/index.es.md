@@ -1,7 +1,7 @@
 ---
-title: "Technical Leader para bases de datos de misión crítica"
-seoTitle: "Ivan Luminaria | Technical Leader, bases de datos críticas"
-description: "Ivan Luminaria, Technical Leader de bases de datos críticas: 30 años de Oracle, PostgreSQL, MySQL y DWH junto a CIOs y CTOs en banca, telco y sector público."
+title: "Technical Leader para bases de datos y Data Warehouse mission-critical"
+seoTitle: "Ivan Luminaria | Technical Leader, bases de datos y Data Warehouse mission-critical"
+description: "Ivan Luminaria, Technical Leader para bases de datos y Data Warehouse mission-critical: 30 años con Oracle, PostgreSQL, MySQL junto a CIOs y CTOs en banca."
 date: "2026-09-14"
 lastmod: "2026-09-14"
 draft: false
@@ -14,7 +14,7 @@ layout: "simple"
 
 ## Perfil Profesional
 
-Technical Leader con casi 30 años de experiencia en bases de datos de misión crítica Oracle, PostgreSQL y MySQL y en Data Warehouse enterprise.
+Technical Leader con casi 30 años de experiencia en bases de datos (Oracle, PostgreSQL, MySQL) y Data Warehouse enterprise mission-critical.
 
 Acompaño a CIOs, CTOs e IT Directors cuando un sistema de datos se ralentiza, se detiene o debe cambiar de dirección. Cuando la causa atraviesa varios niveles — aplicación, SQL, base de datos, sistema operativo, almacenamiento, red, arquitectura de datos — leo la cadena completa y explico cada paso a quienes deben decidir.
 

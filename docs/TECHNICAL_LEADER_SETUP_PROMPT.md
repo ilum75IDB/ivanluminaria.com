@@ -1,5 +1,7 @@
 # PROMPT — Technical Leader come identità principale del sito
 
+> **AGGIORNAMENTO 2026-09-16**: il titolo del ruolo è stato aggiornato da «Technical Leader per database mission-critical» a **«Technical Leader per database e Data Warehouse mission-critical»** (in tutte e 4 le lingue) per rendere esplicito che il perimetro include sia OLTP sia DWH. Le occorrenze nel corpo di questo prompt storico **non sono state modificate** — riflettono lo stato al momento del bootstrap del posizionamento (2026-09-14). Per il testo del ruolo attualmente live sul sito, riferirsi ai file `content/`, `config/`, `i18n/` e `data/`.
+
 > **Per Claude Code.** Questo documento è un prompt autosufficiente: contiene decisioni, testi in 4 lingue, codice e verifiche. Applicalo dall'inizio alla fine, nell'ordine dei passi, **senza rimettere in discussione le decisioni già prese** (sezione 2). Fermati solo sui **punti aperti** della sezione 3.
 
 - **Creato**: 2026-09-14, in una sessione del progetto `personal-branding-idb`

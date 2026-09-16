@@ -1,11 +1,11 @@
 # Ivan Luminaria
 
-<p class="role">Technical Leader for Mission-Critical Databases</p>
+<p class="role">Technical Leader for Mission-Critical Databases and Data Warehouses</p>
 <p class="contact">Rome, Italy · (+39) 335 727 1217 · ivan.luminaria@gmail.com · linkedin.com/in/ivanluminaria · ivanluminaria.com</p>
 
 ## Profile
 
-Technical Leader with nearly 30 years on mission-critical Oracle, PostgreSQL and MySQL databases and enterprise Data Warehouses. I work alongside CIOs, CTOs and IT Directors when a data system slows down, stops or needs a new direction: I read the whole chain — application, SQL, database, operating system, storage, network, data architecture — and explain every step to the people who decide. Three technical pillars (database administration, performance & troubleshooting, data warehouse & data architecture), held together by team coordination and knowledge transfer.
+Technical Leader with nearly 30 years on mission-critical databases (Oracle, PostgreSQL, MySQL) and enterprise Data Warehouses. I work alongside CIOs, CTOs and IT Directors when a data system slows down, stops or needs a new direction: I read the whole chain — application, SQL, database, operating system, storage, network, data architecture — and explain every step to the people who decide. Three technical pillars (database administration, performance & troubleshooting, data warehouse & data architecture), held together by team coordination and knowledge transfer.
 
 ## Areas of engagement
 

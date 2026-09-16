@@ -10,7 +10,7 @@ layout: "simple"
 
 **[Download PDF]({{% staticurl "downloads/CV_DWH_Architect_Ivan_Luminaria_202609_EN.pdf" %}})** | **[LinkedIn Profile](https://www.linkedin.com/in/ivanluminaria)**
 
-> **One role, four pillars.** This profile is one of the four pillars of [Technical Leader for Mission-Critical Databases](/en/resumes/technical-leader/).
+> **One role, four pillars.** This profile is one of the four pillars of [Technical Leader for Mission-Critical Databases and Data Warehouses](/en/resumes/technical-leader/).
 
 ---
 
