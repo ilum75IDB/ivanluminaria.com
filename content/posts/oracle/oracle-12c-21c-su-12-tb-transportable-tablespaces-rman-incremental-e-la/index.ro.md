@@ -362,27 +362,26 @@ Partea cea mai lungă nu a fost noaptea de sâmbătă. A fost săptămâna dinai
 
 ---
 
-## Fonti ufficiali
+## Surse oficiale
 
 1. Oracle Database Backup and Recovery User's Guide 21c — [Transporting Data Across Platforms](https://docs.oracle.com/en/database/oracle/oracle-database/21/bradv/rman-transporting-data-across-platforms.html) (`BACKUP … FOR TRANSPORT ALLOW INCONSISTENT`, `RESTORE FOREIGN TABLESPACE`, `RECOVER FOREIGN DATAFILECOPY`)
 2. Oracle Database Administrator's Guide 21c — [Transporting Tablespaces Between Databases](https://docs.oracle.com/en/database/oracle/oracle-database/21/admin/transporting-data.html)
 3. Oracle Database Upgrade Guide 21c — [Manual Non-CDB Release Upgrades to Multitenant Architecture](https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/upgrade-scenarios-non-cdb-oracle-databases.html) (renunțarea la suportul pentru arhitectura non-CDB)
-4. Oracle Database Upgrade Guide 21c — [Using the Pre-Upgrade Information Tool](https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/using-preupgrade-information-tool-for-oracle-database.html) (`preupgrade.jar` non più distribuito, funzioni confluite in AutoUpgrade)
-5. Oracle Database Security Guide 21c — [Introduction to Auditing](https://docs.oracle.com/en/database/oracle/oracle-database/21/dbseg/introduction-to-auditing.html) (mixed mode di default, `uniaud_on` per il pure unified auditing)
+4. Oracle Database Upgrade Guide 21c — [Using the Pre-Upgrade Information Tool](https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/using-preupgrade-information-tool-for-oracle-database.html) (`preupgrade.jar` nu mai este distribuit, funcțiile fiind integrate în AutoUpgrade)
+5. Oracle Database Security Guide 21c — [Introduction to Auditing](https://docs.oracle.com/en/database/oracle/oracle-database/21/dbseg/introduction-to-auditing.html) (mixed mode ca default, `uniaud_on` pentru pure unified auditing)
 6. Oracle Database Administrator's Reference 21c — [Creating and Populating Password Files](https://docs.oracle.com/en/database/oracle/oracle-database/21/ntqrf/creating-and-populating-password-files.html) (`format`, renunțarea la suportul pentru `IGNORECASE`)
 
 ---
 
-## Glosar candidat
+## Glosar
+- **[Transportable Tablespaces (TTS)](/ro/glossary/transportable-tablespaces/)** — tehnică Oracle care permite mutarea tablespace-urilor între baze de date copiind datafile-urile fizice și importând doar metadatele via Data Pump. Mult mai rapidă decât un export/import complet pe volume mari.
 
-- **Transportable Tablespaces (TTS)** — tehnică Oracle care permite mutarea tablespace-urilor între baze de date copiind datafile-urile fizice și importând doar metadatele via Data Pump. Mult mai rapidă decât un export/import complet pe volume mari.
+- **[RMAN Incremental Backup](/ro/glossary/rman-incremental-backup/)** — backup RMAN care înregistrează doar blocurile modificate față de ultimul backup de nivel egal sau superior. Level 0 este baza completă, level 1 este delta. Folosit în migrare pentru a sincroniza gap-ul dintre copia inițială și fereastra de downtime.
 
-- **RMAN Incremental Backup** — backup RMAN care înregistrează doar blocurile modificate față de ultimul backup de nivel egal sau superior. Level 0 este baza completă, level 1 este delta. Folosit în migrare pentru a sincroniza gap-ul dintre copia inițială și fereastra de downtime.
+- **[AutoUpgrade](/ro/glossary/autoupgrade/)** — utilitar Java (`autoupgrade.jar`) care din Oracle 21c este instrumentul unic pentru analiza pre-upgrade, corecții și upgrade-ul propriu-zis. Cu `-preupgrade … -mode analyze` produce în mod read-only raportul care anterior se obținea cu `preupgrade.jar`, care nu mai este distribuit.
 
-- **AutoUpgrade** — utilitar Java (`autoupgrade.jar`) care din Oracle 21c este instrumentul unic pentru analiza pre-upgrade, corecții și upgrade-ul propriu-zis. Cu `-preupgrade … -mode analyze` produce în mod read-only raportul care anterior se obținea cu `preupgrade.jar`, care nu mai este distribuit.
+- **[Foreign datafile copy](/ro/glossary/foreign-datafile-copy/)** — datafile pe care RMAN îl materializează pe baza de date de destinație pornind de la un backset transportabil, înainte ca tablespace-urile să fie conectate. Este obiectul pe care acționează `RESTORE FOREIGN TABLESPACE` și `RECOVER FOREIGN DATAFILECOPY` în transportul incremental.
 
-- **Foreign datafile copy** — datafile pe care RMAN îl materializează pe baza de date de destinație pornind de la un backset transportabil, înainte ca tablespace-urile să fie conectate. Este obiectul pe care acționează `RESTORE FOREIGN TABLESPACE` și `RECOVER FOREIGN DATAFILECOPY` în transportul incremental.
+- **[Unified Auditing](/ro/glossary/unified-auditing/)** — framework de auditing introdus în 12c care consolidează log-urile (database, fine-grained, SYSDBA) în structura `AUDSYS`. În 21c coexistă cu auditing-ul tradițional în *mixed mode*, care rămâne default-ul; *pure* unified auditing necesită relink-ul binarului cu `uniaud_on`.
 
-- **Unified Auditing** — framework de auditing introdus în 12c care consolidează log-urile (database, fine-grained, SYSDBA) în structura `AUDSYS`. În 21c coexistă cu auditing-ul tradițional în *mixed mode*, care rămâne default-ul; *pure* unified auditing necesită relink-ul binarului cu `uniaud_on`.
-
-- **Auto-Indexing** — funcționalitate Oracle (disponibilă din 19
+- **[Auto-Indexing](/ro/glossary/auto-indexing/)** — funcționalitate Oracle (disponibilă din 19c, configurabilă în 21c) care analizează workload-ul și creează automat indici invizibili, îi validează și îi face vizibili dacă îmbunătățesc performanța. Trebuie dezactivată explicit dacă nu este dorită în producție.

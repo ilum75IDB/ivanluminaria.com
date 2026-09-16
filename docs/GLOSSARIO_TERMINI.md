@@ -25,6 +25,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash |
 | ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | Auto-Indexing | funzionalità Oracle (disponibile da 19c, configurabile in 21c) che analizza il workload e crea automaticamente indici in | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
+| AutoUpgrade | utility Java (`autoupgrade.jar`) che da Oracle 21c è lo strumento unico per analisi pre-upgrade, correzioni e upgrade del database. Sostituisce `preupgrade.jar`, non più distribuito | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Binlog | registro sequenziale di tutte le modifiche ai dati sul master MySQL. Base della replica: lo slave legge il binlog per sa | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | Bus Factor | Numero di persone del team che, se venissero a mancare contemporaneamente, bloccherebbero il progetto. Misura la concentrazione di conoscenza critica in poche teste | team-di-progetto-che-reggono |
 | BYOL | Bring Your Own License — programma Oracle che permette di riutilizzare le licenze on-premises nel cloud OCI senza costi aggiuntivi di licensing | oracle-cloud-migration |
@@ -70,6 +71,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Exchange Partition | Operazione DDL Oracle che scambia istantaneamente i segmenti dati tra una tabella non partizionata e una partizione, senza spostare fisicamente i dati | partitioning-dwh |
 | Float Finanziario | Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori | pagamenti-60-90-120-giorni |
 | FLUSH PRIVILEGES | Comando MySQL/MariaDB che ricarica le tabelle dei grant in memoria, rendendo effettive le modifiche manuali ai privilegi | mysql-users-and-hosts |
+| Foreign datafile copy | datafile che RMAN materializza sul database di destinazione a partire da un backset trasportabile, prima che le tablespace vengano agganciate via plug-in. Oggetto su cui operano `RESTORE FOREIGN TABLESPACE` e `RECOVER FOREIGN DATAFILECOPY` | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
@@ -219,7 +221,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 
-**Ultimo aggiornamento**: 2026-09-04
-**Totale termini**: 205
+**Ultimo aggiornamento**: 2026-09-16
+**Totale termini**: 207
 **Totale articoli con glossario**: 48
 
