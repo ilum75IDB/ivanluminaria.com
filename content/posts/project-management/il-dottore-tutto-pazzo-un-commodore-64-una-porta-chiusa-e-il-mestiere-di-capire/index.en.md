@@ -114,5 +114,5 @@ If you also started out in front of a blinking cursor, you know what I'm talking
 - **[BASIC](/en/glossary/basic/)** — Beginner's All-purpose Symbolic Instruction Code: an interpreted programming language widespread on home computers of the 1980s, designed to be accessible without specialist training.
 - **[Listing](/en/glossary/basic/)** — in the context of home computing, the complete printed or on-screen text of a program's source code, typically published in magazines or books for manual entry.
 - **[Skeleton key](/en/glossary/listato/)** (passpartout) — a key cut to open multiple different locks; used here both literally and as a metaphor for transferable technical understanding.
-- **Syntax error** — an error signalled by an interpreter or compiler when source code does not conform to the grammar rules of the language; on the C64, reported with the line number of the detected anomaly.
-- **Diagnosis** — in database and systems engineering, the process of identifying the root cause of a malfunction starting from observed symptoms, analogous to clinical diagnosis in medicine.
+- **[Syntax error](/en/glossary/basic/)** — an error signalled by an interpreter or compiler when source code does not conform to the grammar rules of the language; on the C64, reported with the line number of the detected anomaly.
+- **[Diagnosis](/en/glossary/listato/)** — in database and systems engineering, the process of identifying the root cause of a malfunction starting from observed symptoms, analogous to clinical diagnosis in medicine.
