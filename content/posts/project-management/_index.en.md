@@ -1,10 +1,14 @@
 ---
-title: "Project Management"
-seoTitle: "IT Project Management: Scrum, AI, consulting"
-description: "IT Project Management articles: Scrum, standup meetings, smart working, AI Manager, team management, freelance and IT consulting. Real cases from 30 years."
+title: "Technical Leadership & Projects"
+seoTitle: "Technical leadership and IT project management: real cases"
+description: "Technical leadership and IT project management: decisions, teams, method and consulting, with true stories and numbers from 30 years of projects."
 layout: "list"
 image: "project-management.cover.jpg"
 ---
+
+This section covers the part of the job that does not live in execution plans: decisions, teams, method. It is the space of **technical leadership**, where people, systems and choices have to work together.
+
+------------------------------------------------------------------------
 
 I've seen project managers make senior developers cry in meetings. I've seen brilliant teams destroyed by PMs who confused authority with authoritarianism. I've seen software delivered "on time" that didn't work, and multi-million euro projects that ended in nothing.
 

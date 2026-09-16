@@ -1,10 +1,10 @@
 ---
 title: "Know-How și Impact"
-seoTitle: "Know-How și Impact: 30 ani de DBA, DWH și echipe IT"
-description: "Know-How și Impact Ivan Luminaria: cele 4 profiluri profesionale — DWH Architect, Oracle DBA, Oracle PL/SQL Developer, Project Manager Scrum/Agile."
+seoTitle: "Ivan Luminaria, Technical Leader pentru baze de date critice"
+description: "Technical Leader pentru baze de date critice: 30 de ani în banking, asigurări, telco și sectorul public. Patru piloni: DWH, Oracle DBA, PL/SQL și PM."
 hero_title: "Experiență, profunzime, impact"
 date: "2026-02-23"
-lastmod: "2026-02-26"
+lastmod: "2026-09-14"
 draft: false
 image: "resumes.cover.jpg"
 ---
@@ -21,9 +21,35 @@ A fost o aprofundare verticală.
 Ceea ce ofer astăzi nu este o listă de competențe.  
 Este suma consecințelor pe care aceste competențe le generează.
 
+Astăzi aceste profunzimi lucrează împreună, într-un singur rol.
+
 </div>
 
-{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202603_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Banca Italiei,Automotive" >}}
+{{< kh-role role="tl" featured="true" title="Technical Leader pentru baze de date critice" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banking,Asigurări,Telco,Sector public,Mobilitate și plăți" >}}
+
+Astăzi munca mea este să fiu alături de CIO, CTO și IT Directori atunci când un sistem de date critic încetinește, se oprește sau trebuie să ia o direcție nouă.
+
+Când cauza traversează mai multe niveluri — aplicație, SQL, bază de date, sistem de operare, stocare, rețea — e nevoie de cineva care să le citească împreună.  
+Și care să știe să explice fiecare pas celor care decid.
+
+Aduc treizeci de ani de sisteme reale în banking, asigurări, telco și sectorul public.  
+Și o metodă care rămâne echipei după încheierea intervenției.
+
+Sisteme mai stabile.  
+Decizii care pot fi susținute.  
+Oameni mai autonomi.
+
+{{< /kh-role >}}
+
+<div class="kh-pillars">
+
+## Cei patru piloni
+
+Competențele pe care se sprijină rolul de Technical Leader. Fiecare are propriul roadmap și propriul CV.
+
+</div>
+
+{{< kh-role role="dwh" title="Data Warehouse Architect" roadmap="dwh-architect" pdf="CV_DWH_Architect_Ivan_Luminaria_202606_EN.pdf" sectors="TIM,Vodafone,Huawei,Generali,Asigurări,Banca Italiei,Automotive" >}}
 
 Experiența mea în Data Warehouse s-a dezvoltat în medii în care datele reprezintă infrastructură critică.
 
@@ -41,7 +67,7 @@ Am proiectat arhitecturi de date în medii în care marja de eroare nu este acce
 
 {{< /kh-role >}}
 
-{{< kh-role role="pm" title="Project Manager cu background tehnic" roadmap="project-manager" pdf="CV_Project_Manager_Ivan_Luminaria_202603_EN.pdf" sectors="Telco internațional,Instituții financiare,Asigurări,Farmaceutic,Automotive,Administrație publică" >}}
+{{< kh-role role="pm" title="Project Manager cu background tehnic" roadmap="project-manager" pdf="CV_Project_Manager_Ivan_Luminaria_202606_EN.pdf" sectors="Telco internațional,Instituții financiare,Asigurări,Farmaceutic,Automotive,Administrație publică" >}}
 
 Experiența mea în management de proiect s-a maturizat coordonând inițiative în medii complexe: telecomunicații internaționale, instituții financiare centrale, asigurări, farmaceutic, automotive și administrație publică.
 
@@ -53,7 +79,7 @@ Conectez viziunea strategică cu detaliul tehnic. Roadmap-urile cu implementarea
 
 {{< /kh-role >}}
 
-{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf" sectors="TIM,Huawei,Banca Italiei,Generali,Automotive" >}}
+{{< kh-role role="oracle" title="Oracle DBA & Performance Tuning Expert" roadmap="oracle-dba" pdf="CV_Oracle_DBA_Ivan_Luminaria_202606_EN.pdf" sectors="POSTE,TIM,Huawei,Banca Italiei,Generali,Automotive" >}}
 
 Activitatea mea ca Oracle DBA s-a consolidat în medii mission-critical pentru operatori precum TIM, Wind, Vodafone și 3, în contexte tehnologice complexe precum Huawei, pentru instituții financiare precum Banca Italiei, Oficiul Italian pentru Schimburi și Cassa Depositi e Prestiti, pentru organizații de asigurări precum Generali, și în proiecte industriale din sectorul automotive.
 
@@ -66,7 +92,7 @@ Este protecție operațională.
 
 {{< /kh-role >}}
 
-{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202603_EN.pdf" sectors="Banking,Asigurări,Farmaceutic,Automotive,Administrație publică" >}}
+{{< kh-role role="plsql" title="Oracle PL/SQL — Senior & Mentor" roadmap="oracle-plsql" pdf="CV_Oracle_PLSQL_Ivan_Luminaria_202606_EN.pdf" sectors="Banking,Finance,Asigurări,Farmaceutic,Automotive,Administrație publică" >}}
 
 Am dezvoltat PL/SQL în medii Telco, Banking, Asigurări, Automotive, Farmaceutic și Administrație Publică.
 

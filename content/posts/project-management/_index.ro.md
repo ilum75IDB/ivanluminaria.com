@@ -1,10 +1,14 @@
 ---
-title: "Project Management"
-seoTitle: "Project Management IT: Scrum, AI, consultanță"
-description: "Articole Project Management IT: Scrum, standup meetings, smart working, AI Manager, management echipe, freelance și consultanță IT. Cazuri reale din 30 ani."
+title: "Leadership tehnic și proiecte"
+seoTitle: "Leadership tehnic și project management IT: cazuri reale"
+description: "Leadership tehnic și project management IT: decizii, echipe, metodă și consultanță, cu povești reale și cifre din 30 de ani de proiecte."
 layout: "list"
 image: "project-management.cover.jpg"
 ---
+
+Această secțiune povestește partea meseriei care nu se află în planurile de execuție: deciziile, echipele, metoda. Este spațiul **leadership-ului tehnic**, unde oamenii, sistemele și alegerile trebuie să funcționeze împreună.
+
+------------------------------------------------------------------------
 
 Am văzut project manageri care au făcut dezvoltatori seniori să plângă în ședințe. Am văzut echipe strălucite distruse de PM-uri care confundau autoritatea cu autoritarismul. Am văzut software livrat „la timp" care nu funcționa, și proiecte de milioane de euro care s-au terminat în nimic.
 

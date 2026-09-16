@@ -1,10 +1,14 @@
 ---
-title: "Project Management"
-seoTitle: "Project Management IT: Scrum, AI, consultoría"
-description: "Artículos Project Management IT: Scrum, standup meetings, smart working, AI Manager, gestión de equipos, freelance y consultoría IT. Casos reales de 30 años."
+title: "Liderazgo técnico y proyectos"
+seoTitle: "Liderazgo técnico y project management IT: casos reales"
+description: "Liderazgo técnico y project management IT: decisiones, equipos, método y consultoría, con historias reales y números de 30 años de proyectos."
 layout: "list"
 image: "project-management.cover.jpg"
 ---
+
+Esta sección cuenta la parte del oficio que no está en los planes de ejecución: las decisiones, los equipos, el método. Es el espacio del **liderazgo técnico**, donde personas, sistemas y decisiones deben funcionar juntos.
+
+------------------------------------------------------------------------
 
 He visto a project managers hacer llorar a desarrolladores senior en una reunión. He visto equipos brillantes destruidos por PMs que confundían la autoridad con el autoritarismo. He visto software entregado "a tiempo" que no funcionaba, y proyectos de millones de euros acabados en nada.
 

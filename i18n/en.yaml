@@ -41,6 +41,13 @@ knowhow:
   read_roadmap: "Read the roadmap"
   download_pdf: "Download PDF"
   pdf_sub: "Full CV"
+  role_word: "role"
+  pillars_word: "pillars"
 
 reading_progress_label: "Read:"
 article_toc_title: "In this article"
+
+brand:
+  role: "Technical Leader for mission-critical databases"
+  tagline: "Helping CIOs & CTOs have data ready<br>the moment the business asks"
+cta_see_also: "See also the overall profile:"

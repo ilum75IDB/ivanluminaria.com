@@ -2,8 +2,10 @@
   <nav>
     <div class="nav-inner flex items-start justify-between desktop-nav-align">
     {{/* Site logo/title */}}
-    <div class="z-40 flex flex-row items-center">
+    <div class="z-40 flex flex-col items-start brand-wrap">
       {{ partial "logo.html" . }}
+      <span class="brand-role">{{ i18n "brand.role" }}</span>
+      <span class="brand-tagline">{{ i18n "brand.tagline" | safeHTML }}</span>
     </div>
     {{ if or .Site.Menus.main (.Site.Params.enableSearch | default false) }}
       {{/* Hamburger menu — visible below 1190px.

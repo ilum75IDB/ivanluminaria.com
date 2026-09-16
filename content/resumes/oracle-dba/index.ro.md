@@ -1,158 +1,188 @@
 ---
 title: "Oracle DBA & Performance Tuning Expert"
 seoTitle: "Ivan Luminaria | Oracle DBA & Performance Tuning Expert"
-description: "Ivan Luminaria, Oracle DBA & Performance Tuning Expert: 30 ani administrând baze de date mission-critical, RAC, Data Guard, AWR/ASH și cloud migration."
-date: "2026-03-10"
-lastmod: "2026-03-10"
+description: "Ivan Luminaria, Oracle DBA & Performance Tuning Expert: 30 de ani administrand baze de date mission-critical, RAC, Data Guard, Exadata, AWR/ASH și Oracle Cloud."
+date: "2026-09-14"
+lastmod: "2026-09-15"
 draft: false
 layout: "simple"
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+**[Descarcă PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)**
+
+> **Un rol, patru piloni.** Acest profil este unul dintre cei patru piloni ai rolului [Technical Leader pentru baze de date critice](/ro/resumes/technical-leader/).
 
 ---
 
 ## Profil Profesional
 
-Senior Oracle DBA si Performance Tuning Expert cu aproape 30 de ani de experienta specializata in administrarea, optimizarea si gestionarea bazelor de date Oracle complexe si critice, inclusiv medii Exadata, RAC si Oracle Cloud (OCI, Autonomous Database). Expertiza avansata in analiza performantei (AWR, ADDM, ASH), optimizarea interogatiilor SQL complexe, tuning-ul instantelor si rezolvarea problemelor de performanta. Cunostinte solide in practici legate de backup & recovery (RMAN), securitate (TDE), instalare, patching, migrari si gestionarea stocarii (ASM), performanta ramanand principala si cea mai aprofundata arie de expertiza, cruciala pentru integritatea, performanta si contributia la disponibilitatea ridicata a sistemelor Oracle in medii corporative exigente si internationale.
+Senior Oracle DBA și Performance Tuning Expert cu aproape 30 de ani pe baze de date Oracle mission-critical, inclusiv Exadata, RAC, Data Guard și Oracle Cloud (OCI, Autonomous Database).
+
+Expertiză aprofundată în analiza AWR, ADDM și ASH, tuning de interogări SQL complexe, optimizare de instanțe și diagnosticare a wait events. Bază operativă solida pe backup & recovery (RMAN), securitate (TDE), instalare, patching, migrari și storage management (ASM).
+
+Performance tuning ramane specializarea principala — disciplina care menține sisteme exigente disponibile sub sarcini reale.
 
 ---
 
-## Competente Tehnice — Oracle DBA & Performance Tuning
+## Arii de intervenție
 
-- **Administrare Oracle Database**: Oracle Database (de la 8i la 21c, Autonomous), Oracle Exadata, Oracle RAC (Real Application Clusters), Oracle Data Guard, Oracle GoldenGate (cunostinte de baza).
-- **Performance Tuning Avansat**:
-  - Analiza si Diagnosticare: AWR, ADDM, ASH, Statspack, SQL Trace, TKPROF, Explain Plan.
-  - SQL Tuning: Optimizarea interogarilor complexe, Hints, SQL Profiles, SQL Plan Management (SPM).
-  - Instance Tuning: Memory Management (SGA, PGA), Parametri de Initializare, Analiza Wait Events.
-  - Proiectare Baze de Date pentru Performanta: Indexare (B-tree, Bitmap, Function-based), Partitioning (Range, List, Hash, Composite), Compresie.
-- **High Availability si Disaster Recovery**: RMAN (Backup, Recovery, Cloning), Oracle Data Guard, Flashback Technologies.
-- **Securitate Baze de Date**: Oracle TDE (Transparent Data Encryption), Gestionarea Utilizatorilor si Privilegiilor, Audit.
-- **Gestionare Stocare**: ASM (Automatic Storage Management), Gestionare Tablespace.
-- **Instalare, Patching si Migrari**: Instalarea de noi instante, aplicarea PSU/CPU/RU, upgrade-uri de versiune, migrari cross-platform.
-- **Instrumente Oracle**: Oracle Enterprise Manager (OEM) Cloud Control, SQL Developer, SQL*Plus, Toad.
-- **Scripting**: PL/SQL, SQL, Unix Shell Scripting (pentru automatizarea sarcinilor DBA).
-- **Cloud**: Oracle Cloud Infrastructure (OCI) — Compute, Storage, Networking, Database Services (VM DB, Bare Metal, Exadata CS, Autonomous Database).
-- **Alte Tehnologii de Baze de Date**: PostgreSQL (administrare, performance tuning, partitioning, replicare), MySQL (administrare, configurare, replicare, optimizare InnoDB).
-- **Sisteme de Operare**: Linux (Red Hat, Oracle Linux), Unix (AIX, Solaris), Windows Server.
+- **Health Check al bazelor de date** — evaluare structurată a performanței, fiabilitatii, capacitatii și a riscurilor latente, cu un raport de evidențe și un roadmap de priorități.
+- **Post-Incident Root Cause Analysis** — reconstrucția incidentului pe date reale (AWR, ASH, wait events, log-uri aplicative și de infrastructură), separând cauze, consecințe și simple corelații.
+- **DBA leadership continuu** — tuning avansat, planuri de upgrade și patching, strategii HA/DR, coordonare cu dezvoltarea și infrastructură.
+- **Modernizare advisory** — evaluare de migrari Oracle → PostgreSQL, servicii cloud database și trecere la Autonomous Database, cu analiza de costuri și riscuri independenta de vendori.
 
 ---
 
-## Experienta Profesionala
+## Rezultate în evidență
+
+- Aproximativ **1.500 instanțe** MySQL și PostgreSQL administrate pentru un operator postal și logistic național.
+- **Peste 30 de baze de date Oracle critice (70+ instanțe)** pe Exadata pentru un operator telco cu **peste 20 de milioane de utilizatori prepay**; până la **800 de milioane de înregistrări de trafic pe zi**; interogări critice sub **500 ms** în disponibilitate 24/7.
+- Batch-uri analitice critice reduse **de la 4 ore la mai puțin de 30 de minute** pe Oracle în OCI și Autonomous Database.
+- Data Warehouse multi-țară pe **4 țări europene** susținut la nivel DBA: **peste 60.000 de linii de PL/SQL** și încărcare zilnică completă în **mai puțin de 2 ore**.
+- Pipeline-uri ETL/ELT care integrează **peste 15 surse eterogene** pe seturi de date de peste **2 miliarde de rânduri**.
+
+---
+
+## Competențe Cheie
+
+### Oracle Database Administration
+
+- Oracle Database 8i → 21c, Autonomous Database
+- Exadata, RAC, Data Guard, GoldenGate (de bază)
+
+### Performance tuning avansat
+
+- Analiza și diagnosticare: AWR, ADDM, ASH, Statspack, SQL Trace, TKPROF, Explain Plan
+- SQL tuning: interogări complexe, hints, SQL Profiles, SQL Plan Management (SPM)
+- Instance tuning: memorie (SGA/PGA), parametri de inițializare, analiza wait events
+- Design pentru performance: indexare (B-tree, Bitmap, Function-based), partitioning (Range, List, Hash, Composite), compression
+
+### HA/DR și securitate
+
+- RMAN (backup, recovery, cloning), Data Guard, Flashback Technologies
+- Oracle TDE, gestionare utilizatori și privilegii, auditing
+- ASM (Automatic Storage Management), gestionare tablespaces
+
+### Instalare, patching, migrari
+
+- Instalare instanțe noi, PSU/CPU/RU, upgrade-uri de versiune, migrari cross-platform
+
+### Cloud
+
+- Oracle Cloud Infrastructure (OCI): Compute, Storage, Networking, Database Services (VM DB, Bare Metal, Exadata CS, Autonomous Database)
+- AWS Aurora PostgreSQL, medii Microsoft Azure Database
+
+### Alte baze de date și instrumente
+
+- PostgreSQL (administrare, tuning, partitioning, replicare)
+- MySQL (administrare, replicare, optimizare InnoDB)
+- Oracle Enterprise Manager (OEM) Cloud Control, SQL Developer, SQL*Plus, Toad
+- PL/SQL, SQL, Unix Shell scripting
+
+---
+
+## Experiență Profesională
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Senior Oracle DBA & Performance Tuning Expert / DWH Architect | Administrator Unic** | 2021 – Prezent
+**Administrator Unic · Senior Oracle DBA & Performance Tuning Expert** | 2021 – Prezent
 
-- **DBA MySQL & PostgreSQL** (pentru POSTE ITALIANE) | Iul 2025 – Prezent:
-  - Administrarea si gestionarea a aproximativ 1.500 de instante MySQL si PostgreSQL in medii de productie, staging si dezvoltare.
-  - Monitorizarea performantei, query tuning, gestionarea replicarii si planificarea capacitatii la scara enterprise.
-
-- **Oracle DBA & Tuning Expert** (pentru GENERALI Assicurazioni) | Feb 2024 – Mai 2025:
-  - Administrarea bazelor de date Oracle si performance tuning avansat pentru aplicatii din sectorul asigurarilor.
-  - Analiza AWR/ADDM, optimizare SQL si rezolvarea proactiva a blocajelor pe baze de date de la 500GB la 8TB.
-
-- **Oracle DBA** (pentru ATRADIUS) | 2022 – 2026:
-  - Administrarea si performance tuning-ul bazelor de date care sustin Data Warehouse-ul diviziei Surety pentru consolidarea datelor din Italia, Spania, Franta si tarile din nordul Europei.
-  - Gestionarea bazelor de date Oracle in medii OCI, sustinand peste 60.000 de linii de cod PL/SQL ETL cu ingestie zilnica completa in mai putin de 2 ore.
-
+- **Oracle DBA & Tuning Expert** (pentru GENERALI Asigurări) | Feb 2024 – Mai 2025:
+  - Administrare și tuning avansat de baze de date Oracle de la 500 GB la 8 TB pentru aplicații din sectorul asigurărilor.
+  - Analiza AWR/ADDM, optimizare SQL, rezolvarea proactivă a blocajelor.
+- **Oracle DBA** (pentru ATRADIUS, divizia Surety) | 2022 – Iun 2025:
+  - Layer DBA în sprijinul DWH-ului multi-țară (peste 60.000 de linii de PL/SQL ETL, încărcare zilnică completă în mai puțin de 2 ore) în OCI.
 - **Oracle DBA** (pentru FAI SERVICE) | 2021 – 2023:
-  - Administrarea si tuning-ul bazelor de date Oracle 19c in OCI pentru procese ETL si dashboarduri Oracle Analytics Cloud.
+  - Administrare și tuning de Oracle 19c în OCI în sprijinul ETL și al dashboard-urilor Oracle Analytics Cloud.
+- **PL/SQL Expert & Oracle DBA** (pentru FINWAVE S.p.A.) | 2020 – 2022:
+  - Dezvoltare PL/SQL avansată și optimizare de interogări pentru aplicații financiare cu milioane de tranzacții zilnice.
+- **Clienți Banking, Telepass și altii**:
+  - Batch-uri analitice critice reduse de la 4 ore la mai puțin de 30 de minute pe Oracle în OCI și Autonomous Database.
+  - ETL/ELT de la peste 15 surse eterogene pe seturi de date de peste 2 miliarde de rânduri; RMAN, OEM, patching; DWH pe PostgreSQL ca alternativa cost-effective la Oracle.
 
-- **DBA & Performance Tuning** (Banking, Telepass si alti clienti):
-  - Optimizarea bazelor de date Oracle in medii OCI si Autonomous Database — reducerea timpilor de procesare batch de la 4 ore la mai putin de 30 de minute pe incarcaturi de lucru analitice critice.
-  - Proiectarea si dezvoltarea fluxurilor ETL/ELT pentru integrarea datelor din peste 15 surse eterogene pe seturi de date de peste 2 miliarde de randuri.
-  - Gestionarea RMAN, monitorizare Oracle OEM, instalare si patching de baze de date Oracle.
-  - Proiectarea si implementarea solutiilor DWH pe PostgreSQL ca alternative cost-effective la arhitecturile Oracle.
+---
+
+### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
+**Senior Database Consultant — MySQL & PostgreSQL DBA** (pentru POSTE ITALIANE) | Iul 2025 – Prezent
+
+- Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
+- Monitorizarea performanței, query tuning, gestionarea replicarii și capacity planning la scara enterprise.
+- Suport pentru echipele de dezvoltare și infrastructură într-un context de baze de date eterogene cu cerințe de continuitate operativă.
 
 ---
 
 ### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
 **Senior Oracle DBA & Performance Tuning Expert** (pentru TIM / HUAWEI) | 2020 – 2022
 
-- Administrarea si gestionarea a peste 30 de baze de date Oracle critice (70+ instante) pe clustere Oracle Exadata (3/5 noduri) pentru un client Telco de prim plan.
-- Responsabilitate directa pentru performance tuning avansat: analiza AWR/ADDM, optimizare SQL, gestionare indecsi, partitioning si compresie.
-- Implicare in activitati de gestionare a stocarii (ASM) si implementare Oracle TDE pentru securitatea datelor.
-- Suport "ON-CALL" 24/7 pentru rezolvarea problemelor critice si mentinerea disponibilitatii ridicate.
+- Peste 30 de baze de date Oracle critice (70+ instanțe) pe cluster-e Exadata cu 3 și 5 noduri.
+- Responsabilitate directă pe performance tuning avansat: analiza AWR/ADDM, optimizare SQL, indexare, partitioning și compression.
+- Storage management (ASM) și Oracle TDE pentru securitatea datelor; disponibilitate 24/7 pentru rezolvarea situațiilor critice.
 
 ---
 
 ### PROFESIONIST INDEPENDENT / CONSULTANT — Roma, Italia (Full Remote Europa)
-**Senior Oracle DBA & Performance Tuning Expert / DWH Architect** | 2013 – 2020
+**Senior Oracle DBA & Performance Tuning Expert · DWH Architect** | 2013 – 2020
 
-- Furnizarea de servicii de consultanta ca Oracle DBA si specialist in Performance Tuning pentru diversi clienti.
-- Optimizarea interogarilor SQL complexe si tuning-ul instantelor Oracle pentru imbunatatirea performantei aplicatiilor critice.
-- Suport in instalarea, configurarea, patching-ul si upgrade-ul bazelor de date Oracle.
-- Consultanta privind strategiile de backup si recovery cu RMAN.
-- Proiectarea si implementarea configuratiilor Oracle Data Guard pentru disponibilitate ridicata si disaster recovery, inclusiv proceduri de switchover/failover.
-- Gestionarea echipelor tehnice mici in proiecte de migrare si upgrade.
+- Consultanta Oracle DBA și performance tuning pentru clienți Banking, Insurance și Telco.
+- Optimizare de interogări SQL complexe și tuning de instanțe Oracle; RMAN și Oracle Data Guard HA/DR cu proceduri de switchover/failover.
+- Coordonarea unor echipe tehnice mici în proiecte de migrare și upgrade.
 
 ---
 
 ### AUSELDA AED GROUP S.P.A. — Roma, Italia
-**Project Oracle DBA / Performance & Tuning Expert** (pentru Administratia Publica) | 2009 – 2013
+**Project Oracle DBA · Performance & Tuning Expert** (pentru Administratia Publica) | 2009 – 2013
 
-- Administrarea si optimizarea bazelor de date Oracle care sustin aplicatii ale Administratiei Publice.
-- Tuning-ul interogarilor SQL si al proceselor ETL pentru sisteme de Data Warehousing.
-- Implicare in activitati de instalare, patching si gestionare a securitatii bazelor de date.
-
----
-
-### ORACLE ITALIA S.R.L. — Diverse locatii, Italia si Madrid, Spania
-**Oracle DBA / DWH Architect / SQL & PL/SQL Developer / Training Specialist** | 1999 – 2009
-
-- **Roluri DBA si Performance (in crestere progresiva):** Administrarea bazelor de date Oracle pentru clienti enterprise (TIM, Vodafone, Banca d'Italia, Generali).
-- Implicare in activitati de SQL Performance & Tuning, troubleshooting si optimizare.
-- Suport pentru instalarea si configurarea instantelor Oracle, gestionarea patch-urilor.
-- **Ca Training Specialist (2000-2001):** Sustinerea de cursuri de Oracle Database Administration si Performance & Tuning.
+- Administrare și optimizare de baze de date Oracle în sprijinul aplicatiilor Administratiei Publice.
+- Tuning de interogări SQL și procese ETL pentru sisteme DWH; instalare, patching și gestionarea securitatii.
 
 ---
 
-### S.EL.DAT. S.P.A. — Roma, Italia
-**Software Developer** (pentru Telecom, Rover Italia) | 1997 – 1999
+### ORACLE ITALIA S.R.L. — Diverse sedii, Italia & Madrid, Spania
+**Oracle DBA · DWH Architect · SQL & PL/SQL Developer · Training Specialist** | 1999 – 2009
 
-- Dezvoltare aplicatii client-server, Junior Oracle DBA, monitorizare DB.
-
----
-
-## Educatie si Formare
-
-- **Facultatea de Inginerie Informatica (Inginerie Software)** | Universitatea Roma Tre, Roma | 1994 – 2000
-- **Diploma de Liceu Stiintific** (EQF Nivel 4) | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
-- **Engleza Avansata (C1/C2)** | The British Council (Level 4A), Roma | 2003 – 2004
-
-**Cursuri Selectate de Formare si Educatie Continua:**
-
-- Advanced SQL for Query Tuning and Performance Optimization — LinkedIn Learning (August 2020)
-- Data Wrangling, Analysis and AB Testing with SQL — Coursera, University of California Davis (Aprilie 2021)
-- Cursuri de specializare Oracle 12c (Administration, Security, Backup and Recovery, Advanced SQL, New Features) — LinkedIn Learning (2020)
+- Administrare de baze de date Oracle pentru clienți Telco (TIM, Vodafone, TRE), Finance (Banca Italiei, Generali, RAS) și Farmaceutic (Menarini) cu responsabilități crescande.
+- Angajament international pe Vodafone Spania (Madrid).
+- Training Specialist (2000-2001) pe Oracle Database Administration și Performance & Tuning.
 
 ---
 
-## Limbi Straine
-
-- **Italiana**: Limba materna
-- **Engleza**: C1/C2 (Fluent, profesional)
-- **Spaniola**: C1 (Fluent)
-- **Romana**: C1 (Fluent)
-- **Franceza**: A1/A2 (Baza)
+### ETNOTEAM S.P.A. · 1999 — S.EL.DAT. S.P.A. · 1997 – 1999
+**Software Developer · Junior Oracle DBA** (pentru Telecom, Rover Italia)
 
 ---
 
-## Competente Transversale
+## Formare
 
-- Rezolvare Analitica si Metodica a Problemelor
-- Gestionarea Prioritatilor si Respectarea Termenelor
-- Capacitatea de a Lucra Sub Presiune
-- Comunicare Tehnica Clara si Eficienta
-- Atentie la Detalii si Precizie
-- Invatare Continua si Adaptabilitate Tehnologica
+- **Facultatea de Inginerie Informatică (Ingineria Software)** | Universitatea Roma Tre, Roma | 1994 – 2000
+- **Diploma de Bacalaureat Stiintific** | Liceo Scientifico Isacco Newton / Manieri Copernico, Roma | 1988 – 1993
+- **Engleză Avansată (C1/C2)** | The British Council, Roma | 2003 – 2004
+- Formare continua: Scrum Agile și Project Management (Randstad / Forma.temp, 2024) · Data Wrangling with SQL (Coursera, UC Davis, 2021) · Advanced SQL for Query Tuning și Oracle 12c (LinkedIn Learning, 2020)
+
+---
+
+## Limbi
+
+- **Italiană**: Maternă
+- **Engleză**: C1/C2 (Fluentă, profesională)
+- **Spaniolă**: C1 (Fluentă)
+- **Română**: C1 (Fluentă)
+- **Franceză**: A1/A2 (De bază)
+
+---
+
+## Competențe Transversale
+
+- Analiza metodica a problemelor de performance, până la cauza reală
+- Gestionarea priorităților și respectarea deadline-urilor sub presiune operativă
+- Comunicare tehnică clară, bazată pe evidențe
+- Atenție la detaliu și precizie operativă
+- Învățare continua și adaptabilitate tehnologică
 
 ---
 
 *Autorizez prelucrarea datelor mele personale conform Art. 13 din Regulamentul UE 2016/679 (GDPR).*
 
-Roma, Martie 2026
+Roma, Septembrie 2026
 
 ---
 
-**[Descarca PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202603_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Inapoi la pagina anterioara](/ro/resumes/)**
+**[Descarcă PDF]({{% staticurl "downloads/CV_Oracle_DBA_Ivan_Luminaria_202609_EN.pdf" %}})** | **[Profil LinkedIn](https://www.linkedin.com/in/ivanluminaria)** | **[Înapoi la pagina anterioară](/ro/resumes/)**

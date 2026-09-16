@@ -56,5 +56,25 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 40 | 2026-07-14 | — | Tue | ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogn | oracle | #99 | 2026-06-10 | scheduled |
 
+| 41 | 2026-07-21 | — | Tue | La pausa pranzo che ha rimandat o il go-live:Data Governance nel DWH | data-warehouse | #103 | 2026-06-14 | scheduled |
+
+| 42 | 2026-07-28 | — | Tue | Swap al 100% su InnoDB Cluster: quando join_buffer_size moltiplica il problema | mysql | #74 | 2026-07-01 | scheduled |
+
+| 43 | 2026-08-04 | — | mar | Assertions in Oracle 26ai: finalmente un vincolo che attraversa le tabelle | oracle | #100 | 2026-07-31 | scheduled |
+
+| 44 | 2026-08-11 | — | Tue | Ricerche su milioni di documenti legali: come Oracle Text ha cambiato i tempi di | oracle | #101 | 2026-08-08 | scheduled |
+
+| 45 | 2026-08-18 | — | Tue | MySQL 8.0.34→8.0.45: workflow di patching reale con errori inclusi | mysql | #68 | 2026-08-08 | scheduled |
+
+| 46 | 2026-08-25 | — | Tue | MySQL slave lag: Seconds_Behind_Master mente, GTID no — diagnosi e fix con paral | mysql | #45 | 2026-08-11 | scheduled |
+
+| 47 | 2026-09-01 | — | Tue | ETL Oracle: da 4 ore a 25 minuti con staging tables, MERGE e parallel DML | data-warehouse | #39 | 2026-09-04 | scheduled |
+
+| 48 | 2026-09-08 | — | Tue | Galera Cluster: quorum, split-brain e bootstrap di emergenza con due nodi giù | mysql | #54 | 2026-09-04 | scheduled |
+
+| 49 | 2026-09-15 | — | Tue | Oracle 12c → 21c su 12 TB: transportable tablespaces, RMAN incremental e la fine | oracle | #52 | 2026-09-04 | scheduled |
+
+| 50 | 2026-09-22 | — | Tue | Il dottore tutto pazzo: un Commodore 64, una porta chiusa e il mestiere di capir | project-management | #None | 2026-09-16 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
-**Next available slot**: 2026-07-07 (Tuesday)
+**Next available slot**: 2026-08-18 (Tuesday)

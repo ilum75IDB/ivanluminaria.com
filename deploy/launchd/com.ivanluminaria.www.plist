@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  COPIA DI RIFERIMENTO. La copia ATTIVA va in ~/Library/LaunchAgents/.
+  Server Hugo persistente di ivanluminaria.com (bind 0.0.0.0:1313 sulla LAN).
+  Gestito da: wwwserver enable / disable / svc.
+  Avvia al login, si riavvia da solo (KeepAlive), log su ~/Library/Logs/ivanluminaria.com/server.log.
+  Flag attivi (vedi sotto in ProgramArguments): buildDrafts + buildFuture + baseURL
+  ivanluminaria.local + appendPort=false + liveReloadPort=1313 (WebSocket live-reload
+  sullo stesso :1313).
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ivanluminaria.www</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/hugo</string>
+        <string>server</string>
+        <string>--bind</string>
+        <string>0.0.0.0</string>
+        <string>--port</string>
+        <string>1313</string>
+        <string>--baseURL</string>
+        <string>http://ivanluminaria.local:1313/</string>
+        <string>--appendPort=false</string>
+        <string>--buildDrafts</string>
+        <string>--buildFuture</string>
+        <string>--liveReloadPort=1313</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/ivanluminaria/Development/APPLICAZIONI/My-Web-Site/ivanluminaria.com</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/ivanluminaria/Library/Logs/ivanluminaria.com/server.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/ivanluminaria/Library/Logs/ivanluminaria.com/server.log</string>
+</dict>
+</plist>

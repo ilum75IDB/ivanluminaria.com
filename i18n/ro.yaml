@@ -41,6 +41,13 @@ knowhow:
   read_roadmap: "Citește roadmap-ul"
   download_pdf: "Descarcă PDF"
   pdf_sub: "CV complet"
+  role_word: "rol"
+  pillars_word: "piloni"
 
 reading_progress_label: "Citit:"
 article_toc_title: "În acest articol"
+
+brand:
+  role: "Technical Leader pentru baze de date critice"
+  tagline: "Ajut CIO și CTO să aibă datele pregătite pentru business,<br>în momentul în care apar întrebările"
+cta_see_also: "Vezi și profilul general:"
