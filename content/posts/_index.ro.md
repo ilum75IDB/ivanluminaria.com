@@ -1,6 +1,6 @@
 ---
 title: "Database Strategy"
-seoTitle: "Database Strategy: blogul Ivan Luminaria pe DB și arhitectură"
+seoTitle: "Database Strategy: blogul pe DB și arhitectură"
 description: "Database Strategy: blogul Technical Leader despre baze de date și Data Warehouse mission-critical. 30 de ani în banking, telco, asigurări, sector public."
 layout: "list"
 image: "database-strategy.cover.jpg"

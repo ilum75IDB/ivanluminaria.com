@@ -1,6 +1,6 @@
 ---
 title: "Technical Leader para bases de datos y Data Warehouse mission-critical"
-seoTitle: "Ivan Luminaria | Technical Leader, bases de datos y Data Warehouse mission-critical"
+seoTitle: "Technical Leader bases de datos y Data Warehouse mission-critical"
 description: "Ivan Luminaria, Technical Leader para bases de datos y Data Warehouse mission-critical: 30 años con Oracle, PostgreSQL, MySQL junto a CIOs y CTOs en banca."
 date: "2026-09-14"
 lastmod: "2026-09-14"
