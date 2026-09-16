@@ -40,6 +40,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
+| Commodore 64 |  | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
 | dbupgrade | utility Oracle (successore di `catupgrd.sql`) che aggiorna il dizionario dati di sistema durante un upgrade di versione. | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
@@ -230,6 +231,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
 **Ultimo aggiornamento**: 2026-09-16
-**Totale termini**: 215
+**Totale termini**: 216
 **Totale articoli con glossario**: 50
 
