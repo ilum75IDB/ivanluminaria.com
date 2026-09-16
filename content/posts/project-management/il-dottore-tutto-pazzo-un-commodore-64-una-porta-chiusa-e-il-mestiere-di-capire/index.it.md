@@ -2,9 +2,18 @@
 categories:
 - project-management
 date: 2099-12-31
+description: Come un bambino curioso, un programma in BASIC e una porta chiusa a chiave
+  hanno tracciato la strada verso il mestiere di diagnosticare sistemi complessi.
 draft: true
 image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
-tags: []
+seoTitle: Da un Commodore 64 a trent'anni di database
+tags:
+- personal
+- career
+- origin-story
+- commodore-64
+- database-engineering
+- programming
 title: 'Il dottore tutto pazzo: un Commodore 64, una porta chiusa e il mestiere di
   capire'
 translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
