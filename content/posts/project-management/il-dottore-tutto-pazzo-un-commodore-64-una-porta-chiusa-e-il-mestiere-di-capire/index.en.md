@@ -1,15 +1,21 @@
 ---
-title: "A kid like any other: from a Commodore 64 to thirty years of databases"
-seoTitle: "From Commodore 64 to database engineering: a personal story"
-description: "A personal story about curiosity, a locked door, and a mad doctor program that changed everything. How a C64 in 1983 shaped thirty years of database work."
+categories:
+- project-management
 date: 2099-12-31
+description: A personal story about curiosity, a locked door, and a mad doctor program
+  that changed everything. How a C64 in 1983 shaped thirty years of database work.
 draft: true
-translationKey: "il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire"
-tags: ["personal", "career", "origin-story", "commodore-64"]
-categories: ["project-management"]
-image: "il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg"
-webo_status: da_tradurre
+image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
+seoTitle: 'From Commodore 64 to database engineering: a personal story'
+tags:
+- personal
+- career
+- origin-story
+- commodore-64
+title: 'A kid like any other: from a Commodore 64 to thirty years of databases'
+translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
+webo_status: da_tradurre
 ---
 
 ## A kid like any other
@@ -104,9 +110,8 @@ Then a teacher who, with the tools of that era, was trying to protect my learnin
 
 If you also started out in front of a blinking cursor, you know what I'm talking about. And if today you're looking at a line 340 that seems perfect, there's only one useful question: where is line 330?
 
-## Glossary candidate
-
-- **BASIC** — Beginner's All-purpose Symbolic Instruction Code: an interpreted programming language widespread on home computers of the 1980s, designed to be accessible without specialist training.
+## Glossary
+- **[BASIC](/en/glossary/basic/)** — Beginner's All-purpose Symbolic Instruction Code: an interpreted programming language widespread on home computers of the 1980s, designed to be accessible without specialist training.
 - **Listing** — in the context of home computing, the complete printed or on-screen text of a program's source code, typically published in magazines or books for manual entry.
 - **Skeleton key** (passpartout) — a key cut to open multiple different locks; used here both literally and as a metaphor for transferable technical understanding.
 - **Syntax error** — an error signalled by an interpreter or compiler when source code does not conform to the grammar rules of the language; on the C64, reported with the line number of the detected anomaly.

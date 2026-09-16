@@ -1,13 +1,15 @@
 ---
-title: "Il dottore tutto pazzo: un Commodore 64, una porta chiusa e il mestiere di capire"
+categories:
+- project-management
 date: 2099-12-31
 draft: true
-translationKey: "il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire"
+image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
 tags: []
-categories: ["project-management"]
-image: "il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg"
-webo_status: da_approvare
+title: 'Il dottore tutto pazzo: un Commodore 64, una porta chiusa e il mestiere di
+  capire'
+translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
+webo_status: da_approvare
 ---
 
 ## Un bambino come tanti
@@ -101,3 +103,7 @@ Prima di tutto di mio padre. Nel 1983 portò in casa un computer quando in pochi
 Poi di una professoressa che, con gli strumenti di quegli anni, voleva proteggere il mio imparare. E di un fratello che ha tenuto un segreto per mesi, al prezzo di un gelato.
 
 Se anche tu hai cominciato davanti a un cursore che lampeggiava, sai di cosa parlo. E se oggi hai davanti una riga 340 che sembra perfetta, la domanda utile è una sola: dove sta la riga 330?
+
+## Glossario
+
+**[BASIC](/it/glossary/basic/)** — BASIC è un linguaggio di programmazione interpretato degli anni '80, progettato per home computer con righe numerate e sintassi leggibile anche da non specialisti.

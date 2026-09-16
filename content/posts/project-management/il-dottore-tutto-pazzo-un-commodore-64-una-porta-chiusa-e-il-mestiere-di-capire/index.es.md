@@ -1,15 +1,22 @@
 ---
-title: "Un niño como tantos: de veterinario a ingeniero de bases de datos"
-seoTitle: "De veterinario a DBA: 30 años de bases de datos desde un Commodore 64"
-description: "Un Commodore 64, un programa modificado para insultar al padre y una puerta cerrada con llave: cómo empieza una carrera de 30 años en ingeniería de bases de datos."
+categories:
+- project-management
 date: 2099-12-31
+description: 'Un Commodore 64, un programa modificado para insultar al padre y una
+  puerta cerrada con llave: cómo empieza una carrera de 30 años en ingeniería de bases
+  de datos.'
 draft: true
-translationKey: "il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire"
-tags: ["career", "personal", "database-engineering", "origin-story"]
-categories: ["project-management"]
-image: "il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg"
-webo_status: da_tradurre
+image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
+seoTitle: 'De veterinario a DBA: 30 años de bases de datos desde un Commodore 64'
+tags:
+- career
+- personal
+- database-engineering
+- origin-story
+title: 'Un niño como tantos: de veterinario a ingeniero de bases de datos'
+translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
+webo_status: da_tradurre
 ---
 
 ## Un niño como tantos
@@ -103,3 +110,7 @@ Ante todo de mi padre. En 1983 trajo a casa un ordenador cuando pocos sabían qu
 Luego de una profesora que, con las herramientas de aquellos años, quería proteger mi aprendizaje. Y de un hermano que guardó un secreto durante meses, al precio de un helado.
 
 Si tú también empezaste delante de un cursor que parpadeaba, sabes de qué hablo. Y si hoy tienes delante una línea 340 que parece perfecta, la pregunta útil es una sola: ¿dónde está la línea 330?
+
+## Glosario
+
+**[BASIC](/es/glossary/basic/)** — BASIC es un lenguaje de programación interpretado de los años 80, diseñado para ordenadores domésticos con líneas numeradas y sintaxis legible para usuarios no especializados.

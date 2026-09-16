@@ -1,15 +1,21 @@
 ---
-title: "Un copil ca oricare altul: cum un Commodore 64 a schimbat tot"
-seoTitle: "Commodore 64 și începuturile în programare: o poveste reală"
-description: "De la veterinar la inginer de baze de date: cum un Commodore 64, un program modificat și o ușă încuiată au trasat o carieră de treizeci de ani."
+categories:
+- project-management
 date: 2099-12-31
+description: 'De la veterinar la inginer de baze de date: cum un Commodore 64, un
+  program modificat și o ușă încuiată au trasat o carieră de treizeci de ani.'
 draft: true
-translationKey: "il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire"
-tags: ["career", "origin-story", "database-engineering", "programming"]
-categories: ["project-management"]
-image: "il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg"
-webo_status: da_tradurre
+image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
+seoTitle: 'Commodore 64 și începuturile în programare: o poveste reală'
+tags:
+- career
+- origin-story
+- database-engineering
+- programming
+title: 'Un copil ca oricare altul: cum un Commodore 64 a schimbat tot'
+translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
+webo_status: da_tradurre
 ---
 
 ## Un copil ca oricare altul
@@ -103,3 +109,7 @@ Meritul acestui drum îl au oameni obișnuiți.
 Apoi o profesoară care, cu instrumentele acelor ani, voia să-mi protejeze procesul de învățare. Și un frate care a păstrat un secret luni întregi, la prețul unei înghețate.
 
 Dacă și tu ai început în fața unui cursor care clipea, știi despre ce vorbesc. Și dacă azi ai în față un rând 340 care pare perfect, întrebarea utilă e una singură: unde e rândul 330?
+
+## Glosar
+
+**[BASIC](/ro/glossary/basic/)** — BASIC este un limbaj de programare interpretat din anii '80, conceput pentru calculatoare personale cu linii numerotate și sintaxă lizibilă pentru utilizatori fără pregătire specializată.
