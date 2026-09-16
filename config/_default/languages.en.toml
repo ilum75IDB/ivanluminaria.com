@@ -7,7 +7,7 @@ title = "Ivan Luminaria"
 
 [params]
   dateFormat = "2 January 2006"
-  description = "Ivan Luminaria, Technical Leader for mission-critical Oracle, PostgreSQL and MySQL databases. Database Strategy blog with real cases from 30 years of IT."
+  description = "Ivan Luminaria, Technical Leader for mission-critical databases and Data Warehouses: Oracle, PostgreSQL, MySQL. Database Strategy blog, 30 years of real cases."
 [params.author]
   # name = "Your name here"
   # image = "img/author.jpg"

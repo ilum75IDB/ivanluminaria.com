@@ -1,7 +1,7 @@
 ---
 title: "Chi sono"
-seoTitle: "Ivan Luminaria: Technical Leader per database mission-critical"
-description: "Ivan Luminaria, Technical Leader per database mission-critical: 30 anni di Oracle, PostgreSQL, MySQL e Data Warehouse al fianco di CIO e CTO."
+seoTitle: "Ivan Luminaria: Technical Leader per database e Data Warehouse mission-critical"
+description: "Ivan Luminaria, Technical Leader per database e Data Warehouse mission-critical: 30 anni tra Oracle, PostgreSQL, MySQL al fianco di CIO e CTO."
 date: "2026-02-20"
 lastmod: "2026-09-14"
 draft: false
@@ -17,7 +17,7 @@ showTitle: false
   </div>
   <div class="about-profile-info">
     <h1 class="about-profile-name">IVAN LUMINARIA</h1>
-    <p class="about-profile-role">Technical Leader per database mission-critical</p>
+    <p class="about-profile-role">Technical Leader per database e Data Warehouse mission-critical</p>
     <p class="about-profile-pillars">Oracle DBA · Oracle PL/SQL · DWH Architect · Project Manager</p>
     <p class="about-profile-desc">
       Professionista IT con circa <strong>30 anni di esperienza</strong> nella progettazione, implementazione e gestione di soluzioni database e Data Warehouse in ambienti Oracle, PostgreSQL e MySQL.

@@ -1,7 +1,7 @@
 ---
 title: "Know-How și Impact"
-seoTitle: "Ivan Luminaria, Technical Leader pentru baze de date critice"
-description: "Technical Leader pentru baze de date critice: 30 de ani în banking, asigurări, telco și sectorul public. Patru piloni: DWH, Oracle DBA, PL/SQL și PM."
+seoTitle: "Ivan Luminaria, Technical Leader pentru baze de date și Data Warehouse mission-critical"
+description: "Technical Leader pentru baze de date și Data Warehouse mission-critical: 30 de ani în banking, asigurări, telco, PA. Piloni: DWH, DBA, PL/SQL, PM."
 hero_title: "Experiență, profunzime, impact"
 date: "2026-02-23"
 lastmod: "2026-09-14"
@@ -25,7 +25,7 @@ Astăzi aceste profunzimi lucrează împreună, într-un singur rol.
 
 </div>
 
-{{< kh-role role="tl" featured="true" title="Technical Leader pentru baze de date critice" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banking,Asigurări,Telco,Sector public,Mobilitate și plăți" >}}
+{{< kh-role role="tl" featured="true" title="Technical Leader pentru baze de date și Data Warehouse mission-critical" roadmap="technical-leader" pdf="CV_Technical_Leader_Ivan_Luminaria_202609_EN.pdf" sectors="Banking,Asigurări,Telco,Sector public,Mobilitate și plăți" >}}
 
 Astăzi munca mea este să fiu alături de CIO, CTO și IT Directori atunci când un sistem de date critic încetinește, se oprește sau trebuie să ia o direcție nouă.
 
