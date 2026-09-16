@@ -1,10 +1,10 @@
 ---
 categories:
 - project-management
-date: 2099-12-31
+date: '2026-09-22'
 description: A personal story about curiosity, a locked door, and a mad doctor program
   that changed everything. How a C64 in 1983 shaped thirty years of database work.
-draft: true
+draft: false
 image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
 seoTitle: 'From Commodore 64 to database engineering: a personal story'
 tags:
@@ -15,7 +15,7 @@ tags:
 title: 'A kid like any other: from a Commodore 64 to thirty years of databases'
 translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## A kid like any other

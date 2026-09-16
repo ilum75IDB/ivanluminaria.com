@@ -1,11 +1,11 @@
 ---
 categories:
 - project-management
-date: 2099-12-31
+date: '2026-09-22'
 description: 'Un Commodore 64, un programa modificado para insultar al padre y una
   puerta cerrada con llave: cómo empieza una carrera de 30 años en ingeniería de bases
   de datos.'
-draft: true
+draft: false
 image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
 seoTitle: 'De veterinario a DBA: 30 años de bases de datos desde un Commodore 64'
 tags:
@@ -16,7 +16,7 @@ tags:
 title: 'Un niño como tantos: de veterinario a ingeniero de bases de datos'
 translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## Un niño como tantos

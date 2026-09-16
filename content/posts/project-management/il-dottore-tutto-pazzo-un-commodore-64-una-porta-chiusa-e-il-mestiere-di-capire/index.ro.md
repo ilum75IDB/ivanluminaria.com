@@ -1,10 +1,10 @@
 ---
 categories:
 - project-management
-date: 2099-12-31
+date: '2026-09-22'
 description: 'De la veterinar la inginer de baze de date: cum un Commodore 64, un
   program modificat și o ușă încuiată au trasat o carieră de treizeci de ani.'
-draft: true
+draft: false
 image: il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire.cover.jpg
 seoTitle: 'Commodore 64 și începuturile în programare: o poveste reală'
 tags:
@@ -15,7 +15,7 @@ tags:
 title: 'Un copil ca oricare altul: cum un Commodore 64 a schimbat tot'
 translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
-webo_status: da_tradurre
+webo_status: scheduled
 ---
 
 ## Un copil ca oricare altul
