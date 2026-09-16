@@ -1,6 +1,6 @@
 ---
 title: "Technical Leader for Mission-Critical Databases and Data Warehouses"
-seoTitle: "Ivan Luminaria | Technical Leader, Mission-Critical Databases and Data Warehouses"
+seoTitle: "Technical Leader, Mission-Critical Databases and Data Warehouses"
 description: "Ivan Luminaria, Technical Leader for mission-critical databases and Data Warehouses: 30 years of Oracle, PostgreSQL, MySQL alongside CIOs and CTOs in banking."
 date: "2026-09-14"
 lastmod: "2026-09-14"

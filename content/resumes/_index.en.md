@@ -1,6 +1,6 @@
 ---
 title: "Know-How & Impact"
-seoTitle: "Ivan Luminaria, Technical Leader for mission-critical databases and Data Warehouses"
+seoTitle: "Technical Leader mission-critical databases and Data Warehouses"
 description: "Technical Leader for mission-critical databases and Data Warehouses: 30 years across banking, insurance, telco, public sector. Pillars: DWH, DBA, PL/SQL, PM."
 hero_title: "Experience, depth, impact"
 date: "2026-02-23"
