@@ -1,0 +1,219 @@
+/* ============================================================
+   CV PDF stylesheet — pandoc + WeasyPrint
+   Target: A4, max 2 pagine, coerente con lo stile 2026-06
+   Brand: Inter (fallback system fonts), Postgres-blue #336791
+          per accenti, Oracle-red #F80000 per link e job role
+   ============================================================ */
+
+@page {
+  size: A4;
+  margin: 1.1cm 1.3cm 1.0cm 1.3cm;
+}
+
+/* Reset minimo */
+* {
+  box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------
+   Font — Inter con fallback su font di sistema
+   Se hai Inter come TTF/WOFF in scripts/resumes/template/fonts/
+   decommenta e punta al path corretto (WeasyPrint accetta path
+   relativi al CSS)
+   ------------------------------------------------------------- */
+/*
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+*/
+
+html, body {
+  font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #2a2a2a;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nasconde eventuale header auto-generato da pandoc --standalone */
+header#title-block-header,
+header.title,
+div.title {
+  display: none !important;
+}
+
+/* -------------------------------------------------------------
+   H1 — Nome
+   ------------------------------------------------------------- */
+h1 {
+  font-size: 18pt;
+  font-weight: 700;
+  color: #336791;
+  margin: 0 0 0.15em 0;
+  letter-spacing: -0.01em;
+}
+
+/* -------------------------------------------------------------
+   Classi custom del MD: .role, .contact, .gdpr
+   ------------------------------------------------------------- */
+p.role {
+  margin: 0.15em 0 0.1em 0;
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #F80000;
+  line-height: 1.3;
+}
+
+p.contact {
+  margin: 0.1em 0 0.55em 0;
+  font-size: 9pt;
+  color: #4a4a4a;
+  line-height: 1.45;
+}
+
+p.gdpr {
+  font-size: 8pt;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.7em;
+  text-align: left;
+}
+
+/* -------------------------------------------------------------
+   H2 — Sezioni (Profile, Areas of engagement, ecc.)
+   ------------------------------------------------------------- */
+h2 {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #336791;
+  margin: 0.6em 0 0.3em 0;
+  padding-bottom: 1.5pt;
+  border-bottom: 0.6pt solid #336791;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* Job role tag opzionale a destra di un H2 (usa <span class="job-role">) */
+h2 .job-role,
+.job-role {
+  float: right;
+  font-size: 10pt;
+  font-weight: 600;
+  color: #F80000;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 1px;
+}
+
+/* -------------------------------------------------------------
+   H3 — Datore / Ruolo dentro Experience
+   ------------------------------------------------------------- */
+h3 {
+  font-size: 10pt;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin: 0.55em 0 0.05em 0;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* Blocchi H3 + contenuto immediato: evita page-break in mezzo */
+h3 + p,
+h3 + ul,
+h3 + p + ul {
+  page-break-before: avoid;
+  break-before: avoid;
+}
+
+/* Wrapper opzionale per esperienze (usa <div class="exp-block">) */
+.exp-block {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* -------------------------------------------------------------
+   Inline
+   ------------------------------------------------------------- */
+strong {
+  color: #336791;
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+  color: #555;
+  font-size: 9pt;
+}
+
+/* -------------------------------------------------------------
+   Liste compatte
+   ------------------------------------------------------------- */
+ul, ol {
+  margin: 0.2em 0 0.4em 0;
+  padding-left: 1.2em;
+}
+
+li {
+  margin-bottom: 0.2em;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+li > ul,
+li > ol {
+  margin: 0.15em 0 0.1em 0;
+}
+
+/* -------------------------------------------------------------
+   Paragrafi
+   ------------------------------------------------------------- */
+p {
+  margin: 0.2em 0 0.35em 0;
+  text-align: justify;
+}
+
+/* -------------------------------------------------------------
+   HR come separatori sottili tra datori
+   ------------------------------------------------------------- */
+hr {
+  border: none;
+  border-top: 0.3pt solid #d8d8d8;
+  margin: 0.3em 0;
+}
+
+/* -------------------------------------------------------------
+   Link (email, LinkedIn, sito)
+   ------------------------------------------------------------- */
+a,
+a:link,
+a:visited {
+  color: #F80000;
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------
+   Regole di paginazione — anti-orfani / anti-widows
+   ------------------------------------------------------------- */
+p, ul, ol {
+  orphans: 2;
+  widows: 2;
+}
+
+/* Force page-break se l'MD contiene <div class="page-break"> */
+.page-break {
+  page-break-after: always;
+  break-after: page;
+}
