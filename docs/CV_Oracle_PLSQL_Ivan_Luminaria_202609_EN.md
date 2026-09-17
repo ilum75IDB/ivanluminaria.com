@@ -35,8 +35,9 @@ Senior Oracle PL/SQL Developer with nearly 30 years designing, building, testing
 
 ## Experience
 
-### IDEA DB CONSULTING S.R.L. — Sole Director · Senior Oracle PL/SQL Developer & DWH Architect · 2022 – Jun 2025
+### IDEA DB CONSULTING S.R.L. — Founder · Senior Oracle PL/SQL Developer & DWH Architect · 2022 – Present
 - **SILICONDEV → POSTE ITALIANE** (Jul 2025 – present): Senior Database Consultant; ~1,500 MySQL and PostgreSQL instances across production, certification and development; query tuning, performance monitoring, replication management, capacity planning at enterprise scale.
+- **GENERALI Insurance** (Feb 2024 – May 2025): SQL & PL/SQL optimization on 500 GB–8 TB Oracle databases for insurance applications; Hierarchical Profiler and SQL tuning to identify bottlenecks.
 - **Atradius**, Surety division (2022 – 2026): **60,000+ lines of PL/SQL** (packages, procedures, functions) for the multi-country DWH (Italy, Spain, France, Northern Europe) consolidating insurance claims and credit data; reusable PL/SQL templates for loading procedures, checkpoints and real-time logging; batch cycle reduced from 4+ h to under 2 h with query rewriting, BULK COLLECT/FORALL and partition-aware DML.
 - **Other Banking, Telco and payments clients**: PL/SQL business logic packages for banking-sector DWH applications on 2B+ row datasets; PL/SQL and SQL optimisation with Hierarchical Profiler analysis to identify bottlenecks and improve critical path execution.
 

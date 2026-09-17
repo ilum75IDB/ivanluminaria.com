@@ -83,11 +83,14 @@ Leadership tecnica e mindset di problem solving in contesti internazionali e ful
 ## Esperienza Professionale
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Amministratore Unico · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2022 – Giu 2025
+**Amministratore Unico · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2022 – Presente
 
 - **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Lug 2025 – Presente:
   - Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
   - Monitoraggio delle performance, query tuning, gestione della replica e capacity planning su scala enterprise.
+- **GENERALI Assicurazioni** — PM DWH Lead | Feb 2024 – Mag 2025:
+  - Coordinamento tecnico su Data Warehouse assicurativo su database Oracle da 500 GB a 8 TB.
+  - Interfaccia diretta col cliente su requisiti, definizione scope e presentazione delle soluzioni.
 - **ATRADIUS, divisione Surety** — DWH Architect | 2022 – 2026:
   - Data Warehouse Oracle unificato per consolidare i dati di 4 Paesi europei (Italia, Spagna, Francia, Nord Europa) da sorgenti eterogenee (Oracle, SQL Server, file esterni).
   - Modellazione dei domini core (portafoglio clienti, polizze, contratti, fatturazione, sinistri, movimenti sinistri).

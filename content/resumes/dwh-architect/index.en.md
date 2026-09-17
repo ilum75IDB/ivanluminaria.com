@@ -83,11 +83,14 @@ Technical leadership and problem-solving mindset in international, full-remote s
 ## Professional Experience
 
 ### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
-**Sole Director · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2022 – Jun 2025
+**Founder · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2022 – Present
 
 - **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Jul 2025 – Present:
   - Administration of about 1,500 MySQL and PostgreSQL instances across production, certification and development.
   - Performance monitoring, query tuning, replication management and capacity planning at enterprise scale.
+- **GENERALI Insurance** — PM DWH Lead | Feb 2024 – May 2025:
+  - Technical coordination on the insurance-sector Data Warehouse on Oracle databases from 500 GB to 8 TB.
+  - Direct client interface for requirements, scope definition and solution presentation.
 - **ATRADIUS, Surety division** — DWH Architect | 2022 – 2026:
   - Unified Oracle Data Warehouse consolidating data from 4 European countries (Italy, Spain, France, Northern Europe) from heterogeneous sources (Oracle, SQL Server, external files).
   - Modelling of core business domains (client portfolio, policies, contracts, billing, claims, claim transactions).

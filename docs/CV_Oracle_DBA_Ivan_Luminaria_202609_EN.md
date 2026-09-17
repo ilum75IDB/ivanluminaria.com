@@ -35,7 +35,7 @@ Senior Oracle DBA and Performance Tuning Expert with nearly 30 years on mission-
 
 ## Experience
 
-### IDEA DB CONSULTING S.R.L. — Sole Director · Senior Oracle DBA & Performance Tuning Expert · 2022 – Jun 2025
+### IDEA DB CONSULTING S.R.L. — Founder · Senior Oracle DBA & Performance Tuning Expert · 2022 – Present
 - **SILICONDEV → POSTE ITALIANE** (Jul 2025 – present): Senior Database Consultant, MySQL & PostgreSQL DBA; ~1,500 MySQL and PostgreSQL instances across production, certification and development; performance monitoring, query tuning, replication management, capacity planning at enterprise scale.
 - **Generali Assicurazioni** (Feb 2024 – May 2025): Oracle DBA and advanced performance tuning for insurance-sector applications on 500 GB–8 TB databases; AWR/ADDM analysis, SQL optimisation, proactive bottleneck resolution.
 - **Atradius**, Surety division (2022 – 2026): DBA layer supporting the multi-country DWH (Italy, Spain, France, Northern Europe) — 60,000+ lines of PL/SQL ETL, full daily load under 2 h in OCI.

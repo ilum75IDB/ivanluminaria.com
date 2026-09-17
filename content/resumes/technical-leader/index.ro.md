@@ -77,7 +77,7 @@ Trei piloni tehnici: **database administration**, **performance și troubleshoot
 
 - Coordonare a echipelor distribuite de la 3 la 7 persoane, în contexte multiculturale și full remote
 - Agile și Scrum (sprint planning, daily stand-up, retrospective, backlog refinement), cu formare certificata
-- Aproximativ 10 proiecte gestionate cu bugete între €100K și €500K, cu un track record solid de livrare la timp
+- Aproximativ 10+ proiecte gestionate în 9 ani cu bugete între €100K și €500K, cu un track record solid de livrare la timp
 - Instrumente: Jira, Microsoft Project, Git/GitHub
 
 ### Formare și mentoring
@@ -90,7 +90,7 @@ Trei piloni tehnici: **database administration**, **performance și troubleshoot
 ## Experiență Profesională
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrator Unic · Technical Leader baze de date & DWH** | 2022 – Iun 2025
+**Administrator Unic · Technical Leader baze de date & DWH** | 2022 – Prezent
 
 - **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Iul 2025 – Prezent:
   - Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.

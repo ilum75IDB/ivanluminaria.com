@@ -29,11 +29,11 @@ Technical Leader with nearly 30 years on mission-critical databases (Oracle, Pos
 - **Performance**: AWR, ADDM, ASH, SQL Trace/TKPROF, execution plans, SQL Profiles, SQL Plan Management, indexing, partitioning, compression, cross-layer diagnosis
 - **Data Warehouse**: Kimball & Inmon, star and snowflake schemas, SCD, bus matrix, PL/SQL ETL/ELT, ODI, OWB, Oracle Analytics Cloud
 - **Cloud**: Oracle Cloud Infrastructure, Autonomous Database, AWS Aurora PostgreSQL, Azure Database
-- **Leadership**: distributed teams of 3–7 people, Agile/Scrum, ~10 projects (€100K–€500K), Jira, MS Project, Git/GitHub, mentoring and technical training
+- **Leadership**: distributed teams of 3–7 people, Agile/Scrum, ~10+ projects across 9 years (€100K–€500K), Jira, MS Project, Git/GitHub, mentoring and technical training
 
 ## Experience
 
-### IDEA DB CONSULTING S.R.L. — Sole Director · Technical Leader, databases & DWH · 2022 – Jun 2025
+### IDEA DB CONSULTING S.R.L. — Founder · Technical Leader, databases & DWH · 2022 – Present
 - **SILICONDEV → POSTE ITALIANE** (Jul 2025 – present): Senior Database Consultant; ~1,500 MySQL and PostgreSQL instances across production, certification and development; query tuning, replication, capacity planning at enterprise scale.
 - **Generali Assicurazioni** (Feb 2024 – May 2025): Oracle DBA, performance tuning and DWH project lead on 500 GB–8 TB databases; technical coordination of the development team; direct client interface on requirements and scope.
 - **Atradius**, Surety division (2022 – 2026): DWH architect and PM lead; unified Oracle DWH for 4 European countries (Italy, Spain, France, Northern Europe), 60,000+ lines of PL/SQL, daily load under 2 hours.

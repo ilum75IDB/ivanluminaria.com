@@ -88,11 +88,14 @@ Background consolidado también como Oracle DBA y DWH Architect: visión complet
 ## Experiencia Profesional
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrador Único · Senior Oracle PL/SQL Developer · DWH Architect** | 2022 – Jun 2025
+**Administrador Único · Senior Oracle PL/SQL Developer · DWH Architect** | 2022 – Presente
 
 - **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Jul 2025 – Presente:
   - Administración de aproximadamente 1.500 instancias MySQL y PostgreSQL entre producción, certificación y desarrollo.
   - Query tuning, monitorización de las performance, gestión de la replicación y capacity planning a escala enterprise.
+- **GENERALI Seguros** — SQL & PL/SQL Optimization | Feb 2024 – May 2025:
+  - Optimización de consultas complejas y desarrollo PL/SQL sobre bases de datos Oracle de 500 GB a 8 TB para aplicaciones del sector asegurador.
+  - Análisis Hierarchical Profiler y SQL tuning para identificar cuellos de botella.
 - **ATRADIUS, división Surety** — PL/SQL Developer | 2022 – 2026:
   - Más de 60.000 líneas de código PL/SQL (packages, procedures, functions) para el DWH multi-país (Italia, España, Francia, Norte de Europa) que consolida siniestros de seguros y datos de crédito.
   - Templates PL/SQL reutilizables para procedures de carga con checkpoints y logging en tiempo real.

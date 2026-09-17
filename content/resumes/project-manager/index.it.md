@@ -79,7 +79,7 @@ Agile e Scrum applicati quotidianamente, con formazione certificata. La base tec
 ## Esperienza Professionale
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Amministratore Unico · Project Manager & Senior DWH Architect** | 2022 – Giu 2025
+**Amministratore Unico · Project Manager & Senior DWH Architect** | 2022 – Presente
 
 - **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Lug 2025 – Presente:
   - Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.

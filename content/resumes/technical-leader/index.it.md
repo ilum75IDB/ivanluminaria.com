@@ -77,7 +77,7 @@ Tre pilastri tecnici: **database administration**, **performance e troubleshooti
 
 - Coordinamento di team distribuiti da 3 a 7 persone, in contesti multiculturali e full remote
 - Agile e Scrum (sprint planning, daily stand-up, retrospective, backlog refinement), con formazione certificata
-- Circa 10 progetti gestiti con budget tra €100K e €500K, con un solido track record di consegna nei tempi
+- Circa 10+ progetti gestiti in 9 anni con budget tra €100K e €500K, con un solido track record di consegna nei tempi
 - Strumenti: Jira, Microsoft Project, Git/GitHub
 
 ### Formazione e mentoring
@@ -90,7 +90,7 @@ Tre pilastri tecnici: **database administration**, **performance e troubleshooti
 ## Esperienza Professionale
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Amministratore Unico · Technical Leader database & DWH** | 2022 – Giu 2025
+**Amministratore Unico · Technical Leader database & DWH** | 2022 – Presente
 
 - **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Lug 2025 – Presente:
   - Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.

@@ -36,8 +36,9 @@ Data Warehouse Architect and IT professional with nearly 30 years designing, imp
 
 ## Experience
 
-### IDEA DB CONSULTING S.R.L. — Sole Director · DWH Architect · Oracle & PostgreSQL Expert · 2022 – Jun 2025
+### IDEA DB CONSULTING S.R.L. — Founder · DWH Architect · Oracle & PostgreSQL Expert · 2022 – Present
 - **SILICONDEV → POSTE ITALIANE** (Jul 2025 – present): Senior Database Consultant; ~1,500 MySQL and PostgreSQL instances across production, certification and development; performance monitoring, query tuning, replication management, capacity planning at enterprise scale.
+- **GENERALI Insurance** (Feb 2024 – May 2025): PM DWH Lead; technical coordination on insurance-sector Data Warehouse on 500 GB–8 TB Oracle databases; direct client interface on requirements, scope and solutions.
 - **Atradius**, Surety division (2022 – 2026): unified Oracle DWH consolidating claims, credit, policies, contracts and billing data from **4 European countries** (Italy, Spain, France, Northern Europe); heterogeneous sources (Oracle, MS SQL Server, flat files) integrated into a single model; entire data model and ETL layer (**60,000+ lines of PL/SQL**) with real-time load monitoring; full daily ingestion under 2 hours.
 - **Other Banking, Telco and payments clients**: Kimball/Inmon-driven DWH architectures; multidimensional modelling on datasets above 2B rows; ETL/ELT integrating 15+ heterogeneous sources; PostgreSQL DWH as cost-effective alternative to Oracle with partitioning strategies and query optimisation.
 

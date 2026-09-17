@@ -32,7 +32,7 @@ Project Manager with nearly 30 years of IT experience and a solid technical back
 
 ## Experience
 
-### IDEA DB CONSULTING S.R.L. — Sole Director · Project Manager & Senior DWH Architect · 2022 – Jun 2025
+### IDEA DB CONSULTING S.R.L. — Founder · Project Manager & Senior DWH Architect · 2022 – Present
 - **SILICONDEV → POSTE ITALIANE** (Jul 2025 – present): Senior Database Consultant; ~1,500 MySQL and PostgreSQL instances across production, certification and development; performance monitoring, query tuning, replication management, capacity planning at enterprise scale.
 - **Generali Assicurazioni** (Feb 2024 – May 2025): project activities and priorities coordinated for the development team on Oracle databases in the insurance sector; direct client interface for requirements, scope and solution presentation; progress monitoring and issue management on 500 GB–8 TB databases.
 - **Atradius**, Surety division (2022 – 2026): multi-country data consolidation programme across **4 European countries** (Italy, Spain, France, Northern Europe); release planning and backlog management across **60,000+ lines of PL/SQL ETL**; activity tracking, stakeholder reporting, cross-team dependency management.

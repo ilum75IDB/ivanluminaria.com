@@ -85,7 +85,7 @@ Il performance tuning resta la specializzazione principale — la disciplina che
 ## Esperienza Professionale
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Amministratore Unico · Senior Oracle DBA & Performance Tuning Expert** | 2022 – Giu 2025
+**Amministratore Unico · Senior Oracle DBA & Performance Tuning Expert** | 2022 – Presente
 
 - **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant — MySQL & PostgreSQL DBA | Lug 2025 – Presente:
   - Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
