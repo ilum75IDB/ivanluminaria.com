@@ -152,7 +152,7 @@ Data Warehouse Architect, Senior Oracle DBA, DWH Designer, SQL & PL/SQL Develope
 
 ---
 
-### ETNOTEAM S.P.A. · 1999 — S.EL.DAT. S.P.A. · 1997 – 1999
+### ETNOTEAM S.P.A. · 1999 – Iul 2000 — S.EL.DAT. S.P.A. · 1997 – 1999
 **Web și Software Developer · Junior Oracle DBA** (pentru Telecom, Rover Italia)
 
 ---
