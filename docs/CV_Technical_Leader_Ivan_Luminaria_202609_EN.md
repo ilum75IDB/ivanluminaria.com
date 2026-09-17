@@ -48,7 +48,7 @@ Technical Leader with nearly 30 years on mission-critical databases (Oracle, Pos
 
 ### Earlier career · 1997 – 2013
 - **Auselda AED Group** (2009 – 2013): DWH architect and Oracle project DBA for the Italian public sector.
-- **Oracle Italia** (1999 – 2009): DWH architect, DBA and PL/SQL developer for TIM, Vodafone (Italy and Spain), Bank of Italy, Generali; Oracle trainer 2000 – 2001.
+- **Oracle Italia** (Jul 2000 – Apr 2009): DWH architect, senior Oracle DBA, SQL & PL/SQL developer and Training Specialist for reference clients in Telco (TIM, Vodafone Italy, Vodafone Spain, TRE), Finance & Insurance (Bank of Italy, Generali, RAS) and Pharma (Menarini); international engagement in Madrid on Vodafone Spain; Oracle Product Specialist on Oracle Warehouse Builder (OWB); Training Specialist 2000–2001 at Oracle University Italy on SQL, PL/SQL, Oracle DBA, Performance & Tuning, Discoverer, Forms, Reports.
 - **Etnoteam** (1999) and **S.EL.DAT.** (1997 – 1999): software development and junior Oracle DBA.
 
 ## Education & languages

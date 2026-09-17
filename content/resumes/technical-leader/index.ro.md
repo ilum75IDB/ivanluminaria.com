@@ -138,11 +138,17 @@ Trei piloni tehnici: **database administration**, **performance și troubleshoot
 
 ---
 
-### ORACLE ITALIA S.R.L. — Diverse sedii, Italia & Madrid, Spania
-**Data Warehouse Architect · Oracle DBA · SQL & PL/SQL Developer · Training Specialist** | 1999 – 2009
+### ORACLE ITALIA S.R.L. — Roma, Italia (cu angajamente în Madrid, Spania)
+**Data Warehouse Architect · Senior Oracle DBA · SQL & PL/SQL Developer · Training Specialist** | Iul 2000 – Apr 2009
 
-- Data Warehouse pentru clienți Telco (TIM, Vodafone, TRE), Finance (Banca Italiei, Generali, RAS) și Farmaceutic (Menarini); angajament international pe Vodafone Spania.
-- Training Specialist (2000-2001) pe SQL, PL/SQL, Oracle DBA și Performance & Tuning.
+Data Warehouse Architect, Senior Oracle DBA, DWH Designer, SQL & PL/SQL Developer și Training Specialist la Oracle Italia. Proiectare și dezvoltare de Data Warehouse pentru clienți de referință ai pieței italiene și angajamente internaționale pe Vodafone Spania (Madrid).
+
+- **Telco** — TIM, Vodafone Italia, Vodafone Spania, TRE. Angajament internațional la Madrid pe Vodafone Spania.
+- **Finance & Insurance** — Banca Italiei, Generali, RAS.
+- **Farmaceutic** — Menarini.
+- **Kimball/Inmon DWH design**, ETL/ELT cu **Oracle Warehouse Builder (OWB)**, cu responsabilități crescânde în coordonarea activităților și în sprijinul consultanților juniori.
+- **Oracle Product Specialist pe Oracle Warehouse Builder (OWB)** — instrument Oracle standard pentru modelarea DWH și orchestrarea ETL pre-ODI.
+- **Training Specialist (2000-2001) la Oracle University Italia** — livrare de cursuri Oracle pe SQL (Bază și Avansat), PL/SQL (Bază și Avansat), Oracle Database Administration, Performance & Tuning, Oracle Discoverer, Oracle Forms, Oracle Reports.
 
 ---
 
