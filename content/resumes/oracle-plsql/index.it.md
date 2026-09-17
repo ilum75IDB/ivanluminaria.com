@@ -3,7 +3,7 @@ title: "Oracle PL/SQL Developer"
 seoTitle: "Oracle PL/SQL Developer & SQL Tuning"
 description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 anni in sviluppo, refactoring e ottimizzazione PL/SQL per applicazioni data-intensive enterprise."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-17"
 draft: false
 layout: "simple"
 ---
@@ -66,7 +66,7 @@ Background consolidato anche come Oracle DBA e DWH Architect: visione completa d
 
 ### Oracle Database
 
-- Oracle Database 8i → 21c, Autonomous Database
+- Oracle Database fino alla 23ai, Autonomous Database
 
 ### Concetti correlati
 
@@ -87,45 +87,41 @@ Background consolidato anche come Oracle DBA e DWH Architect: visione completa d
 ## Esperienza Professionale
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Amministratore Unico · Senior Oracle PL/SQL Developer · DWH Architect** | 2021 – Presente
+**Amministratore Unico · Senior Oracle PL/SQL Developer · DWH Architect** | 2022 – Giu 2025
 
-- **PL/SQL Developer** (per ATRADIUS, divisione Surety) | 2022 – Giu 2025:
-  - Oltre 60.000 righe di codice PL/SQL (package, procedure, function) per il DWH multi-paese che consolida sinistri assicurativi e dati di credito.
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Lug 2025 – Presente:
+  - Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
+  - Query tuning, monitoraggio delle performance, gestione della replica e capacity planning su scala enterprise.
+- **ATRADIUS, divisione Surety** — PL/SQL Developer | 2022 – 2026:
+  - Oltre 60.000 righe di codice PL/SQL (package, procedure, function) per il DWH multi-paese (Italia, Spagna, Francia, Nord Europa) che consolida sinistri assicurativi e dati di credito.
   - Template PL/SQL riutilizzabili per procedure di caricamento con checkpoint e logging in tempo reale.
   - Ottimizzazione delle performance batch (query rewriting, BULK COLLECT/FORALL, partition-aware DML): ciclo giornaliero ridotto da oltre 4 ore a meno di 2 ore.
-- **PL/SQL Developer** (per FINWAVE S.p.A.) | 2020 – 2022:
-  - Package PL/SQL per il processing di transazioni finanziarie con milioni di operazioni giornaliere su clienti banking e insurance.
-- **PL/SQL Developer** (per FAI SERVICE) | 2021 – 2023:
-  - Procedure ETL in PL/SQL su Oracle 19c in OCI per fatturazione, segmentazione clienti e tracking costi/ricavi.
-  - Moduli PL/SQL a supporto delle dashboard Oracle Analytics Cloud con KPI finanziari aggregati.
-- **Sviluppo PL/SQL** (clienti Banking, Telepass e altri):
+- **Altri clienti Banking, Telco e pagamenti** — Sviluppo PL/SQL:
   - Package di business logic PL/SQL per applicazioni DWH del settore banking su dataset da oltre 2 miliardi di righe.
   - Ottimizzazione del codice PL/SQL e delle query SQL con analisi Hierarchical Profiler per identificare i colli di bottiglia.
 
 ---
 
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant** (per POSTE ITALIANE) | Lug 2025 – Presente
+### FREELANCE / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
+**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2022
 
-- Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
-- Query tuning, monitoraggio delle performance, gestione della replica e capacity planning su scala enterprise.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Expert (con focus Development)** (per TIM / HUAWEI) | 2020 – 2022
-
-- Supporto specialistico ai team di sviluppo nell'ottimizzazione di codice PL/SQL e query SQL per applicazioni critiche su Exadata.
-- Analisi e tuning di processi batch PL/SQL ad alto volume; script PL/SQL per monitoraggio e amministrazione.
-
----
-
-### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
-**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2020
-
-- Soluzioni PL/SQL custom per diversi clienti: package per logica ETL, procedure di elaborazione dati, PL/SQL API.
-- Intensa ottimizzazione di codice PL/SQL e SQL per migliorare le performance di sistemi esistenti.
-- Formazione e mentoring di sviluppatori junior sulle best practice di sviluppo PL/SQL.
+- **FAI SERVICE** — PL/SQL Developer | 2021 – 2023:
+  - Procedure ETL in PL/SQL su Oracle 19c in OCI per fatturazione, segmentazione clienti e tracking costi/ricavi.
+  - Moduli PL/SQL a supporto delle dashboard Oracle Analytics Cloud con KPI finanziari aggregati.
+  - *(contract confluito in IDEA DB CONSULTING dal 2022 con sostituzione del contratto)*
+- **LISCOR → Finwave, Gruppo Lutech** — PL/SQL Developer nel settore finanziario | 2020 – 2023:
+  - Package PL/SQL per il processing di transazioni finanziarie con milioni di operazioni giornaliere su clienti banking e insurance.
+  - *(contract confluito in IDEA DB CONSULTING dal 2022 con sostituzione del contratto)*
+- **NIMIS → Huawei → per TIM** — Senior Oracle DBA & Performance Expert (focus Development) | 2020 – 2022:
+  - Supporto specialistico ai team di sviluppo nell'ottimizzazione di codice PL/SQL e query SQL per applicazioni critiche su Exadata (67+ istanze).
+  - Analisi e tuning di processi batch PL/SQL ad alto volume; script PL/SQL per monitoraggio e amministrazione.
+  - *(contract confluito in IDEA DB CONSULTING dal 2022 con sostituzione del contratto)*
+- **DatabTech, Milano** — Oracle DBA e DWH Architect per Allianz e Mediobanca | 2018 – 2021:
+  - Migrazione di progetti Oracle Data Integrator (ODI) dalla versione 10g alla 12c, con sviluppo PL/SQL a supporto delle mapping migrate.
+- **Altri clienti Banking, Insurance e Telco** | 2013 – 2018:
+  - Soluzioni PL/SQL custom per diversi clienti: package per logica ETL, procedure di elaborazione dati, PL/SQL API.
+  - Intensa ottimizzazione di codice PL/SQL e SQL per migliorare le performance di sistemi esistenti.
+  - Formazione e mentoring di sviluppatori junior sulle best practice di sviluppo PL/SQL.
 
 ---
 

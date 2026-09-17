@@ -3,7 +3,7 @@ title: "Technical Leader para bases de datos y Data Warehouse mission-critical"
 seoTitle: "Technical Leader bases de datos y Data Warehouse mission-critical"
 description: "Ivan Luminaria, Technical Leader para bases de datos y Data Warehouse mission-critical: 30 años con Oracle, PostgreSQL, MySQL junto a CIOs y CTOs en banca."
 date: "2026-09-14"
-lastmod: "2026-09-14"
+lastmod: "2026-09-17"
 draft: false
 layout: "simple"
 ---
@@ -45,7 +45,7 @@ Tres pilares técnicos: **database administration**, **performance y troubleshoo
 
 ### Bases de datos de misión crítica
 
-- Oracle Database 8i → 21c, Oracle Exadata, Oracle RAC, Oracle Data Guard, Oracle Autonomous Database
+- Oracle Database hasta la 23ai, Oracle Exadata, Oracle RAC, Oracle Data Guard, Oracle Autonomous Database
 - PostgreSQL 14+ (query optimization, partitioning, `pg_stat_statements`, PgBouncer, replicación lógica, tuning de autovacuum)
 - MySQL enterprise (administración, replicación, optimización InnoDB)
 - Alta disponibilidad y disaster recovery (Data Guard, RMAN, Flashback, procedimientos de switchover/failover)
@@ -89,49 +89,44 @@ Tres pilares técnicos: **database administration**, **performance y troubleshoo
 ## Experiencia Profesional
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrador Único · Technical Leader bases de datos & DWH** | 2021 – Presente
+**Administrador Único · Technical Leader bases de datos & DWH** | 2022 – Jun 2025
 
-- **Oracle DBA, Performance Tuning & PM DWH Lead** (para GENERALI Seguros) | Feb 2024 – May 2025:
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Jul 2025 – Presente:
+  - Administración de aproximadamente 1.500 instancias MySQL y PostgreSQL entre producción, certificación y desarrollo.
+  - Query tuning, gestión de la replicación y capacity planning a escala enterprise.
+- **GENERALI Seguros** — Oracle DBA, Performance Tuning & PM DWH Lead | Feb 2024 – May 2025:
   - Administración y tuning avanzado de bases de datos Oracle de 500 GB a 8 TB para aplicaciones del sector asegurador.
-  - Análisis AWR/ADDM, optimización SQL, resolución proactiva de cuellos de botella; interfaz directa con el cliente sobre requisitos y scope.
-- **DWH Architect & PM Lead** (para ATRADIUS, división Surety) | 2022 – Jun 2025:
-  - Data Warehouse Oracle unificado para consolidar los datos de 4 países europeos desde fuentes heterogéneas (Oracle, SQL Server, archivos externos).
-  - Todo el data model y capa ETL, más de 60.000 líneas de PL/SQL, con framework de carga, checkpoints y logging en tiempo real; carga diaria completa en menos de 2 horas.
-- **DWH Architect & Oracle DBA** (para FAI SERVICE) | 2021 – 2023:
-  - Modelo de datos Snowflake sobre Oracle Analytics Cloud, ETL sobre Oracle 19c en OCI, dashboards para facturación, segmentación y portfolio.
-- **PL/SQL Expert & Oracle DBA** (para FINWAVE S.p.A.) | 2020 – 2022:
-  - Desarrollo PL/SQL avanzado y optimización de consultas para aplicaciones financieras con millones de transacciones diarias.
-- **Clientes Banking, Telepass y otros**:
+  - Análisis AWR/ADDM, optimización SQL, coordinación técnica del equipo de desarrollo, interfaz directa con el cliente sobre requisitos y scope.
+- **ATRADIUS, división Surety** — DWH Architect & PM Lead | 2022 – 2026:
+  - Data Warehouse Oracle unificado para consolidar los datos de 4 países europeos (Italia, España, Francia, Norte de Europa) desde fuentes heterogéneas (Oracle, SQL Server, archivos externos).
+  - Más de 60.000 líneas de PL/SQL, framework de carga con checkpoints y logging en tiempo real; carga diaria completa en menos de 2 horas.
+- **Otros clientes Banking, Telco y pagos**:
   - Batches analíticos críticos reducidos de 4 horas a menos de 30 minutos sobre Oracle en OCI y Autonomous Database.
-  - ETL/ELT desde más de 15 fuentes heterogéneas sobre datasets superiores a los 2 mil millones de filas; DWH sobre PostgreSQL como alternativa sostenible a Oracle.
+  - ETL/ELT desde más de 15 fuentes heterogéneas sobre datasets superiores a los 2 mil millones de filas; diseño de DWH sobre PostgreSQL como alternativa cost-effective a Oracle.
 
 ---
 
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant — MySQL & PostgreSQL DBA** (para POSTE ITALIANE) | Jul 2025 – Presente
+### FREELANCE / CONSULTOR INDEPENDIENTE — Roma, Italia (Full Remote Europa)
+**Project Manager & Senior DWH Consultant · Oracle DBA · Performance Tuning · DWH Architect** | 2013 – 2022
 
-- Administración de aproximadamente 1.500 instancias MySQL y PostgreSQL entre producción, certificación y desarrollo.
-- Monitorización de las performance, query tuning, gestión de la replicación y capacity planning a escala enterprise.
-- Soporte a los equipos de desarrollo e infraestructura en un contexto de bases de datos heterogéneas con requisitos de continuidad operativa.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (para TIM / HUAWEI) | 2020 – 2022
-
-- Más de 30 bases de datos Oracle críticas (70+ instancias) sobre clusters Exadata de 3 y 5 nodos.
-- Guardia 24/7 para sistemas al servicio de más de 20 millones de usuarios prepago mobile; fact tables de hasta 800 millones de registros de tráfico al día.
-- Performance tuning proactivo (AWR/ADDM) para SLA por debajo de los 500 ms; ASM y Oracle TDE.
-
----
-
-### PROFESIONAL AUTÓNOMO / CONSULTOR INDEPENDIENTE — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Consultant · Oracle DBA · Performance Tuning** | 2013 – 2020
-
-- Cerca de 10 proyectos gestionados para clientes Banking, Telco y servicios, con presupuestos entre €100K y €500K.
-- Equipos de 3 a 7 personas en contextos multiculturales distribuidos, con enfoque Agile.
-- Data Warehouses para Banking, Insurance y Telco con pipelines de 500 millones de filas por ciclo de carga.
-- Configuraciones Oracle Data Guard para alta disponibilidad y disaster recovery.
+- **FAI SERVICE** — DWH Architect & Oracle DBA | 2021 – 2023:
+  - Modelo de datos Snowflake sobre Oracle Analytics Cloud, ETL sobre Oracle 19c en OCI, dashboards para facturación, segmentación y portfolio.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **LISCOR → Finwave, Gruppo Lutech** — Oracle DBA en el sector financiero | 2020 – 2023:
+  - Desarrollo PL/SQL avanzado y optimización de consultas para aplicaciones financieras con millones de transacciones diarias.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **NIMIS → Huawei → para TIM** — Senior Oracle DBA y Performance Tuning Expert | 2020 – 2022:
+  - Más de 30 bases de datos Oracle críticas (67+ instancias) sobre clusters Exadata de 3 y 5 nodos.
+  - Ingestión de hasta 800 millones de registros al día, SLA por debajo de los 500 ms, guardia 24/7.
+  - Servicios mobile prepago para más de 20 millones de usuarios; ASM y Oracle TDE.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **DatabTech, Milán** — Oracle DBA y DWH Architect para Allianz y Mediobanca | 2018 – 2021:
+  - Migración de proyectos Oracle Data Integrator (ODI) de la versión 10g a la 12c.
+- **Otros clientes Banking, Insurance y Telco** | 2013 – 2018:
+  - Pipelines ETL/ELT que gestionan hasta 500 millones de filas por ciclo de carga.
+  - Configuraciones Oracle Data Guard para alta disponibilidad y disaster recovery.
+  - SQL performance tuning y diseño DWH Kimball/Inmon.
+  - Equipos de 3–7 personas en contextos multiculturales distribuidos, enfoque Agile iterativo, presupuestos en la franja €100K – €500K.
 
 ---
 

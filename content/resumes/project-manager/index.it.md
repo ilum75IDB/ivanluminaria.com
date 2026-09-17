@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile in IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 anni di gestione progetti software con solido background tecnico Oracle e Data Warehouse. Casi reali."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-17"
 draft: false
 layout: "simple"
 ---
@@ -35,7 +35,7 @@ Agile e Scrum applicati quotidianamente, con formazione certificata. La base tec
 
 ## Risultati in evidenza
 
-- **Circa 10 progetti consegnati** nell'ultimo ciclo indipendente (2013-2020), fascia di budget **€100K-€500K**, forte track record di rispetto delle tempistiche.
+- **Circa 10+ progetti consegnati** nell'ultimo ciclo indipendente (2013-2022), fascia di budget **€100K-€500K**, forte track record di rispetto delle tempistiche.
 - Team da **3 a 7 persone** coordinati in contesti multiculturali distribuiti e full-remote.
 - Batch analitici critici ridotti **da 4 ore a meno di 30 minuti** attraverso tuning coordinato e release planning.
 - Programma DWH multi-paese (**4 Paesi europei**, oltre 60.000 righe di PL/SQL ETL) consegnato con backlog management, gestione delle dipendenze cross-team e reporting agli stakeholder.
@@ -78,47 +78,46 @@ Agile e Scrum applicati quotidianamente, con formazione certificata. La base tec
 ## Esperienza Professionale
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Amministratore Unico · Project Manager & Senior DWH Architect** | 2021 – Presente
+**Amministratore Unico · Project Manager & Senior DWH Architect** | 2022 – Giu 2025
 
-- **PM & DWH Lead** (per GENERALI Assicurazioni) | Feb 2024 – Mag 2025:
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Lug 2025 – Presente:
+  - Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
+  - Monitoraggio delle performance, query tuning, gestione della replica e capacity planning su scala enterprise.
+- **GENERALI Assicurazioni** — PM & DWH Lead | Feb 2024 – Mag 2025:
   - Coordinamento delle attività di progetto e gestione delle priorità del team di sviluppo su database Oracle nel settore assicurativo.
   - Interfaccia diretta con il cliente per requisiti, definizione dello scope e presentazione delle soluzioni.
   - Monitoraggio dell'avanzamento e gestione delle criticità su database da 500 GB a 8 TB.
-- **PM & DWH Lead** (per ATRADIUS, divisione Surety) | 2022 – Giu 2025:
-  - Programma di consolidamento dati multi-paese su 4 Paesi europei.
+- **ATRADIUS, divisione Surety** — PM & DWH Lead | 2022 – 2026:
+  - Programma di consolidamento dati multi-paese su 4 Paesi europei (Italia, Spagna, Francia, Nord Europa).
   - Release planning e gestione del backlog di sviluppo su oltre 60.000 righe di PL/SQL ETL.
   - Activity tracking, reporting agli stakeholder e gestione delle dipendenze cross-team.
-- **Project Coordinator** (clienti Banking, Telepass e altri):
+- **Altri clienti Banking, Telco e pagamenti** — Project Coordinator:
   - Coordinamento di progetti che hanno portato alla riduzione dei batch da 4 ore a meno di 30 minuti.
   - Gestione dell'integrazione dati da oltre 15 sorgenti eterogenee su dataset superiori ai 2 miliardi di righe.
   - Release planning in ambienti Oracle OCI e Autonomous Database.
 
 ---
 
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant** (per POSTE ITALIANE) | Lug 2025 – Presente
+### FREELANCE / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
+**Project Manager & Senior DWH Consultant · Oracle DBA · DWH Architect** | 2013 – 2022
 
-- Amministrazione di circa 1.500 istanze MySQL e PostgreSQL tra produzione, certificazione e sviluppo.
-- Monitoraggio delle performance, query tuning, gestione della replica e capacity planning su scala enterprise.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (per TIM / HUAWEI) | 2020 – 2022
-
-- Pianificazione ed esecuzione di attività di manutenzione e patching su oltre 30 database Oracle critici (70+ istanze) su cluster Exadata.
-- Coordinamento con il team di sviluppo per l'ottimizzazione delle interazioni database e la risoluzione dei problemi di performance.
-- Gestione autonoma del workload con reporting regolare al project lead.
-
----
-
-### LIBERO PROFESSIONISTA / CONSULENTE INDIPENDENTE — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Consultant** | 2013 – 2020
-
-- **Circa 10 progetti gestiti in 7 anni** per clienti Banking, Telco e servizi, con budget da €100K a €500K e un solido track record di consegna nei tempi.
-- Team da 3 a 7 persone in contesti multiculturali distribuiti, con approccio Agile iterativo.
-- Interfaccia diretta con il cliente per raccolta requisiti, definizione dello scope, reporting di avanzamento e gestione delle aspettative.
-- Formazione tecnica e mentoring dei membri del team, onboarding di nuovi consulenti.
+- **FAI SERVICE** — DWH Architect & Oracle DBA | 2021 – 2023:
+  - Coordinamento tecnico della delivery del modello dati Snowflake su Oracle Analytics Cloud e delle pipeline ETL su Oracle 19c in OCI.
+  - *(contract confluito in IDEA DB CONSULTING dal 2022 con sostituzione del contratto)*
+- **LISCOR → Finwave, Gruppo Lutech** — Oracle DBA nel settore finanziario | 2020 – 2023:
+  - Coordinamento delle attività di sviluppo PL/SQL e ottimizzazione query per applicazioni finanziarie con milioni di transazioni giornaliere.
+  - *(contract confluito in IDEA DB CONSULTING dal 2022 con sostituzione del contratto)*
+- **NIMIS → Huawei → per TIM** — Senior Oracle DBA e Performance Tuning Expert | 2020 – 2022:
+  - Pianificazione ed esecuzione di attività di manutenzione e patching su oltre 30 database Oracle critici (67+ istanze) su cluster Exadata.
+  - Coordinamento con il team di sviluppo per l'ottimizzazione delle interazioni database e la risoluzione dei problemi di performance; reporting regolare al project lead.
+  - *(contract confluito in IDEA DB CONSULTING dal 2022 con sostituzione del contratto)*
+- **DatabTech, Milano** — Oracle DBA e DWH Architect per Allianz e Mediobanca | 2018 – 2021:
+  - Coordinamento della migrazione di progetti Oracle Data Integrator (ODI) dalla versione 10g alla 12c.
+- **Altri clienti Banking, Insurance e Telco** | 2013 – 2018:
+  - Team da 3 a 7 persone in contesti multiculturali distribuiti, con approccio Agile iterativo.
+  - Interfaccia diretta con il cliente per raccolta requisiti, definizione dello scope, reporting di avanzamento e gestione delle aspettative.
+  - Formazione tecnica e mentoring dei membri del team, onboarding di nuovi consulenti.
+  - Budget nella fascia €100K – €500K.
 
 ---
 

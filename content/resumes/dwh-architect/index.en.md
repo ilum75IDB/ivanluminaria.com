@@ -3,7 +3,7 @@ title: "Data Warehouse Architect"
 seoTitle: "Data Warehouse Architect Oracle/PostgreSQL"
 description: "Ivan Luminaria, Data Warehouse Architect Oracle/PostgreSQL: 30 years designing DWH solutions, Kimball dimensional modelling, ETL pipelines and analytical architectures."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-17"
 draft: false
 layout: "simple"
 ---
@@ -52,7 +52,7 @@ Technical leadership and problem-solving mindset in international, full-remote s
 
 ### Oracle stack
 
-- Oracle Database 8i → 21c, Exadata, RAC, Data Guard, Autonomous Database (ADB)
+- Oracle Database up to 23ai, Exadata, RAC, Data Guard, Autonomous Database (ADB)
 - Performance Tuning (AWR, ADDM, SQL Tuning Advisor), Storage Management (ASM), Backup & Recovery (RMAN), Oracle TDE
 
 ### PostgreSQL
@@ -82,47 +82,42 @@ Technical leadership and problem-solving mindset in international, full-remote s
 ## Professional Experience
 
 ### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
-**Sole Director · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2021 – Present
+**Sole Director · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2022 – Jun 2025
 
-- **DWH Architect** (for ATRADIUS, Surety division) | 2022 – Jun 2025:
-  - Unified Oracle Data Warehouse consolidating data from 4 European countries from heterogeneous sources (Oracle, SQL Server, external files).
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Jul 2025 – Present:
+  - Administration of about 1,500 MySQL and PostgreSQL instances across production, certification and development.
+  - Performance monitoring, query tuning, replication management and capacity planning at enterprise scale.
+- **ATRADIUS, Surety division** — DWH Architect | 2022 – 2026:
+  - Unified Oracle Data Warehouse consolidating data from 4 European countries (Italy, Spain, France, Northern Europe) from heterogeneous sources (Oracle, SQL Server, external files).
   - Modelling of core business domains (client portfolio, policies, contracts, billing, claims, claim transactions).
-  - Entire data model and ETL layer, over 60,000 lines of PL/SQL, with loading framework, checkpoints and real-time logging; full daily load in under 2 hours.
-- **DWH Architect & Oracle DBA** (for FAI SERVICE) | 2021 – 2023:
-  - Snowflake data model on Oracle Analytics Cloud, ETL on Oracle 19c in OCI, dashboards for billing, segmentation and portfolio.
-- **DWH design and architecture** (Banking clients, Telepass and others):
+  - Over 60,000 lines of PL/SQL, loading framework with checkpoints and real-time logging; full daily load in under 2 hours.
+- **Other Banking, Telco and payments clients** — DWH design and architecture:
   - Kimball/Inmon DWH architectures on datasets above 2 billion rows, integration of 15+ heterogeneous sources.
   - Critical analytical batches cut from 4 hours to under 30 minutes on Oracle in OCI and Autonomous Database.
-  - PostgreSQL DWH as a sustainable alternative to Oracle with partitioning strategies and query optimisation.
-- **PL/SQL Expert & Oracle DBA** (for FINWAVE S.p.A.) | 2020 – 2022:
-  - Advanced PL/SQL development and query optimisation for financial applications with millions of daily transactions.
-
----
-
-### SILICONDEV S.p.A. — Rome, Italy (Full Remote)
-**Senior Database Consultant — MySQL & PostgreSQL DBA** (for POSTE ITALIANE) | Jul 2025 – Present
-
-- Administration of about 1,500 MySQL and PostgreSQL instances across production, certification and development.
-- Performance monitoring, query tuning, replication management and capacity planning at enterprise scale.
-- Support to development and infrastructure teams in a heterogeneous database environment with operational continuity requirements.
-
----
-
-### NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
-**Oracle DBA · DWH Architect · Oracle Performance & Tuning Expert** (for TIM / HUAWEI) | 2020 – 2022
-
-- Telco DWH architecture on 30+ critical Oracle databases (70+ instances on Exadata clusters) supporting over 20 million prepaid mobile users.
-- Fact tables ingesting up to 800 million traffic records per day, with advanced partitioning and compression strategies.
-- Proactive performance tuning (AWR/ADDM) for SLAs under 500 ms; ASM and Oracle TDE.
+  - PostgreSQL DWH as a cost-effective alternative to Oracle with partitioning strategies and query optimisation.
 
 ---
 
 ### FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
-**Oracle DBA · Performance Tuning · DWH Architect** | 2013 – 2020
+**Oracle DBA · Performance Tuning · DWH Architect** | 2013 – 2022
 
-- Data Warehouses for Banking, Insurance and Telco clients on Oracle and PostgreSQL platforms, with Kimball/Inmon modelling.
-- ETL/ELT pipelines handling 500 million rows per load cycle.
-- Teams of 3 to 7 people in distributed, multicultural contexts, with Agile approach.
+- **FAI SERVICE** — DWH Architect & Oracle DBA | 2021 – 2023:
+  - Snowflake data model on Oracle Analytics Cloud, ETL on Oracle 19c in OCI, dashboards for billing, segmentation and portfolio.
+  - *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **LISCOR → Finwave, Gruppo Lutech** — Oracle DBA and DWH development in the financial sector | 2020 – 2023:
+  - Advanced PL/SQL development and query optimisation for financial applications with millions of daily transactions.
+  - *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **NIMIS → Huawei → for TIM** — Oracle DBA and DWH Architect | 2020 – 2022:
+  - Telco DWH architecture on 30+ critical Oracle databases (67+ instances on Exadata clusters) supporting over 20 million prepaid mobile users.
+  - Fact tables ingesting up to 800 million traffic records per day, advanced partitioning and compression strategies, SLAs under 500 ms; ASM and Oracle TDE.
+  - *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **DatabTech, Milan** — Oracle DBA and DWH Architect for Allianz and Mediobanca | 2018 – 2021:
+  - Migration of Oracle Data Integrator (ODI) projects from version 10g to 12c.
+- **Other Banking, Insurance and Telco clients** | 2013 – 2018:
+  - Data Warehouses on Oracle and PostgreSQL platforms, with Kimball/Inmon modelling.
+  - ETL/ELT pipelines handling up to 500 million rows per load cycle.
+  - Oracle Data Guard configurations for high availability and disaster recovery.
+  - Teams of 3–7 people in distributed multicultural contexts, iterative Agile approach, budgets in the €100K – €500K range.
 
 ---
 
