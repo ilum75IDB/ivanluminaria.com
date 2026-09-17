@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile în IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 de ani gestionand proiecte software cu fundament tehnic solid Oracle și Data Warehouse. Cazuri reale."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-17"
 draft: false
 layout: "simple"
 ---
@@ -35,10 +35,11 @@ Agile și Scrum aplicate zilnic, cu formare certificata. Bază tehnică profund�
 
 ## Rezultate în evidență
 
-- **Aproximativ 10 proiecte livrate** în ultimul ciclu independent (2013–2020), interval de buget **€100K–€500K**, track record puternic de respectare a termenelor.
+- **Câteva sute de baze de date Oracle** livrate în 30 de ani, între project management, DWH, tuning și administrare.
+- **Aproximativ 10+ proiecte livrate** în ultimul ciclu independent (2013–2022), interval de buget **€100K–€500K**, track record puternic de respectare a termenelor.
 - Echipe de **3 la 7 persoane** coordonate în contexte multiculturale distribuite și full-remote.
 - Batch-uri analitice critice reduse **de la 4 ore la mai puțin de 30 de minute** prin tuning coordonat și release planning.
-- Program DWH multi-țară (**4 țări europene**, peste 60.000 de linii de PL/SQL ETL) livrat cu backlog management, gestionare a dependentelor cross-team și reporting către stakeholder-i.
+- Program **DWH Surety** (Atradius) multi-țară (**4 țări europene**, peste 60.000 de linii de PL/SQL ETL) livrat cu backlog management, gestionare a dependențelor cross-team și reporting către stakeholder-i.
 - Rollout-uri Oracle Cloud și Autonomous Database orchestrate pe workload-uri Banking și Telepass.
 
 ---
@@ -78,47 +79,46 @@ Agile și Scrum aplicate zilnic, cu formare certificata. Bază tehnică profund�
 ## Experiență Profesională
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrator Unic · Project Manager & Senior DWH Architect** | 2021 – Prezent
+**Administrator Unic · Project Manager & Senior DWH Architect** | 2022 – Prezent
 
-- **PM & DWH Lead** (pentru GENERALI Asigurări) | Feb 2024 – Mai 2025:
-  - Coordonarea activitatilor de proiect și gestionarea priorităților echipei de dezvoltare pe baze de date Oracle în sectorul asigurărilor.
-  - Interfață directă cu clientul pentru cerințe, definirea scope-ului și prezentarea solutiilor.
-  - Monitorizarea avansarii și gestionarea situațiilor critice pe baze de date de la 500 GB la 8 TB.
-- **PM & DWH Lead** (pentru ATRADIUS, divizia Surety) | 2022 – Iun 2025:
-  - Program de consolidare a datelor multi-țară pe 4 țări europene.
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Iul 2025 – Prezent:
+  - Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
+  - Monitorizarea performanței, query tuning, gestionarea replicării și capacity planning la scara enterprise.
+- **GENERALI Asigurări** — PM & DWH Lead | Feb 2024 – Mai 2025:
+  - Coordonarea activităților de proiect și gestionarea priorităților echipei de dezvoltare pe baze de date Oracle în sectorul asigurărilor.
+  - Interfață directă cu clientul pentru cerințe, definirea scope-ului și prezentarea soluțiilor.
+  - Monitorizarea avansării și gestionarea situațiilor critice pe baze de date de la 500 GB la 8 TB.
+- **ATRADIUS, divizia Surety** — PM & DWH Lead | 2022 – 2026:
+  - Program de consolidare a datelor multi-țară pe 4 țări europene (Italia, Spania, Franța, Nordul Europei).
   - Release planning și gestionarea backlog-ului de dezvoltare pe peste 60.000 de linii de PL/SQL ETL.
-  - Activity tracking, reporting către stakeholder-i și gestionarea dependentelor cross-team.
-- **Project Coordinator** (clienți Banking, Telepass și altii):
+  - Activity tracking, reporting către stakeholder-i și gestionarea dependențelor cross-team.
+- **Alți clienți Banking, Telco și plăți** — Project Coordinator:
   - Coordonarea proiectelor care au dus la reducerea batch-urilor de la 4 ore la mai puțin de 30 de minute.
-  - Gestionarea integrarii datelor de la peste 15 surse eterogene pe seturi de date de peste 2 miliarde de rânduri.
+  - Gestionarea integrării datelor de la peste 15 surse eterogene pe seturi de date de peste 2 miliarde de rânduri.
   - Release planning în medii Oracle OCI și Autonomous Database.
 
 ---
 
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant** (pentru POSTE ITALIANE) | Iul 2025 – Prezent
+### FREELANCE / CONSULTANT INDEPENDENT — Roma, Italia (Full Remote Europa)
+**Project Manager & Senior DWH Consultant · Oracle DBA · DWH Architect** | 2013 – 2022
 
-- Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
-- Monitorizarea performanței, query tuning, gestionarea replicarii și capacity planning la scara enterprise.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (pentru TIM / HUAWEI) | 2020 – 2022
-
-- Planificarea și executarea activitatilor de mentenanță și patching pe peste 30 de baze de date Oracle critice (70+ instanțe) pe cluster-e Exadata.
-- Coordonare cu echipa de dezvoltare pentru optimizarea interactiunilor database și rezolvarea problemelor de performance.
-- Gestionarea autonoma a workload-ului cu reporting regulat către project lead.
-
----
-
-### PROFESIONIST INDEPENDENT / CONSULTANT — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Consultant** | 2013 – 2020
-
-- **Aproximativ 10 proiecte gestionate în 7 ani** pentru clienți Banking, Telco și servicii, cu bugete de €100K–€500K și un track record solid de livrare la timp.
-- Echipe de la 3 la 7 persoane în contexte multiculturale distribuite, cu abordare Agile iterativă.
-- Interfață directă cu clientul pentru colectarea cerințelor, definirea scope-ului, reporting-ul avansarii și gestionarea asteptarilor.
-- Formare tehnică și mentoring pentru membrii echipei, onboarding de noi consultanti.
+- **FAI SERVICE** — DWH Architect & Oracle DBA | 2021 – 2023:
+  - Coordonarea tehnică a delivery-ului modelului de date Snowflake pe Oracle Analytics Cloud și a pipeline-urilor ETL pe Oracle 19c în OCI.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **LISCOR → Finwave, Gruppo Lutech** — Oracle DBA în sectorul financiar | 2020 – 2023:
+  - Coordonarea activităților de dezvoltare PL/SQL și optimizare de interogări pentru aplicații financiare cu milioane de tranzacții zilnice.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **NIMIS → Huawei → pentru TIM** — Senior Oracle DBA și Performance Tuning Expert | 2020 – 2022:
+  - Planificarea și executarea activităților de mentenanță și patching pe peste 30 de baze de date Oracle critice (67+ instanțe) pe cluster-e Exadata.
+  - Coordonare cu echipa de dezvoltare pentru optimizarea interacțiunilor database și rezolvarea problemelor de performance; reporting regulat către project lead.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **DatabTech, Milano** — Oracle DBA și DWH Architect pentru Allianz și Mediobanca | 2018 – 2021:
+  - Coordonarea migrării proiectelor Oracle Data Integrator (ODI) de la versiunea 10g la 12c.
+- **Alți clienți Banking, Insurance și Telco** | 2013 – 2018:
+  - Echipe de la 3 la 7 persoane în contexte multiculturale distribuite, cu abordare Agile iterativă.
+  - Interfață directă cu clientul pentru colectarea cerințelor, definirea scope-ului, reporting-ul avansării și gestionarea așteptărilor.
+  - Formare tehnică și mentoring pentru membrii echipei, onboarding de noi consultanți.
+  - Bugete în intervalul €100K – €500K.
 
 ---
 

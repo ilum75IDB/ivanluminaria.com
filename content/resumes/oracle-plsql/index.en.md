@@ -3,7 +3,7 @@ title: "Oracle PL/SQL Developer"
 seoTitle: "Oracle PL/SQL Developer & SQL Tuning"
 description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 years developing, refactoring and optimising PL/SQL code for enterprise data-intensive apps."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-17"
 draft: false
 layout: "simple"
 ---
@@ -35,7 +35,8 @@ Consolidated background as Oracle DBA and DWH Architect provides a full view of 
 
 ## Key results
 
-- **60,000+ lines of PL/SQL** designed and maintained for a multi-country DWH across **4 European countries** (Italy, Spain, France, Northern Europe); reusable templates and real-time load monitoring.
+- **Several hundred Oracle databases** across 30 years, spanning PL/SQL development, tuning, DWH and administration.
+- **60,000+ lines of PL/SQL** designed and maintained for the **Surety DWH** (Atradius) multi-country across **4 European countries** (Italy, Spain, France, Northern Europe); reusable templates and real-time load monitoring.
 - Full daily ingestion **from 4+ hours to under 2 hours** through query rewriting, BULK COLLECT/FORALL and partition-aware DML.
 - PL/SQL packages for financial transaction processing handling **millions of daily operations** across banking and insurance clients.
 - Critical analytical batches cut **from 4 hours to under 30 minutes** on 2B+ row datasets.
@@ -66,7 +67,7 @@ Consolidated background as Oracle DBA and DWH Architect provides a full view of 
 
 ### Oracle Database
 
-- Oracle Database 8i → 21c, Autonomous Database
+- Oracle Database up to 23ai, Autonomous Database
 
 ### Related concepts
 
@@ -87,45 +88,44 @@ Consolidated background as Oracle DBA and DWH Architect provides a full view of 
 ## Professional Experience
 
 ### IDEA DB CONSULTING S.R.L. — Rome, Italy (Full Remote Europe)
-**Sole Director · Senior Oracle PL/SQL Developer · DWH Architect** | 2021 – Present
+**Founder · Senior Oracle PL/SQL Developer · DWH Architect** | 2022 – Present
 
-- **PL/SQL Developer** (for ATRADIUS, Surety division) | 2022 – Jun 2025:
-  - Over 60,000 lines of PL/SQL code (packages, procedures, functions) for the multi-country DWH consolidating insurance claims and credit data.
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Jul 2025 – Present:
+  - Administration of about 1,500 MySQL and PostgreSQL instances across production, certification and development.
+  - Query tuning, performance monitoring, replication management and capacity planning at enterprise scale.
+- **GENERALI Insurance** — SQL & PL/SQL Optimization | Feb 2024 – May 2025:
+  - Complex query optimisation and PL/SQL development on Oracle databases from 500 GB to 8 TB for insurance-sector applications.
+  - Hierarchical Profiler analysis and SQL tuning to identify bottlenecks.
+- **ATRADIUS, Surety division** — PL/SQL Developer | 2022 – 2026:
+  - Over 60,000 lines of PL/SQL code (packages, procedures, functions) for the multi-country DWH (Italy, Spain, France, Northern Europe) consolidating insurance claims and credit data.
   - Reusable PL/SQL templates for loading procedures with checkpoints and real-time logging.
   - Batch performance optimisation (query rewriting, BULK COLLECT/FORALL, partition-aware DML): daily cycle reduced from 4+ hours to under 2 hours.
-- **PL/SQL Developer** (for FINWAVE S.p.A.) | 2020 – 2022:
-  - PL/SQL packages for financial transaction processing handling millions of daily operations across banking and insurance clients.
-- **PL/SQL Developer** (for FAI SERVICE) | 2021 – 2023:
-  - ETL procedures in PL/SQL on Oracle 19c in OCI for billing statistics, customer segmentation and cost/revenue tracking.
-  - PL/SQL modules feeding Oracle Analytics Cloud dashboards with aggregated financial KPIs.
-- **PL/SQL development** (Banking clients, Telepass and others):
+- **Other Banking, Telco and payments clients** — PL/SQL development:
   - PL/SQL business logic packages for banking-sector DWH applications on 2B+ row datasets.
   - PL/SQL and SQL optimisation with Hierarchical Profiler analysis to identify bottlenecks.
 
 ---
 
-### SILICONDEV S.p.A. — Rome, Italy (Full Remote)
-**Senior Database Consultant** (for POSTE ITALIANE) | Jul 2025 – Present
-
-- Administration of about 1,500 MySQL and PostgreSQL instances across production, certification and development.
-- Query tuning, performance monitoring, replication management and capacity planning at enterprise scale.
-
----
-
-### NIMIS CONSULTING S.R.L. — Rome, Italy (Full Remote)
-**Senior Oracle DBA & Performance Expert (with development focus)** (for TIM / HUAWEI) | 2020 – 2022
-
-- Specialist support to development teams in PL/SQL and SQL optimisation for critical applications on Exadata.
-- Analysis and tuning of high-volume PL/SQL batch processes; PL/SQL scripts for monitoring and administration tasks.
-
----
-
 ### FREELANCE / INDEPENDENT CONSULTANT — Rome, Italy (Full Remote Europe)
-**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2020
+**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2022
 
-- Custom PL/SQL solutions for various clients: packages for ETL logic, data-processing procedures, PL/SQL APIs.
-- Intensive PL/SQL and SQL optimisation to improve the performance of existing systems.
-- Training and mentoring of junior developers on PL/SQL best practices.
+- **FAI SERVICE** — PL/SQL Developer | 2021 – 2023:
+  - ETL procedures in PL/SQL on Oracle 19c in OCI for billing statistics, customer segmentation and cost/revenue tracking.
+  - PL/SQL modules feeding Oracle Analytics Cloud dashboards with aggregated financial KPIs.
+  - *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **LISCOR → Finwave, Gruppo Lutech** — PL/SQL Developer in the financial sector | 2020 – 2023:
+  - PL/SQL packages for financial transaction processing handling millions of daily operations across banking and insurance clients.
+  - *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **NIMIS → Huawei → for TIM** — Senior Oracle DBA & Performance Expert (development focus) | 2020 – 2022:
+  - Specialist support to development teams in PL/SQL and SQL optimisation for critical applications on Exadata (67+ instances).
+  - Analysis and tuning of high-volume PL/SQL batch processes; PL/SQL scripts for monitoring and administration tasks.
+  - *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **DatabTech, Milan** — Oracle DBA and DWH Architect for Allianz and Mediobanca | 2018 – 2021:
+  - Migration of Oracle Data Integrator (ODI) projects from version 10g to 12c, with PL/SQL development supporting the migrated mappings.
+- **Other Banking, Insurance and Telco clients** | 2013 – 2018:
+  - Custom PL/SQL solutions for various clients: packages for ETL logic, data-processing procedures, PL/SQL APIs.
+  - Intensive PL/SQL and SQL optimisation to improve the performance of existing systems.
+  - Training and mentoring of junior developers on PL/SQL best practices.
 
 ---
 

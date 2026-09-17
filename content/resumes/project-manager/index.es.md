@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile en IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 años gestionando proyectos software con sólido background técnico Oracle y Data Warehouse. Casos reales."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-17"
 draft: false
 layout: "simple"
 ---
@@ -35,10 +35,11 @@ Agile y Scrum aplicados a diario, con formación certificada. La base técnica p
 
 ## Resultados destacados
 
-- **Cerca de 10 proyectos entregados** en el último ciclo independiente (2013–2020), rango de presupuesto **€100K–€500K**, fuerte track record de cumplimiento de plazos.
+- **Varios cientos de bases de datos Oracle** entregadas en 30 años, entre project management, DWH, tuning y administración.
+- **Cerca de 10+ proyectos entregados** en el último ciclo independiente (2013–2022), rango de presupuesto **€100K–€500K**, fuerte track record de cumplimiento de plazos.
 - Equipos de **3 a 7 personas** coordinados en contextos multiculturales distribuidos y full-remote.
 - Batches analíticos críticos reducidos **de 4 horas a menos de 30 minutos** mediante tuning coordinado y release planning.
-- Programa DWH multi-país (**4 países europeos**, más de 60.000 líneas de PL/SQL ETL) entregado con backlog management, gestión de dependencias cross-team y reporting a los stakeholders.
+- Programa **DWH Surety** (Atradius) multi-país (**4 países europeos**, más de 60.000 líneas de PL/SQL ETL) entregado con backlog management, gestión de dependencias cross-team y reporting a los stakeholders.
 - Rollouts de Oracle Cloud y Autonomous Database orquestados en workloads Banking y Telepass.
 
 ---
@@ -78,47 +79,46 @@ Agile y Scrum aplicados a diario, con formación certificada. La base técnica p
 ## Experiencia Profesional
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrador Único · Project Manager & Senior DWH Architect** | 2021 – Presente
+**Administrador Único · Project Manager & Senior DWH Architect** | 2022 – Presente
 
-- **PM & DWH Lead** (para GENERALI Seguros) | Feb 2024 – May 2025:
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Jul 2025 – Presente:
+  - Administración de aproximadamente 1.500 instancias MySQL y PostgreSQL entre producción, certificación y desarrollo.
+  - Monitorización de las performance, query tuning, gestión de la replicación y capacity planning a escala enterprise.
+- **GENERALI Seguros** — PM & DWH Lead | Feb 2024 – May 2025:
   - Coordinación de las actividades de proyecto y gestión de las prioridades del equipo de desarrollo sobre bases de datos Oracle en el sector asegurador.
   - Interfaz directa con el cliente para requisitos, definición del scope y presentación de las soluciones.
   - Monitorización del avance y gestión de las criticidades sobre bases de datos de 500 GB a 8 TB.
-- **PM & DWH Lead** (para ATRADIUS, división Surety) | 2022 – Jun 2025:
-  - Programa de consolidación de datos multi-país sobre 4 países europeos.
+- **ATRADIUS, división Surety** — PM & DWH Lead | 2022 – 2026:
+  - Programa de consolidación de datos multi-país sobre 4 países europeos (Italia, España, Francia, Norte de Europa).
   - Release planning y gestión del backlog de desarrollo sobre más de 60.000 líneas de PL/SQL ETL.
   - Activity tracking, reporting a los stakeholders y gestión de las dependencias cross-team.
-- **Project Coordinator** (clientes Banking, Telepass y otros):
+- **Otros clientes Banking, Telco y pagos** — Project Coordinator:
   - Coordinación de proyectos que han llevado a la reducción de los batches de 4 horas a menos de 30 minutos.
   - Gestión de la integración de datos desde más de 15 fuentes heterogéneas sobre datasets superiores a los 2 mil millones de filas.
   - Release planning en entornos Oracle OCI y Autonomous Database.
 
 ---
 
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant** (para POSTE ITALIANE) | Jul 2025 – Presente
+### FREELANCE / CONSULTOR INDEPENDIENTE — Roma, Italia (Full Remote Europa)
+**Project Manager & Senior DWH Consultant · Oracle DBA · DWH Architect** | 2013 – 2022
 
-- Administración de aproximadamente 1.500 instancias MySQL y PostgreSQL entre producción, certificación y desarrollo.
-- Monitorización de las performance, query tuning, gestión de la replicación y capacity planning a escala enterprise.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (para TIM / HUAWEI) | 2020 – 2022
-
-- Planificación y ejecución de actividades de mantenimiento y patching sobre más de 30 bases de datos Oracle críticas (70+ instancias) sobre clusters Exadata.
-- Coordinación con el equipo de desarrollo para la optimización de las interacciones database y la resolución de los problemas de performance.
-- Gestión autónoma del workload con reporting regular al project lead.
-
----
-
-### PROFESIONAL AUTÓNOMO / CONSULTOR INDEPENDIENTE — Roma, Italia (Full Remote Europa)
-**Project Manager & Senior DWH Consultant** | 2013 – 2020
-
-- **Cerca de 10 proyectos gestionados en 7 años** para clientes Banking, Telco y servicios, con presupuestos de €100K a €500K y un sólido track record de entrega en plazos.
-- Equipos de 3 a 7 personas en contextos multiculturales distribuidos, con enfoque Agile iterativo.
-- Interfaz directa con el cliente para recogida de requisitos, definición del scope, reporting de avance y gestión de expectativas.
-- Formación técnica y mentoring de los miembros del equipo, onboarding de nuevos consultores.
+- **FAI SERVICE** — DWH Architect & Oracle DBA | 2021 – 2023:
+  - Coordinación técnica de la delivery del modelo de datos Snowflake sobre Oracle Analytics Cloud y de las pipelines ETL sobre Oracle 19c en OCI.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **LISCOR → Finwave, Gruppo Lutech** — Oracle DBA en el sector financiero | 2020 – 2023:
+  - Coordinación de las actividades de desarrollo PL/SQL y optimización de consultas para aplicaciones financieras con millones de transacciones diarias.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **NIMIS → Huawei → para TIM** — Senior Oracle DBA y Performance Tuning Expert | 2020 – 2022:
+  - Planificación y ejecución de actividades de mantenimiento y patching sobre más de 30 bases de datos Oracle críticas (67+ instancias) sobre clusters Exadata.
+  - Coordinación con el equipo de desarrollo para la optimización de las interacciones database y la resolución de los problemas de performance; reporting regular al project lead.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **DatabTech, Milán** — Oracle DBA y DWH Architect para Allianz y Mediobanca | 2018 – 2021:
+  - Coordinación de la migración de proyectos Oracle Data Integrator (ODI) de la versión 10g a la 12c.
+- **Otros clientes Banking, Insurance y Telco** | 2013 – 2018:
+  - Equipos de 3 a 7 personas en contextos multiculturales distribuidos, con enfoque Agile iterativo.
+  - Interfaz directa con el cliente para recogida de requisitos, definición del scope, reporting de avance y gestión de expectativas.
+  - Formación técnica y mentoring de los miembros del equipo, onboarding de nuevos consultores.
+  - Presupuestos en la franja €100K – €500K.
 
 ---
 
