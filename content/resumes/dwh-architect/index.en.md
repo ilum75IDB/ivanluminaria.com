@@ -35,7 +35,8 @@ Technical leadership and problem-solving mindset in international, full-remote s
 
 ## Key results
 
-- Multi-country Data Warehouse consolidating **4 European countries** (Italy, Spain, France, Northern Europe): **60,000+ lines of PL/SQL**, full daily load in **under 2 hours**, real-time monitoring of loading stages.
+- **Several hundred Oracle databases** across 30 years, with focus on DWH design, ETL/ELT and administration.
+- **Surety DWH** (Atradius) consolidating **4 European countries** (Italy, Spain, France, Northern Europe): **60,000+ lines of PL/SQL**, full daily load in **under 2 hours**, real-time monitoring of loading stages.
 - DWH design on datasets exceeding **2 billion rows** with integration of **15+ heterogeneous sources**.
 - Snowflake data model on Oracle Analytics Cloud with ETL on Oracle 19c in OCI for billing statistics, customer segmentation, portfolio and cost/revenue tracking.
 - Critical analytical batches cut **from 4 hours to under 30 minutes** on Oracle in OCI and Autonomous Database.

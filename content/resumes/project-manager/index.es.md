@@ -35,10 +35,11 @@ Agile y Scrum aplicados a diario, con formación certificada. La base técnica p
 
 ## Resultados destacados
 
+- **Varios cientos de bases de datos Oracle** entregadas en 30 años, entre project management, DWH, tuning y administración.
 - **Cerca de 10+ proyectos entregados** en el último ciclo independiente (2013–2022), rango de presupuesto **€100K–€500K**, fuerte track record de cumplimiento de plazos.
 - Equipos de **3 a 7 personas** coordinados en contextos multiculturales distribuidos y full-remote.
 - Batches analíticos críticos reducidos **de 4 horas a menos de 30 minutos** mediante tuning coordinado y release planning.
-- Programa DWH multi-país (**4 países europeos**, más de 60.000 líneas de PL/SQL ETL) entregado con backlog management, gestión de dependencias cross-team y reporting a los stakeholders.
+- Programa **DWH Surety** (Atradius) multi-país (**4 países europeos**, más de 60.000 líneas de PL/SQL ETL) entregado con backlog management, gestión de dependencias cross-team y reporting a los stakeholders.
 - Rollouts de Oracle Cloud y Autonomous Database orquestados en workloads Banking y Telepass.
 
 ---

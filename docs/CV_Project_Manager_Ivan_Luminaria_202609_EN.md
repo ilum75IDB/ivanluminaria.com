@@ -16,10 +16,11 @@ Project Manager with nearly 30 years of IT experience and a solid technical back
 
 ## Key results
 
+- **Several hundred Oracle databases** delivered across 30 years, spanning project management, DWH, tuning and administration.
 - **~10+ projects delivered** in the last independent cycle (2013 – 2022), budget range **€100K–€500K**, strong on-time track record.
 - Teams of **3–7 people** coordinated in multicultural, distributed and full-remote settings.
 - Critical analytical batches cut **from 4 hours to under 30 minutes** through coordinated tuning and release planning.
-- Multi-country DWH programme (**4 European countries**, 60,000+ lines of PL/SQL ETL) delivered with backlog management, cross-team dependency handling and stakeholder reporting.
+- **Surety DWH** (Atradius) multi-country programme (**4 European countries**, 60,000+ lines of PL/SQL ETL) delivered with backlog management, cross-team dependency handling and stakeholder reporting.
 - Oracle Cloud and Autonomous Database rollouts orchestrated across banking and Telepass-related workloads.
 
 ## Core expertise

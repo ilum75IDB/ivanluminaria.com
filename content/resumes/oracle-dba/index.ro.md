@@ -35,10 +35,11 @@ Performance tuning ramane specializarea principala — disciplina care menține 
 
 ## Rezultate în evidență
 
-- Aproximativ **1.500 instanțe** MySQL și PostgreSQL administrate pentru un operator postal și logistic național.
-- **Peste 30 de baze de date Oracle critice (70+ instanțe)** pe Exadata pentru un operator telco cu **peste 20 de milioane de utilizatori prepay**; până la **800 de milioane de înregistrări de trafic pe zi**; interogări critice sub **500 ms** în disponibilitate 24/7.
+- **Câteva sute de baze de date Oracle** în 30 de ani, între administrare, tuning, DWH, PL/SQL și project management.
+- Aproximativ **1.500 de instanțe** MySQL și PostgreSQL administrate azi pentru **POSTE ITALIANE**.
+- **30+ baze de date Oracle pe Exadata** (3+5 noduri, **67+ instanțe**) pe angajament telco pentru **TIM (via Huawei)**, în sprijinul a **peste 20 de milioane de utilizatori prepay mobile**: până la **800 de milioane de înregistrări pe zi**; interogări critice sub **500 ms** în disponibilitate 24/7.
 - Batch-uri analitice critice reduse **de la 4 ore la mai puțin de 30 de minute** pe Oracle în OCI și Autonomous Database.
-- Data Warehouse multi-țară pe **4 țări europene** susținut la nivel DBA: **peste 60.000 de linii de PL/SQL** și încărcare zilnică completă în **mai puțin de 2 ore**.
+- **DWH Surety** (Atradius) pe **4 țări europene** (Italia, Spania, Franța, Nordul Europei) susținut la nivel DBA: **peste 60.000 de linii de PL/SQL** și încărcare zilnică completă în **mai puțin de 2 ore**.
 - Pipeline-uri ETL/ELT care integrează **peste 15 surse eterogene** pe seturi de date de peste **2 miliarde de rânduri**.
 
 ---

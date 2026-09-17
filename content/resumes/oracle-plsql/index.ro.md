@@ -35,7 +35,8 @@ Bază consolidată și ca Oracle DBA și DWH Architect: viziune completă asupra
 
 ## Rezultate în evidență
 
-- **Peste 60.000 de linii de PL/SQL** proiectate și menținute pentru un DWH multi-țară pe **4 țări europene** (Italia, Spania, Franța, Nordul Europei); template-uri reutilizabile și monitorizare în timp real a încărcărilor.
+- **Câteva sute de baze de date Oracle** în 30 de ani, între dezvoltare PL/SQL, tuning, DWH și administrare.
+- **Peste 60.000 de linii de PL/SQL** proiectate și menținute pentru **DWH Surety** (Atradius) multi-țară pe **4 țări europene** (Italia, Spania, Franța, Nordul Europei); template-uri reutilizabile și monitorizare în timp real a încărcărilor.
 - Ingestion zilnică completă **de la peste 4 ore la mai puțin de 2 ore** prin query rewriting, BULK COLLECT/FORALL și partition-aware DML.
 - Packages PL/SQL pentru procesarea tranzacțiilor financiare cu **milioane de operațiuni zilnice** pentru clienți banking și insurance.
 - Batch-uri analitice critice reduse **de la 4 ore la mai puțin de 30 de minute** pe seturi de date de peste 2 miliarde de rânduri.

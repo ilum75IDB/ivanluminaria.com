@@ -16,7 +16,8 @@ Senior Oracle PL/SQL Developer with nearly 30 years designing, building, testing
 
 ## Key results
 
-- **60,000+ lines of PL/SQL** designed and maintained for a multi-country DWH across **4 European countries** (Italy, Spain, France, Northern Europe); reusable templates and real-time load monitoring.
+- **Several hundred Oracle databases** across 30 years, spanning PL/SQL development, tuning, DWH and administration.
+- **60,000+ lines of PL/SQL** designed and maintained for the **Surety DWH** (Atradius) multi-country across **4 European countries** (Italy, Spain, France, Northern Europe); reusable templates and real-time load monitoring.
 - Full daily ingestion **from 4+ hours to under 2 hours** through query rewriting, BULK COLLECT/FORALL and partition-aware DML.
 - PL/SQL packages for financial transaction processing handling **millions of daily operations** across banking and insurance clients.
 - Critical analytical batches cut **from 4 hours to under 30 minutes** on 2B+ row datasets.

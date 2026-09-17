@@ -35,10 +35,11 @@ Il performance tuning resta la specializzazione principale — la disciplina che
 
 ## Risultati in evidenza
 
-- Circa **1.500 istanze** MySQL e PostgreSQL amministrate per un operatore postale e logistico nazionale.
-- **Oltre 30 database Oracle critici (70+ istanze)** su Exadata per un operatore telco con **oltre 20 milioni di utenti prepagati**; fino a **800 milioni di record di traffico al giorno**; query critiche sotto i **500 ms** in reperibilità 24/7.
+- **Diverse centinaia di database Oracle** in 30 anni, tra amministrazione, tuning, DWH, PL/SQL e project management.
+- Circa **1.500 istanze** MySQL e PostgreSQL amministrate oggi per **POSTE ITALIANE**.
+- **30+ database Oracle su Exadata** (3+5 nodi, **67+ istanze**) su commessa telco per **TIM (via Huawei)**, al servizio di **oltre 20 milioni di utenti prepagati mobile**: fino a **800 milioni di record al giorno**; query critiche sotto i **500 ms** in reperibilità 24/7.
 - Batch analitici critici ridotti **da 4 ore a meno di 30 minuti** su Oracle in OCI e Autonomous Database.
-- Data Warehouse multi-paese su **4 Paesi europei** supportato lato DBA: **oltre 60.000 righe di PL/SQL** e caricamento giornaliero in **meno di 2 ore**.
+- **DWH Surety** (Atradius) su **4 Paesi europei** (Italia, Spagna, Francia, Nord Europa) supportato lato DBA: **oltre 60.000 righe di PL/SQL** e caricamento giornaliero in **meno di 2 ore**.
 - Pipeline ETL/ELT che integrano **oltre 15 sorgenti eterogenee** su dataset superiori ai **2 miliardi di righe**.
 
 ---

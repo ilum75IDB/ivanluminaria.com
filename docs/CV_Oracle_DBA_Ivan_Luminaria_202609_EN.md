@@ -16,10 +16,11 @@ Senior Oracle DBA and Performance Tuning Expert with nearly 30 years on mission-
 
 ## Key results
 
-- About **1,500 MySQL and PostgreSQL instances** administered for a national postal and logistics operator.
-- **30+ critical Oracle databases (70+ instances)** on Exadata for a telco with **20M+ prepaid mobile users**; up to **800M call records per day**; critical queries **under 500 ms** under 24/7 on-call.
+- **Several hundred Oracle databases** across 30 years, spanning administration, tuning, DWH, PL/SQL and project management.
+- About **1,500 MySQL and PostgreSQL instances** administered today for **POSTE ITALIANE**.
+- **30+ Oracle databases on Exadata** (3+5 nodes, **67+ instances**) on a telco engagement for **TIM (via Huawei)**, serving **20M+ prepaid mobile users**: up to **800M records per day**; critical queries **under 500 ms** under 24/7 on-call.
 - Critical analytical batches cut **from 4 hours to under 30 minutes** (Oracle on OCI and Autonomous Database).
-- Multi-country DWH across **4 European countries** supported at DBA layer: **60,000+ lines of PL/SQL**, full daily load **under 2 hours**.
+- **Surety DWH** (Atradius) across **4 European countries** (Italy, Spain, France, Northern Europe) supported at DBA layer: **60,000+ lines of PL/SQL**, full daily load **under 2 hours**.
 - ETL/ELT pipelines integrating **15+ heterogeneous sources** on datasets above **2 billion rows**.
 
 ## Core expertise

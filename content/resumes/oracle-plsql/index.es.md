@@ -35,7 +35,8 @@ Background consolidado también como Oracle DBA y DWH Architect: visión complet
 
 ## Resultados destacados
 
-- **Más de 60.000 líneas de PL/SQL** diseñadas y mantenidas para un DWH multi-país sobre **4 países europeos** (Italia, España, Francia, Norte de Europa); templates reutilizables y monitorización en tiempo real de las cargas.
+- **Varios cientos de bases de datos Oracle** en 30 años, entre desarrollo PL/SQL, tuning, DWH y administración.
+- **Más de 60.000 líneas de PL/SQL** diseñadas y mantenidas para el **DWH Surety** (Atradius) multi-país sobre **4 países europeos** (Italia, España, Francia, Norte de Europa); templates reutilizables y monitorización en tiempo real de las cargas.
 - Ingestion diaria completa **de más de 4 horas a menos de 2 horas** mediante query rewriting, BULK COLLECT/FORALL y partition-aware DML.
 - Packages PL/SQL para el procesamiento de transacciones financieras con **millones de operaciones diarias** en clientes banking y insurance.
 - Batches analíticos críticos reducidos **de 4 horas a menos de 30 minutos** sobre datasets de más de 2 mil millones de filas.
