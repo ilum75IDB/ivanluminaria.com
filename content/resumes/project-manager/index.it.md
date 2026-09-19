@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile in IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 anni di gestione progetti software con solido background tecnico Oracle e Data Warehouse. Casi reali."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-19"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Project Manager con quasi 30 anni di esperienza IT e un solido background tecnico su Data Warehouse e Oracle. Oltre 10 progetti consegnati con un forte track record di rispetto delle tempistiche, guidando team da 3 a 7 persone in contesti multiculturali e remoti su ingaggi da **€100K a €500K**.
+C'è il PM che gestisce il progetto. E il PM che lo capisce. Io sono il secondo. Trent'anni dentro Oracle, PL/SQL, Data Warehouse, performance tuning — di questi, negli ultimi dodici circa mi occupo anche di Project Management.
 
-Pianificazione, gestione dei rischi, coordinamento delle risorse e stakeholder engagement — sviluppati in anni di conduzione di attività di sviluppo, release e manutenzione per clienti Banking, Telco, Insurance e Pubblica Amministrazione.
+Cosa riconosco subito su un progetto: quando un requisito non è implementabile come scritto. Quando una stima è ottimista per pressione, non per dati. Quando il vero rischio non è la deadline, è l'architettura.
 
-Agile e Scrum applicati quotidianamente, con formazione certificata. La base tecnica profonda (architettura DWH, Oracle DBA, PL/SQL, ETL/ELT) permette valutazioni di fattibilità realistiche e identificazione precoce dei rischi tecnici.
+10+ progetti consegnati tra il 2013 e il 2022, team di 3–7 persone, budget **€100K–€500K**, multi-paese e full-remote. Settori: Banking, Telco, Assicurazioni, Pubblica Amministrazione. Clienti: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum e Agile, formazione certificata. Cosa porto: traduzione tecnica dei requisiti, scoperta anticipata dei rischi, un linguaggio comune tra team e stakeholder.
 
 ---
 

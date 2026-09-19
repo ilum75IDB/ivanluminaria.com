@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile în IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 de ani gestionand proiecte software cu fundament tehnic solid Oracle și Data Warehouse. Cazuri reale."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-19"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Profil Profesional
 
-Project Manager cu aproape 30 de ani de experiență IT și un fundament tehnic solid pe Data Warehouse și Oracle. Peste 10 proiecte livrate cu un track record puternic de respectare a termenelor, conducand echipe de la 3 la 7 persoane în contexte multiculturale și remote pe angajamente de **€100K–€500K**.
+Există PM-ul care gestionează proiectul. Și PM-ul care înțelege proiectul. Eu sunt al doilea. Treizeci de ani în Oracle, PL/SQL, Data Warehouse, performance tuning — dintre aceștia, în ultimii doisprezece aproximativ mă ocup și de Project Management.
 
-Planificare, gestionarea riscurilor, coordonarea resurselor și stakeholder engagement — dezvoltate în ani de conducere a activitatilor de dezvoltare, release și mentenanță pentru clienți Banking, Telco, Insurance și Administratie Publica.
+Ce recunosc imediat pe un proiect: când o cerință nu este implementabilă așa cum este scrisă. Când o estimare este optimistă din presiune, nu din date. Când riscul real nu este termenul limită, este arhitectura.
 
-Agile și Scrum aplicate zilnic, cu formare certificata. Bază tehnică profundă (arhitectură DWH, Oracle DBA, PL/SQL, ETL/ELT) permite evaluări realiste de fezabilitate și identificarea timpurie a riscurilor tehnice.
+10+ proiecte livrate între 2013 și 2022, echipe de 3–7 persoane, bugete **€100K–€500K**, multi-țară și full-remote. Sectoare: Banking, Telco, Asigurări, Administrație Publică. Clienți: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum și Agile, formare certificată. Ce aduc: traducere tehnică a cerințelor, descoperire anticipată a riscurilor, un limbaj comun pentru echipă și stakeholderi.
 
 ---
 
