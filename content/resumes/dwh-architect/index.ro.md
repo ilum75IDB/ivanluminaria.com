@@ -3,7 +3,7 @@ title: "Data Warehouse Architect"
 seoTitle: "Data Warehouse Architect Oracle/PostgreSQL"
 description: "Ivan Luminaria, Data Warehouse Architect Oracle/PostgreSQL: 30 de ani de proiectare DWH, modelare dimensionala Kimball, pipeline-uri ETL și arhitecturi analitice."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Profil Profesional
 
-Data Warehouse Architect cu aproape 30 de ani de experiență în proiectarea, implementarea și gestionarea de soluții DWH complexe și de inalta performanță pe Oracle și PostgreSQL.
+În majoritatea cazurilor în care am fost chemat să "proiectez un DWH nou", DWH-ul existent era în regulă. Trebuia doar înțeles. Treizeci de ani de Oracle, ultimii cincisprezece ca DWH Architect — am învățat că gâtul de sticlă aproape niciodată nu este platforma.
 
-Expert în modelare multidimensională (Kimball, Inmon) și în optimizarea proceselor ETL/ELT și a interogărilor SQL pe seturi de date de la sute de milioane la miliarde de rânduri. Conduc proiecte DWH end-to-end — de la cerințe până la deploy în producție — cu integritate, calitate și disponibilitate a datelor în sprijinul deciziilor de business.
+Ce văd imediat când sosește o ofertă pentru o platformă nouă: strategia de partiționare nerevizuită după cinci ani de creștere. ETL-ul în PL/SQL care rulează în serial când putea rula în paralel. Materialized view-ul pe care nimeni nu l-a mai reîmprospătat după schimbarea de schemă din 2019. Sunt detaliile care se acumulează, nu tehnologiile care îmbătrânesc.
 
-Leadership tehnic și mindset de problem solving în contexte internaționale și full remote.
+Batch-uri analitice de la 4 ore la sub 30 de minute pe Oracle OCI și Autonomous Database — fără schimbare de hardware, doar lucrând pe design și pe planuri de execuție. Atradius Surety: DWH pe 4 țări EU, 60.000+ linii de PL/SQL, încărcare daily sub 2 ore. GENERALI: DWH asigurări 500 GB–8 TB. TIM (via Huawei): 30+ Oracle pe Exadata, 800M înregistrări/zi, SLA sub 500 ms. Migrare ODI 10g→12c pentru Allianz și Mediobanca — niciodată de la zero, întotdeauna în continuitate. Kimball, Inmon, star/snowflake, SCD, bus matrix. Predare Oracle Italia despre SQL, PL/SQL, tuning. Ce aduc: o a doua opinie independentă înainte să semnezi o ofertă de sute de mii de euro, o metodă care pornește de la datele pe care sistemul le înregistrează deja (AWR, ASH, wait events, planuri de execuție), și disciplina de a spune "sistemul tău actual încă poate rezista — iată cum".
 
 ---
 
