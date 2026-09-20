@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile in IT"
 description: "Ivan Luminaria, Scrum/Agile IT Project Manager: 30 years managing software projects with solid Oracle and Data Warehouse technical background. Real cases."
 date: "2026-09-14"
-lastmod: "2026-09-19"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -20,7 +20,7 @@ There's the PM who manages the project. And the PM who understands the project. 
 
 What I recognize right away on a project: when a requirement is not implementable as written. When an estimate is optimistic out of pressure, not data. When the real risk is not the deadline, it's the architecture.
 
-10+ projects delivered between 2013 and 2022, teams of 3–7 people, budgets **€100K–€500K**, multi-country and full-remote. Sectors: Banking, Telco, Insurance, Public Administration. Clients: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum and Agile, certified training. What I bring: technical translation of requirements, early discovery of risks, one common language for both the team and the stakeholders.
+10+ projects delivered between 2013 and 2022, teams of 3–7 people, budgets **€100K–€500K**, multi-country and full-remote. Sectors: Banking, Telco, Insurance, Public Administration. Scrum and Agile, certified training. What I bring: technical translation of requirements, early discovery of risks, one common language for both the team and the stakeholders.
 
 ---
 

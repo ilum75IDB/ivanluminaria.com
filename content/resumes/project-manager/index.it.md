@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile in IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 anni di gestione progetti software con solido background tecnico Oracle e Data Warehouse. Casi reali."
 date: "2026-09-14"
-lastmod: "2026-09-19"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -20,7 +20,7 @@ C'è il PM che gestisce il progetto. E il PM che lo capisce. Io sono il secondo.
 
 Cosa riconosco subito su un progetto: quando un requisito non è implementabile come scritto. Quando una stima è ottimista per pressione, non per dati. Quando il vero rischio non è la deadline, è l'architettura.
 
-10+ progetti consegnati tra il 2013 e il 2022, team di 3–7 persone, budget **€100K–€500K**, multi-paese e full-remote. Settori: Banking, Telco, Assicurazioni, Pubblica Amministrazione. Clienti: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum e Agile, formazione certificata. Cosa porto: traduzione tecnica dei requisiti, scoperta anticipata dei rischi, un linguaggio comune tra team e stakeholder.
+10+ progetti consegnati tra il 2013 e il 2022, team di 3–7 persone, budget **€100K–€500K**, multi-paese e full-remote. Settori: Banking, Telco, Assicurazioni, Pubblica Amministrazione. Scrum e Agile, formazione certificata. Cosa porto: traduzione tecnica dei requisiti, scoperta anticipata dei rischi, un linguaggio comune tra team e stakeholder.
 
 ---
 

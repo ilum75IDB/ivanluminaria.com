@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile în IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 de ani gestionand proiecte software cu fundament tehnic solid Oracle și Data Warehouse. Cazuri reale."
 date: "2026-09-14"
-lastmod: "2026-09-19"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -20,7 +20,7 @@ Există PM-ul care gestionează proiectul. Și PM-ul care înțelege proiectul. 
 
 Ce recunosc imediat pe un proiect: când o cerință nu este implementabilă așa cum este scrisă. Când o estimare este optimistă din presiune, nu din date. Când riscul real nu este termenul limită, este arhitectura.
 
-10+ proiecte livrate între 2013 și 2022, echipe de 3–7 persoane, bugete **€100K–€500K**, multi-țară și full-remote. Sectoare: Banking, Telco, Asigurări, Administrație Publică. Clienți: Atradius, Generali, TIM/Huawei, Telepass, Banca d'Italia, Cassa Depositi e Prestiti. Scrum și Agile, formare certificată. Ce aduc: traducere tehnică a cerințelor, descoperire anticipată a riscurilor, un limbaj comun pentru echipă și stakeholderi.
+10+ proiecte livrate între 2013 și 2022, echipe de 3–7 persoane, bugete **€100K–€500K**, multi-țară și full-remote. Sectoare: Banking, Telco, Asigurări, Administrație Publică. Scrum și Agile, formare certificată. Ce aduc: traducere tehnică a cerințelor, descoperire anticipată a riscurilor, un limbaj comun pentru echipă și stakeholderi.
 
 ---
 
