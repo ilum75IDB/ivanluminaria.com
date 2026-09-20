@@ -3,7 +3,7 @@ title: "Technical Leader per database e Data Warehouse mission-critical"
 seoTitle: "Technical Leader per database e Data Warehouse mission-critical"
 description: "Ivan Luminaria, Technical Leader per database e Data Warehouse mission-critical: 30 anni tra Oracle, PostgreSQL, MySQL al fianco di CIO e CTO in banche e telco."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -14,11 +14,15 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Technical Leader con quasi 30 anni di esperienza su database (Oracle, PostgreSQL, MySQL) e Data Warehouse enterprise mission-critical.
+Ci sono decisioni che un CIO prende ogni trimestre — con implicazioni a due o tre anni, che dovranno reggere davanti al board e a volte davanti al regolatore. E ci sono momenti in cui quelle decisioni vanno pensate ad alta voce con qualcuno prima di annunciarle al team. Il Technical Leader è quella voce.
 
-Affianco CIO, CTO e IT Director quando un sistema dati rallenta, si ferma o deve cambiare direzione. Quando la causa attraversa più livelli — applicazione, SQL, database, sistema operativo, storage, rete, architettura dei dati — leggo la catena per intero e spiego ogni passaggio a chi deve decidere.
+Non un consulente che arriva, risolve e va via. Non un CTO assunto che deve difendere le decisioni fatte con lui. Un peer senior indipendente che siede nelle stanze giuste con la continuità di un rapporto lungo — stessa persona, stesso contesto operativo, mesi che diventano anni.
 
-Tre pilastri tecnici: **database administration**, **performance e troubleshooting**, **Data Warehouse e data architecture**. Due capacità che li tengono insieme: **coordinamento tecnico dei team** e **trasferimento di competenze**, perché ogni intervento lasci sistemi più stabili e persone più autonome.
+Cosa faccio in un mese tipo: partecipo ai comitati IT del cliente, faccio review architetturali insieme al team senior, ascolto quello che i vendor propongono e lo traduco in trade-off comprensibili al CFO, aiuto il CIO a costruire la narrazione tecnica che poi porterà al board. Nelle notti in cui succede qualcosa sono raggiungibile — non come primo intervento, ma come lettura di secondo livello quando il team ha bisogno di uno sguardo esterno.
+
+Trent'anni di database mission-critical su Oracle, PostgreSQL e MySQL — banking, assicurazioni, telco, pubblica amministrazione e postale. Cluster Exadata multi-nodo, fact table oltre 800M record al giorno con SLA sotto i 500 ms, ambienti a supporto di 20M+ utenti finali. Batch analitici da 4 ore a meno di 30 minuti su Oracle OCI e Autonomous Database — senza cambio di piattaforma. Package ETL PL/SQL da oltre 60.000 righe per DWH multi-paese. Kimball, Inmon, star/snowflake, SCD. Docenza Oracle Italia su SQL, PL/SQL, amministrazione, performance tuning. Venticinque anni di mentoring continuativo di team senior e junior.
+
+Cosa porto: presenza continuativa nelle decisioni tecniche che pesano, un metodo di lettura cross-layer che unisce applicazione, database, storage, rete e architettura dati, e la disciplina di essere il peer che ti dice quello che il vendor non dirà mai — perché non ho niente da venderti.
 
 ---
 

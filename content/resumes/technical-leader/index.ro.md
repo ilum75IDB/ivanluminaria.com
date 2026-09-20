@@ -3,7 +3,7 @@ title: "Technical Leader pentru baze de date și Data Warehouse mission-critical
 seoTitle: "Technical Leader baze de date și Data Warehouse mission-critical"
 description: "Ivan Luminaria, Technical Leader pentru baze de date și Data Warehouse mission-critical: 30 de ani cu Oracle, PostgreSQL, MySQL pentru CIO/CTO în banking."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -14,11 +14,15 @@ layout: "simple"
 
 ## Profil Profesional
 
-Technical Leader cu aproape 30 de ani de experiență pe baze de date (Oracle, PostgreSQL, MySQL) și Data Warehouse enterprise mission-critical.
+Există decizii pe care un CIO le ia în fiecare trimestru — cu implicații pe doi sau trei ani, decizii care va trebui să reziste în fața board-ului și uneori în fața reglementatorului. Și există momente în care aceste decizii trebuie gândite cu voce tare împreună cu cineva înainte de a fi anunțate echipei. Technical Leader-ul este acea voce.
 
-Sunt alături de CIO, CTO și IT Directori atunci când un sistem de date încetinește, se oprește sau trebuie să schimbe direcția. Când cauza traversează mai multe niveluri — aplicație, SQL, bază de date, sistem de operare, stocare, rețea, arhitectură de date — citesc lanțul complet și explic fiecare pas celor care trebuie să decidă.
+Nu un consultant care sosește, rezolvă și pleacă. Nu un CTO angajat care trebuie să apere deciziile luate împreună cu el. Un peer senior independent care stă în camerele potrivite cu continuitatea unei relații lungi — aceeași persoană, același context operativ, luni care devin ani.
 
-Trei piloni tehnici: **database administration**, **performance și troubleshooting**, **Data Warehouse și data architecture**. Două capacități care îi țin împreună: **coordonarea tehnică a echipelor** și **transferul de competențe**, pentru ca fiecare intervenție să lase în urma sisteme mai stabile și oameni mai autonomi.
+Ce fac într-o lună tipică: particip la comitetele IT ale clientului, fac review-uri arhitecturale împreună cu echipa senior, ascult ce propun vendor-ii și traduc în trade-off-uri de înțeles pentru CFO, ajut CIO-ul să construiască narațiunea tehnică pe care apoi o va duce în fața board-ului. În nopțile în care se întâmplă ceva sunt accesibil — nu ca primă intervenție, ci ca citire de al doilea nivel când echipa are nevoie de o privire externă.
+
+Treizeci de ani pe baze de date mission-critical pe Oracle, PostgreSQL și MySQL — banking, asigurări, telco, administrație publică și poștal. Clustere Exadata multi-nod, fact table-uri cu ingest de peste 800M înregistrări pe zi cu SLA sub 500 ms, medii în sprijinul a peste 20M utilizatori finali. Batch-uri analitice de la 4 ore la sub 30 de minute pe Oracle OCI și Autonomous Database — fără schimbare de platformă. Package-uri ETL PL/SQL de peste 60.000 de linii pentru DWH multi-țară. Kimball, Inmon, star/snowflake, SCD. Predare Oracle Italia despre SQL, PL/SQL, administrare, performance tuning. Douăzeci și cinci de ani de mentorat continuu al echipelor senior și junior.
+
+Ce aduc: prezență continuă în deciziile tehnice care contează, o metodă de citire cross-layer care unește aplicație, bază de date, storage, rețea și arhitectură de date, și disciplina de a fi peer-ul care îți spune ceea ce vendor-ul nu-ți va spune niciodată — pentru că nu am nimic să-ți vând.
 
 ---
 
