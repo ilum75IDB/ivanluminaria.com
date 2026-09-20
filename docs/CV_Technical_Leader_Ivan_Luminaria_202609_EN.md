@@ -5,7 +5,15 @@
 
 ## Profile
 
-Technical Leader with nearly 30 years on mission-critical databases (Oracle, PostgreSQL, MySQL) and enterprise Data Warehouses. I work alongside CIOs, CTOs and IT Directors when a data system slows down, stops or needs a new direction: I read the whole chain — application, SQL, database, operating system, storage, network, data architecture — and explain every step to the people who decide. Three technical pillars (database administration, performance & troubleshooting, data warehouse & data architecture), held together by team coordination and knowledge transfer.
+There are decisions a CIO makes every quarter — with two- or three-year implications, decisions that must hold up before the board and sometimes before the regulator. And there are moments when those decisions need to be thought through out loud with someone before they're announced to the team. The Technical Leader is that voice.
+
+Not a consultant who arrives, solves, and leaves. Not a CTO hired who has to defend the decisions made with him. A senior independent peer who sits in the right rooms with the continuity of a long relationship — same person, same operational context, months that turn into years.
+
+What I do in a typical month: I sit in the client's IT committees, run architectural reviews alongside the senior team, listen to what vendors propose and translate it into trade-offs the CFO can understand, help the CIO build the technical narrative that will later reach the board. On the nights when something happens I'm reachable — not as first response, but as second-level reading when the team needs an outside view.
+
+Three decades on mission-critical databases across Oracle, PostgreSQL and MySQL — banking, insurance, telco, public administration and postal. Multi-node Exadata clusters, fact tables ingesting 800M+ records per day with SLAs under 500 ms, environments serving 20M+ end users. Analytical batches cut from 4 hours to under 30 minutes on Oracle OCI and Autonomous Database — no platform change. PL/SQL ETL packages of over 60,000 lines for a multi-country DWH. Kimball, Inmon, star/snowflake, SCD. Oracle Italy trainer on SQL, PL/SQL, administration, performance tuning. Twenty-five years of continuous mentoring of senior and junior teams.
+
+What I bring: continuous presence in the technical decisions that matter, a cross-layer reading method that connects application, database, storage, network and data architecture, and the discipline of being the peer who tells you what the vendor will never say — because I have nothing to sell you.
 
 ## Areas of engagement
 

@@ -3,7 +3,7 @@ title: "Oracle PL/SQL Developer"
 seoTitle: "Oracle PL/SQL Developer & SQL Tuning"
 description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 de ani dezvoltand, refactorizand și optimizand cod PL/SQL pentru aplicații enterprise data-intensive."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,17 @@ layout: "simple"
 
 ## Profil Profesional
 
-Senior Oracle PL/SQL Developer cu aproape 30 de ani în proiectarea, dezvoltarea, testarea și optimizarea de cod PL/SQL robust pentru aplicații data-intensive și sisteme Data Warehouse.
+PL/SQL are o caracteristică particulară printre limbajele de programare: rămâne în producție timp de decenii, trecând adesea prin patru sau cinci generații de dezvoltatori care și-l transmit unii altora. Valoarea celui care îl scrie se măsoară în ceea ce acei succesori pot încă să citească, să înțeleagă și să modifice.
 
-Expertiză aprofundată pe packages, procedures, functions, triggers și tipuri complexe, cu atenție constantă la performance, mentenabilitate și calitatea codului. Fluentă în optimizarea de interogări SQL complexe și gestionarea volumelor mari.
+Când predau PL/SQL, îmi place să-l definesc ca **limbaj orientat pe excepții**: capacitatea de a gestiona excepții de sistem și de a defini excepții custom, în mod declarativ în fiecare bloc, este ceea ce permite codului să supraviețuiască la scenarii care la momentul scrierii nu erau previzibile.
 
-Bază consolidată și ca Oracle DBA și DWH Architect: viziune completă asupra ciclului de viață al datelor, de la ingestion la consumul analitic.
+Cursoare rând-cu-rând care ar putea fi BULK COLLECT. DML care ignoră partiționarea subiacentă. SQL dinamic construit cu concatenare de string-uri când bind variable-ul exista deja. Sunt detaliile de scriere care multiplică timpii de execuție — diferența între un batch de 4 ore și unul de 30 de minute stă aproape întotdeauna în câteva pagini de cod. Și când 60.000 de linii de cod guvernează insurance business-ul din patru țări europene, ceea ce părea legacy devine coloana vertebrală operativă: nu cod de rescris, ci regulament executabil despre cum funcționează cu adevărat business-ul.
+
+Package-uri ETL de peste 60.000 de linii pentru DWH multi-țară, ingest daily redus de la peste 4 ore la mai puțin de 2 ore prin BULK COLLECT/FORALL, partition-aware DML și query rewriting. Batch-uri analitice de la 4 ore la sub 30 de minute pe seturi de date de peste 2 miliarde de rânduri. Package-uri pentru gestionarea tranzacțiilor financiare cu milioane de operațiuni zilnice. PL/SQL Hierarchical Profiler, SQL Trace, TKPROF. Predare Oracle Italia despre SQL și PL/SQL. Douăzeci și cinci de ani de mentorat continuu al dezvoltatorilor junior către nivel senior în banking, asigurări, telco, administrație publică și poștal.
+
+În afară de PL/SQL și SQL pot să citesc, să înțeleg și să modific și alte limbaje — Unix Shell Script, Python, Java, C++, JavaScript, HTML, CSS, Pascal și CaML. Unele le-am studiat la universitate, altele le-am învățat când a fost nevoie să pun mâna pe codul din jurul bazei de date. Nu sunt un guru al niciunuia dintre ele; dar când o bucată de logică critică trăiește în afara bazei de date — într-un script shell, într-un serviciu Python, într-un frontend care apelează proceduri PL/SQL — citirea celeilalte părți ajută să înțelegi unde este cu adevărat problema.
+
+Ce aduc: PL/SQL pe care dezvoltatorii tăi junior îl pot citi și menține, refactor-uri țintite care reduc datoria tehnică fără rewrite-uri grăbite, și disciplina de a distinge ce este datorie tehnică de ce este patrimoniu de business.
 
 ---
 

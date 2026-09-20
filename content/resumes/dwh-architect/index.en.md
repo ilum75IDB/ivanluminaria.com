@@ -3,7 +3,7 @@ title: "Data Warehouse Architect"
 seoTitle: "Data Warehouse Architect Oracle/PostgreSQL"
 description: "Ivan Luminaria, Data Warehouse Architect Oracle/PostgreSQL: 30 years designing DWH solutions, Kimball dimensional modelling, ETL pipelines and analytical architectures."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Professional Profile
 
-Data Warehouse Architect with nearly 30 years of experience designing, implementing and running complex, high-performing DWH solutions on Oracle and PostgreSQL.
+Most of the times I've been called to "design a new DWH", the existing DWH was fine. It just needed to be understood. Thirty years of Oracle, the last fifteen as a DWH Architect — I've learned the bottleneck is almost never the platform.
 
-Expert in multidimensional data modelling (Kimball, Inmon) and in optimising ETL/ELT processes and SQL queries on datasets from hundreds of millions to billions of rows. I lead end-to-end DWH projects — from requirements to production deployment — with data integrity, quality and availability supporting business decisions.
+What I see right away when a proposal for a new platform lands on the table: the partition strategy never revisited after five years of growth. The PL/SQL ETL running serial when it could run parallel. The materialized view no one has refreshed since the schema change in 2019. It's the details that pile up, not the technologies that age out.
 
-Technical leadership and problem-solving mindset in international, full-remote settings.
+Analytical batches cut from 4 hours to under 30 minutes on Oracle OCI and Autonomous Database — no hardware change, only working on design and execution plans. Multi-country DWH programmes consolidating 4 European countries with 60,000+ lines of PL/SQL and full daily ingestion under 2 hours. Insurance DWH 500 GB–8 TB. Multi-node Exadata clusters, fact tables ingesting 800M+ records per day with SLAs under 500 ms. ODI 10g→12c migrations handled in continuity, never from scratch. Kimball, Inmon, star/snowflake, SCD, bus matrix. Long-standing Oracle Italy trainer on SQL, PL/SQL, tuning. What I bring: an independent second opinion before you sign a six-figure proposal, a method that starts from the data the system already records (AWR, ASH, wait events, execution plans), and the discipline to say "your current system can still hold — here's how".
 
 ---
 

@@ -3,7 +3,7 @@ title: "Data Warehouse Architect"
 seoTitle: "Data Warehouse Architect Oracle/PostgreSQL"
 description: "Ivan Luminaria, Data Warehouse Architect Oracle/PostgreSQL: 30 años de diseño DWH, modelado dimensional Kimball, pipelines ETL y arquitecturas analíticas."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Perfil Profesional
 
-Data Warehouse Architect con casi 30 años de experiencia en el diseño, implementación y gestión de soluciones DWH complejas y de alto rendimiento sobre Oracle y PostgreSQL.
+En la mayoría de los casos en que me han llamado para "diseñar un DWH nuevo", el DWH existente estaba bien. Solo faltaba entenderlo. Treinta años de Oracle, los últimos quince como DWH Architect — he aprendido que el cuello de botella casi nunca es la plataforma.
 
-Experto en modelado multidimensional (Kimball, Inmon) y en la optimización de procesos ETL/ELT y consultas SQL sobre datasets de cientos de millones a miles de millones de filas. Lidero proyectos DWH end-to-end — desde los requisitos hasta el despliegue en producción — con integridad, calidad y disponibilidad del dato al servicio de las decisiones de negocio.
+Lo que veo de inmediato cuando llega un presupuesto para una nueva plataforma: la partición nunca revisada después de cinco años de crecimiento. El ETL en PL/SQL que corre en serie cuando podría correr en paralelo. La materialized view que nadie ha actualizado desde el cambio de esquema de 2019. Son los detalles que se acumulan, no las tecnologías que envejecen.
 
-Liderazgo técnico y mindset de problem solving en contextos internacionales y full remote.
+Batch analíticos de 4 horas a menos de 30 minutos en Oracle OCI y Autonomous Database — sin cambio de hardware, solo trabajando en diseño y planes de ejecución. Programas de DWH multi-país consolidando 4 países europeos con más de 60.000 líneas de PL/SQL y carga diaria completa por debajo de 2 horas. DWH aseguradores 500 GB–8 TB. Clusters Exadata multi-nodo, fact tables con ingesta de 800M+ registros al día con SLA por debajo de 500 ms. Migraciones ODI 10g→12c gestionadas en continuidad, nunca desde cero. Kimball, Inmon, star/snowflake, SCD, bus matrix. Docencia Oracle Italia sobre SQL, PL/SQL, tuning. Lo que aporto: una segunda opinión independiente antes de que firmes un presupuesto de cientos de miles de euros, un método que parte de los datos que el sistema ya registra (AWR, ASH, wait events, planes de ejecución), y la disciplina de decir "tu sistema actual todavía puede aguantar — te explico cómo".
 
 ---
 

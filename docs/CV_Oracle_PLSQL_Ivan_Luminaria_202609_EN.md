@@ -5,7 +5,17 @@
 
 ## Profile
 
-Senior Oracle PL/SQL Developer with nearly 30 years designing, building, testing and optimising robust PL/SQL code for data-intensive applications and Data Warehouse systems. Deep expertise in packages, procedures, functions, triggers and types, with a constant focus on performance, maintainability and code quality. Fluent in optimising complex SQL queries and managing very large volumes. Consolidated background as Oracle DBA and DWH Architect gives a full view of the data lifecycle, from source ingestion to analytical consumption.
+PL/SQL has a peculiar trait among programming languages: it stays in production for decades, often passing through four or five generations of developers who hand it over to each other. The value of whoever writes it is measured in what those successors can still read, understand and modify.
+
+When I teach PL/SQL, I like to define it as an **exception-oriented language**: the ability to handle system exceptions and to define custom ones, declaratively inside every block, is what lets the code survive scenarios that weren't foreseeable at the time of writing.
+
+Row-by-row cursors that could be BULK COLLECT. DML that ignores the underlying partitioning. Dynamic SQL built with string concatenation when bind variables were right there. These are the writing details that multiply execution times — the difference between a 4-hour batch and a 30-minute one almost always sits in a few pages of code. And when 60,000 lines of code govern the insurance business of four European countries, what looked like legacy becomes the operational backbone: not code to rewrite, but an executable rulebook of how the business actually works.
+
+ETL packages of over 60,000 lines for a multi-country DWH, full daily ingestion cut from over 4 hours to under 2 hours with BULK COLLECT/FORALL, partition-aware DML and query rewriting. Analytical batches cut from 4 hours to under 30 minutes on 2B+ row datasets. Packages handling millions of daily financial transactions. PL/SQL Hierarchical Profiler, SQL Trace, TKPROF. Oracle Italy trainer on SQL and PL/SQL. Twenty-five years of continuous mentoring of junior developers toward senior level in banking, insurance, telco, public administration and postal.
+
+Beyond PL/SQL and SQL I can read, understand and modify other languages too — Unix Shell Script, Python, Java, C++, JavaScript, HTML, CSS, Pascal and CaML. Some I studied at university, others I picked up when the code around the database needed touching. I'm no guru in any of them; but when a piece of critical logic lives outside the database — in a shell script, in a Python service, in a frontend that calls PL/SQL procedures — reading the other side helps to understand where the problem really sits.
+
+What I bring: PL/SQL your junior developers can read and maintain, targeted refactors that reduce technical debt without hasty rewrites, and the discipline to tell technical debt from business asset.
 
 ## Areas of engagement
 

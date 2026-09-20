@@ -3,7 +3,7 @@ title: "Oracle DBA & Performance Tuning Expert"
 seoTitle: "Oracle DBA & Performance Tuning Expert"
 description: "Ivan Luminaria, Oracle DBA & Performance Tuning Expert: 30 anni in amministrazione database mission-critical, RAC, Data Guard, Exadata, AWR/ASH e Oracle Cloud."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Profilo Professionale
 
-Senior Oracle DBA e Performance Tuning Expert con quasi 30 anni su database Oracle mission-critical, inclusi Exadata, RAC, Data Guard e Oracle Cloud (OCI, Autonomous Database).
+Centinaia di database Oracle amministrati in trent'anni tra banking, assicurazioni, telco, pubblica amministrazione e postale — cluster Exadata multi-nodo, fact table oltre 800M record al giorno con SLA sotto i 500 ms, ambienti a supporto di 20M+ utenti finali. Amministrazione MySQL e PostgreSQL a scala enterprise. Batch analitici da 4 ore a meno di 30 minuti su Oracle OCI e Autonomous Database — senza cambio di piattaforma. OCP dai tempi in cui erano rari. Docenza Oracle Italia su SQL, PL/SQL, amministrazione, performance tuning; venticinque anni di mentoring continuativo di DBA junior verso senior.
 
-Competenza approfondita in analisi AWR, ADDM e ASH, tuning di query SQL complesse, ottimizzazione di istanze e diagnosi dei wait event. Solida base operativa su backup & recovery (RMAN), sicurezza (TDE), installazione, patching, migrazioni e storage management (ASM).
+Quello che vedo quando arriva una richiesta di intervento post-incident: le metriche dei monitoring nel verde fino a quaranta minuti prima. Il ticket vendor chiuso con «unable to reproduce». Il DBA junior che ha ereditato il sistema da un senior uscito a fine anno e non ha ancora la mappa mentale per collegare i puntini. La catena causale sta quasi sempre nell'intreccio tra layer — applicazione, database, storage, rete — non dentro un layer solo. Gli strumenti mostrano sintomi, non cause.
 
-Il performance tuning resta la specializzazione principale — la disciplina che tiene in piedi sistemi sotto carichi reali.
+Post-Incident Root Cause Analysis su casi in cui i log del momento erano stati rotati o compressi male: storico AWR e ASH, log di sistema operativo e storage, registro dei change. Ho ricostruito catene causali che il team pensava perse, e prodotto documenti che sono passati davanti al board senza che il DBA senior fosse messo in mezzo per default. Cosa porto: un metodo cross-layer costruito su sistemi reali. Non cerchiamo colpevoli, ricostruiamo cosa è successo davvero.
 
 ---
 

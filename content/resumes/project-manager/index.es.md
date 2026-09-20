@@ -3,7 +3,7 @@ title: "Project Manager"
 seoTitle: "Project Manager Scrum/Agile en IT"
 description: "Ivan Luminaria, Project Manager Scrum/Agile IT: 30 años gestionando proyectos software con sólido background técnico Oracle y Data Warehouse. Casos reales."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Perfil Profesional
 
-Project Manager con casi 30 años de experiencia IT y un sólido background técnico en Data Warehouse y Oracle. Más de 10 proyectos entregados con un fuerte track record de cumplimiento de plazos, liderando equipos de 3 a 7 personas en contextos multiculturales y remotos con presupuestos de **€100K a €500K**.
+Existe el PM que gestiona el proyecto. Y el PM que entiende el proyecto. Yo soy el segundo. Treinta años dentro de Oracle, PL/SQL, Data Warehouse, performance tuning — de estos, en los últimos doce aproximadamente también me dedico a la gestión de proyectos.
 
-Planificación, gestión de riesgos, coordinación de recursos y stakeholder engagement — desarrollados en años de conducción de actividades de desarrollo, release y mantenimiento para clientes Banking, Telco, Insurance y Administración Pública.
+Lo que reconozco de inmediato en un proyecto: cuándo un requisito no es implementable tal como está escrito. Cuándo una estimación es optimista por presión, no por datos. Cuándo el verdadero riesgo no es la fecha límite, es la arquitectura.
 
-Agile y Scrum aplicados a diario, con formación certificada. La base técnica profunda (arquitectura DWH, Oracle DBA, PL/SQL, ETL/ELT) permite evaluaciones realistas de factibilidad e identificación temprana de riesgos técnicos.
+10+ proyectos entregados entre 2013 y 2022, equipos de 3–7 personas, presupuestos **€100K–€500K**, multi-país y full-remote. Sectores: Banca, Telco, Seguros, Administración Pública. Scrum y Agile, formación certificada. Lo que aporto: traducción técnica de requisitos, descubrimiento anticipado de riesgos, un lenguaje común para el equipo y los stakeholders.
 
 ---
 
