@@ -107,6 +107,12 @@
           {{ i18n "footer.powered_by" (dict "Hugo" $hugo "Congo" $congo) | safeHTML }}
         </p>
       {{ end }}
+      {{/* Site version — links to /changelog/ */}}
+      {{ if and (.Site.Params.footer.showVersion | default true) (.Site.Params.version) }}
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          <a href="{{ "/changelog/" | relLangURL }}" class="hover:underline hover:decoration-primary-400 hover:text-primary-500">{{ .Site.Params.version }}</a>
+        </p>
+      {{ end }}
     </div>
     <div class="flex flex-row items-center">
       {{/* Glossary link — always visible, points to current-language glossary index */}}
