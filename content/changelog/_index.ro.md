@@ -81,6 +81,8 @@ Redesign al paginii `/tags/` cu clasificare multi-secțiune. Mobile search: bott
 
 **Bootstrap-ul site-ului + setup-ul workflow-ului editorial**
 
-Primul release reconstruit retroactiv. Bootstrap al site-ului Hugo cu deploy automat pe GitHub Pages. Publicate primele conținuturi tehnice ale blogului Database Strategy în patru limbi.
+Primul release reconstruit retroactiv. Bootstrap al site-ului Hugo cu deploy automat pe GitHub Pages.
+
+Materialul care alimentează blogul provine dintr-o arhivă personală construită de-a lungul a aproape treizeci de ani de muncă în informatică — notițe tehnice, memorii de proiect, observații adunate proiect după proiect, incident după incident. Reelaborarea acelui patrimoniu a produs primele articole ale blogului Database Strategy, publicate în patru limbi.
 
 Setup al workflow-ului editorial: propunere de 3 titluri per articol, tabel idei cu status, glosar de 5 termeni, `hreflang` multilingv, breadcrumbs `JSON-LD`, OpenGraph tags. Pagină Despre cu etichete LinkedIn/Email în patru limbi.

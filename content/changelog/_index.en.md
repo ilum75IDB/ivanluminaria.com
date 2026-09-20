@@ -81,6 +81,8 @@ Redesign of the `/tags/` page with multi-section classification. Mobile search: 
 
 **Site bootstrap + editorial workflow setup**
 
-First release reconstructed retroactively. Bootstrap of the Hugo site with automatic deploy to GitHub Pages. First technical contents of the Database Strategy blog published in four languages.
+First release reconstructed retroactively. Bootstrap of the Hugo site with automatic deploy to GitHub Pages.
+
+The material that feeds the blog comes from a personal archive built across nearly thirty years of work in IT — technical notes, project memories, observations gathered project after project, incident after incident. Reworking that legacy produced the first articles of the Database Strategy blog, published in four languages.
 
 Editorial workflow setup: 3-title proposal for each article, ideas table with status, 5-term glossary, multilingual `hreflang`, `JSON-LD` breadcrumbs, OpenGraph tags. About Me page with LinkedIn/Email labels in four languages.
