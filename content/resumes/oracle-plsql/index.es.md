@@ -3,7 +3,7 @@ title: "Oracle PL/SQL Developer"
 seoTitle: "Oracle PL/SQL Developer & SQL Tuning"
 description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 años desarrollando, refactorizando y optimizando código PL/SQL para apps data-intensive enterprise."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,17 @@ layout: "simple"
 
 ## Perfil Profesional
 
-Senior Oracle PL/SQL Developer con casi 30 años en el diseño, desarrollo, testing y optimización de código PL/SQL robusto para aplicaciones data-intensive y sistemas Data Warehouse.
+El PL/SQL tiene una característica particular entre los lenguajes de programación: se queda en producción durante décadas, pasando a menudo por cuatro o cinco generaciones de desarrolladores que se lo van pasando. El valor de quien lo escribe se mide en lo que esos sucesores todavía pueden leer, entender y modificar.
 
-Experto en packages, procedures, functions, triggers y tipos complejos, con atención constante a performance, mantenibilidad y calidad del código. Fluido en la optimización de consultas SQL complejas y gestión de grandes volúmenes.
+Cuando enseño PL/SQL, me gusta definirlo como **lenguaje orientado a las excepciones**: la capacidad de gestionar excepciones de sistema y de definir excepciones custom, de forma declarativa dentro de cada bloque, es lo que permite al código sobrevivir a escenarios que en el momento de la escritura no eran previsibles.
 
-Background consolidado también como Oracle DBA y DWH Architect: visión completa del ciclo de vida del dato, desde la ingestion hasta el consumo analítico.
+Cursores fila por fila que podrían ser BULK COLLECT. DML que ignora el particionamiento subyacente. SQL dinámico construido con concatenación de strings cuando el bind variable ya existía. Son los detalles de escritura que multiplican los tiempos de ejecución — la diferencia entre un batch de 4 horas y uno de 30 minutos casi siempre está en pocas páginas de código. Y cuando 60.000 líneas de código gobiernan el insurance business de cuatro países europeos, lo que parecía legacy se convierte en la columna vertebral operativa: no código para reescribir, sino reglamento ejecutable de cómo funciona realmente el negocio.
+
+Packages ETL de más de 60.000 líneas para DWH multi-país, ingesta daily reducida de más de 4 horas a menos de 2 horas con BULK COLLECT/FORALL, partition-aware DML y query rewriting. Batches analíticos de 4 horas a menos de 30 minutos sobre datasets de más de 2 mil millones de filas. Packages para gestión transaccional financiera con millones de operaciones diarias. PL/SQL Hierarchical Profiler, SQL Trace, TKPROF. Docencia Oracle Italia sobre SQL y PL/SQL. Veinticinco años de mentoring continuo de desarrolladores junior hacia nivel senior en banca, seguros, telco, administración pública y postal.
+
+Además de PL/SQL y SQL puedo leer, comprender y modificar también otros lenguajes — Unix Shell Script, Python, Java, C++, JavaScript, HTML, CSS, Pascal y Caml. Algunos los he estudiado en la universidad, otros los he aprendido cuando ha hecho falta tocar el código alrededor de la base de datos. No soy un guru de ninguno de ellos; pero cuando un trozo de lógica crítica vive fuera de la base de datos — en un script shell, en un servicio Python, en un frontend que llama a procedures PL/SQL — leer el otro lado ayuda a entender dónde está realmente el problema.
+
+Lo que aporto: PL/SQL que tus desarrolladores junior pueden leer y mantener, refactors específicos que reducen deuda técnica sin rewrites apresurados, y la disciplina de distinguir lo que es deuda técnica de lo que es patrimonio de negocio.
 
 ---
 
