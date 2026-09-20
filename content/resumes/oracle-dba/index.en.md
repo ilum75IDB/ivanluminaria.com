@@ -3,7 +3,7 @@ title: "Oracle DBA & Performance Tuning Expert"
 seoTitle: "Oracle DBA & Performance Tuning Expert"
 description: "Ivan Luminaria, Oracle DBA & Performance Tuning Expert: 30 years administering mission-critical databases, RAC, Data Guard, Exadata, AWR/ASH and Oracle Cloud."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Professional Profile
 
-Senior Oracle DBA and Performance Tuning Expert with nearly 30 years on mission-critical Oracle databases, including Exadata, RAC, Data Guard and Oracle Cloud (OCI, Autonomous Database).
+Hundreds of Oracle databases administered over three decades across banking, insurance, telco, public administration and postal — multi-node Exadata clusters, fact tables ingesting 800M+ records per day with SLAs under 500 ms, environments serving 20M+ end users. MySQL and PostgreSQL administration at enterprise scale. Analytical batches cut from 4 hours to under 30 minutes on Oracle OCI and Autonomous Database — no platform change. OCP from the days when they were rare. Oracle Italy trainer on SQL, PL/SQL, administration, performance tuning; twenty-five years of continuous mentoring of junior DBAs toward senior level.
 
-Deep expertise in AWR, ADDM and ASH analysis, complex SQL tuning, instance optimisation and wait-event diagnosis. Solid operational grounding in backup & recovery (RMAN), security (TDE), installation, patching, migrations and storage management (ASM).
+What I see when a post-incident request lands: monitoring metrics green until forty minutes before. The vendor ticket closed as "unable to reproduce". The junior DBA who inherited the system from a senior gone at year-end and doesn't yet have the mental map to connect the dots. The causal chain almost always sits in the interplay between layers — application, database, storage, network — not inside a single layer. Tools show symptoms, not causes.
 
-Performance tuning remains the primary specialisation — the discipline that keeps demanding systems available under real workloads.
+Post-Incident Root Cause Analysis on cases where the logs of the moment had been rotated or compressed badly: AWR and ASH history, OS and storage logs, change register. I've reconstructed causal chains the team thought were lost, and produced documents that went before the board without the senior DBA being pinned as the default answer. What I bring: a cross-layer method built on real systems. We don't look for culprits — we reconstruct what actually happened.
 
 ---
 

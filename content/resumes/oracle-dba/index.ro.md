@@ -3,7 +3,7 @@ title: "Oracle DBA & Performance Tuning Expert"
 seoTitle: "Oracle DBA & Performance Tuning Expert"
 description: "Ivan Luminaria, Oracle DBA & Performance Tuning Expert: 30 de ani administrand baze de date mission-critical, RAC, Data Guard, Exadata, AWR/ASH și Oracle Cloud."
 date: "2026-09-14"
-lastmod: "2026-09-17"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Profil Profesional
 
-Senior Oracle DBA și Performance Tuning Expert cu aproape 30 de ani pe baze de date Oracle mission-critical, inclusiv Exadata, RAC, Data Guard și Oracle Cloud (OCI, Autonomous Database).
+Sute de baze de date Oracle administrate în treizeci de ani în banking, asigurări, telco, administrație publică și poștal — clustere Exadata multi-nod, fact table-uri cu ingest de peste 800M înregistrări pe zi cu SLA sub 500 ms, medii în sprijinul a peste 20M utilizatori finali. Administrare MySQL și PostgreSQL la scară enterprise. Batch-uri analitice de la 4 ore la sub 30 de minute pe Oracle OCI și Autonomous Database — fără schimbare de platformă. OCP din vremurile în care erau rari. Predare Oracle Italia despre SQL, PL/SQL, administrare, performance tuning; douăzeci și cinci de ani de mentorat continuu al DBA-lor junior către nivel senior.
 
-Expertiză aprofundată în analiza AWR, ADDM și ASH, tuning de interogări SQL complexe, optimizare de instanțe și diagnosticare a wait events. Bază operativă solida pe backup & recovery (RMAN), securitate (TDE), instalare, patching, migrari și storage management (ASM).
+Ce văd când sosește o cerere de intervenție post-incident: metricile de monitoring în verde până cu patruzeci de minute înainte. Tichetul vendor închis cu «unable to reproduce». DBA-ul junior care a moștenit sistemul de la un senior plecat la sfârșitul anului și încă nu are harta mentală să conecteze punctele. Lanțul cauzal stă aproape întotdeauna în interacțiunea dintre straturi — aplicație, bază de date, storage, rețea — nu în interiorul unui singur strat. Instrumentele arată simptome, nu cauze.
 
-Performance tuning ramane specializarea principala — disciplina care menține sisteme exigente disponibile sub sarcini reale.
+Post-Incident Root Cause Analysis pe cazuri în care log-urile momentului fuseseră rotate sau comprimate greșit: istoric AWR și ASH, log-uri de sistem de operare și storage, registrul modificărilor. Am reconstruit lanțuri cauzale pe care echipa le credea pierdute, și am produs documente care au trecut prin fața board-ului fără ca DBA-ul senior să fie pus în mijloc ca răspuns implicit. Ce aduc: o metodă cross-layer construită pe sisteme reale. Nu căutăm vinovați — reconstruim ce s-a întâmplat cu adevărat.
 
 ---
 
