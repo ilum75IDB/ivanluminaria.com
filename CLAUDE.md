@@ -168,6 +168,45 @@ Pushing to the `main` branch triggers the GitHub Actions workflow (`.github/work
 4. Uploads `public/` as a Pages artifact
 5. Deploys to GitHub Pages
 
+## Versioning
+
+Il progetto usa **CalVer** con schema `v<YYYY>.<MM>.<micro>` — allineato al modello editoriale a cadenza temporale (blog settimanale, LinkedIn 2×/settimana, milestone editoriali per stagione). Convenzione allineata al progetto `NAIT` (Negulici AI Translator Pro), l'altro progetto Ivan che usa CalVer.
+
+**Schema**:
+- `<YYYY>` — anno del release (es. `2026`)
+- `<MM>` — mese con zero padding (es. `09`)
+- `<micro>` — contatore incrementale nel mese, con zero padding a 3 cifre (es. `001`, `002`); reset a `001` al primo del mese successivo
+
+**Quando taggare**:
+- Milestone editoriali (nuova stagione, redesign, nuova sezione)
+- Merge significativi su `main` che aggregano più cambiamenti coerenti (es. cascata refactor CV, lancio nuova serie di articoli, refactor archetipico dei profili)
+- Non taggare ogni singola pubblicazione articolo (troppo rumoroso — 52 tag/anno solo per gli articoli)
+
+**Cosa NON considerare release**:
+- Fix di typo, refactor stilistici singoli, aggiornamenti routine
+- Push singoli su `main` durante il flusso normale editoriale (articoli settimanali)
+
+**Storico rilasci**:
+- `v2026.09.001` (2026-09-20) — Milestone: 5 CV pilastri con voci forti (PM, DWH, DBA, PL/SQL, Technical Leader) + Profile atemporali + posizionamento IDEA DB stabilizzato + LinkedIn v2 TL live + avatar audience-peer "Alex Novak" (`personal-branding-idb`). Commit di merge sottostante: `6755072`
+
+**Comandi**:
+
+```bash
+# Creare un nuovo tag su un commit specifico (es. l'ultimo merge su main)
+git tag -a v<YYYY>.<MM>.<NNN> <sha-commit> -m "<descrizione milestone>"
+git push origin v<YYYY>.<MM>.<NNN>
+
+# Vedere i tag esistenti
+git tag --list
+
+# Vedere l'ultimo tag e la distanza dal HEAD (utile per capire quante modifiche
+# sono state accumulate dopo l'ultima release)
+git describe --tags
+
+# Vedere il contenuto di un tag specifico
+git show v2026.09.001
+```
+
 ## Multilingual Architecture
 
 - **Default language**: Italian (`it`), with `defaultContentLanguageInSubdir = true` (content lives under `/it/`)

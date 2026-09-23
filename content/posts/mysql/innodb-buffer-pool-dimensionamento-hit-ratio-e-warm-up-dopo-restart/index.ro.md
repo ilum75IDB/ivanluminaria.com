@@ -1,15 +1,23 @@
 ---
-title: "128 MB pe o mașină de 32 GB: cum dimensionezi corect InnoDB buffer pool în MySQL"
-seoTitle: "InnoDB buffer pool MySQL: dimensionare, instanțe și warm-up"
-description: "Un server MySQL cu 32 GB RAM și 128 MB buffer pool: cum am diagnosticat problema, ce parametri am modificat și ce rezultate am obținut în producție."
-date: 2099-12-31
-draft: true
-translationKey: "innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart"
-tags: ["mysql", "innodb", "buffer-pool", "performance-tuning", "mysql-8"]
-categories: ["mysql"]
-image: "innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg"
-webo_status: da_tradurre
+categories:
+- mysql
+date: '2026-09-29'
+description: 'Un server MySQL cu 32 GB RAM și 128 MB buffer pool: cum am diagnosticat
+  problema, ce parametri am modificat și ce rezultate am obținut în producție.'
+draft: false
+image: innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg
+seoTitle: 'InnoDB buffer pool MySQL: dimensionare, instanțe și warm-up'
+tags:
+- mysql
+- innodb
+- buffer-pool
+- performance-tuning
+- mysql-8
+title: '128 MB pe o mașină de 32 GB: cum dimensionezi corect InnoDB buffer pool în
+  MySQL'
+translationKey: innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart
 webo_generated_at: 2026-09-15
+webo_status: scheduled
 ---
 
 ## 128 MB pe o mașină de 32 GB

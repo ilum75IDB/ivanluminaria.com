@@ -3,7 +3,7 @@ title: "Oracle PL/SQL Developer"
 seoTitle: "Oracle PL/SQL Developer & SQL Tuning"
 description: "Ivan Luminaria, Oracle PL/SQL Developer & SQL Tuning Expert: 30 de ani dezvoltand, refactorizand și optimizand cod PL/SQL pentru aplicații enterprise data-intensive."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,17 @@ layout: "simple"
 
 ## Profil Profesional
 
-Senior Oracle PL/SQL Developer cu aproape 30 de ani în proiectarea, dezvoltarea, testarea și optimizarea de cod PL/SQL robust pentru aplicații data-intensive și sisteme Data Warehouse.
+PL/SQL are o caracteristică particulară printre limbajele de programare: rămâne în producție timp de decenii, trecând adesea prin patru sau cinci generații de dezvoltatori care și-l transmit unii altora. Valoarea celui care îl scrie se măsoară în ceea ce acei succesori pot încă să citească, să înțeleagă și să modifice.
 
-Expertiză aprofundată pe packages, procedures, functions, triggers și tipuri complexe, cu atenție constantă la performance, mentenabilitate și calitatea codului. Fluentă în optimizarea de interogări SQL complexe și gestionarea volumelor mari.
+Când predau PL/SQL, îmi place să-l definesc ca **limbaj orientat pe excepții**: capacitatea de a gestiona excepții de sistem și de a defini excepții custom, în mod declarativ în fiecare bloc, este ceea ce permite codului să supraviețuiască la scenarii care la momentul scrierii nu erau previzibile.
 
-Bază consolidată și ca Oracle DBA și DWH Architect: viziune completă asupra ciclului de viață al datelor, de la ingestion la consumul analitic.
+Cursoare rând-cu-rând care ar putea fi BULK COLLECT. DML care ignoră partiționarea subiacentă. SQL dinamic construit cu concatenare de string-uri când bind variable-ul exista deja. Sunt detaliile de scriere care multiplică timpii de execuție — diferența între un batch de 4 ore și unul de 30 de minute stă aproape întotdeauna în câteva pagini de cod. Și când 60.000 de linii de cod guvernează insurance business-ul din patru țări europene, ceea ce părea legacy devine coloana vertebrală operativă: nu cod de rescris, ci regulament executabil despre cum funcționează cu adevărat business-ul.
+
+Package-uri ETL de peste 60.000 de linii pentru DWH multi-țară, ingest daily redus de la peste 4 ore la mai puțin de 2 ore prin BULK COLLECT/FORALL, partition-aware DML și query rewriting. Batch-uri analitice de la 4 ore la sub 30 de minute pe seturi de date de peste 2 miliarde de rânduri. Package-uri pentru gestionarea tranzacțiilor financiare cu milioane de operațiuni zilnice. PL/SQL Hierarchical Profiler, SQL Trace, TKPROF. Predare Oracle Italia despre SQL și PL/SQL. Douăzeci și cinci de ani de mentorat continuu al dezvoltatorilor junior către nivel senior în banking, asigurări, telco, administrație publică și poștal.
+
+În afară de PL/SQL și SQL pot să citesc, să înțeleg și să modific și alte limbaje — Unix Shell Script, Python, Java, C++, JavaScript, HTML, CSS, Pascal și CaML. Unele le-am studiat la universitate, altele le-am învățat când a fost nevoie să pun mâna pe codul din jurul bazei de date. Nu sunt un guru al niciunuia dintre ele; dar când o bucată de logică critică trăiește în afara bazei de date — într-un script shell, într-un serviciu Python, într-un frontend care apelează proceduri PL/SQL — citirea celeilalte părți ajută să înțelegi unde este cu adevărat problema.
+
+Ce aduc: PL/SQL pe care dezvoltatorii tăi junior îl pot citi și menține, refactor-uri țintite care reduc datoria tehnică fără rewrite-uri grăbite, și disciplina de a distinge ce este datorie tehnică de ce este patrimoniu de business.
 
 ---
 
@@ -35,7 +41,8 @@ Bază consolidată și ca Oracle DBA și DWH Architect: viziune completă asupra
 
 ## Rezultate în evidență
 
-- **Peste 60.000 de linii de PL/SQL** proiectate și menținute pentru un DWH multi-țară pe **4 țări europene** (Italia, Spania, Franța, Nordul Europei); template-uri reutilizabile și monitorizare în timp real a încărcărilor.
+- **Câteva sute de baze de date Oracle** în 30 de ani, între dezvoltare PL/SQL, tuning, DWH și administrare.
+- **Peste 60.000 de linii de PL/SQL** proiectate și menținute pentru **DWH Surety** (Atradius) multi-țară pe **4 țări europene** (Italia, Spania, Franța, Nordul Europei); template-uri reutilizabile și monitorizare în timp real a încărcărilor.
 - Ingestion zilnică completă **de la peste 4 ore la mai puțin de 2 ore** prin query rewriting, BULK COLLECT/FORALL și partition-aware DML.
 - Packages PL/SQL pentru procesarea tranzacțiilor financiare cu **milioane de operațiuni zilnice** pentru clienți banking și insurance.
 - Batch-uri analitice critice reduse **de la 4 ore la mai puțin de 30 de minute** pe seturi de date de peste 2 miliarde de rânduri.
@@ -66,7 +73,7 @@ Bază consolidată și ca Oracle DBA și DWH Architect: viziune completă asupra
 
 ### Oracle Database
 
-- Oracle Database 8i → 21c, Autonomous Database
+- Oracle Database până la 23ai, Autonomous Database
 
 ### Concepte conexe
 
@@ -87,45 +94,44 @@ Bază consolidată și ca Oracle DBA și DWH Architect: viziune completă asupra
 ## Experiență Profesională
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrator Unic · Senior Oracle PL/SQL Developer · DWH Architect** | 2021 – Prezent
+**Administrator Unic · Senior Oracle PL/SQL Developer · DWH Architect** | 2022 – Prezent
 
-- **PL/SQL Developer** (pentru ATRADIUS, divizia Surety) | 2022 – Iun 2025:
-  - Peste 60.000 de linii de cod PL/SQL (packages, procedures, functions) pentru DWH-ul multi-țară care consolideaza daune de asigurări și date de credit.
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Iul 2025 – Prezent:
+  - Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
+  - Query tuning, monitorizarea performanței, gestionarea replicării și capacity planning la scara enterprise.
+- **GENERALI Asigurări** — SQL & PL/SQL Optimization | Feb 2024 – Mai 2025:
+  - Optimizare de interogări complexe și dezvoltare PL/SQL pe baze de date Oracle de la 500 GB la 8 TB pentru aplicații din sectorul asigurărilor.
+  - Analiza Hierarchical Profiler și SQL tuning pentru identificarea blocajelor.
+- **ATRADIUS, divizia Surety** — PL/SQL Developer | 2022 – 2026:
+  - Peste 60.000 de linii de cod PL/SQL (packages, procedures, functions) pentru DWH-ul multi-țară (Italia, Spania, Franța, Nordul Europei) care consolidează daune de asigurări și date de credit.
   - Template-uri PL/SQL reutilizabile pentru proceduri de încărcare cu checkpoint-uri și logging în timp real.
   - Optimizarea performanței batch (query rewriting, BULK COLLECT/FORALL, partition-aware DML): ciclu zilnic redus de la peste 4 ore la mai puțin de 2 ore.
-- **PL/SQL Developer** (pentru FINWAVE S.p.A.) | 2020 – 2022:
-  - Packages PL/SQL pentru procesarea tranzacțiilor financiare cu milioane de operațiuni zilnice pe clienți banking și insurance.
-- **PL/SQL Developer** (pentru FAI SERVICE) | 2021 – 2023:
-  - Proceduri ETL în PL/SQL pe Oracle 19c în OCI pentru facturare, segmentare clienți și tracking costuri/venituri.
-  - Module PL/SQL de sprijin pentru dashboard-urile Oracle Analytics Cloud cu KPI financiari agregati.
-- **Dezvoltare PL/SQL** (clienți Banking, Telepass și altii):
+- **Alți clienți Banking, Telco și plăți** — Dezvoltare PL/SQL:
   - Packages de business logic PL/SQL pentru aplicații DWH din sectorul banking pe seturi de date de peste 2 miliarde de rânduri.
   - Optimizarea codului PL/SQL și a interogărilor SQL cu analiza Hierarchical Profiler pentru identificarea blocajelor.
 
 ---
 
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant** (pentru POSTE ITALIANE) | Iul 2025 – Prezent
+### FREELANCE / CONSULTANT INDEPENDENT — Roma, Italia (Full Remote Europa)
+**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2022
 
-- Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
-- Query tuning, monitorizarea performanței, gestionarea replicarii și capacity planning la scara enterprise.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Expert (cu focus Development)** (pentru TIM / HUAWEI) | 2020 – 2022
-
-- Suport specializat pentru echipele de dezvoltare în optimizarea codului PL/SQL și a interogărilor SQL pentru aplicații critice pe Exadata.
-- Analiza și tuning de procese batch PL/SQL de volum mare; script-uri PL/SQL pentru monitorizare și administrare.
-
----
-
-### PROFESIONIST INDEPENDENT / CONSULTANT — Roma, Italia (Full Remote Europa)
-**Senior Oracle PL/SQL Developer & DBA · DWH Architect** | 2013 – 2020
-
-- Soluții PL/SQL custom pentru diversi clienți: packages pentru logică ETL, proceduri de procesare a datelor, PL/SQL APIs.
-- Optimizare intensa de cod PL/SQL și SQL pentru îmbunătățirea performanței sistemelor existente.
-- Formare și mentoring de dezvoltatori juniori pe best practices de dezvoltare PL/SQL.
+- **FAI SERVICE** — PL/SQL Developer | 2021 – 2023:
+  - Proceduri ETL în PL/SQL pe Oracle 19c în OCI pentru facturare, segmentare clienți și tracking costuri/venituri.
+  - Module PL/SQL de sprijin pentru dashboard-urile Oracle Analytics Cloud cu KPI financiari agregați.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **LISCOR → Finwave, Gruppo Lutech** — PL/SQL Developer în sectorul financiar | 2020 – 2023:
+  - Packages PL/SQL pentru procesarea tranzacțiilor financiare cu milioane de operațiuni zilnice pe clienți banking și insurance.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **NIMIS → Huawei → pentru TIM** — Senior Oracle DBA & Performance Expert (focus Development) | 2020 – 2022:
+  - Suport specializat pentru echipele de dezvoltare în optimizarea codului PL/SQL și a interogărilor SQL pentru aplicații critice pe Exadata (67+ instanțe).
+  - Analiza și tuning de procese batch PL/SQL de volum mare; script-uri PL/SQL pentru monitorizare și administrare.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **DatabTech, Milano** — Oracle DBA și DWH Architect pentru Allianz și Mediobanca | 2018 – 2021:
+  - Migrarea proiectelor Oracle Data Integrator (ODI) de la versiunea 10g la 12c, cu dezvoltare PL/SQL de sprijin pentru mapping-urile migrate.
+- **Alți clienți Banking, Insurance și Telco** | 2013 – 2018:
+  - Soluții PL/SQL custom pentru diverși clienți: packages pentru logică ETL, proceduri de procesare a datelor, PL/SQL APIs.
+  - Optimizare intensă de cod PL/SQL și SQL pentru îmbunătățirea performanței sistemelor existente.
+  - Formare și mentoring de dezvoltatori juniori pe best practices de dezvoltare PL/SQL.
 
 ---
 

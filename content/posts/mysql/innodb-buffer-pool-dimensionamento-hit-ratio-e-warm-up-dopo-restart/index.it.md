@@ -1,15 +1,22 @@
 ---
-title: "InnoDB buffer pool: dimensionamento, hit ratio e warm-up dopo restart"
-seoTitle: "InnoDB buffer pool: come dimensionarlo e monitorarlo"
-description: "128 MB di default su 32 GB di RAM: diagnosi, dimensionamento, buffer pool instances e warm-up dopo restart. Numeri reali prima e dopo il fix."
-date: 2099-12-31
-draft: true
-translationKey: "innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart"
-tags: ["innodb", "performance-tuning", "memory", "mysql", "mariadb"]
-categories: ["mysql"]
-image: "innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg"
-webo_status: da_approvare
+categories:
+- mysql
+date: '2026-09-29'
+description: '128 MB di default su 32 GB di RAM: diagnosi, dimensionamento, buffer
+  pool instances e warm-up dopo restart. Numeri reali prima e dopo il fix.'
+draft: false
+image: innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg
+seoTitle: 'InnoDB buffer pool: come dimensionarlo e monitorarlo'
+tags:
+- innodb
+- performance-tuning
+- memory
+- mysql
+- mariadb
+title: 'InnoDB buffer pool: dimensionamento, hit ratio e warm-up dopo restart'
+translationKey: innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart
 webo_generated_at: 2026-09-15
+webo_status: scheduled
 ---
 
 ## 128 MB su una macchina da 32 GB

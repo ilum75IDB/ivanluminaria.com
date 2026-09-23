@@ -3,7 +3,7 @@ title: "Data Warehouse Architect"
 seoTitle: "Data Warehouse Architect Oracle/PostgreSQL"
 description: "Ivan Luminaria, Data Warehouse Architect Oracle/PostgreSQL: 30 de ani de proiectare DWH, modelare dimensionala Kimball, pipeline-uri ETL și arhitecturi analitice."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Profil Profesional
 
-Data Warehouse Architect cu aproape 30 de ani de experiență în proiectarea, implementarea și gestionarea de soluții DWH complexe și de inalta performanță pe Oracle și PostgreSQL.
+În majoritatea cazurilor în care am fost chemat să "proiectez un DWH nou", DWH-ul existent era în regulă. Trebuia doar înțeles. Treizeci de ani de Oracle, ultimii cincisprezece ca DWH Architect — am învățat că gâtul de sticlă aproape niciodată nu este platforma.
 
-Expert în modelare multidimensională (Kimball, Inmon) și în optimizarea proceselor ETL/ELT și a interogărilor SQL pe seturi de date de la sute de milioane la miliarde de rânduri. Conduc proiecte DWH end-to-end — de la cerințe până la deploy în producție — cu integritate, calitate și disponibilitate a datelor în sprijinul deciziilor de business.
+Ce văd imediat când sosește o ofertă pentru o platformă nouă: strategia de partiționare nerevizuită după cinci ani de creștere. ETL-ul în PL/SQL care rulează în serial când putea rula în paralel. Materialized view-ul pe care nimeni nu l-a mai reîmprospătat după schimbarea de schemă din 2019. Sunt detaliile care se acumulează, nu tehnologiile care îmbătrânesc.
 
-Leadership tehnic și mindset de problem solving în contexte internaționale și full remote.
+Batch-uri analitice de la 4 ore la sub 30 de minute pe Oracle OCI și Autonomous Database — fără schimbare de hardware, doar lucrând pe design și pe planuri de execuție. Programe DWH multi-țară consolidând 4 țări europene cu peste 60.000 de linii de PL/SQL și încărcare zilnică completă sub 2 ore. DWH asigurări 500 GB–8 TB. Clustere Exadata multi-nod, fact table-uri cu ingest de peste 800M înregistrări pe zi cu SLA sub 500 ms. Migrări ODI 10g→12c gestionate în continuitate, niciodată de la zero. Kimball, Inmon, star/snowflake, SCD, bus matrix. Predare Oracle Italia despre SQL, PL/SQL, tuning. Ce aduc: o a doua opinie independentă înainte să semnezi o ofertă de sute de mii de euro, o metodă care pornește de la datele pe care sistemul le înregistrează deja (AWR, ASH, wait events, planuri de execuție), și disciplina de a spune "sistemul tău actual încă poate rezista — iată cum".
 
 ---
 
@@ -35,7 +35,8 @@ Leadership tehnic și mindset de problem solving în contexte internaționale ș
 
 ## Rezultate în evidență
 
-- Data Warehouse multi-țară consolidat pe **4 țări europene** (Italia, Spania, Franța, Nordul Europei): **peste 60.000 de linii de PL/SQL**, încărcare zilnică completă în **mai puțin de 2 ore**, monitorizare în timp real a fazelor de load.
+- **Câteva sute de baze de date Oracle** în 30 de ani, cu focus pe DWH design, ETL/ELT și administrare.
+- **DWH Surety** (Atradius) consolidat pe **4 țări europene** (Italia, Spania, Franța, Nordul Europei): **peste 60.000 de linii de PL/SQL**, încărcare zilnică completă în **mai puțin de 2 ore**, monitorizare în timp real a fazelor de load.
 - Proiectare DWH pe seturi de date de peste **2 miliarde de rânduri** cu integrare de **peste 15 surse eterogene**.
 - Model de date Snowflake pe Oracle Analytics Cloud cu ETL pe Oracle 19c în OCI pentru facturare, segmentare clienți, portofoliu și tracking costuri/venituri.
 - Batch-uri analitice critice reduse **de la 4 ore la mai puțin de 30 de minute** pe Oracle în OCI și Autonomous Database.
@@ -52,7 +53,7 @@ Leadership tehnic și mindset de problem solving în contexte internaționale ș
 
 ### Stack Oracle
 
-- Oracle Database 8i → 21c, Exadata, RAC, Data Guard, Autonomous Database (ADB)
+- Oracle Database până la 23ai, Exadata, RAC, Data Guard, Autonomous Database (ADB)
 - Performance Tuning (AWR, ADDM, SQL Tuning Advisor), Storage Management (ASM), Backup & Recovery (RMAN), Oracle TDE
 
 ### PostgreSQL
@@ -82,47 +83,45 @@ Leadership tehnic și mindset de problem solving în contexte internaționale ș
 ## Experiență Profesională
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrator Unic · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2021 – Prezent
+**Administrator Unic · Data Warehouse Architect · Oracle & PostgreSQL Expert** | 2022 – Prezent
 
-- **DWH Architect** (pentru ATRADIUS, divizia Surety) | 2022 – Iun 2025:
-  - Data Warehouse Oracle unificat pentru consolidarea datelor din 4 țări europene din surse eterogene (Oracle, SQL Server, fișiere externe).
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant | Iul 2025 – Prezent:
+  - Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
+  - Monitorizarea performanței, query tuning, gestionarea replicării și capacity planning la scara enterprise.
+- **GENERALI Asigurări** — PM DWH Lead | Feb 2024 – Mai 2025:
+  - Coordonare tehnică pe Data Warehouse asigurări pe baze de date Oracle de la 500 GB la 8 TB.
+  - Interfață directă cu clientul pe cerințe, definirea scope-ului și prezentarea soluțiilor.
+- **ATRADIUS, divizia Surety** — DWH Architect | 2022 – 2026:
+  - Data Warehouse Oracle unificat pentru consolidarea datelor din 4 țări europene (Italia, Spania, Franța, Nordul Europei) din surse eterogene (Oracle, SQL Server, fișiere externe).
   - Modelarea domeniilor de business core (portofoliu clienți, polițe, contracte, facturare, daune, tranzacții daune).
-  - Intregul data model și layer ETL, peste 60.000 de linii de PL/SQL, cu framework de încărcare, checkpoint-uri și logging în timp real; încărcare zilnică completă în mai puțin de 2 ore.
-- **DWH Architect & Oracle DBA** (pentru FAI SERVICE) | 2021 – 2023:
-  - Model de date Snowflake pe Oracle Analytics Cloud, ETL pe Oracle 19c în OCI, dashboard-uri pentru facturare, segmentare și portofoliu.
-- **Proiectare și arhitectură DWH** (clienți Banking, Telepass și altii):
+  - Peste 60.000 de linii de PL/SQL, framework de încărcare cu checkpoint-uri și logging în timp real; încărcare zilnică completă în mai puțin de 2 ore.
+- **Alți clienți Banking, Telco și plăți** — Proiectare și arhitectură DWH:
   - Arhitecturi DWH Kimball/Inmon pe seturi de date de peste 2 miliarde de rânduri, integrarea a peste 15 surse eterogene.
   - Batch-uri analitice critice reduse de la 4 ore la mai puțin de 30 de minute pe Oracle în OCI și Autonomous Database.
-  - DWH pe PostgreSQL ca alternativa sustenabilă la Oracle cu strategii de partitioning și query optimization.
-- **PL/SQL Expert & Oracle DBA** (pentru FINWAVE S.p.A.) | 2020 – 2022:
+  - DWH pe PostgreSQL ca alternativă cost-effective la Oracle cu strategii de partitioning și query optimization.
+
+---
+
+### FREELANCE / CONSULTANT INDEPENDENT — Roma, Italia (Full Remote Europa)
+**Oracle DBA · Performance Tuning · DWH Architect** | 2013 – 2022
+
+- **FAI SERVICE** — DWH Architect & Oracle DBA | 2021 – 2023:
+  - Model de date Snowflake pe Oracle Analytics Cloud, ETL pe Oracle 19c în OCI, dashboard-uri pentru facturare, segmentare și portofoliu.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **LISCOR → Finwave, Gruppo Lutech** — Oracle DBA și dezvoltare DWH în sectorul financiar | 2020 – 2023:
   - Dezvoltare PL/SQL avansată și optimizare de interogări pentru aplicații financiare cu milioane de tranzacții zilnice.
-
----
-
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant — MySQL & PostgreSQL DBA** (pentru POSTE ITALIANE) | Iul 2025 – Prezent
-
-- Administrarea a aproximativ 1.500 de instanțe MySQL și PostgreSQL între producție, certificare și dezvoltare.
-- Monitorizarea performanței, query tuning, gestionarea replicarii și capacity planning la scara enterprise.
-- Suport pentru echipele de dezvoltare și infrastructură într-un context de baze de date eterogene cu cerințe de continuitate operativă.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Oracle DBA · DWH Architect · Oracle Performance & Tuning Expert** (pentru TIM / HUAWEI) | 2020 – 2022
-
-- Arhitectură DWH telco pe peste 30 de baze de date Oracle critice (70+ instanțe pe cluster-e Exadata) în sprijinul a peste 20 de milioane de utilizatori prepay mobile.
-- Fact tables cu ingestie de până la 800 de milioane de înregistrări de trafic pe zi, cu strategii avansate de partitioning și compression.
-- Performance tuning proactiv (AWR/ADDM) pentru SLA sub 500 ms; ASM și Oracle TDE.
-
----
-
-### PROFESIONIST INDEPENDENT / CONSULTANT — Roma, Italia (Full Remote Europa)
-**Oracle DBA · Performance Tuning · DWH Architect** | 2013 – 2020
-
-- Data Warehouse pentru clienți Banking, Insurance și Telco pe platforme Oracle și PostgreSQL, cu modelare Kimball/Inmon.
-- Pipeline-uri ETL/ELT care gestioneaza 500 de milioane de rânduri pe ciclu de încărcare.
-- Echipe de la 3 la 7 persoane în contexte multiculturale distribuite, cu abordare Agile.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **NIMIS → Huawei → pentru TIM** — Oracle DBA și DWH Architect | 2020 – 2022:
+  - Arhitectură DWH telco pe peste 30 de baze de date Oracle critice (67+ instanțe pe cluster-e Exadata) în sprijinul a peste 20 de milioane de utilizatori prepay mobile.
+  - Fact tables cu ingestie de până la 800 de milioane de înregistrări de trafic pe zi, strategii avansate de partitioning și compression, SLA sub 500 ms; ASM și Oracle TDE.
+  - *(contract preluat de IDEA DB CONSULTING din 2022 cu novație contractuală)*
+- **DatabTech, Milano** — Oracle DBA și DWH Architect pentru Allianz și Mediobanca | 2018 – 2021:
+  - Migrarea proiectelor Oracle Data Integrator (ODI) de la versiunea 10g la 12c.
+- **Alți clienți Banking, Insurance și Telco** | 2013 – 2018:
+  - Data Warehouse pe platforme Oracle și PostgreSQL, cu modelare Kimball/Inmon.
+  - Pipeline-uri ETL/ELT care gestionează până la 500 de milioane de rânduri pe ciclu de încărcare.
+  - Configurări Oracle Data Guard pentru înaltă disponibilitate și disaster recovery.
+  - Echipe de la 3 la 7 persoane în contexte multiculturale distribuite, abordare Agile iterativă, bugete în intervalul €100K – €500K.
 
 ---
 

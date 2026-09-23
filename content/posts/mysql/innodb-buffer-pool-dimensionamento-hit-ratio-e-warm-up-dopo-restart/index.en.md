@@ -1,15 +1,22 @@
 ---
-title: "128 MB on a 32 GB machine: InnoDB buffer pool sizing in production"
-seoTitle: "InnoDB buffer pool: sizing, instances, and warm-up on MySQL 8.0"
-description: "A MySQL 8.0 e-commerce with 32 GB RAM running on 128 MB buffer pool. How we diagnosed the issue, fixed it, and cut query latency from 45ms to 3ms."
-date: 2099-12-31
-draft: true
-translationKey: "innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart"
-tags: ["mysql", "innodb", "buffer-pool", "performance-tuning", "mysql-8.0"]
-categories: ["mysql"]
-image: "innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg"
-webo_status: da_tradurre
+categories:
+- mysql
+date: '2026-09-29'
+description: A MySQL 8.0 e-commerce with 32 GB RAM running on 128 MB buffer pool.
+  How we diagnosed the issue, fixed it, and cut query latency from 45ms to 3ms.
+draft: false
+image: innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg
+seoTitle: 'InnoDB buffer pool: sizing, instances, and warm-up on MySQL 8.0'
+tags:
+- mysql
+- innodb
+- buffer-pool
+- performance-tuning
+- mysql-8.0
+title: '128 MB on a 32 GB machine: InnoDB buffer pool sizing in production'
+translationKey: innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart
 webo_generated_at: 2026-09-15
+webo_status: scheduled
 ---
 
 ## 128 MB on a 32 GB machine

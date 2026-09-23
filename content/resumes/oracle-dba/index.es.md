@@ -3,7 +3,7 @@ title: "Oracle DBA & Performance Tuning Expert"
 seoTitle: "Oracle DBA & Performance Tuning Expert"
 description: "Ivan Luminaria, Oracle DBA & Performance Tuning Expert: 30 años administrando bases de datos mission-critical, RAC, Data Guard, Exadata, AWR/ASH y Oracle Cloud."
 date: "2026-09-14"
-lastmod: "2026-09-15"
+lastmod: "2026-09-20"
 draft: false
 layout: "simple"
 ---
@@ -16,11 +16,11 @@ layout: "simple"
 
 ## Perfil Profesional
 
-Senior Oracle DBA y Performance Tuning Expert con casi 30 años en bases de datos Oracle de misión crítica, incluidos Exadata, RAC, Data Guard y Oracle Cloud (OCI, Autonomous Database).
+Cientos de bases de datos Oracle administradas en treinta años entre banca, seguros, telco, administración pública y postal — clusters Exadata multi-nodo, fact tables con ingesta de 800M+ registros al día con SLA por debajo de 500 ms, entornos al servicio de 20M+ usuarios finales. Administración MySQL y PostgreSQL a escala enterprise. Batches analíticos de 4 horas a menos de 30 minutos en Oracle OCI y Autonomous Database — sin cambio de plataforma. OCP de los tiempos en que eran raros. Docencia Oracle Italia sobre SQL, PL/SQL, administración, performance tuning; veinticinco años de mentoring continuo de DBA junior hacia nivel senior.
 
-Experto en análisis AWR, ADDM y ASH, tuning de consultas SQL complejas, optimización de instancias y diagnóstico de wait events. Sólida base operativa en backup & recovery (RMAN), seguridad (TDE), instalación, patching, migraciones y storage management (ASM).
+Lo que veo cuando llega una solicitud de intervención post-incident: las métricas de monitoring en verde hasta cuarenta minutos antes. El ticket del vendor cerrado con «unable to reproduce». El DBA junior que heredó el sistema de un senior que se fue a fin de año y aún no tiene el mapa mental para conectar los puntos. La cadena causal casi siempre está en el cruce entre capas — aplicación, base de datos, storage, red — no dentro de una sola capa. Las herramientas muestran síntomas, no causas.
 
-El performance tuning sigue siendo la especialización principal — la disciplina que mantiene sistemas exigentes disponibles bajo cargas reales.
+Post-Incident Root Cause Analysis en casos donde los logs del momento habían sido rotados o comprimidos mal: histórico AWR y ASH, logs de sistema operativo y storage, registro de los cambios. He reconstruido cadenas causales que el equipo pensaba perdidas, y producido documentos que pasaron ante el board sin que el DBA senior fuera puesto en medio por defecto. Lo que aporto: un método cross-layer construido sobre sistemas reales. No buscamos culpables — reconstruimos lo que realmente pasó.
 
 ---
 
@@ -35,10 +35,11 @@ El performance tuning sigue siendo la especialización principal — la discipli
 
 ## Resultados destacados
 
-- Aproximadamente **1.500 instancias** MySQL y PostgreSQL administradas para un operador postal y logístico nacional.
-- **Más de 30 bases de datos Oracle críticas (70+ instancias)** sobre Exadata para un operador telco con **más de 20 millones de usuarios prepago**; hasta **800 millones de registros de tráfico al día**; consultas críticas por debajo de los **500 ms** en guardia 24/7.
+- **Varios cientos de bases de datos Oracle** en 30 años, entre administración, tuning, DWH, PL/SQL y project management.
+- Aproximadamente **1.500 instancias** MySQL y PostgreSQL administradas hoy para **POSTE ITALIANE**.
+- **30+ bases de datos Oracle sobre Exadata** (3+5 nodos, **67+ instancias**) en encargo telco para **TIM (vía Huawei)**, al servicio de **más de 20 millones de usuarios prepago mobile**: hasta **800 millones de registros al día**; consultas críticas por debajo de los **500 ms** en guardia 24/7.
 - Batches analíticos críticos reducidos **de 4 horas a menos de 30 minutos** sobre Oracle en OCI y Autonomous Database.
-- Data Warehouse multi-país sobre **4 países europeos** soportado a nivel DBA: **más de 60.000 líneas de PL/SQL** y carga diaria completa en **menos de 2 horas**.
+- **DWH Surety** (Atradius) sobre **4 países europeos** (Italia, España, Francia, Norte de Europa) soportado a nivel DBA: **más de 60.000 líneas de PL/SQL** y carga diaria completa en **menos de 2 horas**.
 - Pipelines ETL/ELT que integran **más de 15 fuentes heterogéneas** sobre datasets superiores a los **2 mil millones de filas**.
 
 ---
@@ -47,7 +48,7 @@ El performance tuning sigue siendo la especialización principal — la discipli
 
 ### Oracle Database Administration
 
-- Oracle Database 8i → 21c, Autonomous Database
+- Oracle Database hasta la 23ai, Autonomous Database
 - Exadata, RAC, Data Guard, GoldenGate (básico)
 
 ### Performance tuning avanzado
@@ -84,47 +85,42 @@ El performance tuning sigue siendo la especialización principal — la discipli
 ## Experiencia Profesional
 
 ### IDEA DB CONSULTING S.R.L. — Roma, Italia (Full Remote Europa)
-**Administrador Único · Senior Oracle DBA & Performance Tuning Expert** | 2021 – Presente
+**Administrador Único · Senior Oracle DBA & Performance Tuning Expert** | 2022 – Presente
 
-- **Oracle DBA & Tuning Expert** (para GENERALI Seguros) | Feb 2024 – May 2025:
+- **SILICONDEV → POSTE ITALIANE** — Senior Database Consultant — MySQL & PostgreSQL DBA | Jul 2025 – Presente:
+  - Administración de aproximadamente 1.500 instancias MySQL y PostgreSQL entre producción, certificación y desarrollo.
+  - Monitorización de las performance, query tuning, gestión de la replicación y capacity planning a escala enterprise.
+- **GENERALI Seguros** — Oracle DBA & Tuning Expert | Feb 2024 – May 2025:
   - Administración y tuning avanzado de bases de datos Oracle de 500 GB a 8 TB para aplicaciones del sector asegurador.
   - Análisis AWR/ADDM, optimización SQL, resolución proactiva de cuellos de botella.
-- **Oracle DBA** (para ATRADIUS, división Surety) | 2022 – Jun 2025:
-  - Capa DBA en soporte del DWH multi-país (más de 60.000 líneas de PL/SQL ETL, carga diaria completa en menos de 2 horas) en OCI.
-- **Oracle DBA** (para FAI SERVICE) | 2021 – 2023:
-  - Administración y tuning de Oracle 19c en OCI en soporte de ETL y dashboards Oracle Analytics Cloud.
-- **PL/SQL Expert & Oracle DBA** (para FINWAVE S.p.A.) | 2020 – 2022:
-  - Desarrollo PL/SQL avanzado y optimización de consultas para aplicaciones financieras con millones de transacciones diarias.
-- **Clientes Banking, Telepass y otros**:
+- **ATRADIUS, división Surety** — Oracle DBA | 2022 – 2026:
+  - Capa DBA en soporte del DWH multi-país (Italia, España, Francia, Norte de Europa) — más de 60.000 líneas de PL/SQL ETL, carga diaria completa en menos de 2 horas en OCI.
+- **Otros clientes Banking, Telco y pagos**:
   - Batches analíticos críticos reducidos de 4 horas a menos de 30 minutos sobre Oracle en OCI y Autonomous Database.
   - ETL/ELT desde más de 15 fuentes heterogéneas sobre datasets superiores a los 2 mil millones de filas; RMAN, OEM, patching; DWH sobre PostgreSQL como alternativa cost-effective a Oracle.
 
 ---
 
-### SILICONDEV S.p.A. — Roma, Italia (Full Remote)
-**Senior Database Consultant — MySQL & PostgreSQL DBA** (para POSTE ITALIANE) | Jul 2025 – Presente
+### FREELANCE / CONSULTOR INDEPENDIENTE — Roma, Italia (Full Remote Europa)
+**Senior Oracle DBA & Performance Tuning Expert · DWH Architect** | 2013 – 2022
 
-- Administración de aproximadamente 1.500 instancias MySQL y PostgreSQL entre producción, certificación y desarrollo.
-- Monitorización de las performance, query tuning, gestión de la replicación y capacity planning a escala enterprise.
-- Soporte a los equipos de desarrollo e infraestructura en un contexto de bases de datos heterogéneas con requisitos de continuidad operativa.
-
----
-
-### NIMIS CONSULTING S.R.L. — Roma, Italia (Full Remote)
-**Senior Oracle DBA & Performance Tuning Expert** (para TIM / HUAWEI) | 2020 – 2022
-
-- Más de 30 bases de datos Oracle críticas (70+ instancias) sobre clusters Exadata de 3 y 5 nodos.
-- Responsabilidad directa en performance tuning avanzado: análisis AWR/ADDM, optimización SQL, indexación, partitioning y compression.
-- Storage management (ASM) y Oracle TDE para la seguridad de los datos; guardia 24/7 para la resolución de las criticidades.
-
----
-
-### PROFESIONAL AUTÓNOMO / CONSULTOR INDEPENDIENTE — Roma, Italia (Full Remote Europa)
-**Senior Oracle DBA & Performance Tuning Expert · DWH Architect** | 2013 – 2020
-
-- Consultoría Oracle DBA y performance tuning para clientes Banking, Insurance y Telco.
-- Optimización de consultas SQL complejas y tuning de instancias Oracle; RMAN y Oracle Data Guard HA/DR con procedimientos de switchover/failover.
-- Coordinación de pequeños equipos técnicos en proyectos de migración y upgrade.
+- **FAI SERVICE** — Oracle DBA | 2021 – 2023:
+  - Administración y tuning de Oracle 19c en OCI en soporte de ETL y dashboards Oracle Analytics Cloud.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **LISCOR → Finwave, Gruppo Lutech** — Oracle DBA en el sector financiero | 2020 – 2023:
+  - Desarrollo PL/SQL avanzado y optimización de consultas para aplicaciones financieras con millones de transacciones diarias.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **NIMIS → Huawei → para TIM** — Senior Oracle DBA & Performance Tuning Expert | 2020 – 2022:
+  - Más de 30 bases de datos Oracle críticas (67+ instancias) sobre clusters Exadata de 3 y 5 nodos.
+  - Responsabilidad directa en performance tuning avanzado: análisis AWR/ADDM, optimización SQL, indexación, partitioning y compression; ingesta de hasta 800 millones de registros al día, SLA por debajo de los 500 ms.
+  - Storage management (ASM) y Oracle TDE para la seguridad de los datos; guardia 24/7 para la resolución de las criticidades.
+  - *(contrato absorbido por IDEA DB CONSULTING desde 2022 con novación del contrato)*
+- **DatabTech, Milán** — Oracle DBA y DWH Architect para Allianz y Mediobanca | 2018 – 2021:
+  - Migración de proyectos Oracle Data Integrator (ODI) de la versión 10g a la 12c.
+- **Otros clientes Banking, Insurance y Telco** | 2013 – 2018:
+  - Consultoría Oracle DBA y performance tuning para clientes Banking, Insurance y Telco.
+  - Optimización de consultas SQL complejas y tuning de instancias Oracle; RMAN y Oracle Data Guard HA/DR con procedimientos de switchover/failover.
+  - Coordinación de pequeños equipos técnicos en proyectos de migración y upgrade.
 
 ---
 

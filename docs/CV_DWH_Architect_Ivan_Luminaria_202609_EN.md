@@ -5,7 +5,11 @@
 
 ## Profile
 
-Data Warehouse Architect and IT professional with nearly 30 years designing, implementing and running complex, high-performing DWH solutions on Oracle and PostgreSQL. Expert in multidimensional data modelling (Kimball, Inmon) and in optimising ETL/ELT processes and SQL queries on datasets from hundreds of millions to billions of rows. Proven ability to lead end-to-end DWH projects — from requirements to production deployment — with data integrity, quality and availability supporting business decisions. Technical leadership and problem-solving mindset in international, full-remote settings.
+Most of the times I've been called to "design a new DWH", the existing DWH was fine. It just needed to be understood. Thirty years of Oracle, the last fifteen as a DWH Architect — I've learned the bottleneck is almost never the platform.
+
+What I see right away when a proposal for a new platform lands on the table: the partition strategy never revisited after five years of growth. The PL/SQL ETL running serial when it could run parallel. The materialized view no one has refreshed since the schema change in 2019. It's the details that pile up, not the technologies that age out.
+
+Analytical batches cut from 4 hours to under 30 minutes on Oracle OCI and Autonomous Database — no hardware change, only working on design and execution plans. Multi-country DWH programmes consolidating 4 European countries with 60,000+ lines of PL/SQL and full daily ingestion under 2 hours. Insurance DWH 500 GB–8 TB. Multi-node Exadata clusters, fact tables ingesting 800M+ records per day with SLAs under 500 ms. ODI 10g→12c migrations handled in continuity, never from scratch. Kimball, Inmon, star/snowflake, SCD, bus matrix. Long-standing Oracle Italy trainer on SQL, PL/SQL, tuning. What I bring: an independent second opinion before you sign a six-figure proposal, a method that starts from the data the system already records (AWR, ASH, wait events, execution plans), and the discipline to say "your current system can still hold — here's how".
 
 ## Areas of engagement
 
@@ -16,7 +20,8 @@ Data Warehouse Architect and IT professional with nearly 30 years designing, imp
 
 ## Key results
 
-- Multi-country DWH consolidating **4 European countries** (Italy, Spain, France, Northern Europe): **60,000+ lines of PL/SQL**, full daily load **under 2 hours**, real-time monitoring of loading stages.
+- **Several hundred Oracle databases** across 30 years, with focus on DWH design, ETL/ELT and administration.
+- **Surety DWH** (Atradius) consolidating **4 European countries** (Italy, Spain, France, Northern Europe): **60,000+ lines of PL/SQL**, full daily load **under 2 hours**, real-time monitoring of loading stages.
 - DWH design on datasets exceeding **2 billion rows** with 15+ heterogeneous source integrations.
 - Snowflake schema on Oracle Analytics Cloud with ETL on Oracle 19c in OCI for billing statistics, customer segmentation, portfolio and cost/revenue tracking.
 - Critical analytical batches cut **from 4 hours to under 30 minutes** on Oracle OCI and Autonomous Database.
@@ -25,7 +30,7 @@ Data Warehouse Architect and IT professional with nearly 30 years designing, imp
 ## Core expertise
 
 - **DWH Methodologies**: multidimensional data modelling (Kimball, Inmon) · Star Schema, Snowflake Schema · Slowly Changing Dimensions (SCD Type 1/2/3) · Bus Matrix design
-- **Oracle Database**: Oracle 8i–21c · Exadata · RAC · Data Guard · Autonomous Database (ADB) · performance tuning (AWR, ADDM, SQL Tuning Advisor) · ASM · RMAN · TDE
+- **Oracle Database**: Oracle up to 23ai · Exadata · RAC · Data Guard · Autonomous Database (ADB) · performance tuning (AWR, ADDM, SQL Tuning Advisor) · ASM · RMAN · TDE
 - **PostgreSQL**: PostgreSQL 14+ · query optimisation · table partitioning · pg_stat_statements · PgBouncer · logical replication · VACUUM/autovacuum tuning
 - **ETL/ELT Tools**: PL/SQL pipelines · Unix Shell scripting · Oracle Data Integrator (ODI) · Oracle Warehouse Builder (OWB, legacy)
 - **BI & Reporting**: Oracle Analytics Cloud (OAC) — Semantic Model Designer, reports, dashboards
@@ -35,20 +40,18 @@ Data Warehouse Architect and IT professional with nearly 30 years designing, imp
 
 ## Experience
 
-### IDEA DB CONSULTING S.R.L. — Sole Director · DWH Architect · Oracle & PostgreSQL Expert · 2021 – present
-- **Atradius**, Surety division (2022 – Jun 2025): unified Oracle DWH consolidating claims, credit, policies, contracts and billing data from **4 European countries**; heterogeneous sources (Oracle, MS SQL Server, flat files) integrated into a single model; entire data model and ETL layer (**60,000+ lines of PL/SQL**) with real-time load monitoring; full daily ingestion under 2 hours.
-- **FAI Service** (2021 – 2023): Snowflake schema on Oracle Analytics Cloud with ETL on Oracle 19c in OCI; dashboards and reports for billing statistics, customer segmentation, portfolio analysis, cost/revenue tracking.
-- **Banking, Telepass and other clients**: Kimball/Inmon-driven DWH architectures; multidimensional modelling on datasets above 2B rows; ETL/ELT integrating 15+ heterogeneous sources; PostgreSQL DWH as cost-effective alternative to Oracle with partitioning strategies and query optimisation.
-- **Finwave** (2020 – 2022): advanced PL/SQL and query optimisation for financial applications with millions of daily transactions.
+### IDEA DB CONSULTING S.R.L. — Founder · DWH Architect · Oracle & PostgreSQL Expert · 2022 – Present
+- **SILICONDEV → POSTE ITALIANE** (Jul 2025 – present): Senior Database Consultant; ~1,500 MySQL and PostgreSQL instances across production, certification and development; performance monitoring, query tuning, replication management, capacity planning at enterprise scale.
+- **GENERALI Insurance** (Feb 2024 – May 2025): PM DWH Lead; technical coordination on insurance-sector Data Warehouse on 500 GB–8 TB Oracle databases; direct client interface on requirements, scope and solutions.
+- **Atradius**, Surety division (2022 – 2026): unified Oracle DWH consolidating claims, credit, policies, contracts and billing data from **4 European countries** (Italy, Spain, France, Northern Europe); heterogeneous sources (Oracle, MS SQL Server, flat files) integrated into a single model; entire data model and ETL layer (**60,000+ lines of PL/SQL**) with real-time load monitoring; full daily ingestion under 2 hours.
+- **Other Banking, Telco and payments clients**: Kimball/Inmon-driven DWH architectures; multidimensional modelling on datasets above 2B rows; ETL/ELT integrating 15+ heterogeneous sources; PostgreSQL DWH as cost-effective alternative to Oracle with partitioning strategies and query optimisation.
 
-### SILICONDEV S.p.A. — Senior Database Consultant · Jul 2025 – present
-- For POSTE ITALIANE: ~1,500 MySQL and PostgreSQL instances across production, certification and development; performance monitoring, query tuning, replication management, capacity planning at enterprise scale.
-
-### NIMIS CONSULTING S.R.L. — Oracle DBA · DWH Architect · Performance & Tuning Expert · 2020 – 2022
-- For TIM / Huawei: 30+ critical Oracle databases (70+ instances) on 3- and 5-node Exadata clusters supporting 20M+ prepaid mobile users; fact tables ingesting up to 800M call records per day with advanced partitioning and compression; 24/7 on-call; SLAs under 500 ms; indexing, partitioning, compression and TDE for DWH performance and security.
-
-### Freelance consultant — Oracle DBA · Performance Tuning · DWH Architect · 2013 – 2020
-- DWH design and development for banking, insurance and telco clients on Oracle and PostgreSQL following Kimball/Inmon methodologies; ETL/ELT pipelines handling **500M rows per load cycle**; SQL performance tuning, PL/SQL and ETL design; team leadership (3–7 people) in multicultural distributed settings with Agile methodology; Oracle Analytics Cloud reports and dashboards.
+### Freelance consultant — Oracle DBA · Performance Tuning · DWH Architect · 2013 – 2022
+- **FAI Service** (2021 – 2023): Snowflake schema on Oracle Analytics Cloud with ETL on Oracle 19c in OCI; dashboards and reports for billing statistics, customer segmentation, portfolio analysis, cost/revenue tracking. *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **LISCOR → Finwave, Gruppo Lutech** (2020 – 2023): Oracle DBA and DWH development in the financial sector; advanced PL/SQL and query optimisation for applications with millions of daily transactions. *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **NIMIS → Huawei → for TIM** (2020 – 2022): Oracle DBA · DWH Architect · Performance & Tuning Expert; 30+ critical Oracle databases (67+ instances) on 3- and 5-node Exadata clusters supporting 20M+ prepaid mobile users; fact tables ingesting up to 800M records per day with advanced partitioning and compression, SLAs under 500 ms; ASM and TDE. *(contract transitioned to IDEA DB CONSULTING from 2022 with contract novation)*
+- **DatabTech, Milan** (2018 – 2021): Oracle DBA and DWH Architect for Allianz and Mediobanca; migration of Oracle Data Integrator (ODI) projects from version 10g to 12c.
+- **Other Banking, Insurance and Telco clients** (2013 – 2018): DWH design and development on Oracle and PostgreSQL following Kimball/Inmon methodologies; ETL/ELT pipelines handling **500M rows per load cycle**; SQL performance tuning, PL/SQL and ETL design; Oracle Data Guard HA/DR; team leadership (3–7 people) in multicultural distributed settings with Agile methodology; budgets €100K–€500K.
 
 ### Earlier career · 1997 – 2013
 - **Auselda AED Group** (2009 – 2013): DWH design and modelling (Kimball/Inmon) for the Italian public sector; ETL/ELT and complex SQL optimisation; Oracle Warehouse Builder (OWB) product specialist.

@@ -1,15 +1,22 @@
 ---
-title: "128 MB en una máquina de 32 GB: el buffer pool de InnoDB que nadie había tocado"
-seoTitle: "InnoDB buffer pool: configuración correcta en MySQL 8.0"
-description: "Latencia alta en MySQL 8.0 con 32 GB de RAM y buffer pool a 128 MB por defecto. Diagnóstico, configuración y warm-up: de 45ms a 3ms sin reescribir una sola query."
-date: 2099-12-31
-draft: true
-translationKey: "innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart"
-tags: ["mysql", "innodb", "buffer-pool", "performance-tuning", "mysql-8"]
-categories: ["mysql"]
-image: "innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg"
-webo_status: da_tradurre
+categories:
+- mysql
+date: '2026-09-29'
+description: 'Latencia alta en MySQL 8.0: 32 GB de RAM y buffer pool a 128 MB por
+  defecto. Diagnóstico, ajuste y warm-up: de 45ms a 3ms sin reescribir una sola query.'
+draft: false
+image: innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart.cover.jpg
+seoTitle: 'InnoDB buffer pool: configuración correcta en MySQL 8.0'
+tags:
+- mysql
+- innodb
+- buffer-pool
+- performance-tuning
+- mysql-8
+title: '128 MB en una máquina de 32 GB: el buffer pool de InnoDB que nadie había tocado'
+translationKey: innodb_buffer_pool_dimensionamento_hit_ratio_e_warm_up_dopo_restart
 webo_generated_at: 2026-09-15
+webo_status: scheduled
 ---
 
 ## 128 MB en una máquina de 32 GB

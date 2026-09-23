@@ -230,7 +230,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
-**Ultimo aggiornamento**: 2026-09-16
-**Totale termini**: 216
+**Ultimo aggiornamento**: 2026-09-22
+**Totale termini**: 221
 **Totale articoli con glossario**: 50
 

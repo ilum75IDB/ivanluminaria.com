@@ -85,7 +85,7 @@
   {{ end }}
   <div class="flex items-center justify-between">
     <div>
-      {{/* Copyright */}}
+      {{/* Copyright + inline version link to /changelog/ */}}
       {{ if .Site.Params.footer.showCopyright | default true }}
         <p class="text-sm text-neutral-500 dark:text-neutral-400">
           {{- with site.Copyright }}
@@ -95,6 +95,9 @@
             {{ now.Format "2006" }}
             {{ .Site.Language.Params.Author.name | markdownify | emojify }}
           {{- end }}
+          {{ if and (.Site.Params.footer.showVersion | default true) (.Site.Params.version) }}
+            · <a href="{{ "/changelog/" | relLangURL }}" class="hover:underline hover:decoration-primary-400 hover:text-primary-500">{{ .Site.Params.version }}</a>
+          {{ end }}
         </p>
       {{ end }}
       {{/* Theme attribution */}}

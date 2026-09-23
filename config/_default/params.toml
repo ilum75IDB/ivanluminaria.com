@@ -19,6 +19,10 @@ enableImageWebp = false
 # robots = ""
 fingerprintAlgorithm = "sha256"
 
+# Site version — CalVer scheme (v<YYYY>.<MM>.<micro>)
+# Aggiornare a ogni release milestone; il valore appare nel footer linkato a /changelog/
+version = "v2026.09.001"
+
 [header]
   layout = "hybrid" # valid options: basic, hamburger, hybrid, custom
   # logo = "img/ivan_luminaria_avatar.png"
@@ -30,6 +34,7 @@ fingerprintAlgorithm = "sha256"
 [footer]
   showCopyright = true
   showThemeAttribution = true
+  showVersion = true
   showAppearanceSwitcher = false
   showScrollToTop = true
 
