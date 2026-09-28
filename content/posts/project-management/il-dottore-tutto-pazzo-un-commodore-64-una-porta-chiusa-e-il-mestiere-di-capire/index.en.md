@@ -12,7 +12,7 @@ tags:
 - career
 - origin-story
 - commodore-64
-title: 'A kid like any other: from a Commodore 64 to thirty years of databases'
+title: 'The crazy doctor: a Commodore 64, a locked door, and the craft of understanding'
 translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
 webo_status: scheduled

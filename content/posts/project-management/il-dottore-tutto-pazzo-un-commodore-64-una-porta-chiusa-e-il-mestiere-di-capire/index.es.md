@@ -13,7 +13,7 @@ tags:
 - personal
 - database-engineering
 - origin-story
-title: 'Un niño como tantos: de veterinario a ingeniero de bases de datos'
+title: 'El doctor completamente loco: un Commodore 64, una puerta cerrada y el oficio de comprender'
 translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
 webo_status: scheduled

@@ -12,7 +12,7 @@ tags:
 - origin-story
 - database-engineering
 - programming
-title: 'Un copil ca oricare altul: cum un Commodore 64 a schimbat tot'
+title: 'Doctorul complet nebun: un Commodore 64, o ușă închisă și meseria de a înțelege'
 translationKey: il_dottore_tutto_pazzo_un_commodore_64_una_porta_chiusa_e_il_mestiere_di_capire
 webo_generated_at: 2026-09-16
 webo_status: scheduled
