@@ -1,10 +1,12 @@
 ---
-title: "Staging Table"
-description: "Tabel temporar folosit ca zonă de aterizare pentru date brute într-un proces ETL, separând ingestia de transformare și încărcarea finală."
-translationKey: "glossary_staging_table"
-aka: "Zonă de staging, landing table"
+aka: Zonă de staging, landing table
 articles:
-  - "/posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml"
+- /posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+description: Tabel temporar folosit ca zonă de aterizare pentru date brute într-un
+  proces ETL, separând ingestia de transformare și încărcarea finală.
+title: Staging Table
+translationKey: glossary_staging_table
 ---
 
 O staging table este un tabel intermediar care primește datele brute din sursă înainte ca acestea să fie transformate și încărcate în destinația finală. Separă clar cele trei faze ale unui proces ETL, făcând fiecare fază independentă, monitorizabilă și reanalizabilă după un eșec.

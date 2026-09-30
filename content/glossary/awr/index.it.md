@@ -4,6 +4,7 @@ articles:
 - /posts/oracle/oracle-awr-ash
 - /posts/oracle/oracle-cloud-migration
 - /posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
 description: Automatic Workload Repository — strumento diagnostico integrato in Oracle
   Database per la raccolta e l'analisi delle statistiche di performance.
 title: AWR

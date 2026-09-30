@@ -74,7 +74,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 49 | 2026-09-15 | — | Tue | Oracle 12c → 21c su 12 TB: transportable tablespaces, RMAN incremental e la fine | oracle | #52 | 2026-09-04 | scheduled |
 
-| 50 | 2026-09-22 | — | Tue | Il dottore tutto pazzo: un Commodore 64, una porta chiusa e il mestiere di capir | project-management | #None | 2026-09-16 | scheduled |
+| 50 | 2026-10-06 | — | mar | Il dottore tutto pazzo: un Commodore 64, una porta chiusa e il mestiere di capir | project-management | #None | 2026-09-16 | scheduled |
 
 | 51 | 2026-09-29 | — | mar | InnoDB buffer pool: dimensionamento, hit ratio e warm-up dopo restart | mysql | #44 | 2026-09-22 | scheduled |
 

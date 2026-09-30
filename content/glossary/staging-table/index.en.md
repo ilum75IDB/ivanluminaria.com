@@ -1,10 +1,12 @@
 ---
-title: "Staging Table"
-description: "Temporary table used as a landing area for raw data in an ETL pipeline, separating ingestion from transformation and final load."
-translationKey: "glossary_staging_table"
-aka: "Staging area, landing table"
+aka: Staging area, landing table
 articles:
-  - "/posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml"
+- /posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+description: Temporary table used as a landing area for raw data in an ETL pipeline,
+  separating ingestion from transformation and final load.
+title: Staging Table
+translationKey: glossary_staging_table
 ---
 
 A staging table is an intermediate table that receives raw data from the source before any transformation or load into the final destination. It cleanly separates the three phases of an ETL process, making each phase independent, observable, and restartable after a failure.
