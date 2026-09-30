@@ -1,9 +1,11 @@
 ---
-title: "Wait Event"
-description: "A diagnostic event recorded by Oracle whenever a session cannot proceed and must wait for a resource — I/O, lock, network or CPU."
-translationKey: "glossary_wait_event"
 articles:
-  - "/posts/oracle/oracle-awr-ash"
+- /posts/oracle/oracle-awr-ash
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+description: A diagnostic event recorded by Oracle whenever a session cannot proceed
+  and must wait for a resource — I/O, lock, network or CPU.
+title: Wait Event
+translationKey: glossary_wait_event
 ---
 
 **Wait Event** is an Oracle Database diagnostic indicator that identifies why a session is waiting rather than actively working. Whenever a process cannot proceed — because it is waiting for a block from disk, a lock, a network response or a CPU slot — Oracle records a specific wait event.

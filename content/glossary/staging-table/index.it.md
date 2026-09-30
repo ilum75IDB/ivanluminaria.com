@@ -1,10 +1,13 @@
 ---
-title: "Staging Table"
-description: "Tabella temporanea che funge da area di atterraggio per i dati grezzi in un processo ETL, separando l'ingestione dalla trasformazione e dal caricamento finale."
-translationKey: "glossary_staging_table"
-aka: "Staging area, landing table"
+aka: Staging area, landing table
 articles:
-  - "/posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml"
+- /posts/data-warehouse/etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+description: Tabella temporanea che funge da area di atterraggio per i dati grezzi
+  in un processo ETL, separando l'ingestione dalla trasformazione e dal caricamento
+  finale.
+title: Staging Table
+translationKey: glossary_staging_table
 ---
 
 Una staging table è una tabella intermedia che riceve i dati grezzi dalla sorgente prima che vengano trasformati e caricati nella destinazione finale. Separa nettamente le tre fasi di un processo ETL, rendendo ogni fase indipendente, monitorabile e riprendibile in caso di errore.
