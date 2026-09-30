@@ -2,9 +2,17 @@
 # ===================================================================
 # ZSHRC - CONFIGURAZIONE COMPLETA CON GESTIONE PROGETTI
 # Autore: Ivan Luminaria
-# Versione: 7.6
-# Data: 13 Settembre 2026
-# Nota: v7.6 aggiunge Personal Branding IDB (BRAND) al case 15|brand tramite
+# Versione: 7.7
+# Data: 27 Settembre 2026
+# Nota: v7.7 aggiunge Certification Training (CERT) al case 16|cert tramite
+#       skill /project-bootstrap. Progetto di sola documentazione: materiale
+#       di studio per certificazioni IT (Oracle OCP DBA 19c/23ai, Oracle OCI
+#       Foundations, futuri vendor). Standard organizzativo interno definito
+#       in STANDARD.md v1.0. Stack shell ancora STUB (solo cert_env.zsh con
+#       alias di navigazione certroot/certocp/certoci/cert19c/cert23ai);
+#       /mac-create-menu-zsh non necessario perche' progetto non-applicativo.
+#       BASE shifta da 16 a 17|none. Menu interattivo Scegli 1-17,
+#       default INVIO=17. (storia 7.6: aggiunge Personal Branding IDB (BRAND) al case 15|brand tramite
 #       skill /mac-create-menu-zsh. Progetto di posizionamento e brand
 #       personale per IDEA DB CONSULTING (documenti strategici, dashboard
 #       HTML, test degli archetipi su porta 8011). Stack shell completo:
@@ -60,7 +68,10 @@ alias prjmenu='source ~/.zshrc'
 #
 # Modo alternativo: salva il token in ~/.gh_token (NON tracciato in git)
 # e decommenta la riga sotto:
-# [[ -f ~/.gh_token ]] && export GH_TOKEN="$(cat ~/.gh_token)"
+# GH_TOKEN= Token per GitHub
+[[ -f ~/.gh_token ]] && export GH_TOKEN="$(cat ~/.gh_token)"
+# GC_TOKEN= Token per GoatCounter
+[[ -f ~/.gc_token ]] && export GC_TOKEN="$(cat ~/.gc_token)"
 # ===================================================================
 # CONFIGURAZIONE COLORI LS
 # ===================================================================
@@ -115,7 +126,7 @@ setopt HIST_FIND_NO_DUPS
 # ===================================================================
 # VARIABILI GLOBALI PER GESTIONE PROGETTI
 # ===================================================================
-export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac, nait, fkud, cmhl
+export CURRENT_PROJECT="none"  # none, rcc, gdm, www, gma, webo, asg, bct, mfsc, fatt, myctl, dbac, nait, fkud, cmhl, brand, cert
 # ===================================================================
 # FUNZIONI PER PROMPT PERSONALIZZATI
 # ===================================================================
@@ -226,6 +237,12 @@ set_brand_prompt() {
     setup_git_prompt
     PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{045}[BRAND]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
 📈 %# '
+}
+# Prompt CERT (Certification Training)
+set_cert_prompt() {
+    setup_git_prompt
+    PROMPT='%F{blue}[%D{%Y-%m-%d %H:%M}]%f %F{130}[CERT]%f %F{green}%n@$(scutil --get ComputerName 2>/dev/null || hostname -s)%f %F{yellow}%~%f%F{cyan}${vcs_info_msg_0_}%f
+🎓 %# '
 }
 # ===================================================================
 # FUNZIONE PER CAMBIARE PROGETTO
@@ -461,7 +478,21 @@ switch_project() {
                 set_base_prompt
             fi
             ;;
-        16|none)
+        16|cert)
+            echo "🎓 Caricamento ambiente Certification Training..."
+            export CURRENT_PROJECT="cert"
+            CERT_ENV_FILE="/Users/ivanluminaria/Development/APPLICAZIONI/certification-training/scripts/shell/cert_env.zsh"
+            if [[ -f "$CERT_ENV_FILE" ]]; then
+                source "$CERT_ENV_FILE"
+                cd "$CERT_PROJECT_DIR"
+                set_cert_prompt
+                echo "✅ Ambiente CERT caricato!"
+            else
+                echo "❌ File environment CERT non trovato: $CERT_ENV_FILE"
+                set_base_prompt
+            fi
+            ;;
+        17|none)
             echo "🔧 Ambiente base (nessun progetto)"
             export CURRENT_PROJECT="none"
             set_base_prompt
@@ -476,7 +507,6 @@ switch_project() {
 # ALIAS GLOBALI (disponibili sempre)
 # ===================================================================
 alias sublime="open -a /Applications/Sublime\ Text.app"
-alias goXamp='cd /Applications/XAMPP/xamppfiles/htdocs/'
 # Shortcut per chiudere rapidamente la finestra/tab del terminale
 alias x='exit'
 # Alias per cambiare progetto velocemente
@@ -495,6 +525,7 @@ alias worknait='switch_project nait'
 alias workfkud='switch_project fkud'
 alias workcmhl='switch_project cmhl'
 alias workbrand='switch_project brand'
+alias workcert='switch_project cert'
 alias workbase='switch_project none'
 # Funzione per mostrare stato attuale
 project_status() {
@@ -598,6 +629,12 @@ project_status() {
             echo "📂 Dir: $BRAND_PROJECT_DIR"
             echo "🧭 Test archetipi: http://127.0.0.1:$BRAND_TEST_PORT/"
             echo "🏗️  Repo: $BRAND_REPO (privato)"
+            ;;
+        cert)
+            echo "🎓 Certification Training (materiale di studio certificazioni IT — documentazione)"
+            echo "📂 Dir: $CERT_PROJECT_DIR"
+            echo "🏗️  Repo: $CERT_REPO (privato)"
+            echo "🧭 Naviga: certroot | certocp | certoci | cert19c | cert23ai · Standard: certstd"
             ;;
         none)
             echo "🔧 Ambiente base (nessun progetto)"
@@ -756,14 +793,15 @@ show_project_menu() {
     echo " 13) 🏆 Family Kudos                (FKUD)"
     echo " 14) 🏖 Smart Home Casa Mare        (CMHL)"
     echo " 15) 📈 Personal Branding IDB       (BRAND)"
-    echo " 16) 🔧 Ambiente Base               (BASE)"
+    echo " 16) 🎓 Certification Training      (CERT)"
+    echo " 17) 🔧 Ambiente Base               (BASE)"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "💡 prjmenu = ricarica ~/.zshrc e rimostra questo menu (utile dopo modifiche)"
-    echo -n "Scegli (1-16) o premi INVIO per ambiente base: "
+    echo -n "Scegli (1-17) o premi INVIO per ambiente base: "
     read -t 10 choice  # Timeout di 10 secondi
     if [[ -z "$choice" ]]; then
-        choice=16  # Default: ambiente base
+        choice=17  # Default: ambiente base
     fi
     echo ""
     switch_project $choice
