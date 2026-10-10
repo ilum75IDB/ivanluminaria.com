@@ -252,14 +252,13 @@ Indexurile Oracle Text nu se construiesc pornind de la documentație spre date. 
 2. Oracle Text Application Developer's Guide 19c — [Concepte avansate, tuning și bune practici](https://docs.oracle.com/en/database/oracle/oracle-database/19/texta/toc.htm)
 3. Oracle-Base (Tim Hall) — [Oracle Text Articles: exemple practice](https://oracle-base.com/articles/misc/oracle-text)
 
-## Glosar candidat
+## Glosar
+- **[Oracle Text](/ro/glossary/oracle-text/)** — Componentă integrată a Oracle Database pentru indexarea și căutarea full-text pe date textuale. Nu necesită licență separată și operează direct pe structurile de date ale bazei de date, inclusiv coloane CLOB, BLOB și VARCHAR2.
 
-- **Oracle Text** — Componentă integrată a Oracle Database pentru indexarea și căutarea full-text pe date textuale. Nu necesită licență separată și operează direct pe structurile de date ale bazei de date, inclusiv coloane CLOB, BLOB și VARCHAR2.
+- **[Indexul CONTEXT](/ro/glossary/indice-context/)** — Tip de index Oracle Text pentru căutarea full-text pe text nestructurat (documente, articole, avize). Construiește o structură inversată token→document care evită scanarea completă a coloanei CLOB la fiecare interogare.
 
-- **Indexul CONTEXT** — Tip de index Oracle Text pentru căutarea full-text pe text nestructurat (documente, articole, avize). Construiește o structură inversată token→document care evită scanarea completă a coloanei CLOB la fiecare interogare.
+- **[Indexul CATSEARCH](/ro/glossary/indice-catsearch/)** — Tip de index Oracle Text optimizat pentru arhive care combină atribute structurate (expeditor, dată, categorie) cu text liber. Predicatele SQL și căutarea textuală sunt rezolvate împreună în interiorul indexului, nu în faze separate.
 
-- **Indexul CATSEARCH** — Tip de index Oracle Text optimizat pentru arhive care combină atribute structurate (expeditor, dată, categorie) cu text liber. Predicatele SQL și căutarea textuală sunt rezolvate împreună în interiorul indexului, nu în faze separate.
+- **[Indexul CTXXPATH](/ro/glossary/indice-ctxxpath/)** — Tip de index Oracle Text pentru documente XML sau JSON arhivate în CLOB/BLOB. Păstrează structura ierarhică a path-urilor XML în timpul indexării, permițând interogări care limitează căutarea la noduri specifice ale documentului.
 
-- **Indexul CTXXPATH** — Tip de index Oracle Text pentru documente XML sau JSON arhivate în CLOB/BLOB. Păstrează structura ierarhică a path-urilor XML în timpul indexării, permițând interogări care limitează căutarea la noduri specifice ale documentului.
-
-- **Lexer** (Oracle Text) — Componentă care analizează textul în faza de indexare, împărțindu-l în tokeni și aplicând reguli de normalizare specifice limbii și formatului. `BASIC_LEXER` cu `BASE_LETTER YES` gestionează, de exemplu, normalizarea accentelor pentru italiană.
+- **[Lexer](/ro/glossary/lexer/)** (Oracle Text) — Componentă care analizează textul în faza de indexare, împărțindu-l în tokeni și aplicând reguli de normalizare specifice limbii și formatului. `BASIC_LEXER` cu `BASE_LETTER YES` gestionează, de exemplu, normalizarea accentelor pentru italiană.
