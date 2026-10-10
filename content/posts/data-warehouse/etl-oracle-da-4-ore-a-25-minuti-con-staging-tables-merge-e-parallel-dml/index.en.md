@@ -197,8 +197,7 @@ The pattern — staging table → transformation with indexed joins → bulk MER
 3. Oracle Database SQL Language Reference 19c — [MERGE](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/MERGE.html)
 4. Oracle Database — [Parallel DML](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/using-parallel-dml.html)
 
-## Glossary candidate
-
+## Glossary
 - **[AWR](/en/glossary/awr/)** (Oracle Automatic Workload Repository) — Repository of periodic snapshots of Oracle workload metrics. The foundation for AWR reports and ADDM. Essential for diagnosing bottlenecks over specific time windows such as a nightly batch run.
 
 - **[Direct Path Insert](/en/glossary/direct-path-insert/)** — Oracle INSERT mode (activated by the `APPEND` hint) that bypasses the buffer cache and writes directly to datafiles. Dramatically reduces bulk load cost but requires careful attention to backup and recovery strategy.

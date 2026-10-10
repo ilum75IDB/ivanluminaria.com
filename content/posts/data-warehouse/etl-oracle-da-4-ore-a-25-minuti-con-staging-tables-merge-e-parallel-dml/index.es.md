@@ -196,8 +196,7 @@ El patrón — staging table → transformación con joins indexados → MERGE b
 3. Oracle Database SQL Language Reference 19c — [MERGE](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/MERGE.html)
 4. Oracle Database — [Parallel DML](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/using-parallel-dml.html)
 
-## Glosario candidato
-
+## Glosario
 - **[AWR](/es/glossary/awr/)** (Oracle Automatic Workload Repository) — Repositorio de snapshots periódicos de métricas de workload Oracle. Base para los informes AWR y para ADDM. Fundamental para diagnosticar cuellos de botella en ventanas temporales específicas como una noche de batch.
 
 - **[Direct Path Insert](/es/glossary/direct-path-insert/)** — Modalidad de INSERT en Oracle (activada por el hint `APPEND`) que bypasea el buffer cache y escribe directamente en los datafiles. Reduce drásticamente el coste de carga bulk, pero requiere atención a la estrategia de backup y recovery.

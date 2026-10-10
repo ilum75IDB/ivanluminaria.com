@@ -197,8 +197,7 @@ Tiparul — staging table → transformare cu join-uri indexate → MERGE bulk c
 3. Oracle Database SQL Language Reference 19c — [MERGE](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/MERGE.html)
 4. Oracle Database — [Parallel DML](https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/using-parallel-dml.html)
 
-## Glosar candidat
-
+## Glosar
 - **[AWR](/ro/glossary/awr/)** (Oracle Automatic Workload Repository) — Depozit de snapshot-uri periodice cu metrici de workload Oracle. Baza pentru rapoartele AWR și pentru ADDM. Esențial pentru diagnosticarea blocajelor pe ferestre temporale specifice, cum ar fi o noapte de batch.
 
 - **[Direct Path Insert](/ro/glossary/direct-path-insert/)** — Modalitate de INSERT Oracle (activată prin hint-ul `APPEND`) care ocolește buffer cache-ul și scrie direct în datafile-uri. Reduce drastic costul încărcărilor bulk, dar necesită atenție la strategia de backup și recovery.
