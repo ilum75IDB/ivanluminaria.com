@@ -1,6 +1,6 @@
 ---
 categories:
-- oracle
+- project-management
 date: '2026-10-20'
 description: Datadog and Dynatrace show symptoms, not causes. How to explain to the
   board why modern observability isn't enough without a skilled reader.
