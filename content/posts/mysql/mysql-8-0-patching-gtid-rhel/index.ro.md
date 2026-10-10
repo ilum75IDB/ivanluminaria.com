@@ -335,8 +335,8 @@ View-urile invalide în acest caz erau deja invalide înainte de patching. Upgra
 
 - **[mysqldump](/ro/glossary/mysqldump/)** — utilitar de backup logic inclus în MySQL. Produce un fișier SQL cu instrucțiunile `CREATE` și `INSERT` pentru a recrea baza de date. Potrivit pentru baze de date de dimensiuni mici și medii; pentru volume mari se preferă instrumente precum mydumper sau backup-uri fizice cu xtrabackup.
 
-- **View invalid** (MySQL) — vedere al cărei corp SQL face referire la obiecte care nu mai există sau nu sunt accesibile (tabele redenumite, coloane șterse, permisiuni revocate). MySQL nu invalidează automat view-urile la modificarea tabelei de bază: eroarea apare doar la prima execuție sau în timpul unui dump.
+- **[View invalid](/ro/glossary/gtid/)** (MySQL) — vedere al cărei corp SQL face referire la obiecte care nu mai există sau nu sunt accesibile (tabele redenumite, coloane șterse, permisiuni revocate). MySQL nu invalidează automat view-urile la modificarea tabelei de bază: eroarea apare doar la prima execuție sau în timpul unui dump.
 
-- **`--single-transaction`** (mysqldump) — flag care inițiază o tranzacție `REPEATABLE READ` înainte de dump, garantând consistența fără a achiziționa lock-uri pe tabelele InnoDB. Nu se aplică tabelelor MyISAM, care necesită `--lock-tables`.
+- **[`--single-transaction`](/ro/glossary/mysqldump/)** (mysqldump) — flag care inițiază o tranzacție `REPEATABLE READ` înainte de dump, garantând consistența fără a achiziționa lock-uri pe tabelele InnoDB. Nu se aplică tabelelor MyISAM, care necesită `--lock-tables`.
 
 - **`replication_group_members`** (MySQL Performance Schema) — tabelă de sistem care listează nodurile active într-un cluster Group Replication, cu starea (`ONLINE`, `RECOVERING`, `UNREACHABLE`) și rolul (`PRIMARY`, `SECONDARY`). Goală pe servere standalone sau cu replică tradițională.
