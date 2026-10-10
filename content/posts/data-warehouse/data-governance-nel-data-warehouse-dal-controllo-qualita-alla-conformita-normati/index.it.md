@@ -203,4 +203,4 @@ Non era tutto. Ma era abbastanza per arrivare alla riunione con i manager con le
 
 - **[Data Quality](/it/glossary/data-quality/)** — La misura in cui i dati sono accurati, completi, coerenti, validi e tempestivi. Non è un controllo una-tantum ma un processo continuo di monitoraggio, allerta e remediation che garantisce l'affidabilità delle analisi nel tempo.
 
-- **Data Catalog** — Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di ricerca. Rende la governance navigabile dagli utenti business senza richiedere intervento tecnico per ogni domanda sui dati.
+- **[Data Catalog](/it/glossary/data-governance/)** — Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di ricerca. Rende la governance navigabile dagli utenti business senza richiedere intervento tecnico per ogni domanda sui dati.
