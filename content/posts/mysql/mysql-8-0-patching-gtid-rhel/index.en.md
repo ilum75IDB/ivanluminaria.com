@@ -334,8 +334,8 @@ The broken views in this case were already broken before the patching. The upgra
 
 - **[mysqldump](/en/glossary/mysqldump/)** — logical backup utility bundled with MySQL. Produces a SQL file with `CREATE` and `INSERT` statements to recreate the database. Suitable for small to medium-sized databases; for high volumes, tools like mydumper or physical backups with xtrabackup are preferred.
 
-- **[Invalid view](/en/glossary/gtid/)** (MySQL) — a view whose SQL body references objects that no longer exist or are not accessible (renamed tables, dropped columns, revoked permissions). MySQL does not automatically invalidate views when the underlying table changes: the error surfaces only on first execution or during a dump.
+- **Invalid view** (MySQL) — a view whose SQL body references objects that no longer exist or are not accessible (renamed tables, dropped columns, revoked permissions). MySQL does not automatically invalidate views when the underlying table changes: the error surfaces only on first execution or during a dump.
 
-- **[`--single-transaction`](/en/glossary/mysqldump/)** (mysqldump) — flag that opens a `REPEATABLE READ` transaction before the dump, guaranteeing consistency without acquiring locks on InnoDB tables. Not applicable to MyISAM tables, which require `--lock-tables`.
+- **`--single-transaction`** (mysqldump) — flag that opens a `REPEATABLE READ` transaction before the dump, guaranteeing consistency without acquiring locks on InnoDB tables. Not applicable to MyISAM tables, which require `--lock-tables`.
 
 - **`replication_group_members`** (MySQL Performance Schema) — system table listing the active nodes in a Group Replication cluster, with state (`ONLINE`, `RECOVERING`, `UNREACHABLE`) and role (`PRIMARY`, `SECONDARY`). Empty on standalone servers or those using traditional replication.

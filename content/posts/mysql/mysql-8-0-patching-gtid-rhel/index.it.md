@@ -335,8 +335,8 @@ Le view rotte in questo caso erano già rotte prima del patching. L'upgrade non 
 
 - **[mysqldump](/it/glossary/mysqldump/)** — utility di backup logico inclusa in MySQL. Produce un file SQL con le istruzioni `CREATE` e `INSERT` per ricreare il database. Adatto per database di piccole e medie dimensioni; per volumi elevati si preferiscono strumenti come mydumper o backup fisici con xtrabackup.
 
-- **[View invalida](/it/glossary/gtid/)** (MySQL) — vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne eliminate, permessi revocati). MySQL non invalida automaticamente le view alla modifica della tabella sottostante: l'errore emerge solo alla prima esecuzione o durante un dump.
+- **View invalida** (MySQL) — vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne eliminate, permessi revocati). MySQL non invalida automaticamente le view alla modifica della tabella sottostante: l'errore emerge solo alla prima esecuzione o durante un dump.
 
-- **[`--single-transaction`](/it/glossary/mysqldump/)** (mysqldump) — flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabelle InnoDB. Non applicabile a tabelle MyISAM, che richiedono `--lock-tables`.
+- **`--single-transaction`** (mysqldump) — flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabelle InnoDB. Non applicabile a tabelle MyISAM, che richiedono `--lock-tables`.
 
 - **`replication_group_members`** (MySQL Performance Schema) — tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACHABLE`) e ruolo (`PRIMARY`, `SECONDARY`). Vuota su server standalone o con replica tradizionale.
