@@ -1,20 +1,13 @@
 ---
-categories:
-- postgresql
-date: '2026-07-07T08:03:00+01:00'
-description: 'Replica logica PostgreSQL spiegata dalle domande di un collega: migrazione
-  cross-version, CDC verso data warehouse, configurazione passo-passo.'
+title: "Replica logica in PostgreSQL: le domande di un collega che chiariscono l'argomento"
+seoTitle: "Replica logica PostgreSQL: scenari, config e monitoring"
+description: "Replica logica PostgreSQL spiegata dalle domande di un collega: migrazione cross-version, CDC verso data warehouse, configurazione passo-passo."
+date: "2026-07-07T08:03:00+01:00"
 draft: false
-image: replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg
-seoTitle: 'Replica logica PostgreSQL: scenari, config e monitoring'
-tags:
-- replica-logica
-- cdc
-- migration
-- postgresql-13
-- postgresql-15
-title: 'Replica logica in PostgreSQL: le domande di un collega che chiariscono l''argomento'
-translationKey: replica_logica_in_postgresql_scenari_uso
+translationKey: "replica_logica_in_postgresql_scenari_uso"
+tags: ["replica-logica", "cdc", "migration", "postgresql-13", "postgresql-15"]
+categories: ["postgresql"]
+image: "replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg"
 webo_generated_at: 2026-06-08
 webo_status: scheduled
 ---
@@ -270,7 +263,8 @@ Le domande di Claudio non hanno cambiato le scelte tecniche. Le hanno rese più 
 
 ---
 
-## Glossario
+## Glossario candidato
+
 **Publication** — oggetto PostgreSQL che definisce l'insieme di tabelle (e opzionalmente righe, dalla versione 15) i cui cambiamenti vengono resi disponibili per la replica logica. Creata sul publisher con `CREATE PUBLICATION`, può essere referenziata da più subscriber indipendenti.
 
 **Subscription** — oggetto PostgreSQL creato sul subscriber che stabilisce la connessione al publisher, specifica la publication a cui iscriversi e gestisce il ciclo di vita della replica: snapshot iniziale, streaming delle modifiche, riconnessione automatica.

@@ -1,21 +1,13 @@
 ---
-categories:
-- postgresql
-date: '2026-07-07T08:03:00+01:00'
-description: 'Replicación lógica PostgreSQL explicada con las preguntas de un colega:
-  migración cross-version, CDC hacia data warehouse, configuración paso a paso.'
+title: "Replicación lógica en PostgreSQL: las preguntas de un colega que aclaran el tema"
+seoTitle: "Replicación lógica PostgreSQL: escenarios y configuración"
+description: "Replicación lógica PostgreSQL explicada con las preguntas de un colega: migración cross-version, CDC hacia data warehouse, configuración paso a paso."
+date: "2026-07-07T08:03:00+01:00"
 draft: false
-image: replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg
-seoTitle: 'Replicación lógica PostgreSQL: escenarios y configuración'
-tags:
-- replica-logica
-- cdc
-- migration
-- postgresql-13
-- postgresql-15
-title: 'Replicación lógica en PostgreSQL: las preguntas de un colega que aclaran el
-  tema'
-translationKey: replica_logica_in_postgresql_scenari_uso
+translationKey: "replica_logica_in_postgresql_scenari_uso"
+tags: ["replica-logica", "cdc", "migration", "postgresql-13", "postgresql-15"]
+categories: ["postgresql"]
+image: "replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg"
 webo_generated_at: 2026-06-08
 webo_status: scheduled
 ---
@@ -271,7 +263,8 @@ Las preguntas de Claudio no cambiaron las decisiones técnicas. Las hicieron má
 
 ---
 
-## Glosario
+## Glosario candidato
+
 **Publication** — objeto PostgreSQL que define el conjunto de tablas (y opcionalmente filas, desde la versión 15) cuyos cambios se ponen a disposición para la replicación lógica. Se crea en el publisher con `CREATE PUBLICATION` y puede ser referenciada por múltiples subscribers independientes.
 
 **Subscription** — objeto PostgreSQL creado en el subscriber que establece la conexión al publisher, especifica la publication a la que suscribirse y gestiona el ciclo de vida de la replicación: snapshot inicial, streaming de los cambios, reconexión automática.

@@ -1,20 +1,13 @@
 ---
-categories:
-- postgresql
-date: '2026-07-07T08:03:00+01:00'
-description: 'Replică logică PostgreSQL explicată prin întrebările unui coleg: migrare
-  cross-versiune, CDC spre data warehouse, configurare pas cu pas.'
+title: "Replică logică în PostgreSQL: întrebările unui coleg care clarifică subiectul"
+seoTitle: "Replică logică PostgreSQL: scenarii, configurare, monitorizare"
+description: "Replică logică PostgreSQL explicată prin întrebările unui coleg: migrare cross-versiune, CDC spre data warehouse, configurare pas cu pas."
+date: "2026-07-07T08:03:00+01:00"
 draft: false
-image: replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg
-seoTitle: 'Replică logică PostgreSQL: scenarii, configurare, monitorizare'
-tags:
-- replica-logica
-- cdc
-- migration
-- postgresql-13
-- postgresql-15
-title: 'Replică logică în PostgreSQL: întrebările unui coleg care clarifică subiectul'
-translationKey: replica_logica_in_postgresql_scenari_uso
+translationKey: "replica_logica_in_postgresql_scenari_uso"
+tags: ["replica-logica", "cdc", "migration", "postgresql-13", "postgresql-15"]
+categories: ["postgresql"]
+image: "replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg"
 webo_generated_at: 2026-06-08
 webo_status: scheduled
 ---
@@ -270,7 +263,8 @@ Claudio are o înțelegere mai concretă a ceea ce a observat. Eu am o înțeleg
 
 ---
 
-## Glosar
+## Glosar candidat
+
 **Publication** — obiect PostgreSQL care definește mulțimea de tabele (și opțional rânduri, din versiunea 15) ale căror modificări sunt puse la dispoziție pentru replicarea logică. Creat pe publisher cu `CREATE PUBLICATION`, poate fi referențiat de mai mulți subscriberi independenți.
 
 **Subscription** — obiect PostgreSQL creat pe subscriber care stabilește conexiunea la publisher, specifică publication-ul la care se abonează și gestionează ciclul de viață al replicării: snapshot inițial, streaming al modificărilor, reconectare automată.
