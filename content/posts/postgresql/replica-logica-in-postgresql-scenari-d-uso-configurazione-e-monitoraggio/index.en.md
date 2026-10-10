@@ -1,13 +1,21 @@
 ---
-title: "Logical replication in PostgreSQL: a colleague's questions that clarify the topic"
-seoTitle: "PostgreSQL logical replication: scenarios, config, monitoring"
-description: "PostgreSQL logical replication explained through a colleague's questions: cross-version migration, CDC to data warehouse, step-by-step configuration."
-date: "2026-07-07T08:03:00+01:00"
+categories:
+- postgresql
+date: '2026-07-07T08:03:00+01:00'
+description: 'PostgreSQL logical replication explained through a colleague''s questions:
+  cross-version migration, CDC to data warehouse, step-by-step configuration.'
 draft: false
-translationKey: "replica_logica_in_postgresql_scenari_uso"
-tags: ["replica-logica", "cdc", "migration", "postgresql-13", "postgresql-15"]
-categories: ["postgresql"]
-image: "replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg"
+image: replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio.cover.jpg
+seoTitle: 'PostgreSQL logical replication: scenarios, config, monitoring'
+tags:
+- replica-logica
+- cdc
+- migration
+- postgresql-13
+- postgresql-15
+title: 'Logical replication in PostgreSQL: a colleague''s questions that clarify the
+  topic'
+translationKey: replica_logica_in_postgresql_scenari_uso
 webo_generated_at: 2026-06-08
 webo_status: scheduled
 ---
@@ -263,8 +271,7 @@ Claudio's questions didn't change the technical choices. They made them more sol
 
 ---
 
-## Glossary candidate
-
+## Glossary
 **Publication** — a PostgreSQL object that defines the set of tables (and optionally rows, from version 15) whose changes are made available for logical replication. Created on the publisher with `CREATE PUBLICATION`, it can be referenced by multiple independent subscribers.
 
 **Subscription** — a PostgreSQL object created on the subscriber that establishes the connection to the publisher, specifies the publication to subscribe to, and manages the replication lifecycle: initial snapshot, change streaming, automatic reconnection.
