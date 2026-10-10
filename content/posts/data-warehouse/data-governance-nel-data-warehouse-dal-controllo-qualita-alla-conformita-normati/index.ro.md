@@ -202,4 +202,4 @@ Nu era totul. Dar era suficient pentru a ajunge la ședința cu managerii cu ră
 
 - **[Data Quality](/ro/glossary/data-quality/)** — Măsura în care datele sunt exacte, complete, coerente, valide și actuale. Nu este un control unic, ci un proces continuu de monitorizare, alertare și remediere care garantează fiabilitatea analizelor în timp.
 
-- **[Data Catalog](/ro/glossary/data-governance/)** — Inventar organizat al tuturor datelor disponibile într-o organizație, cu metadate, glosar, lineage și instrumente de căutare. Face governance navigabil pentru utilizatorii de business fără a necesita intervenție tehnică pentru fiecare întrebare despre date.
+- **Data Catalog** — Inventar organizat al tuturor datelor disponibile într-o organizație, cu metadate, glosar, lineage și instrumente de căutare. Face governance navigabil pentru utilizatorii de business fără a necesita intervenție tehnică pentru fiecare întrebare despre date.
