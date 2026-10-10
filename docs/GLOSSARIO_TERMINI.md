@@ -19,6 +19,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Additive Measure | Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni (importi, quantità, conteggi). Le misure semi-additive e non-additive hanno regole di aggregazione diverse | fatto-grana-sbagliata |
 | AI Manager | Ruolo professionale che governa l'impatto dell'intelligenza artificiale su architetture, processi e persone all'interno di un progetto | ai-manager-project-management |
 | Agile Manifesto | Documento di poche righe firmato a Snowbird, Utah, l'11-13 febbraio 2001 da diciassette sviluppatori. Quattro coppie di valori che spostavano il focus dello sviluppo software dalle pratiche heavyweight (RUP-like) alle pratiche lightweight (Scrum, XP, Kanban) | da-rivali-a-co-autori-uml-rup |
+| AIOps |  | ai-mostra-sintomo-board-chiede-causa |
 | ALTER DOMAIN | Comando Oracle 23ai che modifica un SQL Domain (vincolo CHECK, DEFAULT, annotations) propagando la modifica a tutte le colonne che usano il dominio. Sostituisce molteplici ALTER TABLE con una sola operazione di schema-wide governance | enum-oracle-workaround-fino-a-23ai |
 | ALTER TYPE ADD VALUE | Comando PostgreSQL che aggiunge un valore a un ENUM esistente. Operazione di metadata, transazionale, senza rebuild della tabella. Disponibile dalla 9.1, con posizionamento BEFORE/AFTER dalla 9.6 | enum-postgresql-paga-o-pesa |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
@@ -130,7 +131,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Parallel DML | Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION E | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
-| piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li |
+| PGA |  | ai-mostra-sintomo-board-chiede-causa |
+| piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, ai-mostra-sintomo-board-chiede-causa |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
 | Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
 | Primary Component (PC) | Il sottoinsieme di nodi che detiene il quorum e può continuare a processare scritture. Un nodo fuori dal PC passa in sta | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
@@ -221,7 +223,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
 | View invalida | vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne elimina | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | WAL | Write-Ahead Log — registro sequenziale di tutte le modifiche al database PostgreSQL, scritto prima dei file dati. Fondamento di durability, crash recovery, replica fisica e logica. La replica logica lo decodifica via plugin `pgoutput` in cambi logici riga per riga | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
-| Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li |
+| Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, ai-mostra-sintomo-board-chiede-causa |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
 | wsrep_cluster_size | Variabile di stato che riporta il numero di nodi attualmente nel cluster Galera. Valore atteso in un cluster a 3 nodi: ` | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | xtrabackup | Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione, gestendo le transazioni attive tramite il redo log. Nettamente più veloce dei backup logici su dataset grandi | mysql-pre-upgrade-assessment |
@@ -234,6 +236,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
 **Ultimo aggiornamento**: 2026-10-10
-**Totale termini**: 224
-**Totale articoli con glossario**: 52
+**Totale termini**: 226
+**Totale articoli con glossario**: 53
 

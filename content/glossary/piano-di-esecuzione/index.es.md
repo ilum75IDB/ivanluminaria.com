@@ -3,6 +3,7 @@ aka: Query execution plan, Query plan
 articles:
 - /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
 - /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
+- /posts/oracle/ai-mostra-sintomo-board-chiede-causa
 description: 'Secuencia de operaciones elegida por el optimizador SQL para ejecutar
   una consulta: escaneos, joins, ordenaciones. Las estadísticas obsoletas lo degradan
   en silencio.'
