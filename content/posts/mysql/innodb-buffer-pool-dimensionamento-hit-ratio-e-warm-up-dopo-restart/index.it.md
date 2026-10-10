@@ -217,14 +217,13 @@ Il team ha anche impostato un alert sul hit ratio: sotto 985/1000 per più di ci
 
 ---
 
-## Glossario candidato
+## Glossario
+- **[InnoDB buffer pool](/it/glossary/innodb-buffer-pool/)** — Area di memoria principale di InnoDB dove vengono cachate pagine di dati e indici. Più è grande, meno letture finiscono su disco. Parametro: `innodb_buffer_pool_size`.
 
-- **InnoDB buffer pool** — Area di memoria principale di InnoDB dove vengono cachate pagine di dati e indici. Più è grande, meno letture finiscono su disco. Parametro: `innodb_buffer_pool_size`.
+- **[Hit ratio](/it/glossary/hit-ratio/)** (buffer pool) — Percentuale di letture servite dalla memoria rispetto al totale. Si esprime in formato X/1000 nell'output di `SHOW ENGINE INNODB STATUS`. Valori sotto 990/1000 indicano eccessiva dipendenza dal disco.
 
-- **Hit ratio** (buffer pool) — Percentuale di letture servite dalla memoria rispetto al totale. Si esprime in formato X/1000 nell'output di `SHOW ENGINE INNODB STATUS`. Valori sotto 990/1000 indicano eccessiva dipendenza dal disco.
+- **[Pagina dirty](/it/glossary/pagina-dirty/)** — Pagina del buffer pool modificata in memoria ma non ancora sincronizzata su disco. InnoDB le gestisce tramite flush in background; un numero elevato e crescente segnala che il flush non riesce a stare al passo con le scritture.
 
-- **Pagina dirty** — Pagina del buffer pool modificata in memoria ma non ancora sincronizzata su disco. InnoDB le gestisce tramite flush in background; un numero elevato e crescente segnala che il flush non riesce a stare al passo con le scritture.
+- **[LRU list](/it/glossary/lru-list/)** (InnoDB) — Struttura a due zone (young list + old list) usata da InnoDB per decidere quali pagine tenere in cache e quali rimuovere. Protegge le pagine calde dall'eviction causata da full scan occasionali.
 
-- **LRU list** (InnoDB) — Struttura a due zone (young list + old list) usata da InnoDB per decidere quali pagine tenere in cache e quali rimuovere. Protegge le pagine calde dall'eviction causata da full scan occasionali.
-
-- **Buffer pool warm-up** — Processo di ricaricamento delle pagine calde nel buffer pool dopo un restart. Con `innodb_buffer_pool_dump_at_shutdown` e `innodb_buffer_pool_load_at_startup`, MySQL salva e ripristina gli identificatori delle pagine, riducendo il tempo di cold start da ore a minuti.
+- **[Buffer pool warm-up](/it/glossary/buffer-pool-warm-up/)** — Processo di ricaricamento delle pagine calde nel buffer pool dopo un restart. Con `innodb_buffer_pool_dump_at_shutdown` e `innodb_buffer_pool_load_at_startup`, MySQL salva e ripristina gli identificatori delle pagine, riducendo il tempo di cold start da ore a minuti.
