@@ -1,10 +1,13 @@
 ---
-title: "Plan de execuție"
-description: "Secvența de operații aleasă de optimizatorul SQL pentru a executa o interogare: scanări, join-uri, sortări. Statisticile învechite îl degradează fără semnal vizibil."
-translationKey: "glossary_piano_di_esecuzione"
-aka: "Query execution plan, Query plan"
+aka: Query execution plan, Query plan
 articles:
-  - "/posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva"
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+- /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
+description: 'Secvența de operații aleasă de optimizatorul SQL pentru a executa o
+  interogare: scanări, join-uri, sortări. Statisticile învechite îl degradează fără
+  semnal vizibil.'
+title: Plan de execuție
+translationKey: glossary_piano_di_esecuzione
 ---
 
 Planul de execuție este rețeta pe care motorul bazei de date o urmează pentru a răspunde la o interogare SQL. Optimizatorul evaluează mai multe strategii posibile — ce indecși să folosească, în ce ordine să unească tabelele, dacă să sorteze înainte sau după join — și o alege pe cea cu costul estimat cel mai mic. Rezultatul este un arbore de operatori executați în secvență.

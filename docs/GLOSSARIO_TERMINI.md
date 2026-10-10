@@ -23,7 +23,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ALTER TYPE ADD VALUE | Comando PostgreSQL che aggiunge un valore a un ENUM esistente. Operazione di metadata, transazionale, senza rebuild della tabella. Disponibile dalla 9.1, con posizionamento BEFORE/AFTER dalla 9.6 | enum-postgresql-paga-o-pesa |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | anamnesi | Nel contesto della diagnostica di sistemi informatici, raccolta sistematica di informazioni su sintomi, eventi recenti e | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
-| ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li |
 | ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | Auto-Indexing | funzionalità Oracle (disponibile da 19c, configurabile in 21c) che analizza il workload e crea automaticamente indici in | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | BASIC | Linguaggio di programmazione semplice e interpretato, diffuso negli anni '80 sui home computer. I programmi erano scritt | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
@@ -39,7 +39,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | B-Tree | Struttura dati ad albero bilanciato, tipo di indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, inadatto per LIKE con wildcard iniziale | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
-| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li |
 | Commodore 64 |  | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
@@ -130,7 +130,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Parallel DML | Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION E | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
-| piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
 | Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
 | Primary Component (PC) | Il sottoinsieme di nodi che detiene il quorum e può continuare a processare scritture. Un nodo fuori dal PC passa in sta | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
@@ -199,7 +199,9 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Tablespace | Unità logica di storage in Oracle che raggruppa uno o più datafile fisici, usata per organizzare e gestire lo spazio su disco per tabelle, indici e partizioni | oracle-partitioning |
 | Three Amigos | Soprannome dato dalla stampa specializzata a Grady Booch, James Rumbaugh e Ivar Jacobson, i tre creatori di UML che lavoravano in Rational Software tra il 1994 e il 1998. Da rivali divennero co-autori di uno standard unificato | da-rivali-a-co-autori-uml-rup |
 | THP | Transparent Huge Pages — funzione del kernel Linux che promuove automaticamente le pagine normali a pagine grandi, causa latenze imprevedibili e deve essere disabilitata per Oracle | oracle-linux-kernel |
+| TIA |  | il-restart-ha-risolto-il-problema-e-ancora-li |
 | Timeboxing | Tecnica di gestione del tempo che assegna un intervallo fisso e non negoziabile a un'attività, forzando la conclusione entro il limite stabilito | tecnica-si-e-yes-and, standup-meeting-15-minuti |
+| Transient Ischemic Attack |  | il-restart-ha-risolto-il-problema-e-ancora-li |
 | Transport Lag | Ritardo nella trasmissione dei redo log dal database primary allo standby in una configurazione Data Guard, indicatore critico della salute della replica | oracle-cloud-migration |
 | Transportable Tablespaces (TTS) | tecnica Oracle che permette di spostare tablespace tra database copiando i datafile fisici e importando solo il metadata | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Type safety | Proprietà di un sistema di tipi che impedisce, a parse-time, l'uso di valori incompatibili con il tipo dichiarato di colonna, parametro o variabile | enum-postgresql-paga-o-pesa |
@@ -219,7 +221,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
 | View invalida | vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne elimina | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | WAL | Write-Ahead Log — registro sequenziale di tutte le modifiche al database PostgreSQL, scritto prima dei file dati. Fondamento di durability, crash recovery, replica fisica e logica. La replica logica lo decodifica via plugin `pgoutput` in cambi logici riga per riga | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
-| Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
 | wsrep_cluster_size | Variabile di stato che riporta il numero di nodi attualmente nel cluster Galera. Valore atteso in un cluster a 3 nodi: ` | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | xtrabackup | Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione, gestendo le transazioni attive tramite il redo log. Nettamente più veloce dei backup logici su dataset grandi | mysql-pre-upgrade-assessment |
@@ -231,7 +233,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
-**Ultimo aggiornamento**: 2026-09-30
-**Totale termini**: 222
-**Totale articoli con glossario**: 51
+**Ultimo aggiornamento**: 2026-10-10
+**Totale termini**: 224
+**Totale articoli con glossario**: 52
 

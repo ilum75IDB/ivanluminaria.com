@@ -3,6 +3,7 @@ aka: Active Session History
 articles:
 - /posts/oracle/oracle-awr-ash
 - /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+- /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
 description: Active Session History — Oracle component that records the state of every
   active session once per second, used for pinpoint performance diagnosis.
 title: ASH

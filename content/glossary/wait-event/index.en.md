@@ -2,6 +2,7 @@
 articles:
 - /posts/oracle/oracle-awr-ash
 - /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+- /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
 description: A diagnostic event recorded by Oracle whenever a session cannot proceed
   and must wait for a resource — I/O, lock, network or CPU.
 title: Wait Event

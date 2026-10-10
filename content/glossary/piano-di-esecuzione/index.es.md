@@ -1,10 +1,13 @@
 ---
-title: "Plan de ejecución"
-description: "Secuencia de operaciones elegida por el optimizador SQL para ejecutar una consulta: escaneos, joins, ordenaciones. Las estadísticas obsoletas lo degradan en silencio."
-translationKey: "glossary_piano_di_esecuzione"
-aka: "Query execution plan, Query plan"
+aka: Query execution plan, Query plan
 articles:
-  - "/posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva"
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+- /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
+description: 'Secuencia de operaciones elegida por el optimizador SQL para ejecutar
+  una consulta: escaneos, joins, ordenaciones. Las estadísticas obsoletas lo degradan
+  en silencio.'
+title: Plan de ejecución
+translationKey: glossary_piano_di_esecuzione
 ---
 
 El plan de ejecución es la receta que sigue el motor de base de datos para responder a una consulta SQL. El optimizador evalúa varias estrategias posibles — qué índices usar, en qué orden unir las tablas, si ordenar antes o después del join — y elige la de menor coste estimado. El resultado es un árbol de operadores que el motor ejecuta en secuencia.
