@@ -267,14 +267,13 @@ Monitorizarea lag-ului de replicare nu este un nice-to-have. Este o metrică ope
 
 ---
 
-## Glosar candidat
+## Glosar
+- **[Binlog](/ro/glossary/binlog/)** (MySQL binary log) — registru secvențial al tuturor modificărilor de date pe masterul MySQL. Baza replicării: slave-ul citește binlog-ul pentru a ști ce să aplice. Format ROW, STATEMENT sau MIXED.
 
-- **Binlog** (MySQL binary log) — registru secvențial al tuturor modificărilor de date pe masterul MySQL. Baza replicării: slave-ul citește binlog-ul pentru a ști ce să aplice. Format ROW, STATEMENT sau MIXED.
+- **[Relay log](/ro/glossary/relay-log/)** — copie locală a binlog-ului masterului, scrisă de IO thread pe slave. SQL thread-ul citește relay log-ul pentru a aplica tranzacțiile. Este buffer-ul dintre recepția și aplicarea evenimentelor.
 
-- **Relay log** — copie locală a binlog-ului masterului, scrisă de IO thread pe slave. SQL thread-ul citește relay log-ul pentru a aplica tranzacțiile. Este buffer-ul dintre recepția și aplicarea evenimentelor.
+- **[GTID](/ro/glossary/gtid/)** (Global Transaction Identifier) — identificator unic atribuit fiecărei tranzacții committate pe un server MySQL. Format `source_uuid:transaction_id`. Permite failover simplificat și monitorizarea precisă a lag-ului de replicare.
 
-- **GTID** (Global Transaction Identifier) — identificator unic atribuit fiecărei tranzacții committate pe un server MySQL. Format `source_uuid:transaction_id`. Permite failover simplificat și monitorizarea precisă a lag-ului de replicare.
+- **[Parallel replication](/ro/glossary/parallel-replication/)** — mod de aplicare a evenimentelor de replicare care folosește mai multe worker thread-uri în loc de un singur SQL thread. În MySQL, modul `LOGICAL_CLOCK` identifică tranzacțiile executabile în paralel pe baza commit timestamp-urilor din binlog.
 
-- **Parallel replication** — mod de aplicare a evenimentelor de replicare care folosește mai multe worker thread-uri în loc de un singur SQL thread. În MySQL, modul `LOGICAL_CLOCK` identifică tranzacțiile executabile în paralel pe baza commit timestamp-urilor din binlog.
-
-- **pt-heartbeat** — tool din Percona Toolkit care măsoară lag-ul de replicare MySQL scriind timestamp-uri pe master și comparându-le cu valorile citite pe slave. Mai fiabil decât `Seconds_Behind_Master` pentru alerting în producție.
+- **[pt-heartbeat](/ro/glossary/pt-heartbeat/)** — tool din Percona Toolkit care măsoară lag-ul de replicare MySQL scriind timestamp-uri pe master și comparându-le cu valorile citite pe slave. Mai fiabil decât `Seconds_Behind_Master` pentru alerting în producție.
