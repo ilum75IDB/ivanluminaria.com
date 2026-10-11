@@ -1,9 +1,11 @@
 ---
-title: "Cutover"
-description: "Momentul critic intr-o migrare in care sistemul de productie este mutat definitiv de pe infrastructura veche pe cea noua."
-translationKey: "glossary_cutover"
 articles:
-  - "/posts/oracle/oracle-cloud-migration"
+- /posts/oracle/oracle-cloud-migration
+- /posts/oracle/oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback
+description: Momentul critic intr-o migrare in care sistemul de productie este mutat
+  definitiv de pe infrastructura veche pe cea noua.
+title: Cutover
+translationKey: glossary_cutover
 ---
 
 **Cutover-ul** este momentul in care un sistem de productie este mutat de pe infrastructura veche pe cea noua. Este faza cea mai vizibila a unei migrari — cea pe care toata lumea si-o aminteste, in bine sau in rau.

@@ -1,9 +1,11 @@
 ---
-title: "Cutover"
-description: "Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura."
-translationKey: "glossary_cutover"
 articles:
-  - "/posts/oracle/oracle-cloud-migration"
+- /posts/oracle/oracle-cloud-migration
+- /posts/oracle/oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback
+description: Momento critico di una migrazione in cui il sistema di produzione viene
+  spostato definitivamente dalla vecchia alla nuova infrastruttura.
+title: Cutover
+translationKey: glossary_cutover
 ---
 
 Il **cutover** è il momento in cui un sistema di produzione viene spostato dalla vecchia infrastruttura alla nuova. È la fase più visibile di una migrazione — quella che tutti ricordano, nel bene o nel male.
