@@ -1,22 +1,24 @@
 ---
 title: "Lift-and-Shift"
-description: "Strategie de migrare care mută un sistem dintr-un mediu în altul fără a-i modifica arhitectura, codul sau configurația."
-translationKey: "glossary_lift-and-shift"
-aka: "Rehosting"
+description: "Strategie de migrare cloud care transferă sisteme fără a modifica arhitectura sau codul, amânând orice optimizare pentru faza post-migrare."
+translationKey: "glossary_lift_and_shift"
+aka: "Migrare rehost"
 articles:
-  - "/posts/project-management/tecnica-si-e-yes-and"
+  - "/posts/oracle/latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift"
 ---
 
-**Lift-and-Shift** (rehosting) este o strategie de migrare care constă în mutarea unui sistem dintr-un mediu în altul — de obicei din on-premise în cloud — fără a-i modifica arhitectura, codul aplicativ sau configurația. Sistemul este luat ca atare și "ridicat și mutat".
+Lift-and-shift este o abordare de migrare cloud care replică mediul sursă — servere, baze de date, aplicații — pe platforma țintă fără a modifica arhitectura, configurația sau codul. Obiectivul principal este reducerea perimetrului de validare și comprimarea timpului până la go-live, acceptând în mod deliberat că sistemul migrat nu va fi optimizat pentru noul său context.
 
 ## Cum funcționează
 
-Infrastructura este replicată în mediul de destinație: aceleași mașini virtuale, aceleași baze de date, același middleware. Avantajul este viteza: nu există rescrierea codului, nu există reproiectare arhitecturală. Riscul este de a duce cu sine toate problemele din mediul original, inclusiv ineficiențele și datoria tehnică.
+Sistemul sursă este reprodus 1:1 pe platforma țintă: VM-urile sunt convertite sau recreate cu aceleași specificații, bazele de date sunt migrate prin backup/restore sau instrumente de replicare fără refactorizarea schemei, iar dependențele de rețea sunt reconstruite fidel. În medii reglementate (GxP, SOX, PCI-DSS), această abordare limitează delta de validare deoarece comportamentul aplicației rămâne nominal nemodificat.
 
-## Când se folosește
+## Când se utilizează
 
-Când prioritatea este ieșirea rapidă dintr-un datacenter (expirare contract, dezafectare hardware), când bugetul nu permite o rearchitectură, sau ca primă fază a unei migrări incrementale unde componentele sunt apoi modernizate una câte una.
+Lift-and-shift este alegerea predominantă atunci când:
 
-## Ce poate merge prost
+- termenele de migrare sunt constrânse de scadențe contractuale sau de licențiere
+- sistemul este legacy și nu există expertiză internă pentru un refactoring sigur
+- domeniul de validare IQ/OQ/PQ trebuie menținut restrâns din motive de buget sau calendar
 
-Un lift-and-shift către cloud fără optimizare poate costa mai mult decât infrastructura on-premise originală. Aplicațiile neproiectate pentru cloud nu profită de elasticitate, auto-scaling și servicii gestionate. Rezultatul este adesea un datacenter privat reconstruit în cloud la un preț superior.
+Limitarea principală este structurală: costurile operaționale cloud (compute, stocare, rețea) rămân ridicate deoarece sistemul nu valorifică elasticitatea, managed services sau arhitecturile cloud-native. Latența WAN și constrângerile de change control în mediile GxP pot amplifica semnificativ aceste costuri, așa cum este analizat în articolul asociat.
