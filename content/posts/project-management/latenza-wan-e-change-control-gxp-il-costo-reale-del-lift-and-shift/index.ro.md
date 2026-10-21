@@ -1,6 +1,6 @@
 ---
 categories:
-- oracle
+- project-management
 date: '2026-11-10'
 description: Migrezi baza de date în cloud și optimizezi după pare rezonabil. Într-un
   sistem GxP, orice modificare post go-live deschide un ciclu de revalidare. Iată

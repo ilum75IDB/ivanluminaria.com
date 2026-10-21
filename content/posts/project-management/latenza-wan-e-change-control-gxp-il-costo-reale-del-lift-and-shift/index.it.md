@@ -1,6 +1,6 @@
 ---
 categories:
-- oracle
+- project-management
 date: '2026-11-10'
 description: Migrare il database in cloud e ottimizzare dopo sembra ragionevole. In
   un sistema GxP, ogni modifica post go-live apre un ciclo di rivalidazione. Ecco

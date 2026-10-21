@@ -1,6 +1,6 @@
 ---
 categories:
-- oracle
+- project-management
 date: '2026-11-10'
 description: Migrating the database to cloud and optimizing afterward sounds reasonable.
   In a GxP system, every post-go-live change opens a revalidation cycle. Here's why.
