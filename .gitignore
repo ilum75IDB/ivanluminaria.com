@@ -6,6 +6,7 @@ resources/_gen/
 # OS / editor
 .DS_Store
 **/.DS_Store
+*.sw?
 
 # robaccia accidentale
 --disableFastRemder/
