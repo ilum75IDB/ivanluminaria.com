@@ -288,14 +288,13 @@ Trebuie calculată explicit când se dimensionează un server MySQL, și trebuie
 3. MySQL 8.0 Reference Manual — [Memory Use in MySQL](https://dev.mysql.com/doc/refman/8.0/en/memory-use.html)
 4. MySQL 8.0 Reference Manual — [InnoDB Cluster — Rolling Restart](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-innodb-cluster-working-with-cluster.html)
 
-## Glosar candidat
+## Glosar
+- **[join_buffer_size](/ro/glossary/join-buffer-size/)** (MySQL) — Buffer alocat per thread pentru fiecare join executat fără index. Spre deosebire de buffer pool, se alocă pentru fiecare conexiune activă: impactul său asupra memoriei totale depinde de numărul de conexiuni concurente.
 
-- **join_buffer_size** (MySQL) — Buffer alocat per thread pentru fiecare join executat fără index. Spre deosebire de buffer pool, se alocă pentru fiecare conexiune activă: impactul său asupra memoriei totale depinde de numărul de conexiuni concurente.
+- **[innodb_buffer_pool_size](/ro/glossary/innodb-buffer-pool-size/)** (MySQL/InnoDB) — Parametru global care definește dimensiunea cache-ului principal InnoDB pentru date și indecși. Este parametrul de memorie cu cel mai mare impact în MySQL: în mod tipic se dimensionează la 70-80% din RAM-ul disponibil pe servere dedicate.
 
-- **innodb_buffer_pool_size** (MySQL/InnoDB) — Parametru global care definește dimensiunea cache-ului principal InnoDB pentru date și indecși. Este parametrul de memorie cu cel mai mare impact în MySQL: în mod tipic se dimensionează la 70-80% din RAM-ul disponibil pe servere dedicate.
+- **[Group Replication](/ro/glossary/group-replication/)** (MySQL) — Mecanism de replicare sincronă multi-master integrat în MySQL, baza InnoDB Cluster. Garantează consistența între noduri printr-un protocol de consens distribuit; permite rolling restart fără pierderea quorum-ului cu 3+ noduri.
 
-- **Group Replication** (MySQL) — Mecanism de replicare sincronă multi-master integrat în MySQL, baza InnoDB Cluster. Garantează consistența între noduri printr-un protocol de consens distribuit; permite rolling restart fără pierderea quorum-ului cu 3+ noduri.
+- **[performance_schema](/ro/glossary/performance-schema/)** (MySQL) — Schema de sistem care colectează metrici de execuție în timp real: statistici per query digest, wait events, memorie alocată per thread. Baza pentru diagnosticarea performanțelor fără instrumente externe.
 
-- **performance_schema** (MySQL) — Schema de sistem care colectează metrici de execuție în timp real: statistici per query digest, wait events, memorie alocată per thread. Baza pentru diagnosticarea performanțelor fără instrumente externe.
-
-- **rolling restart** — Procedură de repornire secvențială a nodurilor unui cluster care menține serviciul activ în timpul operațiunii. Pe InnoDB Cluster cu 3 noduri, permite aplicarea modificărilor de configurație fără downtime, repornind câte un nod pe rând în timp ce celelalte mențin quorum-ul.
+- **[rolling restart](/ro/glossary/rolling-restart/)** — Procedură de repornire secvențială a nodurilor unui cluster care menține serviciul activ în timpul operațiunii. Pe InnoDB Cluster cu 3 noduri, permite aplicarea modificărilor de configurație fără downtime, repornind câte un nod pe rând în timp ce celelalte mențin quorum-ul.

@@ -1,10 +1,13 @@
 ---
-title: "Piano di esecuzione"
-description: "Sequenza di operazioni scelta dall'ottimizzatore SQL per eseguire una query: scansioni, join, ordinamenti. Statistiche obsolete lo degradano silenziosamente."
-translationKey: "glossary_piano_di_esecuzione"
-aka: "Query execution plan, Query plan"
+aka: Query execution plan, Query plan
 articles:
-  - "/posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva"
+- /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+- /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
+- /posts/oracle/ai-mostra-sintomo-board-chiede-causa
+description: 'Sequenza di operazioni scelta dall''ottimizzatore SQL per eseguire una
+  query: scansioni, join, ordinamenti. Statistiche obsolete lo degradano silenziosamente.'
+title: Piano di esecuzione
+translationKey: glossary_piano_di_esecuzione
 ---
 
 Il piano di esecuzione è la ricetta che il motore del database segue per rispondere a una query SQL. L'ottimizzatore valuta più strategie possibili — quali indici usare, in che ordine unire le tabelle, se ordinare prima o dopo il join — e sceglie quella con il costo stimato più basso. Il risultato è un albero di operatori che il motore esegue in sequenza.

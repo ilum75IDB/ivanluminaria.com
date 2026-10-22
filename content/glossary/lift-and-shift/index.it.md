@@ -1,22 +1,24 @@
 ---
 title: "Lift-and-Shift"
-description: "Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione."
-translationKey: "glossary_lift-and-shift"
-aka: "Rehosting"
+description: "Strategia di migrazione cloud che trasferisce sistemi senza modificarne architettura o codice, rimandando le ottimizzazioni al post-migrazione."
+translationKey: "glossary_lift_and_shift"
+aka: "Rehost migration"
 articles:
-  - "/posts/project-management/tecnica-si-e-yes-and"
+  - "/posts/oracle/latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift"
 ---
 
-**Lift-and-Shift** (rehosting) è una strategia di migrazione che consiste nello spostare un sistema da un ambiente all'altro — tipicamente da on-premise a cloud — senza modificarne l'architettura, il codice applicativo o la configurazione. Si prende il sistema così com'è e lo si "solleva e sposta".
+Il lift-and-shift è un approccio di migrazione cloud che replica l'ambiente sorgente — server, database, applicazioni — sulla destinazione target senza alterare architettura, configurazione o codice. L'obiettivo primario è ridurre il perimetro di validazione e comprimere i tempi di go-live, accettando consapevolmente di portare in cloud un sistema non ottimizzato per quel contesto.
 
 ## Come funziona
 
-L'infrastruttura viene replicata nell'ambiente di destinazione: stesse macchine virtuali, stessi database, stessi middleware. Il vantaggio è la velocità: non c'è riscrittura del codice, non c'è redesign architetturale. Il rischio è portarsi dietro tutti i problemi dell'ambiente originale, incluse inefficienze e debito tecnico.
+Il sistema sorgente viene replicato 1:1 sulla piattaforma target: le VM sono convertite o ricreate con le stesse specifiche, i database sono migrati tramite backup/restore o strumenti di replication senza schema refactoring, e le dipendenze di rete vengono ricreate fedelmente. In ambienti regolamentati (GxP, SOX, PCI-DSS) questo approccio riduce il delta di validazione perché il comportamento applicativo rimane nominalmente invariato.
 
 ## Quando si usa
 
-Quando la priorità è uscire rapidamente da un datacenter (fine contratto, dismissione hardware), quando il budget non permette una rearchitettura, o come prima fase di una migrazione incrementale dove i componenti vengono poi modernizzati uno alla volta.
+Il lift-and-shift è la scelta prevalente quando:
 
-## Cosa può andare storto
+- i tempi di migrazione sono vincolati da scadenze contrattuali o di licenza
+- il sistema è legacy e non dispone di competenze interne per un refactoring sicuro
+- la validazione IQ/OQ/PQ deve essere contenuta per ragioni di budget o di calendario
 
-Un lift-and-shift verso il cloud senza ottimizzazione può costare più dell'infrastruttura on-premise originale. Le applicazioni non progettate per il cloud non sfruttano elasticità, auto-scaling e servizi managed. Il risultato è spesso un datacenter privato ricostruito nel cloud a un prezzo superiore.
+Il limite principale è strutturale: i costi operativi cloud (compute, storage, networking) rimangono elevati perché il sistema non sfrutta elasticità, managed services o architetture cloud-native. La latenza WAN e i vincoli di change control in ambienti GxP possono amplificare questi costi in modo significativo, come analizzato nell'articolo collegato.

@@ -2,6 +2,8 @@
 articles:
 - /posts/oracle/oracle-awr-ash
 - /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
+- /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
+- /posts/oracle/ai-mostra-sintomo-board-chiede-causa
 description: Eveniment de asteptare inregistrat de Oracle de fiecare data cand o sesiune
   nu poate continua si trebuie sa astepte o resursa — I/O, lock, retea sau CPU.
 title: Wait Event

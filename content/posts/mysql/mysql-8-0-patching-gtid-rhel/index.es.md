@@ -330,11 +330,10 @@ Las vistas rotas en este caso ya estaban rotas antes del patching. El upgrade no
 
 ---
 
-## Glosario candidato
+## Glosario
+- **[GTID](/es/glossary/gtid/)** (MySQL) — *Global Transaction Identifier*: identificador único asignado a cada transacción cuando `gtid_mode=ON`. Compuesto por `server_uuid:número_secuencia`, permite a la réplica rastrear exactamente qué transacciones ya ha aplicado, independientemente de la posición en el binlog.
 
-- **GTID** (MySQL) — *Global Transaction Identifier*: identificador único asignado a cada transacción cuando `gtid_mode=ON`. Compuesto por `server_uuid:número_secuencia`, permite a la réplica rastrear exactamente qué transacciones ya ha aplicado, independientemente de la posición en el binlog.
-
-- **mysqldump** — utilidad de backup lógico incluida en MySQL. Produce un archivo SQL con las instrucciones `CREATE` e `INSERT` para recrear la base de datos. Adecuada para bases de datos de tamaño pequeño y mediano; para volúmenes elevados se prefieren herramientas como mydumper o backups físicos con xtrabackup.
+- **[mysqldump](/es/glossary/mysqldump/)** — utilidad de backup lógico incluida en MySQL. Produce un archivo SQL con las instrucciones `CREATE` e `INSERT` para recrear la base de datos. Adecuada para bases de datos de tamaño pequeño y mediano; para volúmenes elevados se prefieren herramientas como mydumper o backups físicos con xtrabackup.
 
 - **Vista inválida** (MySQL) — vista cuyo cuerpo SQL hace referencia a objetos que ya no existen o no son accesibles (tablas renombradas, columnas eliminadas, permisos revocados). MySQL no invalida automáticamente las vistas al modificar la tabla subyacente: el error emerge solo en la primera ejecución o durante un dump.
 

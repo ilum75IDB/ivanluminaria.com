@@ -330,11 +330,10 @@ Le view rotte in questo caso erano già rotte prima del patching. L'upgrade non 
 
 ---
 
-## Glossario candidato
+## Glossario
+- **[GTID](/it/glossary/gtid/)** (MySQL) — *Global Transaction Identifier*: identificatore univoco assegnato a ogni transazione quando `gtid_mode=ON`. Composto da `server_uuid:numero_sequenza`, permette alla replica di tracciare esattamente quali transazioni ha già applicato, indipendentemente dalla posizione nel binlog.
 
-- **GTID** (MySQL) — *Global Transaction Identifier*: identificatore univoco assegnato a ogni transazione quando `gtid_mode=ON`. Composto da `server_uuid:numero_sequenza`, permette alla replica di tracciare esattamente quali transazioni ha già applicato, indipendentemente dalla posizione nel binlog.
-
-- **mysqldump** — utility di backup logico inclusa in MySQL. Produce un file SQL con le istruzioni `CREATE` e `INSERT` per ricreare il database. Adatto per database di piccole e medie dimensioni; per volumi elevati si preferiscono strumenti come mydumper o backup fisici con xtrabackup.
+- **[mysqldump](/it/glossary/mysqldump/)** — utility di backup logico inclusa in MySQL. Produce un file SQL con le istruzioni `CREATE` e `INSERT` per ricreare il database. Adatto per database di piccole e medie dimensioni; per volumi elevati si preferiscono strumenti come mydumper o backup fisici con xtrabackup.
 
 - **View invalida** (MySQL) — vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne eliminate, permessi revocati). MySQL non invalida automaticamente le view alla modifica della tabella sottostante: l'errore emerge solo alla prima esecuzione o durante un dump.
 

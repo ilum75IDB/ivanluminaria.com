@@ -193,14 +193,13 @@ Nu era totul. Dar era suficient pentru a ajunge la ședința cu managerii cu ră
 
 ---
 
-## Glosar candidat
+## Glosar
+- **[Data Governance](/ro/glossary/data-governance/)** — Ansamblul de procese, politici, standarde și metrici care asigură utilizarea eficientă a informațiilor, garantând calitatea, integritatea, securitatea și conformitatea normativă a acestora. Nu este un proiect cu o dată de sfârșit: este un framework operațional continuu.
 
-- **Data Governance** — Ansamblul de procese, politici, standarde și metrici care asigură utilizarea eficientă a informațiilor, garantând calitatea, integritatea, securitatea și conformitatea normativă a acestora. Nu este un proiect cu o dată de sfârșit: este un framework operațional continuu.
+- **[Data Lineage](/ro/glossary/data-lineage/)** — Capacitatea de a urmări parcursul unei date de la sursă, prin toate sistemele și transformările, până la destinația finală. Esențial pentru troubleshooting, audituri de reglementare și verificarea corectitudinii calculelor.
 
-- **Data Lineage** — Capacitatea de a urmări parcursul unei date de la sursă, prin toate sistemele și transformările, până la destinația finală. Esențial pentru troubleshooting, audituri de reglementare și verificarea corectitudinii calculelor.
+- **[Transparent Data Encryption (TDE)](/ro/glossary/transparent-data-encryption/)** (Oracle) — Funcționalitate Oracle Database care criptează datele în repaus — fișiere de date, redo log, backup-uri — fără modificări ale aplicațiilor. Protejează împotriva accesurilor fizice neautorizate la suporturile de stocare.
 
-- **Transparent Data Encryption (TDE)** (Oracle) — Funcționalitate Oracle Database care criptează datele în repaus — fișiere de date, redo log, backup-uri — fără modificări ale aplicațiilor. Protejează împotriva accesurilor fizice neautorizate la suporturile de stocare.
-
-- **Data Quality** — Măsura în care datele sunt exacte, complete, coerente, valide și actuale. Nu este un control unic, ci un proces continuu de monitorizare, alertare și remediere care garantează fiabilitatea analizelor în timp.
+- **[Data Quality](/ro/glossary/data-quality/)** — Măsura în care datele sunt exacte, complete, coerente, valide și actuale. Nu este un control unic, ci un proces continuu de monitorizare, alertare și remediere care garantează fiabilitatea analizelor în timp.
 
 - **Data Catalog** — Inventar organizat al tuturor datelor disponibile într-o organizație, cu metadate, glosar, lineage și instrumente de căutare. Face governance navigabil pentru utilizatorii de business fără a necesita intervenție tehnică pentru fiecare întrebare despre date.

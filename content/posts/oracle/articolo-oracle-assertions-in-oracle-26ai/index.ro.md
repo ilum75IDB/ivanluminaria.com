@@ -233,14 +233,13 @@ A muta regula de business în locul potrivit — schema — este o alegere de de
 4. Oracle Database 26ai Release Notes — starea GA vs preview a Assertions, limitări cunoscute — `<TODO: scout fonte ufficiale per "Oracle 26ai Release Notes">`
 5. ISO/IEC 9075 SQL Standard, SQL-92 — definiția originală a `CREATE ASSERTION` — `<TODO: scout riferimento pubblico accessibile per SQL-92 CREATE ASSERTION>`
 
-## Glosar candidat
+## Glosar
+- **[ASSERTION](/ro/glossary/assertion/)** (Oracle 26ai / standard SQL) — constrângere de integritate declarativă care exprimă un predicat asupra întregii stări a bazei de date, implicând potențial mai multe tabele. Definită în SQL-92, implementată pentru prima dată într-un RDBMS enterprise mainstream cu Oracle 23ai/26ai.
 
-- **ASSERTION** (Oracle 26ai / standard SQL) — constrângere de integritate declarativă care exprimă un predicat asupra întregii stări a bazei de date, implicând potențial mai multe tabele. Definită în SQL-92, implementată pentru prima dată într-un RDBMS enterprise mainstream cu Oracle 23ai/26ai.
+- **[Predicat existențial](/ro/glossary/predicato-existential/)** (SQL) — expresie logică care afirmă existența cel puțin a unui rând care satisface o condiție. În SQL se exprimă tipic cu `EXISTS` sau `NOT EXISTS` în subquery corelat; este pattern-ul de bază pentru Assertions de tip „cel puțin unul".
 
-- **Predicat existențial** (SQL) — expresie logică care afirmă existența cel puțin a unui rând care satisface o condiție. În SQL se exprimă tipic cu `EXISTS` sau `NOT EXISTS` în subquery corelat; este pattern-ul de bază pentru Assertions de tip „cel puțin unul".
+- **[Predicat universal](/ro/glossary/predicato-universal/)** (SQL) — expresie logică care afirmă că o condiție este valabilă pentru toate rândurile unui set. În SQL se exprimă indirect cu `NOT EXISTS (... WHERE NOT condiție)`, deoarece SQL nu are un cuantificator universal nativ.
 
-- **Predicat universal** (SQL) — expresie logică care afirmă că o condiție este valabilă pentru toate rândurile unui set. În SQL se exprimă indirect cu `NOT EXISTS (... WHERE NOT condiție)`, deoarece SQL nu are un cuantificator universal nativ.
+- **[DEFERRABLE constraint](/ro/glossary/deferrable-constraint/)** (Oracle / standard SQL) — constrângere de integritate a cărei verificare poate fi amânată la sfârșitul tranzacției în loc de la fiecare instrucțiune DML individuală. Utilă pentru DML multi-step, dar nu echivalentă cu o Assertion: nu exprimă predicate cross-tabel.
 
-- **DEFERRABLE constraint** (Oracle / standard SQL) — constrângere de integritate a cărei verificare poate fi amânată la sfârșitul tranzacției în loc de la fiecare instrucțiune DML individuală. Utilă pentru DML multi-step, dar nu echivalentă cu o Assertion: nu exprimă predicate cross-tabel.
-
-- **Direct-path insert** (Oracle) — modalitate de încărcare a datelor care ocolește buffer cache-ul și scrie direct în datafile-uri, activabilă cu hint-ul `/*+ APPEND */`. Interacționează cu constrângerile de integritate diferit față de conventional insert; comportamentul cu Assertions trebuie verificat caz cu caz.
+- **[Direct-path insert](/ro/glossary/direct-path-insert/)** (Oracle) — modalitate de încărcare a datelor care ocolește buffer cache-ul și scrie direct în datafile-uri, activabilă cu hint-ul `/*+ APPEND */`. Interacționează cu constrângerile de integritate diferit față de conventional insert; comportamentul cu Assertions trebuie verificat caz cu caz.

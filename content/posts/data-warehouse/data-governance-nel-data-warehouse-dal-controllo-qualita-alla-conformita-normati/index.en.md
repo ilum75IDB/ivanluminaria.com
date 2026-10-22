@@ -193,14 +193,13 @@ It wasn't everything. But it was enough to walk into the management meeting with
 
 ---
 
-## Glossary candidate
+## Glossary
+- **[Data Governance](/en/glossary/data-governance/)** — The set of processes, policies, standards, and metrics that ensure effective use of information, guaranteeing its quality, integrity, security, and regulatory compliance. It is not a project with an end date: it is a continuous operational framework.
 
-- **Data Governance** — The set of processes, policies, standards, and metrics that ensure effective use of information, guaranteeing its quality, integrity, security, and regulatory compliance. It is not a project with an end date: it is a continuous operational framework.
+- **[Data Lineage](/en/glossary/data-lineage/)** — The ability to trace the path of a piece of data from its source through all systems and transformations to its final destination. Essential for troubleshooting, regulatory audits, and verifying the correctness of calculations.
 
-- **Data Lineage** — The ability to trace the path of a piece of data from its source through all systems and transformations to its final destination. Essential for troubleshooting, regulatory audits, and verifying the correctness of calculations.
+- **[Transparent Data Encryption (TDE)](/en/glossary/transparent-data-encryption/)** (Oracle) — An Oracle Database feature that encrypts data at rest — data files, redo logs, backups — without application changes. Protects against unauthorized physical access to storage media.
 
-- **Transparent Data Encryption (TDE)** (Oracle) — An Oracle Database feature that encrypts data at rest — data files, redo logs, backups — without application changes. Protects against unauthorized physical access to storage media.
-
-- **Data Quality** — The degree to which data is accurate, complete, consistent, valid, and timely. Not a one-time check but a continuous process of monitoring, alerting, and remediation that guarantees the reliability of analyses over time.
+- **[Data Quality](/en/glossary/data-quality/)** — The degree to which data is accurate, complete, consistent, valid, and timely. Not a one-time check but a continuous process of monitoring, alerting, and remediation that guarantees the reliability of analyses over time.
 
 - **Data Catalog** — An organized inventory of all data available in an organization, with metadata, glossary, lineage, and search tools. Makes governance navigable by business users without requiring technical intervention for every question about the data.

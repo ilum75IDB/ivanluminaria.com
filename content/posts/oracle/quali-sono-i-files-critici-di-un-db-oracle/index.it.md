@@ -1,13 +1,20 @@
 ---
-title: "ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne bisogno"
-seoTitle: "ORA-00205: file critici Oracle 19c (SPFILE, control, redo log)"
-description: "Diagnosi guidata di ORA-00205 in piena emergenza notturna: fase MOUNT, control file, SPFILE, redo log. Metodo pratico per i DBA Oracle reperibili."
-date: "2026-07-14T08:03:00+01:00"
+categories:
+- oracle
+date: '2026-07-14T08:03:00+01:00'
+description: 'Diagnosi guidata di ORA-00205 in piena emergenza notturna: fase MOUNT,
+  control file, SPFILE, redo log. Metodo pratico per i DBA Oracle reperibili.'
 draft: false
-translationKey: "quali_sono_i_files_critici_di_un_db_oracle"
-tags: ["incident-response", "startup", "control-file", "oracle-19c"]
-categories: ["oracle"]
-image: "quali-sono-i-files-critici-di-un-db-oracle.cover.jpg"
+image: quali-sono-i-files-critici-di-un-db-oracle.cover.jpg
+seoTitle: 'ORA-00205: file critici Oracle 19c (SPFILE, control, redo log)'
+tags:
+- incident-response
+- startup
+- control-file
+- oracle-19c
+title: 'ORA-00205 alle tre di notte: capire i file critici Oracle prima di averne
+  bisogno'
+translationKey: quali_sono_i_files_critici_di_un_db_oracle
 webo_generated_at: 2026-06-07
 webo_status: scheduled
 ---
@@ -252,14 +259,13 @@ Il senior DBA che non viene più chiamato in piena notte ha investito in due cos
 
 ---
 
-## Glossario candidato
+## Glossario
+- **[SPFILE](/it/glossary/spfile/)** (Oracle) — Server Parameter File: file binario letto da Oracle all'avvio che contiene i parametri di configurazione dell'istanza (`db_name`, `control_files`, `memory_target`, ecc.). Modificabile a caldo con `ALTER SYSTEM SET` senza riavviare il database.
 
-- **SPFILE** (Oracle) — Server Parameter File: file binario letto da Oracle all'avvio che contiene i parametri di configurazione dell'istanza (`db_name`, `control_files`, `memory_target`, ecc.). Modificabile a caldo con `ALTER SYSTEM SET` senza riavviare il database.
+- **[Control File](/it/glossary/control-file/)** (Oracle) — File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo log, SCN corrente, informazioni di checkpoint. Indispensabile per la fase di MOUNT; va multiplexato su path fisicamente separati.
 
-- **Control File** (Oracle) — File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo log, SCN corrente, informazioni di checkpoint. Indispensabile per la fase di MOUNT; va multiplexato su path fisicamente separati.
+- **[Online Redo Log](/it/glossary/online-redo-log/)** (Oracle) — File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritte sui datafile. Organizzato in gruppi con possibili membri multipli per ridondanza; base del meccanismo di recovery in caso di crash.
 
-- **Online Redo Log** (Oracle) — File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritte sui datafile. Organizzato in gruppi con possibili membri multipli per ridondanza; base del meccanismo di recovery in caso di crash.
+- **[SCN](/it/glossary/scn/)** (System Change Number) — Numero sequenziale monotono crescente che Oracle usa per identificare un punto preciso nella vita del database. Presente nel control file e nei datafile; usato per determinare la consistenza e il punto di recovery.
 
-- **SCN** (System Change Number) — Numero sequenziale monotono crescente che Oracle usa per identificare un punto preciso nella vita del database. Presente nel control file e nei datafile; usato per determinare la consistenza e il punto di recovery.
-
-- **OFA** (Optimal Flexible Architecture) — Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control file, redo log, backup) in modo prevedibile, manutenibile e portabile tra ambienti diversi.
+- **[OFA](/it/glossary/ofa/)** (Optimal Flexible Architecture) — Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control file, redo log, backup) in modo prevedibile, manutenibile e portabile tra ambienti diversi.

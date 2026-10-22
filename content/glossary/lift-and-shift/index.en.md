@@ -1,22 +1,24 @@
 ---
 title: "Lift-and-Shift"
-description: "Migration strategy that moves a system from one environment to another without modifying its architecture, code, or configuration."
-translationKey: "glossary_lift-and-shift"
-aka: "Rehosting"
+description: "Cloud migration strategy that moves systems without changing their architecture or code, deferring any optimization to the post-migration phase."
+translationKey: "glossary_lift_and_shift"
+aka: "Rehost migration"
 articles:
-  - "/posts/project-management/tecnica-si-e-yes-and"
+  - "/posts/oracle/latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift"
 ---
 
-**Lift-and-Shift** (rehosting) is a migration strategy that consists of moving a system from one environment to another — typically from on-premises to cloud — without modifying its architecture, application code, or configuration. The system is taken as-is and "lifted and shifted."
+Lift-and-shift is a cloud migration approach that replicates the source environment — servers, databases, applications — onto the target platform without altering architecture, configuration, or code. The primary goal is to minimize the validation perimeter and compress time-to-go-live, deliberately accepting that the migrated system will not be optimized for its new context.
 
 ## How it works
 
-The infrastructure is replicated in the target environment: same virtual machines, same databases, same middleware. The advantage is speed: no code rewriting, no architectural redesign. The risk is carrying over all the problems from the original environment, including inefficiencies and technical debt.
+The source system is reproduced 1:1 on the target platform: VMs are converted or recreated with identical specifications, databases are migrated via backup/restore or replication tooling without schema refactoring, and network dependencies are faithfully reconstructed. In regulated environments (GxP, SOX, PCI-DSS), this approach limits the validation delta because application behavior remains nominally unchanged.
 
-## When to use it
+## When it is used
 
-When the priority is exiting a datacenter quickly (contract expiration, hardware decommission), when the budget does not allow rearchitecture, or as the first phase of an incremental migration where components are then modernized one by one.
+Lift-and-shift is the predominant choice when:
 
-## What can go wrong
+- migration timelines are constrained by contractual or licensing deadlines
+- the system is legacy and internal expertise for safe refactoring is unavailable
+- IQ/OQ/PQ validation scope must be kept narrow due to budget or schedule constraints
 
-A lift-and-shift to cloud without optimization can cost more than the original on-premises infrastructure. Applications not designed for cloud do not leverage elasticity, auto-scaling, and managed services. The result is often a private datacenter rebuilt in the cloud at a higher price.
+The main limitation is structural: cloud operational costs (compute, storage, networking) remain high because the system does not leverage elasticity, managed services, or cloud-native architectures. WAN latency and change control constraints in GxP environments can amplify these costs significantly, as analyzed in the linked article.

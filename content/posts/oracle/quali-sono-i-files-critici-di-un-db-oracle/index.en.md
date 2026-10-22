@@ -1,13 +1,20 @@
 ---
-title: "ORA-00205 at three in the morning: understanding Oracle critical files before you need to"
-seoTitle: "ORA-00205: Oracle 19c critical files (SPFILE, control, redo)"
-description: "Step-by-step diagnosis of ORA-00205 during a night emergency: MOUNT phase, control file, SPFILE, redo log. A practical method for on-call Oracle DBAs."
-date: "2026-07-14T08:03:00+01:00"
+categories:
+- oracle
+date: '2026-07-14T08:03:00+01:00'
+description: 'Step-by-step diagnosis of ORA-00205 during a night emergency: MOUNT
+  phase, control file, SPFILE, redo log. A practical method for on-call Oracle DBAs.'
 draft: false
-translationKey: "quali_sono_i_files_critici_di_un_db_oracle"
-tags: ["incident-response", "startup", "control-file", "oracle-19c"]
-categories: ["oracle"]
-image: "quali-sono-i-files-critici-di-un-db-oracle.cover.jpg"
+image: quali-sono-i-files-critici-di-un-db-oracle.cover.jpg
+seoTitle: 'ORA-00205: Oracle 19c critical files (SPFILE, control, redo)'
+tags:
+- incident-response
+- startup
+- control-file
+- oracle-19c
+title: 'ORA-00205 at three in the morning: understanding Oracle critical files before
+  you need to'
+translationKey: quali_sono_i_files_critici_di_un_db_oracle
 webo_generated_at: 2026-06-09
 webo_status: scheduled
 ---
@@ -252,14 +259,13 @@ The senior DBA who stops getting called in the middle of the night has invested 
 
 ---
 
-## Glossary candidate
+## Glossary
+- **[SPFILE](/en/glossary/spfile/)** (Oracle) — Server Parameter File: binary file read by Oracle at startup containing instance configuration parameters (`db_name`, `control_files`, `memory_target`, etc.). Can be modified live with `ALTER SYSTEM SET` without restarting the database.
 
-- **SPFILE** (Oracle) — Server Parameter File: binary file read by Oracle at startup containing instance configuration parameters (`db_name`, `control_files`, `memory_target`, etc.). Can be modified live with `ALTER SYSTEM SET` without restarting the database.
+- **[Control File](/en/glossary/control-file/)** (Oracle) — Binary file continuously updated by Oracle that records the physical structure of the database: datafile and redo log paths, current SCN, checkpoint information. Indispensable for the MOUNT phase; must be multiplexed across physically separate paths.
 
-- **Control File** (Oracle) — Binary file continuously updated by Oracle that records the physical structure of the database: datafile and redo log paths, current SCN, checkpoint information. Indispensable for the MOUNT phase; must be multiplexed across physically separate paths.
+- **[Online Redo Log](/en/glossary/online-redo-log/)** (Oracle) — Circular file that sequentially records all changes made to the database (redo entries) before they are written to the datafiles. Organized into groups with optional multiple members for redundancy; the foundation of the crash recovery mechanism.
 
-- **Online Redo Log** (Oracle) — Circular file that sequentially records all changes made to the database (redo entries) before they are written to the datafiles. Organized into groups with optional multiple members for redundancy; the foundation of the crash recovery mechanism.
+- **[SCN](/en/glossary/scn/)** (System Change Number) — Monotonically increasing sequential number that Oracle uses to identify a precise point in the life of the database. Present in the control file and datafiles; used to determine consistency and the recovery point.
 
-- **SCN** (System Change Number) — Monotonically increasing sequential number that Oracle uses to identify a precise point in the life of the database. Present in the control file and datafiles; used to determine consistency and the recovery point.
-
-- **OFA** (Optimal Flexible Architecture) — Naming and path layout convention recommended by Oracle for organizing instance files (datafiles, control files, redo logs, backups) in a predictable, maintainable, and portable way across different environments.
+- **[OFA](/en/glossary/ofa/)** (Optimal Flexible Architecture) — Naming and path layout convention recommended by Oracle for organizing instance files (datafiles, control files, redo logs, backups) in a predictable, maintainable, and portable way across different environments.

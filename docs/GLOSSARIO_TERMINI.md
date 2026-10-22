@@ -19,13 +19,15 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Additive Measure | Misura numerica in una fact table che può essere sommata lungo tutte le dimensioni (importi, quantità, conteggi). Le misure semi-additive e non-additive hanno regole di aggregazione diverse | fatto-grana-sbagliata |
 | AI Manager | Ruolo professionale che governa l'impatto dell'intelligenza artificiale su architetture, processi e persone all'interno di un progetto | ai-manager-project-management |
 | Agile Manifesto | Documento di poche righe firmato a Snowbird, Utah, l'11-13 febbraio 2001 da diciassette sviluppatori. Quattro coppie di valori che spostavano il focus dello sviluppo software dalle pratiche heavyweight (RUP-like) alle pratiche lightweight (Scrum, XP, Kanban) | da-rivali-a-co-autori-uml-rup |
+| AIOps |  | ai-mostra-sintomo-board-chiede-causa |
 | ALTER DOMAIN | Comando Oracle 23ai che modifica un SQL Domain (vincolo CHECK, DEFAULT, annotations) propagando la modifica a tutte le colonne che usano il dominio. Sostituisce molteplici ALTER TABLE con una sola operazione di schema-wide governance | enum-oracle-workaround-fino-a-23ai |
 | ALTER TYPE ADD VALUE | Comando PostgreSQL che aggiunge un valore a un ENUM esistente. Operazione di metadata, transazionale, senza rebuild della tabella. Disponibile dalla 9.1, con posizionamento BEFORE/AFTER dalla 9.6 | enum-postgresql-paga-o-pesa |
 | ANALYZE | Comando PostgreSQL che raccoglie statistiche sulla distribuzione dei dati nelle tabelle, usate dall'optimizer per scegliere il piano di esecuzione | explain-analyze-postgresql, pg-stat-statements |
 | anamnesi | Nel contesto della diagnostica di sistemi informatici, raccolta sistematica di informazioni su sintomi, eventi recenti e | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
-| ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| ASH | Active Session History — componente Oracle che campiona lo stato di ogni sessione attiva una volta al secondo, usato per la diagnosi puntuale dei problemi di performance | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li |
 | ASSERTION | Costrutto SQL standard (mai veramente implementato da nessun DBMS mainstream finora) per esprimere vincoli cross-tabella validati a livello transazionale dal motore del database. Annunciato in Oracle 26ai | enum-oracle-workaround-fino-a-23ai, enum-oracle-19c-26ai-domini |
 | Auto-Indexing | funzionalità Oracle (disponibile da 19c, configurabile in 21c) che analizza il workload e crea automaticamente indici in | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
+| autoupgrade.jar |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
 | BASIC | Linguaggio di programmazione semplice e interpretato, diffuso negli anni '80 sui home computer. I programmi erano scritt | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Binlog | registro sequenziale di tutte le modifiche ai dati sul master MySQL. Base della replica: lo slave legge il binlog per sa | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | Buffer pool warm-up | Processo di ricaricamento delle pagine calde nel buffer pool dopo un restart. Con `innodb_buffer_pool_dump_at_shutdown`  | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
@@ -39,14 +41,15 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | B-Tree | Struttura dati ad albero bilanciato, tipo di indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, inadatto per LIKE con wildcard iniziale | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
-| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
+| change control |  | latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
 | Commodore 64 |  | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
 | dbupgrade | utility Oracle (successore di `catupgrd.sql`) che aggiorna il dizionario dati di sistema durante un upgrade di versione. | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
 | Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
-| Cutover | Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura | oracle-cloud-migration |
+| Cutover | Momento critico di una migrazione in cui il sistema di produzione viene spostato definitivamente dalla vecchia alla nuova infrastruttura | oracle-cloud-migration, oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
 | CTAS | Create Table As Select — tecnica Oracle per creare una nuova tabella popolandola con i risultati di una query, usata per migrazioni di tabelle di grandi dimensioni | oracle-partitioning |
 | Churn | Misura di quanto una tabella database cambia dopo l'inserimento iniziale dei dati (UPDATE/DELETE). Determina il costo di manutenzione degli indici GIN | like-optimization-postgresql |
 | Carbon Footprint | Quantità totale di gas serra emessi da un'attività — un'auto nel traffico romano produce 120-150 g di CO₂ per km, una bici zero | bici-vs-auto-roma |
@@ -66,6 +69,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | DEFERRABLE constraint | vincolo di integrità la cui verifica può essere posticipata alla fine della transazione anziché a ogni singola istruzion | articolo-oracle-assertions-in-oracle-26ai |
 | Direct-path insert | modalità di caricamento dati che bypassa il buffer cache e scrive direttamente nei datafile, attivabile con il hint `/*+ | articolo-oracle-assertions-in-oracle-26ai |
 | Direttiva 2011/7/UE | Direttiva europea sui ritardi di pagamento che fissa il termine standard a 30 giorni, il massimo a 60, con interessi di mora automatici | pagamenti-60-90-120-giorni |
+| DNS |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
 | Drill-down | Navigazione nei report dal livello aggregato al livello di dettaglio. Richiede una gerarchia completa e bilanciata per funzionare correttamente | ragged-hierarchies, fatto-grana-sbagliata |
 | Data Warehouse | Sistema centralizzato di raccolta e storicizzazione dati provenienti da fonti diverse, progettato per l'analisi e il supporto alle decisioni aziendali | 4-milioni-nessun-software |
 | ENUM (MySQL) | Tipo di dato MySQL che ammette un set predefinito di valori stringa, memorizzato internamente come indice numerico di 1-2 byte. Una delle feature caratteristiche di MySQL | enum-mysql-semplifica-o-complica |
@@ -77,16 +81,20 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
 | Facilitatore | Persona responsabile di guidare una riunione mantenendo il focus, rispettando il timebox e garantendo che tutti abbiano voce | standup-meeting-15-minuti |
 | Fact table | Tabella centrale dello star schema che contiene le misure numeriche (importi, quantità, conteggi) e le chiavi esterne verso le tabelle dimensionali | scd-tipo-2, fatto-grana-sbagliata, partitioning-dwh |
+| Gap lock |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
 | gcache | Buffer circolare su disco che ogni nodo Galera mantiene per conservare i writeset recenti. Dimensionare il gcache corret | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
+| GxP |  | latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
 | Hit ratio | Percentuale di letture servite dalla memoria rispetto al totale. Si esprime in formato X/1000 nell'output di `SHOW ENGIN | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Indice CATSEARCH | Tipo di indice Oracle Text ottimizzato per archivi che combinano attributi strutturati (mittente, data, categoria) con t | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CONTEXT | Tipo di indice Oracle Text per la ricerca full-text su testo non strutturato (documenti, articoli, pareri). Costruisce u | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | Indice CTXXPATH | Tipo di indice Oracle Text per documenti XML o JSON archiviati in CLOB/BLOB. Preserva la struttura gerarchica dei path X | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
 | InnoDB buffer pool | Area di memoria principale di InnoDB dove vengono cachate pagine di dati e indici. Più è grande, meno letture finiscono  | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | innodb_buffer_pool_size | Parametro globale che definisce la dimensione della cache principale di InnoDB per dati e indici. È il parametro di memo | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
+| Insert intention lock |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
 | join_buffer_size | Buffer allocato per thread per ogni join eseguito senza indice. A differenza del buffer pool, viene allocato per ogni co | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | Least Privilege | Principio di sicurezza che prevede l'assegnazione a ogni utente solo dei permessi strettamente necessari per svolgere la propria funzione | mysql-users-and-hosts, oracle-roles-privileges, postgresql_roles_and_users |
 | Lexer | Componente che analizza il testo durante la fase di indicizzazione, suddividendolo in token e applicando regole di norma | oracle-text-indicizzare-e-ricercare-testo-in-modo-efficiente |
+| lift-and-shift |  | latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
 | Lift-and-Shift | Strategia di migrazione che sposta un sistema da un ambiente a un altro senza modificarne l'architettura, il codice o la configurazione | tecnica-si-e-yes-and |
 | listato | Testo completo del codice sorgente di un programma, stampato o visualizzato riga per riga. Nel contesto dei home compute | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Local Index | Indice Oracle partizionato con la stessa chiave della tabella, dove ogni partizione della tabella ha la sua partizione di indice corrispondente | oracle-partitioning, partitioning-dwh |
@@ -122,6 +130,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | mysqldump | Utility di backup logico inclusa in ogni installazione MySQL. Produce un file SQL sequenziale con tutte le istruzioni per ricreare schema e dati. Single-threaded, affidabile ma lenta su database grandi | mysqldump-mysqlpump-mydumper, mysql-pre-upgrade-assessment, articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | mysqlpump | Evoluzione di mysqldump introdotta in MySQL 5.7, con supporto per il parallelismo a livello di tabella e compressione nativa. Deprecato da Oracle in MySQL 8.0.34 per problemi di consistenza | mysqldump-mysqlpump-mydumper |
 | Nested Loop | Strategia di join che per ogni riga della tabella esterna cerca le corrispondenze nella tabella interna. Ideale per poche righe, disastrosa su grandi volumi | explain-analyze-postgresql |
+| Next-key lock |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
 | Object Privilege | Privilegio Oracle che autorizza operazioni su un oggetto specifico del database come SELECT, INSERT o EXECUTE su una tabella, vista o procedura | oracle-roles-privileges |
 | OFA | Convenzione di naming e layout dei path raccomandata da Oracle per organizzare i file di un'istanza (datafile, control f | quali-sono-i-files-critici-di-un-db-oracle |
 | Online Redo Log | File circolare che registra in sequenza tutte le modifiche apportate al database (redo entries) prima che vengano scritt | quali-sono-i-files-critici-di-un-db-oracle |
@@ -130,9 +139,13 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Parallel DML | Esecuzione parallela di operazioni DML (INSERT, UPDATE, DELETE, MERGE) su più processi Oracle. Richiede `ALTER SESSION E | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml |
 | Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
-| piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| PGA |  | ai-mostra-sintomo-board-chiede-causa |
+| PgBouncer |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
+| Phantom read |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
+| piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, ai-mostra-sintomo-board-chiede-causa |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
 | Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
+| preupgrd.sql |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
 | Primary Component (PC) | Il sottoinsieme di nodi che detiene il quorum e può continuare a processare scritture. Un nodo fuori dal PC passa in sta | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | pt-heartbeat | tool di Percona Toolkit che misura il lag di replica MySQL scrivendo timestamp sul master e confrontandoli con i valori  | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | Pull Request | Meccanismo di proposta e revisione delle modifiche al codice su GitHub, con code review e approvazione prima del merge nel branch principale | ai-github-project-management |
@@ -148,6 +161,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Psychological Safety | Clima di team in cui le persone possono ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione | team-di-progetto-che-reggono |
 | Publication (PostgreSQL) | Oggetto della replica logica PostgreSQL che definisce l'insieme di tabelle (e righe, dalla 15) i cui cambiamenti vengono resi disponibili ai subscriber. Risiede sul publisher e può essere consumata da più subscriber indipendenti | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
 | REM | Istruzione del BASIC (abbreviazione di REMark) che introduce un commento nel codice. La riga viene ignorata dall'interpr | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
+| REPEATABLE READ |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
 | RMAN Incremental Backup | backup RMAN che registra solo i blocchi modificati dall'ultimo backup di livello uguale o superiore. Level 0 è la base c | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | ROI | Return on Investment — rapporto tra il beneficio ottenuto e il costo sostenuto per un investimento | ai-manager-project-management |
 | ROLE (PostgreSQL) | Entità fondamentale di PostgreSQL che unifica il concetto di utente e gruppo di permessi: con LOGIN è un utente, senza LOGIN è un contenitore di privilegi | postgresql_roles_and_users |
@@ -176,12 +190,15 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | SCN | Numero sequenziale monotono crescente che Oracle usa per identificare un punto preciso nella vita del database. Presente | quali-sono-i-files-critici-di-un-db-oracle |
 | Scrum | Framework agile per la gestione di progetti che organizza il lavoro in sprint a durata fissa, con ruoli definiti e cerimonie strutturate | standup-meeting-15-minuti |
 | Scope | Perimetro di un progetto che definisce cosa è incluso e cosa è escluso: funzionalità, deliverable, vincoli e confini concordati con gli stakeholder | tecnica-si-e-yes-and |
+| Session pooling |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
 | shared_buffers | Area di memoria condivisa di PostgreSQL che funge da cache per i blocchi dati letti dal disco. Il parametro più importante per il tuning della memoria, con un default di 128 MB quasi sempre inadeguato | pg-stat-statements |
 | SGA | System Global Area — area di memoria condivisa di Oracle Database che contiene buffer cache, shared pool, redo log buffer e altre strutture critiche | oracle-linux-kernel |
 | SCAN Listener | Single Client Access Name — componente Oracle RAC che fornisce un unico punto di accesso al cluster, distribuendo automaticamente le connessioni tra i nodi disponibili | oracle-cloud-migration |
 | Smart Working | Modello di lavoro flessibile che combina lavoro da remoto e presenza in ufficio, basato su obiettivi misurabili invece che su presenza fisica | smartworking-consulenza-it |
 | Scope Creep | Espansione incontrollata dei requisiti di progetto oltre il perimetro iniziale, che porta a ritardi, aumento dei costi e spesso al fallimento del progetto | 4-milioni-nessun-software |
 | SPFILE | Server Parameter File: file binario letto da Oracle all'avvio che contiene i parametri di configurazione dell'istanza (` | quali-sono-i-files-critici-di-un-db-oracle |
+| SPM baseline |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
+| SQL*Net roundtrips to/from client |  | latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
 | Staging table | Tabella temporanea usata come area di atterraggio dei dati grezzi prima della trasformazione e del caricamento nella des | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
 | Stakeholder | Persona o gruppo con un interesse diretto nel risultato di un progetto: committente, utente finale, sponsor, team tecnico | tecnica-si-e-yes-and |
 | SCD | Slowly Changing Dimension — tecnica di data warehouse per tracciare le variazioni nel tempo dei dati nelle tabelle dimensionali | scd-tipo-2 |
@@ -197,9 +214,13 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Snapshot (Oracle) | Istantanea delle statistiche di performance catturata periodicamente da AWR (di default ogni 60 minuti) e usata per generare report diagnostici comparativi | oracle-awr-ash |
 | Star schema | Modello di dati tipico del data warehouse: una fact table al centro collegata a più tabelle dimensionali tramite chiavi esterne. Semplifica le query analitiche e ottimizza le performance | scd-tipo-2, fatto-grana-sbagliata, bus-matrix-terreno-comune |
 | Tablespace | Unità logica di storage in Oracle che raggruppa uno o più datafile fisici, usata per organizzare e gestire lo spazio su disco per tabelle, indici e partizioni | oracle-partitioning |
+| Terminal Release |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
 | Three Amigos | Soprannome dato dalla stampa specializzata a Grady Booch, James Rumbaugh e Ivar Jacobson, i tre creatori di UML che lavoravano in Rational Software tra il 1994 e il 1998. Da rivali divennero co-autori di uno standard unificato | da-rivali-a-co-autori-uml-rup |
 | THP | Transparent Huge Pages — funzione del kernel Linux che promuove automaticamente le pagine normali a pagine grandi, causa latenze imprevedibili e deve essere disabilitata per Oracle | oracle-linux-kernel |
+| TIA |  | il-restart-ha-risolto-il-problema-e-ancora-li |
 | Timeboxing | Tecnica di gestione del tempo che assegna un intervallo fisso e non negoziabile a un'attività, forzando la conclusione entro il limite stabilito | tecnica-si-e-yes-and, standup-meeting-15-minuti |
+| Transaction pooling |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
+| Transient Ischemic Attack |  | il-restart-ha-risolto-il-problema-e-ancora-li |
 | Transport Lag | Ritardo nella trasmissione dei redo log dal database primary allo standby in una configurazione Data Guard, indicatore critico della salute della replica | oracle-cloud-migration |
 | Transportable Tablespaces (TTS) | tecnica Oracle che permette di spostare tablespace tra database copiando i datafile fisici e importando solo il metadata | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | Type safety | Proprietà di un sistema di tipi che impedisce, a parse-time, l'uso di valori incompatibili con il tipo dichiarato di colonna, parametro o variabile | enum-postgresql-paga-o-pesa |
@@ -219,19 +240,22 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Unix Socket | Meccanismo di comunicazione inter-processo locale su sistemi Unix/Linux, usato da MySQL per connessioni più veloci rispetto a TCP quando client e server sono sullo stesso host | mysql-multi-istanza-secure-file-priv |
 | View invalida | vista il cui corpo SQL fa riferimento a oggetti non più esistenti o non accessibili (tabelle rinominate, colonne elimina | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | WAL | Write-Ahead Log — registro sequenziale di tutte le modifiche al database PostgreSQL, scritto prima dei file dati. Fondamento di durability, crash recovery, replica fisica e logica. La replica logica lo decodifica via plugin `pgoutput` in cambi logici riga per riga | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
-| Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
+| Wait Event | Evento di attesa registrato da Oracle ogni volta che una sessione non può procedere e deve attendere una risorsa (I/O, lock, CPU, rete). L'analisi dei wait event è la base della metodologia diagnostica Oracle | oracle-awr-ash, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, ai-mostra-sintomo-board-chiede-causa |
 | WSREP | Write Set Replication — API e protocollo di replica sincrona usato da Galera Cluster per mantenere i nodi del cluster allineati in tempo reale | galera-cluster-3-nodi |
 | wsrep_cluster_size | Variabile di stato che riporta il numero di nodi attualmente nel cluster Galera. Valore atteso in un cluster a 3 nodi: ` | galera-cluster-quorum-split-brain-e-bootstrap-di-emergenza-con-due-nodi-giu |
 | xtrabackup | Strumento di backup fisico hot per MySQL/MariaDB sviluppato da Percona. Copia i file InnoDB a database in esecuzione, gestendo le transazioni attive tramite il redo log. Nettamente più veloce dei backup logici su dataset grandi | mysql-pre-upgrade-assessment |
+| XTTS (Cross-Platform Transportable Tablespaces) |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
 | Yes-And | Tecnica di comunicazione nata nel teatro di improvvisazione che sostituisce il "No, però..." con "Sì, e...", trasformando le discussioni in costruzione collaborativa | tecnica-si-e-yes-and |
 | ZDM | Zero Downtime Migration — strumento Oracle per automatizzare le migrazioni verso OCI combinando Data Guard e Data Pump sotto un layer di orchestrazione | oracle-cloud-migration |
 
 ---
 | `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
+| `default_pool_size` |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
+| `max_connections` |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
-**Ultimo aggiornamento**: 2026-09-30
-**Totale termini**: 222
-**Totale articoli con glossario**: 51
+**Ultimo aggiornamento**: 2026-10-22
+**Totale termini**: 246
+**Totale articoli con glossario**: 57
 

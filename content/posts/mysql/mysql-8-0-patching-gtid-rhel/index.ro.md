@@ -330,11 +330,10 @@ View-urile invalide în acest caz erau deja invalide înainte de patching. Upgra
 
 ---
 
-## Glosar candidat
+## Glosar
+- **[GTID](/ro/glossary/gtid/)** (MySQL) — *Global Transaction Identifier*: identificator unic asignat fiecărei tranzacții când `gtid_mode=ON`. Compus din `server_uuid:număr_secvență`, permite replicii să urmărească exact ce tranzacții a aplicat deja, independent de poziția în binlog.
 
-- **GTID** (MySQL) — *Global Transaction Identifier*: identificator unic asignat fiecărei tranzacții când `gtid_mode=ON`. Compus din `server_uuid:număr_secvență`, permite replicii să urmărească exact ce tranzacții a aplicat deja, independent de poziția în binlog.
-
-- **mysqldump** — utilitar de backup logic inclus în MySQL. Produce un fișier SQL cu instrucțiunile `CREATE` și `INSERT` pentru a recrea baza de date. Potrivit pentru baze de date de dimensiuni mici și medii; pentru volume mari se preferă instrumente precum mydumper sau backup-uri fizice cu xtrabackup.
+- **[mysqldump](/ro/glossary/mysqldump/)** — utilitar de backup logic inclus în MySQL. Produce un fișier SQL cu instrucțiunile `CREATE` și `INSERT` pentru a recrea baza de date. Potrivit pentru baze de date de dimensiuni mici și medii; pentru volume mari se preferă instrumente precum mydumper sau backup-uri fizice cu xtrabackup.
 
 - **View invalid** (MySQL) — vedere al cărei corp SQL face referire la obiecte care nu mai există sau nu sunt accesibile (tabele redenumite, coloane șterse, permisiuni revocate). MySQL nu invalidează automat view-urile la modificarea tabelei de bază: eroarea apare doar la prima execuție sau în timpul unui dump.
 

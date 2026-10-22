@@ -1,13 +1,20 @@
 ---
-title: "ORA-00205 la trei dimineața: înțelegerea fișierelor critice Oracle înainte să ai nevoie de ele"
-seoTitle: "ORA-00205: fișiere critice Oracle 19c (SPFILE, control, redo)"
-description: "Diagnostic ghidat al ORA-00205 în plină urgență nocturnă: faza MOUNT, control file, SPFILE, redo log. Metodă practică pentru DBA Oracle de gardă."
-date: "2026-07-14T08:03:00+01:00"
+categories:
+- oracle
+date: '2026-07-14T08:03:00+01:00'
+description: 'Diagnostic ghidat al ORA-00205 în plină urgență nocturnă: faza MOUNT,
+  control file, SPFILE, redo log. Metodă practică pentru DBA Oracle de gardă.'
 draft: false
-translationKey: "quali_sono_i_files_critici_di_un_db_oracle"
-tags: ["incident-response", "startup", "control-file", "oracle-19c"]
-categories: ["oracle"]
-image: "quali-sono-i-files-critici-di-un-db-oracle.cover.jpg"
+image: quali-sono-i-files-critici-di-un-db-oracle.cover.jpg
+seoTitle: 'ORA-00205: fișiere critice Oracle 19c (SPFILE, control, redo)'
+tags:
+- incident-response
+- startup
+- control-file
+- oracle-19c
+title: 'ORA-00205 la trei dimineața: înțelegerea fișierelor critice Oracle înainte
+  să ai nevoie de ele'
+translationKey: quali_sono_i_files_critici_di_un_db_oracle
 webo_generated_at: 2026-06-09
 webo_status: scheduled
 ---
@@ -252,14 +259,13 @@ DBA-ul senior care nu mai e sunat în miez de noapte a investit în două lucrur
 
 ---
 
-## Glosar candidat
+## Glosar
+- **[SPFILE](/ro/glossary/spfile/)** (Oracle) — Server Parameter File: fișier binar citit de Oracle la pornire care conține parametrii de configurare ai instanței (`db_name`, `control_files`, `memory_target` etc.). Modificabil la cald cu `ALTER SYSTEM SET` fără a reporni baza de date.
 
-- **SPFILE** (Oracle) — Server Parameter File: fișier binar citit de Oracle la pornire care conține parametrii de configurare ai instanței (`db_name`, `control_files`, `memory_target` etc.). Modificabil la cald cu `ALTER SYSTEM SET` fără a reporni baza de date.
+- **[Control File](/ro/glossary/control-file/)** (Oracle) — Fișier binar actualizat continuu de Oracle care înregistrează structura fizică a bazei de date: path-urile datafile-urilor și redo log-urilor, SCN-ul curent, informațiile de checkpoint. Indispensabil pentru faza de MOUNT; trebuie multiplexat pe path-uri fizic separate.
 
-- **Control File** (Oracle) — Fișier binar actualizat continuu de Oracle care înregistrează structura fizică a bazei de date: path-urile datafile-urilor și redo log-urilor, SCN-ul curent, informațiile de checkpoint. Indispensabil pentru faza de MOUNT; trebuie multiplexat pe path-uri fizic separate.
+- **[Online Redo Log](/ro/glossary/online-redo-log/)** (Oracle) — Fișier circular care înregistrează în secvență toate modificările aduse bazei de date (redo entries) înainte ca acestea să fie scrise pe datafile-uri. Organizat în grupuri cu posibili membri multipli pentru redundanță; baza mecanismului de recovery în caz de crash.
 
-- **Online Redo Log** (Oracle) — Fișier circular care înregistrează în secvență toate modificările aduse bazei de date (redo entries) înainte ca acestea să fie scrise pe datafile-uri. Organizat în grupuri cu posibili membri multipli pentru redundanță; baza mecanismului de recovery în caz de crash.
+- **[SCN](/ro/glossary/scn/)** (System Change Number) — Număr secvențial monoton crescător pe care Oracle îl folosește pentru a identifica un punct precis în viața bazei de date. Prezent în control file și în datafile-uri; folosit pentru a determina consistența și punctul de recovery.
 
-- **SCN** (System Change Number) — Număr secvențial monoton crescător pe care Oracle îl folosește pentru a identifica un punct precis în viața bazei de date. Prezent în control file și în datafile-uri; folosit pentru a determina consistența și punctul de recovery.
-
-- **OFA** (Optimal Flexible Architecture) — Convenție de denumire și layout al path-urilor recomandată de Oracle pentru a organiza fișierele unei instanțe (datafile-uri, control file-uri, redo log-uri, backup-uri) în mod previzibil, ușor de întreținut și portabil între medii diferite.
+- **[OFA](/ro/glossary/ofa/)** (Optimal Flexible Architecture) — Convenție de denumire și layout al path-urilor recomandată de Oracle pentru a organiza fișierele unei instanțe (datafile-uri, control file-uri, redo log-uri, backup-uri) în mod previzibil, ușor de întreținut și portabil între medii diferite.

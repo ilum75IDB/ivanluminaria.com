@@ -232,14 +232,13 @@ Simplu pe hârtie. Mai puțin simplu când ești la un client, ai al doilea tick
 3. Codership — [Galera Cluster Recovery](https://galeracluster.com/library/documentation/recovery.html) <TODO: scout URL specifico per bootstrap di emergenza>
 4. Percona Blog — [gcache sizing](https://www.percona.com/blog/gcache-record-set-cache-state-transfer-cache/) <TODO: scout URL aggiornato>
 
-## Glosar candidat
+## Glosar
+- **[Primary Component (PC)](/ro/glossary/primary-component/)** (Galera) — Subsetul de noduri care deține quorum-ul și poate continua să proceseze scrieri. Un nod în afara PC trece în starea `non-Primary` și încetează să accepte DML pentru a evita split-brain.
 
-- **Primary Component (PC)** (Galera) — Subsetul de noduri care deține quorum-ul și poate continua să proceseze scrieri. Un nod în afara PC trece în starea `non-Primary` și încetează să accepte DML pentru a evita split-brain.
+- **[wsrep_cluster_size](/ro/glossary/wsrep-cluster-size/)** (Galera) — Variabilă de stare care raportează numărul de noduri prezente în clusterul Galera. Valoare așteptată într-un cluster cu 3 noduri: `3`. Scăderea sub pragul de quorum (≤ 1 din 3) blochează scrierile.
 
-- **wsrep_cluster_size** (Galera) — Variabilă de stare care raportează numărul de noduri prezente în clusterul Galera. Valoare așteptată într-un cluster cu 3 noduri: `3`. Scăderea sub pragul de quorum (≤ 1 din 3) blochează scrierile.
+- **[IST (Incremental State Transfer)](/ro/glossary/ist/)** (Galera) — Sincronizare incrementală a unui nod care reintrare în cluster: primește doar writeset-urile lipsă din gcache-ul celorlalte noduri. Rapid și non-invaziv pentru donor; posibil doar dacă gap-ul este acoperit de gcache.
 
-- **IST (Incremental State Transfer)** (Galera) — Sincronizare incrementală a unui nod care reintrare în cluster: primește doar writeset-urile lipsă din gcache-ul celorlalte noduri. Rapid și non-invaziv pentru donor; posibil doar dacă gap-ul este acoperit de gcache.
+- **[SST (State Snapshot Transfer)](/ro/glossary/sst/)** (Galera) — Transfer complet al stării de la un nod donor la un joiner: echivalent cu un backup fizic complet. Necesar când gap-ul este prea mare pentru IST. Poate încetini donor-ul în timpul transferului.
 
-- **SST (State Snapshot Transfer)** (Galera) — Transfer complet al stării de la un nod donor la un joiner: echivalent cu un backup fizic complet. Necesar când gap-ul este prea mare pentru IST. Poate încetini donor-ul în timpul transferului.
-
-- **gcache** (Galera) — Buffer circular pe disc pe care fiecare nod Galera îl menține pentru a păstra writeset-urile recente. Dimensionarea corectă a gcache-ului (`gcache.size`) este principala pârghie pentru a favoriza IST față de SST la reporniri scurte.
+- **[gcache](/ro/glossary/gcache/)** (Galera) — Buffer circular pe disc pe care fiecare nod Galera îl menține pentru a păstra writeset-urile recente. Dimensionarea corectă a gcache-ului (`gcache.size`) este principala pârghie pentru a favoriza IST față de SST la reporniri scurte.
