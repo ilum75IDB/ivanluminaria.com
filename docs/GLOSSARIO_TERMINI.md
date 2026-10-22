@@ -140,6 +140,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Parallel replication | modalità di applicazione degli eventi di replica che usa più worker thread invece di un singolo SQL thread. In MySQL, la | mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | performance_schema | Schema di sistema che raccoglie metriche di esecuzione in tempo reale: statistiche per query digest, wait events, memori | articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
 | PGA |  | ai-mostra-sintomo-board-chiede-causa |
+| PgBouncer |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
 | Phantom read |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
 | piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, ai-mostra-sintomo-board-chiede-causa |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
@@ -189,6 +190,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | SCN | Numero sequenziale monotono crescente che Oracle usa per identificare un punto preciso nella vita del database. Presente | quali-sono-i-files-critici-di-un-db-oracle |
 | Scrum | Framework agile per la gestione di progetti che organizza il lavoro in sprint a durata fissa, con ruoli definiti e cerimonie strutturate | standup-meeting-15-minuti |
 | Scope | Perimetro di un progetto che definisce cosa è incluso e cosa è escluso: funzionalità, deliverable, vincoli e confini concordati con gli stakeholder | tecnica-si-e-yes-and |
+| Session pooling |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
 | shared_buffers | Area di memoria condivisa di PostgreSQL che funge da cache per i blocchi dati letti dal disco. Il parametro più importante per il tuning della memoria, con un default di 128 MB quasi sempre inadeguato | pg-stat-statements |
 | SGA | System Global Area — area di memoria condivisa di Oracle Database che contiene buffer cache, shared pool, redo log buffer e altre strutture critiche | oracle-linux-kernel |
 | SCAN Listener | Single Client Access Name — componente Oracle RAC che fornisce un unico punto di accesso al cluster, distribuendo automaticamente le connessioni tra i nodi disponibili | oracle-cloud-migration |
@@ -217,6 +219,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | THP | Transparent Huge Pages — funzione del kernel Linux che promuove automaticamente le pagine normali a pagine grandi, causa latenze imprevedibili e deve essere disabilitata per Oracle | oracle-linux-kernel |
 | TIA |  | il-restart-ha-risolto-il-problema-e-ancora-li |
 | Timeboxing | Tecnica di gestione del tempo che assegna un intervallo fisso e non negoziabile a un'attività, forzando la conclusione entro il limite stabilito | tecnica-si-e-yes-and, standup-meeting-15-minuti |
+| Transaction pooling |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
 | Transient Ischemic Attack |  | il-restart-ha-risolto-il-problema-e-ancora-li |
 | Transport Lag | Ritardo nella trasmissione dei redo log dal database primary allo standby in una configurazione Data Guard, indicatore critico della salute della replica | oracle-cloud-migration |
 | Transportable Tablespaces (TTS) | tecnica Oracle che permette di spostare tablespace tra database copiando i datafile fisici e importando solo il metadata | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
@@ -247,10 +250,12 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 
 ---
 | `--single-transaction` | flag che avvia una transazione `REPEATABLE READ` prima del dump, garantendo consistenza senza acquisire lock sulle tabel | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
+| `default_pool_size` |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
+| `max_connections` |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
 **Ultimo aggiornamento**: 2026-10-22
-**Totale termini**: 241
-**Totale articoli con glossario**: 56
+**Totale termini**: 246
+**Totale articoli con glossario**: 57
 

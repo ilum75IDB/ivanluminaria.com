@@ -80,5 +80,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 56 | 2026-11-03 | — | Tue | MySQL gap lock e next-key lock: diagnosi dei deadlock con SHOW ENGINE INNODB STA | mysql | #46 | 2026-10-21 | scheduled |
 
+| 58 | 2026-11-17 | — | Tue | PgBouncer su PostgreSQL: transaction pooling, parametri critici e il salto da 60 | postgresql | #50 | 2026-10-22 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-08-18 (Tuesday)
