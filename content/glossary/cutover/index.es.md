@@ -2,9 +2,8 @@
 articles:
 - /posts/oracle/oracle-cloud-migration
 - /posts/oracle/oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback
-description: 'El cutover es el momento en que un sistema pasa a la nueva infraestructura.
-  Guia: fases, downtime, ventanas y plan de rollback en migraciones.'
-seoTitle: 'Cutover: que es y como se planifica en una migracion'
+description: "Qué es el cutover: el paso de un sistema en producción de la infraestructura antigua a la nueva. Significado, fases, ventana de downtime y plan de rollback."
+seoTitle: "Qué es el cutover: significado y fases en una migración"
 title: Cutover
 translationKey: glossary_cutover
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Partita IVA"
-description: "Régimen fiscal italiano para trabajadores autónomos y profesionales independientes..."
+seoTitle: "Qué es la Partita IVA en Italia (P.IVA) para autónomos"
+description: "Qué es la Partita IVA: el código fiscal que Italia asigna a autónomos y empresas para operar con IVA. Qué significa trabajar con P.IVA en consultoría IT."
 translationKey: "glossary_partita-iva"
 aka: "Número de IVA / Autónomo"
 articles:

@@ -1,7 +1,7 @@
 ---
 title: "MySQL Users: Why 'mario' and 'mario'@'localhost' Are Not the Same Person"
-seoTitle: "MySQL users and hosts: authentication and GRANT explained"
-description: "MySQL users and hosts: 'mario' and 'mario'@'localhost' are different entities. MySQL/MariaDB authentication model, common mistakes and correct GRANTs."
+seoTitle: "MySQL users and hosts: why 'user'@'%' and @'localhost' differ"
+description: "MySQL accounts are user plus host. Why 'mario'@'localhost' and 'mario'@'%' differ, how host matching picks an account, and the anonymous user trap."
 date: "2026-01-13T08:03:00+01:00"
 aliases:
   - "/posts/mysql/security/mysql-users-and-hosts/"

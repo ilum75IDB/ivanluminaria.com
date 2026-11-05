@@ -1,7 +1,7 @@
 ---
 title: "Oracle 19c, 21c, 23ai, 26ai: the silent rewrite of value domains"
-seoTitle: "Oracle 19c → 26ai: SQL Domains and Assertions in 7 years"
-description: "Seven years of Oracle seen through enumerations: from 19c CHECK to 23ai SQL Domains, all the way to 26ai Assertions. An insurance migration story."
+seoTitle: "Oracle 19c vs 26ai: SQL Domains, Assertions and enum values"
+description: "Oracle 19c vs 26ai through enumerated values: from CHECK constraints in 19c to SQL Domains in 23ai and Assertions in 26ai. A real insurance migration."
 date: "2026-06-23T08:03:00+01:00"
 draft: false
 translationKey: "enum_oracle_19c_26ai_domini"

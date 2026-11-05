@@ -1,7 +1,7 @@
 ---
 title: "ENUM in PostgreSQL: when the choice pays off, and when it bites back"
-seoTitle: "PostgreSQL ENUM vs CHECK vs lookup: the right choice"
-description: "PostgreSQL ENUM vs CHECK vs lookup table: ALTER TYPE ADD VALUE is metadata-cheap, dropping a value costs a migration. Three paths, one real telco case."
+seoTitle: "Postgres enum vs check constraint: the cost of ALTER TYPE"
+description: "Postgres ENUM vs CHECK constraint vs lookup table: adding a value with ALTER TYPE is cheap, removing one needs a migration. Real telco case with SQL."
 date: "2026-06-09T08:03:00+01:00"
 draft: false
 translationKey: "enum_postgresql_paga_o_pesa"

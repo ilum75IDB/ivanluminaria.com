@@ -1,7 +1,7 @@
 ---
 title: "Logical replication in PostgreSQL: a colleague's questions that clarify the topic"
-seoTitle: "PostgreSQL logical replication: scenarios, config, monitoring"
-description: "PostgreSQL logical replication explained through a colleague's questions: cross-version migration, CDC to data warehouse, step-by-step configuration."
+seoTitle: "PostgreSQL logical replication: setup, use cases, monitoring"
+description: "PostgreSQL logical replication step by step: publication, subscription, cross-version upgrade without long downtime, CDC to a data warehouse and monitoring."
 date: "2026-07-07T08:03:00+01:00"
 draft: false
 translationKey: "replica_logica_in_postgresql_scenari_uso"

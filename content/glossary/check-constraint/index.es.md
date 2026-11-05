@@ -1,6 +1,7 @@
 ---
 title: "CHECK constraint"
-description: "Restricción SQL estándar que limita los valores admitidos en una columna mediante una expresión booleana."
+seoTitle: "CHECK constraint en SQL: qué es y cómo se usa"
+description: "Qué es un CHECK constraint en SQL: una restricción que limita los valores de una columna con una expresión booleana. Sintaxis, ejemplos y alternativa a ENUM."
 translationKey: "glossary_check_constraint"
 aka: "CHECK constraint"
 articles:

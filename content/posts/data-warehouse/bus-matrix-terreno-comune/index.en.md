@@ -1,7 +1,7 @@
 ---
 title: "Three data marts, three truths about sales: the bus matrix as common ground"
-seoTitle: "Kimball bus matrix: data marts and conformed dimensions"
-description: "Kimball bus matrix to align isolated data marts: conformed dimensions, business processes and comparable sales. Real insurance group case."
+seoTitle: "Kimball bus matrix: what it is and how to build one"
+description: "What the Kimball bus matrix is and how to build it: business processes in rows, conformed dimensions in columns, to align data marts. Real insurance case."
 date: "2026-05-12T08:03:00+01:00"
 draft: false
 translationKey: "bus_matrix_terreno_comune"

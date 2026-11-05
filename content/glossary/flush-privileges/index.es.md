@@ -1,6 +1,7 @@
 ---
 title: "FLUSH PRIVILEGES"
-description: "Comando MySQL/MariaDB que recarga las tablas de grant desde mysql.user, haciendo efectivos los cambios manuales de privilegios."
+seoTitle: "FLUSH PRIVILEGES: cuándo es necesario en MySQL y MariaDB"
+description: "FLUSH PRIVILEGES recarga en memoria las tablas de privilegios de MySQL y MariaDB. Cuándo es necesario y por qué no hace falta tras GRANT o CREATE USER."
 translationKey: "glossary_flush-privileges"
 articles:
   - "/posts/mysql/mysql-users-and-hosts"

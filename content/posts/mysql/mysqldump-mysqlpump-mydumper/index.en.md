@@ -1,7 +1,7 @@
 ---
 title: "mysqldump vs mysqlpump vs mydumper: the backup that keeps you up at night"
-seoTitle: "MySQL backup: mysqldump vs mydumper vs mysqlpump"
-description: "MySQL backup tools compared: mysqldump vs mydumper vs mysqlpump on a 60 GB database. Real dump and restore times, parallelism and architectural choice."
+seoTitle: "mysqldump vs mydumper vs mysqlpump: MySQL backup compared"
+description: "mysqldump vs mydumper vs mysqlpump on a 60 GB MySQL database: real dump and restore times, parallelism, consistency, and why mysqlpump is deprecated."
 date: "2026-04-14T08:03:00+01:00"
 draft: false
 translationKey: "mysqldump_mysqlpump_mydumper"
