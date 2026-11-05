@@ -1,7 +1,7 @@
 ---
 title: "Utenti, ruoli e privilegi in Oracle: perché GRANT ALL non è mai la risposta"
-seoTitle: "Oracle ruoli e privilegi: least privilege con SQL reale"
-description: "Sicurezza Oracle: ridisegno del modello GRANT con ruoli custom e Unified Audit, applicando il least privilege. Caso reale con SQL pronto."
+seoTitle: "Ruoli e privilegi Oracle: GRANT, REVOKE e Unified Audit"
+description: "Come usare GRANT in Oracle: utenti, ruoli e privilegi di sistema e di oggetto, ruoli custom, REVOKE e Unified Audit. Caso reale con SQL pronto da usare."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"

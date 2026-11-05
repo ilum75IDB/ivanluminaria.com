@@ -1,6 +1,7 @@
 ---
 title: "secure-file-priv"
-description: "MySQL security directive that limits the directories where the server can read and write files, protecting the filesystem from unauthorised operations."
+seoTitle: "MySQL secure_file_priv: what it does and how to set it"
+description: "MySQL secure_file_priv limits where LOAD DATA INFILE, SELECT INTO OUTFILE and LOAD_FILE() can read and write. What NULL, empty and a path mean."
 translationKey: "glossary_secure-file-priv"
 articles:
   - "/posts/mysql/mysql-multi-istanza-secure-file-priv"

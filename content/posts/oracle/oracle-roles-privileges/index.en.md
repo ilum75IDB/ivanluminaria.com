@@ -1,7 +1,7 @@
 ---
 title: "Users, Roles and Privileges in Oracle: Why GRANT ALL Is Never the Answer"
-seoTitle: "Oracle security: roles, privileges and least privilege"
-description: "Oracle security: redesigning the GRANT model with custom roles and Unified Audit, applying least privilege. Real case with copy-paste SQL."
+seoTitle: "Oracle roles and privileges: GRANT, REVOKE, least privilege"
+description: "How to manage Oracle users, roles and privileges: GRANT and REVOKE with custom roles, least privilege and Unified Audit. Real case with copy-paste SQL."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"

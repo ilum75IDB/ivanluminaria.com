@@ -1,6 +1,7 @@
 ---
 title: "Drill-down"
-description: "Navegación en reportes desde un nivel agregado hasta un nivel de detalle, típica del análisis OLAP y los data warehouses."
+seoTitle: "Qué es el drill-down: significado en análisis de datos"
+description: "Qué es el drill-down: la navegación en un reporte desde un dato agregado hasta el detalle, bajando por una jerarquía. Significado, ejemplo y drill-up."
 translationKey: "glossary_drill_down"
 aka: "Navegación jerárquica, Detalle progresivo"
 articles:

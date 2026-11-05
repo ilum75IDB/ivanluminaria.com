@@ -1,7 +1,7 @@
 ---
 title: "Payment at 60-90-120 days: the Italian normality that doesn't exist in Europe"
-seoTitle: "Payment terms 60-90-120 days: Italy vs Europe"
-description: "60-90-120 day payment terms in Italian IT consulting: comparison with European rules. DSO, EU directive 2011/7 and strategies for IT freelancers."
+seoTitle: "60, 90, 120-day payment terms: Italy vs EU late payment rules"
+description: "Payment terms of 60, 90 or 120 days are standard in Italian IT consulting. What EU Directive 2011/7 allows, what it means for DSO and for freelancers."
 date: "2026-03-10T08:03:00+01:00"
 draft: false
 translationKey: "pagamenti_60_90_120_giorni"

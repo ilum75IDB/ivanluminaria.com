@@ -1,7 +1,7 @@
 ---
 title: "Usuarios, roles y privilegios en Oracle: por qué GRANT ALL nunca es la respuesta"
-seoTitle: "Seguridad Oracle: roles, privilegios y mínimo privilegio"
-description: "Seguridad Oracle: rediseño del modelo GRANT con roles personalizados y Unified Audit, aplicando el mínimo privilegio. Caso real con SQL listo."
+seoTitle: "Roles y privilegios en Oracle: GRANT, REVOKE y mínimo privilegio"
+description: "Roles y privilegios en Oracle explicados con un caso real: por qué GRANT ALL y DBA son un riesgo y cómo rediseñar los permisos con roles a medida."
 date: "2026-01-27T08:03:00+01:00"
 draft: false
 translationKey: "oracle_roles_privileges"

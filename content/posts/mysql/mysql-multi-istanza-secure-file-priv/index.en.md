@@ -1,7 +1,7 @@
 ---
 title: "MySQL Multi-Instance: A Ticket, a CSV and the secure-file-priv Wall"
-seoTitle: "MySQL multi-instance: secure-file-priv and CSV export"
-description: "MySQL multi-instance on Linux: exporting a CSV with INTO OUTFILE blocked by secure-file-priv. Unix socket connection and shell workaround real case."
+seoTitle: "MySQL SELECT INTO OUTFILE blocked by secure_file_priv"
+description: "MySQL ERROR 1290 on SELECT INTO OUTFILE: how secure_file_priv and the FILE privilege restrict CSV export, on a multi-instance server. Safe workarounds."
 date: "2025-11-04T08:03:00+01:00"
 draft: false
 translationKey: "mysql_multi_istanza_secure_file_priv"

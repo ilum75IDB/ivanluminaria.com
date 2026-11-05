@@ -1,6 +1,7 @@
 ---
 title: "ALTER TYPE ADD VALUE"
-description: "PostgreSQL command that appends a value to an existing ENUM. Metadata-only operation, transactional, no rebuild of the tables that use the type."
+seoTitle: "PostgreSQL ALTER TYPE ADD VALUE: add a value to an enum"
+description: "PostgreSQL ALTER TYPE ADD VALUE explained: extending an enum in milliseconds, positioning the new value, and why removing a value is a different story."
 translationKey: "glossary_postgresql_alter_type_add_value"
 aka: "PostgreSQL ENUM extension"
 articles:

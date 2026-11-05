@@ -1,6 +1,7 @@
 ---
 title: "Pull Request"
-description: "Meccanismo di proposta e revisione delle modifiche al codice su piattaforme come GitHub. Permette code review..."
+seoTitle: "Cos'è una pull request (PR) e a cosa serve su GitHub"
+description: "Cos'è una pull request: la richiesta di unire le modifiche di un branch al branch principale, con diff, commenti e approvazione prima del merge su GitHub."
 translationKey: "glossary_pull-request"
 aka: "PR, Merge Request"
 articles:
