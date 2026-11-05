@@ -5,7 +5,8 @@
 
 {{/* Noindex per tag pages con meno di 2 articoli (thin content per Google).
      I tag con 1 solo articolo non meritano di essere indicizzati: il singolo
-     articolo è già indicizzato di per sé, la tag page non aggiunge valore. */}}
+     articolo è già indicizzato di per sé, la tag page non aggiunge valore.
+     Stessa soglia usata in layouts/sitemap.xml per includere i tag in sitemap. */}}
 {{- if and (eq .Kind "term") (eq .Type "tags") (lt (len .Pages) 2) -}}
 <meta name="robots" content="noindex" />
 {{- end }}

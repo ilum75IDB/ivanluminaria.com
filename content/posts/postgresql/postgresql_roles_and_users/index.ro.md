@@ -3,6 +3,8 @@ title: "Roluri și utilizatori în PostgreSQL: de ce totul este (doar) un ROLE"
 seoTitle: "PostgreSQL ROLE: utilizatori, roluri și GRANT least privilege"
 description: "PostgreSQL ROLE: utilizatorii și rolurile sunt același obiect. Model mental, GRANT, NOINHERIT și construirea unui utilizator read-only mentenabil."
 date: "2026-02-10T08:03:00+01:00"
+aliases:
+  - "/posts/postgresql/security/postgresql_roles_and_users/"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false
 translationKey: "postgresql_roles_and_users"

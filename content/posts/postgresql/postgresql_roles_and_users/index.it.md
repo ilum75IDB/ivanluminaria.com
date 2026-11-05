@@ -3,6 +3,8 @@ title: "Ruoli e utenti in PostgreSQL: perché è tutto (solo) un ROLE"
 seoTitle: "PostgreSQL ROLE: utenti, ruoli e GRANT con least privilege"
 description: "PostgreSQL ROLE: utenti e ruoli sono lo stesso oggetto. Modello mentale, GRANT, NOINHERIT e creazione di un account read-only manutenibile."
 date: "2026-02-10T08:03:00+01:00"
+aliases:
+  - "/posts/postgresql/security/postgresql_roles_and_users/"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false
 translationKey: "postgresql_roles_and_users"

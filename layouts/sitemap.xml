@@ -1,0 +1,34 @@
+{{- /* Override di themes/congo/layouts/sitemap.xml.
+     Differenza rispetto al tema: le pagine term dei "tags" con almeno 2 articoli
+     entrano in sitemap anche se il kind "term" è in sitemap.excludedKinds.
+     La soglia (>= 2) è la stessa del noindex in _partials/extend-head.html:
+     se cambia lì, va cambiata anche qui, altrimenti la sitemap elenca pagine noindex. */ -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {{ range .Data.Pages }}
+    {{- $isIndexableTag := and (eq .Kind "term") (eq .Type "tags") (ge (len .Pages) 2) }}
+    {{ if or (not (in .Site.Params.sitemap.excludedKinds .Kind)) $isIndexableTag }}
+      {{ if and (.Param "xml" | default true) (not (isset .Params "externalUrl")) }}
+        {{- if .Permalink -}}
+          <url>
+            <loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}
+            <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>{{ end }}{{ with .Sitemap.ChangeFreq }}
+            <changefreq>{{ . }}</changefreq>{{ end }}{{ if ge .Sitemap.Priority 0.0 }}
+            <priority>{{ .Sitemap.Priority }}</priority>{{ end }}{{ if .IsTranslated }}{{ range .Translations }}{{ if or (ne .Kind "term") (ge (len .Pages) 2) }}
+            <xhtml:link
+              rel="alternate"
+              hreflang="{{ .Language.Lang }}"
+              href="{{ .Permalink }}"
+              />{{ end }}{{ end }}
+            <xhtml:link
+              rel="alternate"
+              hreflang="{{ .Language.Lang }}"
+              href="{{ .Permalink }}"
+              />{{ end }}
+          </url>
+        {{- end -}}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</urlset>
