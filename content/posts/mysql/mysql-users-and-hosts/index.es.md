@@ -3,6 +3,8 @@ title: "Usuarios MySQL: por qué 'mario' y 'mario'@'localhost' no son la misma p
 seoTitle: "MySQL usuarios y hosts: autenticación y GRANT explicados"
 description: "MySQL usuarios y hosts: 'mario' y 'mario'@'localhost' son entidades distintas. Modelo de autenticación MySQL/MariaDB, errores comunes y GRANTs."
 date: "2026-01-13T08:03:00+01:00"
+aliases:
+  - "/posts/mysql/security/mysql-users-and-hosts/"
 draft: false
 translationKey: "mysql_users_and_hosts"
 tags: ["mariadb", "security", "privileges"]

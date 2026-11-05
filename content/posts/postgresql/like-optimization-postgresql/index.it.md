@@ -3,6 +3,8 @@ title: "Quando un LIKE '%valore%' rallenta tutto: un caso reale di ottimizzazion
 seoTitle: "PostgreSQL LIKE con %valore%: GIN index e pg_trgm"
 description: "Ottimizzazione PostgreSQL: LIKE '%valore%' genera full scan. Uso di pg_trgm e indice GIN per trasformare un wildcard search in lookup veloce."
 date: "2026-01-06T08:03:00+01:00"
+aliases:
+  - "/posts/postgresql/query-tuning/like-optimization-postgresql/"
 lastmod: "2026-02-26T09:34:00+01:00"
 draft: false
 translationKey: "like_optimization_postgresql"
