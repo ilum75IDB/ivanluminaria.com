@@ -2,6 +2,15 @@
 
 ## Issue create
 
+### Oracle Flashback: recuperare dati persi senza ricorrere al backup completo — Issue #104
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/104
+- **Concept**: Questo articolo esplorerà la suite di funzionalità Flashback di Oracle Database, inclusi Flashback Query, Flashback Table, Flashback Drop e Flashback Database. Si spiegherà come queste tecnologie permettono di 'tornare indietro nel tempo' per recuperare dati cancellati accidentalmente o ripristinare oggetti a stati precedenti, riducendo drasticamente i tempi di recovery da errori logici.
+- **Sezione**: Oracle
+- **Slot proposto**: (da definire)
+- **Data nota**: 2026-11-12
+- **Data issue**: 2026-11-12
+
+
 ### Data Governance nel Data Warehouse: dal controllo qualità alla conformità normativa — Issue #103
 - **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/103
 - **Concept**: L'articolo affronterà il tema della Data Governance applicata ai Data Warehouse, spiegando come stabilire politiche e processi per garantire la qualità, la sicurezza e la conformità dei dati. Verranno esplorati gli aspetti chiave come la definizione dei ruoli e delle responsabilità, la gestione del glossario dati, la tracciabilità (lineage) e l'impatto delle normative (es. GDPR) sulla progettazione e gestione del DWH.
