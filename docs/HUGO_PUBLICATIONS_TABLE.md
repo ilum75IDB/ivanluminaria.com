@@ -82,5 +82,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 58 | 2026-11-17 | — | Tue | PgBouncer su PostgreSQL: transaction pooling, parametri critici e il salto da 60 | postgresql | #50 | 2026-10-22 | scheduled |
 
+| 59 | 2026-11-24 | — | mar | Oracle Flashback: recupero dati logici senza downtime, da Query a Database | oracle | #104 | 2026-11-14 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-08-18 (Tuesday)

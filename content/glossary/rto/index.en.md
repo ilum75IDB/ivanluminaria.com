@@ -1,10 +1,12 @@
 ---
-title: "RTO"
-description: "Recovery Time Objective — the maximum acceptable time to restore a service after a failure or disaster."
-translationKey: "glossary_rto"
-aka: "Recovery Time Objective"
+aka: Recovery Time Objective
 articles:
-  - "/posts/oracle/oracle-data-guard"
+- /posts/oracle/oracle-data-guard
+- /posts/oracle/oracle-flashback-recupero-dati-logici-senza-downtime-da-query-a-database
+description: Recovery Time Objective — the maximum acceptable time to restore a service
+  after a failure or disaster.
+title: RTO
+translationKey: glossary_rto
 ---
 
 **RTO** (Recovery Time Objective) is the maximum acceptable time to restore service after a failure or disaster. It is measured from the moment of failure to the moment the system is operational again.

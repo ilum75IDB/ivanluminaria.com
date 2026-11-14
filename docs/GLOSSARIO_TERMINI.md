@@ -76,6 +76,9 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | DSO | Days Sales Outstanding — numero medio di giorni per incassare i crediti commerciali. In Italia la media è 80 giorni, quasi tre volte la media europea | pagamenti-60-90-120-giorni |
 | ETL | Extract, Transform, Load — processo di estrazione, trasformazione e caricamento dati dai sistemi sorgente al data warehouse | scd-tipo-2, ragged-hierarchies, 4-milioni-nessun-software, fatto-grana-sbagliata, partitioning-dwh |
 | Exchange Partition | Operazione DDL Oracle che scambia istantaneamente i segmenti dati tra una tabella non partizionata e una partizione, senza spostare fisicamente i dati | partitioning-dwh |
+| Flashback Database |  | oracle-flashback-recupero-dati-logici-senza-downtime-da-query-a-database |
+| Flashback Query |  | oracle-flashback-recupero-dati-logici-senza-downtime-da-query-a-database |
+| Flashback Table |  | oracle-flashback-recupero-dati-logici-senza-downtime-da-query-a-database |
 | Float Finanziario | Liquidità a costo zero generata dalla differenza tra i tempi di incasso dai clienti e i tempi di pagamento ai fornitori | pagamenti-60-90-120-giorni |
 | FLUSH PRIVILEGES | Comando MySQL/MariaDB che ricarica le tabelle dei grant in memoria, rendendo effettive le modifiche manuali ai privilegi | mysql-users-and-hosts |
 | Execution Plan | Sequenza di operazioni (scan, join, sort) che il database sceglie per risolvere una query SQL. Si visualizza con EXPLAIN e EXPLAIN ANALYZE | explain-analyze-postgresql, like-optimization-postgresql, pg-stat-statements |
@@ -185,9 +188,9 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Relay log | File di log intermedio sullo slave MySQL che riceve gli eventi dal binary log del master prima che vengano eseguiti localmente | binary-log-mysql |
 | RMAN | Recovery Manager — strumento nativo Oracle per backup, restore e recovery del database, inclusa la creazione di database standby per Data Guard | oracle-data-guard |
 | RPO | Recovery Point Objective — la quantità massima di dati che un'organizzazione può permettersi di perdere in caso di disastro, misurata in tempo | oracle-data-guard |
-| RTO | Recovery Time Objective — il tempo massimo accettabile per ripristinare un servizio dopo un guasto o un disastro | oracle-data-guard |
+| RTO | Recovery Time Objective — il tempo massimo accettabile per ripristinare un servizio dopo un guasto o un disastro | oracle-data-guard, oracle-flashback-recupero-dati-logici-senza-downtime-da-query-a-database |
 | Schema | Namespace logico all'interno di un database che raggruppa tabelle, viste, funzioni e altri oggetti, permettendo organizzazione e separazione dei permessi | postgresql_roles_and_users |
-| SCN | Numero sequenziale monotono crescente che Oracle usa per identificare un punto preciso nella vita del database. Presente | quali-sono-i-files-critici-di-un-db-oracle |
+| SCN | Numero sequenziale monotono crescente che Oracle usa per identificare un punto preciso nella vita del database. Presente | quali-sono-i-files-critici-di-un-db-oracle, oracle-flashback-recupero-dati-logici-senza-downtime-da-query-a-database |
 | Scrum | Framework agile per la gestione di progetti che organizza il lavoro in sprint a durata fissa, con ruoli definiti e cerimonie strutturate | standup-meeting-15-minuti |
 | Scope | Perimetro di un progetto che definisce cosa è incluso e cosa è escluso: funzionalità, deliverable, vincoli e confini concordati con gli stakeholder | tecnica-si-e-yes-and |
 | Session pooling |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
@@ -255,7 +258,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | `replication_group_members` | tabella di sistema che elenca i nodi attivi in un cluster Group Replication, con stato (`ONLINE`, `RECOVERING`, `UNREACH | articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo |
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
-**Ultimo aggiornamento**: 2026-10-22
-**Totale termini**: 246
-**Totale articoli con glossario**: 57
+**Ultimo aggiornamento**: 2026-11-14
+**Totale termini**: 249
+**Totale articoli con glossario**: 58
 

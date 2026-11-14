@@ -1,10 +1,12 @@
 ---
-title: "SCN"
-description: "System Change Number: el número secuencial monotónicamente creciente que Oracle usa para marcar cada COMMIT y garantizar consistencia y recovery point-in-time."
-translationKey: "glossary_scn"
-aka: "System Change Number"
+aka: System Change Number
 articles:
-  - "/posts/oracle/quali-sono-i-files-critici-di-un-db-oracle"
+- /posts/oracle/quali-sono-i-files-critici-di-un-db-oracle
+- /posts/oracle/oracle-flashback-recupero-dati-logici-senza-downtime-da-query-a-database
+description: 'System Change Number: el número secuencial monotónicamente creciente
+  que Oracle usa para marcar cada COMMIT y garantizar consistencia y recovery point-in-time.'
+title: SCN
+translationKey: glossary_scn
 ---
 
 El SCN (System Change Number) es el contador interno con el que Oracle ordena cada cambio producido en la base de datos. Crece de forma estrictamente monotónica: cada COMMIT recibe un SCN mayor que el anterior, lo que permite reconstruir con precisión el estado de la base de datos en cualquier momento pasado.
