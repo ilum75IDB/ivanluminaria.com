@@ -2,6 +2,15 @@
 
 ## Issue create
 
+### SQL Plan Management in Oracle: stabilizzare i piani di esecuzione per prevenire regressioni — Issue #105
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/105
+- **Concept**: Questo articolo si concentrerà su SQL Plan Management (SPM) di Oracle, una funzionalità che permette di controllare e stabilizzare i piani di esecuzione delle query. Verranno illustrati i concetti di SQL Plan Baseline, come acquisirli, evolverli e gestirli per prevenire variazioni di performance inattese dopo patch, upgrade o aggiornamenti delle statistiche.
+- **Sezione**: Oracle
+- **Slot proposto**: (da definire)
+- **Data nota**: 2026-11-14
+- **Data issue**: 2026-11-14
+
+
 ### Oracle Flashback: recuperare dati persi senza ricorrere al backup completo — Issue #104
 - **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/104
 - **Concept**: Questo articolo esplorerà la suite di funzionalità Flashback di Oracle Database, inclusi Flashback Query, Flashback Table, Flashback Drop e Flashback Database. Si spiegherà come queste tecnologie permettono di 'tornare indietro nel tempo' per recuperare dati cancellati accidentalmente o ripristinare oggetti a stati precedenti, riducendo drasticamente i tempi di recovery da errori logici.
