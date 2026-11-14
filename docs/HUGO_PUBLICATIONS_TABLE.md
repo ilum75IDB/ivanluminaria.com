@@ -86,5 +86,7 @@ ogni volta che si aggiunge, ripianifica o pubblica un articolo.
 
 | 60 | 2026-12-01 | — | mar | Oracle SQL Plan Management: stabilizzare i piani di esecuzione per prevenire reg | oracle | #105 | 2026-11-14 | scheduled |
 
+| 61 | 2026-12-09 | — | mer | La demo che non poteva aspettare: Materialized Views e un DWH Telco sotto pressi | data-warehouse | #106 | 2026-11-14 | scheduled |
+
 **Previous available slot**: 2025-10-07 (Tuesday)
 **Next available slot**: 2026-08-18 (Tuesday)

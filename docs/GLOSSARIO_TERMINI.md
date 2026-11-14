@@ -42,10 +42,12 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
 | AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift, oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire |
+| Call Detail Record (CDR) |  | la-demo-che-non-poteva-aspettare-materialized-views-e-un-dwh-telco-sotto |
 | change control |  | latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
 | Commodore 64 |  | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
 | Data Catalog | Inventario organizzato di tutti i dati disponibili in un'organizzazione, con metadati, glossario, lineage e strumenti di | data-governance-nel-data-warehouse-dal-controllo-qualita-alla-conformita-normati |
+| Data Warehouse (DWH) |  | la-demo-che-non-poteva-aspettare-materialized-views-e-un-dwh-telco-sotto |
 | dbupgrade | utility Oracle (successore di `catupgrd.sql`) che aggiorna il dizionario dati di sistema durante un upgrade di versione. | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
 | default_statistics_target | Parametro PostgreSQL che definisce quanti campioni raccogliere per colonna durante l'ANALYZE. Il default è 100; su colonne con distribuzione asimmetrica conviene alzarlo a 500-1000 | explain-analyze-postgresql |
 | Chiave surrogata | Identificativo numerico generato dal data warehouse, distinto dalla chiave naturale del sistema sorgente. Nella SCD Tipo 2 è indispensabile perché lo stesso record può avere più versioni | scd-tipo-2, enum-mysql-semplifica-o-complica, enum-postgresql-paga-o-pesa |
@@ -124,6 +126,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | KPI | Key Performance Indicator — metrica misurabile che valuta l'efficacia di un'attività rispetto a un obiettivo definito | smartworking-consulenza-it |
 | LRU list | Struttura a due zone (young list + old list) usata da InnoDB per decidere quali pagine tenere in cache e quali rimuovere | innodb-buffer-pool-dimensionamento-hit-ratio-e-warm-up-dopo-restart |
 | Major release Oracle | Versione principale del Database server Oracle con cambiamenti significativi di feature, ciclo di supporto Premier dedicato e numerazione propria (19c, 21c, 23ai, 26ai). Alterna Long-Term Release e Innovation Release | enum-oracle-19c-26ai-domini |
+| Materialized View (MV) |  | la-demo-che-non-poteva-aspettare-materialized-views-e-un-dwh-telco-sotto |
 | MERGE | Istruzione SQL che combina INSERT e UPDATE in un'unica operazione: se il record esiste lo aggiorna, se non esiste lo inserisce. In Oracle anche nota come "upsert" | scd-tipo-2 |
 | Micromanagement | Stile di gestione basato sul controllo puntuale delle attività quotidiane del team. Genera calo di motivazione, turnover e disincentiva l'iniziativa | team-di-progetto-che-reggono |
 | Mobilità Sostenibile | Approccio ai trasporti urbani che privilegia mezzi a basso impatto ambientale, riducendo emissioni, traffico e costi | bici-vs-auto-roma |
@@ -164,6 +167,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Pre-upgrade assessment | Misurazione strutturata di dimensioni, crescita, tempi di backup e restore di un database prima di un upgrade. Serve a dimensionare la finestra di manutenzione e a definire una strategia di rollback realistica | mysql-pre-upgrade-assessment |
 | Psychological Safety | Clima di team in cui le persone possono ammettere errori, dire "non lo so" e sollevare problemi senza temere conseguenze sul giudizio professionale. Presupposto di team che reggono sotto pressione | team-di-progetto-che-reggono |
 | Publication (PostgreSQL) | Oggetto della replica logica PostgreSQL che definisce l'insieme di tabelle (e righe, dalla 15) i cui cambiamenti vengono resi disponibili ai subscriber. Risiede sul publisher e può essere consumata da più subscriber indipendenti | replica-logica-in-postgresql-scenari-d-uso-configurazione-e-monitoraggio |
+| Query Rewriting |  | la-demo-che-non-poteva-aspettare-materialized-views-e-un-dwh-telco-sotto |
+| Refresh (MV) |  | la-demo-che-non-poteva-aspettare-materialized-views-e-un-dwh-telco-sotto |
 | REM | Istruzione del BASIC (abbreviazione di REMark) che introduce un commento nel codice. La riga viene ignorata dall'interpr | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | REPEATABLE READ |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
 | RMAN Incremental Backup | backup RMAN che registra solo i blocchi modificati dall'ultimo backup di livello uguale o superiore. Level 0 è la base c | oracle-12c-21c-su-12-tb-transportable-tablespaces-rman-incremental-e-la |
@@ -262,6 +267,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
 **Ultimo aggiornamento**: 2026-11-14
-**Totale termini**: 252
-**Totale articoli con glossario**: 59
+**Totale termini**: 257
+**Totale articoli con glossario**: 60
 

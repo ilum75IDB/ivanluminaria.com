@@ -1,21 +1,39 @@
 ---
-title: "Data Warehouse"
-description: "Sistema centralizado de recopilación e historización de datos de fuentes diversas, diseñado para el análisis y el soporte a las decisiones empresariales."
-translationKey: "glossary_data-warehouse"
+title: "Data Warehouse (DWH)"
+description: "Sistema de base de datos optimizado para el análisis de datos históricos, que agrega información de fuentes operacionales heterogéneas priorizando lecturas masivas y agregaciones."
+translationKey: "glossary_data_warehouse"
+aka: "DWH, Enterprise Data Warehouse (EDW)"
 articles:
-  - "/posts/project-management/4-milioni-nessun-software"
+  - "/posts/data-warehouse/la-demo-che-non-poteva-aspettare-materialized-views-e-un-dwh-telco-sotto"
 ---
 
-Un **Data Warehouse** (DWH) es un sistema de almacenamiento de datos diseñado específicamente para el análisis, el reporting y el soporte a las decisiones empresariales. A diferencia de las bases de datos operacionales (OLTP), un DWH recopila datos de múltiples fuentes, los transforma y los organiza en estructuras optimizadas para consultas analíticas.
+Un Data Warehouse es un sistema de almacenamiento diseñado para consolidar datos provenientes de múltiples fuentes operacionales — CRM, ERP, sistemas de facturación, logs de aplicaciones — en un único repositorio optimizado para el análisis. No reemplaza las bases de datos transaccionales: las complementa, leyendo de ellas mediante pipelines ETL o ELT.
 
 ## Cómo funciona
 
-Los datos se extraen de los sistemas fuente (gestionales, CRM, ERP), se transforman mediante procesos ETL que los limpian, normalizan y enriquecen, y finalmente se cargan en el DWH. El modelo de datos típico es el star schema: una fact table central con las medidas numéricas conectada a tablas dimensionales que describen el contexto (tiempo, cliente, producto, geografía).
+El patrón de acceso es el opuesto al OLTP: pocas escrituras masivas (batch o micro-batch) y un volumen muy alto de lecturas que recorren millones de filas. El esquema es típicamente desnormalizado — star schema o snowflake schema — para minimizar los JOIN y maximizar el rendimiento de las consultas analíticas.
 
-## Para qué sirve
+```sql
+-- Consulta analítica típica sobre un DWH telco
+SELECT
+    d.mes,
+    r.region,
+    SUM(f.ingresos_eur)  AS ingresos_totales,
+    COUNT(f.cliente_id)  AS clientes_activos
+FROM fact_ingresos f
+JOIN dim_fecha   d ON f.fecha_id  = d.fecha_id
+JOIN dim_region  r ON f.region_id = r.region_id
+WHERE d.anio = 2024
+GROUP BY d.mes, r.region
+ORDER BY d.mes, ingresos_totales DESC;
+```
 
-Un DWH permite responder a preguntas de negocio que los sistemas operacionales no pueden gestionar: tendencias históricas, análisis comparativos entre períodos, agregaciones cross-system, KPIs empresariales. Separa la carga analítica de la transaccional, evitando que las queries de reporting impacten el rendimiento de las aplicaciones operativas.
+Las materialized views son una herramienta habitual para pre-calcular agregaciones costosas y servirlas con latencia mínima.
 
-## Cuándo se usa
+## Cuándo utilizarlo
 
-Un DWH es necesario cuando una empresa necesita integrar datos de fuentes diversas para producir análisis consolidados. La complejidad y los costes dependen del número de sistemas fuente, el volumen de datos y la frecuencia de actualización requerida.
+Un DWH es la elección correcta cuando la carga analítica empieza a degradar el rendimiento de los sistemas operacionales, cuando es necesario historizar datos que los sistemas fuente no conservan, o cuando múltiples fuentes heterogéneas deben consultarse de forma unificada. No es adecuado para escenarios que requieren datos en tiempo real con latencia inferior al segundo: en esos casos se evalúan arquitecturas lambda o kappa con una capa de streaming.
+
+## Notas
+
+La distinción entre un DWH y un Data Lake tiene que ver principalmente con la estructura: el DWH impone un esquema rígido en el momento de la escritura (schema-on-write), mientras que el Data Lake acepta datos crudos y aplica el esquema en la lectura (schema-on-read). Muchas arquitecturas modernas combinan ambos en el patrón conocido como Data Lakehouse.
