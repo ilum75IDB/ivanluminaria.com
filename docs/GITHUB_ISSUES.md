@@ -18,6 +18,7 @@ tool `WebFetch`.
 |----|-------|--------|-------|
 | 39 | https://github.com/ilum75IDB/ivanluminaria.com/issues/39 | ETL a 4 ore: come ho portato un caricamento notturno a 25 minuti | aperta |
 | 103 | https://github.com/ilum75IDB/ivanluminaria.com/issues/103 | Data Governance nel Data Warehouse: dal controllo qualità alla conformità normativa | aperta |
+| 106 | https://github.com/ilum75IDB/ivanluminaria.com/issues/106 | Materialized Views nel DWH: quando i report non aspettano e i dati sono troppi | aperta |
 ## Issue Aperte — Sezione MySQL
 
 | #  | Issue | Titolo | Stato |

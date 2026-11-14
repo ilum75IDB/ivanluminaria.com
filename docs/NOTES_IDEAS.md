@@ -2,6 +2,15 @@
 
 ## Issue create
 
+### Materialized Views nel DWH: quando i report non aspettano e i dati sono troppi — Issue #106
+- **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/106
+- **Concept**: Questo articolo si concentrerà sull'uso strategico delle Materialized Views (MV) per migliorare le performance dei carichi di lavoro analitici in un Data Warehouse. Verranno esaminati i criteri per identificare i candidati ideali per le MV, le sfide di refresh e coerenza dei dati, e gli impatti sulle query e sui report.
+- **Sezione**: Data Warehouse
+- **Slot proposto**: (da definire)
+- **Data nota**: 2026-11-14
+- **Data issue**: 2026-11-14
+
+
 ### SQL Plan Management in Oracle: stabilizzare i piani di esecuzione per prevenire regressioni — Issue #105
 - **Issue**: https://github.com/ilum75IDB/ivanluminaria.com/issues/105
 - **Concept**: Questo articolo si concentrerà su SQL Plan Management (SPM) di Oracle, una funzionalità che permette di controllare e stabilizzare i piani di esecuzione delle query. Verranno illustrati i concetti di SQL Plan Baseline, come acquisirli, evolverli e gestirli per prevenire variazioni di performance inattese dopo patch, upgrade o aggiornamenti delle statistiche.
