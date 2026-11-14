@@ -7,6 +7,7 @@ articles:
 - /posts/project-management/il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva
 - /posts/project-management/il-restart-ha-risolto-il-problema-e-ancora-li
 - /posts/oracle/latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift
+- /posts/oracle/oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire
 description: Automatic Workload Repository — strumento diagnostico integrato in Oracle
   Database per la raccolta e l'analisi delle statistiche di performance.
 title: AWR

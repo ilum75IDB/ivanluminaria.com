@@ -1,10 +1,12 @@
 ---
-title: "Hash Join"
-description: "Hash Join — a join strategy optimized for large data volumes, based on a hash table built in memory."
-translationKey: "glossary_hash_join"
-aka: "Hash Join"
+aka: Hash Join
 articles:
-  - "/posts/postgresql/explain-analyze-postgresql"
+- /posts/postgresql/explain-analyze-postgresql
+- /posts/oracle/oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire
+description: Hash Join — a join strategy optimized for large data volumes, based on
+  a hash table built in memory.
+title: Hash Join
+translationKey: glossary_hash_join
 ---
 
 **Hash join** is a join strategy designed for large data volumes. It works in two phases: first it builds a data structure in memory, then uses it to find matches efficiently.

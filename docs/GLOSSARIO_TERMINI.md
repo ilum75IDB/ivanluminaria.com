@@ -41,7 +41,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | B-Tree | Struttura dati ad albero bilanciato, tipo di indice predefinito nei database relazionali. Efficiente per ricerche di uguaglianza e range, inadatto per LIKE con wildcard iniziale | like-optimization-postgresql, postgresql-indici-quando-fanno-male |
 | Bus Matrix | Matrice bidimensionale di Ralph Kimball con i processi di business sulle righe e le dimensioni conformi sulle colonne. Strumento di allineamento organizzativo prima della progettazione fisica del DWH | bus-matrix-terreno-comune |
 | Autovacuum | Daemon PostgreSQL che esegue automaticamente VACUUM e ANALYZE sulle tabelle quando il numero di dead tuples supera una soglia configurabile | vacuum-autovacuum-postgresql |
-| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
+| AWR | Automatic Workload Repository — strumento diagnostico integrato in Oracle Database per la raccolta e l'analisi delle statistiche di performance | oracle-awr-ash, oracle-cloud-migration, etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift, oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire |
 | change control |  | latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
 | Commodore 64 |  | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 | Control File | File binario aggiornato continuamente da Oracle che registra la struttura fisica del database: path di datafile e redo l | quali-sono-i-files-critici-di-un-db-oracle |
@@ -109,7 +109,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Full Table Scan | Operazione di lettura in cui il database legge tutti i blocchi di una tabella senza utilizzare indici. In Oracle si manifesta come wait event `db file scattered read` | oracle-awr-ash, partitioning-dwh |
 | GTID | Global Transaction Identifier — identificativo univoco assegnato a ogni transazione in MySQL, che semplifica la gestione della replica e il tracking delle transazioni tra master e slave | mysqldump-mysqlpump-mydumper, mysql-group-replication-binlog-migration, articolo-mysql-patching-mysql-8-0-dal-backup-alla-verifica-passo-per-passo, mysql-slave-lag-diagnosi-e-fix-con-parallel-replication |
 | Group Replication | Meccanismo nativo di MySQL per la replica sincrona multi-nodo con failover automatico e gestione del quorum | mysql-group-replication-binlog-migration, articolo-mysql-saturazione-swap-su-innodb-cluster-3-nodi-analisi-e-fix-dei-param |
-| Hash Join | Strategia di join che costruisce una hash table dalla tabella più piccola e poi scansiona la più grande cercando corrispondenze con lookup O(1). Efficiente su grandi volumi senza indici | explain-analyze-postgresql |
+| Hash Join | Strategia di join che costruisce una hash table dalla tabella più piccola e poi scansiona la più grande cercando corrispondenze con lookup O(1). Efficiente su grandi volumi senza indici | explain-analyze-postgresql, oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire |
 | Hot Desk | Modello di organizzazione degli spazi ufficio in cui le postazioni non sono assegnate: chi viene in ufficio occupa una scrivania libera | smartworking-consulenza-it |
 | Huge Pages | Pagine di memoria da 2 MB che riducono drasticamente la pressione sulla MMU e sul TLB, migliorando le performance di Oracle su Linux | oracle-linux-kernel |
 | Indice Parziale | Indice PostgreSQL che copre solo un sottoinsieme delle righe della tabella, definito con WHERE nella CREATE INDEX. Riduce spazio e tempo di manutenzione | postgresql-indici-quando-fanno-male |
@@ -146,6 +146,7 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | PgBouncer |  | pgbouncer-su-postgresql-transaction-pooling-parametri-critici-e-il-salto-da-600 |
 | Phantom read |  | mysql-gap-lock-e-next-key-lock-diagnosi-dei-deadlock-con-show-engine-innodb |
 | piano di esecuzione |  | il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva, il-restart-ha-risolto-il-problema-e-ancora-li, ai-mostra-sintomo-board-chiede-causa |
+| Piano fixed |  | oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire |
 | Predicato existential | espressione logica che afferma l'esistenza di almeno una riga che soddisfa una condizione. In SQL si esprime tipicamente | articolo-oracle-assertions-in-oracle-26ai |
 | Predicato universal | espressione logica che afferma che una condizione vale per tutte le righe di un insieme. In SQL si esprime indirettament | articolo-oracle-assertions-in-oracle-26ai |
 | preupgrd.sql |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
@@ -201,6 +202,8 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | Scope Creep | Espansione incontrollata dei requisiti di progetto oltre il perimetro iniziale, che porta a ritardi, aumento dei costi e spesso al fallimento del progetto | 4-milioni-nessun-software |
 | SPFILE | Server Parameter File: file binario letto da Oracle all'avvio che contiene i parametri di configurazione dell'istanza (` | quali-sono-i-files-critici-di-un-db-oracle |
 | SPM baseline |  | oracle-11g-r2-19c-su-oci-8-tb-in-finanza-un-piano-di-upgrade-con-fasi-e-rollback |
+| SQL Plan Baseline |  | oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire |
+| SQL Plan Management (SPM) |  | oracle-sql-plan-management-stabilizzare-i-piani-di-esecuzione-per-prevenire |
 | SQL*Net roundtrips to/from client |  | latenza-wan-e-change-control-gxp-il-costo-reale-del-lift-and-shift |
 | Staging table | Tabella temporanea usata come area di atterraggio dei dati grezzi prima della trasformazione e del caricamento nella des | etl-oracle-da-4-ore-a-25-minuti-con-staging-tables-merge-e-parallel-dml, il-preventivo-dell-upgrade-e-la-domanda-che-non-e-istintiva |
 | Stakeholder | Persona o gruppo con un interesse diretto nel risultato di un progetto: committente, utente finale, sponsor, team tecnico | tecnica-si-e-yes-and |
@@ -259,6 +262,6 @@ Tabella centralizzata di tutti i termini tecnici e acronimi presenti nelle sezio
 | ?SYNTAX ERROR | Messaggio di errore del Commodore 64 che segnala una violazione delle regole sintattiche del BASIC. Indica la riga in cu | il-dottore-tutto-pazzo-un-commodore-64-una-porta-chiusa-e-il-mestiere-di-capire |
 
 **Ultimo aggiornamento**: 2026-11-14
-**Totale termini**: 249
-**Totale articoli con glossario**: 58
+**Totale termini**: 252
+**Totale articoli con glossario**: 59
 
